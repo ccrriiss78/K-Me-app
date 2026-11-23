@@ -1,0 +1,40 @@
+﻿K-ME · LOGOS REVISADOS · VERSIÓN 1.1
+10 de noviembre de 2026
+
+Se conserva íntegro el diseño aprobado, incluido el borde negro redondeado del sello.
+El interior del sello sigue siendo blanco opaco. El exterior es transparente.
+Los archivos principales están ajustados al contorno del logo, sin margen exterior añadido.
+No hay recuadro gris ni fondo rectangular en ninguno de los archivos de imagen.
+
+NOTA DE NOMBRES (18/11/2026)
+Los archivos que antes se llamaban «general» son el logo de K-ME Connect (sello dentro del
+círculo con trazos rosas) y ahora se llaman «connect»: carpeta 01-logo-connect, K-ME-connect.*,
+K-ME-icono-connect.svg, icono-connect-*.png y favicon-connect.ico.
+El logo general de K-ME es el sello Studio (02-sello-Studio, K-ME-Studio.*).
+El zip original K-ME-logos-revisados-v1.1.zip conserva los nombres de la entrega.
+
+QUÉ USAR
+• Web: 03-web/K-ME-connect.svg y 03-web/K-ME-Studio.svg.
+• Word: PNG de 2048 de 01-logo-connect o 02-sello-Studio.
+• Impresión o ampliación: SVG vectorial. Coordinar con imprenta el perfil de color necesario.
+• Iconos: archivos icono-*.png y favicon*.ico de 03-web; mantienen transparencia y proporción.
+
+CONTENIDO
+01-logo-connect: maestro SVG y PNG de 512, 1024, 2048 y 4096 píxeles de ancho.
+02-sello-Studio: maestro SVG y PNG de 512, 1024, 2048 y 4096 píxeles de alto.
+03-web: SVG, WebP sin pérdida, iconos transparentes, favicons y ejemplo de integración.
+COMPROBAR-LOGOS.html: abrir en el navegador para ver SVG, PNG y WebP en fondo blanco, oscuro y rosa.
+04-instrucciones: comprobaciones realizadas.
+
+TRANSPARENCIA Y USO
+Todos los archivos de imagen conservan la transparencia exterior, también los iconos.
+Los iconos cuadrados tienen espacio transparente para conservar la proporción del logo.
+La página de comprobación usa fondos de prueba que no están incorporados a los logos.
+Si Word muestra una guía o aplica un contorno a la imagen, se debe desactivar en el documento.
+La integración web incluye las imágenes sin borde, sombra ni fondo añadido.
+
+CONSERVACIÓN
+La versión 1.0 se conserva aparte. En esta versión no se han modificado letras, rostro,
+comillas, nodos, órbita, colores ni las distancias entre los elementos del diseño.
+SVG con trazados, sin tipografías externas y sin imágenes raster incrustadas.
+Negro #000000 · blanco #FFFFFF · fucsia #E83475. Color para pantalla en sRGB.

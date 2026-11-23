@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- Capa: ropa_abajo · Ropa inferior: corto · Lienzo 400×480 (usa assets/plantilla.svg como guía) -->
+<path class="f-abajo" d="M150,350 L250,350 L249,394 L206,396 L201,376 L199,376 L194,396 L151,394 Z" fill="#3d4466" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="t-abajo-oscuro" d="M156,386 L192,388 M208,388 L244,386" stroke="#323854" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

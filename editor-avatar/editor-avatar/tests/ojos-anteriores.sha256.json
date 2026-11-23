@@ -1,0 +1,50 @@
+[
+  {
+    "nombre": "alargados-abiertos.svg",
+    "hash": "2ecaafc934418e7e6764f84def4d67f91f7cda8e3098cd882278a0eb58ac59b7"
+  },
+  {
+    "nombre": "alargados-cerrados.svg",
+    "hash": "b559c435a9bb92f3ae8740bef29fa15f5d48439430ef5733e529e2771fff8b14"
+  },
+  {
+    "nombre": "alargados-guino-derecho.svg",
+    "hash": "547970155f4999d7b9d7d08a8170c5f8b3d09f65a0fc2213508047efb2abf46d"
+  },
+  {
+    "nombre": "alargados-guino-izquierdo.svg",
+    "hash": "51807075b749f8c5e801e26437ef807f5c5c374d985e66104e0087025fc73409"
+  },
+  {
+    "nombre": "almendrados-abiertos.svg",
+    "hash": "868e74067dd36b48b7a2e2ca02cabdd337b475a98cbe7a28221065921ca1d219"
+  },
+  {
+    "nombre": "almendrados-cerrados.svg",
+    "hash": "c508fd7dddb4bf3efa5262dc03ff0a2625efec5cfaf3832a4f5fefd86ae9e487"
+  },
+  {
+    "nombre": "almendrados-guino-derecho.svg",
+    "hash": "5f1b104d1651c4b63f32b3a228b722c32b70a27947e5bce4c0c6aa99c8034657"
+  },
+  {
+    "nombre": "almendrados-guino-izquierdo.svg",
+    "hash": "e20780f3b2f69863a71ebc3802757a8a6123d7a782ba7501f93be8e9aaa797be"
+  },
+  {
+    "nombre": "redondos-abiertos.svg",
+    "hash": "d2e3adc0a35386de8990a2b970969715f013dcfff7bccab5ea23f8fcc7fa8839"
+  },
+  {
+    "nombre": "redondos-cerrados.svg",
+    "hash": "bfbbee73c96a47295d68feee1f49dde7be9d949eade8edc65b95a82cfd6b4ab9"
+  },
+  {
+    "nombre": "redondos-guino-derecho.svg",
+    "hash": "241cf413d4544a80a20d0a4dc4718c958c764f35429444667f1fae22b3151306"
+  },
+  {
+    "nombre": "redondos-guino-izquierdo.svg",
+    "hash": "70e0a6420b29035165609c669c879068cf4165e8d46c887001238b5ea3a830d6"
+  }
+]

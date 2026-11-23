@@ -1,0 +1,144 @@
+{
+  "estado": "Propuesta visual estática",
+  "avatarSha256": "e61b9bfa372ad9a0b9268320c21168aae097d2f4a1c65b153d5cd843a71d627e",
+  "fuentes": [
+    {
+      "ruta": "src/views/entrar.ejs",
+      "sha256": "af915ef29e7f5846c6267b63a481a707c672225407f61ac6b5a37e623cc86ccb"
+    },
+    {
+      "ruta": "src/views/registro.ejs",
+      "sha256": "595b1534489eee94ddee240aa9031640615cc6b6dad6167998eb51f24dc88868"
+    },
+    {
+      "ruta": "src/views/mi-kme.ejs",
+      "sha256": "b25963096e1895a4cbf1ce9e0797b9a21007d5b1c7afc2b5fae36a147412d6a4"
+    },
+    {
+      "ruta": "src/views/connect.ejs",
+      "sha256": "2c46e9f2ca532b85a3578bae8da8052da0b781c91c6382bf027a4ba943cafddc"
+    },
+    {
+      "ruta": "src/views/_cabecera.ejs",
+      "sha256": "d61beb8000f13ec3f5ea758c90a7218443a7e15c2cadbdc99430354c9561351d"
+    },
+    {
+      "ruta": "src/views/_pie.ejs",
+      "sha256": "9f21f29566913c5dc9c8dd67d13d29ede36be5f2348e6ead344cd539132987ac"
+    },
+    {
+      "ruta": "public/css/estilos.css",
+      "sha256": "e22902af55bf884c850bea4baa84898e6ad8a87a9ac4e2198c59b7a825ab9897"
+    },
+    {
+      "ruta": "src/catalogos/connect.js",
+      "sha256": "2067f26bf5254ed5d79205b74ae1676b0289d79fb613e7a0c15beb3579c29cbd"
+    },
+    {
+      "ruta": "public/img/logo-kme.svg",
+      "sha256": "1859e5a7cbb618ef380c42197cfe6360128bec72c08199fd8d1d08c089dd0fb3"
+    },
+    {
+      "ruta": "public/img/connect/emociones/feliz.svg",
+      "sha256": "a686273665ebbed87062d43c54e4741393aa2259e34a0aa5ae6b2a29375c9f82"
+    },
+    {
+      "ruta": "public/img/connect/emociones/emocion.svg",
+      "sha256": "6f454411f23670b5cacdb5103427723465c6e89a1f5b5f6fb67f8108387a75da"
+    },
+    {
+      "ruta": "public/img/connect/emociones/orgullo.svg",
+      "sha256": "4917247ec659376084abe0ad4844da079afa4622fe419b14a775742d407a3ef6"
+    },
+    {
+      "ruta": "public/img/connect/emociones/flechazo.svg",
+      "sha256": "fecdf5a4fe6afd571b5bf652d1fdc0096b79f5b190201d740cf35fd2f5b9f3ef"
+    },
+    {
+      "ruta": "public/img/connect/emociones/energia.svg",
+      "sha256": "40fc6055905cf65c08306e1a9a622d472d72e08738c9c54b787a616d30714c25"
+    },
+    {
+      "ruta": "public/img/connect/emociones/risa.svg",
+      "sha256": "c5bab372d54e130a0ddc22ee2223e3b4dd2e2e2b3a083511e5d01b1eb3a29625"
+    },
+    {
+      "ruta": "public/img/connect/emociones/sorpresa.svg",
+      "sha256": "f2560473649d6505c14b99b520356c3dfbd7cb4ae1ed2475dcc07b75d7ee59e1"
+    },
+    {
+      "ruta": "public/img/connect/emociones/nervios.svg",
+      "sha256": "6cf756ab51761c8e29bc67b2642b668abc06e0ccb54252eed5de2d02a8217667"
+    },
+    {
+      "ruta": "public/img/connect/emociones/comeback.svg",
+      "sha256": "1bcdd3065b4671abfa32629c9a9f3d2afaa23ce870b301d5c91798259d9e5f34"
+    },
+    {
+      "ruta": "public/img/connect/emociones/lagrimas.svg",
+      "sha256": "ca46a3b22e4a9cf38d540b8c399b4c586a30a6f2f6e268be04b780f8ffcb38af"
+    },
+    {
+      "ruta": "public/img/connect/emociones/gratitud.svg",
+      "sha256": "f25c5fc070aef56fb62fd15f72606a891ae3e8bc6579ad0f1e287605718661e6"
+    },
+    {
+      "ruta": "public/img/connect/emociones/calma.svg",
+      "sha256": "547b2d6f7cbd5fb9b7ed7f2b0710c9b819565ef352229dfd7431a8ce24220f07"
+    },
+    {
+      "ruta": "public/img/connect/emociones/nostalgia.svg",
+      "sha256": "ad591e68ba19feb44616f09983eee48863b798cab8ac66757e52bf8fa48b1c87"
+    },
+    {
+      "ruta": "public/img/connect/emociones/bajon.svg",
+      "sha256": "4e93c520093ea7b7aad2fe8236ba4b5853c47137f8a00a1d9ece1bd33c602e9e"
+    },
+    {
+      "ruta": "public/img/connect/reacciones/corazon.svg",
+      "sha256": "6d845eaf6f362446d7fe7e14c19ec1d690d79325f78efd81d9fef20e7ffa0f0f"
+    },
+    {
+      "ruta": "public/img/connect/reacciones/aplauso.svg",
+      "sha256": "2e163eafdd02f85b3ddb2d62ecfb81418583f1059134188ad07589474446e224"
+    },
+    {
+      "ruta": "public/img/connect/reacciones/lightstick.svg",
+      "sha256": "91748445f2258ff1711f9d157041cae8dd129d5e6e9d0f25e80db0ea0a5eb4dd"
+    },
+    {
+      "ruta": "public/img/connect/reacciones/minicorazon.svg",
+      "sha256": "1a745eb247cf48b65e6880b367186b80966557432ce0ab08a9a68f48aa5eaccc"
+    },
+    {
+      "ruta": "public/img/connect/reacciones/brillas.svg",
+      "sha256": "595330166fb438e32d5dd290a468dd01ba97262f92b2faaccb95619960d3f7b3"
+    },
+    {
+      "ruta": "public/img/connect/reacciones/fuego.svg",
+      "sha256": "72915d62b31dc0a33b25b71c2832f6f5b6f54c44aafbcacec973b9a9d9754b68"
+    },
+    {
+      "ruta": "public/img/connect/reacciones/fanchant.svg",
+      "sha256": "335e50e14d288d239c84bac5942e2e9fefeb2a523116226aac6a256daf187f2b"
+    },
+    {
+      "ruta": "public/img/connect/reacciones/corona.svg",
+      "sha256": "731f29073b66a6e828f4a0e161022c0dce96bee700adf6d71cdfded34f64b71f"
+    },
+    {
+      "ruta": "public/img/connect/reacciones/flores.svg",
+      "sha256": "c4ef03ee6626fa0c569d2a3168ad8e434227c11541873001ee991f73832ecd2f"
+    }
+  ],
+  "emociones": 14,
+  "reacciones": 9,
+  "cuentas": "Ficticias; sin credenciales",
+  "pantallas": [
+    "KME_ENTRAR_PROPUESTA.svg",
+    "KME_REGISTRO_PROPUESTA.svg",
+    "KME_MI_KME_PROPUESTA.svg",
+    "KME_CONNECT_PROPUESTA.svg"
+  ],
+  "cabecera": "Logo original sobre banda blanca de altura completa, no recoloreado"
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- Capa: accesorio · Accesorio: auriculares · Lienzo 400×480 (usa assets/plantilla.svg como guía) -->
+<path d="M86,196 C80,22 320,22 314,196" fill="none" stroke="#3d2f45" stroke-width="15" stroke-linecap="round"/><path d="M86,196 C80,22 320,22 314,196" fill="none" stroke="#9b7be0" stroke-width="9" stroke-linecap="round"/>
+<rect x="64" y="166" width="36" height="64" rx="17" fill="#9b7be0" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><rect x="300" y="166" width="36" height="64" rx="17" fill="#9b7be0" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="76" y="178" width="12" height="40" rx="6" fill="#c3b0ec"/><rect x="312" y="178" width="12" height="40" rx="6" fill="#c3b0ec"/>
+</svg>

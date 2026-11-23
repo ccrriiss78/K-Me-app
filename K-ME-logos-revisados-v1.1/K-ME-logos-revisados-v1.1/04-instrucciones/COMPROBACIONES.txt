@@ -1,0 +1,11 @@
+﻿COMPROBACIONES DE LA ENTREGA K-ME v1.1
+
+104 comprobaciones realizadas correctamente.
+Se ha comparado el contenido vectorial con la versión 1.0: únicamente cambia el encuadre.
+No se han redibujado ni deformado los elementos.
+Todos los PNG, WebP e ICO: transparencia exterior real y esquinas transparentes.
+Logos principales: blanco interior opaco y resolución comprobada.
+SVG: trazados vectoriales y paleta original.
+Prueba local en Microsoft Edge: 18 inserciones SVG/PNG/WebP cargadas correctamente,
+sin bordes, sombras ni fondos añadidos. Revisión visual en fondos blanco, oscuro y rosa.
+El logo negro conserva su color sobre fondo oscuro; elegir el fondo de uso apropiado.

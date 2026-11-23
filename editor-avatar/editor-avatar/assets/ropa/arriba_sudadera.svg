@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- Capa: ropa_arriba · Ropa superior: sudadera · Lienzo 400×480 (usa assets/plantilla.svg como guía) -->
+<path class="f-arriba-oscuro" d="M136,294 Q132,262 168,256 L232,256 Q268,262 264,294 Q200,310 136,294 Z" fill="#789bc5" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M166,298 L148,332" stroke="#3d2f45" stroke-width="33" stroke-linecap="round"/><path class="t-arriba" d="M166,298 L148,332" stroke="#8fb8ea" stroke-width="27" stroke-linecap="round"/><path class="t-arriba-oscuro" d="M151,326 L148,332" stroke="#789bc5" stroke-width="27" stroke-linecap="round"/>
+<path d="M234,298 L252,332" stroke="#3d2f45" stroke-width="33" stroke-linecap="round"/><path class="t-arriba" d="M234,298 L252,332" stroke="#8fb8ea" stroke-width="27" stroke-linecap="round"/><path class="t-arriba-oscuro" d="M249,326 L252,332" stroke="#789bc5" stroke-width="27" stroke-linecap="round"/>
+<path class="f-arriba" d="M156,286 Q200,278 244,286 L256,370 Q200,380 144,370 Z" fill="#8fb8ea" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="f-arriba-oscuro" d="M146,356 Q200,366 254,356 L256,370 Q200,380 144,370 Z" fill="#789bc5" stroke="#3d2f45" stroke-width="2.5" stroke-linejoin="round"/>
+<path class="f-arriba-oscuro" d="M170,330 L230,330 L238,352 Q200,358 162,352 Z" fill="#789bc5" stroke="#3d2f45" stroke-width="2.5" stroke-linejoin="round"/>
+<path class="t-arriba-claro" d="M190,292 L188,316 M210,292 L212,316" stroke="#c1d8f3" stroke-width="3.5" stroke-linecap="round"/>
+<circle class="f-arriba-claro" cx="188" cy="318" r="3.5" fill="#c1d8f3"/><circle class="f-arriba-claro" cx="212" cy="318" r="3.5" fill="#c1d8f3"/>
+</svg>

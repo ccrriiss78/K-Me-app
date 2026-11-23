@@ -1,0 +1,20 @@
+<% const accesos = new Set(['corazon', 'aplauso', 'lightstick', 'minicorazon', 'fuego']);
+   const adicionales = p.reacciones.filter(r => !accesos.has(r.id));
+   const totalExtra = adicionales.reduce((n,r) => n + r.total, 0); %>
+<form method="post" action="/connect/publicaciones/<%= p.id %>/reacciones" class="reacciones" aria-label="Reacciones a la publicación de <%= p.alias %>">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  <% p.reacciones.filter(r => accesos.has(r.id)).forEach(r => { %>
+    <%- include('_reaccion', { r, conNombre: false }) %>
+  <% }) %>
+  <% if (adicionales.length) { %>
+  <details class="reacciones-mas" data-mas-reacciones>
+    <summary><span class="reacciones-mas__signo" aria-hidden="true">+</span> Más reacciones <span class="reacciones-mas__total" data-total-extra<% if (!totalExtra) { %> hidden<% } %> aria-label="<%= totalExtra %> reacciones adicionales"><%= totalExtra %></span></summary>
+    <div class="reacciones-mas__panel">
+      <p class="reacciones-mas__titulo">¿Qué te hace sentir?</p>
+      <div class="reacciones-mas__opciones">
+        <% adicionales.forEach(r => { %><%- include('_reaccion', { r, conNombre: true }) %><% }) %>
+      </div>
+    </div>
+  </details>
+  <% } %>
+</form>

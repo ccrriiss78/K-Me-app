@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- Capa: ropa_arriba · Ropa superior: rayas · Lienzo 400×480 (usa assets/plantilla.svg como guía) -->
+<path d="M166,298 L148,332" stroke="#3d2f45" stroke-width="33" stroke-linecap="round"/><path class="t-arriba" d="M166,298 L148,332" stroke="#8fb8ea" stroke-width="27" stroke-linecap="round"/><path class="t-arriba-oscuro" d="M151,326 L148,332" stroke="#789bc5" stroke-width="27" stroke-linecap="round"/>
+<path d="M234,298 L252,332" stroke="#3d2f45" stroke-width="33" stroke-linecap="round"/><path class="t-arriba" d="M234,298 L252,332" stroke="#8fb8ea" stroke-width="27" stroke-linecap="round"/><path class="t-arriba-oscuro" d="M249,326 L252,332" stroke="#789bc5" stroke-width="27" stroke-linecap="round"/>
+<path class="f-arriba" d="M156,286 Q200,278 244,286 L254,366 Q200,376 146,366 Z" fill="#8fb8ea"/>
+<rect class="f-arriba-claro" x="156.5" y="298" width="87" height="10" fill="#c1d8f3"/><rect class="f-arriba-claro" x="153.75" y="320" width="92.5" height="10" fill="#c1d8f3"/><rect class="f-arriba-claro" x="151" y="342" width="98" height="10" fill="#c1d8f3"/>
+<path d="M156,286 Q200,278 244,286 L254,366 Q200,376 146,366 Z" fill="none" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="f-piel t-arriba-oscuro" d="M182,285 Q200,302 218,285" fill="#f6d3b8" stroke="#789bc5" stroke-width="6" stroke-linecap="round"/>
+</svg>

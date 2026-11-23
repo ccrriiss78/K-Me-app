@@ -1,0 +1,550 @@
+/* K-ME · estilos de la fase 1. Paleta del entorno provisional (abierta a personalización futura).
+   Colores de marca según LEEME de los logos: negro #000000, blanco #FFFFFF, fucsia #E83475. */
+
+:root {
+  --color-fondo: #faf7f9;
+  --color-superficie: #ffffff;
+  --color-texto: #1a1a1a;
+  --color-texto-suave: #5a5a5a;
+  --color-marca: #e83475;
+  --color-marca-oscuro: #b9235a;
+  --color-borde: #e4dde0;
+  --color-error-fondo: #fdecef;
+  --color-error-texto: #8a1538;
+  --color-ok-fondo: #e9f7ef;
+  --color-ok-texto: #1d6b3a;
+  --color-rosa-suave: #fdecef;
+  --radio: 12px;
+
+  /* Connect (D038): cambia aquí el aspecto del muro sin tocar nada más. */
+  --connect-ancho: 1120px;         /* ancho máximo de Connect (muro + panel de publicar) */
+  --connect-lateral: 320px;        /* ancho del panel «Publicar» en el ordenador */
+  --connect-photocard-ancho: 76px; /* la photocard con la inicial (o el avatar) de cada publicación */
+  --connect-photocard-alto: 100px;
+  --connect-emocion-icono: 40px;   /* caritas del formulario de publicar */
+  --connect-sello-icono: 48px;     /* carita de cada publicación */
+  --connect-reaccion-icono: 1.25rem;
+  --connect-reaccion-mia: var(--color-marca-oscuro); /* borde y texto de las reacciones que has dado */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--color-texto);
+  background: var(--color-fondo);
+  line-height: 1.5;
+}
+
+.cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-superficie);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.marca img { display: block; height: 40px; width: auto; }
+
+.nav { display: flex; align-items: center; gap: 1rem; }
+.nav__form { margin: 0; }
+
+/* Menú principal de la cabecera, con la sesión abierta. La página actual va marcada. */
+.menu { display: flex; gap: 0.25rem; margin-right: auto; }
+.menu a {
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  color: var(--color-texto);
+  font-weight: 600;
+  text-decoration: none;
+}
+.menu a:hover { background: var(--color-fondo); }
+.menu a[aria-current="page"] { background: var(--color-rosa-suave); color: var(--color-marca-oscuro); }
+.menu a:focus-visible { outline: 3px solid var(--color-marca); outline-offset: 2px; }
+
+.contenido {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+}
+
+.tarjeta {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  padding: 1.5rem;
+}
+
+h1 { margin-top: 0; font-size: 1.5rem; }
+
+/* Páginas de entrada («Entrar» y «Crear cuenta», T014): sin barra de cabecera. La marca (logo
+   muy grande y lema) va dentro de la tarjeta: en el móvil, encima del formulario; desde 960 px de
+   ancho, a la izquierda, separada por una línea, para que el logo crezca sin alargar la página. */
+.contenido--entrada { padding-top: 1rem; }
+/* La tarjeta, centrada en vertical en la ventana. Con margin auto (y no con align-items: center),
+   si la tarjeta no cabe empieza arriba y no se corta. */
+.contenido--entrada > .tarjeta { margin-block: auto; }
+/* --alto-logo: alto del logo; las rayitas del lema se calculan a partir de él. */
+.tarjeta--entrada { --alto-logo: 120px; }
+.entrada-marca { text-align: center; margin-bottom: 1rem; }
+.entrada-marca img { display: block; margin: 0 auto; height: var(--alto-logo); width: auto; }
+@media (min-width: 960px) {
+  .tarjeta--entrada {
+    --alto-logo: 200px;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    align-items: center;
+    gap: 2rem;
+    max-width: 800px;
+  }
+  .tarjeta--entrada.tarjeta--ancha { max-width: 1040px; }
+  .entrada-marca { margin: 0; padding-right: 2rem; border-right: 1px solid var(--color-borde); }
+}
+
+/* Lema de la marca con el estilo del editor: «fan» e «idol» en negrita y, a cada lado, las dos
+   rayitas fucsias inclinadas del logo, con su mismo grosor. Medidas tomadas de logo-kme.svg (alto
+   127 unidades): cada rayita, 3,6 de grueso (4,3 en horizontal), 9,5 de alto, inclinada 33° y a
+   6,5 de su pareja. Se calculan a partir de --alto-logo para que coincidan con el logo mostrado.
+   Las rayitas son decoración (content vacío): un lector de pantalla solo lee «Sin fan no hay idol.». */
+.lema-marca {
+  --u: calc(var(--alto-logo, 200px) / 126.8); /* una unidad del dibujo del logo */
+  margin: 0.9rem 0 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+.lema-marca strong { font-weight: 900; }
+.lema-marca::before,
+.lema-marca::after {
+  content: "";
+  position: relative;
+  display: inline-block;
+  width: calc(4.3 * var(--u));
+  height: calc(9.5 * var(--u));
+  border-radius: calc(1.8 * var(--u));
+  background: var(--color-marca);
+  box-shadow: calc(6.5 * var(--u)) 0 0 var(--color-marca);
+  transform: skew(-33deg);
+  vertical-align: middle;
+}
+.lema-marca::before { top: -0.18em; margin: 0 calc(6.5 * var(--u) + 0.45em) 0 0; }
+.lema-marca::after { top: 0.15em; margin: 0 calc(6.5 * var(--u)) 0 0.5em; }
+
+.formulario { display: grid; gap: 0.5rem; }
+.formulario label { font-weight: 600; margin-top: 0.5rem; }
+.formulario input {
+  font: inherit;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+}
+.formulario input:focus { outline: 3px solid var(--color-marca); outline-offset: 1px; }
+/* Formulario por parejas de campos (registro, D036): en el ordenador, dos columnas, para que
+   quepa entero sin desplazar la página; en pantallas estrechas, una sola columna. */
+.tarjeta--ancha { max-width: 760px; }
+.formulario__fila { display: grid; gap: 0.5rem 1.5rem; }
+.formulario__campo { display: grid; gap: 0.5rem; align-content: start; }
+@media (min-width: 720px) {
+  .formulario__fila { grid-template-columns: 1fr 1fr; }
+}
+/* Casilla con su texto en la misma línea («Mantener sesión abierta»). */
+.formulario .casilla { display: flex; align-items: center; gap: 0.5rem; font-weight: 400; cursor: pointer; }
+.formulario .casilla input { width: 1.15rem; height: 1.15rem; margin: 0; padding: 0; accent-color: var(--color-marca); }
+
+.boton {
+  font: inherit;
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.65rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--color-marca);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.boton:hover, .boton:focus-visible { background: var(--color-marca-oscuro); }
+.boton--secundario {
+  margin-top: 0;
+  background: transparent;
+  color: var(--color-marca-oscuro);
+  border: 1px solid var(--color-marca);
+}
+.boton--secundario:hover, .boton--secundario:focus-visible { background: var(--color-error-fondo); }
+
+.aviso { padding: 0.6rem 0.75rem; border-radius: 8px; margin: 0 0 1rem; }
+.aviso--error { background: var(--color-error-fondo); color: var(--color-error-texto); }
+.aviso--ok { background: var(--color-ok-fondo); color: var(--color-ok-texto); }
+
+.datos { display: grid; grid-template-columns: auto 1fr; gap: 0.25rem 1rem; }
+.datos dt { font-weight: 600; }
+.datos dd { margin: 0; }
+
+.nota { color: var(--color-texto-suave); font-size: 0.9rem; }
+.nota--campo { margin: 0; font-size: 0.85rem; } /* ayuda pegada a un campo del formulario */
+.enlace { color: var(--color-marca-oscuro); }
+
+.pie { padding: 1rem; text-align: center; color: var(--color-texto-suave); font-size: 0.85rem; }
+
+.boton--pequeno { margin-top: 0; padding: 0.4rem 0.8rem; font-size: 0.9rem; }
+.boton--peligro { background: var(--color-error-texto); }
+.boton--peligro:hover, .boton--peligro:focus-visible { background: #6a0f2a; }
+.boton--enlace { display: inline-block; text-decoration: none; }
+
+/* ===== Connect (D038): el muro de los fans ===== */
+.connect { width: 100%; max-width: var(--connect-ancho); }
+.connect__cabeza { margin-bottom: 1rem; }
+.connect__titulo { font-size: 2rem; margin: 0; letter-spacing: -0.02em; }
+.connect__subtitulo { margin: 0.25rem 0 0; color: var(--color-texto-suave); }
+
+/* Formulario de publicar: una emoción del catálogo, en «pastillas» con su carita. */
+.publicar {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  padding: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+.publicar__grupo { border: 0; margin: 0; padding: 0; min-width: 0; }
+.publicar__pregunta { font-size: 1.15rem; font-weight: 700; padding: 0; margin-bottom: 0.75rem; }
+.emociones { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 0.5rem; }
+/* El círculo de cada opción se oculta a la vista pero sigue funcionando con teclado y lector de pantalla. */
+.emocion__radio { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.emocion {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem 0.35rem 0.35rem;
+  border: 2px solid var(--color-borde);
+  border-radius: 14px;
+  background: var(--color-superficie);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: border-color 0.12s, transform 0.12s;
+}
+.emocion img { width: var(--connect-emocion-icono); height: var(--connect-emocion-icono); flex: none; }
+.emocion:hover { border-color: var(--color-marca); transform: translateY(-1px); }
+.emocion__radio:checked + .emocion {
+  border-color: var(--connect-reaccion-mia);
+  background: var(--color-rosa-suave);
+  box-shadow: inset 0 0 0 1px var(--connect-reaccion-mia);
+}
+.emocion__radio:focus-visible + .emocion { outline: 3px solid var(--color-marca); outline-offset: 2px; }
+.publicar__pie { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.publicar__pie .nota { margin: 0; flex: 1 1 260px; }
+.publicar__boton { margin-top: 0; }
+
+/* Ordenador: el muro a la izquierda y «Publicar» en un panel a la derecha que se queda fijo al
+   bajar, para ver el muro nada más entrar. Las emociones, a dos columnas y más compactas. */
+@media (min-width: 960px) {
+  .connect__columnas {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--connect-lateral);
+    grid-template-areas: "muro lateral";
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .connect__lateral { grid-area: lateral; position: sticky; top: 1rem; }
+  .connect__columnas > .muro { grid-area: muro; }
+  .connect__lateral .publicar { margin-bottom: 0; padding: 1rem; }
+  .connect__lateral .publicar__pregunta { font-size: 1.05rem; margin-bottom: 0.6rem; }
+  .connect__lateral .emociones { grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+  .connect__lateral .emocion { padding: 0.25rem 0.4rem 0.25rem 0.25rem; font-size: 0.82rem; gap: 0.4rem; border-radius: 12px; }
+  .connect__lateral .emocion img { width: 32px; height: 32px; }
+  .connect__lateral .publicar__pie { margin-top: 0.75rem; gap: 0.6rem; }
+  .connect__lateral .publicar__pie .nota { font-size: 0.8rem; flex-basis: 100%; }
+  .connect__lateral .publicar__boton { width: 100%; }
+}
+
+/* Móvil y pantallas medianas: «Publicar» arriba, con las emociones en una sola fila que se desliza
+   con el dedo (icono encima y nombre debajo), para que el muro se vea enseguida. */
+@media (max-width: 959px) {
+  .emociones {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding: 0.2rem 0.1rem 0.6rem;
+    scroll-snap-type: x proximity;
+  }
+  .emocion {
+    flex: 0 0 auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 92px;
+    padding: 0.45rem 0.35rem;
+    text-align: center;
+    font-size: 0.78rem;
+    scroll-snap-align: start;
+  }
+  .emocion img { width: 36px; height: 36px; }
+  .publicar { padding: 1rem; margin-bottom: 1.25rem; }
+  .publicar__pie .nota { font-size: 0.8rem; }
+}
+
+/* El muro */
+.muro__titulo { font-size: 1.25rem; margin: 0 0 0.75rem; }
+.muro__vacio { padding: 1.5rem; text-align: center; color: var(--color-texto-suave); border: 2px dashed var(--color-borde); border-radius: var(--radio); }
+.muro__lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.publicacion {
+  display: grid;
+  grid-template-columns: var(--connect-photocard-ancho) 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  scroll-margin-top: 1rem; /* al volver tras reaccionar, la publicación no queda pegada al borde */
+}
+.publicacion:target { border-color: var(--color-marca); }
+
+/* Photocard de quien publica: el marco del logo con su inicial y las rayitas del rubor.
+   Cuando Avatar Studio guarde diseños, aquí irá el avatar (Q11). */
+.photocard {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--connect-photocard-ancho);
+  height: var(--connect-photocard-alto);
+  border: 3px solid #000;
+  border-radius: 14px;
+  background: var(--color-superficie);
+}
+.photocard__inicial { font-size: 2.3rem; font-weight: 900; line-height: 1; margin-top: -0.6rem; }
+.photocard::before,
+.photocard::after {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  width: 3.4px;
+  height: 9px;
+  border-radius: 2px;
+  background: var(--color-marca);
+  box-shadow: 5.6px 0 0 var(--color-marca);
+  transform: skew(-33deg);
+}
+.photocard::before { left: 13px; }
+.photocard::after { right: 18px; }
+
+.publicacion__cuerpo { min-width: 0; }
+.publicacion__cabeza { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; margin: 0; }
+.publicacion__alias { font-size: 1.05rem; }
+.publicacion__cabeza time { color: var(--color-texto-suave); font-size: 0.85rem; }
+.publicacion__emocion {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0.5rem 0 0.75rem;
+  padding: 0.3rem 1rem 0.3rem 0.3rem;
+  border-radius: 999px;
+  background: var(--color-rosa-suave);
+  font-weight: 700;
+}
+.publicacion__emocion img { width: var(--connect-sello-icono); height: var(--connect-sello-icono); }
+
+/* Reacciones: cada pulsación suma una (hasta el tope del catálogo). El icono es una máscara:
+   se pinta con el color del texto del botón, así cambia de color con el estado. */
+.reacciones { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; }
+.reaccion {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2.5rem;
+  padding: 0.3rem 0.7rem;
+  border: 1.5px solid var(--color-borde);
+  border-radius: 999px;
+  background: var(--color-superficie);
+  color: var(--color-texto);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.12s, transform 0.12s;
+}
+.reaccion:hover { border-color: var(--color-marca); transform: translateY(-1px); }
+.reaccion:active { transform: scale(0.94); }
+.reaccion:focus-visible { outline: 3px solid var(--color-marca); outline-offset: 2px; }
+.reaccion--mia { border-color: var(--connect-reaccion-mia); background: var(--color-rosa-suave); color: var(--connect-reaccion-mia); }
+.reaccion:disabled { cursor: not-allowed; transform: none; }
+.reaccion__icono {
+  width: var(--connect-reaccion-icono);
+  height: var(--connect-reaccion-icono);
+  background: currentColor;
+  -webkit-mask: var(--icono) center / contain no-repeat;
+  mask: var(--icono) center / contain no-repeat;
+}
+.reaccion__total { font-variant-numeric: tabular-nums; }
+/* Sin reacciones de ese tipo, solo el icono: los ceros llenan de ruido el muro. */
+.reaccion[data-total="0"] .reaccion__total { display: none; }
+/* «Latido» del botón al reaccionar sin recargar (public/js/connect.js). Con «reducir movimiento»
+   activado en el sistema, la regla general de arriba lo desactiva. */
+.reaccion--latido { animation: latido-reaccion 0.35s ease-out; }
+@keyframes latido-reaccion {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+
+/* Texto solo para lectores de pantalla: no se ve, pero se lee (por ejemplo, el aviso de Connect). */
+.solo-lectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Acciones de cada publicación: quitar tus reacciones y borrar la tuya, en desplegables. */
+.publicacion__acciones { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: 0.75rem; }
+.desplegable > summary {
+  cursor: pointer;
+  color: var(--color-marca-oscuro);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.desplegable > summary:focus-visible { outline: 3px solid var(--color-marca); outline-offset: 2px; }
+.desplegable__contenido { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.desplegable__texto { margin: 0; font-size: 0.9rem; }
+
+@media (max-width: 520px) {
+  :root { --connect-photocard-ancho: 58px; --connect-photocard-alto: 78px; }
+  .photocard__inicial { font-size: 1.7rem; margin-top: -0.9rem; }
+  .photocard::before, .photocard::after { bottom: 11px; height: 8px; width: 3px; box-shadow: 4.8px 0 0 var(--color-marca); }
+  .photocard::before { left: 9px; }
+  .photocard::after { right: 13px; }
+  .emociones { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+}
+
+/* Cabecera en pantallas estrechas: el menú baja a su propia fila, a lo ancho. */
+@media (max-width: 600px) {
+  .cabecera { flex-wrap: wrap; row-gap: 0.5rem; }
+  .menu { order: 3; width: 100%; margin-right: 0; }
+  .menu a { white-space: nowrap; }
+}
+
+/* Sello Studio · Mi rincón fan. Estilos propios: no alteran las otras pantallas. */
+.sello-studio [hidden] { display: none !important; }
+.sello-studio, .sellos-studio {
+  --studio-papel: #fffaf7;
+  --studio-tinta: #282126;
+  --studio-linea: #6e737b;
+  max-width: 1160px;
+  min-width: 0;
+  padding: clamp(1rem, 3vw, 2.5rem);
+  border: 1px solid var(--studio-linea);
+  background: var(--studio-papel);
+  color: var(--studio-tinta);
+  box-shadow: 5px 6px 0 #ede0cb;
+}
+.studio-cabecera { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.studio-antetitulo { font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 .6rem; }
+.studio-cabecera h1 { font-size: clamp(2rem, 4.5vw, 3.5rem); line-height: 1.1; letter-spacing: -.045em; margin: 0 0 .6rem; }
+.studio-intro { margin: 0; font-size: 1.05rem; }
+.studio-rayitas { display: inline-block; margin-left: .2em; color: var(--color-marca); font-style: italic; letter-spacing: -.14em; }
+.studio-etiqueta { border: 1px solid var(--studio-tinta); padding: .45rem .8rem; background: #f5bfd3; font-weight: 700; transform: rotate(3deg); }
+.studio-volver { display: inline-block; color: inherit; margin-bottom: 1.25rem; min-height: 36px; text-underline-offset: .2em; }
+.sello-studio .boton, .sellos-studio .boton { min-height: 44px; border: 1.5px solid #000; background: #000; color: #fff; font-weight: 750; }
+.sello-studio .boton:hover, .sellos-studio .boton:hover { background: var(--studio-tinta); }
+.sello-studio .boton--secundario, .sellos-studio .boton--secundario { background: #fff; color: #000; }
+.sello-studio .boton--secundario:hover, .sellos-studio .boton--secundario:hover { background: #ede0cb; }
+.sello-studio .boton--peligro { background: var(--color-error-texto); border-color: var(--color-error-texto); }
+.sello-studio :is(a, button, summary, input, select):focus-visible,
+.sellos-studio :is(a, button, summary):focus-visible { outline: 3px solid #000; outline-offset: 4px; }
+.sello-studio :is(input, select) { font: inherit; accent-color: #000; }
+.sello-studio :is(input[type="text"], select) { width: 100%; max-width: 100%; min-width: 0; min-height: 46px; padding: .65rem .7rem; background: #fff; color: #000; border: 1.5px solid var(--studio-linea); border-radius: 7px; }
+.sello-studio input[type="text"] { overflow-wrap: anywhere; }
+.sello-studio .nota { color: #5a5a5a; font-size: .87rem; }
+.sello-editor { display: grid; grid-template-columns: minmax(250px, .9fr) minmax(0, 1.15fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; }
+.sello-editor__vista { position: sticky; top: 1rem; min-width: 0; text-align: center; }
+.sello-editor__escenario { padding: 22px 20px; background: #ede0cb; border-radius: 14px; }
+.sello-editor__papel { position: relative; padding: 20px 16px 14px; border: 1px solid #c7ab8d; background: #fff; box-shadow: 4px 5px 0 #c7ab8d; }
+.sello-editor__papel::before { content: ""; position: absolute; top: -10px; left: calc(50% - 42px); width: 84px; height: 21px; background: #f5bfd3; opacity: .85; transform: rotate(-3deg); }
+.sello-editor__papel .sello { display: block; width: 100%; max-width: 300px; max-height: min(47vh, 420px); height: auto; margin: auto; }
+.sello-editor__ayuda { font-size: .9rem; margin: 1rem 0 .5rem; overflow-wrap: anywhere; }
+.sello-editor__ayuda [lang="ko"] { font-weight: 800; font-size: 1.2em; }
+.sello-editor__avisos { text-align: left; padding: .7rem .8rem .7rem 1.8rem; border-left: 3px solid var(--color-marca-oscuro); background: #fdecef; font-size: .85rem; }
+.sello-editor__estado { font-size: .8rem; color: #5a5a5a; min-height: 1.5em; margin: .6rem 0; }
+.sello-editor__cambios { font-size: .85rem; margin: .5rem 0 1rem; }
+.sello-editor__cambios[data-pendiente="true"] { font-weight: 750; }
+.sello-editor__acciones { display: flex; justify-content: center; flex-wrap: wrap; gap: .65rem; }
+.sello-editor__acciones .boton { flex: 1 1 135px; }
+.sello-editor__acciones a { color: inherit; font-weight: 650; }
+.sello-editor__opciones { min-width: 0; display: grid; gap: 1.4rem; }
+.sello-editor__nombre { margin: 0; }
+.sello-editor__nombre > label { font-weight: 750; }
+.sello-bloque { min-width: 0; max-width: 100%; margin: 0; padding: 1.05rem 1.1rem 1.1rem; border: 1px solid var(--studio-linea); border-radius: 10px; background: #fff; }
+.sello-bloque > legend { max-width: 100%; padding: 0 .4rem; font-size: 1.05rem; font-weight: 800; }
+.sello-bloque__numero { color: #5a5a5a; font-size: .73rem; margin-right: .35rem; font-variant-numeric: tabular-nums; }
+.sello-bloque > p:first-of-type { margin-top: 0; }
+.sello-avatar-pendiente { border-left: 3px solid #c5b1e3; padding-left: .8rem; font-size: .9rem; }
+.sello-encuadre-titulo { font-weight: 700; font-size: .87rem; margin-bottom: .5rem; }
+.sello-encuadres { display: flex; gap: .65rem; flex-wrap: wrap; }
+.sello-encuadre { display: flex; align-items: center; gap: .5rem; min-height: 44px; border: 1px solid var(--studio-linea); border-radius: 7px; padding: .5rem .75rem; cursor: pointer; font-size: .9rem; }
+.sello-encuadre:has(input:checked) { background: #fdecef; border-color: #000; }
+.sello-encuadre:has(input:disabled) { cursor: default; color: #5a5a5a; background: #faf7f9; }
+.sello-alias { display: flex; align-items: center; gap: .7rem; min-height: 44px; overflow-wrap: anywhere; }
+.sello-alias input { flex: 0 0 auto; width: 20px; height: 20px; }
+.sello-adorno + .sello-adorno { border-top: 1px dashed var(--studio-linea); margin-top: 1rem; padding-top: 1rem; }
+.sello-adorno > label { display: block; margin-bottom: .4rem; font-size: .9rem; font-weight: 700; }
+.muestras { margin-top: .8rem; min-width: 0; }
+.muestras > summary { display: flex; gap: .65rem; align-items: center; min-height: 44px; padding: .5rem .2rem; cursor: pointer; font-size: .85rem; }
+.muestras > summary::after { content: "+"; margin-left: auto; font-size: 1.2rem; }
+.muestras[open] > summary::after { content: "−"; }
+.muestras__actual { width: 22px; height: 22px; flex: 0 0 22px; background: var(--muestra, #fff); border: 1px solid #6e737b; border-radius: 50%; }
+.muestras__lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 5px; min-width: 0; padding: .7rem 0 .2rem; margin: 0; border: 0; }
+.muestra { position: relative; display: grid; place-items: center; min-width: 44px; min-height: 44px; cursor: pointer; }
+.muestra > input { position: absolute; width: 1px; height: 1px; margin: -1px; clip: rect(0 0 0 0); clip-path: inset(50%); overflow: hidden; }
+.muestra__color { display: block; width: 28px; height: 28px; border-radius: 50%; border: 1px solid #6e737b; background: var(--muestra); }
+.muestra input:checked + .muestra__color { outline: 2px solid #000; outline-offset: 3px; }
+.muestra input:focus-visible + .muestra__color { outline: 3px solid #000; outline-offset: 5px; box-shadow: 0 0 0 3px #fff; }
+.sello-editor__mas { border-top: 1px dashed var(--studio-linea); margin-top: 2.5rem; padding-top: 1.2rem; display: flex; flex-wrap: wrap; align-items: start; gap: 1.5rem; }
+.sello-editor__mas summary { cursor: pointer; color: var(--color-error-texto); padding: .6rem .2rem; font-weight: 700; }
+.studio-crear { display: inline-flex; gap: 1rem; align-items: center; }
+.sellos-vacio { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 2rem; align-items: center; margin: 1rem 0; padding: clamp(1rem, 4vw, 3rem); border: 1px dashed var(--studio-linea); border-radius: 12px; background: #fff; }
+.sellos-vacio h2 { font-size: clamp(1.4rem, 3vw, 2rem); letter-spacing: -.025em; margin: 0; }
+.sellos-vacio__marca { position: relative; padding: 20px; background: #ede0cb; text-align: center; transform: rotate(-4deg); }
+.sellos-vacio__marca img { display: block; margin: auto; max-width: 100%; height: auto; }
+.sellos-vacio__estrella { position: absolute; top: -24px; right: -18px; color: var(--color-marca); font-size: 3rem; }
+.sellos-conteo { font-size: .87rem; margin: 0 0 1.25rem; }
+.sellos-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 215px), 1fr)); gap: 1.5rem; margin: 0; padding: 0; list-style: none; }
+.sellos-lista__elemento { min-width: 0; background: #fff; border: 1px solid var(--studio-linea); border-radius: 10px; overflow: hidden; }
+.sello-card__abrir { display: block; color: inherit; padding: 1rem; text-decoration: none; }
+.sello-card__abrir:focus-visible { outline-offset: -5px; }
+.sello-card__papel { position: relative; display: grid; place-items: center; padding: 1.6rem 1rem 1.2rem; background: #ede0cb; border-radius: 5px; min-height: 280px; }
+.sello-card__papel::before { content: ""; position: absolute; top: -7px; width: 68px; height: 18px; background: #f5bfd3; transform: rotate(-3deg); }
+.sello-card__numero { position: absolute; top: .4rem; left: .5rem; font-size: .7rem; font-weight: 750; }
+.sello-card__papel .sello { width: 150px; max-width: 100%; height: auto; transition: transform .15s ease; }
+.sello-card__abrir:hover .sello { transform: translateY(-3px); }
+.sellos-lista__nombre { display: block; font-size: 1.08rem; font-weight: 800; margin: .9rem 0 .25rem; overflow-wrap: anywhere; }
+.sello-card__editar { display: flex; justify-content: space-between; font-size: .82rem; color: #5a5a5a; }
+.sello-card__acciones { padding: 0 1rem 1rem; }
+.sello-card__acciones .boton { width: 100%; }
+@media (max-width: 760px) {
+  .sello-editor { grid-template-columns: minmax(0, 1fr); }
+  .sello-editor__vista { position: static; }
+  .sello-editor__papel .sello { max-width: 240px; max-height: 340px; }
+  .sello-editor__escenario { padding: 20px 16px; }
+  .studio-cabecera { margin-bottom: 1.5rem; gap: 1rem; }
+  .sellos-vacio { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  .sellos-vacio__marca { width: 150px; justify-self: center; }
+  .sello-bloque { padding: .8rem; }
+}

@@ -1,0 +1,45 @@
+# Lo que NO entra nunca en Git. El repositorio de GitHub es público (D026).
+# Ojo: estas reglas solo afectan a archivos que todavía no están en Git.
+
+# Configuración privada, en cualquier carpeta.
+# Solo se sube la plantilla .env.example, con valores ficticios.
+.env
+.env.*
+!.env.example
+
+# Claves y certificados
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Copias de la base de datos y carpetas de copias de seguridad
+# (las migraciones .sql de app/db/migrations sí se suben)
+*.dump
+*.backup
+*.bak
+copias-seguridad/
+backups/
+
+# Notas personales de la autora
+privado/
+# Notas sueltas que pueden llevar datos de una cuenta de prueba (no se abren)
+fan01.txt
+notalogindemo.despuesborrartxt.txt
+
+# Dependencias instaladas (se recuperan con npm install)
+node_modules/
+
+# Registros y temporales
+*.log
+npm-debug.log*
+tmp/
+temp/
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Configuración local de herramientas
+**/.claude/settings.local.json
+.vscode/*
+!.vscode/extensions.json

@@ -1,0 +1,2435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sello Studio · vista estática · K-ME</title>
+
+  <style>/* K-ME · estilos de la fase 1. Paleta del entorno provisional (abierta a personalización futura).
+   Colores de marca según LEEME de los logos: negro #000000, blanco #FFFFFF, fucsia #E83475. */
+
+:root {
+  --color-fondo: #faf7f9;
+  --color-superficie: #ffffff;
+  --color-texto: #1a1a1a;
+  --color-texto-suave: #5a5a5a;
+  --color-marca: #e83475;
+  --color-marca-oscuro: #b9235a;
+  --color-borde: #e4dde0;
+  --color-error-fondo: #fdecef;
+  --color-error-texto: #8a1538;
+  --color-ok-fondo: #e9f7ef;
+  --color-ok-texto: #1d6b3a;
+  --color-rosa-suave: #fdecef;
+  --radio: 12px;
+
+  /* Connect (D038): cambia aquí el aspecto del muro sin tocar nada más. */
+  --connect-ancho: 1120px;         /* ancho máximo de Connect (muro + panel de publicar) */
+  --connect-lateral: 320px;        /* ancho del panel «Publicar» en el ordenador */
+  --connect-photocard-ancho: 76px; /* la photocard con la inicial (o el avatar) de cada publicación */
+  --connect-photocard-alto: 100px;
+  --connect-emocion-icono: 40px;   /* caritas del formulario de publicar */
+  --connect-sello-icono: 48px;     /* carita de cada publicación */
+  --connect-reaccion-icono: 1.25rem;
+  --connect-reaccion-mia: var(--color-marca-oscuro); /* borde y texto de las reacciones que has dado */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--color-texto);
+  background: var(--color-fondo);
+  line-height: 1.5;
+}
+
+.cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-superficie);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.marca img { display: block; height: 40px; width: auto; }
+
+.nav { display: flex; align-items: center; gap: 1rem; }
+.nav__form { margin: 0; }
+
+/* Menú principal de la cabecera, con la sesión abierta. La página actual va marcada. */
+.menu { display: flex; gap: 0.25rem; margin-right: auto; }
+.menu a {
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  color: var(--color-texto);
+  font-weight: 600;
+  text-decoration: none;
+}
+.menu a:hover { background: var(--color-fondo); }
+.menu a[aria-current="page"] { background: var(--color-rosa-suave); color: var(--color-marca-oscuro); }
+.menu a:focus-visible { outline: 3px solid var(--color-marca); outline-offset: 2px; }
+
+.contenido {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+}
+
+.tarjeta {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  padding: 1.5rem;
+}
+
+h1 { margin-top: 0; font-size: 1.5rem; }
+
+/* Páginas de entrada («Entrar» y «Crear cuenta», T014): sin barra de cabecera. La marca (logo
+   muy grande y lema) va dentro de la tarjeta: en el móvil, encima del formulario; desde 960 px de
+   ancho, a la izquierda, separada por una línea, para que el logo crezca sin alargar la página. */
+.contenido--entrada { padding-top: 1rem; }
+/* La tarjeta, centrada en vertical en la ventana. Con margin auto (y no con align-items: center),
+   si la tarjeta no cabe empieza arriba y no se corta. */
+.contenido--entrada > .tarjeta { margin-block: auto; }
+/* --alto-logo: alto del logo; las rayitas del lema se calculan a partir de él. */
+.tarjeta--entrada { --alto-logo: 120px; }
+.entrada-marca { text-align: center; margin-bottom: 1rem; }
+.entrada-marca img { display: block; margin: 0 auto; height: var(--alto-logo); width: auto; }
+@media (min-width: 960px) {
+  .tarjeta--entrada {
+    --alto-logo: 200px;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    align-items: center;
+    gap: 2rem;
+    max-width: 800px;
+  }
+  .tarjeta--entrada.tarjeta--ancha { max-width: 1040px; }
+  .entrada-marca { margin: 0; padding-right: 2rem; border-right: 1px solid var(--color-borde); }
+}
+
+/* Lema de la marca con el estilo del editor: «fan» e «idol» en negrita y, a cada lado, las dos
+   rayitas fucsias inclinadas del logo, con su mismo grosor. Medidas tomadas de logo-kme.svg (alto
+   127 unidades): cada rayita, 3,6 de grueso (4,3 en horizontal), 9,5 de alto, inclinada 33° y a
+   6,5 de su pareja. Se calculan a partir de --alto-logo para que coincidan con el logo mostrado.
+   Las rayitas son decoración (content vacío): un lector de pantalla solo lee «Sin fan no hay idol.». */
+.lema-marca {
+  --u: calc(var(--alto-logo, 200px) / 126.8); /* una unidad del dibujo del logo */
+  margin: 0.9rem 0 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+.lema-marca strong { font-weight: 900; }
+.lema-marca::before,
+.lema-marca::after {
+  content: "";
+  position: relative;
+  display: inline-block;
+  width: calc(4.3 * var(--u));
+  height: calc(9.5 * var(--u));
+  border-radius: calc(1.8 * var(--u));
+  background: var(--color-marca);
+  box-shadow: calc(6.5 * var(--u)) 0 0 var(--color-marca);
+  transform: skew(-33deg);
+  vertical-align: middle;
+}
+.lema-marca::before { top: -0.18em; margin: 0 calc(6.5 * var(--u) + 0.45em) 0 0; }
+.lema-marca::after { top: 0.15em; margin: 0 calc(6.5 * var(--u)) 0 0.5em; }
+
+.formulario { display: grid; gap: 0.5rem; }
+.formulario label { font-weight: 600; margin-top: 0.5rem; }
+.formulario input {
+  font: inherit;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+}
+.formulario input:focus { outline: 3px solid var(--color-marca); outline-offset: 1px; }
+/* Formulario por parejas de campos (registro, D036): en el ordenador, dos columnas, para que
+   quepa entero sin desplazar la página; en pantallas estrechas, una sola columna. */
+.tarjeta--ancha { max-width: 760px; }
+.formulario__fila { display: grid; gap: 0.5rem 1.5rem; }
+.formulario__campo { display: grid; gap: 0.5rem; align-content: start; }
+@media (min-width: 720px) {
+  .formulario__fila { grid-template-columns: 1fr 1fr; }
+}
+/* Casilla con su texto en la misma línea («Mantener sesión abierta»). */
+.formulario .casilla { display: flex; align-items: center; gap: 0.5rem; font-weight: 400; cursor: pointer; }
+.formulario .casilla input { width: 1.15rem; height: 1.15rem; margin: 0; padding: 0; accent-color: var(--color-marca); }
+
+.boton {
+  font: inherit;
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.65rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--color-marca);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.boton:hover, .boton:focus-visible { background: var(--color-marca-oscuro); }
+.boton--secundario {
+  margin-top: 0;
+  background: transparent;
+  color: var(--color-marca-oscuro);
+  border: 1px solid var(--color-marca);
+}
+.boton--secundario:hover, .boton--secundario:focus-visible { background: var(--color-error-fondo); }
+
+.aviso { padding: 0.6rem 0.75rem; border-radius: 8px; margin: 0 0 1rem; }
+.aviso--error { background: var(--color-error-fondo); color: var(--color-error-texto); }
+.aviso--ok { background: var(--color-ok-fondo); color: var(--color-ok-texto); }
+
+.datos { display: grid; grid-template-columns: auto 1fr; gap: 0.25rem 1rem; }
+.datos dt { font-weight: 600; }
+.datos dd { margin: 0; }
+
+.nota { color: var(--color-texto-suave); font-size: 0.9rem; }
+.nota--campo { margin: 0; font-size: 0.85rem; } /* ayuda pegada a un campo del formulario */
+.enlace { color: var(--color-marca-oscuro); }
+
+.pie { padding: 1rem; text-align: center; color: var(--color-texto-suave); font-size: 0.85rem; }
+
+.boton--pequeno { margin-top: 0; padding: 0.4rem 0.8rem; font-size: 0.9rem; }
+.boton--peligro { background: var(--color-error-texto); }
+.boton--peligro:hover, .boton--peligro:focus-visible { background: #6a0f2a; }
+.boton--enlace { display: inline-block; text-decoration: none; }
+
+/* ===== Connect (D038): el muro de los fans ===== */
+.connect { width: 100%; max-width: var(--connect-ancho); }
+.connect__cabeza { margin-bottom: 1rem; }
+.connect__titulo { font-size: 2rem; margin: 0; letter-spacing: -0.02em; }
+.connect__subtitulo { margin: 0.25rem 0 0; color: var(--color-texto-suave); }
+
+/* Formulario de publicar: una emoción del catálogo, en «pastillas» con su carita. */
+.publicar {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  padding: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+.publicar__grupo { border: 0; margin: 0; padding: 0; min-width: 0; }
+.publicar__pregunta { font-size: 1.15rem; font-weight: 700; padding: 0; margin-bottom: 0.75rem; }
+.emociones { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 0.5rem; }
+/* El círculo de cada opción se oculta a la vista pero sigue funcionando con teclado y lector de pantalla. */
+.emocion__radio { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.emocion {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem 0.35rem 0.35rem;
+  border: 2px solid var(--color-borde);
+  border-radius: 14px;
+  background: var(--color-superficie);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: border-color 0.12s, transform 0.12s;
+}
+.emocion img { width: var(--connect-emocion-icono); height: var(--connect-emocion-icono); flex: none; }
+.emocion:hover { border-color: var(--color-marca); transform: translateY(-1px); }
+.emocion__radio:checked + .emocion {
+  border-color: var(--connect-reaccion-mia);
+  background: var(--color-rosa-suave);
+  box-shadow: inset 0 0 0 1px var(--connect-reaccion-mia);
+}
+.emocion__radio:focus-visible + .emocion { outline: 3px solid var(--color-marca); outline-offset: 2px; }
+.publicar__pie { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.publicar__pie .nota { margin: 0; flex: 1 1 260px; }
+.publicar__boton { margin-top: 0; }
+
+/* Ordenador: el muro a la izquierda y «Publicar» en un panel a la derecha que se queda fijo al
+   bajar, para ver el muro nada más entrar. Las emociones, a dos columnas y más compactas. */
+@media (min-width: 960px) {
+  .connect__columnas {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--connect-lateral);
+    grid-template-areas: "muro lateral";
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .connect__lateral { grid-area: lateral; position: sticky; top: 1rem; }
+  .connect__columnas > .muro { grid-area: muro; }
+  .connect__lateral .publicar { margin-bottom: 0; padding: 1rem; }
+  .connect__lateral .publicar__pregunta { font-size: 1.05rem; margin-bottom: 0.6rem; }
+  .connect__lateral .emociones { grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+  .connect__lateral .emocion { padding: 0.25rem 0.4rem 0.25rem 0.25rem; font-size: 0.82rem; gap: 0.4rem; border-radius: 12px; }
+  .connect__lateral .emocion img { width: 32px; height: 32px; }
+  .connect__lateral .publicar__pie { margin-top: 0.75rem; gap: 0.6rem; }
+  .connect__lateral .publicar__pie .nota { font-size: 0.8rem; flex-basis: 100%; }
+  .connect__lateral .publicar__boton { width: 100%; }
+}
+
+/* Móvil y pantallas medianas: «Publicar» arriba, con las emociones en una sola fila que se desliza
+   con el dedo (icono encima y nombre debajo), para que el muro se vea enseguida. */
+@media (max-width: 959px) {
+  .emociones {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding: 0.2rem 0.1rem 0.6rem;
+    scroll-snap-type: x proximity;
+  }
+  .emocion {
+    flex: 0 0 auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 92px;
+    padding: 0.45rem 0.35rem;
+    text-align: center;
+    font-size: 0.78rem;
+    scroll-snap-align: start;
+  }
+  .emocion img { width: 36px; height: 36px; }
+  .publicar { padding: 1rem; margin-bottom: 1.25rem; }
+  .publicar__pie .nota { font-size: 0.8rem; }
+}
+
+/* El muro */
+.muro__titulo { font-size: 1.25rem; margin: 0 0 0.75rem; }
+.muro__vacio { padding: 1.5rem; text-align: center; color: var(--color-texto-suave); border: 2px dashed var(--color-borde); border-radius: var(--radio); }
+.muro__lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.publicacion {
+  display: grid;
+  grid-template-columns: var(--connect-photocard-ancho) 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  scroll-margin-top: 1rem; /* al volver tras reaccionar, la publicación no queda pegada al borde */
+}
+.publicacion:target { border-color: var(--color-marca); }
+
+/* Photocard de quien publica: el marco del logo con su inicial y las rayitas del rubor.
+   Cuando Avatar Studio guarde diseños, aquí irá el avatar (Q11). */
+.photocard {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--connect-photocard-ancho);
+  height: var(--connect-photocard-alto);
+  border: 3px solid #000;
+  border-radius: 14px;
+  background: var(--color-superficie);
+}
+.photocard__inicial { font-size: 2.3rem; font-weight: 900; line-height: 1; margin-top: -0.6rem; }
+.photocard::before,
+.photocard::after {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  width: 3.4px;
+  height: 9px;
+  border-radius: 2px;
+  background: var(--color-marca);
+  box-shadow: 5.6px 0 0 var(--color-marca);
+  transform: skew(-33deg);
+}
+.photocard::before { left: 13px; }
+.photocard::after { right: 18px; }
+
+.publicacion__cuerpo { min-width: 0; }
+.publicacion__cabeza { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; margin: 0; }
+.publicacion__alias { font-size: 1.05rem; }
+.publicacion__cabeza time { color: var(--color-texto-suave); font-size: 0.85rem; }
+.publicacion__emocion {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0.5rem 0 0.75rem;
+  padding: 0.3rem 1rem 0.3rem 0.3rem;
+  border-radius: 999px;
+  background: var(--color-rosa-suave);
+  font-weight: 700;
+}
+.publicacion__emocion img { width: var(--connect-sello-icono); height: var(--connect-sello-icono); }
+
+/* Reacciones: cada pulsación suma una (hasta el tope del catálogo). El icono es una máscara:
+   se pinta con el color del texto del botón, así cambia de color con el estado. */
+.reacciones { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; }
+.reaccion {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2.5rem;
+  padding: 0.3rem 0.7rem;
+  border: 1.5px solid var(--color-borde);
+  border-radius: 999px;
+  background: var(--color-superficie);
+  color: var(--color-texto);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.12s, transform 0.12s;
+}
+.reaccion:hover { border-color: var(--color-marca); transform: translateY(-1px); }
+.reaccion:active { transform: scale(0.94); }
+.reaccion:focus-visible { outline: 3px solid var(--color-marca); outline-offset: 2px; }
+.reaccion--mia { border-color: var(--connect-reaccion-mia); background: var(--color-rosa-suave); color: var(--connect-reaccion-mia); }
+.reaccion:disabled { cursor: not-allowed; transform: none; }
+.reaccion__icono {
+  width: var(--connect-reaccion-icono);
+  height: var(--connect-reaccion-icono);
+  background: currentColor;
+  -webkit-mask: var(--icono) center / contain no-repeat;
+  mask: var(--icono) center / contain no-repeat;
+}
+.reaccion__total { font-variant-numeric: tabular-nums; }
+/* Sin reacciones de ese tipo, solo el icono: los ceros llenan de ruido el muro. */
+.reaccion[data-total="0"] .reaccion__total { display: none; }
+/* «Latido» del botón al reaccionar sin recargar (public/js/connect.js). Con «reducir movimiento»
+   activado en el sistema, la regla general de arriba lo desactiva. */
+.reaccion--latido { animation: latido-reaccion 0.35s ease-out; }
+@keyframes latido-reaccion {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+
+/* Texto solo para lectores de pantalla: no se ve, pero se lee (por ejemplo, el aviso de Connect). */
+.solo-lectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Acciones de cada publicación: quitar tus reacciones y borrar la tuya, en desplegables. */
+.publicacion__acciones { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: 0.75rem; }
+.desplegable > summary {
+  cursor: pointer;
+  color: var(--color-marca-oscuro);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.desplegable > summary:focus-visible { outline: 3px solid var(--color-marca); outline-offset: 2px; }
+.desplegable__contenido { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.desplegable__texto { margin: 0; font-size: 0.9rem; }
+
+@media (max-width: 520px) {
+  :root { --connect-photocard-ancho: 58px; --connect-photocard-alto: 78px; }
+  .photocard__inicial { font-size: 1.7rem; margin-top: -0.9rem; }
+  .photocard::before, .photocard::after { bottom: 11px; height: 8px; width: 3px; box-shadow: 4.8px 0 0 var(--color-marca); }
+  .photocard::before { left: 9px; }
+  .photocard::after { right: 13px; }
+  .emociones { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+}
+
+/* Cabecera en pantallas estrechas: el menú baja a su propia fila, a lo ancho. */
+@media (max-width: 600px) {
+  .cabecera { flex-wrap: wrap; row-gap: 0.5rem; }
+  .menu { order: 3; width: 100%; margin-right: 0; }
+  .menu a { white-space: nowrap; }
+}
+
+/* Sello Studio · Mi rincón fan. Estilos propios: no alteran las otras pantallas. */
+.sello-studio [hidden] { display: none !important; }
+.sello-studio, .sellos-studio {
+  --studio-papel: #fffaf7;
+  --studio-tinta: #282126;
+  --studio-linea: #6e737b;
+  max-width: 1160px;
+  min-width: 0;
+  padding: clamp(1rem, 3vw, 2.5rem);
+  border: 1px solid var(--studio-linea);
+  background: var(--studio-papel);
+  color: var(--studio-tinta);
+  box-shadow: 5px 6px 0 #ede0cb;
+}
+.studio-cabecera { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.studio-antetitulo { font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 .6rem; }
+.studio-cabecera h1 { font-size: clamp(2rem, 4.5vw, 3.5rem); line-height: 1.1; letter-spacing: -.045em; margin: 0 0 .6rem; }
+.studio-intro { margin: 0; font-size: 1.05rem; }
+.studio-rayitas { display: inline-block; margin-left: .2em; color: var(--color-marca); font-style: italic; letter-spacing: -.14em; }
+.studio-etiqueta { border: 1px solid var(--studio-tinta); padding: .45rem .8rem; background: #f5bfd3; font-weight: 700; transform: rotate(3deg); }
+.studio-volver { display: inline-block; color: inherit; margin-bottom: 1.25rem; min-height: 36px; text-underline-offset: .2em; }
+.sello-studio .boton, .sellos-studio .boton { min-height: 44px; border: 1.5px solid #000; background: #000; color: #fff; font-weight: 750; }
+.sello-studio .boton:hover, .sellos-studio .boton:hover { background: var(--studio-tinta); }
+.sello-studio .boton--secundario, .sellos-studio .boton--secundario { background: #fff; color: #000; }
+.sello-studio .boton--secundario:hover, .sellos-studio .boton--secundario:hover { background: #ede0cb; }
+.sello-studio .boton--peligro { background: var(--color-error-texto); border-color: var(--color-error-texto); }
+.sello-studio :is(a, button, summary, input, select):focus-visible,
+.sellos-studio :is(a, button, summary):focus-visible { outline: 3px solid #000; outline-offset: 4px; }
+.sello-studio :is(input, select) { font: inherit; accent-color: #000; }
+.sello-studio :is(input[type="text"], select) { width: 100%; max-width: 100%; min-width: 0; min-height: 46px; padding: .65rem .7rem; background: #fff; color: #000; border: 1.5px solid var(--studio-linea); border-radius: 7px; }
+.sello-studio input[type="text"] { overflow-wrap: anywhere; }
+.sello-studio .nota { color: #5a5a5a; font-size: .87rem; }
+.sello-editor { display: grid; grid-template-columns: minmax(250px, .9fr) minmax(0, 1.15fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; }
+.sello-editor__vista { position: sticky; top: 1rem; min-width: 0; text-align: center; }
+.sello-editor__escenario { padding: 22px 20px; background: #ede0cb; border-radius: 14px; }
+.sello-editor__papel { position: relative; padding: 20px 16px 14px; border: 1px solid #c7ab8d; background: #fff; box-shadow: 4px 5px 0 #c7ab8d; }
+.sello-editor__papel::before { content: ""; position: absolute; top: -10px; left: calc(50% - 42px); width: 84px; height: 21px; background: #f5bfd3; opacity: .85; transform: rotate(-3deg); }
+.sello-editor__papel .sello { display: block; width: 100%; max-width: 300px; max-height: min(47vh, 420px); height: auto; margin: auto; }
+.sello-editor__ayuda { font-size: .9rem; margin: 1rem 0 .5rem; overflow-wrap: anywhere; }
+.sello-editor__ayuda [lang="ko"] { font-weight: 800; font-size: 1.2em; }
+.sello-editor__avisos { text-align: left; padding: .7rem .8rem .7rem 1.8rem; border-left: 3px solid var(--color-marca-oscuro); background: #fdecef; font-size: .85rem; }
+.sello-editor__estado { font-size: .8rem; color: #5a5a5a; min-height: 1.5em; margin: .6rem 0; }
+.sello-editor__cambios { font-size: .85rem; margin: .5rem 0 1rem; }
+.sello-editor__cambios[data-pendiente="true"] { font-weight: 750; }
+.sello-editor__acciones { display: flex; justify-content: center; flex-wrap: wrap; gap: .65rem; }
+.sello-editor__acciones .boton { flex: 1 1 135px; }
+.sello-editor__acciones a { color: inherit; font-weight: 650; }
+.sello-editor__opciones { min-width: 0; display: grid; gap: 1.4rem; }
+.sello-editor__nombre { margin: 0; }
+.sello-editor__nombre > label { font-weight: 750; }
+.sello-bloque { min-width: 0; max-width: 100%; margin: 0; padding: 1.05rem 1.1rem 1.1rem; border: 1px solid var(--studio-linea); border-radius: 10px; background: #fff; }
+.sello-bloque > legend { max-width: 100%; padding: 0 .4rem; font-size: 1.05rem; font-weight: 800; }
+.sello-bloque__numero { color: #5a5a5a; font-size: .73rem; margin-right: .35rem; font-variant-numeric: tabular-nums; }
+.sello-bloque > p:first-of-type { margin-top: 0; }
+.sello-avatar-pendiente { border-left: 3px solid #c5b1e3; padding-left: .8rem; font-size: .9rem; }
+.sello-encuadre-titulo { font-weight: 700; font-size: .87rem; margin-bottom: .5rem; }
+.sello-encuadres { display: flex; gap: .65rem; flex-wrap: wrap; }
+.sello-encuadre { display: flex; align-items: center; gap: .5rem; min-height: 44px; border: 1px solid var(--studio-linea); border-radius: 7px; padding: .5rem .75rem; cursor: pointer; font-size: .9rem; }
+.sello-encuadre:has(input:checked) { background: #fdecef; border-color: #000; }
+.sello-encuadre:has(input:disabled) { cursor: default; color: #5a5a5a; background: #faf7f9; }
+.sello-alias { display: flex; align-items: center; gap: .7rem; min-height: 44px; overflow-wrap: anywhere; }
+.sello-alias input { flex: 0 0 auto; width: 20px; height: 20px; }
+.sello-adorno + .sello-adorno { border-top: 1px dashed var(--studio-linea); margin-top: 1rem; padding-top: 1rem; }
+.sello-adorno > label { display: block; margin-bottom: .4rem; font-size: .9rem; font-weight: 700; }
+.muestras { margin-top: .8rem; min-width: 0; }
+.muestras > summary { display: flex; gap: .65rem; align-items: center; min-height: 44px; padding: .5rem .2rem; cursor: pointer; font-size: .85rem; }
+.muestras > summary::after { content: "+"; margin-left: auto; font-size: 1.2rem; }
+.muestras[open] > summary::after { content: "−"; }
+.muestras__actual { width: 22px; height: 22px; flex: 0 0 22px; background: var(--muestra, #fff); border: 1px solid #6e737b; border-radius: 50%; }
+.muestras__lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 5px; min-width: 0; padding: .7rem 0 .2rem; margin: 0; border: 0; }
+.muestra { position: relative; display: grid; place-items: center; min-width: 44px; min-height: 44px; cursor: pointer; }
+.muestra > input { position: absolute; width: 1px; height: 1px; margin: -1px; clip: rect(0 0 0 0); clip-path: inset(50%); overflow: hidden; }
+.muestra__color { display: block; width: 28px; height: 28px; border-radius: 50%; border: 1px solid #6e737b; background: var(--muestra); }
+.muestra input:checked + .muestra__color { outline: 2px solid #000; outline-offset: 3px; }
+.muestra input:focus-visible + .muestra__color { outline: 3px solid #000; outline-offset: 5px; box-shadow: 0 0 0 3px #fff; }
+.sello-editor__mas { border-top: 1px dashed var(--studio-linea); margin-top: 2.5rem; padding-top: 1.2rem; display: flex; flex-wrap: wrap; align-items: start; gap: 1.5rem; }
+.sello-editor__mas summary { cursor: pointer; color: var(--color-error-texto); padding: .6rem .2rem; font-weight: 700; }
+.studio-crear { display: inline-flex; gap: 1rem; align-items: center; }
+.sellos-vacio { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 2rem; align-items: center; margin: 1rem 0; padding: clamp(1rem, 4vw, 3rem); border: 1px dashed var(--studio-linea); border-radius: 12px; background: #fff; }
+.sellos-vacio h2 { font-size: clamp(1.4rem, 3vw, 2rem); letter-spacing: -.025em; margin: 0; }
+.sellos-vacio__marca { position: relative; padding: 20px; background: #ede0cb; text-align: center; transform: rotate(-4deg); }
+.sellos-vacio__marca img { display: block; margin: auto; max-width: 100%; height: auto; }
+.sellos-vacio__estrella { position: absolute; top: -24px; right: -18px; color: var(--color-marca); font-size: 3rem; }
+.sellos-conteo { font-size: .87rem; margin: 0 0 1.25rem; }
+.sellos-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 215px), 1fr)); gap: 1.5rem; margin: 0; padding: 0; list-style: none; }
+.sellos-lista__elemento { min-width: 0; background: #fff; border: 1px solid var(--studio-linea); border-radius: 10px; overflow: hidden; }
+.sello-card__abrir { display: block; color: inherit; padding: 1rem; text-decoration: none; }
+.sello-card__abrir:focus-visible { outline-offset: -5px; }
+.sello-card__papel { position: relative; display: grid; place-items: center; padding: 1.6rem 1rem 1.2rem; background: #ede0cb; border-radius: 5px; min-height: 280px; }
+.sello-card__papel::before { content: ""; position: absolute; top: -7px; width: 68px; height: 18px; background: #f5bfd3; transform: rotate(-3deg); }
+.sello-card__numero { position: absolute; top: .4rem; left: .5rem; font-size: .7rem; font-weight: 750; }
+.sello-card__papel .sello { width: 150px; max-width: 100%; height: auto; transition: transform .15s ease; }
+.sello-card__abrir:hover .sello { transform: translateY(-3px); }
+.sellos-lista__nombre { display: block; font-size: 1.08rem; font-weight: 800; margin: .9rem 0 .25rem; overflow-wrap: anywhere; }
+.sello-card__editar { display: flex; justify-content: space-between; font-size: .82rem; color: #5a5a5a; }
+.sello-card__acciones { padding: 0 1rem 1rem; }
+.sello-card__acciones .boton { width: 100%; }
+@media (max-width: 760px) {
+  .sello-editor { grid-template-columns: minmax(0, 1fr); }
+  .sello-editor__vista { position: static; }
+  .sello-editor__papel .sello { max-width: 240px; max-height: 340px; }
+  .sello-editor__escenario { padding: 20px 16px; }
+  .studio-cabecera { margin-bottom: 1.5rem; gap: 1rem; }
+  .sellos-vacio { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  .sellos-vacio__marca { width: 150px; justify-self: center; }
+  .sello-bloque { padding: .8rem; }
+}
+
+/* A+C · Fuerza con orden. Gramática común: tinta, papel y gesto; controles limpios.
+   La paleta y los originales de marca se mantienen. La intensidad se adapta a cada pantalla. */
+:root {
+  --kme-tinta: var(--color-texto);
+  --kme-papel: var(--color-superficie);
+  --kme-acento: var(--color-marca);
+  --kme-contorno: #6e737b;
+  --kme-radio-control: 6px;
+}
+.cabecera { border-bottom-color: var(--kme-tinta); padding-inline: max(1rem, calc((100vw - 1280px) / 2)); }
+.marca img { height: 60px; }
+.menu a { border-radius: 0; border-bottom: 3px solid transparent; font-weight: 800; }
+.menu a[aria-current="page"] { background: transparent; color: var(--kme-tinta); border-bottom-color: var(--kme-acento); }
+.nav { min-width: 0; }
+.nav__alias { max-width: 18ch; overflow-wrap: anywhere; font-size: .85rem; }
+.contenido { min-width: 0; padding: clamp(1rem, 3vw, 2.5rem) 1rem; }
+.tarjeta { border-color: var(--kme-contorno); border-radius: 8px; }
+:is(.tarjeta > h1, .entrada-formulario > h1, .connect__titulo) { font-weight: 900; letter-spacing: -.045em; line-height: 1.15; }
+:is(.tarjeta > h1, .entrada-formulario > h1, .connect__titulo)::after {
+  content: ''; display: block; width: 70px; height: 8px; margin-top: .55rem;
+  background: var(--kme-acento); clip-path: polygon(3% 36%, 93% 0, 100% 31%, 87% 46%, 91% 66%, 16% 100%, 0 79%);
+}
+.tarjeta--entrada { position: relative; isolation: isolate; box-shadow: 5px 5px 0 var(--color-rosa-suave); }
+.tarjeta--entrada::before {
+  content: ''; position: absolute; top: -12px; right: 12px; width: 110px; height: 8px;
+  background: var(--kme-acento); transform: rotate(-3deg); pointer-events: none;
+  clip-path: polygon(4% 30%, 100% 0, 94% 58%, 98% 75%, 0 100%);
+}
+.formulario input { border-color: var(--kme-contorno); border-radius: var(--kme-radio-control); }
+.boton {
+  min-height: 44px; background: var(--kme-tinta); color: #fff;
+  border: 1.5px solid var(--kme-tinta); border-radius: var(--kme-radio-control); font-weight: 800;
+}
+.boton:hover, .boton:focus-visible { background: #333; }
+.boton--secundario { background: #fff; color: var(--kme-tinta); }
+.boton--secundario:hover, .boton--secundario:focus-visible { background: var(--color-rosa-suave); }
+.boton--peligro { background: var(--color-error-texto); border-color: var(--color-error-texto); }
+.boton--peligro:hover, .boton--peligro:focus-visible { background: #6a0f2a; }
+:is(a, button, input, select, summary, [tabindex]):focus-visible { outline: 3px solid var(--kme-tinta); outline-offset: 4px; }
+.connect__cabeza { border-bottom: 1px solid var(--kme-tinta); padding-bottom: 1.25rem; }
+:is(.publicar, .publicacion) { border-color: var(--kme-contorno); border-radius: 8px; }
+
+/* Sello Studio: la composición concreta aprobada A+C. */
+.sello-studio, .sellos-studio {
+  --studio-tinta: var(--kme-tinta); --studio-papel: var(--kme-papel); --studio-linea: var(--kme-contorno);
+  max-width: 1280px; background: #fff; border-color: var(--kme-tinta); border-radius: 0;
+  padding: clamp(1rem, 3vw, 2.5rem); box-shadow: 5px 5px 0 var(--color-rosa-suave);
+}
+.studio-volver { float: right; font-size: .88rem; font-weight: 800; margin-bottom: .6rem; }
+.studio-cabecera { clear: both; position: relative; align-items: end; margin-bottom: 2rem; padding-bottom: 1.2rem; }
+.studio-cabecera::after {
+  content: ''; position: absolute; bottom: 0; left: 0; width: 140px; height: 9px; background: var(--kme-acento);
+  clip-path: polygon(4% 27%, 84% 0, 100% 30%, 91% 53%, 96% 70%, 10% 100%, 0 77%);
+}
+.studio-cabecera h1 { font-size: clamp(2.4rem, 5.6vw, 4.7rem); font-weight: 950; letter-spacing: -.065em; line-height: 1; }
+.studio-antetitulo { font-size: .69rem; letter-spacing: .1em; }
+.studio-intro { font-size: 1rem; font-weight: 650; }
+.studio-etiqueta { background: #fff; border: 0; border-bottom: 3px solid var(--kme-acento); transform: none; padding: .3rem 0; font-size: .85rem; }
+.sello-studio .boton, .sellos-studio .boton { border-radius: var(--kme-radio-control); }
+.sello-studio .boton--secundario:hover, .sellos-studio .boton--secundario:hover { background: var(--color-rosa-suave); }
+.sello-editor { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3rem); }
+.sello-editor__vista { top: 1rem; }
+.sello-editor__vista > .studio-antetitulo { text-align: left; }
+.sello-editor__escenario {
+  position: relative; isolation: isolate; display: grid; place-items: center;
+  min-height: 390px; padding: 12px 18px 20px; background: #fff; border-radius: 0;
+}
+/* La creación se juzga sobre blanco; la identidad vive fuera del área de dibujo. */
+.sello-editor__escenario::before { content: none; }
+.sello-editor__papel { padding: 0; border: 0; box-shadow: none; background: transparent; width: 100%; }
+.sello-editor__papel::before { content: none; }
+.sello-editor__papel .sello { max-width: 280px; max-height: min(54vh, 460px); filter: drop-shadow(0 5px 4px #00000018); }
+.sello-editor__ayuda { margin-top: .65rem; font-size: 1rem; font-weight: 700; }
+.sello-editor__estado { display: inline-block; padding: .3rem .8rem; border: 1px solid var(--kme-contorno); border-radius: 999px; color: var(--kme-tinta); }
+.sello-editor__opciones { border-left: 1px solid var(--studio-linea); padding-left: clamp(1rem, 2.5vw, 2rem); gap: 1.3rem; }
+.sello-categorias { display: flex; min-width: 0; border-bottom: 1px solid var(--kme-tinta); gap: .2rem; }
+.sello-categorias a { min-width: 0; flex: 1; padding: .65rem .3rem; min-height: 44px; text-align: center; color: var(--kme-tinta); font-weight: 850; text-decoration: none; border-bottom: 4px solid transparent; }
+.sello-categorias a:hover { background: var(--color-rosa-suave); }
+.sello-categorias a[aria-selected="true"] { background: var(--kme-acento); color: #000; border-bottom-color: var(--kme-tinta); }
+.sello-panel { min-width: 0; scroll-margin-top: 1rem; }
+.sello-bloque { padding: 0 0 1rem; border: 0; border-radius: 0; }
+.sello-bloque > legend { padding: 0; margin-bottom: .65rem; font-size: 1.1rem; }
+.sello-bloque__numero { font-size: .9em; color: var(--kme-tinta); }
+.sello-seccion { border-top: 1px solid var(--studio-linea); }
+.sello-seccion:last-child { border-bottom: 1px solid var(--studio-linea); }
+.sello-seccion > summary { display: flex; align-items: center; gap: .5rem; min-height: 50px; padding: .6rem 0; cursor: pointer; font-weight: 850; }
+.sello-seccion > summary::after { content: '+'; margin-left: auto; font-size: 1.25rem; }
+.sello-seccion[open] > summary::after { content: '−'; }
+.sello-seccion__nota { font-size: .75rem; font-weight: 500; color: var(--color-texto-suave); }
+.sello-avatar-pendiente { border-left-color: var(--kme-acento); }
+.muestras > summary { font-size: .83rem; }
+.muestras__lista { grid-template-columns: repeat(auto-fit, minmax(40px, 1fr)); padding: .2rem 0 .7rem; gap: 4px; }
+.muestra { min-width: 40px; min-height: 44px; }
+.muestra__color { width: 30px; height: 30px; border-radius: 6px; border-color: var(--kme-contorno); }
+.muestra input:checked + .muestra__color { outline: 2px solid #000; outline-offset: 3px; box-shadow: 0 0 0 3px #fff; }
+.muestra input:checked + .muestra__color::after { content: '✓'; display: block; text-align: center; line-height: 28px; color: #fff; font-weight: 900; text-shadow: -1px -1px #000, 1px -1px #000, -1px 1px #000, 1px 1px #000; }
+.sello-editor__nombre { border-top: 1px solid var(--studio-linea); padding-top: 1.1rem; }
+.sello-editor__guardar { display: grid; gap: .6rem; padding-bottom: 5px; }
+.sello-editor__cambios { margin: 0; color: var(--color-texto-suave); }
+.sello-editor__cambios[data-pendiente="true"] { color: var(--kme-tinta); }
+.sello-editor__acciones { justify-content: flex-start; }
+.sello-editor__acciones .boton { margin-top: 0; }
+.sello-editor__acciones button[value="guardar"], .studio-crear { box-shadow: 4px 4px 0 var(--kme-acento); }
+.sellos-lista { gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 250px)); }
+.sellos-lista__elemento { border-color: var(--kme-tinta); border-radius: 6px; }
+.sello-card__papel { background: #fff; border-radius: 0; padding: 1.5rem 1rem; }
+.sello-card__papel::before { content: none; }
+.sello-card__numero { top: .2rem; left: .2rem; background: var(--kme-tinta); color: #fff; padding: .1rem .45rem; font-size: .75rem; box-shadow: 3px 3px 0 var(--kme-acento); }
+.sello-card__editar { color: var(--kme-tinta); font-weight: 650; }
+.sello-card__acciones { border-top: 1px solid var(--color-borde); padding-top: .8rem; }
+.sellos-vacio { border-style: solid; border-radius: 0; }
+.sellos-vacio__marca { background: transparent; transform: none; }
+
+/* El collage pertenece al ambiente de la colección, debajo de tarjetas opacas. */
+.contenido:has(> .sellos-studio) { position: relative; isolation: isolate; }
+.contenido:has(> .sellos-studio)::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNjIwIiBmaWxsPSJub25lIj4KICA8ZGVmcz4KICAgIDxwYXR0ZXJuIGlkPSJwdW50b3MiIHdpZHRoPSIxNSIgaGVpZ2h0PSIxNSIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PGNpcmNsZSBjeD0iNCIgY3k9IjQiIHI9IjIuNCIgZmlsbD0iIzAwMCIvPjwvcGF0dGVybj4KICAgIDxmaWx0ZXIgaWQ9ImdyYW5vIiB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjY1IiBudW1PY3RhdmVzPSIzIiBzZWVkPSIxMiIvPjxmZUNvbG9yTWF0cml4IHR5cGU9InNhdHVyYXRlIiB2YWx1ZXM9IjAiLz48ZmVDb21wb25lbnRUcmFuc2Zlcj48ZmVGdW5jQSB0eXBlPSJsaW5lYXIiIHNsb3BlPSIuMTQiLz48L2ZlQ29tcG9uZW50VHJhbnNmZXI+PGZlQmxlbmQgaW49IlNvdXJjZUdyYXBoaWMiIG1vZGU9Im11bHRpcGx5Ii8+PC9maWx0ZXI+CiAgICA8Y2xpcFBhdGggaWQ9InBhcGVsIj48cGF0aCBkPSJtNjYgNDM3IDMwLTI0IDE0IDMgMjEtMTQgMTEgMyAyMy0xNyAxNCAyIDIyLTE4IDkgMyAyOC0xOSAxMSA0IDI2LTIyIDE0IDMgMjMtMTggMTMgMyAyNi0yMSAxMiAzIDIzLTIwIDEyIDIgMjctMTYgMTQgMiAyMy0xNyAxMSAzIDI2LTIwIDEzIDMgMjEtMTYgMjktNi0zNiA0NyAyIDEzLTIwIDI4IDIgMTItMTkgMjkgMSAxMi0yMCAyOSAxIDEyLTI2IDI4IDEgMTAtMjYgMjctMTUtMS0yNiAxOC0xMy0zLTI2IDE1LTE1LTMtMjUgMTQtMTUtNC0yNyAxMy0xNC00LTI3IDEyLTE1LTQtMjYgMTItMTQtNC0yOSAxMC0xOC0zLTMyIDExLTE2LTUtMzMgMTAtMTQtNC0yOSA2LTIxLTNaIi8+PC9jbGlwUGF0aD4KICA8L2RlZnM+CiAgPCEtLSBMYSB0cmFtYSB5IGVsIHBhcGVsIHF1ZWRhbiBmdWVyYSBkZWwgZGlidWpvIHBlcnNvbmFsIGRlbCBmYW4uIC0tPgogIDxwYXRoIGQ9Ik00MTAgMzUzIDU5NiAzMDYgNTY4IDUzNSAzNzggNTU3WiIgZmlsbD0idXJsKCNwdW50b3MpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA3KSIgb3BhY2l0eT0iLjE0Ij48cGF0aCBkPSJtNjYgNDM3IDExNS02MCAxMzItNTQgMTM1LTU5IDE1Ni02MS05MSAxNjYtMTEyIDgxLTEyOSAzMy0xMzUgMzNaIiBmaWxsPSIjMDAwIi8+PC9nPgogIDxnIGNsaXAtcGF0aD0idXJsKCNwYXBlbCkiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik00MiAxOTBoNTgwdjM1NUg0MnoiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIC04KSIgZD0ibTY2IDQzNyAzMC0yNCAxNCAzIDIxLTE0IDExIDMgMjMtMTcgMTQgMiAyMi0xOCA5IDMgMjgtMTkgMTEgNCAyNi0yMiAxNCAzIDIzLTE4IDEzIDMgMjYtMjEgMTIgMyAyMy0yMCAxMiAyIDI3LTE2IDE0IDIgMjMtMTcgMTEgMyAyNi0yMCAxMyAzIDIxLTE2IDI5LTYtMzYgNDcgMiAxMy0yMCAyOCAyIDEyLTE5IDI5IDEgMTItMjAgMjkgMSAxMi0yNiAyOCAxIDEwLTI2IDI3LTE1LTEtMjYgMTgtMTMtMy0yNiAxNS0xNS0zLTI1IDE0LTE1LTQtMjcgMTMtMTQtNC0yNyAxMi0xNS00LTI2IDEyLTE0LTQtMjkgMTAtMTgtMy0zMiAxMS0xNi01LTMzIDEwLTE0LTQtMjkgNi0yMS0zWiIgZmlsbD0iI2U4MzQ3NSIgZmlsdGVyPSJ1cmwoI2dyYW5vKSIvPjwvZz4KICA8ZyBmaWxsPSIjMDAwIj4KICAgIDxwYXRoIGQ9Im0zNCAzNTQgMjYtNDAtOSAyMyAzNC00OC03IDIzIDQxLTQ5LTEzIDI1IDQzLTQ0LTExIDIyIDQ3LTQxLTEzIDE4IDU1LTM4LTEyIDE1IDYzLTM1LTEwIDEzIDYzLTMxLTExIDEzIDY1LTI4LTkgMTIgNjAtMjUtNyAxMCA2OC0yNy0xMCAxMCA3Mi0yNS0xMiAxMyAzMi01LTI4IDIwIDEwLTEtNDUgMjQgMTQtMi02MiAyOSAxMi0zLTcyIDM0IDExLTEtNjMgMjggMTEtMS03MyAzMiA4LTEtNjQgMzEgNy0xLTYzIDM0IDYtMS01NiAzMyAyLTQtNDggMzUgNC04LTQxIDM1IDQtMTAtMjUgMjQgNS0xNC0xNyAxM1oiLz4KICAgIDxwYXRoIGQ9Ik02NyAzMjRRMjA5IDE2OSA1OTIgOTNMNTc0IDExMFEyNTQgMTkxIDczIDMzMVoiLz4KICAgIDxwYXRoIGQ9Ik0xMDEgMjgxUTI0MyAxNjcgNTMxIDEwOUw1MTAgMTE4UTI2NiAxNzggMTA1IDI4NVoiLz4KICAgIDxwYXRoIGQ9Im0zNSAzNzEgNDAtMzMtMjQgMjktMjkgMTlabTY0LTkyIDI1LTIxLTE1IDIxLTI2IDIxWm00MzEtMTYxIDYxLTIxLTExIDEzLTYyIDE4Wm0tMzU4IDg5IDM2LTI0LTE1IDE1LTM3IDIzWiIvPgogIDwvZz4KPC9zdmc+Cg==") right 2vw bottom 2rem / min(58vw, 720px) auto no-repeat;
+}
+.sellos-studio { background: transparent; border-color: transparent; box-shadow: none; }
+.sellos-studio .studio-cabecera { background: #fff; padding: 1rem 1rem 1.3rem; }
+.sellos-studio .studio-cabecera::after { left: 1rem; }
+.sellos-conteo { display: inline-block; background: #fff; padding: .3rem .6rem; }
+.sellos-lista__elemento { background: #fff; }
+.sellos-vacio { background: #fff; }
+
+/* Connect: accesos rápidos y un desplegable en el flujo, sin salir de la tarjeta. */
+.reacciones { align-items: flex-start; }
+.reaccion { min-height: 44px; border-color: var(--kme-contorno); }
+.reaccion--mia { border-color: var(--connect-reaccion-mia); }
+.reacciones-mas { min-width: 0; max-width: 100%; }
+.reacciones-mas[open] { flex-basis: 100%; }
+.reacciones-mas > summary {
+  display: flex; align-items: center; flex-wrap: wrap; gap: .4rem; min-height: 44px;
+  list-style: none; cursor: pointer; border: 1px solid var(--kme-contorno); border-radius: 999px;
+  padding: .4rem .7rem; background: #fff; color: var(--kme-tinta); font-size: .85rem; font-weight: 750;
+}
+.reacciones-mas > summary::-webkit-details-marker { display: none; }
+.reacciones-mas[open] > summary { background: var(--color-rosa-suave); border-color: var(--kme-tinta); }
+.reacciones-mas__signo { display: inline-block; line-height: 1; font-size: 1.2rem; }
+.reacciones-mas[open] .reacciones-mas__signo { transform: rotate(45deg); }
+.reacciones-mas__total { min-width: 1.4em; padding: .05rem .3rem; border-radius: 999px; background: var(--kme-tinta); color: #fff; font-size: .75rem; text-align: center; }
+.reacciones-mas [hidden] { display: none !important; }
+.reacciones-mas__panel { margin-top: .6rem; padding: .8rem; background: #fff; border: 1px solid var(--kme-tinta); border-radius: 8px; box-shadow: 3px 3px 0 var(--color-rosa-suave); }
+.reacciones-mas__titulo { margin: 0 0 .7rem; font-weight: 850; font-size: .9rem; }
+.reacciones-mas__opciones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .4rem; }
+.reacciones-mas__opciones .reaccion { display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; gap: .4rem; text-align: left; border-radius: 6px; padding: .5rem; }
+.reaccion__nombre { min-width: 0; overflow-wrap: anywhere; font-size: .8rem; line-height: 1.25; }
+@media (max-width: 760px) {
+  .sello-editor { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  .sello-editor__vista { position: static; }
+  .sello-editor__opciones { border-left: 0; border-top: 1px solid var(--kme-tinta); padding: 1rem 0 0; }
+  .sello-editor__escenario { min-height: 0; padding: 8px 24px 16px; }
+  .sello-editor__papel .sello { max-width: 220px; max-height: 320px; }
+  .studio-cabecera h1 { font-size: clamp(2.1rem, 9vw, 3.2rem); }
+  .studio-cabecera { gap: .8rem; }
+  .sello-categorias a { font-size: .85rem; }
+  .sello-editor__acciones .boton { flex-basis: 100%; }
+  .contenido:has(> .sellos-studio)::before { background-size: 86vw auto; background-position: right bottom 1rem; }
+}
+@media (max-width: 600px) {
+  .cabecera { gap: .5rem; }
+  .marca img { height: 48px; }
+  .menu { gap: 0; justify-content: space-between; }
+  .menu a { padding: .6rem .5rem; font-size: .83rem; }
+  .nav { gap: .6rem; }
+  .nav__alias { max-width: 15ch; font-size: .75rem; }
+  .nav .boton { margin: 0; padding: .4rem .7rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}
+</style>
+
+</head>
+<body><p style="margin:0;padding:10px;background:#fff;color:#000;text-align:center;font:14px sans-serif">VISTA ESTÁTICA · datos ficticios · los cambios no se guardan</p>
+
+
+
+  <header class="cabecera">
+    <a class="marca" href="/">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjIzLjEgMTUuMiA4OC41IDEyNi44IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkstTUUgU3R1ZGlvIj48dGl0bGU+Sy1NRSBTdHVkaW88L3RpdGxlPjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0zNy4xIDE2LjYgSDk3LjYgQzEwNC41NTg3OSAxNi42IDExMC4yIDIyLjI0MTIxIDExMC4yIDI5LjIgVjEyOCBDMTEwLjIgMTM0Ljk1ODc5IDEwNC41NTg3OSAxNDAuNiA5Ny42IDE0MC42IEgzNy4xIEMzMC4xNDEyMSAxNDAuNiAyNC41IDEzNC45NTg3OSAyNC41IDEyOCBWMjkuMiBDMjQuNSAyMi4yNDEyMSAzMC4xNDEyMSAxNi42IDM3LjEgMTYuNiBaIi8+PHBhdGggZmlsbD0iIzAwMDAwMCIgZD0iTTM3LjEgMTUuMiBIOTcuNiBDMTA1LjMzMTk5IDE1LjIgMTExLjYgMjEuNDY4MDEgMTExLjYgMjkuMiBWMTI4IEMxMTEuNiAxMzUuNzMxOTkgMTA1LjMzMTk5IDE0MiA5Ny42IDE0MiBIMzcuMSBDMjkuMzY4MDEgMTQyIDIzLjEgMTM1LjczMTk5IDIzLjEgMTI4IFYyOS4yIEMyMy4xIDIxLjQ2ODAxIDI5LjM2ODAxIDE1LjIgMzcuMSAxNS4yIFogTTM3LjEgMTguNiBIOTcuNiBDMTAzLjUwOTQ1IDE4LjYgMTA4LjMgMjMuMzkwNTUgMTA4LjMgMjkuMyBWMTI3LjkgQzEwOC4zIDEzMy44MDk0NSAxMDMuNTA5NDUgMTM4LjYgOTcuNiAxMzguNiBIMzcuMSBDMzEuMTkwNTUgMTM4LjYgMjYuNCAxMzMuODA5NDUgMjYuNCAxMjcuOSBWMjkuMyBDMjYuNCAyMy4zOTA1NSAzMS4xOTA1NSAxOC42IDM3LjEgMTguNiBaIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48cGF0aCBmaWxsPSIjMDAwMDAwIiBkPSJNMzYuOSA2Ni43IEMzOC42IDYwLjEgNDIuNSA0OS4zIDQ3LjQgMzkuNSBMNTAuNSAzMi4yIEM1MyAyNy42IDU1IDI2IDU4LjYgMjYuMSBDNjIuNSAyNi4xIDY1LjggMjguOSA2NS4yIDMyIEM2NC45IDM0LjEgNjIuOSAzOC44IDYxLjcgNDIgTDU5LjQgNDcuNSBDNjUuNyA0Mi43IDcyLjggMzUuNSA3OS40IDI5LjkgQzgyIDI3IDg1LjQgMjYuMiA4Ny42IDI5LjIgQzkwLjMgMzEuOCA5MC45IDM0LjkgODcuNyAzNy44IEw2NyA1My4zIEM3NS41IDY2LjggODQuMSA2OC40IDk1IDYxLjYgQzg5LjIgNzIuMiA4MC42IDc1IDcyLjYgNzIuMSBDNjUuMSA2OC44IDU5LjMgNjIgNTUuNSA1Ni41IEM1Mi4yIDYyLjkgNTAuMiA2OC4xIDQ4LjIgNzEuMiBDNDYuNyA3NC44IDQyIDc0LjcgMzkuNiA3My4xIEMzOC41IDcyLjggMzYuOCA2OS44IDM2LjkgNjYuNyBaIi8+PHBhdGggZmlsbD0iIzAwMDAwMCIgZD0iTTU3LjIgNzkgQzU3LjIgODEuNzA2MiA1NS4wMDYyIDgzLjkgNTIuMyA4My45IEM0OS41OTM4IDgzLjkgNDcuNCA4MS43MDYyIDQ3LjQgNzkgQzQ3LjQgNzYuMjkzOCA0OS41OTM4IDc0LjEgNTIuMyA3NC4xIEM1NS4wMDYyIDc0LjEgNTcuMiA3Ni4yOTM4IDU3LjIgNzkgWiIvPjxwYXRoIGZpbGw9IiMwMDAwMDAiIGQ9Ik03NS4yIDgyIEw4NS44IDgyIEM4Ni45MDQ1NyA4MiA4Ny44IDgxLjEwNDU3IDg3LjggODAgQzg3LjggNzguODk1NDMgODYuOTA0NTcgNzggODUuOCA3OCBMNzUuMiA3OCBDNzQuMDk1NDMgNzggNzMuMiA3OC44OTU0MyA3My4yIDgwIEM3My4yIDgxLjEwNDU3IDc0LjA5NTQzIDgyIDc1LjIgODIgWiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuNTUgMCkiPjxwYXRoIGZpbGw9IiMwMDAwMDAiIGQ9Ik01Ni44IDkxLjMgQzU2LjEgODkuMyA1OC41IDg3LjkgNTkuNiA5MC4xIEM2Mi42IDk1IDY4LjkgOTUuOSA3Mi42IDkwLjEgQzc0IDg3LjkgNzYuMiA4OS42IDc1LjEgOTEuNyBDNzAuNiAxMDAgNjEgMTAwLjEgNTYuOCA5MS4zIFoiLz48L2c+PHBhdGggZmlsbD0iIzAwMDAwMCIgZD0iTTQxLjEgMTI3LjcgVjEwNyBDNDEuMSAxMDQgNDQuMyAxMDIuOCA0Ni4zIDEwNSBMNTUuMSAxMTYuNCBMNjMuNiAxMDUuMSBDNjUuNyAxMDIuOSA2OC44IDEwNCA2OC44IDEwNyBWMTI3LjcgQzY4LjggMTMxLjIgNjMuNyAxMzEuMiA2My43IDEyNy43IFYxMTQuNSBMNTcuOSAxMjIuMiBDNTUuOCAxMjUuMSA1NC4yIDEyNS4xIDUyLjIgMTIyLjMgTDQ2LjMgMTE0LjYgVjEyNy43IEM0Ni4zIDEzMS40IDQxLjEgMTMxLjQgNDEuMSAxMjcuNyBaIi8+PHBhdGggZmlsbD0iIzAwMDAwMCIgZD0iTTc1LjIgMTA0IEg5MCBDOTMgMTA0IDkzIDEwOSA5MCAxMDkgSDc3LjkgVjExNC4yIEg4OC44IEM5Mi4zIDExNC4yIDkyLjMgMTE5LjUgODguOCAxMTkuNSBINzcuOSBWMTI1LjggSDkwLjEgQzkzIDEyNS44IDkzIDEzMC41IDkwLjEgMTMwLjUgSDc1LjIgQzczLjEgMTMwLjUgNzIgMTI5LjEgNzIgMTI3LjUgVjEwNyBDNzIgMTA1IDczLjEgMTA0IDc1LjIgMTA0IFoiLz48cGF0aCBmaWxsPSIjRTgzNDc1IiBkPSJNMzkuNTEzMjkgOTYuNzc0NjYgTDQzLjMxMzI5IDkwLjg3NDY2IEM0My44NTE1OCA5MC4wMzg4OSA0My42MTA0MyA4OC45MjUgNDIuNzc0NjYgODguMzg2NzEgQzQxLjkzODg5IDg3Ljg0ODQyIDQwLjgyNSA4OC4wODk1NyA0MC4yODY3MSA4OC45MjUzNCBMMzYuNDg2NzEgOTQuODI1MzQgQzM1Ljk0ODQyIDk1LjY2MTExIDM2LjE4OTU3IDk2Ljc3NSAzNy4wMjUzNCA5Ny4zMTMyOSBDMzcuODYxMTEgOTcuODUxNTggMzguOTc1IDk3LjYxMDQzIDM5LjUxMzI5IDk2Ljc3NDY2IFoiLz48cGF0aCBmaWxsPSIjRTgzNDc1IiBkPSJNNDYuMTEzMjkgOTYuNzc0NjYgTDQ5LjkxMzI5IDkwLjg3NDY2IEM1MC40NTE1OCA5MC4wMzg4OSA1MC4yMTA0MyA4OC45MjUgNDkuMzc0NjYgODguMzg2NzEgQzQ4LjUzODg5IDg3Ljg0ODQyIDQ3LjQyNSA4OC4wODk1NyA0Ni44ODY3MSA4OC45MjUzNCBMNDMuMDg2NzEgOTQuODI1MzQgQzQyLjU0ODQyIDk1LjY2MTExIDQyLjc4OTU3IDk2Ljc3NSA0My42MjUzNCA5Ny4zMTMyOSBDNDQuNDYxMTEgOTcuODUxNTggNDUuNTc1IDk3LjYxMDQzIDQ2LjExMzI5IDk2Ljc3NDY2IFoiLz48cGF0aCBmaWxsPSIjRTgzNDc1IiBkPSJNODUuOTEzMjkgOTYuNzc0NjYgTDg5LjcxMzI5IDkwLjg3NDY2IEM5MC4yNTE1OCA5MC4wMzg4OSA5MC4wMTA0MyA4OC45MjUgODkuMTc0NjYgODguMzg2NzEgQzg4LjMzODg5IDg3Ljg0ODQyIDg3LjIyNSA4OC4wODk1NyA4Ni42ODY3MSA4OC45MjUzNCBMODIuODg2NzEgOTQuODI1MzQgQzgyLjM0ODQyIDk1LjY2MTExIDgyLjU4OTU3IDk2Ljc3NSA4My40MjUzNCA5Ny4zMTMyOSBDODQuMjYxMTEgOTcuODUxNTggODUuMzc1IDk3LjYxMDQzIDg1LjkxMzI5IDk2Ljc3NDY2IFoiLz48cGF0aCBmaWxsPSIjRTgzNDc1IiBkPSJNOTIuMzEzMjkgOTYuNzc0NjYgTDk2LjExMzI5IDkwLjg3NDY2IEM5Ni42NTE1OCA5MC4wMzg4OSA5Ni40MTA0MyA4OC45MjUgOTUuNTc0NjYgODguMzg2NzEgQzk0LjczODg5IDg3Ljg0ODQyIDkzLjYyNSA4OC4wODk1NyA5My4wODY3MSA4OC45MjUzNCBMODkuMjg2NzEgOTQuODI1MzQgQzg4Ljc0ODQyIDk1LjY2MTExIDg4Ljk4OTU3IDk2Ljc3NSA4OS44MjUzNCA5Ny4zMTMyOSBDOTAuNjYxMTEgOTcuODUxNTggOTEuNzc1IDk3LjYxMDQzIDkyLjMxMzI5IDk2Ljc3NDY2IFoiLz48L3N2Zz4=" alt="K-ME" width="28" height="40">
+    </a>
+
+
+      <nav class="menu" aria-label="Principal">
+        <a href="/mi-kme">Mi K-ME</a>
+        <a href="KME_MIS_SELLOS_REVISION.html" aria-current="page">Sello Studio</a>
+        <a href="/connect">Connect</a>
+      </nav>
+      <nav class="nav" aria-label="Sesión">
+        <span class="nav__alias">Hola, <strong>fan_demo</strong></span>
+        <form method="post" action="/salir" class="nav__form">
+          <input type="hidden" name="_csrf" value="ficticio-sin-validez">
+          <button type="button" class="boton boton--secundario">Salir</button>
+        </form>
+      </nav>
+
+  </header>
+
+  <main class="contenido">
+
+<section class="tarjeta sello-studio" aria-labelledby="titulo-sello">
+  <a class="studio-volver" href="KME_MIS_SELLOS_REVISION.html">← Mis sellos</a>
+  <header class="studio-cabecera">
+    <div><p class="studio-antetitulo">Mi rincón fan</p><h1 id="titulo-sello">Sello Studio<span class="studio-rayitas" aria-hidden="true">//</span></h1>
+      <p class="studio-intro">Tu palabra. Tu forma de sentirla.</p></div>
+    <span class="studio-etiqueta">Hecho por ti <span aria-hidden="true">✦</span></span>
+  </header>
+
+
+  <form method="post" action="/studio/sellos" class="sello-editor" data-sello-editor data-sello-id="" data-sello-pendiente="false">
+    <input type="hidden" name="_csrf" value="ficticio-sin-validez">
+
+    <div class="sello-editor__vista">
+      <p class="studio-antetitulo">Tu creación</p>
+      <div class="sello-editor__escenario">
+        <div class="sello-editor__papel" data-sello-dibujo aria-label="Vista previa del sello">
+          <svg class="sello sello--editor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 354 507" width="300" role="img" aria-label="Sello: 우정 (amistad), alias fan_demo">
+  <rect width="354" height="507" rx="56" fill="#000000"/>
+  <rect x="13" y="13" width="328" height="481" rx="43" fill="#ffffff"/>
+  <g data-parte="palabra" fill="#000000" font-family="&#39;Malgun Gothic&#39;, &#39;Apple SD Gothic Neo&#39;, &#39;Noto Sans KR&#39;, &#39;Noto Sans CJK KR&#39;, sans-serif" font-weight="700" text-anchor="middle" dominant-baseline="central">
+    <text x="177" y="126.58" font-size="149.85">우</text>
+    <text x="177" y="276.42" font-size="149.85">정</text>
+  </g>
+  <g data-parte="adorno" transform="translate(161 384) scale(1.33)" fill="#e83475" color="#e83475"><path d="M12 21.2C5.6 16.6 2.5 13 2.5 8.9c0-3 2.3-5.3 5.2-5.3 1.8 0 3.4.9 4.3 2.4.9-1.5 2.5-2.4 4.3-2.4 2.9 0 5.2 2.3 5.2 5.3 0 4.1-3.1 7.7-9.5 12.3z"/></g>
+  <text data-parte="alias" x="177" y="452" font-size="28" font-family="&#39;Segoe UI&#39;, system-ui, -apple-system, Roboto, sans-serif" font-weight="700" text-anchor="middle" dominant-baseline="central" fill="#000000">fan_demo</text>
+</svg>
+
+
+        </div>
+      </div>
+      <p class="sello-editor__ayuda" data-sello-ayuda><span lang="ko">우정</span> · se lee <em>ujeong</em> · significa «amistad»</p>
+      <ul class="sello-editor__avisos" data-sello-avisos hidden></ul>
+      <p class="aviso aviso--error" data-sello-error role="alert" hidden></p>
+      <p class="sello-editor__estado" data-sello-estado role="status" aria-live="polite" aria-atomic="true">Vista previa de tu sello.</p>
+    </div>
+    <div class="sello-editor__opciones">
+      <nav class="sello-categorias" data-sello-categorias aria-label="Opciones del sello">
+        <a id="categoria-contenido" href="#sello-contenido">Contenido</a>
+        <a id="categoria-colores" href="#sello-colores">Colores</a>
+        <a id="categoria-detalles" href="#sello-detalles">Detalles</a>
+      </nav>
+      <section id="sello-contenido" class="sello-panel" aria-labelledby="categoria-contenido">
+      <h2 class="solo-lectores">Contenido del sello</h2>
+      <fieldset class="sello-bloque">
+        <legend><span class="sello-bloque__numero" aria-hidden="true">01</span> Palabra en hangul</legend>
+        <p class="nota">Una palabra que conecte contigo.</p>
+        <label for="palabra" class="solo-lectores">Palabra</label>
+        <select id="palabra" name="palabra">
+          <option value="">Sin palabra</option>
+          <optgroup label="Emociones y sentimientos">
+            <option value="amor">사랑 · sarang · amor</option><option value="felicidad">행복 · haengbok · felicidad</option><option value="emocion">설렘 · seollem · emoción que acelera el corazón</option><option value="gratitud">감사 · gamsa · agradecimiento, gratitud</option><option value="esperanza">희망 · huimang · esperanza</option><option value="valor">용기 · yonggi · valor, valentía</option><option value="sueno">꿈 · kkum · sueño (lo que sueñas)</option><option value="amistad" selected>우정 · ujeong · amistad</option><option value="corazon">마음 · maeum · corazón (los sentimientos)</option><option value="sonrisa">미소 · miso · sonrisa</option><option value="consuelo">위로 · wiro · consuelo</option><option value="nostalgia">그리움 · geurium · nostalgia</option><option value="para-siempre">영원히 · yeongwonhi · para siempre, eternamente</option><option value="juntos">함께 · hamkke · juntos</option>
+          </optgroup><optgroup label="Música y escenario">
+            <option value="musica">음악 · eumak · música</option><option value="cancion">노래 · norae · canción</option><option value="baile">춤 · chum · baile, danza</option><option value="escenario">무대 · mudae · escenario</option><option value="concierto">콘서트 · konseoteu · concierto</option><option value="album">앨범 · aelbeom · álbum</option><option value="comeback">컴백 · keombaek · regreso (comeback)</option><option value="debut">데뷔 · debwi · debut</option><option value="fanchant">응원법 · eungwonbeop · fanchant: animar con consignas, canciones y movimientos</option><option value="photocard">포카 · poka · photocard (abreviado)</option>
+          </optgroup><optgroup label="Idols y fans">
+            <option value="fan">팬 · paen · fan</option><option value="fandom">팬덤 · paendeom · fandom</option><option value="idol">아이돌 · aidol · ídolo (idol)</option><option value="bias">최애 · choeae · favorito, favorita (bias)</option><option value="maknae">막내 · mangnae · el o la menor (maknae)</option><option value="lider">리더 · rideo · líder</option><option value="aegyo">애교 · aegyo · encanto, gracia (aegyo)</option><option value="carino-de-fan">팬심 · paensim · cariño de fan</option><option value="vamos">파이팅 · paiting · ¡vamos! (fighting)</option><option value="gran-exito">대박 · daebak · gran éxito</option>
+          </optgroup><optgroup label="Símbolos">
+            <option value="estrella">별 · byeol · estrella</option><option value="luz">빛 · bit · luz</option>
+          </optgroup>
+        </select>
+
+<details class="muestras" open>
+  <summary><span class="muestras__actual" data-color-actual aria-hidden="true" style="--muestra:#000000"></span><span>Color de la palabra: <strong data-color-elegido>Negro K-ME</strong></span></summary>
+  <fieldset class="muestras__lista">
+    <legend class="solo-lectores">Color de la palabra</legend>
+
+    <label class="muestra" title="Negro K-ME">
+      <input type="radio" name="color_palabra" value="negro" data-nombre="Negro K-ME" data-color="#000000" checked>
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#000000"></span>
+      <span class="solo-lectores">Negro K-ME</span>
+    </label>
+
+    <label class="muestra" title="Blanco K-ME">
+      <input type="radio" name="color_palabra" value="blanco" data-nombre="Blanco K-ME" data-color="#ffffff">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ffffff"></span>
+      <span class="solo-lectores">Blanco K-ME</span>
+    </label>
+
+    <label class="muestra" title="Fucsia K-ME">
+      <input type="radio" name="color_palabra" value="fucsia" data-nombre="Fucsia K-ME" data-color="#e83475">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e83475"></span>
+      <span class="solo-lectores">Fucsia K-ME</span>
+    </label>
+
+    <label class="muestra" title="Rojo">
+      <input type="radio" name="color_palabra" value="rojo" data-nombre="Rojo" data-color="#e2231a">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e2231a"></span>
+      <span class="solo-lectores">Rojo</span>
+    </label>
+
+    <label class="muestra" title="Naranja">
+      <input type="radio" name="color_palabra" value="naranja" data-nombre="Naranja" data-color="#e65725">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e65725"></span>
+      <span class="solo-lectores">Naranja</span>
+    </label>
+
+    <label class="muestra" title="Amarillo pop">
+      <input type="radio" name="color_palabra" value="amarillo-pop" data-nombre="Amarillo pop" data-color="#f6ad19">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f6ad19"></span>
+      <span class="solo-lectores">Amarillo pop</span>
+    </label>
+
+    <label class="muestra" title="Amarillo">
+      <input type="radio" name="color_palabra" value="amarillo" data-nombre="Amarillo" data-color="#ffd000">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ffd000"></span>
+      <span class="solo-lectores">Amarillo</span>
+    </label>
+
+    <label class="muestra" title="Lima">
+      <input type="radio" name="color_palabra" value="lima" data-nombre="Lima" data-color="#d0eb39">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#d0eb39"></span>
+      <span class="solo-lectores">Lima</span>
+    </label>
+
+    <label class="muestra" title="Verde">
+      <input type="radio" name="color_palabra" value="verde" data-nombre="Verde" data-color="#18844a">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#18844a"></span>
+      <span class="solo-lectores">Verde</span>
+    </label>
+
+    <label class="muestra" title="Turquesa">
+      <input type="radio" name="color_palabra" value="turquesa" data-nombre="Turquesa" data-color="#007c91">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#007c91"></span>
+      <span class="solo-lectores">Turquesa</span>
+    </label>
+
+    <label class="muestra" title="Azul eléctrico">
+      <input type="radio" name="color_palabra" value="azul-electrico" data-nombre="Azul eléctrico" data-color="#2457d6">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#2457d6"></span>
+      <span class="solo-lectores">Azul eléctrico</span>
+    </label>
+
+    <label class="muestra" title="Orquídea">
+      <input type="radio" name="color_palabra" value="orquidea" data-nombre="Orquídea" data-color="#8e4cd3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#8e4cd3"></span>
+      <span class="solo-lectores">Orquídea</span>
+    </label>
+
+    <label class="muestra" title="Blanco cálido">
+      <input type="radio" name="color_palabra" value="blanco-calido" data-nombre="Blanco cálido" data-color="#fffaf7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#fffaf7"></span>
+      <span class="solo-lectores">Blanco cálido</span>
+    </label>
+
+    <label class="muestra" title="Tinta">
+      <input type="radio" name="color_palabra" value="tinta" data-nombre="Tinta" data-color="#282126">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#282126"></span>
+      <span class="solo-lectores">Tinta</span>
+    </label>
+
+    <label class="muestra" title="Gris">
+      <input type="radio" name="color_palabra" value="gris" data-nombre="Gris" data-color="#6e737b">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6e737b"></span>
+      <span class="solo-lectores">Gris</span>
+    </label>
+
+    <label class="muestra" title="Crema">
+      <input type="radio" name="color_palabra" value="crema" data-nombre="Crema" data-color="#ede0cb">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ede0cb"></span>
+      <span class="solo-lectores">Crema</span>
+    </label>
+
+    <label class="muestra" title="Beige">
+      <input type="radio" name="color_palabra" value="beige" data-nombre="Beige" data-color="#c7ab8d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c7ab8d"></span>
+      <span class="solo-lectores">Beige</span>
+    </label>
+
+    <label class="muestra" title="Tierra">
+      <input type="radio" name="color_palabra" value="tierra" data-nombre="Tierra" data-color="#8b6248">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#8b6248"></span>
+      <span class="solo-lectores">Tierra</span>
+    </label>
+
+    <label class="muestra" title="Chocolate">
+      <input type="radio" name="color_palabra" value="chocolate" data-nombre="Chocolate" data-color="#503a32">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#503a32"></span>
+      <span class="solo-lectores">Chocolate</span>
+    </label>
+
+    <label class="muestra" title="Azul marino">
+      <input type="radio" name="color_palabra" value="azul-marino" data-nombre="Azul marino" data-color="#293b58">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#293b58"></span>
+      <span class="solo-lectores">Azul marino</span>
+    </label>
+
+    <label class="muestra" title="Denim">
+      <input type="radio" name="color_palabra" value="denim" data-nombre="Denim" data-color="#557a9d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#557a9d"></span>
+      <span class="solo-lectores">Denim</span>
+    </label>
+
+    <label class="muestra" title="Azul cielo">
+      <input type="radio" name="color_palabra" value="azul-cielo" data-nombre="Azul cielo" data-color="#6b9cd1">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6b9cd1"></span>
+      <span class="solo-lectores">Azul cielo</span>
+    </label>
+
+    <label class="muestra" title="Azul pastel">
+      <input type="radio" name="color_palabra" value="azul-pastel" data-nombre="Azul pastel" data-color="#b8d9ec">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#b8d9ec"></span>
+      <span class="solo-lectores">Azul pastel</span>
+    </label>
+
+    <label class="muestra" title="Rosa pastel">
+      <input type="radio" name="color_palabra" value="rosa-pastel" data-nombre="Rosa pastel" data-color="#f5bfd3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f5bfd3"></span>
+      <span class="solo-lectores">Rosa pastel</span>
+    </label>
+
+    <label class="muestra" title="Rosa empolvado">
+      <input type="radio" name="color_palabra" value="rosa-empolvado" data-nombre="Rosa empolvado" data-color="#cc7797">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#cc7797"></span>
+      <span class="solo-lectores">Rosa empolvado</span>
+    </label>
+
+    <label class="muestra" title="Lavanda">
+      <input type="radio" name="color_palabra" value="lavanda" data-nombre="Lavanda" data-color="#c5b1e3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c5b1e3"></span>
+      <span class="solo-lectores">Lavanda</span>
+    </label>
+
+    <label class="muestra" title="Lila">
+      <input type="radio" name="color_palabra" value="lila" data-nombre="Lila" data-color="#9673b7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#9673b7"></span>
+      <span class="solo-lectores">Lila</span>
+    </label>
+
+    <label class="muestra" title="Violeta">
+      <input type="radio" name="color_palabra" value="violeta" data-nombre="Violeta" data-color="#6a4ba1">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6a4ba1"></span>
+      <span class="solo-lectores">Violeta</span>
+    </label>
+
+    <label class="muestra" title="Menta">
+      <input type="radio" name="color_palabra" value="menta" data-nombre="Menta" data-color="#b8d8c7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#b8d8c7"></span>
+      <span class="solo-lectores">Menta</span>
+    </label>
+
+    <label class="muestra" title="Verde bosque">
+      <input type="radio" name="color_palabra" value="verde-bosque" data-nombre="Verde bosque" data-color="#56866d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#56866d"></span>
+      <span class="solo-lectores">Verde bosque</span>
+    </label>
+
+    <label class="muestra" title="Oliva">
+      <input type="radio" name="color_palabra" value="oliva" data-nombre="Oliva" data-color="#818449">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#818449"></span>
+      <span class="solo-lectores">Oliva</span>
+    </label>
+
+    <label class="muestra" title="Amarillo suave">
+      <input type="radio" name="color_palabra" value="amarillo-suave" data-nombre="Amarillo suave" data-color="#f5d975">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f5d975"></span>
+      <span class="solo-lectores">Amarillo suave</span>
+    </label>
+
+    <label class="muestra" title="Mandarina">
+      <input type="radio" name="color_palabra" value="mandarina" data-nombre="Mandarina" data-color="#e8a15b">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e8a15b"></span>
+      <span class="solo-lectores">Mandarina</span>
+    </label>
+
+    <label class="muestra" title="Rojo cereza">
+      <input type="radio" name="color_palabra" value="rojo-cereza" data-nombre="Rojo cereza" data-color="#c94d58">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c94d58"></span>
+      <span class="solo-lectores">Rojo cereza</span>
+    </label>
+
+    <label class="muestra" title="Burdeos">
+      <input type="radio" name="color_palabra" value="burdeos" data-nombre="Burdeos" data-color="#793549">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#793549"></span>
+      <span class="solo-lectores">Burdeos</span>
+    </label>
+
+  </fieldset>
+</details>
+
+      </fieldset>
+      <details class="sello-seccion"><summary><span>02 · Avatar</span><span class="sello-seccion__nota">Opcional</span></summary>
+      <fieldset class="sello-bloque">
+        <legend class="solo-lectores">Avatar</legend>
+
+          <p class="sello-avatar-pendiente">Todavía no tienes avatares guardados. Cuando Avatar Studio los guarde en tu cuenta, podrás añadir uno aquí.</p>
+          <input type="hidden" name="avatar" value="">
+
+        <p class="sello-encuadre-titulo">Encuadre:</p>
+        <div class="sello-encuadres">
+          <label class="sello-encuadre"><input type="radio" name="encuadre" value="rostro" checked disabled><span>Solo rostro</span></label>
+
+          <label class="sello-encuadre"><input type="radio" name="encuadre" value="cuerpo" disabled><span>Cuerpo entero</span></label>
+        </div>
+      </fieldset>
+      </details>
+      <details class="sello-seccion"><summary><span>03 · Alias</span><span class="sello-seccion__nota">Opcional</span></summary>
+      <fieldset class="sello-bloque">
+        <legend class="solo-lectores">Alias</legend>
+        <label class="sello-alias"><input type="checkbox" name="mostrar_alias" value="si" checked> <span>Mostrar mi alias (fan_demo)</span></label>
+
+<details class="muestras">
+  <summary><span class="muestras__actual" data-color-actual aria-hidden="true" style="--muestra:#000000"></span><span>Color del alias: <strong data-color-elegido>Negro K-ME</strong></span></summary>
+  <fieldset class="muestras__lista">
+    <legend class="solo-lectores">Color del alias</legend>
+
+    <label class="muestra" title="Negro K-ME">
+      <input type="radio" name="color_alias" value="negro" data-nombre="Negro K-ME" data-color="#000000" checked>
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#000000"></span>
+      <span class="solo-lectores">Negro K-ME</span>
+    </label>
+
+    <label class="muestra" title="Blanco K-ME">
+      <input type="radio" name="color_alias" value="blanco" data-nombre="Blanco K-ME" data-color="#ffffff">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ffffff"></span>
+      <span class="solo-lectores">Blanco K-ME</span>
+    </label>
+
+    <label class="muestra" title="Fucsia K-ME">
+      <input type="radio" name="color_alias" value="fucsia" data-nombre="Fucsia K-ME" data-color="#e83475">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e83475"></span>
+      <span class="solo-lectores">Fucsia K-ME</span>
+    </label>
+
+    <label class="muestra" title="Rojo">
+      <input type="radio" name="color_alias" value="rojo" data-nombre="Rojo" data-color="#e2231a">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e2231a"></span>
+      <span class="solo-lectores">Rojo</span>
+    </label>
+
+    <label class="muestra" title="Naranja">
+      <input type="radio" name="color_alias" value="naranja" data-nombre="Naranja" data-color="#e65725">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e65725"></span>
+      <span class="solo-lectores">Naranja</span>
+    </label>
+
+    <label class="muestra" title="Amarillo pop">
+      <input type="radio" name="color_alias" value="amarillo-pop" data-nombre="Amarillo pop" data-color="#f6ad19">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f6ad19"></span>
+      <span class="solo-lectores">Amarillo pop</span>
+    </label>
+
+    <label class="muestra" title="Amarillo">
+      <input type="radio" name="color_alias" value="amarillo" data-nombre="Amarillo" data-color="#ffd000">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ffd000"></span>
+      <span class="solo-lectores">Amarillo</span>
+    </label>
+
+    <label class="muestra" title="Lima">
+      <input type="radio" name="color_alias" value="lima" data-nombre="Lima" data-color="#d0eb39">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#d0eb39"></span>
+      <span class="solo-lectores">Lima</span>
+    </label>
+
+    <label class="muestra" title="Verde">
+      <input type="radio" name="color_alias" value="verde" data-nombre="Verde" data-color="#18844a">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#18844a"></span>
+      <span class="solo-lectores">Verde</span>
+    </label>
+
+    <label class="muestra" title="Turquesa">
+      <input type="radio" name="color_alias" value="turquesa" data-nombre="Turquesa" data-color="#007c91">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#007c91"></span>
+      <span class="solo-lectores">Turquesa</span>
+    </label>
+
+    <label class="muestra" title="Azul eléctrico">
+      <input type="radio" name="color_alias" value="azul-electrico" data-nombre="Azul eléctrico" data-color="#2457d6">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#2457d6"></span>
+      <span class="solo-lectores">Azul eléctrico</span>
+    </label>
+
+    <label class="muestra" title="Orquídea">
+      <input type="radio" name="color_alias" value="orquidea" data-nombre="Orquídea" data-color="#8e4cd3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#8e4cd3"></span>
+      <span class="solo-lectores">Orquídea</span>
+    </label>
+
+    <label class="muestra" title="Blanco cálido">
+      <input type="radio" name="color_alias" value="blanco-calido" data-nombre="Blanco cálido" data-color="#fffaf7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#fffaf7"></span>
+      <span class="solo-lectores">Blanco cálido</span>
+    </label>
+
+    <label class="muestra" title="Tinta">
+      <input type="radio" name="color_alias" value="tinta" data-nombre="Tinta" data-color="#282126">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#282126"></span>
+      <span class="solo-lectores">Tinta</span>
+    </label>
+
+    <label class="muestra" title="Gris">
+      <input type="radio" name="color_alias" value="gris" data-nombre="Gris" data-color="#6e737b">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6e737b"></span>
+      <span class="solo-lectores">Gris</span>
+    </label>
+
+    <label class="muestra" title="Crema">
+      <input type="radio" name="color_alias" value="crema" data-nombre="Crema" data-color="#ede0cb">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ede0cb"></span>
+      <span class="solo-lectores">Crema</span>
+    </label>
+
+    <label class="muestra" title="Beige">
+      <input type="radio" name="color_alias" value="beige" data-nombre="Beige" data-color="#c7ab8d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c7ab8d"></span>
+      <span class="solo-lectores">Beige</span>
+    </label>
+
+    <label class="muestra" title="Tierra">
+      <input type="radio" name="color_alias" value="tierra" data-nombre="Tierra" data-color="#8b6248">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#8b6248"></span>
+      <span class="solo-lectores">Tierra</span>
+    </label>
+
+    <label class="muestra" title="Chocolate">
+      <input type="radio" name="color_alias" value="chocolate" data-nombre="Chocolate" data-color="#503a32">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#503a32"></span>
+      <span class="solo-lectores">Chocolate</span>
+    </label>
+
+    <label class="muestra" title="Azul marino">
+      <input type="radio" name="color_alias" value="azul-marino" data-nombre="Azul marino" data-color="#293b58">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#293b58"></span>
+      <span class="solo-lectores">Azul marino</span>
+    </label>
+
+    <label class="muestra" title="Denim">
+      <input type="radio" name="color_alias" value="denim" data-nombre="Denim" data-color="#557a9d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#557a9d"></span>
+      <span class="solo-lectores">Denim</span>
+    </label>
+
+    <label class="muestra" title="Azul cielo">
+      <input type="radio" name="color_alias" value="azul-cielo" data-nombre="Azul cielo" data-color="#6b9cd1">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6b9cd1"></span>
+      <span class="solo-lectores">Azul cielo</span>
+    </label>
+
+    <label class="muestra" title="Azul pastel">
+      <input type="radio" name="color_alias" value="azul-pastel" data-nombre="Azul pastel" data-color="#b8d9ec">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#b8d9ec"></span>
+      <span class="solo-lectores">Azul pastel</span>
+    </label>
+
+    <label class="muestra" title="Rosa pastel">
+      <input type="radio" name="color_alias" value="rosa-pastel" data-nombre="Rosa pastel" data-color="#f5bfd3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f5bfd3"></span>
+      <span class="solo-lectores">Rosa pastel</span>
+    </label>
+
+    <label class="muestra" title="Rosa empolvado">
+      <input type="radio" name="color_alias" value="rosa-empolvado" data-nombre="Rosa empolvado" data-color="#cc7797">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#cc7797"></span>
+      <span class="solo-lectores">Rosa empolvado</span>
+    </label>
+
+    <label class="muestra" title="Lavanda">
+      <input type="radio" name="color_alias" value="lavanda" data-nombre="Lavanda" data-color="#c5b1e3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c5b1e3"></span>
+      <span class="solo-lectores">Lavanda</span>
+    </label>
+
+    <label class="muestra" title="Lila">
+      <input type="radio" name="color_alias" value="lila" data-nombre="Lila" data-color="#9673b7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#9673b7"></span>
+      <span class="solo-lectores">Lila</span>
+    </label>
+
+    <label class="muestra" title="Violeta">
+      <input type="radio" name="color_alias" value="violeta" data-nombre="Violeta" data-color="#6a4ba1">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6a4ba1"></span>
+      <span class="solo-lectores">Violeta</span>
+    </label>
+
+    <label class="muestra" title="Menta">
+      <input type="radio" name="color_alias" value="menta" data-nombre="Menta" data-color="#b8d8c7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#b8d8c7"></span>
+      <span class="solo-lectores">Menta</span>
+    </label>
+
+    <label class="muestra" title="Verde bosque">
+      <input type="radio" name="color_alias" value="verde-bosque" data-nombre="Verde bosque" data-color="#56866d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#56866d"></span>
+      <span class="solo-lectores">Verde bosque</span>
+    </label>
+
+    <label class="muestra" title="Oliva">
+      <input type="radio" name="color_alias" value="oliva" data-nombre="Oliva" data-color="#818449">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#818449"></span>
+      <span class="solo-lectores">Oliva</span>
+    </label>
+
+    <label class="muestra" title="Amarillo suave">
+      <input type="radio" name="color_alias" value="amarillo-suave" data-nombre="Amarillo suave" data-color="#f5d975">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f5d975"></span>
+      <span class="solo-lectores">Amarillo suave</span>
+    </label>
+
+    <label class="muestra" title="Mandarina">
+      <input type="radio" name="color_alias" value="mandarina" data-nombre="Mandarina" data-color="#e8a15b">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e8a15b"></span>
+      <span class="solo-lectores">Mandarina</span>
+    </label>
+
+    <label class="muestra" title="Rojo cereza">
+      <input type="radio" name="color_alias" value="rojo-cereza" data-nombre="Rojo cereza" data-color="#c94d58">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c94d58"></span>
+      <span class="solo-lectores">Rojo cereza</span>
+    </label>
+
+    <label class="muestra" title="Burdeos">
+      <input type="radio" name="color_alias" value="burdeos" data-nombre="Burdeos" data-color="#793549">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#793549"></span>
+      <span class="solo-lectores">Burdeos</span>
+    </label>
+
+  </fieldset>
+</details>
+
+      </fieldset>
+      </details>
+      </section>
+      <section id="sello-colores" class="sello-panel" aria-labelledby="categoria-colores">
+      <h2 class="solo-lectores">Colores del sello</h2>
+      <fieldset class="sello-bloque">
+        <legend><span class="sello-bloque__numero" aria-hidden="true">04</span> Marco y fondo</legend>
+        <p class="nota">Tus colores, también los originales de K-ME.</p>
+
+<details class="muestras" open>
+  <summary><span class="muestras__actual" data-color-actual aria-hidden="true" style="--muestra:#000000"></span><span>Color del marco: <strong data-color-elegido>Negro K-ME</strong></span></summary>
+  <fieldset class="muestras__lista">
+    <legend class="solo-lectores">Color del marco</legend>
+
+    <label class="muestra" title="Negro K-ME">
+      <input type="radio" name="borde" value="negro" data-nombre="Negro K-ME" data-color="#000000" checked>
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#000000"></span>
+      <span class="solo-lectores">Negro K-ME</span>
+    </label>
+
+    <label class="muestra" title="Blanco K-ME">
+      <input type="radio" name="borde" value="blanco" data-nombre="Blanco K-ME" data-color="#ffffff">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ffffff"></span>
+      <span class="solo-lectores">Blanco K-ME</span>
+    </label>
+
+    <label class="muestra" title="Fucsia K-ME">
+      <input type="radio" name="borde" value="fucsia" data-nombre="Fucsia K-ME" data-color="#e83475">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e83475"></span>
+      <span class="solo-lectores">Fucsia K-ME</span>
+    </label>
+
+    <label class="muestra" title="Rojo">
+      <input type="radio" name="borde" value="rojo" data-nombre="Rojo" data-color="#e2231a">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e2231a"></span>
+      <span class="solo-lectores">Rojo</span>
+    </label>
+
+    <label class="muestra" title="Naranja">
+      <input type="radio" name="borde" value="naranja" data-nombre="Naranja" data-color="#e65725">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e65725"></span>
+      <span class="solo-lectores">Naranja</span>
+    </label>
+
+    <label class="muestra" title="Amarillo pop">
+      <input type="radio" name="borde" value="amarillo-pop" data-nombre="Amarillo pop" data-color="#f6ad19">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f6ad19"></span>
+      <span class="solo-lectores">Amarillo pop</span>
+    </label>
+
+    <label class="muestra" title="Amarillo">
+      <input type="radio" name="borde" value="amarillo" data-nombre="Amarillo" data-color="#ffd000">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ffd000"></span>
+      <span class="solo-lectores">Amarillo</span>
+    </label>
+
+    <label class="muestra" title="Lima">
+      <input type="radio" name="borde" value="lima" data-nombre="Lima" data-color="#d0eb39">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#d0eb39"></span>
+      <span class="solo-lectores">Lima</span>
+    </label>
+
+    <label class="muestra" title="Verde">
+      <input type="radio" name="borde" value="verde" data-nombre="Verde" data-color="#18844a">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#18844a"></span>
+      <span class="solo-lectores">Verde</span>
+    </label>
+
+    <label class="muestra" title="Turquesa">
+      <input type="radio" name="borde" value="turquesa" data-nombre="Turquesa" data-color="#007c91">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#007c91"></span>
+      <span class="solo-lectores">Turquesa</span>
+    </label>
+
+    <label class="muestra" title="Azul eléctrico">
+      <input type="radio" name="borde" value="azul-electrico" data-nombre="Azul eléctrico" data-color="#2457d6">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#2457d6"></span>
+      <span class="solo-lectores">Azul eléctrico</span>
+    </label>
+
+    <label class="muestra" title="Orquídea">
+      <input type="radio" name="borde" value="orquidea" data-nombre="Orquídea" data-color="#8e4cd3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#8e4cd3"></span>
+      <span class="solo-lectores">Orquídea</span>
+    </label>
+
+    <label class="muestra" title="Blanco cálido">
+      <input type="radio" name="borde" value="blanco-calido" data-nombre="Blanco cálido" data-color="#fffaf7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#fffaf7"></span>
+      <span class="solo-lectores">Blanco cálido</span>
+    </label>
+
+    <label class="muestra" title="Tinta">
+      <input type="radio" name="borde" value="tinta" data-nombre="Tinta" data-color="#282126">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#282126"></span>
+      <span class="solo-lectores">Tinta</span>
+    </label>
+
+    <label class="muestra" title="Gris">
+      <input type="radio" name="borde" value="gris" data-nombre="Gris" data-color="#6e737b">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6e737b"></span>
+      <span class="solo-lectores">Gris</span>
+    </label>
+
+    <label class="muestra" title="Crema">
+      <input type="radio" name="borde" value="crema" data-nombre="Crema" data-color="#ede0cb">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ede0cb"></span>
+      <span class="solo-lectores">Crema</span>
+    </label>
+
+    <label class="muestra" title="Beige">
+      <input type="radio" name="borde" value="beige" data-nombre="Beige" data-color="#c7ab8d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c7ab8d"></span>
+      <span class="solo-lectores">Beige</span>
+    </label>
+
+    <label class="muestra" title="Tierra">
+      <input type="radio" name="borde" value="tierra" data-nombre="Tierra" data-color="#8b6248">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#8b6248"></span>
+      <span class="solo-lectores">Tierra</span>
+    </label>
+
+    <label class="muestra" title="Chocolate">
+      <input type="radio" name="borde" value="chocolate" data-nombre="Chocolate" data-color="#503a32">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#503a32"></span>
+      <span class="solo-lectores">Chocolate</span>
+    </label>
+
+    <label class="muestra" title="Azul marino">
+      <input type="radio" name="borde" value="azul-marino" data-nombre="Azul marino" data-color="#293b58">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#293b58"></span>
+      <span class="solo-lectores">Azul marino</span>
+    </label>
+
+    <label class="muestra" title="Denim">
+      <input type="radio" name="borde" value="denim" data-nombre="Denim" data-color="#557a9d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#557a9d"></span>
+      <span class="solo-lectores">Denim</span>
+    </label>
+
+    <label class="muestra" title="Azul cielo">
+      <input type="radio" name="borde" value="azul-cielo" data-nombre="Azul cielo" data-color="#6b9cd1">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6b9cd1"></span>
+      <span class="solo-lectores">Azul cielo</span>
+    </label>
+
+    <label class="muestra" title="Azul pastel">
+      <input type="radio" name="borde" value="azul-pastel" data-nombre="Azul pastel" data-color="#b8d9ec">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#b8d9ec"></span>
+      <span class="solo-lectores">Azul pastel</span>
+    </label>
+
+    <label class="muestra" title="Rosa pastel">
+      <input type="radio" name="borde" value="rosa-pastel" data-nombre="Rosa pastel" data-color="#f5bfd3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f5bfd3"></span>
+      <span class="solo-lectores">Rosa pastel</span>
+    </label>
+
+    <label class="muestra" title="Rosa empolvado">
+      <input type="radio" name="borde" value="rosa-empolvado" data-nombre="Rosa empolvado" data-color="#cc7797">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#cc7797"></span>
+      <span class="solo-lectores">Rosa empolvado</span>
+    </label>
+
+    <label class="muestra" title="Lavanda">
+      <input type="radio" name="borde" value="lavanda" data-nombre="Lavanda" data-color="#c5b1e3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c5b1e3"></span>
+      <span class="solo-lectores">Lavanda</span>
+    </label>
+
+    <label class="muestra" title="Lila">
+      <input type="radio" name="borde" value="lila" data-nombre="Lila" data-color="#9673b7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#9673b7"></span>
+      <span class="solo-lectores">Lila</span>
+    </label>
+
+    <label class="muestra" title="Violeta">
+      <input type="radio" name="borde" value="violeta" data-nombre="Violeta" data-color="#6a4ba1">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6a4ba1"></span>
+      <span class="solo-lectores">Violeta</span>
+    </label>
+
+    <label class="muestra" title="Menta">
+      <input type="radio" name="borde" value="menta" data-nombre="Menta" data-color="#b8d8c7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#b8d8c7"></span>
+      <span class="solo-lectores">Menta</span>
+    </label>
+
+    <label class="muestra" title="Verde bosque">
+      <input type="radio" name="borde" value="verde-bosque" data-nombre="Verde bosque" data-color="#56866d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#56866d"></span>
+      <span class="solo-lectores">Verde bosque</span>
+    </label>
+
+    <label class="muestra" title="Oliva">
+      <input type="radio" name="borde" value="oliva" data-nombre="Oliva" data-color="#818449">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#818449"></span>
+      <span class="solo-lectores">Oliva</span>
+    </label>
+
+    <label class="muestra" title="Amarillo suave">
+      <input type="radio" name="borde" value="amarillo-suave" data-nombre="Amarillo suave" data-color="#f5d975">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f5d975"></span>
+      <span class="solo-lectores">Amarillo suave</span>
+    </label>
+
+    <label class="muestra" title="Mandarina">
+      <input type="radio" name="borde" value="mandarina" data-nombre="Mandarina" data-color="#e8a15b">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e8a15b"></span>
+      <span class="solo-lectores">Mandarina</span>
+    </label>
+
+    <label class="muestra" title="Rojo cereza">
+      <input type="radio" name="borde" value="rojo-cereza" data-nombre="Rojo cereza" data-color="#c94d58">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c94d58"></span>
+      <span class="solo-lectores">Rojo cereza</span>
+    </label>
+
+    <label class="muestra" title="Burdeos">
+      <input type="radio" name="borde" value="burdeos" data-nombre="Burdeos" data-color="#793549">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#793549"></span>
+      <span class="solo-lectores">Burdeos</span>
+    </label>
+
+  </fieldset>
+</details>
+
+
+<details class="muestras" open>
+  <summary><span class="muestras__actual" data-color-actual aria-hidden="true" style="--muestra:#ffffff"></span><span>Color del fondo: <strong data-color-elegido>Blanco K-ME</strong></span></summary>
+  <fieldset class="muestras__lista">
+    <legend class="solo-lectores">Color del fondo</legend>
+
+    <label class="muestra" title="Negro K-ME">
+      <input type="radio" name="fondo" value="negro" data-nombre="Negro K-ME" data-color="#000000">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#000000"></span>
+      <span class="solo-lectores">Negro K-ME</span>
+    </label>
+
+    <label class="muestra" title="Blanco K-ME">
+      <input type="radio" name="fondo" value="blanco" data-nombre="Blanco K-ME" data-color="#ffffff" checked>
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ffffff"></span>
+      <span class="solo-lectores">Blanco K-ME</span>
+    </label>
+
+    <label class="muestra" title="Fucsia K-ME">
+      <input type="radio" name="fondo" value="fucsia" data-nombre="Fucsia K-ME" data-color="#e83475">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e83475"></span>
+      <span class="solo-lectores">Fucsia K-ME</span>
+    </label>
+
+    <label class="muestra" title="Rojo">
+      <input type="radio" name="fondo" value="rojo" data-nombre="Rojo" data-color="#e2231a">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e2231a"></span>
+      <span class="solo-lectores">Rojo</span>
+    </label>
+
+    <label class="muestra" title="Naranja">
+      <input type="radio" name="fondo" value="naranja" data-nombre="Naranja" data-color="#e65725">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e65725"></span>
+      <span class="solo-lectores">Naranja</span>
+    </label>
+
+    <label class="muestra" title="Amarillo pop">
+      <input type="radio" name="fondo" value="amarillo-pop" data-nombre="Amarillo pop" data-color="#f6ad19">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f6ad19"></span>
+      <span class="solo-lectores">Amarillo pop</span>
+    </label>
+
+    <label class="muestra" title="Amarillo">
+      <input type="radio" name="fondo" value="amarillo" data-nombre="Amarillo" data-color="#ffd000">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ffd000"></span>
+      <span class="solo-lectores">Amarillo</span>
+    </label>
+
+    <label class="muestra" title="Lima">
+      <input type="radio" name="fondo" value="lima" data-nombre="Lima" data-color="#d0eb39">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#d0eb39"></span>
+      <span class="solo-lectores">Lima</span>
+    </label>
+
+    <label class="muestra" title="Verde">
+      <input type="radio" name="fondo" value="verde" data-nombre="Verde" data-color="#18844a">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#18844a"></span>
+      <span class="solo-lectores">Verde</span>
+    </label>
+
+    <label class="muestra" title="Turquesa">
+      <input type="radio" name="fondo" value="turquesa" data-nombre="Turquesa" data-color="#007c91">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#007c91"></span>
+      <span class="solo-lectores">Turquesa</span>
+    </label>
+
+    <label class="muestra" title="Azul eléctrico">
+      <input type="radio" name="fondo" value="azul-electrico" data-nombre="Azul eléctrico" data-color="#2457d6">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#2457d6"></span>
+      <span class="solo-lectores">Azul eléctrico</span>
+    </label>
+
+    <label class="muestra" title="Orquídea">
+      <input type="radio" name="fondo" value="orquidea" data-nombre="Orquídea" data-color="#8e4cd3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#8e4cd3"></span>
+      <span class="solo-lectores">Orquídea</span>
+    </label>
+
+    <label class="muestra" title="Blanco cálido">
+      <input type="radio" name="fondo" value="blanco-calido" data-nombre="Blanco cálido" data-color="#fffaf7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#fffaf7"></span>
+      <span class="solo-lectores">Blanco cálido</span>
+    </label>
+
+    <label class="muestra" title="Tinta">
+      <input type="radio" name="fondo" value="tinta" data-nombre="Tinta" data-color="#282126">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#282126"></span>
+      <span class="solo-lectores">Tinta</span>
+    </label>
+
+    <label class="muestra" title="Gris">
+      <input type="radio" name="fondo" value="gris" data-nombre="Gris" data-color="#6e737b">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6e737b"></span>
+      <span class="solo-lectores">Gris</span>
+    </label>
+
+    <label class="muestra" title="Crema">
+      <input type="radio" name="fondo" value="crema" data-nombre="Crema" data-color="#ede0cb">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ede0cb"></span>
+      <span class="solo-lectores">Crema</span>
+    </label>
+
+    <label class="muestra" title="Beige">
+      <input type="radio" name="fondo" value="beige" data-nombre="Beige" data-color="#c7ab8d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c7ab8d"></span>
+      <span class="solo-lectores">Beige</span>
+    </label>
+
+    <label class="muestra" title="Tierra">
+      <input type="radio" name="fondo" value="tierra" data-nombre="Tierra" data-color="#8b6248">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#8b6248"></span>
+      <span class="solo-lectores">Tierra</span>
+    </label>
+
+    <label class="muestra" title="Chocolate">
+      <input type="radio" name="fondo" value="chocolate" data-nombre="Chocolate" data-color="#503a32">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#503a32"></span>
+      <span class="solo-lectores">Chocolate</span>
+    </label>
+
+    <label class="muestra" title="Azul marino">
+      <input type="radio" name="fondo" value="azul-marino" data-nombre="Azul marino" data-color="#293b58">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#293b58"></span>
+      <span class="solo-lectores">Azul marino</span>
+    </label>
+
+    <label class="muestra" title="Denim">
+      <input type="radio" name="fondo" value="denim" data-nombre="Denim" data-color="#557a9d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#557a9d"></span>
+      <span class="solo-lectores">Denim</span>
+    </label>
+
+    <label class="muestra" title="Azul cielo">
+      <input type="radio" name="fondo" value="azul-cielo" data-nombre="Azul cielo" data-color="#6b9cd1">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6b9cd1"></span>
+      <span class="solo-lectores">Azul cielo</span>
+    </label>
+
+    <label class="muestra" title="Azul pastel">
+      <input type="radio" name="fondo" value="azul-pastel" data-nombre="Azul pastel" data-color="#b8d9ec">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#b8d9ec"></span>
+      <span class="solo-lectores">Azul pastel</span>
+    </label>
+
+    <label class="muestra" title="Rosa pastel">
+      <input type="radio" name="fondo" value="rosa-pastel" data-nombre="Rosa pastel" data-color="#f5bfd3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f5bfd3"></span>
+      <span class="solo-lectores">Rosa pastel</span>
+    </label>
+
+    <label class="muestra" title="Rosa empolvado">
+      <input type="radio" name="fondo" value="rosa-empolvado" data-nombre="Rosa empolvado" data-color="#cc7797">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#cc7797"></span>
+      <span class="solo-lectores">Rosa empolvado</span>
+    </label>
+
+    <label class="muestra" title="Lavanda">
+      <input type="radio" name="fondo" value="lavanda" data-nombre="Lavanda" data-color="#c5b1e3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c5b1e3"></span>
+      <span class="solo-lectores">Lavanda</span>
+    </label>
+
+    <label class="muestra" title="Lila">
+      <input type="radio" name="fondo" value="lila" data-nombre="Lila" data-color="#9673b7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#9673b7"></span>
+      <span class="solo-lectores">Lila</span>
+    </label>
+
+    <label class="muestra" title="Violeta">
+      <input type="radio" name="fondo" value="violeta" data-nombre="Violeta" data-color="#6a4ba1">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6a4ba1"></span>
+      <span class="solo-lectores">Violeta</span>
+    </label>
+
+    <label class="muestra" title="Menta">
+      <input type="radio" name="fondo" value="menta" data-nombre="Menta" data-color="#b8d8c7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#b8d8c7"></span>
+      <span class="solo-lectores">Menta</span>
+    </label>
+
+    <label class="muestra" title="Verde bosque">
+      <input type="radio" name="fondo" value="verde-bosque" data-nombre="Verde bosque" data-color="#56866d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#56866d"></span>
+      <span class="solo-lectores">Verde bosque</span>
+    </label>
+
+    <label class="muestra" title="Oliva">
+      <input type="radio" name="fondo" value="oliva" data-nombre="Oliva" data-color="#818449">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#818449"></span>
+      <span class="solo-lectores">Oliva</span>
+    </label>
+
+    <label class="muestra" title="Amarillo suave">
+      <input type="radio" name="fondo" value="amarillo-suave" data-nombre="Amarillo suave" data-color="#f5d975">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f5d975"></span>
+      <span class="solo-lectores">Amarillo suave</span>
+    </label>
+
+    <label class="muestra" title="Mandarina">
+      <input type="radio" name="fondo" value="mandarina" data-nombre="Mandarina" data-color="#e8a15b">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e8a15b"></span>
+      <span class="solo-lectores">Mandarina</span>
+    </label>
+
+    <label class="muestra" title="Rojo cereza">
+      <input type="radio" name="fondo" value="rojo-cereza" data-nombre="Rojo cereza" data-color="#c94d58">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c94d58"></span>
+      <span class="solo-lectores">Rojo cereza</span>
+    </label>
+
+    <label class="muestra" title="Burdeos">
+      <input type="radio" name="fondo" value="burdeos" data-nombre="Burdeos" data-color="#793549">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#793549"></span>
+      <span class="solo-lectores">Burdeos</span>
+    </label>
+
+  </fieldset>
+</details>
+
+      </fieldset>
+      </section>
+      <section id="sello-detalles" class="sello-panel" aria-labelledby="categoria-detalles">
+      <h2 class="solo-lectores">Detalles del sello</h2>
+      <fieldset class="sello-bloque">
+        <legend><span class="sello-bloque__numero" aria-hidden="true">05</span> Adornos (hasta 3)</legend>
+        <p class="nota">Pequeños detalles para hacerlo más tuyo.</p>
+        <div class="sello-adorno">
+          <label for="motivo1">Adorno 1</label>
+          <select id="motivo1" name="motivo1">
+            <option value="">Sin adorno</option>
+            <option value="corazon" selected>Corazón</option><option value="aplauso">Aplauso</option><option value="lightstick">Lightstick</option><option value="minicorazon">Mini corazón</option><option value="brillos">Brillos</option><option value="fuego">Fuego</option><option value="fanchant">Fanchant</option><option value="corona">Corona</option><option value="flores">Flores</option><option value="estrella">Estrella</option><option value="nota">Nota musical</option><option value="rayitas">Rayitas K-ME</option>
+          </select>
+
+<details class="muestras">
+  <summary><span class="muestras__actual" data-color-actual aria-hidden="true" style="--muestra:#e83475"></span><span>Color del adorno 1: <strong data-color-elegido>Fucsia K-ME</strong></span></summary>
+  <fieldset class="muestras__lista">
+    <legend class="solo-lectores">Color del adorno 1</legend>
+
+    <label class="muestra" title="Negro K-ME">
+      <input type="radio" name="color_motivo1" value="negro" data-nombre="Negro K-ME" data-color="#000000">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#000000"></span>
+      <span class="solo-lectores">Negro K-ME</span>
+    </label>
+
+    <label class="muestra" title="Blanco K-ME">
+      <input type="radio" name="color_motivo1" value="blanco" data-nombre="Blanco K-ME" data-color="#ffffff">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ffffff"></span>
+      <span class="solo-lectores">Blanco K-ME</span>
+    </label>
+
+    <label class="muestra" title="Fucsia K-ME">
+      <input type="radio" name="color_motivo1" value="fucsia" data-nombre="Fucsia K-ME" data-color="#e83475" checked>
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e83475"></span>
+      <span class="solo-lectores">Fucsia K-ME</span>
+    </label>
+
+    <label class="muestra" title="Rojo">
+      <input type="radio" name="color_motivo1" value="rojo" data-nombre="Rojo" data-color="#e2231a">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e2231a"></span>
+      <span class="solo-lectores">Rojo</span>
+    </label>
+
+    <label class="muestra" title="Naranja">
+      <input type="radio" name="color_motivo1" value="naranja" data-nombre="Naranja" data-color="#e65725">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e65725"></span>
+      <span class="solo-lectores">Naranja</span>
+    </label>
+
+    <label class="muestra" title="Amarillo pop">
+      <input type="radio" name="color_motivo1" value="amarillo-pop" data-nombre="Amarillo pop" data-color="#f6ad19">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f6ad19"></span>
+      <span class="solo-lectores">Amarillo pop</span>
+    </label>
+
+    <label class="muestra" title="Amarillo">
+      <input type="radio" name="color_motivo1" value="amarillo" data-nombre="Amarillo" data-color="#ffd000">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ffd000"></span>
+      <span class="solo-lectores">Amarillo</span>
+    </label>
+
+    <label class="muestra" title="Lima">
+      <input type="radio" name="color_motivo1" value="lima" data-nombre="Lima" data-color="#d0eb39">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#d0eb39"></span>
+      <span class="solo-lectores">Lima</span>
+    </label>
+
+    <label class="muestra" title="Verde">
+      <input type="radio" name="color_motivo1" value="verde" data-nombre="Verde" data-color="#18844a">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#18844a"></span>
+      <span class="solo-lectores">Verde</span>
+    </label>
+
+    <label class="muestra" title="Turquesa">
+      <input type="radio" name="color_motivo1" value="turquesa" data-nombre="Turquesa" data-color="#007c91">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#007c91"></span>
+      <span class="solo-lectores">Turquesa</span>
+    </label>
+
+    <label class="muestra" title="Azul eléctrico">
+      <input type="radio" name="color_motivo1" value="azul-electrico" data-nombre="Azul eléctrico" data-color="#2457d6">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#2457d6"></span>
+      <span class="solo-lectores">Azul eléctrico</span>
+    </label>
+
+    <label class="muestra" title="Orquídea">
+      <input type="radio" name="color_motivo1" value="orquidea" data-nombre="Orquídea" data-color="#8e4cd3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#8e4cd3"></span>
+      <span class="solo-lectores">Orquídea</span>
+    </label>
+
+    <label class="muestra" title="Blanco cálido">
+      <input type="radio" name="color_motivo1" value="blanco-calido" data-nombre="Blanco cálido" data-color="#fffaf7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#fffaf7"></span>
+      <span class="solo-lectores">Blanco cálido</span>
+    </label>
+
+    <label class="muestra" title="Tinta">
+      <input type="radio" name="color_motivo1" value="tinta" data-nombre="Tinta" data-color="#282126">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#282126"></span>
+      <span class="solo-lectores">Tinta</span>
+    </label>
+
+    <label class="muestra" title="Gris">
+      <input type="radio" name="color_motivo1" value="gris" data-nombre="Gris" data-color="#6e737b">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6e737b"></span>
+      <span class="solo-lectores">Gris</span>
+    </label>
+
+    <label class="muestra" title="Crema">
+      <input type="radio" name="color_motivo1" value="crema" data-nombre="Crema" data-color="#ede0cb">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ede0cb"></span>
+      <span class="solo-lectores">Crema</span>
+    </label>
+
+    <label class="muestra" title="Beige">
+      <input type="radio" name="color_motivo1" value="beige" data-nombre="Beige" data-color="#c7ab8d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c7ab8d"></span>
+      <span class="solo-lectores">Beige</span>
+    </label>
+
+    <label class="muestra" title="Tierra">
+      <input type="radio" name="color_motivo1" value="tierra" data-nombre="Tierra" data-color="#8b6248">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#8b6248"></span>
+      <span class="solo-lectores">Tierra</span>
+    </label>
+
+    <label class="muestra" title="Chocolate">
+      <input type="radio" name="color_motivo1" value="chocolate" data-nombre="Chocolate" data-color="#503a32">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#503a32"></span>
+      <span class="solo-lectores">Chocolate</span>
+    </label>
+
+    <label class="muestra" title="Azul marino">
+      <input type="radio" name="color_motivo1" value="azul-marino" data-nombre="Azul marino" data-color="#293b58">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#293b58"></span>
+      <span class="solo-lectores">Azul marino</span>
+    </label>
+
+    <label class="muestra" title="Denim">
+      <input type="radio" name="color_motivo1" value="denim" data-nombre="Denim" data-color="#557a9d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#557a9d"></span>
+      <span class="solo-lectores">Denim</span>
+    </label>
+
+    <label class="muestra" title="Azul cielo">
+      <input type="radio" name="color_motivo1" value="azul-cielo" data-nombre="Azul cielo" data-color="#6b9cd1">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6b9cd1"></span>
+      <span class="solo-lectores">Azul cielo</span>
+    </label>
+
+    <label class="muestra" title="Azul pastel">
+      <input type="radio" name="color_motivo1" value="azul-pastel" data-nombre="Azul pastel" data-color="#b8d9ec">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#b8d9ec"></span>
+      <span class="solo-lectores">Azul pastel</span>
+    </label>
+
+    <label class="muestra" title="Rosa pastel">
+      <input type="radio" name="color_motivo1" value="rosa-pastel" data-nombre="Rosa pastel" data-color="#f5bfd3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f5bfd3"></span>
+      <span class="solo-lectores">Rosa pastel</span>
+    </label>
+
+    <label class="muestra" title="Rosa empolvado">
+      <input type="radio" name="color_motivo1" value="rosa-empolvado" data-nombre="Rosa empolvado" data-color="#cc7797">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#cc7797"></span>
+      <span class="solo-lectores">Rosa empolvado</span>
+    </label>
+
+    <label class="muestra" title="Lavanda">
+      <input type="radio" name="color_motivo1" value="lavanda" data-nombre="Lavanda" data-color="#c5b1e3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c5b1e3"></span>
+      <span class="solo-lectores">Lavanda</span>
+    </label>
+
+    <label class="muestra" title="Lila">
+      <input type="radio" name="color_motivo1" value="lila" data-nombre="Lila" data-color="#9673b7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#9673b7"></span>
+      <span class="solo-lectores">Lila</span>
+    </label>
+
+    <label class="muestra" title="Violeta">
+      <input type="radio" name="color_motivo1" value="violeta" data-nombre="Violeta" data-color="#6a4ba1">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6a4ba1"></span>
+      <span class="solo-lectores">Violeta</span>
+    </label>
+
+    <label class="muestra" title="Menta">
+      <input type="radio" name="color_motivo1" value="menta" data-nombre="Menta" data-color="#b8d8c7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#b8d8c7"></span>
+      <span class="solo-lectores">Menta</span>
+    </label>
+
+    <label class="muestra" title="Verde bosque">
+      <input type="radio" name="color_motivo1" value="verde-bosque" data-nombre="Verde bosque" data-color="#56866d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#56866d"></span>
+      <span class="solo-lectores">Verde bosque</span>
+    </label>
+
+    <label class="muestra" title="Oliva">
+      <input type="radio" name="color_motivo1" value="oliva" data-nombre="Oliva" data-color="#818449">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#818449"></span>
+      <span class="solo-lectores">Oliva</span>
+    </label>
+
+    <label class="muestra" title="Amarillo suave">
+      <input type="radio" name="color_motivo1" value="amarillo-suave" data-nombre="Amarillo suave" data-color="#f5d975">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f5d975"></span>
+      <span class="solo-lectores">Amarillo suave</span>
+    </label>
+
+    <label class="muestra" title="Mandarina">
+      <input type="radio" name="color_motivo1" value="mandarina" data-nombre="Mandarina" data-color="#e8a15b">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e8a15b"></span>
+      <span class="solo-lectores">Mandarina</span>
+    </label>
+
+    <label class="muestra" title="Rojo cereza">
+      <input type="radio" name="color_motivo1" value="rojo-cereza" data-nombre="Rojo cereza" data-color="#c94d58">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c94d58"></span>
+      <span class="solo-lectores">Rojo cereza</span>
+    </label>
+
+    <label class="muestra" title="Burdeos">
+      <input type="radio" name="color_motivo1" value="burdeos" data-nombre="Burdeos" data-color="#793549">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#793549"></span>
+      <span class="solo-lectores">Burdeos</span>
+    </label>
+
+  </fieldset>
+</details>
+
+        </div><div class="sello-adorno">
+          <label for="motivo2">Adorno 2</label>
+          <select id="motivo2" name="motivo2">
+            <option value="">Sin adorno</option>
+            <option value="corazon">Corazón</option><option value="aplauso">Aplauso</option><option value="lightstick">Lightstick</option><option value="minicorazon">Mini corazón</option><option value="brillos">Brillos</option><option value="fuego">Fuego</option><option value="fanchant">Fanchant</option><option value="corona">Corona</option><option value="flores">Flores</option><option value="estrella">Estrella</option><option value="nota">Nota musical</option><option value="rayitas">Rayitas K-ME</option>
+          </select>
+
+<details class="muestras">
+  <summary><span class="muestras__actual" data-color-actual aria-hidden="true" style="--muestra:#000000"></span><span>Color del adorno 2: <strong data-color-elegido>Negro K-ME</strong></span></summary>
+  <fieldset class="muestras__lista">
+    <legend class="solo-lectores">Color del adorno 2</legend>
+
+    <label class="muestra" title="Negro K-ME">
+      <input type="radio" name="color_motivo2" value="negro" data-nombre="Negro K-ME" data-color="#000000" checked>
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#000000"></span>
+      <span class="solo-lectores">Negro K-ME</span>
+    </label>
+
+    <label class="muestra" title="Blanco K-ME">
+      <input type="radio" name="color_motivo2" value="blanco" data-nombre="Blanco K-ME" data-color="#ffffff">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ffffff"></span>
+      <span class="solo-lectores">Blanco K-ME</span>
+    </label>
+
+    <label class="muestra" title="Fucsia K-ME">
+      <input type="radio" name="color_motivo2" value="fucsia" data-nombre="Fucsia K-ME" data-color="#e83475">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e83475"></span>
+      <span class="solo-lectores">Fucsia K-ME</span>
+    </label>
+
+    <label class="muestra" title="Rojo">
+      <input type="radio" name="color_motivo2" value="rojo" data-nombre="Rojo" data-color="#e2231a">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e2231a"></span>
+      <span class="solo-lectores">Rojo</span>
+    </label>
+
+    <label class="muestra" title="Naranja">
+      <input type="radio" name="color_motivo2" value="naranja" data-nombre="Naranja" data-color="#e65725">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e65725"></span>
+      <span class="solo-lectores">Naranja</span>
+    </label>
+
+    <label class="muestra" title="Amarillo pop">
+      <input type="radio" name="color_motivo2" value="amarillo-pop" data-nombre="Amarillo pop" data-color="#f6ad19">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f6ad19"></span>
+      <span class="solo-lectores">Amarillo pop</span>
+    </label>
+
+    <label class="muestra" title="Amarillo">
+      <input type="radio" name="color_motivo2" value="amarillo" data-nombre="Amarillo" data-color="#ffd000">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ffd000"></span>
+      <span class="solo-lectores">Amarillo</span>
+    </label>
+
+    <label class="muestra" title="Lima">
+      <input type="radio" name="color_motivo2" value="lima" data-nombre="Lima" data-color="#d0eb39">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#d0eb39"></span>
+      <span class="solo-lectores">Lima</span>
+    </label>
+
+    <label class="muestra" title="Verde">
+      <input type="radio" name="color_motivo2" value="verde" data-nombre="Verde" data-color="#18844a">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#18844a"></span>
+      <span class="solo-lectores">Verde</span>
+    </label>
+
+    <label class="muestra" title="Turquesa">
+      <input type="radio" name="color_motivo2" value="turquesa" data-nombre="Turquesa" data-color="#007c91">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#007c91"></span>
+      <span class="solo-lectores">Turquesa</span>
+    </label>
+
+    <label class="muestra" title="Azul eléctrico">
+      <input type="radio" name="color_motivo2" value="azul-electrico" data-nombre="Azul eléctrico" data-color="#2457d6">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#2457d6"></span>
+      <span class="solo-lectores">Azul eléctrico</span>
+    </label>
+
+    <label class="muestra" title="Orquídea">
+      <input type="radio" name="color_motivo2" value="orquidea" data-nombre="Orquídea" data-color="#8e4cd3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#8e4cd3"></span>
+      <span class="solo-lectores">Orquídea</span>
+    </label>
+
+    <label class="muestra" title="Blanco cálido">
+      <input type="radio" name="color_motivo2" value="blanco-calido" data-nombre="Blanco cálido" data-color="#fffaf7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#fffaf7"></span>
+      <span class="solo-lectores">Blanco cálido</span>
+    </label>
+
+    <label class="muestra" title="Tinta">
+      <input type="radio" name="color_motivo2" value="tinta" data-nombre="Tinta" data-color="#282126">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#282126"></span>
+      <span class="solo-lectores">Tinta</span>
+    </label>
+
+    <label class="muestra" title="Gris">
+      <input type="radio" name="color_motivo2" value="gris" data-nombre="Gris" data-color="#6e737b">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6e737b"></span>
+      <span class="solo-lectores">Gris</span>
+    </label>
+
+    <label class="muestra" title="Crema">
+      <input type="radio" name="color_motivo2" value="crema" data-nombre="Crema" data-color="#ede0cb">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ede0cb"></span>
+      <span class="solo-lectores">Crema</span>
+    </label>
+
+    <label class="muestra" title="Beige">
+      <input type="radio" name="color_motivo2" value="beige" data-nombre="Beige" data-color="#c7ab8d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c7ab8d"></span>
+      <span class="solo-lectores">Beige</span>
+    </label>
+
+    <label class="muestra" title="Tierra">
+      <input type="radio" name="color_motivo2" value="tierra" data-nombre="Tierra" data-color="#8b6248">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#8b6248"></span>
+      <span class="solo-lectores">Tierra</span>
+    </label>
+
+    <label class="muestra" title="Chocolate">
+      <input type="radio" name="color_motivo2" value="chocolate" data-nombre="Chocolate" data-color="#503a32">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#503a32"></span>
+      <span class="solo-lectores">Chocolate</span>
+    </label>
+
+    <label class="muestra" title="Azul marino">
+      <input type="radio" name="color_motivo2" value="azul-marino" data-nombre="Azul marino" data-color="#293b58">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#293b58"></span>
+      <span class="solo-lectores">Azul marino</span>
+    </label>
+
+    <label class="muestra" title="Denim">
+      <input type="radio" name="color_motivo2" value="denim" data-nombre="Denim" data-color="#557a9d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#557a9d"></span>
+      <span class="solo-lectores">Denim</span>
+    </label>
+
+    <label class="muestra" title="Azul cielo">
+      <input type="radio" name="color_motivo2" value="azul-cielo" data-nombre="Azul cielo" data-color="#6b9cd1">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6b9cd1"></span>
+      <span class="solo-lectores">Azul cielo</span>
+    </label>
+
+    <label class="muestra" title="Azul pastel">
+      <input type="radio" name="color_motivo2" value="azul-pastel" data-nombre="Azul pastel" data-color="#b8d9ec">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#b8d9ec"></span>
+      <span class="solo-lectores">Azul pastel</span>
+    </label>
+
+    <label class="muestra" title="Rosa pastel">
+      <input type="radio" name="color_motivo2" value="rosa-pastel" data-nombre="Rosa pastel" data-color="#f5bfd3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f5bfd3"></span>
+      <span class="solo-lectores">Rosa pastel</span>
+    </label>
+
+    <label class="muestra" title="Rosa empolvado">
+      <input type="radio" name="color_motivo2" value="rosa-empolvado" data-nombre="Rosa empolvado" data-color="#cc7797">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#cc7797"></span>
+      <span class="solo-lectores">Rosa empolvado</span>
+    </label>
+
+    <label class="muestra" title="Lavanda">
+      <input type="radio" name="color_motivo2" value="lavanda" data-nombre="Lavanda" data-color="#c5b1e3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c5b1e3"></span>
+      <span class="solo-lectores">Lavanda</span>
+    </label>
+
+    <label class="muestra" title="Lila">
+      <input type="radio" name="color_motivo2" value="lila" data-nombre="Lila" data-color="#9673b7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#9673b7"></span>
+      <span class="solo-lectores">Lila</span>
+    </label>
+
+    <label class="muestra" title="Violeta">
+      <input type="radio" name="color_motivo2" value="violeta" data-nombre="Violeta" data-color="#6a4ba1">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6a4ba1"></span>
+      <span class="solo-lectores">Violeta</span>
+    </label>
+
+    <label class="muestra" title="Menta">
+      <input type="radio" name="color_motivo2" value="menta" data-nombre="Menta" data-color="#b8d8c7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#b8d8c7"></span>
+      <span class="solo-lectores">Menta</span>
+    </label>
+
+    <label class="muestra" title="Verde bosque">
+      <input type="radio" name="color_motivo2" value="verde-bosque" data-nombre="Verde bosque" data-color="#56866d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#56866d"></span>
+      <span class="solo-lectores">Verde bosque</span>
+    </label>
+
+    <label class="muestra" title="Oliva">
+      <input type="radio" name="color_motivo2" value="oliva" data-nombre="Oliva" data-color="#818449">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#818449"></span>
+      <span class="solo-lectores">Oliva</span>
+    </label>
+
+    <label class="muestra" title="Amarillo suave">
+      <input type="radio" name="color_motivo2" value="amarillo-suave" data-nombre="Amarillo suave" data-color="#f5d975">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f5d975"></span>
+      <span class="solo-lectores">Amarillo suave</span>
+    </label>
+
+    <label class="muestra" title="Mandarina">
+      <input type="radio" name="color_motivo2" value="mandarina" data-nombre="Mandarina" data-color="#e8a15b">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e8a15b"></span>
+      <span class="solo-lectores">Mandarina</span>
+    </label>
+
+    <label class="muestra" title="Rojo cereza">
+      <input type="radio" name="color_motivo2" value="rojo-cereza" data-nombre="Rojo cereza" data-color="#c94d58">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c94d58"></span>
+      <span class="solo-lectores">Rojo cereza</span>
+    </label>
+
+    <label class="muestra" title="Burdeos">
+      <input type="radio" name="color_motivo2" value="burdeos" data-nombre="Burdeos" data-color="#793549">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#793549"></span>
+      <span class="solo-lectores">Burdeos</span>
+    </label>
+
+  </fieldset>
+</details>
+
+        </div><div class="sello-adorno">
+          <label for="motivo3">Adorno 3</label>
+          <select id="motivo3" name="motivo3">
+            <option value="">Sin adorno</option>
+            <option value="corazon">Corazón</option><option value="aplauso">Aplauso</option><option value="lightstick">Lightstick</option><option value="minicorazon">Mini corazón</option><option value="brillos">Brillos</option><option value="fuego">Fuego</option><option value="fanchant">Fanchant</option><option value="corona">Corona</option><option value="flores">Flores</option><option value="estrella">Estrella</option><option value="nota">Nota musical</option><option value="rayitas">Rayitas K-ME</option>
+          </select>
+
+<details class="muestras">
+  <summary><span class="muestras__actual" data-color-actual aria-hidden="true" style="--muestra:#000000"></span><span>Color del adorno 3: <strong data-color-elegido>Negro K-ME</strong></span></summary>
+  <fieldset class="muestras__lista">
+    <legend class="solo-lectores">Color del adorno 3</legend>
+
+    <label class="muestra" title="Negro K-ME">
+      <input type="radio" name="color_motivo3" value="negro" data-nombre="Negro K-ME" data-color="#000000" checked>
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#000000"></span>
+      <span class="solo-lectores">Negro K-ME</span>
+    </label>
+
+    <label class="muestra" title="Blanco K-ME">
+      <input type="radio" name="color_motivo3" value="blanco" data-nombre="Blanco K-ME" data-color="#ffffff">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ffffff"></span>
+      <span class="solo-lectores">Blanco K-ME</span>
+    </label>
+
+    <label class="muestra" title="Fucsia K-ME">
+      <input type="radio" name="color_motivo3" value="fucsia" data-nombre="Fucsia K-ME" data-color="#e83475">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e83475"></span>
+      <span class="solo-lectores">Fucsia K-ME</span>
+    </label>
+
+    <label class="muestra" title="Rojo">
+      <input type="radio" name="color_motivo3" value="rojo" data-nombre="Rojo" data-color="#e2231a">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e2231a"></span>
+      <span class="solo-lectores">Rojo</span>
+    </label>
+
+    <label class="muestra" title="Naranja">
+      <input type="radio" name="color_motivo3" value="naranja" data-nombre="Naranja" data-color="#e65725">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e65725"></span>
+      <span class="solo-lectores">Naranja</span>
+    </label>
+
+    <label class="muestra" title="Amarillo pop">
+      <input type="radio" name="color_motivo3" value="amarillo-pop" data-nombre="Amarillo pop" data-color="#f6ad19">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f6ad19"></span>
+      <span class="solo-lectores">Amarillo pop</span>
+    </label>
+
+    <label class="muestra" title="Amarillo">
+      <input type="radio" name="color_motivo3" value="amarillo" data-nombre="Amarillo" data-color="#ffd000">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ffd000"></span>
+      <span class="solo-lectores">Amarillo</span>
+    </label>
+
+    <label class="muestra" title="Lima">
+      <input type="radio" name="color_motivo3" value="lima" data-nombre="Lima" data-color="#d0eb39">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#d0eb39"></span>
+      <span class="solo-lectores">Lima</span>
+    </label>
+
+    <label class="muestra" title="Verde">
+      <input type="radio" name="color_motivo3" value="verde" data-nombre="Verde" data-color="#18844a">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#18844a"></span>
+      <span class="solo-lectores">Verde</span>
+    </label>
+
+    <label class="muestra" title="Turquesa">
+      <input type="radio" name="color_motivo3" value="turquesa" data-nombre="Turquesa" data-color="#007c91">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#007c91"></span>
+      <span class="solo-lectores">Turquesa</span>
+    </label>
+
+    <label class="muestra" title="Azul eléctrico">
+      <input type="radio" name="color_motivo3" value="azul-electrico" data-nombre="Azul eléctrico" data-color="#2457d6">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#2457d6"></span>
+      <span class="solo-lectores">Azul eléctrico</span>
+    </label>
+
+    <label class="muestra" title="Orquídea">
+      <input type="radio" name="color_motivo3" value="orquidea" data-nombre="Orquídea" data-color="#8e4cd3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#8e4cd3"></span>
+      <span class="solo-lectores">Orquídea</span>
+    </label>
+
+    <label class="muestra" title="Blanco cálido">
+      <input type="radio" name="color_motivo3" value="blanco-calido" data-nombre="Blanco cálido" data-color="#fffaf7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#fffaf7"></span>
+      <span class="solo-lectores">Blanco cálido</span>
+    </label>
+
+    <label class="muestra" title="Tinta">
+      <input type="radio" name="color_motivo3" value="tinta" data-nombre="Tinta" data-color="#282126">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#282126"></span>
+      <span class="solo-lectores">Tinta</span>
+    </label>
+
+    <label class="muestra" title="Gris">
+      <input type="radio" name="color_motivo3" value="gris" data-nombre="Gris" data-color="#6e737b">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6e737b"></span>
+      <span class="solo-lectores">Gris</span>
+    </label>
+
+    <label class="muestra" title="Crema">
+      <input type="radio" name="color_motivo3" value="crema" data-nombre="Crema" data-color="#ede0cb">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#ede0cb"></span>
+      <span class="solo-lectores">Crema</span>
+    </label>
+
+    <label class="muestra" title="Beige">
+      <input type="radio" name="color_motivo3" value="beige" data-nombre="Beige" data-color="#c7ab8d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c7ab8d"></span>
+      <span class="solo-lectores">Beige</span>
+    </label>
+
+    <label class="muestra" title="Tierra">
+      <input type="radio" name="color_motivo3" value="tierra" data-nombre="Tierra" data-color="#8b6248">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#8b6248"></span>
+      <span class="solo-lectores">Tierra</span>
+    </label>
+
+    <label class="muestra" title="Chocolate">
+      <input type="radio" name="color_motivo3" value="chocolate" data-nombre="Chocolate" data-color="#503a32">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#503a32"></span>
+      <span class="solo-lectores">Chocolate</span>
+    </label>
+
+    <label class="muestra" title="Azul marino">
+      <input type="radio" name="color_motivo3" value="azul-marino" data-nombre="Azul marino" data-color="#293b58">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#293b58"></span>
+      <span class="solo-lectores">Azul marino</span>
+    </label>
+
+    <label class="muestra" title="Denim">
+      <input type="radio" name="color_motivo3" value="denim" data-nombre="Denim" data-color="#557a9d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#557a9d"></span>
+      <span class="solo-lectores">Denim</span>
+    </label>
+
+    <label class="muestra" title="Azul cielo">
+      <input type="radio" name="color_motivo3" value="azul-cielo" data-nombre="Azul cielo" data-color="#6b9cd1">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6b9cd1"></span>
+      <span class="solo-lectores">Azul cielo</span>
+    </label>
+
+    <label class="muestra" title="Azul pastel">
+      <input type="radio" name="color_motivo3" value="azul-pastel" data-nombre="Azul pastel" data-color="#b8d9ec">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#b8d9ec"></span>
+      <span class="solo-lectores">Azul pastel</span>
+    </label>
+
+    <label class="muestra" title="Rosa pastel">
+      <input type="radio" name="color_motivo3" value="rosa-pastel" data-nombre="Rosa pastel" data-color="#f5bfd3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f5bfd3"></span>
+      <span class="solo-lectores">Rosa pastel</span>
+    </label>
+
+    <label class="muestra" title="Rosa empolvado">
+      <input type="radio" name="color_motivo3" value="rosa-empolvado" data-nombre="Rosa empolvado" data-color="#cc7797">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#cc7797"></span>
+      <span class="solo-lectores">Rosa empolvado</span>
+    </label>
+
+    <label class="muestra" title="Lavanda">
+      <input type="radio" name="color_motivo3" value="lavanda" data-nombre="Lavanda" data-color="#c5b1e3">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c5b1e3"></span>
+      <span class="solo-lectores">Lavanda</span>
+    </label>
+
+    <label class="muestra" title="Lila">
+      <input type="radio" name="color_motivo3" value="lila" data-nombre="Lila" data-color="#9673b7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#9673b7"></span>
+      <span class="solo-lectores">Lila</span>
+    </label>
+
+    <label class="muestra" title="Violeta">
+      <input type="radio" name="color_motivo3" value="violeta" data-nombre="Violeta" data-color="#6a4ba1">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#6a4ba1"></span>
+      <span class="solo-lectores">Violeta</span>
+    </label>
+
+    <label class="muestra" title="Menta">
+      <input type="radio" name="color_motivo3" value="menta" data-nombre="Menta" data-color="#b8d8c7">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#b8d8c7"></span>
+      <span class="solo-lectores">Menta</span>
+    </label>
+
+    <label class="muestra" title="Verde bosque">
+      <input type="radio" name="color_motivo3" value="verde-bosque" data-nombre="Verde bosque" data-color="#56866d">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#56866d"></span>
+      <span class="solo-lectores">Verde bosque</span>
+    </label>
+
+    <label class="muestra" title="Oliva">
+      <input type="radio" name="color_motivo3" value="oliva" data-nombre="Oliva" data-color="#818449">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#818449"></span>
+      <span class="solo-lectores">Oliva</span>
+    </label>
+
+    <label class="muestra" title="Amarillo suave">
+      <input type="radio" name="color_motivo3" value="amarillo-suave" data-nombre="Amarillo suave" data-color="#f5d975">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#f5d975"></span>
+      <span class="solo-lectores">Amarillo suave</span>
+    </label>
+
+    <label class="muestra" title="Mandarina">
+      <input type="radio" name="color_motivo3" value="mandarina" data-nombre="Mandarina" data-color="#e8a15b">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#e8a15b"></span>
+      <span class="solo-lectores">Mandarina</span>
+    </label>
+
+    <label class="muestra" title="Rojo cereza">
+      <input type="radio" name="color_motivo3" value="rojo-cereza" data-nombre="Rojo cereza" data-color="#c94d58">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#c94d58"></span>
+      <span class="solo-lectores">Rojo cereza</span>
+    </label>
+
+    <label class="muestra" title="Burdeos">
+      <input type="radio" name="color_motivo3" value="burdeos" data-nombre="Burdeos" data-color="#793549">
+      <span class="muestra__color" aria-hidden="true" style="--muestra:#793549"></span>
+      <span class="solo-lectores">Burdeos</span>
+    </label>
+
+  </fieldset>
+</details>
+
+        </div>
+      </fieldset>
+      </section>
+      <div class="sello-editor__nombre formulario__campo">
+        <label for="nombre">Nombre del sello</label>
+        <input id="nombre" name="nombre" type="text" maxlength="40" required value="Mi sello" aria-describedby="nombre-ayuda">
+        <span id="nombre-ayuda" class="nota">Para encontrarlo en «Mis sellos». No sale en el sello.</span>
+      </div>
+      <div class="sello-editor__guardar">
+        <p class="sello-editor__cambios" data-sello-cambios>Tus cambios se guardan cuando pulses Guardar.</p>
+        <div class="sello-editor__acciones">
+          <button type="button" name="accion" value="guardar" class="boton">Guardar sello</button>
+          <button type="button" name="accion" value="vista" class="boton boton--secundario">Ver cómo queda</button>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+</section>
+
+
+  </main>
+  <footer class="pie">
+
+    <p>K-ME · fase 1 · cuentas ficticias de prueba. <em>Sin fan no hay idol.</em></p>
+  </footer>
+</body>
+</html>
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= titulo %> · K-ME</title>
+  <link rel="icon" href="/img/favicon-kme.ico">
+  <link rel="stylesheet" href="/css/estilos.css">
+  <link rel="stylesheet" href="/css/identidad.css">
+</head>
+<body>
+  <%# Páginas de entrada («Entrar» y «Crear cuenta», que solo se ven sin sesión): sin barra de
+      cabecera, porque el logo va grande dentro de la tarjeta (T014). Se marcan al incluir este
+      archivo con { paginaDeEntrada: true }. %>
+  <% const paginaDeEntrada = locals.paginaDeEntrada === true && !aliasSesion; %>
+  <% if (!paginaDeEntrada) { %>
+  <header class="cabecera">
+    <a class="marca" href="/">
+      <img src="/img/logo-kme.svg" alt="K-ME" width="28" height="40">
+    </a>
+    <% if (aliasSesion) { %>
+      <%# Menú principal: aria-current marca la página en la que estás. %>
+      <nav class="menu" aria-label="Principal">
+        <a href="/mi-kme"<% if (locals.rutaActual === '/mi-kme') { %> aria-current="page"<% } %>>Mi K-ME</a>
+        <a href="/studio/sellos"<% if ((locals.rutaActual || '').startsWith('/studio/sellos')) { %> aria-current="page"<% } %>>Sello Studio</a>
+        <a href="/connect"<% if (locals.rutaActual === '/connect') { %> aria-current="page"<% } %>>Connect</a>
+      </nav>
+      <nav class="nav" aria-label="Sesión">
+        <span class="nav__alias">Hola, <strong><%= aliasSesion %></strong></span>
+        <form method="post" action="/salir" class="nav__form">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button type="submit" class="boton boton--secundario">Salir</button>
+        </form>
+      </nav>
+    <% } %>
+  </header>
+  <% } %>
+  <main class="contenido<%= paginaDeEntrada ? ' contenido--entrada' : '' %>">

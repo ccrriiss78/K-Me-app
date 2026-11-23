@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480"><title>Rubor difuminado</title>
+<g data-maquillaje="rubor" class="f-m-rubor" fill="#cc7797">
+<g data-anclaje="mejilla-izquierda" transform="translate(128 234) rotate(-8)">
+<path d="M-23 0Q-24 -6 -12 -8Q2 -13 19 -6Q26 -1 19 5Q6 13 -10 9Q-21 8 -23 0Z" opacity=".055"/>
+<path d="M-19 -1Q-15 -7 -3 -7Q11 -9 19 -3Q23 2 12 6Q-3 12 -17 5Z" opacity=".085"/>
+<path d="M-14 0Q-10 -5 0 -5Q10 -6 16 -1Q17 4 5 6Q-11 9 -14 0Z" opacity=".13"/>
+<path d="M-10 0Q-2 -5 4 -2L2 3L-8 4Z M9 -2L15 -1L10 3Z" opacity=".1"/>
+<circle cx="-12" cy="3" r=".5" opacity=".2"/><circle cx="-4" cy="-3" r=".45" opacity=".17"/>
+<circle cx="6" cy="4" r=".65" opacity=".18"/><circle cx="13" cy="0" r=".35" opacity=".2"/>
+</g>
+<g data-anclaje="mejilla-derecha" transform="translate(272 234) rotate(8)">
+<path d="M-23 0Q-24 -6 -12 -8Q2 -13 19 -6Q26 -1 19 5Q6 13 -10 9Q-21 8 -23 0Z" opacity=".055"/>
+<path d="M-19 -1Q-15 -7 -3 -7Q11 -9 19 -3Q23 2 12 6Q-3 12 -17 5Z" opacity=".085"/>
+<path d="M-14 0Q-10 -5 0 -5Q10 -6 16 -1Q17 4 5 6Q-11 9 -14 0Z" opacity=".13"/>
+<path d="M-10 0Q-2 -5 4 -2L2 3L-8 4Z M9 -2L15 -1L10 3Z" opacity=".1"/>
+<circle cx="-12" cy="3" r=".5" opacity=".2"/><circle cx="-4" cy="-3" r=".45" opacity=".17"/>
+<circle cx="6" cy="4" r=".65" opacity=".18"/><circle cx="13" cy="0" r=".35" opacity=".2"/>
+</g>
+</g></svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480"><title>Base inferior suave · delgado</title>
+<g stroke="#282126" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path data-parte="piernas" d="M170 351 C166 367 165 389 168 408 C160 419 177 424 187 414 C190 408 188 397 193 381 C197 376 203 376 207 381 C215 395 210 408 215 415 C226 423 240 416 232 407 C235 388 234 368 230 351 C220 349 181 349 170 351Z" class="f-piel" fill="#fff5ef"/>
+<path data-parte="calzado" d="M166 408 C158 410 151 417 153 424 C154 432 184 432 194 425 C198 421 192 414 187 410 C181 406 172 406 166 408Z M215 410 C211 414 205 421 208 426 C216 432 241 432 245 426 C248 421 239 412 232 409 C227 407 220 407 215 410Z" fill="#282126"/>
+<path d="M158 425 C167 428 183 429 190 425 M213 426 C222 429 236 429 241 426" fill="none" stroke="#fff" stroke-width="2.7"/></g>
+</svg>
+

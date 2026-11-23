@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480"><title>Tristeza suave</title>
+<g transform="translate(152 205)" data-ojo="izquierdo" data-coleccion="tristeza">
+<path d="M-23 0Q-4 -29 22 -7Q23 12 9 18Q-10 25 -23 0Z" fill="#fffaf7" opacity=".92"/>
+<g class="f-ojos" fill="#775d43">
+<path data-parte="iris-tristeza" d="M-12 -9Q-16 0 -12 13Q0 25 12 13Q16 1 11 -12Q0 -17 -12 -9Z" opacity=".28"/>
+<path d="M-12 -9Q-16 0 -12 13Q0 25 12 13Q16 1 11 -12Q0 -17 -12 -9Z" transform="scale(.9 .9)" opacity=".22"/>
+<path d="M-12 -9Q-16 0 -12 13Q0 25 12 13Q16 1 11 -12Q0 -17 -12 -9Z" fill="none" class="t-ojos" stroke="#775d43" stroke-width="1.1" opacity=".3"/>
+<ellipse cx="-8" cy="2" rx="0.8" ry="0.9" opacity="0.09"/>
+<ellipse cx="-4.2" cy="4.8" rx="1.1" ry="1.2" opacity="0.125"/>
+<ellipse cx="-0.40000000000000036" cy="7.6" rx="1.4" ry="0.9" opacity="0.16"/>
+<ellipse cx="3.3999999999999986" cy="2" rx="0.8" ry="1.2" opacity="0.09"/>
+<ellipse cx="7.199999999999999" cy="4.8" rx="1.1" ry="0.9" opacity="0.125"/>
+<ellipse cx="-8" cy="7.6" rx="1.4" ry="1.2" opacity="0.16"/>
+<ellipse cx="-4.2" cy="2" rx="0.8" ry="0.9" opacity="0.09"/>
+<ellipse cx="-0.40000000000000036" cy="4.8" rx="1.1" ry="1.2" opacity="0.125"/>
+<ellipse cx="3.3999999999999986" cy="7.6" rx="1.4" ry="0.9" opacity="0.16"/>
+<ellipse cx="7.199999999999999" cy="2" rx="0.8" ry="1.2" opacity="0.09"/>
+<ellipse cx="-8" cy="4.8" rx="1.1" ry="0.9" opacity="0.125"/>
+<ellipse cx="-4.2" cy="7.6" rx="1.4" ry="1.2" opacity="0.16"/>
+</g>
+<g transform="translate(2 5) scale(0.9 0.9)"><g transform="translate(-52.3 -79)"><path data-parte="pupila-logo" d="M57.2 79 C57.2 81.7062 55.0062 83.9 52.3 83.9 C49.5938 83.9 47.4 81.7062 47.4 79 C47.4 76.2938 49.5938 74.1 52.3 74.1 C55.0062 74.1 57.2 76.2938 57.2 79 Z" fill="#282126"/></g></g>
+<path data-brillo="estrella" d="M-4 -5L-2.5 -2L1 -1.5L-1.5 .8L-1 4L-4 2.3L-7 3.5L-6.5 .3L-9 -2L-5.5 -2.5Z" fill="#fffaf7"/>
+<circle cx="-7" cy="12" r="1" fill="#fffaf7" opacity=".85"/>
+<path data-parte="linea-ojo" d="M-23 0Q-4 -29 22 -7" fill="none" stroke="#282126" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(248 205)" data-ojo="derecho" data-coleccion="tristeza">
+<path d="M23 0Q4 -29 -22 -7Q-23 12 -9 18Q10 25 23 0Z" fill="#fffaf7" opacity=".92"/>
+<g class="f-ojos" fill="#775d43">
+<path data-parte="iris-tristeza" d="M12 -9Q16 0 12 13Q0 25 -12 13Q-16 1 -11 -12Q0 -17 12 -9Z" opacity=".28"/>
+<path d="M12 -9Q16 0 12 13Q0 25 -12 13Q-16 1 -11 -12Q0 -17 12 -9Z" transform="scale(.9 .9)" opacity=".22"/>
+<path d="M12 -9Q16 0 12 13Q0 25 -12 13Q-16 1 -11 -12Q0 -17 12 -9Z" fill="none" class="t-ojos" stroke="#775d43" stroke-width="1.1" opacity=".3"/>
+<ellipse cx="8" cy="2" rx="0.8" ry="0.9" opacity="0.09"/>
+<ellipse cx="4.2" cy="4.8" rx="1.1" ry="1.2" opacity="0.125"/>
+<ellipse cx="0.40000000000000036" cy="7.6" rx="1.4" ry="0.9" opacity="0.16"/>
+<ellipse cx="-3.3999999999999986" cy="2" rx="0.8" ry="1.2" opacity="0.09"/>
+<ellipse cx="-7.199999999999999" cy="4.8" rx="1.1" ry="0.9" opacity="0.125"/>
+<ellipse cx="8" cy="7.6" rx="1.4" ry="1.2" opacity="0.16"/>
+<ellipse cx="4.2" cy="2" rx="0.8" ry="0.9" opacity="0.09"/>
+<ellipse cx="0.40000000000000036" cy="4.8" rx="1.1" ry="1.2" opacity="0.125"/>
+<ellipse cx="-3.3999999999999986" cy="7.6" rx="1.4" ry="0.9" opacity="0.16"/>
+<ellipse cx="-7.199999999999999" cy="2" rx="0.8" ry="1.2" opacity="0.09"/>
+<ellipse cx="8" cy="4.8" rx="1.1" ry="0.9" opacity="0.125"/>
+<ellipse cx="4.2" cy="7.6" rx="1.4" ry="1.2" opacity="0.16"/>
+</g>
+<g transform="translate(-2 5) scale(0.9 0.9)"><g transform="translate(-52.3 -79)"><path data-parte="pupila-logo" d="M57.2 79 C57.2 81.7062 55.0062 83.9 52.3 83.9 C49.5938 83.9 47.4 81.7062 47.4 79 C47.4 76.2938 49.5938 74.1 52.3 74.1 C55.0062 74.1 57.2 76.2938 57.2 79 Z" fill="#282126"/></g></g>
+<path data-brillo="estrella" d="M4 -5L2.5 -2L-1 -1.5L1.5 .8L1 4L4 2.3L7 3.5L6.5 .3L9 -2L5.5 -2.5Z" fill="#fffaf7"/>
+<circle cx="7" cy="12" r="1" fill="#fffaf7" opacity=".85"/>
+<path data-parte="linea-ojo" d="M23 0Q4 -29 -22 -7" fill="none" stroke="#282126" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

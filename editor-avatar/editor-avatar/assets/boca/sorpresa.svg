@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- Capa: boca · Boca sorpresa · Lienzo 400×480 (usa assets/plantilla.svg como guía) -->
+<g transform="translate(200 250)">
+<!-- versión con labial: se muestra cuando el avatar tiene color de labial -->
+<g class="con-labial"><ellipse class="t-labial" rx="7" ry="9" fill="#8a2f3f" stroke="#e0607e" stroke-width="4"/></g>
+<!-- versión sin labial -->
+<g class="sin-labial"><ellipse rx="7" ry="9" fill="#8a2f3f" stroke="#3d2f45" stroke-width="3"/></g>
+</g>
+</svg>

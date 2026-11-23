@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <!-- ¡Sorpresa!: cejas arriba, ojos grandes y boca en «o». -->
+  <rect x="7" y="3" width="34" height="42" rx="9" fill="#fff" stroke="#000" stroke-width="3"/>
+  <path d="M14.5 14.5q3.5-2.6 7 0M26.5 14.5q3.5-2.6 7 0" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="18" cy="20.5" r="2.8"/>
+  <circle cx="30" cy="20.5" r="2.8"/>
+  <ellipse cx="24" cy="30" rx="2.8" ry="3.4"/>
+  <path d="M12.2 30.2l1.7-3M14.9 30.2l1.7-3M31.4 30.2l1.7-3M34.1 30.2l1.7-3" stroke="#E83475" stroke-width="1.7" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480"><title>Labios · Pigmento suave C</title>
+<g data-maquillaje="labios" data-grosor="fino" class="t-m-labios" stroke="#cc7797" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<g data-boca="sonrisa">
+<path d="M194 245 Q200 251 206 245 Q201 257 194 245Z" data-trazo="velo" stroke-width="4.5" opacity=".16"/>
+<path d="M194 245 Q200 251 206 245 Q201 257 194 245Z" data-trazo="pigmento" stroke-width="3.8" opacity=".4"/>
+<path d="M194 245 Q200 251 206 245 Q201 257 194 245Z" data-trazo="grano" stroke-width="4.2" stroke-dasharray="1.2 2.1 .6 1.4" opacity=".16"/>
+</g>
+<g data-boca="risa" display="none">
+<path d="M186 241 Q200 248 214 241 Q213 261 200 261 Q189 260 186 241Z" data-trazo="velo" stroke-width="4.5" opacity=".16"/>
+<path d="M186 241 Q200 248 214 241 Q213 261 200 261 Q189 260 186 241Z" data-trazo="pigmento" stroke-width="3.8" opacity=".4"/>
+<path d="M186 241 Q200 248 214 241 Q213 261 200 261 Q189 260 186 241Z" data-trazo="grano" stroke-width="4.2" stroke-dasharray="1.2 2.1 .6 1.4" opacity=".16"/>
+</g>
+<g data-boca="asombro" display="none">
+<ellipse cx="200" cy="248" rx="4" ry="6" data-trazo="velo" stroke-width="4.5" opacity=".16"/>
+<ellipse cx="200" cy="248" rx="4" ry="6" data-trazo="pigmento" stroke-width="3.8" opacity=".4"/>
+<ellipse cx="200" cy="248" rx="4" ry="6" data-trazo="grano" stroke-width="4.2" stroke-dasharray="1.2 2.1 .6 1.4" opacity=".16"/>
+</g>
+<g data-boca="tristeza" display="none">
+<path d="M188 253 Q200 240 212 253" data-trazo="velo" stroke-width="4.5" opacity=".16"/>
+<path d="M188 253 Q200 240 212 253" data-trazo="pigmento" stroke-width="3.8" opacity=".4"/>
+<path d="M188 253 Q200 240 212 253" data-trazo="grano" stroke-width="4.2" opacity=".16" stroke-dasharray="1.2 2.1 .6 1.4"/>
+</g>
+<g data-boca="desanimo" display="none">
+<path d="M191 249 Q198 247 204 250 Q208 252 211 251" data-trazo="velo" stroke-width="4.5" opacity=".16"/>
+<path d="M191 249 Q198 247 204 250 Q208 252 211 251" data-trazo="pigmento" stroke-width="3.8" opacity=".4"/>
+<path d="M191 249 Q198 247 204 250 Q208 252 211 251" data-trazo="grano" stroke-width="4.2" opacity=".16" stroke-dasharray="1.2 2.1 .6 1.4"/>
+</g>
+<g data-boca="puchero" display="none">
+<path d="M193 250 Q200 242 207 250 Q205 255 200 255 Q195 255 193 250Z" data-trazo="velo" stroke-width="4.5" opacity=".16"/>
+<path d="M193 250 Q200 242 207 250 Q205 255 200 255 Q195 255 193 250Z" data-trazo="pigmento" stroke-width="3.8" opacity=".4"/>
+<path d="M193 250 Q200 242 207 250 Q205 255 200 255 Q195 255 193 250Z" data-trazo="grano" stroke-width="4.2" opacity=".16" stroke-dasharray="1.2 2.1 .6 1.4"/>
+</g>
+<g data-boca="preocupacion" display="none">
+<path d="M188 251 Q191 247 195 249 Q200 244 205 249 Q209 247 212 251" data-trazo="velo" stroke-width="4.5" opacity=".16"/>
+<path d="M188 251 Q191 247 195 249 Q200 244 205 249 Q209 247 212 251" data-trazo="pigmento" stroke-width="3.8" opacity=".4"/>
+<path d="M188 251 Q191 247 195 249 Q200 244 205 249 Q209 247 212 251" data-trazo="grano" stroke-width="4.2" opacity=".16" stroke-dasharray="1.2 2.1 .6 1.4"/>
+</g>
+<g data-boca="incomodidad" display="none">
+<path d="M189 249 Q192 246 196 250 Q199 253 202 249 Q205 246 209 250 Q211 252 213 249" data-trazo="velo" stroke-width="4.5" opacity=".16"/>
+<path d="M189 249 Q192 246 196 250 Q199 253 202 249 Q205 246 209 250 Q211 252 213 249" data-trazo="pigmento" stroke-width="3.8" opacity=".4"/>
+<path d="M189 249 Q192 246 196 250 Q199 253 202 249 Q205 246 209 250 Q211 252 213 249" data-trazo="grano" stroke-width="4.2" opacity=".16" stroke-dasharray="1.2 2.1 .6 1.4"/>
+</g>
+<g data-boca="enfado" display="none">
+<path d="M189 252 Q198 247 211 246" data-trazo="velo" stroke-width="4.5" opacity=".16"/>
+<path d="M189 252 Q198 247 211 246" data-trazo="pigmento" stroke-width="3.8" opacity=".4"/>
+<path d="M189 252 Q198 247 211 246" data-trazo="grano" stroke-width="4.2" opacity=".16" stroke-dasharray="1.2 2.1 .6 1.4"/>
+</g>
+<g data-boca="serenidad" display="none">
+<path d="M193 248 Q200 250 207 248" data-trazo="velo" stroke-width="4.5" opacity=".16"/>
+<path d="M193 248 Q200 250 207 248" data-trazo="pigmento" stroke-width="3.8" opacity=".4"/>
+<path d="M193 248 Q200 250 207 248" data-trazo="grano" stroke-width="4.2" opacity=".16" stroke-dasharray="1.2 2.1 .6 1.4"/>
+</g>
+<g data-boca="timidez" display="none">
+<path d="M190 247 Q200 255 211 244" data-trazo="velo" stroke-width="4.5" opacity=".16"/>
+<path d="M190 247 Q200 255 211 244" data-trazo="pigmento" stroke-width="3.8" opacity=".4"/>
+<path d="M190 247 Q200 255 211 244" data-trazo="grano" stroke-width="4.2" opacity=".16" stroke-dasharray="1.2 2.1 .6 1.4"/>
+</g>
+</g></svg>

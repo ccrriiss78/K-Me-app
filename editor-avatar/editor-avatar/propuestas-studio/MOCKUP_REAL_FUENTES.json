@@ -1,0 +1,822 @@
+{
+  "estado": "Maqueta estática; no modifica el editor",
+  "composicion": {
+    "version": 1,
+    "rostro": "redondo",
+    "cuerpo": "relajado",
+    "cejas": "suaves",
+    "grosorCejas": "medio",
+    "piel": "#fff5ef",
+    "ojos": {
+      "estilo": "redondos-guino-derecho",
+      "color": "#775d43"
+    },
+    "boca": "risa",
+    "maquillaje": {
+      "sombra": null,
+      "labial": null,
+      "sombraEstilo": "nada",
+      "labios": "nada",
+      "grosorLabios": "fino",
+      "colorLabios": "#cc7797",
+      "delineado": "nada",
+      "brillo": "nada",
+      "gemas": "nada",
+      "colorSombra": "#9673b7",
+      "colorDelineado": "#282126",
+      "colorBrillo": "#ede0cb",
+      "colorGemas": "#cc7797",
+      "colorRubor": "#cc7797",
+      "mejillas": "acuarela"
+    },
+    "pelo": {
+      "estilo": "mono",
+      "color": "#282126",
+      "acabado": "tinta",
+      "mechones": "sin",
+      "mechon1": "#e83475",
+      "mechon2": "#9673b7",
+      "mechon3": "#00c6e8"
+    },
+    "ropa": {
+      "arriba": "camiseta-integrada-delgado",
+      "colorArriba": "#fffaf7",
+      "abajo": "falda-integrada-delgado",
+      "colorAbajo": "#282126"
+    },
+    "accesorio": "auriculares",
+    "fondo": "ninguno"
+  },
+  "svgAvatarSha256": "e61b9bfa372ad9a0b9268320c21168aae097d2f4a1c65b153d5cd843a71d627e",
+  "recursos": [
+    {
+      "ruta": "../assets/kme/cabeza/redondo.svg",
+      "sha256": "5c85c50a50fd469872efa5b523f142a7bf6e00029ebb55155a444a9a9df25af4"
+    },
+    {
+      "ruta": "../assets/kme/cabeza/ovalado.svg",
+      "sha256": "99bb8d19e6f278821b95a560255176ad4cba679f5a3d7c326891b0b749078602"
+    },
+    {
+      "ruta": "../assets/kme/cabeza/cuadrado.svg",
+      "sha256": "4d1a5ecaaf80ce9ba1676c276420cd95b5a3594f520de9b758a3a98c3d6fae38"
+    },
+    {
+      "ruta": "../assets/kme/cuerpo/relajado.svg",
+      "sha256": "7a859004995bc426b6d4e8a25fb6ab936db1dd8badcc082233d36d4225d576f5"
+    },
+    {
+      "ruta": "../assets/kme/cuerpo/recto.svg",
+      "sha256": "baf1155828ac02171a7d1746936cd047a871ff04bc485de4304762076b796fa2"
+    },
+    {
+      "ruta": "../assets/kme/cuerpo/amplio.svg",
+      "sha256": "56340696b084e081a12d3c700b5289333e7dff327e2607a2367bb49a6f698dde"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-tristeza-a-estrella.svg",
+      "sha256": "e81a08254076064492257cf74be54f2e86073c061213765015953f348efafed2"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-tristeza-b-estrella.svg",
+      "sha256": "bec3a5a0f26598a230f3a90af572afbfcde4b8f1f4d9852a801abbec4fcbe4fa"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-tristeza-c-estrella.svg",
+      "sha256": "80e44d2ffdbba7691e208b71e9f78df86a0edb63bdf185ef3e7a8841a2a5ccaf"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-tristeza-d-estrella.svg",
+      "sha256": "272a20f8d826cc8bd6b689bc7e71a1876e4edf75e0d6174d7fca7eb5ab799795"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-tristeza-e-estrella.svg",
+      "sha256": "6d17c855ed7cafd6aa26b3a6702663e0d6dfc2fb258e0d8e8f95e2d5acec28cc"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-tristeza-f-cerrados-sin-brillo.svg",
+      "sha256": "c2f97801a0272e8988eb3fb3e77b7e6a776fcfff62220c716c84bf586d2c8396"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-escenario-abiertos-estrella.svg",
+      "sha256": "4fd98445b9ede61d0f0bf0691b52bc6048709f2ef3d1dc7ce0af3f95c22f297e"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-escenario-cerrados-sin-brillo.svg",
+      "sha256": "86d0a9f7ecf46fe46a99b60db5a630294f50048a0f6698c9e7639a0ee06d609e"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-escenario-guino-izquierdo-estrella.svg",
+      "sha256": "1d7b21baa28930d4e4d119525f791b9523900d2b5617371e3bf8d74f7135e600"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-escenario-guino-derecho-estrella.svg",
+      "sha256": "6f9384911c35a01984d6461c2b272530c735d88de60cb44ea927315e36f3f54c"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-dulces-abiertos-estrella.svg",
+      "sha256": "652dd5b2a68b9d38ec2991fd73337cede1fc6c5a66e98c6c559c9c260bc9d716"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-dulces-cerrados-sin-brillo.svg",
+      "sha256": "0ac6d574c89934459fa0e686d7db23fed85563d1e18bf4eb80bf11a58db968c3"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-dulces-guino-izquierdo-estrella.svg",
+      "sha256": "bbcb9d6662db27df29ef45cb3617f60bc9ee53ebfac1764c5669bb427ab8aee4"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-dulces-guino-derecho-estrella.svg",
+      "sha256": "f4ee4bfa0d9088856041497b860fc1a100c61b9d63264f188b61772b77d11e07"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-felinos-abiertos-estrella.svg",
+      "sha256": "722d59bc9e1ddf0aca327c6f72e37f4e8e86a680378f0aef6e85965da97ad2cc"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-felinos-cerrados-sin-brillo.svg",
+      "sha256": "7b10ec25278b44113b380cf115672d0aee909de8846b848b014a38816dd4c747"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-felinos-guino-izquierdo-estrella.svg",
+      "sha256": "cd2d7aae1d2332fd54cbb70457ca8b299a9ed9d8f0be2b9b47a9e759c324f297"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-felinos-guino-derecho-estrella.svg",
+      "sha256": "55c812803cb0cfb0a2f0228f6e49a4de2961e6ef4ad684aaac208e97ba1c6049"
+    },
+    {
+      "ruta": "../assets/kme/ojos/redondos-abiertos.svg",
+      "sha256": "d2e3adc0a35386de8990a2b970969715f013dcfff7bccab5ea23f8fcc7fa8839"
+    },
+    {
+      "ruta": "../assets/kme/ojos/redondos-cerrados.svg",
+      "sha256": "bfbbee73c96a47295d68feee1f49dde7be9d949eade8edc65b95a82cfd6b4ab9"
+    },
+    {
+      "ruta": "../assets/kme/ojos/redondos-guino-izquierdo.svg",
+      "sha256": "70e0a6420b29035165609c669c879068cf4165e8d46c887001238b5ea3a830d6"
+    },
+    {
+      "ruta": "../assets/kme/ojos/redondos-guino-derecho.svg",
+      "sha256": "241cf413d4544a80a20d0a4dc4718c958c764f35429444667f1fae22b3151306"
+    },
+    {
+      "ruta": "../assets/kme/ojos/almendrados-abiertos.svg",
+      "sha256": "868e74067dd36b48b7a2e2ca02cabdd337b475a98cbe7a28221065921ca1d219"
+    },
+    {
+      "ruta": "../assets/kme/ojos/almendrados-cerrados.svg",
+      "sha256": "c508fd7dddb4bf3efa5262dc03ff0a2625efec5cfaf3832a4f5fefd86ae9e487"
+    },
+    {
+      "ruta": "../assets/kme/ojos/almendrados-guino-izquierdo.svg",
+      "sha256": "e20780f3b2f69863a71ebc3802757a8a6123d7a782ba7501f93be8e9aaa797be"
+    },
+    {
+      "ruta": "../assets/kme/ojos/almendrados-guino-derecho.svg",
+      "sha256": "5f1b104d1651c4b63f32b3a228b722c32b70a27947e5bce4c0c6aa99c8034657"
+    },
+    {
+      "ruta": "../assets/kme/ojos/alargados-abiertos.svg",
+      "sha256": "2ecaafc934418e7e6764f84def4d67f91f7cda8e3098cd882278a0eb58ac59b7"
+    },
+    {
+      "ruta": "../assets/kme/ojos/alargados-cerrados.svg",
+      "sha256": "b559c435a9bb92f3ae8740bef29fa15f5d48439430ef5733e529e2771fff8b14"
+    },
+    {
+      "ruta": "../assets/kme/ojos/alargados-guino-izquierdo.svg",
+      "sha256": "51807075b749f8c5e801e26437ef807f5c5c374d985e66104e0087025fc73409"
+    },
+    {
+      "ruta": "../assets/kme/ojos/alargados-guino-derecho.svg",
+      "sha256": "547970155f4999d7b9d7d08a8170c5f8b3d09f65a0fc2213508047efb2abf46d"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-redondos-abiertos-punto.svg",
+      "sha256": "07a27063bf27830e81e2730c6ceaeaa29336d3bfa24915f6ff32edc6b0844098"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-redondos-abiertos-estrella.svg",
+      "sha256": "d5bac5ace52543a28a87052105c3413f6d6483713eab9a64c553781dfb760077"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-redondos-cerrados-sin-brillo.svg",
+      "sha256": "5077832cdf1671df9cf673f34a30de1c75568713ce4f8bce3a3abef2df254daa"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-redondos-guino-izquierdo-punto.svg",
+      "sha256": "2b73f9dfbce380780b880446694ba197c69a3d4f43f78bdd7bbf7f7aeae7c4a0"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-redondos-guino-izquierdo-estrella.svg",
+      "sha256": "13afb202eeada6cefd8f5acc8e44e57ca259e85904d47ac5d9068019ea67adb2"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-redondos-guino-derecho-punto.svg",
+      "sha256": "0dbd690c12dd1b22adb2f2b008cb54f797413acc792de2e807099705602cd9a5"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-redondos-guino-derecho-estrella.svg",
+      "sha256": "4e57415db1c2c1bf1d04025ca6cfbb53be26ff960a88f5bf9bde4c9480348b4f"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-almendrados-abiertos-punto.svg",
+      "sha256": "8e9bc25079052873a9ec0bde8aba08d26eb7803fd409500baeb4689aa2f97ec1"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-almendrados-abiertos-estrella.svg",
+      "sha256": "b9dfcd2a4822447b94f9f799f51cb1b97b2c08c94f9f81a6d4351ce2c70e9ef2"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-almendrados-cerrados-sin-brillo.svg",
+      "sha256": "cb612e4745eb60698db257e04755e0a10eb338a35e2893bad44921d94ad2810c"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-almendrados-guino-izquierdo-punto.svg",
+      "sha256": "1e8f038c16a5e859210217b7a275b8ca7e4c40e6f8841f04245792c30c997435"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-almendrados-guino-izquierdo-estrella.svg",
+      "sha256": "e5c022458a1705bc136a5f8ebbf50b16969f9cd4413d7a2537ef9af1b6f96980"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-almendrados-guino-derecho-punto.svg",
+      "sha256": "2a5c42443e341e50c383bc9ba998a3c89df0f754fc2bfd8c79cc4e4f0723233d"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-almendrados-guino-derecho-estrella.svg",
+      "sha256": "45b68202d70e40a59f38503f96e4d89f99fe0559bf0c7fb4a5d63ff384edb638"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-alargados-abiertos-punto.svg",
+      "sha256": "f607a778cdf410a926298c9166f6bf863179aebfa4024e56abaa215bbe73b953"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-alargados-abiertos-estrella.svg",
+      "sha256": "08222f2fc59f4eea45ccdfb15deeefccf278eed8517caa881838bfeba4090336"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-alargados-cerrados-sin-brillo.svg",
+      "sha256": "fe2dff4b38ec1ea5c49e870f32e076482a80e6d453b248746647fb2a871dc1ec"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-alargados-guino-izquierdo-punto.svg",
+      "sha256": "a72894fd2fa6d93f2442732e11c1f03536056df20aa5eb9c9c148ec2b42084c6"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-alargados-guino-izquierdo-estrella.svg",
+      "sha256": "b61b87714fdc6e68e5b9b0bf5e833438342a8107e27cb99a6ca7d6630532ebcc"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-alargados-guino-derecho-punto.svg",
+      "sha256": "2d8647f45f76f42de29fb2a3611be2ce06234d8bf700d4e6daeda084cf1e00ea"
+    },
+    {
+      "ruta": "../assets/kme/ojos/kme-alargados-guino-derecho-estrella.svg",
+      "sha256": "22203347da1cf9d0e1b33a433c2c9b45c1107e04b24d209047132e955b3fbb21"
+    },
+    {
+      "ruta": "../assets/kme/cejas/tristes.svg",
+      "sha256": "159b8ab3648674e6287ad347c513d69bf7d294192683f30038e866b2ecd58d2a"
+    },
+    {
+      "ruta": "../assets/kme/cejas/suaves.svg",
+      "sha256": "2961dfe4efea55812c3740020061c4f9070e59880609f72277429d8c8e91fba4"
+    },
+    {
+      "ruta": "../assets/kme/cejas/rectas.svg",
+      "sha256": "dbddd0627a2cc00dad58c8de5b2fdf8b2fce4c0e3d38e5ded3b0e7a317bdbd4e"
+    },
+    {
+      "ruta": "../assets/kme/cejas/arqueadas.svg",
+      "sha256": "91042bf894f253f38e75e890476154b8e2e7336e75ac156fb424dc2e77e6ee4a"
+    },
+    {
+      "ruta": "../assets/kme/maquillaje/escenario-labios.svg",
+      "sha256": "7ebb1ec09da39219b66551a839662a754fdf2bf1e3aae608944b800caa4b0480"
+    },
+    {
+      "ruta": "../assets/kme/maquillaje/escenario-sombra.svg",
+      "sha256": "7b761672d7404206d39c67b7e87bf033136f6a1205fc59ef63d425ceaffc3077"
+    },
+    {
+      "ruta": "../assets/kme/maquillaje/escenario-delineado.svg",
+      "sha256": "ae07b1bd01639586e53cffc99f582265479fc3c18f2cf9748e9bfefda57cc101"
+    },
+    {
+      "ruta": "../assets/kme/maquillaje/escenario-brillo.svg",
+      "sha256": "42e02b26013bdc78caa8ce216fd6b47c747d8521b8df6ea29113ad3fa84523bc"
+    },
+    {
+      "ruta": "../assets/kme/maquillaje/escenario-gemas.svg",
+      "sha256": "88409e198c45ff817f315b65e2ce8784a69d84246af34d07638cb8fe3d12827f"
+    },
+    {
+      "ruta": "../assets/kme/maquillaje/escenario-rubor.svg",
+      "sha256": "5a7126dedd2deb9b0ef60693b94e9bc2d563737347ab364d3523e83a5254dc51"
+    },
+    {
+      "ruta": "../assets/kme/maquillaje/acuarela.svg",
+      "sha256": "daded33b29b0a252102a6f3fc5860bcd73b7a6168b83582de7a1a3e37233e706"
+    },
+    {
+      "ruta": "../assets/kme/maquillaje/comillas.svg",
+      "sha256": "715ce2efbc59a0d449866227f2db18b221ffadeab66d40884655317739166fed"
+    },
+    {
+      "ruta": "../assets/kme/maquillaje/pecas.svg",
+      "sha256": "5c9f3f4925ee7a3eae647414f87e3427855365dd199aba5bdada442da22691a6"
+    },
+    {
+      "ruta": "../assets/kme/boca/sonrisa.svg",
+      "sha256": "b08bda72575d4fc6bffc1580db62fd521ab293b2c86fe9e7912c4bbb79d9b3e7"
+    },
+    {
+      "ruta": "../assets/kme/boca/risa.svg",
+      "sha256": "f2becaf9af180b9d1b3770eda3648dc7f418c3e47bbcfdd68b25b1aba9704369"
+    },
+    {
+      "ruta": "../assets/kme/boca/asombro.svg",
+      "sha256": "f1531c1068dadea25873b751325b613ab9459ad7a86a16f8d5d2e8a24ae3af7e"
+    },
+    {
+      "ruta": "../assets/kme/boca/tristeza.svg",
+      "sha256": "1766bcef0a24d75fd394e6cf1a5d5247cf71e67627a3abf6ab0551d417ab93b2"
+    },
+    {
+      "ruta": "../assets/kme/boca/desanimo.svg",
+      "sha256": "5d895a66a10349b8072d03f19bb8d59cf781cd2b3fd65a5dea42091cbc22ac16"
+    },
+    {
+      "ruta": "../assets/kme/boca/puchero.svg",
+      "sha256": "79470f2ba51c036da270eaf3beb9218dddc824880c57779fe7afbd0da6596263"
+    },
+    {
+      "ruta": "../assets/kme/boca/preocupacion.svg",
+      "sha256": "bdfa6f491447ba6be903c30e910cbc3ed5fe4645e3409efffceceac42e313124"
+    },
+    {
+      "ruta": "../assets/kme/boca/incomodidad.svg",
+      "sha256": "b3fc231a66ab4f00478ddc20c69adff51deb8efa9584851b08379fd1d09a554c"
+    },
+    {
+      "ruta": "../assets/kme/boca/enfado.svg",
+      "sha256": "543f35c3bd9c59bd199fb2f2f01082562b9d9a65ec2e22177cf4dcea0cfe0649"
+    },
+    {
+      "ruta": "../assets/kme/boca/serenidad.svg",
+      "sha256": "aa3754c608e30bf207735427662dace983f0ffcd9abd880e7de2ed16a2b11b28"
+    },
+    {
+      "ruta": "../assets/kme/boca/timidez.svg",
+      "sha256": "479c7ec94ce1a288b5e0c47d640cc14295633a7146cc96d777096a645a9e4730"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/cargo-integrada-delgado.svg",
+      "sha256": "f350ab199ac906aa6630af50d0e025c33d9dc66186ca7abe66e902d591dbe8ad"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/falda-integrada-delgado.svg",
+      "sha256": "e4ef20af8ee7dd801e9aa875c02b9d8ea043f955eed375dfb901efcb56acc72b"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/bermudas-integrada-delgado.svg",
+      "sha256": "56f1a8306a50452020bbe478828efeb41fc45ed062551f0264eff358f7c80806"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/cargo-integrada-medio.svg",
+      "sha256": "72551af639eb594f1def8960cf4d7cf630ed05db8d0879159ba17cd5311ac46a"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/falda-integrada-medio.svg",
+      "sha256": "d9261571a1806a97debbf58b01e633fd9bb019870147e26d147623c7a7f7a888"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/bermudas-integrada-medio.svg",
+      "sha256": "aab6937fc3ca4a2f899ae780d5be38dc44344837827f66c22ae03c1b2d1ee678"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/cargo-integrada-grueso.svg",
+      "sha256": "4a2550554092b44eeb9900f2f4d9017ecc7988de1a7f8675517777563d1b26ac"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/falda-integrada-grueso.svg",
+      "sha256": "4bf1635ad875ce098fb5bbc04a3550e4c8c3352d700aa4442fa4bf628c46d78d"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/bermudas-integrada-grueso.svg",
+      "sha256": "4b58c87abe99e1a29afac1c74302aa5e3f93ed7881beb6da95598b7f5b57dcbe"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/cargo-beat-delgado.svg",
+      "sha256": "c69361a94088066d9e2367c4109e7df76caa5c195dbc1000fa6ec426f4080711"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/cargo-beat-medio.svg",
+      "sha256": "b4be70c365d7eee05e4f281e3b3628a7d44e3f7c416314fa40f82cb55b05a1ee"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/cargo-beat-grueso.svg",
+      "sha256": "2b90cbdc0fad730be0e3bcdb892d8f73e086199fd8b61ca213497ae26fa97dea"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/denim-layer-delgado.svg",
+      "sha256": "133e98c14f685d085782683ecceaa828932627d5b4bcad664ec2e857bf8137d8"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/denim-layer-medio.svg",
+      "sha256": "d5bad914f7c3e32399a924843db9de7c8ba9c39891973b286bc5f28dcc88dfeb"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/denim-layer-grueso.svg",
+      "sha256": "3829925e34ff1d7c0001d923c7c33c460b1801014ae82689384a6bd8646c9099"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/school-remix-delgado.svg",
+      "sha256": "b552216053a9eab759eb8b754b5ba0666215e99b2393654b9e87afb3788ca244"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/school-remix-medio.svg",
+      "sha256": "4f1f35e0b31bc92a04dd6c203d080e4aad54bd38b28b85ac75c773e9f5f975ae"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/school-remix-grueso.svg",
+      "sha256": "abceb6949a04221c4e0e1ff6cf89feee49154e35ac016504a0e506f67803f607"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/racing-pop-delgado.svg",
+      "sha256": "ccadf3b520ad145a8a86be290b81a2a1e2a7e80758c6a7bb30d870b0b739cd2c"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/racing-pop-medio.svg",
+      "sha256": "a02d79bb256bb4e31272f20e7af40ab4ab360b70da24e2fd73ea781f0d873228"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/racing-pop-grueso.svg",
+      "sha256": "c8cac4c1c7c6ff535938179f8c6fb903b1e8a7b76ae4e00d14b66f5945776cc7"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/pocket-pop-delgado.svg",
+      "sha256": "1d77dac0c3732a3cc49547badf661c90dede564cbfa66a164fd9203b5f4c0c15"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/pocket-pop-medio.svg",
+      "sha256": "276668a80211567bf9bc88aece27593b3df0ad3c25f80fbf557cca19186003fc"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/pocket-pop-grueso.svg",
+      "sha256": "f1c3983e5cc431f40c89ff3283a036e261d1ec511470d022e2d14289ce8b6709"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/ribbon-punk-delgado.svg",
+      "sha256": "2e31a989ec7287954c36e03d43b44682e0d26dfde0579a0e1d314ccc94f49dac"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/ribbon-punk-medio.svg",
+      "sha256": "85342d405f43101e49ac8d80becc475f28ec9693bff9d6f36c416a7bd3d2fe6d"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/ribbon-punk-grueso.svg",
+      "sha256": "83dfb0a93468678d1361230cdf010098029e31373cd086bf706990e55baeb94d"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/denim-star-delgado.svg",
+      "sha256": "76866dd9bf4346eacb3f140b012cacd53d8739fd331f7ef25c24798a94ac6a3f"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/denim-star-medio.svg",
+      "sha256": "2edae0f40e7d268733eabf7228bc8332a7978ca955283a4aa04791f37c943f4e"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/denim-star-grueso.svg",
+      "sha256": "d15c926ee862123e3f5efce5882ee12f55f404b3fd1d20ab78aadba1064cab7e"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/stage-noir-delgado.svg",
+      "sha256": "ad17b6ec1480d2f10f3078a3d2bcd72b051c9e42fefc9571014a364ad08c517e"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/stage-noir-medio.svg",
+      "sha256": "73ca6d44a052fcf4c2b47363a3d2d06c17409c5b4b30f5150a06bbd824119acf"
+    },
+    {
+      "ruta": "../assets/kme/ropa_abajo/stage-noir-grueso.svg",
+      "sha256": "0acb3adb2f3da91f0a4f8bdb65539a143697a0843799912372419b30d420ce86"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/camiseta-integrada-grueso.svg",
+      "sha256": "5a283593de141a9d5585c7e47764515062051bf573ecd062ee0f77e66062c33d"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/camiseta-integrada-medio.svg",
+      "sha256": "f45bc343172c3355a20ee053fc8ae2c0ea56c9a66c01c2952c838b052c162ba5"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/camiseta-integrada-delgado.svg",
+      "sha256": "12f1284a54db25fee86f8e6a162796a0488a075973e390a9f6ccd416827ca1e5"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/camiseta-revisada-delgado.svg",
+      "sha256": "3540d3d5bde8394d79bbd4a01cd5917fc272313a273cc0693218be2e0aaf1c1f"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/camiseta-revisada-medio.svg",
+      "sha256": "fd6264f9ca991cc28ba1c9bfd206f0f13c562ce2ca34b916a332c3a37ee0eacb"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/camiseta-revisada-grueso.svg",
+      "sha256": "c3eeb4c4b37009a538d6093bfc45eaa522d288c55d4bd0a488f19f2646607894"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/sudadera-revisada-delgado.svg",
+      "sha256": "abae5e2b9506b6d3e2e2cc3ed763bae70dcf5f070bfe1c57e409ee2e593509e8"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/sudadera-revisada-medio.svg",
+      "sha256": "741fcd2e107a3517542c73a94de88f74098df1744ed18f72613f740a7f654127"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/sudadera-revisada-grueso.svg",
+      "sha256": "dfe1c52e653cdb884361f501e3bd5aa25d68c772062762bdb616a95bc58521c0"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/chaqueta-revisada-delgado.svg",
+      "sha256": "cf213b8ffbbcc9767983967274b9e6743a1a7f453f6942d05b1b2a85a6b8c32b"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/chaqueta-revisada-medio.svg",
+      "sha256": "8ee1cd5ff57b37e5e027ad9918a066ad281ea36f956c01bb17ae0f788206222d"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/chaqueta-revisada-grueso.svg",
+      "sha256": "0f68eabed2bfa9ab5f12df901493c1bb69838b4548e8c3a3bab7e1a5d5c1ff99"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/cargo-beat-delgado.svg",
+      "sha256": "d1f9e09d725d8353527c46fb29ece2eb8a353e3fdaf671d635977e9798fd881f"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/cargo-beat-medio.svg",
+      "sha256": "0730fbf9f5c574052356ee1da0f2a8b387a46fe1273b2ebc7ea1bfa2cf77c795"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/cargo-beat-grueso.svg",
+      "sha256": "7c49611b181827384b1c95e470d90080436feb71e45b1294cccdd88cb588d964"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/denim-layer-delgado.svg",
+      "sha256": "346086cc46efa280e10495082ae5988640c6375cb64e9573130a1e52f9e67f4e"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/denim-layer-medio.svg",
+      "sha256": "042808fc8975895512054ebcabfe0c5960b8ceb7c4c3d7c43deb307f287a7a46"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/denim-layer-grueso.svg",
+      "sha256": "3768e5ad95b6f635eed4240bb13b7edfb35e1c6022625dfc4ced4d6801e7e805"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/school-remix-delgado.svg",
+      "sha256": "afa4805abb82518226faec11c669b56d24e39291a85b45c61d0077980bda2dcd"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/school-remix-medio.svg",
+      "sha256": "c29728a45b2186f1aec38ff7278c92d433b6a15e4e8dae796c7a3b50b024006a"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/school-remix-grueso.svg",
+      "sha256": "d56c3429f9d8e7ab03d8d44e32fd2eebc6865c13bf048cc847dd19b3fa7500f5"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/racing-pop-delgado.svg",
+      "sha256": "dbb3907d6b19b7535319d9271a09fd2b94ca1482e0371b77e9ada030cdb857ab"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/racing-pop-medio.svg",
+      "sha256": "f5de6d930df7da2a0353b9149392ab025c9954a3607d2ce578d95ddd69366088"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/racing-pop-grueso.svg",
+      "sha256": "afd7d15a692ff8d886612d207705b4a489efeb373b8c1afa0e4eda5ea661797b"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/pocket-pop-delgado.svg",
+      "sha256": "379cfd4483b247cc33161a576f46eeb7cc9cef885b3759dc1a232da3aa57c910"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/pocket-pop-medio.svg",
+      "sha256": "721691524a2b057f834d96e001f9a61c00a2a7220118abc73f1e7328bcd75371"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/pocket-pop-grueso.svg",
+      "sha256": "0bc66a721d123376a511c173529f140a1451a1d7415103b0590c76e23e27c2ad"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/ribbon-punk-delgado.svg",
+      "sha256": "5ba26826a4391c33a07d4413743749bb0aeb3b42d1b79e9c3f74b67169446bc7"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/ribbon-punk-medio.svg",
+      "sha256": "761ec32058a47374176ddbe70dc60a6095334f0a49b485e96e4407ab76db2917"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/ribbon-punk-grueso.svg",
+      "sha256": "ef6d6faafd44969ef61d0fa0a73752ffae2892e68a4f07394a25ab3b34618f02"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/denim-star-delgado.svg",
+      "sha256": "b4b0e3861d32d8130fe144cdbd5f214d7c67e345655b537303845ba2ab15ad4d"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/denim-star-medio.svg",
+      "sha256": "30d1841079c4e1a170f2781b5e0ce2b84a4ae3a51bc6d2964f58e2c29b5cb109"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/denim-star-grueso.svg",
+      "sha256": "7e91469272ba9e651a43ad194ad3bb0f952a4c5048506827c6806962e671dd10"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/stage-noir-delgado.svg",
+      "sha256": "9e37f8e285a80038067eac782f4f92201e211242c30168faeb3cbeb84bf67ab4"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/stage-noir-medio.svg",
+      "sha256": "79c73ef6cf44e8051aa8b4810c1a0d0d7217ff173449f6c0839a0f98b7c7c14a"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/stage-noir-grueso.svg",
+      "sha256": "d8f6c9522c40ebe8152cc350ba411220c97d953ad0d007bc18542638be86942e"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/top-orbita-delgado.svg",
+      "sha256": "a900c6e56a78678a4f9c40cef6cddb9eb13ec79276e9bab77d30c881f0aadf80"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/top-orbita-medio.svg",
+      "sha256": "3263403adea22e52f520eab6a9d08468bb732d76b21df1ad2a012ac307edb04d"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/top-orbita-grueso.svg",
+      "sha256": "b1625ac42c44d761cd9c2989e50d7a881d659acba2e33025da8f2f979272fdb9"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/top-halter-delgado.svg",
+      "sha256": "f95ec5981e21a5e847391b11aec046dafab696907f2fdffc00010dfcca5bf719"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/top-halter-medio.svg",
+      "sha256": "97257f4894114445915f9f819294387a5ce79fb2bacc44df0e2e5e5a7777c5a6"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/top-halter-grueso.svg",
+      "sha256": "e7cba8722c2deeb11949e926b5704fe9426203f07e04cfe1859456aea6d292f1"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/top-deportivo-delgado.svg",
+      "sha256": "b79eafb8a4bd4f9aab8927022b0d41cd9678bcac7a837993d2dbe931a3022ac3"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/top-deportivo-medio.svg",
+      "sha256": "91a50acf1131f2159890e2c2c6673142597fbd7d93bd3abcc997d40efe0d7b8e"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/top-deportivo-grueso.svg",
+      "sha256": "fdb91dfc240e16140e5df239bb0b49eb5671376fb267cbace82d739938db997f"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/top-cruzado-delgado.svg",
+      "sha256": "ad9bc0ab28bda056e87e379e7080c2f0c45f95f596f9d4888b2723585f526191"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/top-cruzado-medio.svg",
+      "sha256": "dcae4bbd2c865c71e89bcc8953ca509247cacf915777be43c61f7d6af7017f46"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/top-cruzado-grueso.svg",
+      "sha256": "726fd7484c45cf95ff5f10e14b714b03b4ee935a99ba73b8fd62effc02d9ae48"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/top-holgado-delgado.svg",
+      "sha256": "7006c26a00bb57ae4615619ff34c0d9c347e5d02ed8abe34f781c4990b52b932"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/top-holgado-medio.svg",
+      "sha256": "5deca6e348c0c2ffd3326de6cf57e95cd6a47c007a3d85477c0c4fe0060ae1ea"
+    },
+    {
+      "ruta": "../assets/kme/ropa_arriba/top-holgado-grueso.svg",
+      "sha256": "258089063a243c889271bda6b973f0995aebfb9e44c2217f3a07f4b1d8da781d"
+    },
+    {
+      "ruta": "../assets/kme/pelo_atras/mono.svg",
+      "sha256": "fbab81a9ce9899c7272f670149d8265f72282cab06d3fb4f3069549ee7226e5d"
+    },
+    {
+      "ruta": "../assets/kme/pelo_frente/mono.svg",
+      "sha256": "ded4773d5764d112f752372d05db30083394474cda1b27797d262877c373f586"
+    },
+    {
+      "ruta": "../assets/kme/pelo_atras/corto.svg",
+      "sha256": "6bb22cd4cc3c8f46dcbeda9f3ed67c2b2b63800ea0b30a0be2e14b327254a3f7"
+    },
+    {
+      "ruta": "../assets/kme/pelo_frente/corto.svg",
+      "sha256": "ac6c4ce6cbd9189c5c6a430f0bd4a68b1ba5df784a6ce0abc946e5d87fac0fce"
+    },
+    {
+      "ruta": "../assets/kme/pelo_atras/bob.svg",
+      "sha256": "5d34f559a334a38c58dd0c2311f10ba4cc7c5831074431eb0fcf1e5521e3929b"
+    },
+    {
+      "ruta": "../assets/kme/pelo_frente/bob.svg",
+      "sha256": "91ada75cdc092c5c97fecde5469b31b2f1bfdef4aa82764b9d9e54d3252619f7"
+    },
+    {
+      "ruta": "../assets/kme/pelo_atras/cortinas-textura.svg",
+      "sha256": "916e9213937e174ea6c847f7ee2251440493a3257696136ef87a3016466bc8f7"
+    },
+    {
+      "ruta": "../assets/kme/pelo_frente/cortinas-textura.svg",
+      "sha256": "55a958b15a6e55d1e3a9a9cfb60a0d066504e7b591b56c02f1338d6cc1acbaa9"
+    },
+    {
+      "ruta": "../assets/kme/pelo_atras/coleta-ondas.svg",
+      "sha256": "4748fd09344481471b29777310ec339827ca436941200b9d4aafa7316f668feb"
+    },
+    {
+      "ruta": "../assets/kme/pelo_frente/coleta-ondas.svg",
+      "sha256": "e57ab44b363bc535c588ffb2960bdcdbec8edb8040991c6de76547ffeea677ee"
+    },
+    {
+      "ruta": "../assets/kme/pelo_atras/doble-mono-lazos.svg",
+      "sha256": "f40bf4a6fe82b0341c24d334edf03991e28aaf1fdb7f257830cf724ab73d8c8c"
+    },
+    {
+      "ruta": "../assets/kme/pelo_frente/doble-mono-lazos.svg",
+      "sha256": "5462025de578acb01599912922731fadadffc067a5dd3b264f9da34782758159"
+    },
+    {
+      "ruta": "../assets/kme/pelo_atras/trenza-lateral.svg",
+      "sha256": "9a2b800650ca1d7603a4276e6a169780665ec6bc65bf83d27c490610448fd1e5"
+    },
+    {
+      "ruta": "../assets/kme/pelo_frente/trenza-lateral.svg",
+      "sha256": "b57a40b325dc0c90d9c7a877570328b59c4218810627470507a3db2c3b7c3872"
+    },
+    {
+      "ruta": "../assets/kme/pelo_atras/media-melena-ondas.svg",
+      "sha256": "943930ea07ee84c131bb679ace40c149e952ce657cc797eed072dcc58699eaff"
+    },
+    {
+      "ruta": "../assets/kme/pelo_frente/media-melena-ondas.svg",
+      "sha256": "09bfbbdc7675e91ce98823083dc55aefaff1c27ba47259622b30e10fa3277cc0"
+    },
+    {
+      "ruta": "../assets/kme/pelo_atras/corto-despeinado.svg",
+      "sha256": "ae47e8cb3c85b7075238f454d3b2366dec78bab9b6f0fc979400e8edbac8ee0d"
+    },
+    {
+      "ruta": "../assets/kme/pelo_frente/corto-despeinado.svg",
+      "sha256": "222bcba848b36623b80505f31f1ad148633c0b4c6c109d0e800b5eb8b45d412d"
+    },
+    {
+      "ruta": "../assets/kme/pelo_atras/corto-dos-bloques.svg",
+      "sha256": "42f3128141af6089ce68135134ca450b59cdb051897dfc8f930672830159b9df"
+    },
+    {
+      "ruta": "../assets/kme/pelo_frente/corto-dos-bloques.svg",
+      "sha256": "eed04bfb7df9d1290ae8f07dc2bcadc977691a5ff182957b4f244c1750cabf87"
+    },
+    {
+      "ruta": "../assets/kme/pelo_atras/semirrecogido-grenas.svg",
+      "sha256": "af809b8b9bb60babe61f13c548d4131add9aeab3257c344a404fa762078fce8a"
+    },
+    {
+      "ruta": "../assets/kme/pelo_frente/semirrecogido-grenas.svg",
+      "sha256": "d01b0224ec6af742e1878966ba21435945f6e5fb9b447b7f77898efbe72f20f4"
+    },
+    {
+      "ruta": "../assets/kme/accesorio/gafas.svg",
+      "sha256": "8f728c95753e9a3029e941b1bee75435a3193fa17cc261a4a049dd28adac8193"
+    },
+    {
+      "ruta": "../assets/kme/accesorio/auriculares.svg",
+      "sha256": "f61d124bb50d1250676e5a8dd55b2fcff94f3b7b20ff535a3ba4e1ebb33ee271"
+    },
+    {
+      "ruta": "../assets/kme/accesorio/pin.svg",
+      "sha256": "0b3490d3da06782e7ff66c06504d842ba20f26e3b88e2f03294fb9db3d07e7dc"
+    }
+  ],
+  "miniaturas": [
+    "mono",
+    "bob",
+    "corto",
+    "cortinas-textura",
+    "doble-mono-lazos",
+    "trenza-lateral"
+  ],
+  "nota": "Se conserva exactamente la salida de svgDelAvatar con la composición por defecto vigente."
+}

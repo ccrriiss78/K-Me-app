@@ -1,0 +1,132 @@
+<%- include('_cabecera') %>
+<section class="tarjeta sello-studio" aria-labelledby="titulo-sello">
+  <a class="studio-volver" href="/studio/sellos">← Mis sellos</a>
+  <header class="studio-cabecera">
+    <div><p class="studio-antetitulo">Mi rincón fan</p><h1 id="titulo-sello">Sello Studio<span class="studio-rayitas" aria-hidden="true">//</span></h1>
+      <p class="studio-intro">Tu palabra. Tu forma de sentirla.</p></div>
+    <span class="studio-etiqueta">Hecho por ti <span aria-hidden="true">✦</span></span>
+  </header>
+  <% if (guardado) { %><p class="aviso aviso--ok" role="status">Sello guardado.</p><% } %>
+  <% if (error) { %><p class="aviso aviso--error" role="alert"><%= error %></p><% } %>
+  <form method="post" action="<%= accion %>" class="sello-editor" data-sello-editor data-sello-id="<%= idSello || '' %>" data-sello-pendiente="<%= error || conflicto ? 'true' : 'false' %>">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <% if (idSello) { %><input type="hidden" name="version" value="<%= version %>"><% } %>
+    <div class="sello-editor__vista">
+      <p class="studio-antetitulo">Tu creación</p>
+      <div class="sello-editor__escenario">
+        <div class="sello-editor__papel" data-sello-dibujo aria-label="Vista previa del sello">
+          <% if (dibujo) { %><%- include('_sello', { dibujo, ancho: 300, clase: 'sello--editor' }) %>
+          <% } else { %><p class="nota">Corrige lo que se indica arriba para ver cómo queda tu sello.</p><% } %>
+        </div>
+      </div>
+      <p class="sello-editor__ayuda" data-sello-ayuda<% if (!ayudaPalabra) { %> hidden<% } %>><% if (ayudaPalabra) { %><span lang="ko"><%= ayudaPalabra.hangul %></span> · se lee <em><%= ayudaPalabra.lectura %></em> · significa «<%= ayudaPalabra.significado %>»<% } %></p>
+      <ul class="sello-editor__avisos" data-sello-avisos<% if (!avisos.length) { %> hidden<% } %>><% avisos.forEach((a) => { %><li><%= a %></li><% }) %></ul>
+      <p class="aviso aviso--error" data-sello-error role="alert" hidden></p>
+      <p class="sello-editor__estado" data-sello-estado role="status" aria-live="polite" aria-atomic="true">Vista previa de tu sello.</p>
+    </div>
+    <div class="sello-editor__opciones">
+      <nav class="sello-categorias" data-sello-categorias aria-label="Opciones del sello">
+        <a id="categoria-contenido" href="#sello-contenido">Contenido</a>
+        <a id="categoria-colores" href="#sello-colores">Colores</a>
+        <a id="categoria-detalles" href="#sello-detalles">Detalles</a>
+      </nav>
+      <section id="sello-contenido" class="sello-panel" aria-labelledby="categoria-contenido">
+      <h2 class="solo-lectores">Contenido del sello</h2>
+      <fieldset class="sello-bloque">
+        <legend><span class="sello-bloque__numero" aria-hidden="true">01</span> Palabra en hangul</legend>
+        <p class="nota">Una palabra que conecte contigo.</p>
+        <label for="palabra" class="solo-lectores">Palabra</label>
+        <select id="palabra" name="palabra">
+          <option value="">Sin palabra</option>
+          <% gruposPalabras.forEach((g) => { %><optgroup label="<%= g.texto %>">
+            <% g.palabras.forEach((p) => { %><option value="<%= p.id %>"<% if (p.id === valores.palabra) { %> selected<% } %>><%= p.hangul %> · <%= p.lectura %> · <%= p.significado %></option><% }) %>
+          </optgroup><% }) %>
+        </select>
+        <%- include('_muestras-color', { campo: 'color_palabra', elegido: valores.color_palabra, colores, titulo: 'Color de la palabra', abierto: true }) %>
+      </fieldset>
+      <details class="sello-seccion"><summary><span>02 · Avatar</span><span class="sello-seccion__nota">Opcional</span></summary>
+      <fieldset class="sello-bloque">
+        <legend class="solo-lectores">Avatar</legend>
+        <% if (!avatares.length && !tieneCopiaAvatar) { %>
+          <p class="sello-avatar-pendiente">Todavía no tienes avatares guardados. Cuando Avatar Studio los guarde en tu cuenta, podrás añadir uno aquí.</p>
+          <input type="hidden" name="avatar" value="">
+        <% } else { %>
+          <label for="avatar">Avatar del sello</label>
+          <select id="avatar" name="avatar">
+            <option value="">Sin avatar</option>
+            <% if (tieneCopiaAvatar) { %><option value="actual"<% if (valores.avatar === 'actual') { %> selected<% } %>>El avatar que ya lleva este sello</option><% } %>
+            <% avatares.forEach((a) => { %><option value="<%= a.id %>"<% if (String(a.id) === valores.avatar) { %> selected<% } %>><%= a.nombre %></option><% }) %>
+          </select>
+        <% } %>
+        <p class="sello-encuadre-titulo">Encuadre:</p>
+        <div class="sello-encuadres"><% encuadres.forEach((e) => { %>
+          <label class="sello-encuadre"><input type="radio" name="encuadre" value="<%= e.id %>"<% if (e.id === valores.encuadre) { %> checked<% } %><% if (!avatares.length && !tieneCopiaAvatar) { %> disabled<% } %>><span><%= e.texto %></span></label>
+        <% }) %></div>
+      </fieldset>
+      </details>
+      <details class="sello-seccion"><summary><span>03 · Alias</span><span class="sello-seccion__nota">Opcional</span></summary>
+      <fieldset class="sello-bloque">
+        <legend class="solo-lectores">Alias</legend>
+        <label class="sello-alias"><input type="checkbox" name="mostrar_alias" value="si"<% if (valores.mostrar_alias) { %> checked<% } %>> <span>Mostrar mi alias (<%= aliasSesion %>)</span></label>
+        <%- include('_muestras-color', { campo: 'color_alias', elegido: valores.color_alias, colores, titulo: 'Color del alias' }) %>
+      </fieldset>
+      </details>
+      </section>
+      <section id="sello-colores" class="sello-panel" aria-labelledby="categoria-colores">
+      <h2 class="solo-lectores">Colores del sello</h2>
+      <fieldset class="sello-bloque">
+        <legend><span class="sello-bloque__numero" aria-hidden="true">04</span> Marco y fondo</legend>
+        <p class="nota">Tus colores, también los originales de K-ME.</p>
+        <%- include('_muestras-color', { campo: 'borde', elegido: valores.borde, colores, titulo: 'Color del marco', abierto: true }) %>
+        <%- include('_muestras-color', { campo: 'fondo', elegido: valores.fondo, colores, titulo: 'Color del fondo', abierto: true }) %>
+      </fieldset>
+      </section>
+      <section id="sello-detalles" class="sello-panel" aria-labelledby="categoria-detalles">
+      <h2 class="solo-lectores">Detalles del sello</h2>
+      <fieldset class="sello-bloque">
+        <legend><span class="sello-bloque__numero" aria-hidden="true">05</span> Adornos (hasta 3)</legend>
+        <p class="nota">Pequeños detalles para hacerlo más tuyo.</p>
+        <% valores.motivos.forEach((m, i) => { %><div class="sello-adorno">
+          <label for="motivo<%= i + 1 %>">Adorno <%= i + 1 %></label>
+          <select id="motivo<%= i + 1 %>" name="motivo<%= i + 1 %>">
+            <option value="">Sin adorno</option>
+            <% motivos.forEach((mo) => { %><option value="<%= mo.id %>"<% if (mo.id === m.id) { %> selected<% } %>><%= mo.texto %></option><% }) %>
+          </select>
+          <%- include('_muestras-color', { campo: 'color_motivo' + (i + 1), elegido: m.color, colores, titulo: 'Color del adorno ' + (i + 1) }) %>
+        </div><% }) %>
+      </fieldset>
+      </section>
+      <div class="sello-editor__nombre formulario__campo">
+        <label for="nombre">Nombre del sello</label>
+        <input id="nombre" name="nombre" type="text" maxlength="40" required value="<%= valores.nombre %>" aria-describedby="nombre-ayuda">
+        <span id="nombre-ayuda" class="nota">Para encontrarlo en «Mis sellos». No sale en el sello.</span>
+      </div>
+      <div class="sello-editor__guardar">
+        <p class="sello-editor__cambios" data-sello-cambios>Tus cambios se guardan cuando pulses Guardar.</p>
+        <div class="sello-editor__acciones">
+          <button type="submit" name="accion" value="guardar" class="boton">Guardar sello</button>
+          <button type="submit" name="accion" value="vista" class="boton boton--secundario">Ver cómo queda</button>
+          <% if (conflicto) { %>
+            <button type="submit" name="accion" value="guardar" formaction="/studio/sellos" class="boton boton--secundario">Guardar como copia</button>
+            <a href="/studio/sellos/<%= idSello %>">Volver a abrir el sello</a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </form>
+  <% if (idSello) { %><div class="sello-editor__mas">
+    <form method="post" action="/studio/sellos/<%= idSello %>/duplicar">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <button type="submit" class="boton boton--pequeno boton--secundario">Duplicar</button>
+    </form>
+    <details><summary>Borrar este sello</summary><p>Se borrará para siempre.</p>
+      <form method="post" action="/studio/sellos/<%= idSello %>/eliminar">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <button type="submit" class="boton boton--pequeno boton--peligro">Sí, borrar</button>
+      </form>
+    </details>
+  </div><% } %>
+</section>
+<script src="/js/sello.js" defer></script>
+<script src="/js/sello-paneles.js" defer></script>
+<%- include('_pie') %>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480"><title>Piernas y calzado para la prueba de camiseta integrada</title>
+<g stroke="#282126" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+<path data-parte="piernas" class="f-piel" d="M166 350 L234 350 L232 367 L228 423 Q220 430 210 424 L208 374 L192 374 L190 424 Q180 430 172 423 L168 367Z" fill="#fff5ef"/>
+<g data-parte="calzado" fill="#282126"><path d="M168 416 Q179 411 192 418 L195 436 Q185 445 161 439 L161 432Z"/><path d="M208 418 Q221 411 232 416 L239 432 L239 439 Q216 445 205 436Z"/><path d="M163 434 L191 434 M209 434 L237 434" fill="none" stroke="#fff" stroke-width="3"/></g>
+</g></svg>

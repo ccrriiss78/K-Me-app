@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K-ME Studio · Editor de avatares</title>
+<style>
+:root{--ink:#201820;--ink-soft:#655463;--pink:#ab0057;--accent:#f51280;--line:#e5d7df;--paper:#fffaf8;color:var(--ink);font:16px/1.5 system-ui,sans-serif;background:var(--paper)}
+*{box-sizing:border-box}body{margin:0}.frame{width:min(1040px,100% - 36px);margin:auto;padding:32px 0 26px}
+header{border-bottom:1px solid var(--line);padding:0 0 20px;margin-bottom:25px}
+.brand{font-size:.85rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);margin:0}
+h1{font-size:clamp(2rem,6vw,3.8rem);letter-spacing:-.085em;line-height:1.06;margin:5px 0 0}
+main{display:grid;grid-template-columns:minmax(260px,1.07fr) minmax(240px,1fr);gap:clamp(20px,5vw,60px);align-items:start}
+figure{margin:0;min-width:0;border:1px solid #eddce5;border-radius:18px;overflow:hidden;background:#f9e8ef}
+#preview{display:grid;place-items:center;min-height:0;background:radial-gradient(ellipse at 52% 38%,#fffaf9 12%,#fae8ef 65%,#f3dae6)}
+#preview svg{display:block;width:min(100%,380px);height:auto}
+figcaption{background:#fff9fa;padding:12px 16px;border-top:1px solid #eddce5;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center}
+fieldset{min-inline-size:0;border:0;padding:8px 0 14px;margin:0;border-bottom:1px solid var(--line)}
+fieldset+fieldset{margin-top:12px}legend{padding:0;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;font-weight:750;color:var(--ink-soft)}
+.options{display:flex;flex-wrap:wrap;gap:7px}
+.choice{position:relative;display:inline-flex}.choice input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.choice span, button{font:inherit;font-size:.9rem;font-weight:650;padding:7px 11px;border-radius:8px;background:#fff;border:1px solid var(--line);color:var(--ink)}
+.choice input:checked+span{background:#2c1827;border-color:#2c1827;color:#fff}
+.choice input:focus-visible+span,button:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+button{cursor:pointer;min-height:40px}button:hover{border-color:var(--pink)}
+#png{background:var(--pink);color:white;border-color:var(--pink)}
+#reset{margin-top:14px}#status{font-size:.8rem;margin:5px 0 0;min-height:1.2em;color:var(--ink-soft)}
+@media(max-width:630px){.frame{width:calc(100% - 24px);padding-top:14px}header{margin-bottom:12px;padding-bottom:10px}main{grid-template-columns:1fr;gap:12px}figure{position:sticky;top:0;z-index:2}#preview svg{width:min(76%, 31vh, 260px)}figcaption{padding:5px 8px}#status{margin:0}.choice span{padding:9px 11px}}
+</style>
+</head>
+<body>
+<div class="frame">
+<header><p class="brand">K-ME Studio</p><h1>Crea tu avatar</h1></header>
+<main>
+<figure>
+<div id="preview"></div>
+<figcaption><div><button id="png" type="button">Descargar PNG</button> <button id="svg" type="button">SVG</button></div>
+<span id="status" role="status"></span></figcaption>
+</figure>
+<section aria-label="Personalización">
+<form id="options"></form>
+<button id="reset" type="button">Restaurar avatar</button>
+</section>
+</main>
+</div>
+<script>/*COMPOSER*/</script>
+<script>
+const manifest = /*MANIFEST*/;
+const assets = /*ASSETS*/;
+const { defaults, categories, normalize, compose } = KMEAvatar;
+const form = document.querySelector('#options');
+const preview = document.querySelector('#preview');
+const status = document.querySelector('#status');
+const storageKey = 'kme-avatar-v1';
+const labels = ['Cuerpo', 'Rostro', 'Ojos', 'Boca', 'Cabello', 'Pose', 'Emoción'];
+
+let stored;
+try { stored = JSON.parse(localStorage.getItem(storageKey)); } catch {}
+let state = normalize(manifest, stored);
+
+categories.forEach((key, index) => {
+  const fieldset = document.createElement('fieldset');
+  const legend = document.createElement('legend');
+  legend.textContent = labels[index];
+  fieldset.append(legend);
+  const list = document.createElement('div');
+  list.className = 'options';
+  manifest[key].forEach(option => {
+    const label = document.createElement('label');
+    label.className = 'choice';
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = key;
+    input.value = option.id;
+    const caption = document.createElement('span');
+    caption.textContent = option.label;
+    label.append(input, caption);
+    list.append(label);
+  });
+  fieldset.append(list);
+  form.append(fieldset);
+});
+
+function render() {
+  preview.innerHTML = compose(manifest, assets, state);
+  for (const key of categories) form.elements[key].value = state[key];
+  try { localStorage.setItem(storageKey, JSON.stringify(state)); } catch {}
+}
+form.addEventListener('change', event => {
+  const { name, value } = event.target;
+  state[name] = value;
+  if (name === 'emotions') {
+    const emotion = manifest.emotions.find(option => option.id === value);
+    if (emotion.mouth) state.mouths = emotion.mouth;
+  }
+  render();
+});
+document.querySelector('#reset').onclick = () => {
+  state = { ...defaults };
+  render();
+};
+function download(blob, extension) {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'mi-avatar-kme.' + extension;
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+}
+function avatarBlob() {
+  return new Blob([compose(manifest, assets, state)], { type: 'image/svg+xml;charset=utf-8' });
+}
+document.querySelector('#svg').onclick = () => download(avatarBlob(), 'svg');
+document.querySelector('#png').onclick = async () => {
+  const url = URL.createObjectURL(avatarBlob());
+  try {
+    const image = new Image();
+    image.src = url;
+    await image.decode();
+    const canvas = document.createElement('canvas');
+    canvas.width = 960;
+    canvas.height = 1260;
+    canvas.getContext('2d').drawImage(image, 0, 0, canvas.width, canvas.height);
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    if (!blob) throw new Error('PNG vacío');
+    download(blob, 'png');
+    status.textContent = '';
+  } catch {
+    status.textContent = 'No se pudo exportar el PNG. Puedes descargar el SVG.';
+  } finally {
+    URL.revokeObjectURL(url);
+  }
+};
+render();
+</script>
+</body>
+</html>

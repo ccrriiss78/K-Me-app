@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- Capa: maquillaje · Sombra de ojos (se oculta si no hay color elegido) · Lienzo 400×480 (usa assets/plantilla.svg como guía) -->
+<ellipse class="f-sombra-ojos" cx="152" cy="191" rx="27" ry="16" fill="#c58bd6" opacity=".6"/>
+<ellipse class="f-sombra-ojos" cx="248" cy="191" rx="27" ry="16" fill="#c58bd6" opacity=".6"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- Capa: pelo_atras · Peinado coletas, parte trasera · Lienzo 400×480 (usa assets/plantilla.svg como guía) -->
+<path class="f-pelo-trasero" d="M100,118 Q34,140 34,230 Q34,300 18,350 Q58,348 74,300 Q90,250 96,180 Z" fill="#412d23" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="f-pelo-trasero" d="M300,118 Q366,140 366,230 Q366,300 382,350 Q342,348 326,300 Q310,250 304,180 Z" fill="#412d23" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="t-pelo-oscuro" d="M66,160 Q52,240 40,320 M334,160 Q348,240 360,320" stroke="#35251d" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path class="f-pelo-trasero" d="M84,190 C78,120 130,70 200,70 C270,70 322,120 316,190 L318,236 Q300,250 280,240 L120,240 Q100,250 82,236 Z" fill="#412d23" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

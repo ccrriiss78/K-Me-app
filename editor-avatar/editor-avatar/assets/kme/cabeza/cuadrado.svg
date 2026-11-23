@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480"><title>Rostro cuadrado suave</title>
+<g stroke="#282126" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path data-parte="oreja-izquierda" d="M99 185 Q76 171 79 202 Q80 221 98 219Z" fill="#fff5ef" class="f-piel"/><path data-parte="oreja-derecha" d="M301 185 Q324 171 321 202 Q320 221 302 219Z" fill="#fff5ef" class="f-piel"/><path data-parte="cara" d="M92 180 Q90 89 196 85 Q304 84 308 181 L306 232 Q305 275 269 278 L135 278 Q95 276 94 237Z" fill="#fff5ef" class="f-piel"/></g>
+</svg>
+

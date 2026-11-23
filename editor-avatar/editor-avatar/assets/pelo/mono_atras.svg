@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- Capa: pelo_atras · Peinado mono, parte trasera · Lienzo 400×480 (usa assets/plantilla.svg como guía) -->
+<circle class="f-pelo-trasero" cx="200" cy="54" r="40" fill="#412d23" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="t-pelo-oscuro" d="M172,38 Q200,22 228,38 M168,58 Q200,44 232,58" stroke="#35251d" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path class="f-pelo-trasero" d="M84,190 C78,120 130,70 200,70 C270,70 322,120 316,190 L318,236 Q300,250 280,240 L120,240 Q100,250 82,236 Z" fill="#412d23" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

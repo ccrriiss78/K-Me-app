@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480"><title>Nuevo · almendrados · cerrados</title>
+<g transform="translate(152 205)" data-ojo="izquierdo">
+<path data-parte="linea-ojo" d="M-23 -1 Q0 8 23 -5" fill="none" stroke="#282126" stroke-width="2.2" stroke-linecap="round"/>
+</g>
+<g transform="translate(248 205)" data-ojo="derecho">
+<path data-parte="linea-ojo" d="M-23 -1 Q0 8 23 -5" fill="none" stroke="#282126" stroke-width="2.2" stroke-linecap="round"/>
+</g>
+</svg>

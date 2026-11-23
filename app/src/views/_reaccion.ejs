@@ -1,0 +1,7 @@
+<button type="submit" name="tipo" value="<%= r.id %>" class="reaccion<%= r.mias ? ' reaccion--mia' : '' %>"
+        data-total="<%= r.total %>" data-mias="<%= r.mias %>"<% if (r.completa) { %> disabled<% } %>
+        title="<%= r.texto %>" aria-label="<%= r.etiqueta %>">
+  <span class="reaccion__icono" style="--icono: url('<%= r.icono %>')" aria-hidden="true"></span>
+  <% if (conNombre) { %><span class="reaccion__nombre" aria-hidden="true"><%= r.texto %></span><% } %>
+  <span class="reaccion__total" aria-hidden="true"><%= r.total %></span>
+</button>

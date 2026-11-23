@@ -1,0 +1,33 @@
+<%#
+  Dibujo de un sello personal (D041). Recibe «dibujo», preparado por services/selloDibujo.js
+  (prepararDibujo): posiciones, tamaños y colores ya calculados; aquí solo se pinta.
+  El alias y los textos van siempre escapados (etiqueta de igual). Solo se insertan sin escapar dos
+  recursos propios: los dibujos de los adornos (archivos de app/public/img) y el SVG del avatar
+  que genera el dibujador de avatares; nunca algo escrito o enviado por el navegador.
+  «clase» (opcional) añade una clase al <svg>, por ejemplo para las miniaturas, y «ancho» (opcional)
+  fija su ancho en píxeles; el alto sale solo, con la proporción del logo.
+-%>
+<svg class="sello<%= locals.clase ? ' ' + clase : '' %>" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 <%= dibujo.lienzo.ancho %> <%= dibujo.lienzo.alto %>"<% if (locals.ancho) { %> width="<%= ancho %>"<% } %> role="img" aria-label="<%= dibujo.etiqueta %>">
+  <rect width="<%= dibujo.lienzo.ancho %>" height="<%= dibujo.lienzo.alto %>" rx="<%= dibujo.lienzo.radio %>" fill="<%= dibujo.colores.borde %>"/>
+  <rect x="<%= dibujo.interior.x %>" y="<%= dibujo.interior.y %>" width="<%= dibujo.interior.ancho %>" height="<%= dibujo.interior.alto %>" rx="<%= dibujo.interior.radio %>" fill="<%= dibujo.colores.fondo %>"/>
+<% if (dibujo.palabra) { -%>
+  <g data-parte="palabra" fill="<%= dibujo.palabra.color %>" font-family="<%= dibujo.palabra.fuente %>" font-weight="700" text-anchor="middle" dominant-baseline="central">
+<% for (const linea of dibujo.palabra.lineas) { -%>
+    <text x="<%= linea.x %>" y="<%= linea.y %>" font-size="<%= dibujo.palabra.tam %>"><%= linea.texto %></text>
+<% } -%>
+  </g>
+<% } -%>
+<% if (dibujo.avatar) { -%>
+<%   if (dibujo.avatar.svg) { -%>
+  <g data-parte="avatar"><%- dibujo.avatar.svg %></g>
+<%   } else { -%>
+  <g data-parte="avatar-pendiente"><rect x="<%= dibujo.avatar.x %>" y="<%= dibujo.avatar.y %>" width="<%= dibujo.avatar.ancho %>" height="<%= dibujo.avatar.alto %>" rx="18" fill="none" stroke="<%= dibujo.colores.borde %>" stroke-dasharray="8 8" opacity=".5"/></g>
+<%   } -%>
+<% } -%>
+<% for (const m of dibujo.motivos) { -%>
+  <g data-parte="adorno" transform="translate(<%= m.x %> <%= m.y %>) scale(<%= m.escala %>)" fill="<%= m.color %>" color="<%= m.color %>"><%- m.contenido %></g>
+<% } -%>
+<% if (dibujo.alias) { -%>
+  <text data-parte="alias" x="<%= dibujo.alias.x %>" y="<%= dibujo.alias.y %>" font-size="<%= dibujo.alias.tam %>" font-family="<%= dibujo.alias.fuente %>" font-weight="700" text-anchor="middle" dominant-baseline="central" fill="<%= dibujo.alias.color %>"><%= dibujo.alias.texto %></text>
+<% } -%>
+</svg>

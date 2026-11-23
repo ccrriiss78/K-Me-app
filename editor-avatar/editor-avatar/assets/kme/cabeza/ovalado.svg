@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480"><title>Rostro ovalado</title>
+<g stroke="#282126" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path data-parte="oreja-izquierda" d="M112 185 C91 176 87 198 94 212 Q100 225 115 218Z" fill="#fff5ef" class="f-piel"/><path data-parte="oreja-derecha" d="M288 185 C309 176 313 198 306 212 Q300 225 285 218Z" fill="#fff5ef" class="f-piel"/><path data-parte="cara" d="M103 184 C100 117 140 76 198 78 C259 77 300 120 297 185 Q295 270 202 282 Q106 274 103 184Z" fill="#fff5ef" class="f-piel"/></g>
+</svg>
+

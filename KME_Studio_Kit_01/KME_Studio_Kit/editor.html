@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K-ME Studio · Editor de avatares</title>
+<style>
+:root{--ink:#201820;--ink-soft:#655463;--pink:#ab0057;--accent:#f51280;--line:#e5d7df;--paper:#fffaf8;color:var(--ink);font:16px/1.5 system-ui,sans-serif;background:var(--paper)}
+*{box-sizing:border-box}body{margin:0}.frame{width:min(1040px,100% - 36px);margin:auto;padding:32px 0 26px}
+header{border-bottom:1px solid var(--line);padding:0 0 20px;margin-bottom:25px}
+.brand{font-size:.85rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);margin:0}
+h1{font-size:clamp(2rem,6vw,3.8rem);letter-spacing:-.085em;line-height:1.06;margin:5px 0 0}
+main{display:grid;grid-template-columns:minmax(260px,1.07fr) minmax(240px,1fr);gap:clamp(20px,5vw,60px);align-items:start}
+figure{margin:0;min-width:0;border:1px solid #eddce5;border-radius:18px;overflow:hidden;background:#f9e8ef}
+#preview{display:grid;place-items:center;min-height:0;background:radial-gradient(ellipse at 52% 38%,#fffaf9 12%,#fae8ef 65%,#f3dae6)}
+#preview svg{display:block;width:min(100%,380px);height:auto}
+figcaption{background:#fff9fa;padding:12px 16px;border-top:1px solid #eddce5;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center}
+fieldset{min-inline-size:0;border:0;padding:8px 0 14px;margin:0;border-bottom:1px solid var(--line)}
+fieldset+fieldset{margin-top:12px}legend{padding:0;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;font-weight:750;color:var(--ink-soft)}
+.options{display:flex;flex-wrap:wrap;gap:7px}
+.choice{position:relative;display:inline-flex}.choice input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.choice span, button{font:inherit;font-size:.9rem;font-weight:650;padding:7px 11px;border-radius:8px;background:#fff;border:1px solid var(--line);color:var(--ink)}
+.choice input:checked+span{background:#2c1827;border-color:#2c1827;color:#fff}
+.choice input:focus-visible+span,button:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+button{cursor:pointer;min-height:40px}button:hover{border-color:var(--pink)}
+#png{background:var(--pink);color:white;border-color:var(--pink)}
+#reset{margin-top:14px}#status{font-size:.8rem;margin:5px 0 0;min-height:1.2em;color:var(--ink-soft)}
+@media(max-width:630px){.frame{width:calc(100% - 24px);padding-top:14px}header{margin-bottom:12px;padding-bottom:10px}main{grid-template-columns:1fr;gap:12px}figure{position:sticky;top:0;z-index:2}#preview svg{width:min(76%, 31vh, 260px)}figcaption{padding:5px 8px}#status{margin:0}.choice span{padding:9px 11px}}
+</style>
+</head>
+<body>
+<div class="frame">
+<header><p class="brand">K-ME Studio</p><h1>Crea tu avatar</h1></header>
+<main>
+<figure>
+<div id="preview"></div>
+<figcaption><div><button id="png" type="button">Descargar PNG</button> <button id="svg" type="button">SVG</button></div>
+<span id="status" role="status"></span></figcaption>
+</figure>
+<section aria-label="Personalización">
+<form id="options"></form>
+<button id="reset" type="button">Restaurar avatar</button>
+</section>
+</main>
+</div>
+<script>(function (scope) {
+  const categories = ['bodies', 'faces', 'eyes', 'mouths', 'hair', 'poses', 'emotions'];
+  const defaults = {
+    bodies: 'wide', faces: 'long', eyes: 'almond', mouths: 'soft',
+    hair: 'sweep', poses: 'concert', emotions: 'neutral',
+  };
+
+  function normalize(manifest, input = {}) {
+    return Object.fromEntries(categories.map(key => {
+      const id = input?.[key];
+      return [key, manifest[key].some(option => option.id === id) ? id : defaults[key]];
+    }));
+  }
+
+  function compose(manifest, assets, input) {
+    const state = normalize(manifest, input);
+    const [body, face, eyes, mouth, hair, , emotion] = categories.map(
+      key => manifest[key].find(option => option.id === state[key])
+    );
+    const [arms, poseAccent] = body.poses[state.poses];
+    const art = file => {
+      if (!Object.hasOwn(assets, file)) throw new Error('Falta la pieza ' + file);
+      return assets[file];
+    };
+    const place = (file, [x, y], extra = '') =>
+      '<g transform="translate(' + x + ' ' + y + ') ' + extra + '">' + art(file) + '</g>';
+    const [width, height] = manifest.canvas;
+    const eyeScale = emotion.eyeScale ?? [1, 1];
+    const layers = {
+      hairBack: art(hair.back),
+      legs: art(body.legs),
+      shoes: art(body.shoes),
+      neck: art(body.neck),
+      arms: art(arms),
+      torso: art(body.torso),
+      face: art(face.file),
+      cheeks: emotion.cheek
+        ? face.anchors.eyes.map(([x, y], i) =>
+          place(emotion.cheek, [x + (i ? 6 : -6), y + 13]).replaceAll('wash', 'wash-' + i)
+        ).join('') : '',
+      eyes: face.anchors.eyes.map((point, i) =>
+        place(eyes.file, point, 'scale(' + (i ? -eyeScale[0] : eyeScale[0]) + ' ' + eyeScale[1] + ')')
+      ).join(''),
+      brows: face.anchors.brows.map((point, i) =>
+        place(eyes.brow, point, (i ? 'scale(-1 1) ' : '') + (emotion.id === 'sad' ? 'rotate(15)' : ''))
+      ).join(''),
+      tears: emotion.tear
+        ? face.anchors.eyes.map(([x, y]) => place(emotion.tear, [x, y + 2])).join('') : '',
+      mouth: place(mouth.file, face.anchors.mouth),
+      hairFront: art(hair.front),
+      poseAccent: art(poseAccent),
+      emotionAccent: emotion.outer ? art(emotion.outer) : '',
+    };
+    const drawing = manifest.layerOrder.map(
+      layer => '<g data-layer="' + layer + '">' + layers[layer] + '</g>'
+    ).join('');
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + width + ' ' + height
+      + '" width="' + width + '" height="' + height + '" role="img" aria-label="Avatar K-ME Studio">'
+      + drawing + '</svg>';
+  }
+
+  scope.KMEAvatar = { categories, defaults, normalize, compose };
+})(globalThis);
+</script>
+<script>
+const manifest = {
+  "version": 1,
+  "canvas": [
+    320,
+    420
+  ],
+  "layerOrder": [
+    "hairBack",
+    "legs",
+    "shoes",
+    "neck",
+    "arms",
+    "torso",
+    "face",
+    "cheeks",
+    "eyes",
+    "brows",
+    "tears",
+    "mouth",
+    "hairFront",
+    "poseAccent",
+    "emotionAccent"
+  ],
+  "bodies": [
+    {
+      "id": "wide",
+      "label": "Masculino",
+      "neck": "assets/bodies/wide-neck.svg",
+      "torso": "assets/bodies/wide-torso.svg",
+      "legs": "assets/bodies/wide-legs.svg",
+      "shoes": "assets/bodies/wide-shoes.svg",
+      "poses": {
+        "v": [
+          "assets/poses/wide-v.svg",
+          "assets/poses/v-accent.svg"
+        ],
+        "concert": [
+          "assets/poses/wide-concert.svg",
+          "assets/poses/concert-accent.svg"
+        ]
+      },
+      "anchors": {
+        "neck": [
+          159,
+          157
+        ],
+        "torso": [
+          158,
+          181
+        ],
+        "arms": [
+          [
+            115,
+            184
+          ],
+          [
+            199,
+            184
+          ]
+        ],
+        "legs": [
+          157,
+          269
+        ],
+        "shoes": [
+          [
+            128,
+            353
+          ],
+          [
+            182,
+            353
+          ]
+        ],
+        "accessory": {
+          "concert": [
+            259,
+            176
+          ]
+        }
+      }
+    },
+    {
+      "id": "short",
+      "label": "Femenino",
+      "neck": "assets/bodies/short-neck.svg",
+      "torso": "assets/bodies/short-torso.svg",
+      "legs": "assets/bodies/short-legs.svg",
+      "shoes": "assets/bodies/short-shoes.svg",
+      "poses": {
+        "v": [
+          "assets/poses/short-v.svg",
+          "assets/poses/v-accent.svg"
+        ],
+        "concert": [
+          "assets/poses/short-concert.svg",
+          "assets/poses/concert-accent.svg"
+        ]
+      },
+      "anchors": {
+        "neck": [
+          159,
+          157
+        ],
+        "torso": [
+          158,
+          181
+        ],
+        "arms": [
+          [
+            115,
+            184
+          ],
+          [
+            199,
+            184
+          ]
+        ],
+        "legs": [
+          157,
+          269
+        ],
+        "shoes": [
+          [
+            128,
+            353
+          ],
+          [
+            182,
+            353
+          ]
+        ],
+        "accessory": {
+          "concert": [
+            259,
+            176
+          ]
+        }
+      }
+    }
+  ],
+  "faces": [
+    {
+      "id": "round",
+      "label": "Redondo",
+      "file": "assets/faces/round.svg",
+      "anchors": {
+        "eyes": [
+          [
+            134,
+            112
+          ],
+          [
+            182,
+            111
+          ]
+        ],
+        "brows": [
+          [
+            134,
+            99
+          ],
+          [
+            182,
+            98
+          ]
+        ],
+        "mouth": [
+          158,
+          137
+        ],
+        "hair": [
+          158,
+          60
+        ]
+      }
+    },
+    {
+      "id": "long",
+      "label": "Alargado",
+      "file": "assets/faces/long.svg",
+      "anchors": {
+        "eyes": [
+          [
+            136,
+            110
+          ],
+          [
+            180,
+            109
+          ]
+        ],
+        "brows": [
+          [
+            136,
+            97
+          ],
+          [
+            180,
+            96
+          ]
+        ],
+        "mouth": [
+          158,
+          140
+        ],
+        "hair": [
+          158,
+          60
+        ]
+      }
+    },
+    {
+      "id": "square",
+      "label": "Cuadrado",
+      "file": "assets/faces/square.svg",
+      "anchors": {
+        "eyes": [
+          [
+            133,
+            110
+          ],
+          [
+            183,
+            109
+          ]
+        ],
+        "brows": [
+          [
+            133,
+            97
+          ],
+          [
+            183,
+            96
+          ]
+        ],
+        "mouth": [
+          158,
+          136
+        ],
+        "hair": [
+          158,
+          60
+        ]
+      }
+    }
+  ],
+  "eyes": [
+    {
+      "id": "almond",
+      "label": "Almendrados",
+      "file": "assets/eyes/almond.svg",
+      "brow": "assets/eyes/almond-brow.svg"
+    },
+    {
+      "id": "round",
+      "label": "Redondos",
+      "file": "assets/eyes/round.svg",
+      "brow": "assets/eyes/round-brow.svg"
+    },
+    {
+      "id": "slit",
+      "label": "Horizontales",
+      "file": "assets/eyes/slit.svg",
+      "brow": "assets/eyes/slit-brow.svg"
+    }
+  ],
+  "mouths": [
+    {
+      "id": "soft",
+      "label": "Media sonrisa",
+      "file": "assets/mouths/soft.svg"
+    },
+    {
+      "id": "laugh",
+      "label": "Risa",
+      "file": "assets/mouths/laugh.svg"
+    },
+    {
+      "id": "sing",
+      "label": "Canto",
+      "file": "assets/mouths/sing.svg"
+    },
+    {
+      "id": "tremble",
+      "label": "Temblor",
+      "file": "assets/mouths/tremble.svg"
+    }
+  ],
+  "hair": [
+    {
+      "id": "sweep",
+      "label": "Flequillo tinta",
+      "back": "assets/hair/sweep-back.svg",
+      "front": "assets/hair/sweep-front.svg"
+    },
+    {
+      "id": "bun",
+      "label": "Moño fucsia",
+      "back": "assets/hair/bun-back.svg",
+      "front": "assets/hair/bun-front.svg"
+    }
+  ],
+  "emotions": [
+    {
+      "id": "neutral",
+      "label": "Neutro"
+    },
+    {
+      "id": "joy",
+      "label": "Alegría",
+      "mouth": "laugh",
+      "eyeScale": [
+        1,
+        0.78
+      ],
+      "outer": "assets/emotion/joy.svg"
+    },
+    {
+      "id": "sad",
+      "label": "Tristeza",
+      "mouth": "tremble",
+      "eyeScale": [
+        1,
+        0.61
+      ],
+      "tear": "assets/emotion/tear.svg"
+    },
+    {
+      "id": "shy",
+      "label": "Vergüenza",
+      "mouth": "soft",
+      "eyeScale": [
+        0.96,
+        0.75
+      ],
+      "cheek": "assets/emotion/blush.svg"
+    }
+  ],
+  "poses": [
+    {
+      "id": "v",
+      "label": "V · Photocard"
+    },
+    {
+      "id": "concert",
+      "label": "Concierto · Lightstick"
+    }
+  ],
+  "compatibility": {
+    "sharedAcrossBodies": [
+      "faces",
+      "eyes",
+      "mouths",
+      "hair",
+      "emotions"
+    ],
+    "poseFit": "Cada cuerpo declara sus propias mangas y manos para cada pose."
+  }
+}
+;
+const assets = {"assets/bodies/short-legs.svg": "<path d=\"M125 264 Q155 249 194 263 L194 287 173 293 158 282 145 294 119 287Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"3.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M122 286 L144 288 Q144 304 139 325 L141 355 120 357 115 321Z\" fill=\"#ffddca\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M171 290 L192 284 200 315 190 357 170 356 175 321Z\" fill=\"#ffddca\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M123 289 L142 290 138 310 129 308Z\" fill=\"#f2ad9e\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M172 292 L191 287 195 303 184 306Z\" fill=\"#f2ad9e\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M117 326 Q128 329 139 325 L143 354 119 359Z\" fill=\"#fff8f1\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M175 322 Q187 327 197 319 L192 355 169 358Z\" fill=\"#fff8f1\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M118 332 L138 332 M176 329 L195 327\" fill=\"none\" stroke=\"#f51280\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M120 337 l17 0 M175 334 l18 -2\" fill=\"none\" stroke=\"#18131b\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/bodies/short-neck.svg": "<path d=\"M148 145 Q151 163 143 170 Q155 189 178 169 Q170 161 170 141Z\" fill=\"#ffddca\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M148 147 Q152 163 147 165 Q164 163 171 151 L170 141Z\" fill=\"#f2ad9e\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/bodies/short-shoes.svg": "<path d=\"M116 350 Q129 354 143 349 L146 367 Q145 378 135 379 L98 380 Q87 379 90 371 Q93 364 112 360Z\" fill=\"#fff8f1\" stroke=\"#18131b\" stroke-width=\"3.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M170 350 Q183 354 194 348 L198 360 Q216 363 224 371 Q226 380 215 381 L178 380 Q165 379 166 370Z\" fill=\"#fff8f1\" stroke=\"#18131b\" stroke-width=\"3.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M91 373 Q116 373 145 369 L144 376 134 379 96 379Z\" fill=\"#18131b\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M167 372 Q198 373 224 374 L218 380 176 379Z\" fill=\"#18131b\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M96 369 Q102 365 112 366 L121 373 M217 371 Q211 367 201 368 L193 374\" fill=\"none\" stroke=\"#f51280\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M116 361 l14 3 m-9 -7 l13 3 M179 364 l15 -4 m-13 0 l12 -4\" fill=\"none\" stroke=\"#18131b\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/bodies/short-torso.svg": "<path d=\"M143 175 Q155 186 175 173 L198 179 194 211 182 236 188 250 Q159 260 128 249 L133 233 119 210 117 182Z\" fill=\"#fff8f1\" stroke=\"#18131b\" stroke-width=\"3.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M136 168 Q128 168 112 183 L117 208 130 237 141 239 137 220 143 196Z\" fill=\"#f51280\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M177 168 Q187 171 204 180 L198 214 185 237 174 237 181 212 171 190Z\" fill=\"#f51280\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M137 168 L151 184 143 200 129 180Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M177 168 L164 185 171 200 187 177Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M134 248 Q151 254 182 246 L197 271 Q164 282 118 269Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M129 263 L139 255 M146 267 l4 -10 M162 269 l0 -13 M182 266 l-5 -11\" fill=\"none\" stroke=\"#8d697e\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M135 244 Q158 249 181 242\" fill=\"none\" stroke=\"#f51280\" stroke-width=\"2.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M117 188 l8 -5 11 28 -10 -7Z\" fill=\"#ff9cca\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M191 189 l7 -5 -5 29 -9 10Z\" fill=\"#970951\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M151 209 q6 -7 10 0 q4 -8 10 -3 q3 6 -10 14 q-11 -4 -10 -11Z\" fill=\"#f51280\" stroke=\"#18131b\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M121 192 l4 5 m-2 1 l5 7 M198 190 l-3 8 M180 222 l5 -8 M133 233 l3 3\" fill=\"none\" stroke=\"#ffcfdf\" stroke-width=\"1.15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M156 203 l4 -2 m2 0 l2 1 M144 229 l5 1 M166 233 l5 -3\" fill=\"none\" stroke=\"#c7a4a5\" stroke-width=\"0.85\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/bodies/wide-legs.svg": "<path d=\"M121 262 Q155 249 196 263 L202 316 193 358 170 359 165 324 157 295 148 328 142 359 115 357 111 328Z\" fill=\"#423642\" stroke=\"#18131b\" stroke-width=\"3.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M123 272 L142 277 132 314 133 346 119 352 115 328Z\" fill=\"#635462\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M177 271 L195 270 198 315 187 350 178 353 183 307Z\" fill=\"#18131b\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M116 293 L138 296 135 320 115 317Z\" fill=\"#50414e\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M117 302 L136 305 M188 288 L193 309 185 336\" fill=\"none\" stroke=\"#fff8f1\" stroke-width=\"1\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M120 350 Q129 346 139 350 M169 344 Q180 340 193 344\" fill=\"none\" stroke=\"#18131b\" stroke-width=\"2.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M122 288 L126 279 M170 299 L178 307\" fill=\"none\" stroke=\"#f51280\" stroke-width=\"2.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M118 310 l12 2 m-10 3 l4 1 M130 321 l-2 11 M188 319 l-2 12\" fill=\"none\" stroke=\"#a1869b\" stroke-width=\"0.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/bodies/wide-neck.svg": "<path d=\"M148 145 Q151 163 143 170 Q155 189 178 169 Q170 161 170 141Z\" fill=\"#ffddca\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M148 147 Q152 163 147 165 Q164 163 171 151 L170 141Z\" fill=\"#f2ad9e\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/bodies/wide-shoes.svg": "<path d=\"M116 350 Q129 354 143 349 L146 367 Q145 378 135 379 L98 380 Q87 379 90 371 Q93 364 112 360Z\" fill=\"#fff8f1\" stroke=\"#18131b\" stroke-width=\"3.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M170 350 Q183 354 194 348 L198 360 Q216 363 224 371 Q226 380 215 381 L178 380 Q165 379 166 370Z\" fill=\"#fff8f1\" stroke=\"#18131b\" stroke-width=\"3.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M91 373 Q116 373 145 369 L144 376 134 379 96 379Z\" fill=\"#18131b\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M167 372 Q198 373 224 374 L218 380 176 379Z\" fill=\"#18131b\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M96 369 Q102 365 112 366 L121 373 M217 371 Q211 367 201 368 L193 374\" fill=\"none\" stroke=\"#f51280\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M116 361 l14 3 m-9 -7 l13 3 M179 364 l15 -4 m-13 0 l12 -4\" fill=\"none\" stroke=\"#18131b\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/bodies/wide-torso.svg": "<path d=\"M140 169 Q132 168 113 180 L118 227 112 267 Q151 279 202 265 L194 230 206 182 Q189 170 174 170 Q155 189 140 169Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M141 177 Q149 190 159 195 Q172 188 178 176 L174 258 Q155 267 143 258Z\" fill=\"#fff8f1\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M140 161 Q126 164 122 177 L142 193 153 192 148 183 139 175Z\" fill=\"#e9dada\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M173 161 Q188 165 195 178 L176 191 159 196 161 184 176 173Z\" fill=\"#fff8f1\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M119 184 L132 191 129 237 135 261 119 263 124 235Z\" fill=\"#f51280\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M185 188 L198 184 191 216 195 258 178 262Z\" fill=\"#332634\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M141 198 L138 251 M178 196 L176 248\" fill=\"none\" stroke=\"#a88996\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M121 248 l10 -3 M188 245 l8 5 M149 226 l15 -2 M151 230 l10 -2\" fill=\"none\" stroke=\"#f51280\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M120 193 l4 3 m-3 -1 l4 4 M122 214 l4 4 M119 256 l8 -3 M183 255 l6 -2 m1 -1 l2 -1\" fill=\"none\" stroke=\"#ffa3c5\" stroke-width=\"0.85\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M145 174 q4 7 9 9 M172 179 l9 -5\" fill=\"none\" stroke=\"#736171\" stroke-width=\"0.85\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/emotion/blush.svg": "<defs><radialGradient id=\"wash\"><stop stop-color=\"#ff3982\" stop-opacity=\".5\"/><stop offset=\"1\" stop-color=\"#ff3982\" stop-opacity=\"0\"/><\/radialGradient><\/defs><path d=\"M-15 0 Q-17 -5 -8 -8 Q-1 -11 9 -6 Q18 -4 15 1 Q17 8 4 9 Q-6 10 -13 5Z\" fill=\"url(#wash)\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M-7 2 l3 -4 M0 3 l4 -5 M6 3 l3 -4\" fill=\"none\" stroke=\"#df467a\" stroke-width=\"1.15\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/emotion/joy.svg": "<path d=\"M75 61 Q65 50 63 37 L73 43 80 60Z M65 74 L48 66 47 62 Q59 61 72 71Z M236 49 Q244 36 251 34 L247 46 236 54Z M246 65 l15 -9 5 3 -11 7Z\" fill=\"#f51280\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/emotion/tear.svg": "<path d=\"M-3 1 Q2 2 3 0 Q3 8 1 14 Q2 22 -1 24 Q-5 22 -3 15 Q-6 10 -3 1Z\" fill=\"#6da8e4\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M-1 4 Q0 9 -2 15\" fill=\"none\" stroke=\"#e4f5ff\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><ellipse cx=\"-3\" cy=\"28\" rx=\"1.4\" ry=\"2.2\" fill=\"#6da8e4\"/>", "assets/eyes/almond-brow.svg": "<path d=\"M-7 1 Q-3 -3 4 -2\" fill=\"none\" stroke=\"#18131b\" stroke-width=\"2.05\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/eyes/almond.svg": "<path d=\"M-11 1 Q-6 -8 1 -6 Q7 -7 12 -4 Q8 4 1 5 Q-5 6 -11 1Z\" fill=\"#fff8f1\" stroke=\"#18131b\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M-12 1 Q-5 -9 4 -7 L13 -5 11 -2 Q0 -5 -11 3Z\" fill=\"#18131b\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><ellipse cx=\"1\" cy=\"-0.5\" rx=\"4.1\" ry=\"5\" fill=\"#18131b\"/><ellipse cx=\"2\" cy=\"2\" rx=\"2.4\" ry=\"2.2\" fill=\"#f51280\"/><ellipse cx=\"-0.3\" cy=\"-2.3\" rx=\"1.25\" ry=\"1.2\" fill=\"white\"/>", "assets/eyes/round-brow.svg": "<path d=\"M-7 1 Q-3 -3 4 -2\" fill=\"none\" stroke=\"#18131b\" stroke-width=\"2.05\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/eyes/round.svg": "<path d=\"M-8 2 Q-10 -7 -5 -10 Q2 -14 8 -6 Q11 1 7 6 Q1 10 -5 7Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><ellipse cx=\"2\" cy=\"4\" rx=\"4.1\" ry=\"2.8\" fill=\"#f51280\"/><ellipse cx=\"-2\" cy=\"-5\" rx=\"3\" ry=\"3\" fill=\"white\"/><ellipse cx=\"4\" cy=\"0\" rx=\"1.25\" ry=\"1.2\" fill=\"white\"/>", "assets/eyes/slit-brow.svg": "<path d=\"M-7 1 Q-3 -3 4 -2\" fill=\"none\" stroke=\"#18131b\" stroke-width=\"2.05\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/eyes/slit.svg": "<path d=\"M-12 -2 Q-5 -5 3 -4 L13 -6 11 -2 Q5 4 -3 3 Q-8 3 -12 -2Z\" fill=\"#18131b\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M-5 0 Q1 -1 4 -1 Q3 3 0 3Z\" fill=\"#f51280\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><ellipse cx=\"0\" cy=\"0\" rx=\"1.5\" ry=\"0.8\" fill=\"#fff8f1\"/>", "assets/faces/long.svg": "<path d=\"M110 106 Q98 98 95 109 Q91 120 100 130 Q105 135 113 130 M205 102 Q216 95 222 107 Q225 119 216 128 Q211 133 207 130\" fill=\"#ffddca\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M100 111 q6 -3 8 8 M216 108 q-5 -1 -7 7\" fill=\"none\" stroke=\"#aa5f61\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><ellipse cx=\"103\" cy=\"129\" rx=\"3.8\" ry=\"4.5\" fill=\"#f51280\"/><path d=\"M216 125 l4 13 -6 6 -5 -7Z\" fill=\"#fff8f1\" stroke=\"#18131b\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M115 89 Q114 63 150 57 Q194 56 204 82 L207 116 Q205 138 195 150 L176 164 Q165 171 152 165 L132 155 Q118 146 114 129Z\" fill=\"#ffddca\" stroke=\"#18131b\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M110 91 Q126 67 151 66 Q185 62 199 81 Q177 72 157 82 Q126 95 112 113Z\" fill=\"#ffc3b1\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M153 130 q3 -1 5 -4 q1 3 4 3\" fill=\"none\" stroke=\"#bb7674\" stroke-width=\"1.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M120 121 l4 -5 1 4 -5 4Z M126 123 l4 -6 2 2 -4 5Z M185 122 l4 -6 2 4 -4 4Z M192 121 l4 -6 2 4 -5 5Z\" fill=\"#f51280\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/faces/round.svg": "<path d=\"M110 106 Q98 98 95 109 Q91 120 100 130 Q105 135 113 130 M205 102 Q216 95 222 107 Q225 119 216 128 Q211 133 207 130\" fill=\"#ffddca\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M100 111 q6 -3 8 8 M216 108 q-5 -1 -7 7\" fill=\"none\" stroke=\"#aa5f61\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><ellipse cx=\"103\" cy=\"129\" rx=\"3.8\" ry=\"4.5\" fill=\"#f51280\"/><path d=\"M216 125 l4 13 -6 6 -5 -7Z\" fill=\"#fff8f1\" stroke=\"#18131b\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M106 90 Q111 57 151 57 Q194 51 210 84 Q218 106 209 129 Q198 155 169 161 Q140 165 118 149 Q100 134 101 113Z\" fill=\"#ffddca\" stroke=\"#18131b\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M110 91 Q126 67 151 66 Q185 62 199 81 Q177 72 157 82 Q126 95 112 113Z\" fill=\"#ffc3b1\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M153 127 q3 -1 5 -4 q1 3 4 3\" fill=\"none\" stroke=\"#bb7674\" stroke-width=\"1.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M120 123 l4 -5 1 4 -5 4Z M126 125 l4 -6 2 2 -4 5Z M185 124 l4 -6 2 4 -4 4Z M192 123 l4 -6 2 4 -5 5Z\" fill=\"#f51280\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/faces/square.svg": "<path d=\"M110 106 Q98 98 95 109 Q91 120 100 130 Q105 135 113 130 M205 102 Q216 95 222 107 Q225 119 216 128 Q211 133 207 130\" fill=\"#ffddca\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M100 111 q6 -3 8 8 M216 108 q-5 -1 -7 7\" fill=\"none\" stroke=\"#aa5f61\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><ellipse cx=\"103\" cy=\"129\" rx=\"3.8\" ry=\"4.5\" fill=\"#f51280\"/><path d=\"M216 125 l4 13 -6 6 -5 -7Z\" fill=\"#fff8f1\" stroke=\"#18131b\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M105 87 Q112 63 154 57 Q193 57 210 79 L213 107 214 136 Q212 151 198 154 Q163 161 129 155 Q106 154 103 138 L101 112Z\" fill=\"#ffddca\" stroke=\"#18131b\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M110 91 Q126 67 151 66 Q185 62 199 81 Q177 72 157 82 Q126 95 112 113Z\" fill=\"#ffc3b1\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M153 126 q3 -1 5 -4 q1 3 4 3\" fill=\"none\" stroke=\"#bb7674\" stroke-width=\"1.35\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M120 121 l4 -5 1 4 -5 4Z M126 123 l4 -6 2 2 -4 5Z M185 122 l4 -6 2 4 -4 4Z M192 121 l4 -6 2 4 -5 5Z\" fill=\"#f51280\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/hair/bun-back.svg": "<path d=\"M110 118 Q98 127 93 147 Q93 161 106 174 Q93 178 85 166 Q76 148 85 133 Q90 119 92 88 Q93 61 120 48 Q150 32 180 44 Q211 47 219 83 Q224 100 222 118 Q221 130 229 145 Q238 165 223 178 Q226 155 211 141 Q198 130 192 121Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"3.1\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M89 136 Q80 155 91 165 Q86 148 98 134Z\" fill=\"#fa398e\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M218 130 Q221 145 229 152 Q228 142 224 137Z\" fill=\"#fa398e\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/hair/bun-front.svg": "<path d=\"M133 53 Q120 46 124 30 Q128 13 146 11 Q159 6 172 14 Q188 22 185 36 Q184 45 172 51Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M128 34 Q134 19 148 16 Q139 23 138 36 Q134 44 132 43Z\" fill=\"#dac3cf\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M145 40 Q145 23 154 18 Q168 18 173 28 M160 42 Q175 34 174 26\" fill=\"none\" stroke=\"#8a677e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M134 48 Q149 41 171 46 L176 53 134 55Z\" fill=\"#f51280\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M107 109 Q105 125 99 138 Q94 149 100 160 Q86 153 90 139 Q96 119 96 102 Q91 78 110 60 Q129 43 155 47 Q178 42 197 57 Q218 72 218 96 Q219 105 214 120 Q209 136 216 152 Q200 146 201 127 Q206 108 195 90 Q179 77 155 62 Q141 80 125 88 Q116 92 107 109Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"3.1\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M103 113 Q97 125 95 139 Q99 131 103 129 Q108 110 120 95 Q142 83 153 61 Q138 65 127 77 Q111 86 103 113Z\" fill=\"#f51280\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M159 55 Q178 60 196 75 Q212 90 211 108 Q203 90 187 81 Q170 64 159 55Z\" fill=\"#f51280\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M99 100 Q100 76 126 60 M106 107 Q113 91 128 83 Q142 73 150 62 M164 53 Q190 55 205 76\" fill=\"none\" stroke=\"#fff8f1\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M126 46 Q109 46 109 33 Q110 27 118 28 M180 47 Q201 44 197 32\" fill=\"none\" stroke=\"#18131b\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M196 77 l1 7 7 -1 -5 5 2 6 -6 -3 -5 4 1 -7 -5 -3 7 -1Z\" fill=\"#fff8f1\" stroke=\"#18131b\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M133 33 l3 -8 m-2 13 l2 -5 M149 28 q4 -7 9 -8 M162 45 l10 -3 M105 87 q4 -12 10 -15 M111 98 l9 -10 M119 90 l6 -4 M182 67 q8 4 14 10 M212 104 l-1 7 m-1 1 l-1 4\" fill=\"none\" stroke=\"#fff2e8\" stroke-width=\"0.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M140 18 l5 -4 m14 -1 l4 1 M103 124 l-4 11 M201 101 l2 6\" fill=\"none\" stroke=\"#ff6fae\" stroke-width=\"1\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/hair/sweep-back.svg": "<path d=\"M104 116 Q97 109 98 87 Q83 97 88 74 Q80 69 72 72 Q91 65 99 50 Q121 20 158 35 Q173 16 192 30 Q210 34 216 54 Q222 48 226 43 Q230 57 220 67 Q241 71 229 93 L220 118 211 136 202 138 111 139 Q99 134 94 126Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"3.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/hair/sweep-front.svg": "<path d=\"M96 92 Q89 94 85 89 Q110 78 113 60 Q102 67 95 63 Q113 54 122 41 Q138 27 160 42 Q167 28 182 29 Q204 31 213 54 Q223 61 224 75 Q223 94 213 111 L207 125 Q209 104 204 91 Q199 83 191 76 Q191 90 180 99 Q188 77 176 62 Q165 70 157 77 Q139 93 121 93 Q113 104 108 122 Q101 114 103 100 L106 87Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M98 84 Q119 72 122 55 Q132 37 148 42 Q136 45 133 59 Q126 76 106 85Z\" fill=\"#f3dbe4\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M124 90 Q145 83 157 68 Q167 50 181 49 Q171 52 169 64 Q148 90 124 90Z\" fill=\"#f51280\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M163 47 Q172 34 184 34 Q197 41 202 55 Q186 43 181 44Z\" fill=\"#755462\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M209 63 Q220 71 217 88 L211 100 Q215 78 209 63Z\" fill=\"#d68aa9\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M119 72 Q135 66 141 53 M187 42 Q197 46 202 56 M130 81 Q141 75 148 68\" fill=\"none\" stroke=\"#fff8f1\" stroke-width=\"1.45\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M162 42 Q156 27 141 25 M210 59 Q229 54 232 62 M99 84 Q88 89 79 85\" fill=\"none\" stroke=\"#18131b\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M108 76 l-7 5 m6 0 l-7 4 M126 53 q6 -10 14 -11 M150 70 l-5 5 m2 0 l-5 4 M203 70 q4 5 5 9 m2 2 l1 4 M128 41 l5 -3 m-16 13 l-3 4\" fill=\"none\" stroke=\"#fff2e8\" stroke-width=\"0.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M177 47 q10 -4 18 6 M111 85 l12 -5 m38 -7 l6 -6 M211 74 l3 8\" fill=\"none\" stroke=\"#f763a4\" stroke-width=\"0.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M95 84 l-11 3 8 1Z M219 88 l3 -6 -2 11 -4 4Z M121 40 l8 -6 -11 5Z\" fill=\"#18131b\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/mouths/laugh.svg": "<path d=\"M-10 -2 Q-3 0 10 -5 Q9 9 2 9 Q-5 10 -10 -2Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M-5 5 Q0 0 7 3 Q5 8 1 8 Q-2 8 -5 5Z\" fill=\"#f51280\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M-7 -1 Q2 -1 8 -3 L7 0 Q0 3 -6 1Z\" fill=\"#fff8f1\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/mouths/sing.svg": "<path d=\"M-5 2 Q-5 -5 1 -5 Q7 -4 7 2 Q6 7 1 7 Q-4 7 -5 2Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><ellipse cx=\"1\" cy=\"4\" rx=\"3.2\" ry=\"1.7\" fill=\"#f51280\"/>", "assets/mouths/soft.svg": "<path d=\"M-6 0 Q1 6 7 -2\" fill=\"none\" stroke=\"#18131b\" stroke-width=\"2.1\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/mouths/tremble.svg": "<path d=\"M-7 3 Q-3 -3 0 1 Q3 3 7 0\" fill=\"none\" stroke=\"#18131b\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/poses/concert-accent.svg": "<path d=\"M246 143 l-5 -7 M262 138 l1 -10 M277 145 l8 -5 M283 163 l9 1\" fill=\"none\" stroke=\"#f51280\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/poses/short-concert.svg": "<path d=\"M116 179 Q100 180 96 196 L86 240 Q87 253 98 258 L111 251 119 217 125 193Z\" fill=\"#f51280\" stroke=\"#18131b\" stroke-width=\"3.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M110 186 Q103 189 100 207 L93 239 101 246 106 217 117 190Z\" fill=\"#a30d5f\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M97 242 l12 6\" fill=\"none\" stroke=\"#fff8f1\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M90 250 Q87 260 92 268 Q95 272 98 267 Q102 270 105 265 L107 255Z\" fill=\"#ffddca\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M99 258 l-1 7\" fill=\"none\" stroke=\"#f2ad9e\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M198 180 Q215 177 221 190 L230 211 243 202 Q252 205 253 217 L235 232 Q218 244 205 227 L192 199Z\" fill=\"#f51280\" stroke=\"#18131b\" stroke-width=\"3.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M208 189 Q216 190 221 208 L229 224 246 211 250 217 233 230 Q221 239 211 223Z\" fill=\"#a30d5f\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M239 205 l9 14\" fill=\"none\" stroke=\"#fff8f1\" stroke-width=\"2.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M250 210 L254 175 264 176 261 211 Q256 215 250 210Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M257 187 l-2 15\" fill=\"none\" stroke=\"#f51280\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M246 204 Q247 198 249 194 Q252 190 255 194 L260 193 Q265 192 266 196 Q270 199 266 202 Q269 206 264 207 Q265 212 259 212 L251 214Z\" fill=\"#ffddca\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M257 198 l8 -1 M258 203 l8 -1 M258 207 l5 -1\" fill=\"none\" stroke=\"#935454\" stroke-width=\"1.1\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M253 176 Q245 171 245 162 Q246 147 259 146 Q273 145 277 159 Q280 173 265 179Z\" fill=\"#fff8f1\" stroke=\"#18131b\" stroke-width=\"2.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M252 158 Q257 148 263 155 Q267 151 272 157 Q276 165 261 173 Q250 168 252 158Z\" fill=\"#f51280\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M249 160 q1 -7 8 -9\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/poses/short-v.svg": "<path d=\"M116 179 Q100 180 96 196 L86 240 Q87 253 98 258 L111 251 119 217 125 193Z\" fill=\"#f51280\" stroke=\"#18131b\" stroke-width=\"3.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M110 186 Q103 189 100 207 L93 239 101 246 106 217 117 190Z\" fill=\"#a30d5f\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M97 242 l12 6\" fill=\"none\" stroke=\"#fff8f1\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M90 250 Q87 260 92 268 Q95 272 98 267 Q102 270 105 265 L107 255Z\" fill=\"#ffddca\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M99 258 l-1 7\" fill=\"none\" stroke=\"#f2ad9e\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M199 180 Q212 176 221 190 L230 206 236 168 Q246 161 256 171 L250 217 Q244 234 228 232 Q218 233 205 216 L193 201Z\" fill=\"#f51280\" stroke=\"#18131b\" stroke-width=\"3.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M207 187 Q218 193 229 216 L239 215 246 178 250 177 245 217 Q239 230 229 228 L214 214Z\" fill=\"#a30d5f\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M236 175 q10 -1 18 4\" fill=\"none\" stroke=\"#fff8f1\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M239 169 Q232 163 233 154 Q229 150 228 145 Q227 140 232 140 L239 147 235 127 Q234 120 238 119 Q242 118 244 125 L249 142 256 124 Q258 119 262 122 Q265 124 263 131 L256 151 Q260 156 255 166 L253 173Z\" fill=\"#ffddca\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M239 151 Q245 149 247 155 Q253 150 255 154 M244 159 q4 -4 8 0\" fill=\"none\" stroke=\"#8c4b50\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/poses/v-accent.svg": "<path d=\"M268 112 l7 -8 M275 126 l10 -2 M270 142 l8 4\" fill=\"none\" stroke=\"#f51280\" stroke-width=\"2.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/poses/wide-concert.svg": "<path d=\"M116 179 Q100 180 96 196 L86 240 Q87 253 98 258 L111 251 119 217 125 193Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"3.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M110 186 Q103 189 100 207 L93 239 101 246 106 217 117 190Z\" fill=\"#584355\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M97 242 l12 6\" fill=\"none\" stroke=\"#fff8f1\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M90 250 Q87 260 92 268 Q95 272 98 267 Q102 270 105 265 L107 255Z\" fill=\"#ffddca\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M99 258 l-1 7\" fill=\"none\" stroke=\"#f2ad9e\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M198 180 Q215 177 221 190 L230 211 243 202 Q252 205 253 217 L235 232 Q218 244 205 227 L192 199Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"3.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M208 189 Q216 190 221 208 L229 224 246 211 250 217 233 230 Q221 239 211 223Z\" fill=\"#584355\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M239 205 l9 14\" fill=\"none\" stroke=\"#fff8f1\" stroke-width=\"2.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M250 210 L254 175 264 176 261 211 Q256 215 250 210Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M257 187 l-2 15\" fill=\"none\" stroke=\"#f51280\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M246 204 Q247 198 249 194 Q252 190 255 194 L260 193 Q265 192 266 196 Q270 199 266 202 Q269 206 264 207 Q265 212 259 212 L251 214Z\" fill=\"#ffddca\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M257 198 l8 -1 M258 203 l8 -1 M258 207 l5 -1\" fill=\"none\" stroke=\"#935454\" stroke-width=\"1.1\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M253 176 Q245 171 245 162 Q246 147 259 146 Q273 145 277 159 Q280 173 265 179Z\" fill=\"#fff8f1\" stroke=\"#18131b\" stroke-width=\"2.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M252 158 Q257 148 263 155 Q267 151 272 157 Q276 165 261 173 Q250 168 252 158Z\" fill=\"#f51280\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M249 160 q1 -7 8 -9\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "assets/poses/wide-v.svg": "<path d=\"M116 179 Q100 180 96 196 L86 240 Q87 253 98 258 L111 251 119 217 125 193Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"3.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M110 186 Q103 189 100 207 L93 239 101 246 106 217 117 190Z\" fill=\"#584355\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M97 242 l12 6\" fill=\"none\" stroke=\"#fff8f1\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M90 250 Q87 260 92 268 Q95 272 98 267 Q102 270 105 265 L107 255Z\" fill=\"#ffddca\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M99 258 l-1 7\" fill=\"none\" stroke=\"#f2ad9e\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M199 180 Q212 176 221 190 L230 206 236 168 Q246 161 256 171 L250 217 Q244 234 228 232 Q218 233 205 216 L193 201Z\" fill=\"#18131b\" stroke=\"#18131b\" stroke-width=\"3.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M207 187 Q218 193 229 216 L239 215 246 178 250 177 245 217 Q239 230 229 228 L214 214Z\" fill=\"#584355\" stroke=\"none\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M236 175 q10 -1 18 4\" fill=\"none\" stroke=\"#fff8f1\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M239 169 Q232 163 233 154 Q229 150 228 145 Q227 140 232 140 L239 147 235 127 Q234 120 238 119 Q242 118 244 125 L249 142 256 124 Q258 119 262 122 Q265 124 263 131 L256 151 Q260 156 255 166 L253 173Z\" fill=\"#ffddca\" stroke=\"#18131b\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M239 151 Q245 149 247 155 Q253 150 255 154 M244 159 q4 -4 8 0\" fill=\"none\" stroke=\"#8c4b50\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"};
+const { defaults, categories, normalize, compose } = KMEAvatar;
+const form = document.querySelector('#options');
+const preview = document.querySelector('#preview');
+const status = document.querySelector('#status');
+const storageKey = 'kme-avatar-v1';
+const labels = ['Cuerpo', 'Rostro', 'Ojos', 'Boca', 'Cabello', 'Pose', 'Emoción'];
+
+let stored;
+try { stored = JSON.parse(localStorage.getItem(storageKey)); } catch {}
+let state = normalize(manifest, stored);
+
+categories.forEach((key, index) => {
+  const fieldset = document.createElement('fieldset');
+  const legend = document.createElement('legend');
+  legend.textContent = labels[index];
+  fieldset.append(legend);
+  const list = document.createElement('div');
+  list.className = 'options';
+  manifest[key].forEach(option => {
+    const label = document.createElement('label');
+    label.className = 'choice';
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = key;
+    input.value = option.id;
+    const caption = document.createElement('span');
+    caption.textContent = option.label;
+    label.append(input, caption);
+    list.append(label);
+  });
+  fieldset.append(list);
+  form.append(fieldset);
+});
+
+function render() {
+  preview.innerHTML = compose(manifest, assets, state);
+  for (const key of categories) form.elements[key].value = state[key];
+  try { localStorage.setItem(storageKey, JSON.stringify(state)); } catch {}
+}
+form.addEventListener('change', event => {
+  const { name, value } = event.target;
+  state[name] = value;
+  if (name === 'emotions') {
+    const emotion = manifest.emotions.find(option => option.id === value);
+    if (emotion.mouth) state.mouths = emotion.mouth;
+  }
+  render();
+});
+document.querySelector('#reset').onclick = () => {
+  state = { ...defaults };
+  render();
+};
+function download(blob, extension) {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'mi-avatar-kme.' + extension;
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+}
+function avatarBlob() {
+  return new Blob([compose(manifest, assets, state)], { type: 'image/svg+xml;charset=utf-8' });
+}
+document.querySelector('#svg').onclick = () => download(avatarBlob(), 'svg');
+document.querySelector('#png').onclick = async () => {
+  const url = URL.createObjectURL(avatarBlob());
+  try {
+    const image = new Image();
+    image.src = url;
+    await image.decode();
+    const canvas = document.createElement('canvas');
+    canvas.width = 960;
+    canvas.height = 1260;
+    canvas.getContext('2d').drawImage(image, 0, 0, canvas.width, canvas.height);
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    if (!blob) throw new Error('PNG vacío');
+    download(blob, 'png');
+    status.textContent = '';
+  } catch {
+    status.textContent = 'No se pudo exportar el PNG. Puedes descargar el SVG.';
+  } finally {
+    URL.revokeObjectURL(url);
+  }
+};
+render();
+</script>
+</body>
+</html>

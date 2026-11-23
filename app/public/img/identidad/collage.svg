@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 620" fill="none">
+  <defs>
+    <pattern id="puntos" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2.4" fill="#000"/></pattern>
+    <filter id="grano" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="3" seed="12"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".14"/></feComponentTransfer><feBlend in="SourceGraphic" mode="multiply"/></filter>
+    <clipPath id="papel"><path d="m66 437 30-24 14 3 21-14 11 3 23-17 14 2 22-18 9 3 28-19 11 4 26-22 14 3 23-18 13 3 26-21 12 3 23-20 12 2 27-16 14 2 23-17 11 3 26-20 13 3 21-16 29-6-36 47 2 13-20 28 2 12-19 29 1 12-20 29 1 12-26 28 1 10-26 27-15-1-26 18-13-3-26 15-15-3-25 14-15-4-27 13-14-4-27 12-15-4-26 12-14-4-29 10-18-3-32 11-16-5-33 10-14-4-29 6-21-3Z"/></clipPath>
+  </defs>
+  <!-- La trama y el papel quedan fuera del dibujo personal del fan. -->
+  <path d="M410 353 596 306 568 535 378 557Z" fill="url(#puntos)"/>
+  <g transform="translate(0 7)" opacity=".14"><path d="m66 437 115-60 132-54 135-59 156-61-91 166-112 81-129 33-135 33Z" fill="#000"/></g>
+  <g clip-path="url(#papel)"><path fill="#fff" d="M42 190h580v355H42z"/><path transform="translate(0 -8)" d="m66 437 30-24 14 3 21-14 11 3 23-17 14 2 22-18 9 3 28-19 11 4 26-22 14 3 23-18 13 3 26-21 12 3 23-20 12 2 27-16 14 2 23-17 11 3 26-20 13 3 21-16 29-6-36 47 2 13-20 28 2 12-19 29 1 12-20 29 1 12-26 28 1 10-26 27-15-1-26 18-13-3-26 15-15-3-25 14-15-4-27 13-14-4-27 12-15-4-26 12-14-4-29 10-18-3-32 11-16-5-33 10-14-4-29 6-21-3Z" fill="#e83475" filter="url(#grano)"/></g>
+  <g fill="#000">
+    <path d="m34 354 26-40-9 23 34-48-7 23 41-49-13 25 43-44-11 22 47-41-13 18 55-38-12 15 63-35-10 13 63-31-11 13 65-28-9 12 60-25-7 10 68-27-10 10 72-25-12 13 32-5-28 20 10-1-45 24 14-2-62 29 12-3-72 34 11-1-63 28 11-1-73 32 8-1-64 31 7-1-63 34 6-1-56 33 2-4-48 35 4-8-41 35 4-10-25 24 5-14-17 13Z"/>
+    <path d="M67 324Q209 169 592 93L574 110Q254 191 73 331Z"/>
+    <path d="M101 281Q243 167 531 109L510 118Q266 178 105 285Z"/>
+    <path d="m35 371 40-33-24 29-29 19Zm64-92 25-21-15 21-26 21Zm431-161 61-21-11 13-62 18Zm-358 89 36-24-15 15-37 23Z"/>
+  </g>
+</svg>

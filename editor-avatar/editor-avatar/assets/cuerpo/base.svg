@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- Capa: cuerpo · Cuerpo base: piernas, zapatos, brazos, torso y cuello · Lienzo 400×480 (usa assets/plantilla.svg como guía) -->
+<ellipse cx="200" cy="446" rx="76" ry="9" fill="#000" opacity=".1"/>
+<rect class="f-piel" x="170" y="356" width="24" height="72" rx="11" fill="#f6d3b8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<rect class="f-piel" x="206" y="356" width="24" height="72" rx="11" fill="#f6d3b8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M160,432 Q160,416 182,416 Q198,416 199,430 Q199,441 182,441 L168,441 Q160,441 160,432 Z" fill="#4b3d5c" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M240,432 Q240,416 218,416 Q202,416 201,430 Q201,441 218,441 L232,441 Q240,441 240,432 Z" fill="#4b3d5c" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<ellipse cx="176" cy="424" rx="6" ry="3" fill="#fff" opacity=".35"/><ellipse cx="224" cy="424" rx="6" ry="3" fill="#fff" opacity=".35"/>
+<path d="M166,300 L142,348" stroke="#3d2f45" stroke-width="25" stroke-linecap="round"/><path class="t-piel" d="M166,300 L142,348" stroke="#f6d3b8" stroke-width="19" stroke-linecap="round"/>
+<path d="M234,300 L258,348" stroke="#3d2f45" stroke-width="25" stroke-linecap="round"/><path class="t-piel" d="M234,300 L258,348" stroke="#f6d3b8" stroke-width="19" stroke-linecap="round"/>
+<circle class="f-piel" cx="140" cy="352" r="12" fill="#f6d3b8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle class="f-piel" cx="260" cy="352" r="12" fill="#f6d3b8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="f-piel" d="M160,290 Q200,282 240,290 L250,366 Q200,374 150,366 Z" fill="#f6d3b8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<rect class="f-piel-sombra" x="186" y="258" width="28" height="36" rx="8" fill="#d6b8a0" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

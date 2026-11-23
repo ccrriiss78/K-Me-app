@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- PLANTILLA: dibuja cada pieza nueva sobre este lienzo de 400×480 y exporta solo la pieza (fondo transparente, sin recortar). -->
+<rect x="0" y="0" width="400" height="480" fill="#ffffff"/>
+<g opacity=".35"><ellipse cx="200" cy="446" rx="76" ry="9" fill="#000" opacity=".1"/>
+<rect x="170" y="356" width="24" height="72" rx="11" fill="#f6d3b8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="206" y="356" width="24" height="72" rx="11" fill="#f6d3b8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M160,432 Q160,416 182,416 Q198,416 199,430 Q199,441 182,441 L168,441 Q160,441 160,432 Z" fill="#4b3d5c" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M240,432 Q240,416 218,416 Q202,416 201,430 Q201,441 218,441 L232,441 Q240,441 240,432 Z" fill="#4b3d5c" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<ellipse cx="176" cy="424" rx="6" ry="3" fill="#fff" opacity=".35"/><ellipse cx="224" cy="424" rx="6" ry="3" fill="#fff" opacity=".35"/>
+<path d="M166,300 L142,348" stroke="#3d2f45" stroke-width="25" stroke-linecap="round"/><path d="M166,300 L142,348" stroke="#f6d3b8" stroke-width="19" stroke-linecap="round"/>
+<path d="M234,300 L258,348" stroke="#3d2f45" stroke-width="25" stroke-linecap="round"/><path d="M234,300 L258,348" stroke="#f6d3b8" stroke-width="19" stroke-linecap="round"/>
+<circle cx="140" cy="352" r="12" fill="#f6d3b8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="260" cy="352" r="12" fill="#f6d3b8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M160,290 Q200,282 240,290 L250,366 Q200,374 150,366 Z" fill="#f6d3b8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="186" y="258" width="28" height="36" rx="8" fill="#f6d3b8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="91" cy="198" rx="15" ry="20" fill="#f6d3b8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M92,190 Q85,198 92,206" stroke="#f6d3b8" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="309" cy="198" rx="15" ry="20" fill="#f6d3b8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M308,190 Q315,198 308,206" stroke="#f6d3b8" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="200" cy="178" rx="112" ry="102" fill="#f6d3b8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<ellipse cx="200" cy="230" rx="2.6" ry="1.9" fill="#f6d3b8"/></g>
+<g fill="none" stroke="#7b5cf0" stroke-width="1.2" stroke-dasharray="6 5">
+<line x1="200" y1="0" x2="200" y2="480"/>
+<ellipse cx="200" cy="178" rx="112" ry="102"/>
+<line x1="60" y1="205" x2="340" y2="205"/>
+<line x1="120" y1="250" x2="280" y2="250"/>
+<line x1="90" y1="290" x2="310" y2="290"/>
+<line x1="110" y1="350" x2="290" y2="350"/>
+<line x1="110" y1="441" x2="290" y2="441"/>
+<line x1="20" y1="58" x2="380" y2="58"/>
+</g>
+<g fill="#7b5cf0" font-family="sans-serif" font-size="11">
+<text x="8" y="54">techo del pelo (y=58)</text>
+<text x="344" y="201">ojos y=205</text>
+<text x="284" y="246">boca y=250</text>
+<text x="314" y="286">hombros y=290</text>
+<text x="294" y="346">cintura y=350</text>
+<text x="294" y="437">suelo y=441</text>
+<text x="206" y="14">centro x=200</text>
+<text x="246" y="96">cabeza: elipse 200,178 · 112×102</text>
+<text x="152" y="205" text-anchor="middle" font-size="9">ojo izq. x=152</text>
+<text x="248" y="205" text-anchor="middle" font-size="9">ojo der. x=248</text>
+</g>
+</svg>

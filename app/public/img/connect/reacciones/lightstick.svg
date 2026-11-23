@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!-- Lightstick: bola de luz con rayos, cuello y mango. Icono de una tinta. -->
+  <circle cx="12" cy="8.2" r="5.2"/>
+  <rect x="9" y="13.2" width="6" height="2.2" rx="1"/>
+  <rect x="10.6" y="15" width="2.8" height="8" rx="1.4"/>
+  <path d="M12 .8v1.1M5.2 3.2l.8.8M18.8 3.2l-.8.8M3 8.2h1.1M21 8.2h-1.1" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round"/>
+</svg>

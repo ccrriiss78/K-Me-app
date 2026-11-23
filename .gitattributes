@@ -1,0 +1,5 @@
+# Git guarda cada archivo tal cual, byte a byte, sin cambiar los saltos de línea.
+# Motivo: los tests del editor comprueban la huella SHA-256 de algunos SVG
+# (tests/ojos-sugeridos.test.js). Con la conversión automática de Windows
+# (core.autocrlf), un archivo recuperado desde Git cambiaría sus bytes y el test fallaría.
+* -text

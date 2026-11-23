@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- Capa: cabeza · Cabeza base: orejas, cara y nariz · Lienzo 400×480 (usa assets/plantilla.svg como guía) -->
+<ellipse class="f-piel" cx="91" cy="198" rx="15" ry="20" fill="#f6d3b8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="t-piel-sombra" d="M92,190 Q85,198 92,206" stroke="#d6b8a0" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse class="f-piel" cx="309" cy="198" rx="15" ry="20" fill="#f6d3b8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="t-piel-sombra" d="M308,190 Q315,198 308,206" stroke="#d6b8a0" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse class="f-piel" cx="200" cy="178" rx="112" ry="102" fill="#f6d3b8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<ellipse class="f-piel-sombra" cx="200" cy="230" rx="2.6" ry="1.9" fill="#d6b8a0"/>
+</svg>

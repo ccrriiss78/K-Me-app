@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480"><title>Desánimo</title>
+<g transform="translate(152 205)" data-ojo="izquierdo" data-coleccion="tristeza">
+<path d="M-25 -2Q-3 -4 24 -6Q14 10 1 11Q-13 12 -25 -2Z" fill="#fffaf7" opacity=".92"/>
+<g class="f-ojos" fill="#775d43">
+<path data-parte="iris-tristeza" d="M-14 -3.2L15 -5.2Q13 10 2 11Q-9 11 -14 -3.2Z" opacity=".28"/>
+<path d="M-14 -3.2L15 -5.2Q13 10 2 11Q-9 11 -14 -3.2Z" transform="scale(.9 .9)" opacity=".22"/>
+<path d="M-14 -3.2L15 -5.2Q13 10 2 11Q-9 11 -14 -3.2Z" fill="none" class="t-ojos" stroke="#775d43" stroke-width="1.1" opacity=".3"/>
+<ellipse cx="-8" cy="2" rx="0.8" ry="0.9" opacity="0.09"/>
+<ellipse cx="-4.2" cy="4.8" rx="1.1" ry="1.2" opacity="0.125"/>
+<ellipse cx="-0.40000000000000036" cy="7.6" rx="1.4" ry="0.9" opacity="0.16"/>
+<ellipse cx="3.3999999999999986" cy="2" rx="0.8" ry="1.2" opacity="0.09"/>
+<ellipse cx="7.199999999999999" cy="4.8" rx="1.1" ry="0.9" opacity="0.125"/>
+<ellipse cx="-8" cy="7.6" rx="1.4" ry="1.2" opacity="0.16"/>
+<ellipse cx="-4.2" cy="2" rx="0.8" ry="0.9" opacity="0.09"/>
+<ellipse cx="-0.40000000000000036" cy="4.8" rx="1.1" ry="1.2" opacity="0.125"/>
+<ellipse cx="3.3999999999999986" cy="7.6" rx="1.4" ry="0.9" opacity="0.16"/>
+<ellipse cx="7.199999999999999" cy="2" rx="0.8" ry="1.2" opacity="0.09"/>
+<ellipse cx="-8" cy="4.8" rx="1.1" ry="0.9" opacity="0.125"/>
+<ellipse cx="-4.2" cy="7.6" rx="1.4" ry="1.2" opacity="0.16"/>
+</g>
+<g transform="translate(2 4.8) scale(0.62 0.2976)"><g transform="translate(-52.3 -79)"><path data-parte="pupila-logo" d="M57.2 79 C57.2 81.7062 55.0062 83.9 52.3 83.9 C49.5938 83.9 47.4 81.7062 47.4 79 C47.4 76.2938 49.5938 74.1 52.3 74.1 C55.0062 74.1 57.2 76.2938 57.2 79 Z" fill="#282126"/></g></g>
+<path data-brillo="estrella" d="M-2 0L-1 1.7L1 2L-.4 3.3L0 5.2L-1.8 4.2L-3.7 5L-3.3 3L-4.8 1.7L-2.7 1.5Z" fill="#fffaf7"/>
+<path data-parte="linea-ojo" d="M-25 -2Q-3 -4 24 -6" fill="none" stroke="#282126" stroke-width="2.9" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(248 205)" data-ojo="derecho" data-coleccion="tristeza">
+<path d="M25 -2Q3 -4 -24 -6Q-14 10 -1 11Q13 12 25 -2Z" fill="#fffaf7" opacity=".92"/>
+<g class="f-ojos" fill="#775d43">
+<path data-parte="iris-tristeza" d="M14 -3.2L-15 -5.2Q-13 10 -2 11Q9 11 14 -3.2Z" opacity=".28"/>
+<path d="M14 -3.2L-15 -5.2Q-13 10 -2 11Q9 11 14 -3.2Z" transform="scale(.9 .9)" opacity=".22"/>
+<path d="M14 -3.2L-15 -5.2Q-13 10 -2 11Q9 11 14 -3.2Z" fill="none" class="t-ojos" stroke="#775d43" stroke-width="1.1" opacity=".3"/>
+<ellipse cx="8" cy="2" rx="0.8" ry="0.9" opacity="0.09"/>
+<ellipse cx="4.2" cy="4.8" rx="1.1" ry="1.2" opacity="0.125"/>
+<ellipse cx="0.40000000000000036" cy="7.6" rx="1.4" ry="0.9" opacity="0.16"/>
+<ellipse cx="-3.3999999999999986" cy="2" rx="0.8" ry="1.2" opacity="0.09"/>
+<ellipse cx="-7.199999999999999" cy="4.8" rx="1.1" ry="0.9" opacity="0.125"/>
+<ellipse cx="8" cy="7.6" rx="1.4" ry="1.2" opacity="0.16"/>
+<ellipse cx="4.2" cy="2" rx="0.8" ry="0.9" opacity="0.09"/>
+<ellipse cx="0.40000000000000036" cy="4.8" rx="1.1" ry="1.2" opacity="0.125"/>
+<ellipse cx="-3.3999999999999986" cy="7.6" rx="1.4" ry="0.9" opacity="0.16"/>
+<ellipse cx="-7.199999999999999" cy="2" rx="0.8" ry="1.2" opacity="0.09"/>
+<ellipse cx="8" cy="4.8" rx="1.1" ry="0.9" opacity="0.125"/>
+<ellipse cx="4.2" cy="7.6" rx="1.4" ry="1.2" opacity="0.16"/>
+</g>
+<g transform="translate(-2 4.8) scale(0.62 0.2976)"><g transform="translate(-52.3 -79)"><path data-parte="pupila-logo" d="M57.2 79 C57.2 81.7062 55.0062 83.9 52.3 83.9 C49.5938 83.9 47.4 81.7062 47.4 79 C47.4 76.2938 49.5938 74.1 52.3 74.1 C55.0062 74.1 57.2 76.2938 57.2 79 Z" fill="#282126"/></g></g>
+<path data-brillo="estrella" d="M2 0L1 1.7L-1 2L0.4 3.3L0 5.2L1.8 4.2L3.7 5L3.3 3L4.8 1.7L2.7 1.5Z" fill="#fffaf7"/>
+<path data-parte="linea-ojo" d="M25 -2Q3 -4 -24 -6" fill="none" stroke="#282126" stroke-width="2.9" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

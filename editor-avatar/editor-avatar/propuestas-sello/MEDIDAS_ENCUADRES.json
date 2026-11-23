@@ -1,0 +1,1917 @@
+{
+  "metodo": "Cotas conservadoras: puntos de control, trazos y clips; margen adicional de 8 unidades; no inspección visual.",
+  "casos": 234,
+  "extremos": {
+    "rostro": {
+      "x": 36.75,
+      "y": 6.6,
+      "derecha": 348.25,
+      "abajo": 356.25
+    },
+    "cuerpo": {
+      "x": 36.75,
+      "y": 6.6,
+      "derecha": 348.25,
+      "abajo": 433.4
+    }
+  },
+  "recortes": {
+    "rostro": {
+      "x": 25,
+      "y": -5,
+      "ancho": 350,
+      "alto": 370
+    },
+    "cuerpo": {
+      "x": 25,
+      "y": -5,
+      "ancho": 350,
+      "alto": 450
+    }
+  },
+  "capasRostro": [
+    "pelo_atras",
+    "cabeza",
+    "maquillaje",
+    "ojos",
+    "maquillaje_detalles",
+    "cejas",
+    "boca",
+    "pelo_frente",
+    "accesorio"
+  ],
+  "registros": [
+    {
+      "nombre": "rostro/redondo",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "rostro/ovalado",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 283.4
+    },
+    {
+      "nombre": "rostro/cuadrado",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 279.4
+    },
+    {
+      "nombre": "pelo.estilo/mono",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "pelo.estilo/corto",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 40.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "pelo.estilo/bob",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 57.6,
+      "derecha": 330,
+      "abajo": 299.4
+    },
+    {
+      "nombre": "pelo.estilo/cortinas-textura",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "pelo.estilo/coleta-ondas",
+      "grupo": "rostro",
+      "x": 36.75,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "pelo.estilo/doble-mono-lazos",
+      "grupo": "rostro",
+      "x": 64.75,
+      "y": 47.75,
+      "derecha": 339.25,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "pelo.estilo/trenza-lateral",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 356.25
+    },
+    {
+      "nombre": "pelo.estilo/media-melena-ondas",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "pelo.estilo/corto-despeinado",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 48.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "pelo.estilo/corto-dos-bloques",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 52.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "pelo.estilo/semirrecogido-grenas",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 19.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "accesorio/ninguno",
+      "grupo": "rostro",
+      "x": 71.6,
+      "y": 6.6,
+      "derecha": 325.4,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "accesorio/gafas",
+      "grupo": "rostro",
+      "x": 71.6,
+      "y": 6.6,
+      "derecha": 325.4,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "accesorio/auriculares",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "accesorio/pin",
+      "grupo": "rostro",
+      "x": 71.6,
+      "y": 6.6,
+      "derecha": 325.4,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "ropa.arriba/camiseta-integrada-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/camiseta-integrada-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/camiseta-integrada-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/camiseta",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/sudadera",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/chaqueta",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/cargo-beat-arriba-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/cargo-beat-arriba-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/cargo-beat-arriba-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/denim-layer-arriba-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/denim-layer-arriba-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/denim-layer-arriba-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/school-remix-arriba-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/school-remix-arriba-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/school-remix-arriba-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/racing-pop-arriba-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/racing-pop-arriba-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/racing-pop-arriba-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/pocket-pop-arriba-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/pocket-pop-arriba-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/pocket-pop-arriba-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/ribbon-punk-arriba-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/ribbon-punk-arriba-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/ribbon-punk-arriba-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/denim-star-arriba-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/denim-star-arriba-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/denim-star-arriba-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/stage-noir-arriba-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/stage-noir-arriba-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/stage-noir-arriba-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/top-orbita-arriba-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/top-orbita-arriba-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/top-orbita-arriba-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/top-halter-arriba-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/top-halter-arriba-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/top-halter-arriba-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/top-deportivo-arriba-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/top-deportivo-arriba-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/top-deportivo-arriba-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/top-cruzado-arriba-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/top-cruzado-arriba-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/top-cruzado-arriba-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/top-holgado-arriba-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/top-holgado-arriba-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.arriba/top-holgado-arriba-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/cargo-integrada-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/falda-integrada-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/bermudas-integrada-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/cargo-integrada-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/falda-integrada-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/bermudas-integrada-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/cargo-integrada-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/falda-integrada-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/bermudas-integrada-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/cargo",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/falda",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/bermudas",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/cargo-beat-abajo-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/cargo-beat-abajo-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/cargo-beat-abajo-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/denim-layer-abajo-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/denim-layer-abajo-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/denim-layer-abajo-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/school-remix-abajo-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/school-remix-abajo-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/school-remix-abajo-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/racing-pop-abajo-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/racing-pop-abajo-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/racing-pop-abajo-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/pocket-pop-abajo-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/pocket-pop-abajo-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/pocket-pop-abajo-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/ribbon-punk-abajo-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/ribbon-punk-abajo-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/ribbon-punk-abajo-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/denim-star-abajo-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/denim-star-abajo-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/denim-star-abajo-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/stage-noir-abajo-delgado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/stage-noir-abajo-medio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "ropa.abajo/stage-noir-abajo-grueso",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "cuerpo/relajado",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "cuerpo/recto",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "cuerpo/amplio",
+      "grupo": "cuerpo",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 433.4
+    },
+    {
+      "nombre": "mono/tinta/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "mono/tinta/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "mono/tinta/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "mono/tinta/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "mono/acuarela/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "mono/acuarela/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "mono/acuarela/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "mono/acuarela/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "mono/pinceladas/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "mono/pinceladas/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "mono/pinceladas/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "mono/pinceladas/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 6.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto/tinta/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 40.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto/tinta/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 40.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto/tinta/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 40.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto/tinta/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 40.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto/acuarela/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 40.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto/acuarela/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 40.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto/acuarela/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 40.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto/acuarela/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 40.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto/pinceladas/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 40.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto/pinceladas/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 40.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto/pinceladas/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 40.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto/pinceladas/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 40.6,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "bob/tinta/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 57.6,
+      "derecha": 330,
+      "abajo": 299.4
+    },
+    {
+      "nombre": "bob/tinta/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 57.6,
+      "derecha": 330,
+      "abajo": 299.4
+    },
+    {
+      "nombre": "bob/tinta/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 57.6,
+      "derecha": 330,
+      "abajo": 299.4
+    },
+    {
+      "nombre": "bob/tinta/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 57.6,
+      "derecha": 330,
+      "abajo": 299.4
+    },
+    {
+      "nombre": "bob/acuarela/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 57.6,
+      "derecha": 330,
+      "abajo": 299.4
+    },
+    {
+      "nombre": "bob/acuarela/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 57.6,
+      "derecha": 330,
+      "abajo": 299.4
+    },
+    {
+      "nombre": "bob/acuarela/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 57.6,
+      "derecha": 330,
+      "abajo": 299.4
+    },
+    {
+      "nombre": "bob/acuarela/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 57.6,
+      "derecha": 330,
+      "abajo": 299.4
+    },
+    {
+      "nombre": "bob/pinceladas/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 57.6,
+      "derecha": 330,
+      "abajo": 299.4
+    },
+    {
+      "nombre": "bob/pinceladas/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 57.6,
+      "derecha": 330,
+      "abajo": 299.4
+    },
+    {
+      "nombre": "bob/pinceladas/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 57.6,
+      "derecha": 330,
+      "abajo": 299.4
+    },
+    {
+      "nombre": "bob/pinceladas/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 57.6,
+      "derecha": 330,
+      "abajo": 299.4
+    },
+    {
+      "nombre": "cortinas-textura/tinta/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "cortinas-textura/tinta/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "cortinas-textura/tinta/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "cortinas-textura/tinta/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "cortinas-textura/acuarela/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "cortinas-textura/acuarela/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "cortinas-textura/acuarela/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "cortinas-textura/acuarela/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "cortinas-textura/pinceladas/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "cortinas-textura/pinceladas/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "cortinas-textura/pinceladas/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "cortinas-textura/pinceladas/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "coleta-ondas/tinta/sin",
+      "grupo": "rostro",
+      "x": 36.75,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "coleta-ondas/tinta/frontales",
+      "grupo": "rostro",
+      "x": 36.75,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "coleta-ondas/tinta/varios",
+      "grupo": "rostro",
+      "x": 36.75,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "coleta-ondas/tinta/capas",
+      "grupo": "rostro",
+      "x": 36.75,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "coleta-ondas/acuarela/sin",
+      "grupo": "rostro",
+      "x": 36.75,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "coleta-ondas/acuarela/frontales",
+      "grupo": "rostro",
+      "x": 36.75,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "coleta-ondas/acuarela/varios",
+      "grupo": "rostro",
+      "x": 36.75,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "coleta-ondas/acuarela/capas",
+      "grupo": "rostro",
+      "x": 36.75,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "coleta-ondas/pinceladas/sin",
+      "grupo": "rostro",
+      "x": 36.75,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "coleta-ondas/pinceladas/frontales",
+      "grupo": "rostro",
+      "x": 36.75,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "coleta-ondas/pinceladas/varios",
+      "grupo": "rostro",
+      "x": 36.75,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "coleta-ondas/pinceladas/capas",
+      "grupo": "rostro",
+      "x": 36.75,
+      "y": 47.75,
+      "derecha": 330,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "doble-mono-lazos/tinta/sin",
+      "grupo": "rostro",
+      "x": 64.75,
+      "y": 47.75,
+      "derecha": 339.25,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "doble-mono-lazos/tinta/frontales",
+      "grupo": "rostro",
+      "x": 64.75,
+      "y": 47.75,
+      "derecha": 339.25,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "doble-mono-lazos/tinta/varios",
+      "grupo": "rostro",
+      "x": 64.75,
+      "y": 47.75,
+      "derecha": 339.25,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "doble-mono-lazos/tinta/capas",
+      "grupo": "rostro",
+      "x": 64.75,
+      "y": 47.75,
+      "derecha": 339.25,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "doble-mono-lazos/acuarela/sin",
+      "grupo": "rostro",
+      "x": 64.75,
+      "y": 47.75,
+      "derecha": 339.25,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "doble-mono-lazos/acuarela/frontales",
+      "grupo": "rostro",
+      "x": 64.75,
+      "y": 47.75,
+      "derecha": 339.25,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "doble-mono-lazos/acuarela/varios",
+      "grupo": "rostro",
+      "x": 64.75,
+      "y": 47.75,
+      "derecha": 339.25,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "doble-mono-lazos/acuarela/capas",
+      "grupo": "rostro",
+      "x": 64.75,
+      "y": 47.75,
+      "derecha": 339.25,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "doble-mono-lazos/pinceladas/sin",
+      "grupo": "rostro",
+      "x": 64.75,
+      "y": 47.75,
+      "derecha": 339.25,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "doble-mono-lazos/pinceladas/frontales",
+      "grupo": "rostro",
+      "x": 64.75,
+      "y": 47.75,
+      "derecha": 339.25,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "doble-mono-lazos/pinceladas/varios",
+      "grupo": "rostro",
+      "x": 64.75,
+      "y": 47.75,
+      "derecha": 339.25,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "doble-mono-lazos/pinceladas/capas",
+      "grupo": "rostro",
+      "x": 64.75,
+      "y": 47.75,
+      "derecha": 339.25,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "trenza-lateral/tinta/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 356.25
+    },
+    {
+      "nombre": "trenza-lateral/tinta/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 356.25
+    },
+    {
+      "nombre": "trenza-lateral/tinta/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 356.25
+    },
+    {
+      "nombre": "trenza-lateral/tinta/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 356.25
+    },
+    {
+      "nombre": "trenza-lateral/acuarela/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 356.25
+    },
+    {
+      "nombre": "trenza-lateral/acuarela/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 356.25
+    },
+    {
+      "nombre": "trenza-lateral/acuarela/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 356.25
+    },
+    {
+      "nombre": "trenza-lateral/acuarela/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 356.25
+    },
+    {
+      "nombre": "trenza-lateral/pinceladas/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 356.25
+    },
+    {
+      "nombre": "trenza-lateral/pinceladas/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 356.25
+    },
+    {
+      "nombre": "trenza-lateral/pinceladas/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 356.25
+    },
+    {
+      "nombre": "trenza-lateral/pinceladas/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 356.25
+    },
+    {
+      "nombre": "media-melena-ondas/tinta/sin",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "media-melena-ondas/tinta/frontales",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "media-melena-ondas/tinta/varios",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "media-melena-ondas/tinta/capas",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "media-melena-ondas/acuarela/sin",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "media-melena-ondas/acuarela/frontales",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "media-melena-ondas/acuarela/varios",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "media-melena-ondas/acuarela/capas",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "media-melena-ondas/pinceladas/sin",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "media-melena-ondas/pinceladas/frontales",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "media-melena-ondas/pinceladas/varios",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "media-melena-ondas/pinceladas/capas",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 47.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "corto-despeinado/tinta/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 48.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-despeinado/tinta/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 48.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-despeinado/tinta/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 48.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-despeinado/tinta/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 48.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-despeinado/acuarela/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 48.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-despeinado/acuarela/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 48.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-despeinado/acuarela/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 48.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-despeinado/acuarela/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 48.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-despeinado/pinceladas/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 48.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-despeinado/pinceladas/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 48.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-despeinado/pinceladas/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 48.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-despeinado/pinceladas/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 48.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-dos-bloques/tinta/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 52.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-dos-bloques/tinta/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 52.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-dos-bloques/tinta/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 52.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-dos-bloques/tinta/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 52.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-dos-bloques/acuarela/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 52.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-dos-bloques/acuarela/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 52.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-dos-bloques/acuarela/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 52.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-dos-bloques/acuarela/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 52.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-dos-bloques/pinceladas/sin",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 52.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-dos-bloques/pinceladas/frontales",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 52.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-dos-bloques/pinceladas/varios",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 52.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "corto-dos-bloques/pinceladas/capas",
+      "grupo": "rostro",
+      "x": 68,
+      "y": 52.75,
+      "derecha": 330,
+      "abajo": 281.4
+    },
+    {
+      "nombre": "semirrecogido-grenas/tinta/sin",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 19.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "semirrecogido-grenas/tinta/frontales",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 19.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "semirrecogido-grenas/tinta/varios",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 19.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "semirrecogido-grenas/tinta/capas",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 19.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "semirrecogido-grenas/acuarela/sin",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 19.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "semirrecogido-grenas/acuarela/frontales",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 19.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "semirrecogido-grenas/acuarela/varios",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 19.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "semirrecogido-grenas/acuarela/capas",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 19.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "semirrecogido-grenas/pinceladas/sin",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 19.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "semirrecogido-grenas/pinceladas/frontales",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 19.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "semirrecogido-grenas/pinceladas/varios",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 19.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    },
+    {
+      "nombre": "semirrecogido-grenas/pinceladas/capas",
+      "grupo": "rostro",
+      "x": 51.75,
+      "y": 19.75,
+      "derecha": 348.25,
+      "abajo": 340.25
+    }
+  ]
+}

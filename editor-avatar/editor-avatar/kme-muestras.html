@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>K-ME · Tu estilo. Tu K-ME.</title>
+  <link rel="stylesheet" href="css/kme-muestras.css">
+  <script type="module" src="js/kme-muestras.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="marca">
+      <img src="../../K-ME-logos-revisados-v1.1/K-ME-logos-revisados-v1.1/03-web/K-ME-Studio.svg" alt="K-ME Studio" width="50" height="72">
+      <div><p class="nombre-marca">K-ME<span>STUDIO</span></p></div>
+    </div>
+    <p class="lema-principal">Sin <strong>fan</strong> no hay <strong>idol</strong>.</p>
+    <details id="mi-ambiente" class="mi-ambiente">
+      <summary id="abrir-ambiente"><span aria-hidden="true" class="punto-ambiente"></span>Mi ambiente</summary>
+      <div class="contenido-ambiente">
+        <div class="titulo-ambiente"><div><p class="eyebrow">HAZLO TUYO</p><h2>Tu espacio, tu color.</h2></div><button type="button" id="cerrar-ambiente" aria-label="Cerrar Mi ambiente">×</button></div>
+        <div id="opciones-ambiente"></div>
+        <p class="nota-ambiente">Esta vista previa dura mientras mantengas la página abierta.</p>
+      </div>
+    </details>
+  </header>
+  <main>
+    <section class="presentacion" aria-label="Crea tu avatar">
+      <div class="titulo-estudio"><p class="eyebrow">K-ME / AVATAR STUDIO</p><h1>Hazlo <span>muy tú.</span></h1></div>
+      <div class="intro-derecha"><span class="comillas-marca" aria-hidden="true"></span><p class="nota-taller">Aquí se viene<br>a crear.</p></div>
+    </section>
+    <div class="editor-visual">
+      <section class="escenario" aria-label="Vista previa y bases">
+        <div class="rotulo-escenario"><span>ASÍ VA TU CREACIÓN</span><span class="estrella-decorativa" aria-hidden="true">✦</span></div>
+        <div class="photocard">
+          <div class="cabecera-photocard"><span>K-ME ORIGINAL</span><span id="numero-photocard">01</span></div>
+          <div id="avatar-grande" class="avatar-grande" role="img" aria-label="Tu avatar con los cambios elegidos"></div>
+          <div class="pie-photocard"><strong>HECHO POR TI.</strong><span class="firma-kme" aria-hidden="true"></span></div>
+        </div>
+        <div class="bases-bloque"><p class="microtitulo">Empieza por aquí <span aria-hidden="true">↘</span></p><div id="selector-bases" class="selector-bases" role="group" aria-label="Elige una base"></div></div>
+        <div class="acciones">
+          <button type="button" id="deshacer" disabled>Deshacer</button>
+          <button type="button" id="restaurar">Restaurar base</button>
+        </div>
+        <section class="impresion-avatar" aria-label="Imprimir tu avatar">
+          <p class="microtitulo">IMPRIME TU CREACIÓN</p>
+          <div class="botones-impresion" role="group" aria-label="Opciones de impresión">
+            <button type="button" id="imprimir-avatar"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z"/><path d="M16 11h1"/></svg><strong>Imprimir avatar</strong><span>Tamaño libre</span></button>
+            <button type="button" id="imprimir-55x85" aria-describedby="ayuda-photocards"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 17h8M10 19h4M12 6v6m-3-3h6"/></svg><strong>Photocard</strong><span>PDF · 55 × 85 mm</span></button>
+            <button type="button" id="imprimir-54x86" aria-describedby="ayuda-photocards"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 17h8M10 19h4M12 6v6m-3-3h6"/></svg><strong>Photocard</strong><span>PDF · 54 × 86 mm</span></button>
+          </div>
+          <div class="ayudas-impresion">
+            <p id="ayuda-photocards">Descarga el PDF e imprímelo en tamaño real.</p>
+          </div>
+          <p id="estado-impresion" role="status"></p>
+        </section>
+      </section>
+      <section class="mesa-edicion" aria-label="Personaliza tu avatar">
+        <div class="cabecera-mesa"><p class="microtitulo">DALE TU TOQUE</p><span class="directo"><i aria-hidden="true"></i>Vista al instante</span></div>
+        <nav id="categorias" class="categorias" aria-label="Partes del avatar"></nav>
+        <div id="panel-editor" class="panel-editor" tabindex="0" role="region" aria-label="Opciones de la categoría"></div>
+      </section>
+    </div>
+    <p id="estado" class="estado" role="status">Preparando las piezas…</p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!-- Mini corazón: dos dedos cruzados con un corazón pequeño encima, el gesto de los fans. -->
+  <rect x="9.6" y="10" width="3.4" height="13" rx="1.7" transform="rotate(-17 11.3 16.5)"/>
+  <rect x="11" y="10" width="3.4" height="13" rx="1.7" transform="rotate(17 12.7 16.5)"/>
+  <path d="M12 9C9.2 7 8.2 5.6 8.2 4.1c0-1.2 1-2.2 2.2-2.2.7 0 1.2.3 1.6.8.4-.5.9-.8 1.6-.8 1.2 0 2.2 1 2.2 2.2 0 1.5-1 2.9-3.8 4.9z"/>
+</svg>

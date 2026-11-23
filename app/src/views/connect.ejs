@@ -1,0 +1,113 @@
+<%- include('_cabecera') %>
+<%#
+  Connect (D038): el muro de los fans. Sin JavaScript: cada acción es un formulario que vuelve al muro.
+  Las emociones y reacciones salen del catálogo (src/catalogos/connect.js) y los dibujos, de
+  public/img/connect/; colores y tamaños, de las variables «--connect-…» de estilos.css.
+%>
+<div class="connect">
+  <header class="connect__cabeza">
+    <h1 class="connect__titulo">Connect</h1>
+    <p class="connect__subtitulo">El muro de los fans: cuenta cómo te sientes y reacciona a los demás.</p>
+  </header>
+
+  <% if (publicada) { %><p class="aviso aviso--ok" role="status">¡Publicado en el muro!</p><% } %>
+  <% if (eliminada) { %><p class="aviso aviso--ok" role="status">Publicación borrada.</p><% } %>
+  <% if (error) { %><p class="aviso aviso--error" role="alert"><%= error %></p><% } %>
+
+  <%# En el ordenador, dos columnas: el muro a la izquierda y «Publicar» en un panel lateral que se
+      queda fijo al bajar. En el móvil, «Publicar» va arriba, con las emociones en una fila que se
+      desliza. En el código va primero «Publicar», que es el orden de lectura con teclado. %>
+  <div class="connect__columnas">
+  <aside class="connect__lateral" aria-label="Publicar en el muro">
+  <form method="post" action="/connect/publicaciones" class="publicar">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <fieldset class="publicar__grupo">
+      <legend class="publicar__pregunta">¿Cómo te sientes hoy?</legend>
+      <div class="emociones">
+        <% emociones.forEach((e) => { %>
+          <input class="emocion__radio" type="radio" name="emocion" id="emocion-<%= e.id %>" value="<%= e.id %>" required>
+          <label class="emocion" for="emocion-<%= e.id %>">
+            <img src="<%= e.icono %>" alt="" width="40" height="40">
+            <span><%= e.texto %></span>
+          </label>
+        <% }) %>
+      </div>
+    </fieldset>
+    <div class="publicar__pie">
+      <p class="nota">Tu publicación llevará tu avatar cuando Avatar Studio esté listo. Mientras tanto, tu inicial.</p>
+      <button type="submit" class="boton publicar__boton">Publicar en el muro</button>
+    </div>
+  </form>
+  </aside>
+
+  <section class="muro" aria-labelledby="titulo-muro">
+    <h2 id="titulo-muro" class="muro__titulo">Lo último de los fans</h2>
+    <% if (!publicaciones.length) { %>
+      <p class="muro__vacio">Todavía no hay publicaciones. ¡Estrena el muro!</p>
+    <% } else { %>
+      <ol class="muro__lista">
+        <% publicaciones.forEach((p) => { %>
+          <li>
+            <article id="publicacion-<%= p.id %>" class="publicacion" data-publicacion="<%= p.id %>" aria-labelledby="autor-<%= p.id %>">
+              <div class="photocard" aria-hidden="true"><span class="photocard__inicial"><%= p.inicial %></span></div>
+              <div class="publicacion__cuerpo">
+                <p class="publicacion__cabeza">
+                  <strong id="autor-<%= p.id %>" class="publicacion__alias"><%= p.alias %></strong>
+                  <time datetime="<%= p.creadoEn.toISOString() %>"><%= p.hace %></time>
+                </p>
+                <p class="publicacion__emocion">
+                  <img src="<%= p.emocion.icono %>" alt="" width="48" height="48">
+                  <span><%= p.emocion.texto %></span>
+                </p>
+
+                <%- include('_reacciones', { p }) %>
+
+                <%# Siempre existe, aunque esté vacío: el script de Connect añade aquí «Tus reacciones»
+                    cuando das tu primera reacción, sin recargar. %>
+                <div class="publicacion__acciones">
+                    <% if (p.totalMias > 0) { %>
+                      <details class="desplegable" data-mis-reacciones>
+                        <summary>Tus reacciones (<span data-total-mias><%= p.totalMias %></span>)</summary>
+                        <form method="post" action="/connect/publicaciones/<%= p.id %>/reacciones/quitar" class="desplegable__contenido">
+                          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                          <button type="submit" name="que" value="ultima" class="boton boton--secundario boton--pequeno">Quitar la última</button>
+                          <button type="submit" name="que" value="todas" class="boton boton--secundario boton--pequeno">Quitar todas las mías</button>
+                        </form>
+                      </details>
+                    <% } %>
+                    <% if (p.esMia) { %>
+                      <details class="desplegable">
+                        <summary>Borrar</summary>
+                        <form method="post" action="/connect/publicaciones/<%= p.id %>/eliminar" class="desplegable__contenido">
+                          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                          <p class="desplegable__texto">¿Borrar esta publicación? No se puede deshacer.</p>
+                          <button type="submit" class="boton boton--peligro boton--pequeno">Sí, borrar</button>
+                        </form>
+                      </details>
+                    <% } %>
+                </div>
+              </div>
+            </article>
+          </li>
+        <% }) %>
+      </ol>
+    <% } %>
+  </section>
+  </div>
+</div>
+
+<%# Para el script de Connect: el aviso que leen los lectores de pantalla al reaccionar sin recargar,
+    y la plantilla de «Tus reacciones» que copia en una publicación cuando das tu primera reacción. %>
+<p id="connect-aviso" class="solo-lectores" aria-live="polite"></p>
+<template id="plantilla-mis-reacciones">
+  <details class="desplegable" data-mis-reacciones>
+    <summary>Tus reacciones (<span data-total-mias>0</span>)</summary>
+    <form method="post" action="" class="desplegable__contenido">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <button type="submit" name="que" value="ultima" class="boton boton--secundario boton--pequeno">Quitar la última</button>
+      <button type="submit" name="que" value="todas" class="boton boton--secundario boton--pequeno">Quitar todas las mías</button>
+    </form>
+  </details>
+</template>
+<script src="/js/connect.js" defer></script>
+<%- include('_pie') %>

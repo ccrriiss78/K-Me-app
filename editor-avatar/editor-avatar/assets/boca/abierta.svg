@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- Capa: boca · Boca abierta · Lienzo 400×480 (usa assets/plantilla.svg como guía) -->
+<g transform="translate(200 250)">
+<!-- versión con labial: se muestra cuando el avatar tiene color de labial -->
+<g class="con-labial"><path class="t-labial" d="M-16,-4 Q0,-1 16,-4 Q14,16 0,17 Q-14,16 -16,-4 Z" fill="#8a2f3f" stroke="#e0607e" stroke-width="4" stroke-linejoin="round"/><path d="M-8,11 Q0,5 8,11 Q0,16 -8,11 Z" fill="#ff8a9b"/></g>
+<!-- versión sin labial -->
+<g class="sin-labial"><path d="M-16,-4 Q0,-1 16,-4 Q14,16 0,17 Q-14,16 -16,-4 Z" fill="#8a2f3f" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round"/><path d="M-8,11 Q0,5 8,11 Q0,16 -8,11 Z" fill="#ff8a9b"/></g>
+</g>
+</svg>

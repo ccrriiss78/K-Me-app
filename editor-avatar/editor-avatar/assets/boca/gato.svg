@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- Capa: boca · Boca gato · Lienzo 400×480 (usa assets/plantilla.svg como guía) -->
+<g transform="translate(200 250)">
+<!-- versión con labial: se muestra cuando el avatar tiene color de labial -->
+<g class="con-labial"><path class="t-labial" d="M-14,-4 Q-7,7 0,-2 Q7,7 14,-4" fill="none" stroke="#e0607e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+<!-- versión sin labial -->
+<g class="sin-labial"><path d="M-14,-4 Q-7,7 0,-2 Q7,7 14,-4" fill="none" stroke="#3d2f45" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+</g>
+</svg>

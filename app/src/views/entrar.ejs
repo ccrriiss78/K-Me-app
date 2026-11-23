@@ -1,0 +1,38 @@
+<%- include('_cabecera', { paginaDeEntrada: true }) %>
+<%# Página de entrada (T014): en el ordenador, la marca a la izquierda y el formulario a la derecha;
+    en el móvil, la marca encima. %>
+<section class="tarjeta tarjeta--entrada" aria-labelledby="titulo-entrar">
+  <div class="entrada-marca">
+    <img src="/img/logo-kme.svg" alt="K-ME" width="140" height="200">
+    <p class="lema-marca">Sin <strong>fan</strong> no hay <strong>idol</strong>.</p>
+  </div>
+  <div class="entrada-formulario">
+  <h1 id="titulo-entrar">Entrar en K-ME</h1>
+  <% if (typeof salida !== 'undefined' && salida) { %>
+    <p class="aviso aviso--ok" role="status">Has cerrado la sesión.</p>
+  <% } %>
+  <% if (typeof registro !== 'undefined' && registro) { %>
+    <p class="aviso aviso--ok" role="status">Cuenta creada. Ya puedes entrar.</p>
+  <% } %>
+  <% if (error) { %>
+    <p class="aviso aviso--error" role="alert"><%= error %></p>
+  <% } %>
+  <%# El formulario nunca se rellena con lo escrito antes: el dispositivo puede ser compartido (D022). %>
+  <form method="post" action="/entrar" class="formulario">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <label for="usuario">Usuario</label>
+    <input id="usuario" name="usuario" type="text" required minlength="3" maxlength="30"
+           pattern="[A-Za-z0-9_]+" autocomplete="off" autocapitalize="none" spellcheck="false" autofocus>
+    <label for="password">Contraseña</label>
+    <input id="password" name="password" type="password" required minlength="12" maxlength="128" autocomplete="current-password">
+    <label for="mantener_sesion" class="casilla">
+      <input id="mantener_sesion" name="mantener_sesion" type="checkbox" value="1" aria-describedby="ayuda-mantener">
+      Mantener sesión abierta
+    </label>
+    <p id="ayuda-mantener" class="nota nota--campo">Sin marcar, la sesión se cierra tras 24 h sin usar K-ME; marcada, tras 7 días. No la marques en un ordenador compartido.</p>
+    <button type="submit" class="boton">Entrar</button>
+  </form>
+  <p class="nota">¿No tienes cuenta? <a href="/registro">Crea una</a>.</p>
+  </div>
+</section>
+<%- include('_pie', { paginaDeEntrada: true }) %>

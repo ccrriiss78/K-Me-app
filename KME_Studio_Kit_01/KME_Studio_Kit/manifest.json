@@ -1,0 +1,361 @@
+{
+  "version": 1,
+  "canvas": [
+    320,
+    420
+  ],
+  "layerOrder": [
+    "hairBack",
+    "legs",
+    "shoes",
+    "neck",
+    "arms",
+    "torso",
+    "face",
+    "cheeks",
+    "eyes",
+    "brows",
+    "tears",
+    "mouth",
+    "hairFront",
+    "poseAccent",
+    "emotionAccent"
+  ],
+  "bodies": [
+    {
+      "id": "wide",
+      "label": "Masculino",
+      "neck": "assets/bodies/wide-neck.svg",
+      "torso": "assets/bodies/wide-torso.svg",
+      "legs": "assets/bodies/wide-legs.svg",
+      "shoes": "assets/bodies/wide-shoes.svg",
+      "poses": {
+        "v": [
+          "assets/poses/wide-v.svg",
+          "assets/poses/v-accent.svg"
+        ],
+        "concert": [
+          "assets/poses/wide-concert.svg",
+          "assets/poses/concert-accent.svg"
+        ]
+      },
+      "anchors": {
+        "neck": [
+          159,
+          157
+        ],
+        "torso": [
+          158,
+          181
+        ],
+        "arms": [
+          [
+            115,
+            184
+          ],
+          [
+            199,
+            184
+          ]
+        ],
+        "legs": [
+          157,
+          269
+        ],
+        "shoes": [
+          [
+            128,
+            353
+          ],
+          [
+            182,
+            353
+          ]
+        ],
+        "accessory": {
+          "concert": [
+            259,
+            176
+          ]
+        }
+      }
+    },
+    {
+      "id": "short",
+      "label": "Femenino",
+      "neck": "assets/bodies/short-neck.svg",
+      "torso": "assets/bodies/short-torso.svg",
+      "legs": "assets/bodies/short-legs.svg",
+      "shoes": "assets/bodies/short-shoes.svg",
+      "poses": {
+        "v": [
+          "assets/poses/short-v.svg",
+          "assets/poses/v-accent.svg"
+        ],
+        "concert": [
+          "assets/poses/short-concert.svg",
+          "assets/poses/concert-accent.svg"
+        ]
+      },
+      "anchors": {
+        "neck": [
+          159,
+          157
+        ],
+        "torso": [
+          158,
+          181
+        ],
+        "arms": [
+          [
+            115,
+            184
+          ],
+          [
+            199,
+            184
+          ]
+        ],
+        "legs": [
+          157,
+          269
+        ],
+        "shoes": [
+          [
+            128,
+            353
+          ],
+          [
+            182,
+            353
+          ]
+        ],
+        "accessory": {
+          "concert": [
+            259,
+            176
+          ]
+        }
+      }
+    }
+  ],
+  "faces": [
+    {
+      "id": "round",
+      "label": "Redondo",
+      "file": "assets/faces/round.svg",
+      "anchors": {
+        "eyes": [
+          [
+            134,
+            112
+          ],
+          [
+            182,
+            111
+          ]
+        ],
+        "brows": [
+          [
+            134,
+            99
+          ],
+          [
+            182,
+            98
+          ]
+        ],
+        "mouth": [
+          158,
+          137
+        ],
+        "hair": [
+          158,
+          60
+        ]
+      }
+    },
+    {
+      "id": "long",
+      "label": "Alargado",
+      "file": "assets/faces/long.svg",
+      "anchors": {
+        "eyes": [
+          [
+            136,
+            110
+          ],
+          [
+            180,
+            109
+          ]
+        ],
+        "brows": [
+          [
+            136,
+            97
+          ],
+          [
+            180,
+            96
+          ]
+        ],
+        "mouth": [
+          158,
+          140
+        ],
+        "hair": [
+          158,
+          60
+        ]
+      }
+    },
+    {
+      "id": "square",
+      "label": "Cuadrado",
+      "file": "assets/faces/square.svg",
+      "anchors": {
+        "eyes": [
+          [
+            133,
+            110
+          ],
+          [
+            183,
+            109
+          ]
+        ],
+        "brows": [
+          [
+            133,
+            97
+          ],
+          [
+            183,
+            96
+          ]
+        ],
+        "mouth": [
+          158,
+          136
+        ],
+        "hair": [
+          158,
+          60
+        ]
+      }
+    }
+  ],
+  "eyes": [
+    {
+      "id": "almond",
+      "label": "Almendrados",
+      "file": "assets/eyes/almond.svg",
+      "brow": "assets/eyes/almond-brow.svg"
+    },
+    {
+      "id": "round",
+      "label": "Redondos",
+      "file": "assets/eyes/round.svg",
+      "brow": "assets/eyes/round-brow.svg"
+    },
+    {
+      "id": "slit",
+      "label": "Horizontales",
+      "file": "assets/eyes/slit.svg",
+      "brow": "assets/eyes/slit-brow.svg"
+    }
+  ],
+  "mouths": [
+    {
+      "id": "soft",
+      "label": "Media sonrisa",
+      "file": "assets/mouths/soft.svg"
+    },
+    {
+      "id": "laugh",
+      "label": "Risa",
+      "file": "assets/mouths/laugh.svg"
+    },
+    {
+      "id": "sing",
+      "label": "Canto",
+      "file": "assets/mouths/sing.svg"
+    },
+    {
+      "id": "tremble",
+      "label": "Temblor",
+      "file": "assets/mouths/tremble.svg"
+    }
+  ],
+  "hair": [
+    {
+      "id": "sweep",
+      "label": "Flequillo tinta",
+      "back": "assets/hair/sweep-back.svg",
+      "front": "assets/hair/sweep-front.svg"
+    },
+    {
+      "id": "bun",
+      "label": "Moño fucsia",
+      "back": "assets/hair/bun-back.svg",
+      "front": "assets/hair/bun-front.svg"
+    }
+  ],
+  "emotions": [
+    {
+      "id": "neutral",
+      "label": "Neutro"
+    },
+    {
+      "id": "joy",
+      "label": "Alegría",
+      "mouth": "laugh",
+      "eyeScale": [
+        1,
+        0.78
+      ],
+      "outer": "assets/emotion/joy.svg"
+    },
+    {
+      "id": "sad",
+      "label": "Tristeza",
+      "mouth": "tremble",
+      "eyeScale": [
+        1,
+        0.61
+      ],
+      "tear": "assets/emotion/tear.svg"
+    },
+    {
+      "id": "shy",
+      "label": "Vergüenza",
+      "mouth": "soft",
+      "eyeScale": [
+        0.96,
+        0.75
+      ],
+      "cheek": "assets/emotion/blush.svg"
+    }
+  ],
+  "poses": [
+    {
+      "id": "v",
+      "label": "V · Photocard"
+    },
+    {
+      "id": "concert",
+      "label": "Concierto · Lightstick"
+    }
+  ],
+  "compatibility": {
+    "sharedAcrossBodies": [
+      "faces",
+      "eyes",
+      "mouths",
+      "hair",
+      "emotions"
+    ],
+    "poseFit": "Cada cuerpo declara sus propias mangas y manos para cada pose."
+  }
+}

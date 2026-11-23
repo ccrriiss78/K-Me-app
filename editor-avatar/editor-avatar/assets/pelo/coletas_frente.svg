@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- Capa: pelo_frente · Peinado coletas, parte delantera · Lienzo 400×480 (usa assets/plantilla.svg como guía) -->
+<path class="f-pelo" d="M86,240 L84,220 C72,118 130,58 200,58 C270,58 328,118 316,220 L314,240 Q306,250 296,242 L292,196 Q291,172 284,158 Q270,170 256,154 Q244,170 230,154 Q216,170 200,154 Q184,170 170,154 Q156,170 144,154 Q130,170 116,158 Q109,172 108,196 L104,242 Q94,250 86,240 Z" fill="#4a3328" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="t-pelo-oscuro" d="M150,92 Q138,120 142,152 M250,92 Q262,120 258,152" stroke="#35251d" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path d="M134,100 Q158,78 194,72" fill="none" stroke="#fff" stroke-opacity=".38" stroke-width="7" stroke-linecap="round"/>
+<!-- gomas del pelo (color fijo) -->
+<circle cx="98" cy="126" r="12" fill="#ff7aa8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="302" cy="126" r="12" fill="#ff7aa8" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

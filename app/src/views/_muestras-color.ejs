@@ -1,0 +1,14 @@
+<% const colorElegido = colores.find((c) => c.id === elegido); %>
+<details class="muestras"<% if (typeof abierto !== 'undefined' && abierto) { %> open<% } %>>
+  <summary><span class="muestras__actual" data-color-actual aria-hidden="true"<% if (colorElegido) { %> style="--muestra:<%= colorElegido.valor %>"<% } %>></span><span><%= titulo %>: <strong data-color-elegido><%= colorElegido ? colorElegido.nombre : 'elige un color' %></strong></span></summary>
+  <fieldset class="muestras__lista">
+    <legend class="solo-lectores"><%= titulo %></legend>
+    <% for (const c of colores) { %>
+    <label class="muestra" title="<%= c.nombre %>">
+      <input type="radio" name="<%= campo %>" value="<%= c.id %>" data-nombre="<%= c.nombre %>" data-color="<%= c.valor %>"<% if (c.id === elegido) { %> checked<% } %>>
+      <span class="muestra__color" aria-hidden="true" style="--muestra:<%= c.valor %>"></span>
+      <span class="solo-lectores"><%= c.nombre %></span>
+    </label>
+    <% } %>
+  </fieldset>
+</details>

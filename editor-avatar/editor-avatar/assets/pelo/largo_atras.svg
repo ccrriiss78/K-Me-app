@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- Capa: pelo_atras · Peinado largo, parte trasera · Lienzo 400×480 (usa assets/plantilla.svg como guía) -->
+<path class="f-pelo-trasero" d="M78,180 C68,108 130,62 200,62 C270,62 332,108 322,180 L336,368 Q318,392 290,384 Q270,392 250,384 L150,384 Q130,392 110,384 Q82,392 64,368 Z" fill="#412d23" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="t-pelo-oscuro" d="M96,250 Q92,320 104,370 M304,250 Q308,320 296,370" stroke="#35251d" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- Capa: accesorio · Accesorio: gorra · Lienzo 400×480 (usa assets/plantilla.svg como guía) -->
+<path d="M84,150 C84,64 140,38 200,38 C260,38 316,64 316,150 Z" fill="#ff8a5c" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M200,40 L200,148 M142,58 Q128,100 132,150 M258,58 Q272,100 268,150" stroke="#d1714b" stroke-width="2.5" fill="none"/>
+<circle cx="200" cy="40" r="7" fill="#d1714b" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path transform="translate(200 104) scale(2)" d="M0,-8 Q1.6,-1.6 8,0 Q1.6,1.6 0,8 Q-1.6,1.6 -8,0 Q-1.6,-1.6 0,-8 Z" fill="#fff"/>
+<path d="M78,150 Q200,124 322,150 Q336,168 304,174 Q200,152 96,174 Q64,168 78,150 Z" fill="#d1714b" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

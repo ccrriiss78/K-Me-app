@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480"><title>Gemas</title>
+<g data-maquillaje="gemas" class="f-m-gemas" fill="#cc7797" stroke="#282126" stroke-opacity=".24" stroke-width=".6" stroke-linejoin="round">
+<g data-anclaje="gema-izquierda" transform="translate(152 205)">
+<path d="M-31 8L-27 7L-24 10L-25 14L-29 15L-32 12Z"/>
+<path d="M-25 19L-22 18L-19 20L-20 23L-23 24L-26 22Z" opacity=".8"/>
+<path d="M-17 25L-15 24L-13 26L-15 28L-17 27Z" opacity=".65"/>
+<path d="M-31 8L-28 11L-24 10M-28 11L-29 15M-25 19L-22 21L-19 20" fill="none" stroke="#fffaf7" stroke-opacity=".8" stroke-width=".7"/>
+<path d="M-31 8L-27 7L-28 11Z" fill="#fffaf7" opacity=".7" stroke="none"/>
+<circle cx="-23" cy="19.7" r=".65" fill="#fffaf7" stroke="none"/>
+</g>
+<g data-anclaje="gema-derecha" transform="translate(248 205) scale(-1 1)">
+<path d="M-31 8L-27 7L-24 10L-25 14L-29 15L-32 12Z"/>
+<path d="M-25 19L-22 18L-19 20L-20 23L-23 24L-26 22Z" opacity=".8"/>
+<path d="M-17 25L-15 24L-13 26L-15 28L-17 27Z" opacity=".65"/>
+<path d="M-31 8L-28 11L-24 10M-28 11L-29 15M-25 19L-22 21L-19 20" fill="none" stroke="#fffaf7" stroke-opacity=".8" stroke-width=".7"/>
+<path d="M-31 8L-27 7L-28 11Z" fill="#fffaf7" opacity=".7" stroke="none"/>
+<circle cx="-23" cy="19.7" r=".65" fill="#fffaf7" stroke="none"/>
+</g>
+</g></svg>

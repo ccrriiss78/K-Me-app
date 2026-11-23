@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+// Hook pre-commit de K-ME (D026, punto 4 de T021). Git lo ejecuta antes de cada commit.
+// Solo arranca la comprobación de comprobar-commit.mjs: si devuelve 1, Git cancela el commit.
+// Se activa una vez, desde la raíz de k-me:  git config core.hooksPath .githooks
+const { join } = require('node:path');
+const { pathToFileURL } = require('node:url');
+
+import(pathToFileURL(join(__dirname, 'comprobar-commit.mjs')).href)
+  .then((modulo) => modulo.main())
+  .then((codigo) => process.exit(codigo))
+  .catch((error) => {
+    console.error('Error en la comprobación previa al commit: ' + error.message);
+    process.exit(1);
+  });

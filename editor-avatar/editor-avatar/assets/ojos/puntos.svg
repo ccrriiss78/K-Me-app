@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- Capa: ojos · Ojos puntos (incluye cejas) · Lienzo 400×480 (usa assets/plantilla.svg como guía) -->
+<!-- cejas: usan el color oscuro del pelo -->
+<g class="t-pelo-oscuro" stroke="#35251d"><g transform="translate(152 205)"><path d="M-12,-30 Q0,-35 12,-31" fill="none" stroke-width="4.5" stroke-linecap="round"/></g><g transform="translate(248 205) scale(-1 1)"><path d="M-12,-30 Q0,-35 12,-31" fill="none" stroke-width="4.5" stroke-linecap="round"/></g></g>
+<!-- ojos (la clase "parpadeo" permite la animación de parpadeo) -->
+<g class="parpadeo"><g transform="translate(152 205)"><ellipse rx="8" ry="11" fill="#2a1f30"/><circle cx="-3" cy="-4" r="3" fill="#fff"/></g><g transform="translate(248 205) scale(-1 1)"><ellipse rx="8" ry="11" fill="#2a1f30"/><circle cx="-3" cy="-4" r="3" fill="#fff"/></g></g>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- Capa: accesorio · Accesorio: orejas · Lienzo 400×480 (usa assets/plantilla.svg como guía) -->
+<path d="M96,150 Q200,40 304,150" fill="none" stroke="#3d2f45" stroke-width="9" stroke-linecap="round"/>
+<path d="M100,120 L110,42 L168,84 Z" fill="#3d2f45" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round"/><path d="M112,106 L117,62 L150,86 Z" fill="#ff9fc0"/>
+<path d="M300,120 L290,42 L232,84 Z" fill="#3d2f45" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round"/><path d="M288,106 L283,62 L250,86 Z" fill="#ff9fc0"/>
+</svg>

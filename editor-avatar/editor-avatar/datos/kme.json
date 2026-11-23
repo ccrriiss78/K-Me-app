@@ -1,0 +1,3003 @@
+{
+  "version": 1,
+  "estado": "Propuesta gráfica: pendiente de aprobación de Cristina",
+  "lienzo": {
+    "ancho": 400,
+    "alto": 480
+  },
+  "capas": [
+    {
+      "id": "pelo_atras",
+      "nombre": "pelo atras"
+    },
+    {
+      "id": "cuerpo",
+      "nombre": "cuerpo"
+    },
+    {
+      "id": "piernas",
+      "nombre": "piernas y calzado"
+    },
+    {
+      "id": "anatomia",
+      "nombre": "perfil superior continuo"
+    },
+    {
+      "id": "torso",
+      "nombre": "torso unido bajo la ropa"
+    },
+    {
+      "id": "ropa_abajo",
+      "nombre": "ropa abajo"
+    },
+    {
+      "id": "ropa_arriba",
+      "nombre": "ropa arriba"
+    },
+    {
+      "id": "cabeza",
+      "nombre": "cabeza"
+    },
+    {
+      "id": "maquillaje",
+      "nombre": "maquillaje"
+    },
+    {
+      "id": "ojos",
+      "nombre": "ojos"
+    },
+    {
+      "id": "maquillaje_detalles",
+      "nombre": "delineado, brillo y gemas"
+    },
+    {
+      "id": "cejas",
+      "nombre": "cejas"
+    },
+    {
+      "id": "boca",
+      "nombre": "boca"
+    },
+    {
+      "id": "pelo_frente",
+      "nombre": "pelo frente"
+    },
+    {
+      "id": "accesorio",
+      "nombre": "accesorio"
+    }
+  ],
+  "fijas": [],
+  "piezas": {
+    "rostro": [
+      {
+        "id": "redondo",
+        "nombre": "Rostro redondo",
+        "capas": {
+          "cabeza": "../assets/kme/cabeza/redondo.svg"
+        }
+      },
+      {
+        "id": "ovalado",
+        "nombre": "Rostro ovalado",
+        "capas": {
+          "cabeza": "../assets/kme/cabeza/ovalado.svg"
+        }
+      },
+      {
+        "id": "cuadrado",
+        "nombre": "Rostro cuadrado suave",
+        "capas": {
+          "cabeza": "../assets/kme/cabeza/cuadrado.svg"
+        }
+      }
+    ],
+    "cuerpo": [
+      {
+        "id": "relajado",
+        "nombre": "Cuerpo delgado",
+        "capas": {
+          "cuerpo": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "recto",
+        "nombre": "Cuerpo medio",
+        "capas": {
+          "cuerpo": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "amplio",
+        "nombre": "Cuerpo grueso",
+        "capas": {
+          "cuerpo": "../assets/kme/cuerpo/amplio.svg"
+        }
+      }
+    ],
+    "ojos.estilo": [
+      {
+        "id": "kme-tristeza-a-estrella",
+        "nombre": "Tristeza suave",
+        "coleccion": "kme-mockup",
+        "subcoleccion": "tristeza",
+        "expresionEspecial": "tristeza-a",
+        "cejasSugeridas": "tristes",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-tristeza-a-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-tristeza-b-estrella",
+        "nombre": "Mirada caída",
+        "coleccion": "kme-mockup",
+        "subcoleccion": "tristeza",
+        "expresionEspecial": "tristeza-b",
+        "cejasSugeridas": "tristes",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-tristeza-b-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-tristeza-c-estrella",
+        "nombre": "Desánimo",
+        "coleccion": "kme-mockup",
+        "subcoleccion": "tristeza",
+        "expresionEspecial": "tristeza-c",
+        "cejasSugeridas": "tristes",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-tristeza-c-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-tristeza-d-estrella",
+        "nombre": "Pena contenida",
+        "coleccion": "kme-mockup",
+        "subcoleccion": "tristeza",
+        "expresionEspecial": "tristeza-d",
+        "cejasSugeridas": "tristes",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-tristeza-d-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-tristeza-e-estrella",
+        "nombre": "A punto de llorar",
+        "coleccion": "kme-mockup",
+        "subcoleccion": "tristeza",
+        "expresionEspecial": "tristeza-e",
+        "cejasSugeridas": "tristes",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-tristeza-e-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-tristeza-f-cerrados-sin-brillo",
+        "nombre": "Llanto silencioso",
+        "coleccion": "kme-mockup",
+        "subcoleccion": "tristeza",
+        "expresionEspecial": "tristeza-f",
+        "cejasSugeridas": "tristes",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-tristeza-f-cerrados-sin-brillo.svg"
+        }
+      },
+      {
+        "id": "kme-escenario-abiertos-estrella",
+        "nombre": "Mockup · escenario · abiertos",
+        "coleccion": "kme-mockup",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-escenario-abiertos-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-escenario-cerrados-sin-brillo",
+        "nombre": "Mockup · escenario · cerrados",
+        "coleccion": "kme-mockup",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-escenario-cerrados-sin-brillo.svg"
+        }
+      },
+      {
+        "id": "kme-escenario-guino-izquierdo-estrella",
+        "nombre": "Mockup · escenario · guino-izquierdo",
+        "coleccion": "kme-mockup",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-escenario-guino-izquierdo-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-escenario-guino-derecho-estrella",
+        "nombre": "Mockup · escenario · guino-derecho",
+        "coleccion": "kme-mockup",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-escenario-guino-derecho-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-dulces-abiertos-estrella",
+        "nombre": "Mockup · dulces · abiertos",
+        "coleccion": "kme-mockup",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-dulces-abiertos-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-dulces-cerrados-sin-brillo",
+        "nombre": "Mockup · dulces · cerrados",
+        "coleccion": "kme-mockup",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-dulces-cerrados-sin-brillo.svg"
+        }
+      },
+      {
+        "id": "kme-dulces-guino-izquierdo-estrella",
+        "nombre": "Mockup · dulces · guino-izquierdo",
+        "coleccion": "kme-mockup",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-dulces-guino-izquierdo-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-dulces-guino-derecho-estrella",
+        "nombre": "Mockup · dulces · guino-derecho",
+        "coleccion": "kme-mockup",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-dulces-guino-derecho-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-felinos-abiertos-estrella",
+        "nombre": "Mockup · felinos · abiertos",
+        "coleccion": "kme-mockup",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-felinos-abiertos-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-felinos-cerrados-sin-brillo",
+        "nombre": "Mockup · felinos · cerrados",
+        "coleccion": "kme-mockup",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-felinos-cerrados-sin-brillo.svg"
+        }
+      },
+      {
+        "id": "kme-felinos-guino-izquierdo-estrella",
+        "nombre": "Mockup · felinos · guino-izquierdo",
+        "coleccion": "kme-mockup",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-felinos-guino-izquierdo-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-felinos-guino-derecho-estrella",
+        "nombre": "Mockup · felinos · guino-derecho",
+        "coleccion": "kme-mockup",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-felinos-guino-derecho-estrella.svg"
+        }
+      },
+      {
+        "id": "redondos-abiertos",
+        "nombre": "redondos · abiertos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/redondos-abiertos.svg"
+        }
+      },
+      {
+        "id": "redondos-cerrados",
+        "nombre": "redondos · cerrados",
+        "capas": {
+          "ojos": "../assets/kme/ojos/redondos-cerrados.svg"
+        }
+      },
+      {
+        "id": "redondos-guino-izquierdo",
+        "nombre": "redondos · guino izquierdo",
+        "capas": {
+          "ojos": "../assets/kme/ojos/redondos-guino-izquierdo.svg"
+        }
+      },
+      {
+        "id": "redondos-guino-derecho",
+        "nombre": "redondos · guino derecho",
+        "capas": {
+          "ojos": "../assets/kme/ojos/redondos-guino-derecho.svg"
+        }
+      },
+      {
+        "id": "almendrados-abiertos",
+        "nombre": "almendrados · abiertos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/almendrados-abiertos.svg"
+        }
+      },
+      {
+        "id": "almendrados-cerrados",
+        "nombre": "almendrados · cerrados",
+        "capas": {
+          "ojos": "../assets/kme/ojos/almendrados-cerrados.svg"
+        }
+      },
+      {
+        "id": "almendrados-guino-izquierdo",
+        "nombre": "almendrados · guino izquierdo",
+        "capas": {
+          "ojos": "../assets/kme/ojos/almendrados-guino-izquierdo.svg"
+        }
+      },
+      {
+        "id": "almendrados-guino-derecho",
+        "nombre": "almendrados · guino derecho",
+        "capas": {
+          "ojos": "../assets/kme/ojos/almendrados-guino-derecho.svg"
+        }
+      },
+      {
+        "id": "alargados-abiertos",
+        "nombre": "alargados · abiertos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/alargados-abiertos.svg"
+        }
+      },
+      {
+        "id": "alargados-cerrados",
+        "nombre": "alargados · cerrados",
+        "capas": {
+          "ojos": "../assets/kme/ojos/alargados-cerrados.svg"
+        }
+      },
+      {
+        "id": "alargados-guino-izquierdo",
+        "nombre": "alargados · guino izquierdo",
+        "capas": {
+          "ojos": "../assets/kme/ojos/alargados-guino-izquierdo.svg"
+        }
+      },
+      {
+        "id": "alargados-guino-derecho",
+        "nombre": "alargados · guino derecho",
+        "capas": {
+          "ojos": "../assets/kme/ojos/alargados-guino-derecho.svg"
+        }
+      },
+      {
+        "id": "kme-redondos-abiertos-punto",
+        "nombre": "Nuevo · redondos · abiertos · brillo punto",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-redondos-abiertos-punto.svg"
+        }
+      },
+      {
+        "id": "kme-redondos-abiertos-estrella",
+        "nombre": "Nuevo · redondos · abiertos · brillo estrella",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-redondos-abiertos-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-redondos-cerrados-sin-brillo",
+        "nombre": "Nuevo · redondos · cerrados",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-redondos-cerrados-sin-brillo.svg"
+        }
+      },
+      {
+        "id": "kme-redondos-guino-izquierdo-punto",
+        "nombre": "Nuevo · redondos · guino izquierdo · brillo punto",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-redondos-guino-izquierdo-punto.svg"
+        }
+      },
+      {
+        "id": "kme-redondos-guino-izquierdo-estrella",
+        "nombre": "Nuevo · redondos · guino izquierdo · brillo estrella",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-redondos-guino-izquierdo-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-redondos-guino-derecho-punto",
+        "nombre": "Nuevo · redondos · guino derecho · brillo punto",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-redondos-guino-derecho-punto.svg"
+        }
+      },
+      {
+        "id": "kme-redondos-guino-derecho-estrella",
+        "nombre": "Nuevo · redondos · guino derecho · brillo estrella",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-redondos-guino-derecho-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-almendrados-abiertos-punto",
+        "nombre": "Nuevo · almendrados · abiertos · brillo punto",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-almendrados-abiertos-punto.svg"
+        }
+      },
+      {
+        "id": "kme-almendrados-abiertos-estrella",
+        "nombre": "Nuevo · almendrados · abiertos · brillo estrella",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-almendrados-abiertos-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-almendrados-cerrados-sin-brillo",
+        "nombre": "Nuevo · almendrados · cerrados",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-almendrados-cerrados-sin-brillo.svg"
+        }
+      },
+      {
+        "id": "kme-almendrados-guino-izquierdo-punto",
+        "nombre": "Nuevo · almendrados · guino izquierdo · brillo punto",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-almendrados-guino-izquierdo-punto.svg"
+        }
+      },
+      {
+        "id": "kme-almendrados-guino-izquierdo-estrella",
+        "nombre": "Nuevo · almendrados · guino izquierdo · brillo estrella",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-almendrados-guino-izquierdo-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-almendrados-guino-derecho-punto",
+        "nombre": "Nuevo · almendrados · guino derecho · brillo punto",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-almendrados-guino-derecho-punto.svg"
+        }
+      },
+      {
+        "id": "kme-almendrados-guino-derecho-estrella",
+        "nombre": "Nuevo · almendrados · guino derecho · brillo estrella",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-almendrados-guino-derecho-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-alargados-abiertos-punto",
+        "nombre": "Nuevo · alargados · abiertos · brillo punto",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-alargados-abiertos-punto.svg"
+        }
+      },
+      {
+        "id": "kme-alargados-abiertos-estrella",
+        "nombre": "Nuevo · alargados · abiertos · brillo estrella",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-alargados-abiertos-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-alargados-cerrados-sin-brillo",
+        "nombre": "Nuevo · alargados · cerrados",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-alargados-cerrados-sin-brillo.svg"
+        }
+      },
+      {
+        "id": "kme-alargados-guino-izquierdo-punto",
+        "nombre": "Nuevo · alargados · guino izquierdo · brillo punto",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-alargados-guino-izquierdo-punto.svg"
+        }
+      },
+      {
+        "id": "kme-alargados-guino-izquierdo-estrella",
+        "nombre": "Nuevo · alargados · guino izquierdo · brillo estrella",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-alargados-guino-izquierdo-estrella.svg"
+        }
+      },
+      {
+        "id": "kme-alargados-guino-derecho-punto",
+        "nombre": "Nuevo · alargados · guino derecho · brillo punto",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-alargados-guino-derecho-punto.svg"
+        }
+      },
+      {
+        "id": "kme-alargados-guino-derecho-estrella",
+        "nombre": "Nuevo · alargados · guino derecho · brillo estrella",
+        "coleccion": "kme-sugeridos",
+        "capas": {
+          "ojos": "../assets/kme/ojos/kme-alargados-guino-derecho-estrella.svg"
+        }
+      }
+    ],
+    "cejas": [
+      {
+        "id": "tristes",
+        "nombre": "Cejas de tristeza",
+        "capas": {
+          "cejas": "../assets/kme/cejas/tristes.svg"
+        }
+      },
+      {
+        "id": "suaves",
+        "nombre": "Cejas suaves",
+        "capas": {
+          "cejas": "../assets/kme/cejas/suaves.svg"
+        }
+      },
+      {
+        "id": "rectas",
+        "nombre": "Cejas rectas",
+        "capas": {
+          "cejas": "../assets/kme/cejas/rectas.svg"
+        }
+      },
+      {
+        "id": "arqueadas",
+        "nombre": "Cejas arqueadas",
+        "capas": {
+          "cejas": "../assets/kme/cejas/arqueadas.svg"
+        }
+      }
+    ],
+    "maquillaje.labios": [
+      {
+        "id": "nada",
+        "nombre": "Sin color de labios",
+        "capas": {}
+      },
+      {
+        "id": "pigmento",
+        "nombre": "Pigmento suave",
+        "capas": {
+          "maquillaje": "../assets/kme/maquillaje/escenario-labios.svg"
+        }
+      }
+    ],
+    "maquillaje.sombraEstilo": [
+      {
+        "id": "nada",
+        "nombre": "Sin sombra",
+        "capas": {}
+      },
+      {
+        "id": "acuarela",
+        "nombre": "Sombra acuarela",
+        "capas": {
+          "maquillaje": "../assets/kme/maquillaje/escenario-sombra.svg"
+        }
+      }
+    ],
+    "maquillaje.delineado": [
+      {
+        "id": "nada",
+        "nombre": "Sin delineado",
+        "capas": {}
+      },
+      {
+        "id": "pop",
+        "nombre": "Delineado pop",
+        "capas": {
+          "maquillaje_detalles": "../assets/kme/maquillaje/escenario-delineado.svg"
+        }
+      }
+    ],
+    "maquillaje.brillo": [
+      {
+        "id": "nada",
+        "nombre": "Sin brillo",
+        "capas": {}
+      },
+      {
+        "id": "escenario",
+        "nombre": "Luz de escenario",
+        "capas": {
+          "maquillaje_detalles": "../assets/kme/maquillaje/escenario-brillo.svg"
+        }
+      }
+    ],
+    "maquillaje.gemas": [
+      {
+        "id": "nada",
+        "nombre": "Sin gemas",
+        "capas": {}
+      },
+      {
+        "id": "cristal",
+        "nombre": "Gemas",
+        "capas": {
+          "maquillaje_detalles": "../assets/kme/maquillaje/escenario-gemas.svg"
+        }
+      }
+    ],
+    "maquillaje.mejillas": [
+      {
+        "id": "difuminado",
+        "nombre": "Rubor difuminado",
+        "capas": {
+          "maquillaje": "../assets/kme/maquillaje/escenario-rubor.svg"
+        }
+      },
+      {
+        "id": "acuarela",
+        "nombre": "Rubor suave",
+        "capas": {
+          "maquillaje": "../assets/kme/maquillaje/acuarela.svg"
+        }
+      },
+      {
+        "id": "comillas",
+        "nombre": "Comillas K-ME",
+        "capas": {
+          "maquillaje": "../assets/kme/maquillaje/comillas.svg"
+        }
+      },
+      {
+        "id": "pecas",
+        "nombre": "Rubor y pecas",
+        "capas": {
+          "maquillaje": "../assets/kme/maquillaje/pecas.svg"
+        }
+      },
+      {
+        "id": "nada",
+        "nombre": "Sin mejillas",
+        "capas": {}
+      }
+    ],
+    "boca": [
+      {
+        "id": "sonrisa",
+        "nombre": "Sonrisa pequeña",
+        "capas": {
+          "boca": "../assets/kme/boca/sonrisa.svg"
+        }
+      },
+      {
+        "id": "risa",
+        "nombre": "Risa abierta",
+        "capas": {
+          "boca": "../assets/kme/boca/risa.svg"
+        }
+      },
+      {
+        "id": "asombro",
+        "nombre": "Asombro",
+        "capas": {
+          "boca": "../assets/kme/boca/asombro.svg"
+        }
+      },
+      {
+        "id": "tristeza",
+        "nombre": "Tristeza suave",
+        "capas": {
+          "boca": "../assets/kme/boca/tristeza.svg"
+        }
+      },
+      {
+        "id": "desanimo",
+        "nombre": "Desánimo",
+        "capas": {
+          "boca": "../assets/kme/boca/desanimo.svg"
+        }
+      },
+      {
+        "id": "puchero",
+        "nombre": "Puchero",
+        "capas": {
+          "boca": "../assets/kme/boca/puchero.svg"
+        }
+      },
+      {
+        "id": "preocupacion",
+        "nombre": "Preocupación",
+        "capas": {
+          "boca": "../assets/kme/boca/preocupacion.svg"
+        }
+      },
+      {
+        "id": "incomodidad",
+        "nombre": "Incomodidad",
+        "capas": {
+          "boca": "../assets/kme/boca/incomodidad.svg"
+        }
+      },
+      {
+        "id": "enfado",
+        "nombre": "Enfado contenido",
+        "capas": {
+          "boca": "../assets/kme/boca/enfado.svg"
+        }
+      },
+      {
+        "id": "serenidad",
+        "nombre": "Serenidad",
+        "capas": {
+          "boca": "../assets/kme/boca/serenidad.svg"
+        }
+      },
+      {
+        "id": "timidez",
+        "nombre": "Sonrisa tímida",
+        "capas": {
+          "boca": "../assets/kme/boca/timidez.svg"
+        }
+      }
+    ],
+    "ropa.abajo": [
+      {
+        "id": "cargo-integrada-delgado",
+        "nombre": "Pantalón cargo con piernas · delgado",
+        "familia": "cargo-integrada",
+        "anterior": "cargo",
+        "cuerpoCompatible": "relajado",
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/cargo-integrada-delgado.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/cargo-integrada-delgado.svg"
+        }
+      },
+      {
+        "id": "falda-integrada-delgado",
+        "nombre": "Falda plisada con piernas · delgado",
+        "familia": "falda-integrada",
+        "anterior": "falda",
+        "cuerpoCompatible": "relajado",
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/falda-integrada-delgado.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/falda-integrada-delgado.svg"
+        }
+      },
+      {
+        "id": "bermudas-integrada-delgado",
+        "nombre": "Bermudas con piernas · delgado",
+        "familia": "bermudas-integrada",
+        "anterior": "bermudas",
+        "cuerpoCompatible": "relajado",
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/bermudas-integrada-delgado.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/bermudas-integrada-delgado.svg"
+        }
+      },
+      {
+        "id": "cargo-integrada-medio",
+        "nombre": "Pantalón cargo con piernas · medio",
+        "familia": "cargo-integrada",
+        "anterior": "cargo",
+        "cuerpoCompatible": "recto",
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/cargo-integrada-medio.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/cargo-integrada-medio.svg"
+        }
+      },
+      {
+        "id": "falda-integrada-medio",
+        "nombre": "Falda plisada con piernas · medio",
+        "familia": "falda-integrada",
+        "anterior": "falda",
+        "cuerpoCompatible": "recto",
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/falda-integrada-medio.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/falda-integrada-medio.svg"
+        }
+      },
+      {
+        "id": "bermudas-integrada-medio",
+        "nombre": "Bermudas con piernas · medio",
+        "familia": "bermudas-integrada",
+        "anterior": "bermudas",
+        "cuerpoCompatible": "recto",
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/bermudas-integrada-medio.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/bermudas-integrada-medio.svg"
+        }
+      },
+      {
+        "id": "cargo-integrada-grueso",
+        "nombre": "Pantalón cargo con piernas · grueso",
+        "familia": "cargo-integrada",
+        "anterior": "cargo",
+        "cuerpoCompatible": "amplio",
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/cargo-integrada-grueso.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/cargo-integrada-grueso.svg"
+        }
+      },
+      {
+        "id": "falda-integrada-grueso",
+        "nombre": "Falda plisada con piernas · grueso",
+        "familia": "falda-integrada",
+        "anterior": "falda",
+        "cuerpoCompatible": "amplio",
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/falda-integrada-grueso.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/falda-integrada-grueso.svg"
+        }
+      },
+      {
+        "id": "bermudas-integrada-grueso",
+        "nombre": "Bermudas con piernas · grueso",
+        "familia": "bermudas-integrada",
+        "anterior": "bermudas",
+        "cuerpoCompatible": "amplio",
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/bermudas-integrada-grueso.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/bermudas-integrada-grueso.svg"
+        }
+      },
+      {
+        "id": "cargo",
+        "nombre": "Pantalón cargo",
+        "capas": {
+          "ropa_abajo": [
+            "../assets/kme/ropa_abajo/cargo-integrada-delgado.svg",
+            "../assets/kme/ropa_abajo/cargo-integrada-medio.svg",
+            "../assets/kme/ropa_abajo/cargo-integrada-grueso.svg"
+          ]
+        },
+        "indicePorCuerpo": {
+          "relajado": 0,
+          "recto": 1,
+          "amplio": 2
+        },
+        "gruposPorCapa": {
+          "ropa_abajo": "prenda"
+        }
+      },
+      {
+        "id": "falda",
+        "nombre": "Falda plisada",
+        "capas": {
+          "ropa_abajo": [
+            "../assets/kme/ropa_abajo/falda-integrada-delgado.svg",
+            "../assets/kme/ropa_abajo/falda-integrada-medio.svg",
+            "../assets/kme/ropa_abajo/falda-integrada-grueso.svg"
+          ]
+        },
+        "indicePorCuerpo": {
+          "relajado": 0,
+          "recto": 1,
+          "amplio": 2
+        },
+        "gruposPorCapa": {
+          "ropa_abajo": "prenda"
+        }
+      },
+      {
+        "id": "bermudas",
+        "nombre": "Bermudas amplias",
+        "capas": {
+          "ropa_abajo": [
+            "../assets/kme/ropa_abajo/bermudas-integrada-delgado.svg",
+            "../assets/kme/ropa_abajo/bermudas-integrada-medio.svg",
+            "../assets/kme/ropa_abajo/bermudas-integrada-grueso.svg"
+          ]
+        },
+        "indicePorCuerpo": {
+          "relajado": 0,
+          "recto": 1,
+          "amplio": 2
+        },
+        "gruposPorCapa": {
+          "ropa_abajo": "prenda"
+        }
+      },
+      {
+        "id": "cargo-beat-abajo-delgado",
+        "nombre": "Cargo Beat · delgado",
+        "coleccion": "lamina-kpop",
+        "familia": "cargo-beat",
+        "cuerpoCompatible": "relajado",
+        "cinturaY": 350,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/cargo-beat-delgado.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/cargo-beat-delgado.svg"
+        }
+      },
+      {
+        "id": "cargo-beat-abajo-medio",
+        "nombre": "Cargo Beat · medio",
+        "coleccion": "lamina-kpop",
+        "familia": "cargo-beat",
+        "cuerpoCompatible": "recto",
+        "cinturaY": 350,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/cargo-beat-medio.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/cargo-beat-medio.svg"
+        }
+      },
+      {
+        "id": "cargo-beat-abajo-grueso",
+        "nombre": "Cargo Beat · grueso",
+        "coleccion": "lamina-kpop",
+        "familia": "cargo-beat",
+        "cuerpoCompatible": "amplio",
+        "cinturaY": 350,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/cargo-beat-grueso.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/cargo-beat-grueso.svg"
+        }
+      },
+      {
+        "id": "denim-layer-abajo-delgado",
+        "nombre": "Denim Layer · delgado",
+        "coleccion": "lamina-kpop",
+        "familia": "denim-layer",
+        "cuerpoCompatible": "relajado",
+        "cinturaY": 350,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/denim-layer-delgado.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/denim-layer-delgado.svg"
+        }
+      },
+      {
+        "id": "denim-layer-abajo-medio",
+        "nombre": "Denim Layer · medio",
+        "coleccion": "lamina-kpop",
+        "familia": "denim-layer",
+        "cuerpoCompatible": "recto",
+        "cinturaY": 350,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/denim-layer-medio.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/denim-layer-medio.svg"
+        }
+      },
+      {
+        "id": "denim-layer-abajo-grueso",
+        "nombre": "Denim Layer · grueso",
+        "coleccion": "lamina-kpop",
+        "familia": "denim-layer",
+        "cuerpoCompatible": "amplio",
+        "cinturaY": 350,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/denim-layer-grueso.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/denim-layer-grueso.svg"
+        }
+      },
+      {
+        "id": "school-remix-abajo-delgado",
+        "nombre": "School Remix · delgado",
+        "coleccion": "lamina-kpop",
+        "familia": "school-remix",
+        "cuerpoCompatible": "relajado",
+        "cinturaY": 350,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/school-remix-delgado.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/school-remix-delgado.svg"
+        }
+      },
+      {
+        "id": "school-remix-abajo-medio",
+        "nombre": "School Remix · medio",
+        "coleccion": "lamina-kpop",
+        "familia": "school-remix",
+        "cuerpoCompatible": "recto",
+        "cinturaY": 350,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/school-remix-medio.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/school-remix-medio.svg"
+        }
+      },
+      {
+        "id": "school-remix-abajo-grueso",
+        "nombre": "School Remix · grueso",
+        "coleccion": "lamina-kpop",
+        "familia": "school-remix",
+        "cuerpoCompatible": "amplio",
+        "cinturaY": 350,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/school-remix-grueso.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/school-remix-grueso.svg"
+        }
+      },
+      {
+        "id": "racing-pop-abajo-delgado",
+        "nombre": "Racing Pop · delgado",
+        "coleccion": "lamina-kpop",
+        "familia": "racing-pop",
+        "cuerpoCompatible": "relajado",
+        "cinturaY": 350,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/racing-pop-delgado.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/racing-pop-delgado.svg"
+        }
+      },
+      {
+        "id": "racing-pop-abajo-medio",
+        "nombre": "Racing Pop · medio",
+        "coleccion": "lamina-kpop",
+        "familia": "racing-pop",
+        "cuerpoCompatible": "recto",
+        "cinturaY": 350,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/racing-pop-medio.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/racing-pop-medio.svg"
+        }
+      },
+      {
+        "id": "racing-pop-abajo-grueso",
+        "nombre": "Racing Pop · grueso",
+        "coleccion": "lamina-kpop",
+        "familia": "racing-pop",
+        "cuerpoCompatible": "amplio",
+        "cinturaY": 350,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/racing-pop-grueso.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/racing-pop-grueso.svg"
+        }
+      },
+      {
+        "id": "pocket-pop-abajo-delgado",
+        "nombre": "Pocket Pop · delgado",
+        "coleccion": "lamina-kpop",
+        "familia": "pocket-pop",
+        "cuerpoCompatible": "relajado",
+        "cinturaY": 370,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/pocket-pop-delgado.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/pocket-pop-delgado.svg"
+        }
+      },
+      {
+        "id": "pocket-pop-abajo-medio",
+        "nombre": "Pocket Pop · medio",
+        "coleccion": "lamina-kpop",
+        "familia": "pocket-pop",
+        "cuerpoCompatible": "recto",
+        "cinturaY": 370,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/pocket-pop-medio.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/pocket-pop-medio.svg"
+        }
+      },
+      {
+        "id": "pocket-pop-abajo-grueso",
+        "nombre": "Pocket Pop · grueso",
+        "coleccion": "lamina-kpop",
+        "familia": "pocket-pop",
+        "cuerpoCompatible": "amplio",
+        "cinturaY": 370,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/pocket-pop-grueso.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/pocket-pop-grueso.svg"
+        }
+      },
+      {
+        "id": "ribbon-punk-abajo-delgado",
+        "nombre": "Ribbon Punk · delgado",
+        "coleccion": "lamina-kpop",
+        "familia": "ribbon-punk",
+        "cuerpoCompatible": "relajado",
+        "cinturaY": 350,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/ribbon-punk-delgado.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/ribbon-punk-delgado.svg"
+        }
+      },
+      {
+        "id": "ribbon-punk-abajo-medio",
+        "nombre": "Ribbon Punk · medio",
+        "coleccion": "lamina-kpop",
+        "familia": "ribbon-punk",
+        "cuerpoCompatible": "recto",
+        "cinturaY": 350,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/ribbon-punk-medio.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/ribbon-punk-medio.svg"
+        }
+      },
+      {
+        "id": "ribbon-punk-abajo-grueso",
+        "nombre": "Ribbon Punk · grueso",
+        "coleccion": "lamina-kpop",
+        "familia": "ribbon-punk",
+        "cuerpoCompatible": "amplio",
+        "cinturaY": 350,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/ribbon-punk-grueso.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/ribbon-punk-grueso.svg"
+        }
+      },
+      {
+        "id": "denim-star-abajo-delgado",
+        "nombre": "Denim Star · delgado",
+        "coleccion": "lamina-kpop",
+        "familia": "denim-star",
+        "cuerpoCompatible": "relajado",
+        "cinturaY": 370,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/denim-star-delgado.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/denim-star-delgado.svg"
+        }
+      },
+      {
+        "id": "denim-star-abajo-medio",
+        "nombre": "Denim Star · medio",
+        "coleccion": "lamina-kpop",
+        "familia": "denim-star",
+        "cuerpoCompatible": "recto",
+        "cinturaY": 370,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/denim-star-medio.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/denim-star-medio.svg"
+        }
+      },
+      {
+        "id": "denim-star-abajo-grueso",
+        "nombre": "Denim Star · grueso",
+        "coleccion": "lamina-kpop",
+        "familia": "denim-star",
+        "cuerpoCompatible": "amplio",
+        "cinturaY": 370,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/denim-star-grueso.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/denim-star-grueso.svg"
+        }
+      },
+      {
+        "id": "stage-noir-abajo-delgado",
+        "nombre": "Stage Noir · delgado",
+        "coleccion": "lamina-kpop",
+        "familia": "stage-noir",
+        "cuerpoCompatible": "relajado",
+        "cinturaY": 350,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/stage-noir-delgado.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/stage-noir-delgado.svg"
+        }
+      },
+      {
+        "id": "stage-noir-abajo-medio",
+        "nombre": "Stage Noir · medio",
+        "coleccion": "lamina-kpop",
+        "familia": "stage-noir",
+        "cuerpoCompatible": "recto",
+        "cinturaY": 350,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/stage-noir-medio.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/stage-noir-medio.svg"
+        }
+      },
+      {
+        "id": "stage-noir-abajo-grueso",
+        "nombre": "Stage Noir · grueso",
+        "coleccion": "lamina-kpop",
+        "familia": "stage-noir",
+        "cuerpoCompatible": "amplio",
+        "cinturaY": 350,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/stage-noir-grueso.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/stage-noir-grueso.svg"
+        }
+      }
+    ],
+    "ropa.arriba": [
+      {
+        "id": "camiseta-integrada-grueso",
+        "nombre": "Camiseta unida · grueso",
+        "cuerpoCompatible": "amplio",
+        "familia": "camiseta-integrada",
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "capas": {
+          "ropa_arriba": "../assets/kme/ropa_arriba/camiseta-integrada-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
+      },
+      {
+        "id": "camiseta-integrada-medio",
+        "nombre": "Camiseta unida · medio",
+        "cuerpoCompatible": "recto",
+        "familia": "camiseta-integrada",
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "capas": {
+          "ropa_arriba": "../assets/kme/ropa_arriba/camiseta-integrada-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "camiseta-integrada-delgado",
+        "nombre": "Camiseta unida · delgado",
+        "cuerpoCompatible": "relajado",
+        "familia": "camiseta-integrada",
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "capas": {
+          "ropa_arriba": "../assets/kme/ropa_arriba/camiseta-integrada-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "camiseta",
+        "nombre": "Camiseta · otra opción",
+        "capas": {
+          "ropa_arriba": [
+            "../assets/kme/ropa_arriba/camiseta-revisada-delgado.svg",
+            "../assets/kme/ropa_arriba/camiseta-revisada-medio.svg",
+            "../assets/kme/ropa_arriba/camiseta-revisada-grueso.svg"
+          ]
+        },
+        "indicePorCuerpo": {
+          "relajado": 0,
+          "recto": 1,
+          "amplio": 2
+        }
+      },
+      {
+        "id": "sudadera",
+        "nombre": "Sudadera",
+        "capas": {
+          "ropa_arriba": [
+            "../assets/kme/ropa_arriba/sudadera-revisada-delgado.svg",
+            "../assets/kme/ropa_arriba/sudadera-revisada-medio.svg",
+            "../assets/kme/ropa_arriba/sudadera-revisada-grueso.svg"
+          ]
+        },
+        "indicePorCuerpo": {
+          "relajado": 0,
+          "recto": 1,
+          "amplio": 2
+        }
+      },
+      {
+        "id": "chaqueta",
+        "nombre": "Chaqueta",
+        "capas": {
+          "ropa_arriba": [
+            "../assets/kme/ropa_arriba/chaqueta-revisada-delgado.svg",
+            "../assets/kme/ropa_arriba/chaqueta-revisada-medio.svg",
+            "../assets/kme/ropa_arriba/chaqueta-revisada-grueso.svg"
+          ]
+        },
+        "indicePorCuerpo": {
+          "relajado": 0,
+          "recto": 1,
+          "amplio": 2
+        }
+      },
+      {
+        "id": "cargo-beat-arriba-delgado",
+        "nombre": "Cargo Beat · delgado",
+        "coleccion": "lamina-kpop",
+        "familia": "cargo-beat",
+        "cuerpoCompatible": "relajado",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/cargo-beat-delgado.svg",
+          "torso": "../assets/kme/ropa_arriba/cargo-beat-delgado.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/cargo-beat-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "cargo-beat-arriba-medio",
+        "nombre": "Cargo Beat · medio",
+        "coleccion": "lamina-kpop",
+        "familia": "cargo-beat",
+        "cuerpoCompatible": "recto",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/cargo-beat-medio.svg",
+          "torso": "../assets/kme/ropa_arriba/cargo-beat-medio.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/cargo-beat-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "cargo-beat-arriba-grueso",
+        "nombre": "Cargo Beat · grueso",
+        "coleccion": "lamina-kpop",
+        "familia": "cargo-beat",
+        "cuerpoCompatible": "amplio",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/cargo-beat-grueso.svg",
+          "torso": "../assets/kme/ropa_arriba/cargo-beat-grueso.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/cargo-beat-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
+      },
+      {
+        "id": "denim-layer-arriba-delgado",
+        "nombre": "Denim Layer · delgado",
+        "coleccion": "lamina-kpop",
+        "familia": "denim-layer",
+        "cuerpoCompatible": "relajado",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/denim-layer-delgado.svg",
+          "torso": "../assets/kme/ropa_arriba/denim-layer-delgado.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/denim-layer-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "denim-layer-arriba-medio",
+        "nombre": "Denim Layer · medio",
+        "coleccion": "lamina-kpop",
+        "familia": "denim-layer",
+        "cuerpoCompatible": "recto",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/denim-layer-medio.svg",
+          "torso": "../assets/kme/ropa_arriba/denim-layer-medio.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/denim-layer-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "denim-layer-arriba-grueso",
+        "nombre": "Denim Layer · grueso",
+        "coleccion": "lamina-kpop",
+        "familia": "denim-layer",
+        "cuerpoCompatible": "amplio",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/denim-layer-grueso.svg",
+          "torso": "../assets/kme/ropa_arriba/denim-layer-grueso.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/denim-layer-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
+      },
+      {
+        "id": "school-remix-arriba-delgado",
+        "nombre": "School Remix · delgado",
+        "coleccion": "lamina-kpop",
+        "familia": "school-remix",
+        "cuerpoCompatible": "relajado",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/school-remix-delgado.svg",
+          "torso": "../assets/kme/ropa_arriba/school-remix-delgado.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/school-remix-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "school-remix-arriba-medio",
+        "nombre": "School Remix · medio",
+        "coleccion": "lamina-kpop",
+        "familia": "school-remix",
+        "cuerpoCompatible": "recto",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/school-remix-medio.svg",
+          "torso": "../assets/kme/ropa_arriba/school-remix-medio.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/school-remix-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "school-remix-arriba-grueso",
+        "nombre": "School Remix · grueso",
+        "coleccion": "lamina-kpop",
+        "familia": "school-remix",
+        "cuerpoCompatible": "amplio",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/school-remix-grueso.svg",
+          "torso": "../assets/kme/ropa_arriba/school-remix-grueso.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/school-remix-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
+      },
+      {
+        "id": "racing-pop-arriba-delgado",
+        "nombre": "Racing Pop · delgado",
+        "coleccion": "lamina-kpop",
+        "familia": "racing-pop",
+        "cuerpoCompatible": "relajado",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/racing-pop-delgado.svg",
+          "torso": "../assets/kme/ropa_arriba/racing-pop-delgado.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/racing-pop-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "racing-pop-arriba-medio",
+        "nombre": "Racing Pop · medio",
+        "coleccion": "lamina-kpop",
+        "familia": "racing-pop",
+        "cuerpoCompatible": "recto",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/racing-pop-medio.svg",
+          "torso": "../assets/kme/ropa_arriba/racing-pop-medio.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/racing-pop-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "racing-pop-arriba-grueso",
+        "nombre": "Racing Pop · grueso",
+        "coleccion": "lamina-kpop",
+        "familia": "racing-pop",
+        "cuerpoCompatible": "amplio",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/racing-pop-grueso.svg",
+          "torso": "../assets/kme/ropa_arriba/racing-pop-grueso.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/racing-pop-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
+      },
+      {
+        "id": "pocket-pop-arriba-delgado",
+        "nombre": "Pocket Pop · delgado",
+        "coleccion": "lamina-kpop",
+        "familia": "pocket-pop",
+        "cuerpoCompatible": "relajado",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/pocket-pop-delgado.svg",
+          "torso": "../assets/kme/ropa_arriba/pocket-pop-delgado.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/pocket-pop-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "pocket-pop-arriba-medio",
+        "nombre": "Pocket Pop · medio",
+        "coleccion": "lamina-kpop",
+        "familia": "pocket-pop",
+        "cuerpoCompatible": "recto",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/pocket-pop-medio.svg",
+          "torso": "../assets/kme/ropa_arriba/pocket-pop-medio.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/pocket-pop-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "pocket-pop-arriba-grueso",
+        "nombre": "Pocket Pop · grueso",
+        "coleccion": "lamina-kpop",
+        "familia": "pocket-pop",
+        "cuerpoCompatible": "amplio",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/pocket-pop-grueso.svg",
+          "torso": "../assets/kme/ropa_arriba/pocket-pop-grueso.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/pocket-pop-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
+      },
+      {
+        "id": "ribbon-punk-arriba-delgado",
+        "nombre": "Ribbon Punk · delgado",
+        "coleccion": "lamina-kpop",
+        "familia": "ribbon-punk",
+        "cuerpoCompatible": "relajado",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/ribbon-punk-delgado.svg",
+          "torso": "../assets/kme/ropa_arriba/ribbon-punk-delgado.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/ribbon-punk-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "ribbon-punk-arriba-medio",
+        "nombre": "Ribbon Punk · medio",
+        "coleccion": "lamina-kpop",
+        "familia": "ribbon-punk",
+        "cuerpoCompatible": "recto",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/ribbon-punk-medio.svg",
+          "torso": "../assets/kme/ropa_arriba/ribbon-punk-medio.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/ribbon-punk-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "ribbon-punk-arriba-grueso",
+        "nombre": "Ribbon Punk · grueso",
+        "coleccion": "lamina-kpop",
+        "familia": "ribbon-punk",
+        "cuerpoCompatible": "amplio",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/ribbon-punk-grueso.svg",
+          "torso": "../assets/kme/ropa_arriba/ribbon-punk-grueso.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/ribbon-punk-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
+      },
+      {
+        "id": "denim-star-arriba-delgado",
+        "nombre": "Denim Star · delgado",
+        "coleccion": "lamina-kpop",
+        "familia": "denim-star",
+        "cuerpoCompatible": "relajado",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/denim-star-delgado.svg",
+          "torso": "../assets/kme/ropa_arriba/denim-star-delgado.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/denim-star-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "denim-star-arriba-medio",
+        "nombre": "Denim Star · medio",
+        "coleccion": "lamina-kpop",
+        "familia": "denim-star",
+        "cuerpoCompatible": "recto",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/denim-star-medio.svg",
+          "torso": "../assets/kme/ropa_arriba/denim-star-medio.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/denim-star-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "denim-star-arriba-grueso",
+        "nombre": "Denim Star · grueso",
+        "coleccion": "lamina-kpop",
+        "familia": "denim-star",
+        "cuerpoCompatible": "amplio",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/denim-star-grueso.svg",
+          "torso": "../assets/kme/ropa_arriba/denim-star-grueso.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/denim-star-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
+      },
+      {
+        "id": "stage-noir-arriba-delgado",
+        "nombre": "Stage Noir · delgado",
+        "coleccion": "lamina-kpop",
+        "familia": "stage-noir",
+        "cuerpoCompatible": "relajado",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/stage-noir-delgado.svg",
+          "torso": "../assets/kme/ropa_arriba/stage-noir-delgado.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/stage-noir-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "stage-noir-arriba-medio",
+        "nombre": "Stage Noir · medio",
+        "coleccion": "lamina-kpop",
+        "familia": "stage-noir",
+        "cuerpoCompatible": "recto",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/stage-noir-medio.svg",
+          "torso": "../assets/kme/ropa_arriba/stage-noir-medio.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/stage-noir-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "stage-noir-arriba-grueso",
+        "nombre": "Stage Noir · grueso",
+        "coleccion": "lamina-kpop",
+        "familia": "stage-noir",
+        "cuerpoCompatible": "amplio",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/stage-noir-grueso.svg",
+          "torso": "../assets/kme/ropa_arriba/stage-noir-grueso.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/stage-noir-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
+      },
+      {
+        "id": "top-orbita-arriba-delgado",
+        "nombre": "Órbita · un hombro · delgado",
+        "coleccion": "tops-kpop",
+        "familia": "top-orbita",
+        "cuerpoCompatible": "relajado",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/top-orbita-delgado.svg",
+          "torso": "../assets/kme/ropa_arriba/top-orbita-delgado.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/top-orbita-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "top-orbita-arriba-medio",
+        "nombre": "Órbita · un hombro · medio",
+        "coleccion": "tops-kpop",
+        "familia": "top-orbita",
+        "cuerpoCompatible": "recto",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/top-orbita-medio.svg",
+          "torso": "../assets/kme/ropa_arriba/top-orbita-medio.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/top-orbita-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "top-orbita-arriba-grueso",
+        "nombre": "Órbita · un hombro · grueso",
+        "coleccion": "tops-kpop",
+        "familia": "top-orbita",
+        "cuerpoCompatible": "amplio",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/top-orbita-grueso.svg",
+          "torso": "../assets/kme/ropa_arriba/top-orbita-grueso.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/top-orbita-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
+      },
+      {
+        "id": "top-halter-arriba-delgado",
+        "nombre": "Halter de escenario · delgado",
+        "coleccion": "tops-kpop",
+        "familia": "top-halter",
+        "cuerpoCompatible": "relajado",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/top-halter-delgado.svg",
+          "torso": "../assets/kme/ropa_arriba/top-halter-delgado.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/top-halter-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "top-halter-arriba-medio",
+        "nombre": "Halter de escenario · medio",
+        "coleccion": "tops-kpop",
+        "familia": "top-halter",
+        "cuerpoCompatible": "recto",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/top-halter-medio.svg",
+          "torso": "../assets/kme/ropa_arriba/top-halter-medio.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/top-halter-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "top-halter-arriba-grueso",
+        "nombre": "Halter de escenario · grueso",
+        "coleccion": "tops-kpop",
+        "familia": "top-halter",
+        "cuerpoCompatible": "amplio",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/top-halter-grueso.svg",
+          "torso": "../assets/kme/ropa_arriba/top-halter-grueso.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/top-halter-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
+      },
+      {
+        "id": "top-deportivo-arriba-delgado",
+        "nombre": "Top deportivo · delgado",
+        "coleccion": "tops-kpop",
+        "familia": "top-deportivo",
+        "cuerpoCompatible": "relajado",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/top-deportivo-delgado.svg",
+          "torso": "../assets/kme/ropa_arriba/top-deportivo-delgado.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/top-deportivo-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "top-deportivo-arriba-medio",
+        "nombre": "Top deportivo · medio",
+        "coleccion": "tops-kpop",
+        "familia": "top-deportivo",
+        "cuerpoCompatible": "recto",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/top-deportivo-medio.svg",
+          "torso": "../assets/kme/ropa_arriba/top-deportivo-medio.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/top-deportivo-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "top-deportivo-arriba-grueso",
+        "nombre": "Top deportivo · grueso",
+        "coleccion": "tops-kpop",
+        "familia": "top-deportivo",
+        "cuerpoCompatible": "amplio",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/top-deportivo-grueso.svg",
+          "torso": "../assets/kme/ropa_arriba/top-deportivo-grueso.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/top-deportivo-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
+      },
+      {
+        "id": "top-cruzado-arriba-delgado",
+        "nombre": "Top cruzado · delgado",
+        "coleccion": "tops-kpop",
+        "familia": "top-cruzado",
+        "cuerpoCompatible": "relajado",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/top-cruzado-delgado.svg",
+          "torso": "../assets/kme/ropa_arriba/top-cruzado-delgado.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/top-cruzado-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "top-cruzado-arriba-medio",
+        "nombre": "Top cruzado · medio",
+        "coleccion": "tops-kpop",
+        "familia": "top-cruzado",
+        "cuerpoCompatible": "recto",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/top-cruzado-medio.svg",
+          "torso": "../assets/kme/ropa_arriba/top-cruzado-medio.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/top-cruzado-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "top-cruzado-arriba-grueso",
+        "nombre": "Top cruzado · grueso",
+        "coleccion": "tops-kpop",
+        "familia": "top-cruzado",
+        "cuerpoCompatible": "amplio",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/top-cruzado-grueso.svg",
+          "torso": "../assets/kme/ropa_arriba/top-cruzado-grueso.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/top-cruzado-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
+      },
+      {
+        "id": "top-holgado-arriba-delgado",
+        "nombre": "Camiseta corta holgada · delgado",
+        "coleccion": "tops-kpop",
+        "familia": "top-holgado",
+        "cuerpoCompatible": "relajado",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/top-holgado-delgado.svg",
+          "torso": "../assets/kme/ropa_arriba/top-holgado-delgado.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/top-holgado-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "top-holgado-arriba-medio",
+        "nombre": "Camiseta corta holgada · medio",
+        "coleccion": "tops-kpop",
+        "familia": "top-holgado",
+        "cuerpoCompatible": "recto",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/top-holgado-medio.svg",
+          "torso": "../assets/kme/ropa_arriba/top-holgado-medio.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/top-holgado-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "top-holgado-arriba-grueso",
+        "nombre": "Camiseta corta holgada · grueso",
+        "coleccion": "tops-kpop",
+        "familia": "top-holgado",
+        "cuerpoCompatible": "amplio",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/top-holgado-grueso.svg",
+          "torso": "../assets/kme/ropa_arriba/top-holgado-grueso.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/top-holgado-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
+      }
+    ],
+    "pelo.estilo": [
+      {
+        "id": "mono",
+        "nombre": "Moño suelto",
+        "capas": {
+          "pelo_atras": "../assets/kme/pelo_atras/mono.svg",
+          "pelo_frente": "../assets/kme/pelo_frente/mono.svg"
+        }
+      },
+      {
+        "id": "corto",
+        "nombre": "Corto asimétrico",
+        "capas": {
+          "pelo_atras": "../assets/kme/pelo_atras/corto.svg",
+          "pelo_frente": "../assets/kme/pelo_frente/corto.svg"
+        }
+      },
+      {
+        "id": "bob",
+        "nombre": "Bob con mechones",
+        "capas": {
+          "pelo_atras": "../assets/kme/pelo_atras/bob.svg",
+          "pelo_frente": "../assets/kme/pelo_frente/bob.svg"
+        }
+      },
+      {
+        "id": "cortinas-textura",
+        "nombre": "Cortinas con textura",
+        "coleccion": "lamina-kpop",
+        "capas": {
+          "pelo_atras": "../assets/kme/pelo_atras/cortinas-textura.svg",
+          "pelo_frente": "../assets/kme/pelo_frente/cortinas-textura.svg"
+        }
+      },
+      {
+        "id": "coleta-ondas",
+        "nombre": "Coleta ondulada",
+        "coleccion": "lamina-kpop",
+        "capas": {
+          "pelo_atras": "../assets/kme/pelo_atras/coleta-ondas.svg",
+          "pelo_frente": "../assets/kme/pelo_frente/coleta-ondas.svg"
+        }
+      },
+      {
+        "id": "doble-mono-lazos",
+        "nombre": "Dos moños con lazos",
+        "coleccion": "lamina-kpop",
+        "capas": {
+          "pelo_atras": "../assets/kme/pelo_atras/doble-mono-lazos.svg",
+          "pelo_frente": "../assets/kme/pelo_frente/doble-mono-lazos.svg"
+        }
+      },
+      {
+        "id": "trenza-lateral",
+        "nombre": "Trenza lateral",
+        "coleccion": "lamina-kpop",
+        "capas": {
+          "pelo_atras": "../assets/kme/pelo_atras/trenza-lateral.svg",
+          "pelo_frente": "../assets/kme/pelo_frente/trenza-lateral.svg"
+        }
+      },
+      {
+        "id": "media-melena-ondas",
+        "nombre": "Media melena ondulada",
+        "coleccion": "lamina-kpop",
+        "capas": {
+          "pelo_atras": "../assets/kme/pelo_atras/media-melena-ondas.svg",
+          "pelo_frente": "../assets/kme/pelo_frente/media-melena-ondas.svg"
+        }
+      },
+      {
+        "id": "corto-despeinado",
+        "nombre": "Corto despeinado",
+        "coleccion": "lamina-kpop",
+        "capas": {
+          "pelo_atras": "../assets/kme/pelo_atras/corto-despeinado.svg",
+          "pelo_frente": "../assets/kme/pelo_frente/corto-despeinado.svg"
+        }
+      },
+      {
+        "id": "corto-dos-bloques",
+        "nombre": "Corto en dos bloques",
+        "coleccion": "lamina-kpop",
+        "capas": {
+          "pelo_atras": "../assets/kme/pelo_atras/corto-dos-bloques.svg",
+          "pelo_frente": "../assets/kme/pelo_frente/corto-dos-bloques.svg"
+        }
+      },
+      {
+        "id": "semirrecogido-grenas",
+        "nombre": "Semirrecogido con greñas",
+        "coleccion": "lamina-kpop",
+        "capas": {
+          "pelo_atras": "../assets/kme/pelo_atras/semirrecogido-grenas.svg",
+          "pelo_frente": "../assets/kme/pelo_frente/semirrecogido-grenas.svg"
+        }
+      }
+    ],
+    "accesorio": [
+      {
+        "id": "ninguno",
+        "nombre": "Sin accesorio",
+        "capas": {}
+      },
+      {
+        "id": "gafas",
+        "nombre": "Gafas redondas",
+        "capas": {
+          "accesorio": "../assets/kme/accesorio/gafas.svg"
+        }
+      },
+      {
+        "id": "auriculares",
+        "nombre": "Auriculares de estrella",
+        "capas": {
+          "accesorio": "../assets/kme/accesorio/auriculares.svg"
+        }
+      },
+      {
+        "id": "pin",
+        "nombre": "Pin de estrella",
+        "capas": {
+          "accesorio": "../assets/kme/accesorio/pin.svg"
+        }
+      }
+    ]
+  },
+  "paletas": {
+    "piel": [
+      "#fff5ef",
+      "#f6d3b8",
+      "#eab894",
+      "#d39b73",
+      "#a96f4c",
+      "#7a4a33",
+      "#fff0e9",
+      "#f5e5d6",
+      "#edcfc0",
+      "#dfbf9f",
+      "#cfa88b",
+      "#b98c70",
+      "#ae806b",
+      "#936349",
+      "#895744",
+      "#684534",
+      "#583a30",
+      "#49332d"
+    ],
+    "pelo": [
+      "#282126",
+      "#674336",
+      "#cab28d",
+      "#e83475"
+    ],
+    "ojos": [
+      "#282126",
+      "#775d43",
+      "#c28a39",
+      "#4b7158",
+      "#42688f",
+      "#9abac9",
+      "#6e737b",
+      "#ff27c0",
+      "#b878ff",
+      "#6c33ff",
+      "#00c6e8",
+      "#00df9a",
+      "#d0f423",
+      "#ff672d",
+      "#f5a5f8",
+      "#ffd000"
+    ],
+    "arriba": [
+      "#fffaf7",
+      "#282126",
+      "#6e737b",
+      "#ede0cb",
+      "#c7ab8d",
+      "#8b6248",
+      "#503a32",
+      "#293b58",
+      "#557a9d",
+      "#6b9cd1",
+      "#b8d9ec",
+      "#f5bfd3",
+      "#cc7797",
+      "#e83475",
+      "#c5b1e3",
+      "#9673b7",
+      "#6a4ba1",
+      "#b8d8c7",
+      "#56866d",
+      "#818449",
+      "#f5d975",
+      "#e8a15b",
+      "#c94d58",
+      "#793549"
+    ],
+    "abajo": [
+      "#fffaf7",
+      "#282126",
+      "#6e737b",
+      "#ede0cb",
+      "#c7ab8d",
+      "#8b6248",
+      "#503a32",
+      "#293b58",
+      "#557a9d",
+      "#6b9cd1",
+      "#b8d9ec",
+      "#f5bfd3",
+      "#cc7797",
+      "#e83475",
+      "#c5b1e3",
+      "#9673b7",
+      "#6a4ba1",
+      "#b8d8c7",
+      "#56866d",
+      "#818449",
+      "#f5d975",
+      "#e8a15b",
+      "#c94d58",
+      "#793549"
+    ]
+  },
+  "categorias": [],
+  "porDefecto": {
+    "version": 1,
+    "rostro": "redondo",
+    "cuerpo": "relajado",
+    "cejas": "suaves",
+    "grosorCejas": "medio",
+    "piel": "#fff5ef",
+    "ojos": {
+      "estilo": "redondos-guino-derecho",
+      "color": "#775d43"
+    },
+    "boca": "risa",
+    "maquillaje": {
+      "sombra": null,
+      "labial": null,
+      "sombraEstilo": "nada",
+      "labios": "nada",
+      "grosorLabios": "fino",
+      "colorLabios": "#cc7797",
+      "delineado": "nada",
+      "brillo": "nada",
+      "gemas": "nada",
+      "colorSombra": "#9673b7",
+      "colorDelineado": "#282126",
+      "colorBrillo": "#ede0cb",
+      "colorGemas": "#cc7797",
+      "colorRubor": "#cc7797",
+      "mejillas": "acuarela"
+    },
+    "pelo": {
+      "estilo": "mono",
+      "color": "#282126",
+      "acabado": "tinta",
+      "mechones": "sin",
+      "mechon1": "#e83475",
+      "mechon2": "#9673b7",
+      "mechon3": "#00c6e8"
+    },
+    "ropa": {
+      "arriba": "camiseta-integrada-delgado",
+      "colorArriba": "#fffaf7",
+      "abajo": "falda-integrada-delgado",
+      "colorAbajo": "#282126"
+    },
+    "accesorio": "auriculares",
+    "fondo": "ninguno"
+  },
+  "bases": [
+    {
+      "id": "base-01",
+      "nombre": "01 · Redondo / moño",
+      "avatar": {
+        "version": 1,
+        "rostro": "redondo",
+        "cuerpo": "relajado",
+        "cejas": "suaves",
+        "grosorCejas": "medio",
+        "piel": "#fff5ef",
+        "ojos": {
+          "estilo": "redondos-guino-derecho",
+          "color": "#775d43"
+        },
+        "boca": "risa",
+        "maquillaje": {
+          "sombra": null,
+          "labial": null,
+          "sombraEstilo": "nada",
+          "labios": "nada",
+          "grosorLabios": "fino",
+          "colorLabios": "#cc7797",
+          "delineado": "nada",
+          "brillo": "nada",
+          "gemas": "nada",
+          "colorSombra": "#9673b7",
+          "colorDelineado": "#282126",
+          "colorBrillo": "#ede0cb",
+          "colorGemas": "#cc7797",
+          "colorRubor": "#cc7797",
+          "mejillas": "acuarela"
+        },
+        "pelo": {
+          "estilo": "mono",
+          "color": "#282126",
+          "acabado": "tinta",
+          "mechones": "sin",
+          "mechon1": "#e83475",
+          "mechon2": "#9673b7",
+          "mechon3": "#00c6e8"
+        },
+        "ropa": {
+          "arriba": "camiseta-integrada-delgado",
+          "colorArriba": "#fffaf7",
+          "abajo": "falda-integrada-delgado",
+          "colorAbajo": "#282126"
+        },
+        "accesorio": "auriculares",
+        "fondo": "ninguno"
+      }
+    },
+    {
+      "id": "base-02",
+      "nombre": "02 · Ovalado / corto",
+      "avatar": {
+        "version": 1,
+        "rostro": "ovalado",
+        "cuerpo": "recto",
+        "cejas": "suaves",
+        "grosorCejas": "medio",
+        "piel": "#fff5ef",
+        "ojos": {
+          "estilo": "alargados-abiertos",
+          "color": "#775d43"
+        },
+        "boca": "sonrisa",
+        "maquillaje": {
+          "sombra": null,
+          "labial": null,
+          "sombraEstilo": "nada",
+          "labios": "nada",
+          "grosorLabios": "fino",
+          "colorLabios": "#cc7797",
+          "delineado": "nada",
+          "brillo": "nada",
+          "gemas": "nada",
+          "colorSombra": "#9673b7",
+          "colorDelineado": "#282126",
+          "colorBrillo": "#ede0cb",
+          "colorGemas": "#cc7797",
+          "colorRubor": "#cc7797",
+          "mejillas": "comillas"
+        },
+        "pelo": {
+          "estilo": "corto",
+          "color": "#282126",
+          "acabado": "tinta",
+          "mechones": "sin",
+          "mechon1": "#e83475",
+          "mechon2": "#9673b7",
+          "mechon3": "#00c6e8"
+        },
+        "ropa": {
+          "arriba": "camiseta-integrada-medio",
+          "colorArriba": "#fffaf7",
+          "abajo": "cargo-integrada-medio",
+          "colorAbajo": "#282126"
+        },
+        "accesorio": "pin",
+        "fondo": "ninguno"
+      }
+    },
+    {
+      "id": "base-03",
+      "nombre": "03 · Cuadrado / bob",
+      "avatar": {
+        "version": 1,
+        "rostro": "cuadrado",
+        "cuerpo": "amplio",
+        "cejas": "suaves",
+        "grosorCejas": "medio",
+        "piel": "#fff5ef",
+        "ojos": {
+          "estilo": "almendrados-cerrados",
+          "color": "#775d43"
+        },
+        "boca": "sonrisa",
+        "maquillaje": {
+          "sombra": null,
+          "labial": null,
+          "sombraEstilo": "nada",
+          "labios": "nada",
+          "grosorLabios": "fino",
+          "colorLabios": "#cc7797",
+          "delineado": "nada",
+          "brillo": "nada",
+          "gemas": "nada",
+          "colorSombra": "#9673b7",
+          "colorDelineado": "#282126",
+          "colorBrillo": "#ede0cb",
+          "colorGemas": "#cc7797",
+          "colorRubor": "#cc7797",
+          "mejillas": "pecas"
+        },
+        "pelo": {
+          "estilo": "bob",
+          "color": "#282126",
+          "acabado": "tinta",
+          "mechones": "sin",
+          "mechon1": "#e83475",
+          "mechon2": "#9673b7",
+          "mechon3": "#00c6e8"
+        },
+        "ropa": {
+          "arriba": "camiseta-integrada-grueso",
+          "colorArriba": "#fffaf7",
+          "abajo": "bermudas-integrada-grueso",
+          "colorAbajo": "#282126"
+        },
+        "accesorio": "gafas",
+        "fondo": "ninguno"
+      }
+    }
+  ],
+  "nombresColor": {
+    "#fff5ef": "Marfil cálido",
+    "#f6d3b8": "Melocotón",
+    "#eab894": "Arena",
+    "#d39b73": "Caramelo",
+    "#a96f4c": "Cobre",
+    "#7a4a33": "Cacao",
+    "#674336": "Castaño",
+    "#cab28d": "Rubio arena",
+    "#282126": "Tinta",
+    "#3d251e": "Café oscuro",
+    "#9a6b43": "Marrón claro",
+    "#c28a39": "Miel",
+    "#775d43": "Avellana",
+    "#b88432": "Ámbar",
+    "#4b7158": "Verde musgo",
+    "#6f7841": "Verde oliva",
+    "#92a682": "Verde salvia",
+    "#326b55": "Verde esmeralda",
+    "#42688f": "Azul profundo",
+    "#9abac9": "Azul hielo",
+    "#6e737b": "Gris",
+    "#7b8b96": "Gris azulado",
+    "#8d5046": "Castaño cobrizo",
+    "#fffaf7": "Blanco cálido",
+    "#ede0cb": "Crema",
+    "#c7ab8d": "Beige",
+    "#8b6248": "Tierra",
+    "#503a32": "Chocolate",
+    "#293b58": "Azul marino",
+    "#557a9d": "Denim",
+    "#6b9cd1": "Azul cielo",
+    "#b8d9ec": "Azul pastel",
+    "#f5bfd3": "Rosa pastel",
+    "#cc7797": "Rosa empolvado",
+    "#e83475": "Fucsia",
+    "#c5b1e3": "Lavanda",
+    "#9673b7": "Lila",
+    "#6a4ba1": "Violeta",
+    "#b8d8c7": "Menta",
+    "#56866d": "Verde bosque",
+    "#818449": "Oliva",
+    "#f5d975": "Amarillo suave",
+    "#e8a15b": "Mandarina",
+    "#c94d58": "Rojo cereza",
+    "#793549": "Burdeos",
+    "#fff0e9": "Porcelana rosada",
+    "#f5e5d6": "Marfil neutro",
+    "#edcfc0": "Beige rosado",
+    "#dfbf9f": "Beige dorado",
+    "#cfa88b": "Almendra",
+    "#b98c70": "Miel tostada",
+    "#ae806b": "Canela neutra",
+    "#936349": "Avellana tostada",
+    "#895744": "Caoba cálida",
+    "#684534": "Cacao profundo",
+    "#583a30": "Ébano cálido",
+    "#49332d": "Ébano neutro",
+    "#ff27c0": "Magenta pop",
+    "#b878ff": "Lila eléctrico",
+    "#6c33ff": "Violeta intenso",
+    "#00c6e8": "Cian brillante",
+    "#00df9a": "Menta neón",
+    "#d0f423": "Lima neón",
+    "#ff672d": "Coral eléctrico",
+    "#f5a5f8": "Rosa fantasía",
+    "#ffd000": "Amarillo solar"
+  },
+  "gruposPaleta": {
+    "ojos": {
+      "naturales": [
+        "#282126",
+        "#775d43",
+        "#c28a39",
+        "#4b7158",
+        "#42688f",
+        "#9abac9",
+        "#6e737b"
+      ],
+      "fantasia": [
+        "#ff27c0",
+        "#b878ff",
+        "#6c33ff",
+        "#00c6e8",
+        "#00df9a",
+        "#d0f423",
+        "#ff672d",
+        "#f5a5f8",
+        "#ffd000"
+      ]
+    }
+  }
+}

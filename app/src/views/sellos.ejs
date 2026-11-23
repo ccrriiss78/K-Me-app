@@ -1,0 +1,42 @@
+<%- include('_cabecera') %>
+<section class="tarjeta sellos-studio" aria-labelledby="titulo-sellos">
+  <header class="studio-cabecera">
+    <div><p class="studio-antetitulo">Mi rincón fan · Sello Studio</p>
+      <h1 id="titulo-sellos">Mis sellos<span class="studio-rayitas" aria-hidden="true">//</span></h1>
+      <p class="studio-intro">Pequeñas creaciones que hablan de ti.</p>
+    </div>
+    <% if (sellos.length < maximo) { %><a class="boton studio-crear" href="/studio/sellos/nuevo">Crear un sello <span aria-hidden="true">＋</span></a><% } %>
+  </header>
+  <% if (eliminado) { %><p class="aviso aviso--ok" role="status">Sello borrado.</p><% } %>
+  <% if (error) { %><p class="aviso aviso--error" role="alert"><%= error %></p><% } %>
+  <% if (!sellos.length) { %>
+    <div class="sellos-vacio">
+      <div class="sellos-vacio__marca" aria-hidden="true"><img src="/img/logo-kme.svg" alt="" width="89" height="127"><span class="sellos-vacio__estrella">✦</span></div>
+      <div><p class="studio-antetitulo">Una palabra. Tu forma de sentirla.</p>
+        <h2>Tu colección empieza aquí</h2>
+        <p>Todavía no tienes sellos. Crea el primero con una palabra en hangul y tus colores.</p>
+        <p class="nota">El alias y los adornos son opcionales. Tú eliges qué cuenta tu sello.</p>
+      </div>
+    </div>
+  <% } else { %>
+    <p class="sellos-conteo">Tienes <strong><%= sellos.length %></strong> de <%= maximo %> sellos.</p>
+    <ul class="sellos-lista">
+      <% sellos.forEach((s, i) => { %>
+      <li class="sellos-lista__elemento">
+        <a class="sello-card__abrir" href="/studio/sellos/<%= s.id %>" aria-labelledby="sello-nombre-<%= s.id %>">
+          <div class="sello-card__papel"><span class="sello-card__numero" aria-hidden="true"><%= String(i + 1).padStart(2, '0') %></span>
+            <%- include('_sello', { dibujo: s.dibujo, ancho: 170, clase: 'sello--miniatura' }) %>
+          </div>
+          <span class="sellos-lista__nombre" id="sello-nombre-<%= s.id %>"><%= s.nombre %></span>
+          <span class="sello-card__editar">Abrir y editar <span aria-hidden="true">↗</span></span>
+        </a>
+        <form method="post" action="/studio/sellos/<%= s.id %>/duplicar" class="sello-card__acciones">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button type="submit" class="boton boton--pequeno boton--secundario" aria-label="Duplicar <%= s.nombre %>">Duplicar</button>
+        </form>
+      </li>
+      <% }) %>
+    </ul>
+  <% } %>
+</section>
+<%- include('_pie') %>

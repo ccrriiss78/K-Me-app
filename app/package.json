@@ -1,0 +1,30 @@
+{
+  "name": "k-me-app",
+  "version": "0.1.0",
+  "description": "K-ME · app web para fans del K-pop. Fase 1: cuentas ficticias, inicio y cierre de sesión.",
+  "private": true,
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch --env-file-if-exists=.env.local src/server.js",
+    "start": "node --env-file-if-exists=.env.local src/server.js",
+    "migrate": "node --env-file-if-exists=.env.local scripts/migrate.js",
+    "crear-cuenta": "node --env-file-if-exists=.env.local scripts/crear-cuenta.js",
+    "comprobar-bd": "node --env-file-if-exists=.env.local scripts/comprobar-bd.js",
+    "test": "node --env-file-if-exists=.env.local --test \"tests/**/*.test.js\""
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "argon2": "^0.45.2",
+    "connect-pg-simple": "^10.0.0",
+    "ejs": "^7.0.2",
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.4",
+    "express-session": "^1.19.0",
+    "helmet": "^8.3.0",
+    "pg": "^8.23.1"
+  }
+}

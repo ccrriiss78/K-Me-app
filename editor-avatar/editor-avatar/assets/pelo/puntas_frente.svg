@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
+<!-- Capa: pelo_frente · Peinado puntas, parte delantera · Lienzo 400×480 (usa assets/plantilla.svg como guía) -->
+<path class="f-pelo" d="M84.8,208.1 L55.0,190.5 L80.7,168.1 L59.9,141.9 L92.7,129.5 L83.7,98.2 L119.2,97.4 L123.3,65.3 L156.7,76.2 L173.2,47.7 L200.0,68.9 L226.8,47.7 L243.3,76.2 L276.7,65.3 L280.8,97.4 L316.3,98.2 L307.3,129.5 L340.1,141.9 L319.3,168.1 L345.0,190.5 L315.2,208.1 L300,214 L294,176 L280,188 L270,152 L254,174 L242,146 L226,172 L212,144 L198,174 L184,146 L170,172 L156,148 L144,178 L128,156 L116,190 L104,182 L100,214 Z" fill="#4a3328" stroke="#3d2f45" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M134,100 Q158,78 194,72" fill="none" stroke="#fff" stroke-opacity=".38" stroke-width="7" stroke-linecap="round"/>
+</svg>

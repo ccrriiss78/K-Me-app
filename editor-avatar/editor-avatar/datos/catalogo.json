@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "lienzo": { "ancho": 400, "alto": 480 },
+
+  "capas": [
+    { "id": "fondo",       "nombre": "Fondo",             "categoria": "fondo" },
+    { "id": "pelo_atras",  "nombre": "Cabello trasero",   "categoria": "pelo" },
+    { "id": "cuerpo",      "nombre": "Cuerpo",            "categoria": "piel" },
+    { "id": "ropa_abajo",  "nombre": "Ropa inferior",     "categoria": "ropa" },
+    { "id": "ropa_arriba", "nombre": "Ropa superior",     "categoria": "ropa" },
+    { "id": "cabeza",      "nombre": "Cabeza",            "categoria": "piel" },
+    { "id": "maquillaje",  "nombre": "Maquillaje",        "categoria": "maquillaje" },
+    { "id": "ojos",        "nombre": "Ojos",              "categoria": "ojos" },
+    { "id": "boca",        "nombre": "Boca",              "categoria": "boca" },
+    { "id": "pelo_frente", "nombre": "Cabello delantero", "categoria": "pelo" },
+    { "id": "accesorio",   "nombre": "Accesorio",         "categoria": "accesorio" }
+  ],
+
+  "fijas": [
+    { "capa": "cuerpo",     "archivo": "../assets/cuerpo/base.svg" },
+    { "capa": "cabeza",     "archivo": "../assets/cabeza/base.svg" },
+    { "capa": "maquillaje", "archivo": "../assets/maquillaje/sombra_ojos.svg" }
+  ],
+
+  "piezas": {
+    "pelo.estilo": [
+      { "id": "corto",   "nombre": "Corto",   "capas": { "pelo_atras": "../assets/pelo/corto_atras.svg",   "pelo_frente": "../assets/pelo/corto_frente.svg" } },
+      { "id": "bob",     "nombre": "Bob",     "capas": { "pelo_atras": "../assets/pelo/bob_atras.svg",     "pelo_frente": "../assets/pelo/bob_frente.svg" } },
+      { "id": "largo",   "nombre": "Largo",   "capas": { "pelo_atras": "../assets/pelo/largo_atras.svg",   "pelo_frente": "../assets/pelo/largo_frente.svg" } },
+      { "id": "coletas", "nombre": "Coletas", "capas": { "pelo_atras": "../assets/pelo/coletas_atras.svg", "pelo_frente": "../assets/pelo/coletas_frente.svg" } },
+      { "id": "mono",    "nombre": "Moño",    "capas": { "pelo_atras": "../assets/pelo/mono_atras.svg",    "pelo_frente": "../assets/pelo/mono_frente.svg" } },
+      { "id": "puntas",  "nombre": "Puntas",  "capas": { "pelo_atras": "../assets/pelo/puntas_atras.svg",  "pelo_frente": "../assets/pelo/puntas_frente.svg" } }
+    ],
+    "ojos.estilo": [
+      { "id": "redondos",   "nombre": "Redondos",   "capas": { "ojos": "../assets/ojos/redondos.svg" } },
+      { "id": "brillantes", "nombre": "Brillantes", "capas": { "ojos": "../assets/ojos/brillantes.svg" } },
+      { "id": "felices",    "nombre": "Felices",    "capas": { "ojos": "../assets/ojos/felices.svg" } },
+      { "id": "gato",       "nombre": "Gatunos",    "capas": { "ojos": "../assets/ojos/gato.svg" } },
+      { "id": "dormidos",   "nombre": "Dormidos",   "capas": { "ojos": "../assets/ojos/dormidos.svg" } },
+      { "id": "puntos",     "nombre": "Puntos",     "capas": { "ojos": "../assets/ojos/puntos.svg" } }
+    ],
+    "boca": [
+      { "id": "sonrisa",  "nombre": "Sonrisa",  "capas": { "boca": "../assets/boca/sonrisa.svg" } },
+      { "id": "abierta",  "nombre": "Alegre",   "capas": { "boca": "../assets/boca/abierta.svg" } },
+      { "id": "gato",     "nombre": "Gatuna",   "capas": { "boca": "../assets/boca/gato.svg" } },
+      { "id": "lengua",   "nombre": "Traviesa", "capas": { "boca": "../assets/boca/lengua.svg" } },
+      { "id": "sorpresa", "nombre": "Sorpresa", "capas": { "boca": "../assets/boca/sorpresa.svg" } },
+      { "id": "neutra",   "nombre": "Neutra",   "capas": { "boca": "../assets/boca/neutra.svg" } }
+    ],
+    "maquillaje.mejillas": [
+      { "id": "rubor", "nombre": "Rubor",         "capas": { "maquillaje": "../assets/maquillaje/mejillas_rubor.svg" } },
+      { "id": "pecas", "nombre": "Pecas",         "capas": { "maquillaje": "../assets/maquillaje/mejillas_pecas.svg" } },
+      { "id": "ambos", "nombre": "Rubor y pecas", "capas": { "maquillaje": ["../assets/maquillaje/mejillas_rubor.svg", "../assets/maquillaje/mejillas_pecas.svg"] } },
+      { "id": "nada",  "nombre": "Nada",          "capas": {} }
+    ],
+    "ropa.arriba": [
+      { "id": "camiseta", "nombre": "Camiseta",       "capas": { "ropa_arriba": "../assets/ropa/arriba_camiseta.svg" } },
+      { "id": "sudadera", "nombre": "Sudadera",       "capas": { "ropa_arriba": "../assets/ropa/arriba_sudadera.svg" } },
+      { "id": "rayas",    "nombre": "Jersey a rayas", "capas": { "ropa_arriba": "../assets/ropa/arriba_rayas.svg" } },
+      { "id": "vestido",  "nombre": "Vestido",        "capas": { "ropa_arriba": "../assets/ropa/arriba_vestido.svg" }, "ocultaCapas": ["ropa_abajo"] }
+    ],
+    "ropa.abajo": [
+      { "id": "pantalon", "nombre": "Pantalón",       "capas": { "ropa_abajo": "../assets/ropa/abajo_pantalon.svg" } },
+      { "id": "corto",    "nombre": "Pantalón corto", "capas": { "ropa_abajo": "../assets/ropa/abajo_corto.svg" } },
+      { "id": "falda",    "nombre": "Falda",          "capas": { "ropa_abajo": "../assets/ropa/abajo_falda.svg" } }
+    ],
+    "accesorio": [
+      { "id": "ninguno",     "nombre": "Ninguno",        "capas": {} },
+      { "id": "gafas",       "nombre": "Gafas",          "capas": { "accesorio": "../assets/accesorios/gafas.svg" } },
+      { "id": "orejas",      "nombre": "Orejas de gato", "capas": { "accesorio": "../assets/accesorios/orejas.svg" } },
+      { "id": "gorra",       "nombre": "Gorra",          "capas": { "accesorio": "../assets/accesorios/gorra.svg" } },
+      { "id": "auriculares", "nombre": "Auriculares",    "capas": { "accesorio": "../assets/accesorios/auriculares.svg" } },
+      { "id": "flor",        "nombre": "Flor",           "capas": { "accesorio": "../assets/accesorios/flor.svg" } }
+    ],
+    "fondo": [
+      { "id": "lavanda",   "nombre": "Lavanda",   "color3d": "#ece4ff", "capas": { "fondo": "../assets/fondo/lavanda.svg" } },
+      { "id": "menta",     "nombre": "Menta",     "color3d": "#daf4ea", "capas": { "fondo": "../assets/fondo/menta.svg" } },
+      { "id": "melocoton", "nombre": "Melocotón", "color3d": "#ffe6d8", "capas": { "fondo": "../assets/fondo/melocoton.svg" } },
+      { "id": "cielo",     "nombre": "Cielo",     "color3d": "#d9ecff", "capas": { "fondo": "../assets/fondo/cielo.svg" } },
+      { "id": "noche",     "nombre": "Noche",     "color3d": "#2f2a4a", "capas": { "fondo": "../assets/fondo/noche.svg" } },
+      { "id": "corazones", "nombre": "Corazones", "color3d": "#ffe2ee", "capas": { "fondo": "../assets/fondo/corazones.svg" } }
+    ]
+  },
+
+  "paletas": {
+    "piel":   ["#ffe6d6", "#f6d3b8", "#eab894", "#d39b73", "#a96f4c", "#7a4a33"],
+    "pelo":   ["#2b2230", "#4a3328", "#8a5a3b", "#e3b866", "#f3e7cc", "#e86a5c", "#ff8fc2", "#7aa5ff", "#9b7be0", "#6fcfa8"],
+    "ojos":   ["#6b4a3a", "#3b6fd1", "#3fa36b", "#9b59d0", "#e0a030", "#d14b6a", "#2b2230"],
+    "sombra": [null, "#c58bd6", "#f2a3b8", "#e8b07a", "#8fb8ea", "#9fd8c0", "#b08a6e"],
+    "labial": [null, "#e0607e", "#c43c5c", "#ff8a7a", "#b0507e", "#8a2f4a", "#f2a0a8"],
+    "arriba": ["#8fb8ea", "#ff9fb8", "#ffd36e", "#9fd8c0", "#c5a8f0", "#ffffff", "#3d4466", "#e86a5c"],
+    "abajo":  ["#3d4466", "#5b7fbf", "#2b2230", "#c9a27e", "#ff9fb8", "#9fd8c0"]
+  },
+
+  "categorias": [
+    { "id": "piel", "nombre": "Piel", "secciones": [
+      { "tipo": "colores", "titulo": "Tono de piel", "ruta": "piel", "paleta": "piel" }
+    ] },
+    { "id": "ojos", "nombre": "Ojos", "secciones": [
+      { "tipo": "piezas", "titulo": "Forma", "ruta": "ojos.estilo", "recorte": "96 150 208 112", "fondoPiel": true },
+      { "tipo": "colores", "titulo": "Color de ojos", "ruta": "ojos.color", "paleta": "ojos", "nota": "Se ve en los ojos abiertos." }
+    ] },
+    { "id": "boca", "nombre": "Boca", "secciones": [
+      { "tipo": "piezas", "titulo": "Expresión", "ruta": "boca", "recorte": "150 216 100 70", "fondoPiel": true }
+    ] },
+    { "id": "maquillaje", "nombre": "Maquillaje", "secciones": [
+      { "tipo": "colores", "titulo": "Sombra de ojos", "ruta": "maquillaje.sombra", "paleta": "sombra" },
+      { "tipo": "colores", "titulo": "Labial", "ruta": "maquillaje.labial", "paleta": "labial" },
+      { "tipo": "piezas", "titulo": "Mejillas", "ruta": "maquillaje.mejillas", "recorte": "96 160 208 120", "fondoPiel": true }
+    ] },
+    { "id": "pelo", "nombre": "Cabello", "secciones": [
+      { "tipo": "piezas", "titulo": "Peinado", "ruta": "pelo.estilo", "recorte": "12 8 376 400" },
+      { "tipo": "colores", "titulo": "Color de pelo", "ruta": "pelo.color", "paleta": "pelo" }
+    ] },
+    { "id": "ropa", "nombre": "Ropa", "secciones": [
+      { "tipo": "piezas", "titulo": "Parte de arriba", "ruta": "ropa.arriba", "recorte": "96 246 208 214" },
+      { "tipo": "colores", "titulo": "Color de arriba", "ruta": "ropa.colorArriba", "paleta": "arriba" },
+      { "tipo": "piezas", "titulo": "Parte de abajo", "ruta": "ropa.abajo", "recorte": "96 246 208 214" },
+      { "tipo": "colores", "titulo": "Color de abajo", "ruta": "ropa.colorAbajo", "paleta": "abajo" }
+    ] },
+    { "id": "accesorio", "nombre": "Accesorios", "secciones": [
+      { "tipo": "piezas", "titulo": "Accesorio", "ruta": "accesorio", "recorte": "34 16 332 300" }
+    ] },
+    { "id": "fondo", "nombre": "Fondo", "secciones": [
+      { "tipo": "piezas", "titulo": "Fondo", "ruta": "fondo", "recorte": "0 0 400 480", "conFondo": true, "rellenar": true }
+    ] }
+  ],
+
+  "porDefecto": {
+    "version": 1,
+    "piel": "#f6d3b8",
+    "ojos": { "estilo": "redondos", "color": "#6b4a3a" },
+    "boca": "sonrisa",
+    "maquillaje": { "sombra": "#c58bd6", "labial": "#e0607e", "mejillas": "rubor" },
+    "pelo": { "estilo": "bob", "color": "#4a3328" },
+    "ropa": { "arriba": "sudadera", "colorArriba": "#8fb8ea", "abajo": "falda", "colorAbajo": "#3d4466" },
+    "accesorio": "ninguno",
+    "fondo": "lavanda"
+  }
+}

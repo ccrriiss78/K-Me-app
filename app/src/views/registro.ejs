@@ -1,0 +1,62 @@
+<%- include('_cabecera', { paginaDeEntrada: true }) %>
+<%#
+  Tras un error el formulario vuelve vacío: el dispositivo puede ser compartido (D022).
+  Excepción (D036): si el error es solo del alias, se conserva el usuario escrito y el cursor va
+  al alias, que sale en blanco. Las contraseñas nunca se devuelven en la página.
+  Los campos van por parejas: en el ordenador se ven a dos columnas y el formulario cabe entero.
+%>
+<% const usuarioEscrito = locals.usuarioEscrito || ''; %>
+<% const errorEnAlias = locals.errorEnAlias === true; %>
+<%# Página de entrada (T014): en el ordenador, la marca a la izquierda y el formulario a la derecha;
+    en el móvil, la marca encima. %>
+<section class="tarjeta tarjeta--entrada tarjeta--ancha" aria-labelledby="titulo-registro">
+  <div class="entrada-marca">
+    <img src="/img/logo-kme.svg" alt="K-ME" width="140" height="200">
+    <p class="lema-marca">Sin <strong>fan</strong> no hay <strong>idol</strong>.</p>
+  </div>
+  <div class="entrada-formulario">
+  <h1 id="titulo-registro">Crear una cuenta</h1>
+  <% if (error) { %>
+    <p id="error-registro" class="aviso aviso--error" role="alert"><%= error %></p>
+  <% } %>
+  <form method="post" action="/registro" class="formulario">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+    <div class="formulario__fila">
+      <div class="formulario__campo">
+        <label for="usuario">Usuario</label>
+        <input id="usuario" name="usuario" type="text" required minlength="3" maxlength="30"
+               pattern="[A-Za-z0-9_]+" autocomplete="off" autocapitalize="none" spellcheck="false"
+               aria-describedby="ayuda-usuario"<% if (usuarioEscrito) { %> value="<%= usuarioEscrito %>"<% } %><% if (!errorEnAlias) { %> autofocus<% } %>>
+        <p id="ayuda-usuario" class="nota nota--campo">Privado: solo sirve para entrar y nadie más lo ve. De 3 a 30 caracteres: letras, números o _.</p>
+      </div>
+      <div class="formulario__campo">
+        <label for="alias">Alias</label>
+        <input id="alias" name="alias" type="text" required minlength="3" maxlength="30"
+               pattern="[A-Za-z0-9_]+" autocomplete="off" spellcheck="false"
+               <% if (errorEnAlias) { %>aria-describedby="error-registro ayuda-alias" aria-invalid="true" autofocus<% } else { %>aria-describedby="ayuda-alias"<% } %>>
+        <p id="ayuda-alias" class="nota nota--campo">Público: es el nombre que verán los demás fans. De 3 a 30 caracteres: letras, números o _. Tiene que ser distinto de tu usuario.</p>
+      </div>
+    </div>
+
+    <div class="formulario__fila">
+      <div class="formulario__campo">
+        <label for="password">Contraseña</label>
+        <input id="password" name="password" type="password" required minlength="12" maxlength="128"
+               autocomplete="new-password" aria-describedby="ayuda-password">
+        <p id="ayuda-password" class="nota nota--campo">De 12 a 128 caracteres. No hace falta mezclar mayúsculas, números ni símbolos.</p>
+      </div>
+      <div class="formulario__campo">
+        <label for="password_repetida">Repite la contraseña</label>
+        <input id="password_repetida" name="password_repetida" type="password" required minlength="12" maxlength="128"
+               autocomplete="new-password" aria-describedby="ayuda-repetida">
+        <p id="ayuda-repetida" class="nota nota--campo">Repite la misma contraseña.</p>
+      </div>
+    </div>
+
+    <button type="submit" class="boton">Crear cuenta</button>
+  </form>
+  <p class="nota">¿Ya tienes cuenta? <a href="/entrar">Entra</a>.</p>
+  </div>
+</section>
+<%- include('_pie', { paginaDeEntrada: true }) %>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo: avatar en el perfil</title>
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; color: #2d2440; background: #f3effa; }
+    .pagina { max-width: 720px; margin: 40px auto; padding: 0 16px; }
+    .perfil { display: flex; gap: 20px; align-items: center; background: #fff; border-radius: 22px; padding: 20px; box-shadow: 0 10px 30px rgba(45,36,64,.08); }
+    .foto { width: 120px; height: 120px; border-radius: 50%; overflow: hidden; flex: none; background: #ece4ff; }
+    .foto svg { width: 100%; height: 100%; display: block; }
+    h1 { margin: 0 0 6px; font-size: 22px; }
+    p { margin: 0; color: #776c8c; line-height: 1.5; }
+    .png { margin-top: 20px; background: #fff; border-radius: 22px; padding: 20px; }
+    .png img { width: 160px; border-radius: 18px; display: block; margin-top: 10px; }
+    a { color: #7b5cf0; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="pagina">
+    <div class="perfil">
+      <!-- Opción 1: SVG dentro de la página (nítido a cualquier tamaño) -->
+      <div class="foto" id="foto"></div>
+      <div>
+        <h1>Perfil de ejemplo</h1>
+        <p>Este avatar se dibuja a partir del JSON que guardó el editor. Aquí solo se muestra la cabeza, recortando el lienzo.</p>
+      </div>
+    </div>
+    <div class="png">
+      <b>Opción 2: imagen PNG</b>
+      <p>Útil para usarla como &lt;img&gt;, subirla al servidor o compartirla.</p>
+      <img id="imagen" alt="Avatar en PNG">
+    </div>
+    <p style="margin-top:16px"><a href="../index.html">Volver al editor</a></p>
+  </div>
+
+  <script type="module">
+    import { crearRenderizador } from '../js/renderizador.js';
+
+    const r = await crearRenderizador('../datos/catalogo.json');
+    let avatar = null;
+    try { avatar = JSON.parse(localStorage.getItem('avatar-chibi-v1')); } catch (_) {}
+    // En la app real, el avatar vendría de tu servidor: await (await fetch('/api/avatar')).json()
+
+    document.getElementById('foto').innerHTML = r.svg(avatar, { recorte: '60 40 280 280', rellenar: true });
+    document.getElementById('imagen').src = await r.png(avatar, { ancho: 400, alto: 480 });
+  </script>
+</body>
+</html>

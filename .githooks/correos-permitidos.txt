@@ -1,0 +1,4 @@
+# Correos que la autora ha permitido guardar en Git, uno por línea.
+# La comprobación antes de cada commit (.githooks/comprobar-commit.mjs) avisa y para el commit
+# si encuentra un correo que no está aquí. Solo la autora decide qué se añade.
+# Lo que va detrás de # es un comentario.

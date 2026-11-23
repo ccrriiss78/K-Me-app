@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crea tu avatar</title>
+  <!-- Fuentes opcionales: sin internet se usan las del sistema -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/editor-avatar.css">
+  <style>
+    body { margin: 0; font-family: 'Nunito', system-ui, sans-serif; color: #2d2440; min-height: 100vh;
+      background: radial-gradient(1100px 600px at 8% -10%, #ffe2ee 0%, transparent 60%),
+                  radial-gradient(900px 600px at 105% 0%, #e2dcff 0%, transparent 55%), #f3effa; }
+    .pagina { max-width: 1120px; margin: 0 auto; padding: 16px; }
+    .cabecera { display: flex; align-items: center; gap: 11px; margin-bottom: 14px; }
+    .logo { width: 42px; height: 42px; border-radius: 14px; background: linear-gradient(135deg, #7b5cf0, #ff7aa8); display: grid; place-items: center; flex: none; }
+    h1 { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 23px; margin: 0; }
+    .cabecera p { margin: 2px 0 0; font-size: 12.5px; color: #776c8c; }
+    .error { background: #fff; border-radius: 18px; padding: 20px; line-height: 1.5; }
+    .enlace { font-size: 13px; color: #776c8c; text-align: center; margin-top: 16px; }
+    .enlace a { color: #7b5cf0; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="pagina">
+    <header class="cabecera">
+      <div class="logo" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 26 26"><circle cx="13" cy="13" r="11" fill="#fff"/><circle cx="9" cy="13" r="2" fill="#2d2440"/><circle cx="17" cy="13" r="2" fill="#2d2440"/><path d="M10 17.5 Q13 20 16 17.5" stroke="#2d2440" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg></div>
+      <div><h1>Crea tu avatar</h1><p>Personaliza tu personaje y guárdalo</p></div>
+    </header>
+
+    <!-- Aquí se monta el editor -->
+    <div id="editor"></div>
+
+    <p class="enlace">Ejemplo de uso fuera del editor: <a href="ejemplos/perfil.html">avatar en una página de perfil</a></p>
+  </div>
+  <script>
+    // Abierto con doble clic: los módulos JS no se cargan desde file://
+    if (location.protocol === 'file:') {
+      document.getElementById('editor').innerHTML = '<div class="error"><b>Falta el servidor local.</b><br>' +
+        'Abre una terminal en esta carpeta y ejecuta <code>npx serve .</code>, o usa Live Server en VS Code. ' +
+        'Los pasos están en el README (apartado «Arrancar»).</div>';
+    }
+  </script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 280">
+<defs>
+<radialGradient id="wash2" cx="45%" cy="44%" r="70%"><stop stop-color="#fffaf6"/><stop offset=".65" stop-color="#fff4ed"/><stop offset="1" stop-color="#f8e3d8"/></radialGradient>
+<filter id="grain2"><feTurbulence baseFrequency=".07" numOctaves="4" seed="12"/><feColorMatrix values="0 0 0 0 .72 0 0 0 0 .43 0 0 0 0 .36 .03 .03 .03 0 -.01"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+</defs>
+<g fill="#fbece2" stroke="#21191a" stroke-width="2"><path d="M45 145C19 131 10 172 33 184Q43 190 53 182ZM195 145C221 131 230 172 207 184Q197 190 187 182Z"/></g>
+<path fill="url(#wash2)" stroke="#21191a" stroke-width="2.1" d="M36 136C22 67 61 29 119 31C179 29 215 71 204 136C195 174 180 202 151 220Q124 239 110 232C77 222 47 187 36 136Z"/>
+<path fill="white" filter="url(#grain2)" d="M36 136C22 67 61 29 119 31C179 29 215 71 204 136C195 174 180 202 151 220Q124 239 110 232C77 222 47 187 36 136Z"/>
+<path fill="none" stroke="#21191a" stroke-width="2.65" stroke-linecap="round" d="M36 136C22 67 61 29 119 31C179 29 215 71 204 136"/>
+</svg>
+

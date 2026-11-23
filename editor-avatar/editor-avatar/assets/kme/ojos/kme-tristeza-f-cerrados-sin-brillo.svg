@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480"><title>Llanto silencioso</title>
+<g transform="translate(152 205)" data-ojo="izquierdo" data-coleccion="tristeza">
+<path data-parte="linea-ojo" d="M-23 0Q-4 10 22 -8" fill="none" stroke="#282126" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(248 205)" data-ojo="derecho" data-coleccion="tristeza">
+<path data-parte="linea-ojo" d="M23 0Q4 10 -22 -8" fill="none" stroke="#282126" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path data-parte="lagrima" d="M19 2Q19 10 22 17Q25 25 20 27Q14 28 15 20Q17 12 19 2Z" fill="#fffaf7" stroke="#9abac9" stroke-width=".8" opacity=".8"/><path d="M19 14Q17 21 19 23" fill="none" stroke="#fffaf7" stroke-width="1.1" stroke-linecap="round"/>
+</g>
+</svg>
