@@ -39,7 +39,10 @@ test('Todas las piezas encajan en el lienzo del editor y no introducen scripts n
   for (const archivo of archivos) {
     const svg = await readFile(new URL(archivo, url), 'utf8');
     assert.match(svg, /viewBox="0 0 400 480"/, archivo);
-    assert.doesNotMatch(svg, /<script|<foreignObject|\bon\w+\s*=|(?:href|src)\s*=/i, archivo);
+    // Desde el lote collage 01 (D067), una pieza puede llevar texturas: solo como <image> con un PNG
+    // incrustado en base64 (nunca un archivo ni una dirección de fuera). Lo demás sigue prohibido.
+    const sinTexturas = svg.replace(/<image\b[^>]*\shref="data:image\/png;base64,[A-Za-z0-9+/]+={0,2}"[^>]*\/>/g, '');
+    assert.doesNotMatch(sinTexturas, /<script|<foreignObject|<image\b|\bon\w+\s*=|(?:href|src)\s*=/i, archivo);
     assert.match(svg, /<title>.+<\/title>/, archivo);
   }
 });

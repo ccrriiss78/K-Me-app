@@ -1,0 +1,73 @@
+{
+  "nota": "Propuesta aditiva: el integrador debe comprobar el catálogo vigente. No aplicar automáticamente.",
+  "piezas": [
+    {
+      "id": "collage-falda-bolsillos",
+      "nombre": "Falda con bolsillos de tela",
+      "familia": "collage-falda-bolsillos",
+      "cinturaY": 350,
+      "reemplazaCapas": [
+        "piernas"
+      ],
+      "indicePorCuerpo": {
+        "relajado": 0,
+        "recto": 1,
+        "amplio": 2
+      },
+      "gruposPorCapa": {
+        "piernas": "piernas",
+        "ropa_abajo": "prenda"
+      },
+      "capas": {
+        "piernas": [
+          "svg/collage-falda-bolsillos-delgado.svg",
+          "svg/collage-falda-bolsillos-medio.svg",
+          "svg/collage-falda-bolsillos-grueso.svg"
+        ],
+        "ropa_abajo": [
+          "svg/collage-falda-bolsillos-delgado.svg",
+          "svg/collage-falda-bolsillos-medio.svg",
+          "svg/collage-falda-bolsillos-grueso.svg"
+        ]
+      },
+      "ruta": "ropa.abajo"
+    },
+    {
+      "id": "collage-lightstick-estudio",
+      "nombre": "Lightstick de estudio",
+      "ruta": "accesorio",
+      "capas": {
+        "accesorio": [
+          "svg/collage-lightstick-estudio-delgado.svg",
+          "svg/collage-lightstick-estudio-medio.svg",
+          "svg/collage-lightstick-estudio-grueso.svg"
+        ]
+      },
+      "coloresFijosPropuestos": [
+        "#282126",
+        "#fffaf7",
+        "#e83475"
+      ],
+      "anclajeReferencia": {
+        "relajado": {
+          "x": 254.5,
+          "y": 357
+        },
+        "recto": {
+          "x": 262.5,
+          "y": 357
+        },
+        "amplio": {
+          "x": 270.5,
+          "y": 357
+        }
+      },
+      "nota": "No hay campo independiente de color de accesorio en el contrato inspeccionado. No inventar una clave; mantener el acento de marca o acordar el enlace a la paleta. Revisar agarre y solapes con brazos.",
+      "indicePorCuerpo": {
+        "relajado": 0,
+        "recto": 1,
+        "amplio": 2
+      }
+    }
+  ]
+}

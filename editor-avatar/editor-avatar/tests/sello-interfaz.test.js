@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 import vm from 'node:vm';
 
 const script = new URL('../../../app/public/js/sello.js', import.meta.url);
+const filtroSvg = new URL('../../../app/public/js/svg-seguro.js', import.meta.url);
 function entorno() {
   const eventos = new Map(), ventana = new Map(), trabajos = new Map(), peticiones = [];
   let secuencia = 0;
@@ -22,7 +23,8 @@ function entorno() {
     setTimeout(fn){const id=++secuencia;trabajos.set(id,fn);return id;},clearTimeout(id){trabajos.delete(id);},
     fetch(url,opciones){return new Promise((resolve,reject)=>peticiones.push({url,opciones,resolve,reject}));}};
   return {form,nodos,peticiones,eventos,ventana,
-    async iniciar(){vm.runInNewContext(await readFile(script,'utf8'),contexto);},
+    // Como en la página: primero el filtro de seguridad (svg-seguro.js, E0079) y después sello.js.
+    async iniciar(){vm.createContext(contexto);vm.runInContext(await readFile(filtroSvg,'utf8'),contexto);vm.runInContext(await readFile(script,'utf8'),contexto);},
     cambiar(campo='palabra',valor='luz'){form.valores=form.valores.filter(([k])=>k!==campo);form.valores.push([campo,valor]);eventos.get('change')?.({target:{name:campo}});},
     async reloj(){for(const [id,fn]of [...trabajos]){trabajos.delete(id);fn();}await new Promise(r=>setImmediate(r));},
     async responder(i,datos,ok=true){peticiones[i].resolve({ok,status:ok?200:400,headers:{get:()=> 'application/json'},json:async()=>datos});await new Promise(r=>setImmediate(r));},

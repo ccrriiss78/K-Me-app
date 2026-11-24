@@ -5,7 +5,8 @@
   if (!form) return;
   // Si falta una capacidad, queda el formulario original, incluido su botón de vista previa.
   if (typeof fetch !== 'function' || typeof AbortController !== 'function'
-    || typeof FormData !== 'function' || typeof URLSearchParams !== 'function' || typeof DOMParser !== 'function') return;
+    || typeof FormData !== 'function' || typeof URLSearchParams !== 'function' || typeof DOMParser !== 'function'
+    || !window.KME_SVG) return;
   const botonVista = form.querySelector('button[name="accion"][value="vista"]');
   const nodos = Object.fromEntries(['dibujo', 'avisos', 'ayuda', 'error', 'estado', 'cambios']
     .map(k => [k, document.querySelector(`[data-sello-${k}]`)]));
@@ -45,19 +46,9 @@
       form.submit();
     }
   }
-  function svgSeguro(texto) {
-    if (typeof texto !== 'string') throw new Error('Dibujo no válido');
-    const xml = new DOMParser().parseFromString(texto, 'image/svg+xml');
-    const svg = xml.documentElement;
-    if (svg.localName !== 'svg' || svg.namespaceURI !== 'http://www.w3.org/2000/svg'
-      || xml.querySelector('parsererror, script, foreignObject, iframe, object, embed, image, a, animate, set')) throw new Error('Dibujo no válido');
-    for (const elemento of [svg, ...svg.querySelectorAll('*')]) {
-      for (const atributo of elemento.attributes) {
-        if (/^on/i.test(atributo.name) || (/href$/i.test(atributo.name) && !atributo.value.startsWith('#'))) throw new Error('Dibujo no válido');
-      }
-    }
-    return document.importNode(svg, true);
-  }
+  // El filtro de seguridad está en svg-seguro.js, que se carga antes (E0079): sin scripts ni enlaces
+  // externos, y solo texturas PNG incrustadas y pequeñas (lote collage 01).
+  const svgSeguro = (texto) => window.KME_SVG.svgSeguro(texto);
   function mostrarAyuda(ayuda) {
     nodos.ayuda.replaceChildren();
     nodos.ayuda.hidden = !ayuda;

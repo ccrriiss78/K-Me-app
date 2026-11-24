@@ -57,11 +57,17 @@ export function normalizarReceta(receta) {
 export function dibujarAvatar(receta, { encuadre = null, alto = null } = {}) {
   const e = encuadre ? buscarEncuadre(encuadre) : null;
   const opciones = { conFondo: false };
+  let dibujada = receta;
   if (e) {
     opciones.recorte = `${e.recorte.x} ${e.recorte.y} ${e.recorte.ancho} ${e.recorte.alto}`;
     if (e.capas) opciones.soloCapas = e.capas;
+    // El recorte del rostro solo lleva la cabeza: un accesorio de la mano (el lightstick del lote
+    // collage, «zona: mano») se quedaría cortado junto a la barbilla. Con el cuerpo entero, sí sale.
+    if (e.capas && obtenerCatalogo().pieza('accesorio', receta.accesorio)?.zona === 'mano') {
+      dibujada = { ...receta, accesorio: 'ninguno' };
+    }
   }
-  const svg = svgDelAvatar(obtenerCatalogo(), receta, opciones);
+  const svg = svgDelAvatar(obtenerCatalogo(), dibujada, opciones);
   if (!e || !alto) return svg;
   const ancho = Math.round((alto * e.recorte.ancho) / e.recorte.alto);
   return svg.replace(/^<svg\b/, `<svg width="${ancho}" height="${alto}"`);

@@ -1492,6 +1492,63 @@
           "piernas": "../assets/kme/ropa_abajo/stage-noir-grueso.svg",
           "ropa_abajo": "../assets/kme/ropa_abajo/stage-noir-grueso.svg"
         }
+      },
+      {
+        "id": "collage-falda-bolsillos-delgado",
+        "nombre": "Falda con bolsillos de tela · delgado",
+        "familia": "collage-falda-bolsillos",
+        "coleccion": "collage-01",
+        "cuerpoCompatible": "relajado",
+        "cinturaY": 350,
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/collage-falda-bolsillos-delgado.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/collage-falda-bolsillos-delgado.svg"
+        }
+      },
+      {
+        "id": "collage-falda-bolsillos-medio",
+        "nombre": "Falda con bolsillos de tela · medio",
+        "familia": "collage-falda-bolsillos",
+        "coleccion": "collage-01",
+        "cuerpoCompatible": "recto",
+        "cinturaY": 350,
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/collage-falda-bolsillos-medio.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/collage-falda-bolsillos-medio.svg"
+        }
+      },
+      {
+        "id": "collage-falda-bolsillos-grueso",
+        "nombre": "Falda con bolsillos de tela · grueso",
+        "familia": "collage-falda-bolsillos",
+        "coleccion": "collage-01",
+        "cuerpoCompatible": "amplio",
+        "cinturaY": 350,
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/collage-falda-bolsillos-grueso.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/collage-falda-bolsillos-grueso.svg"
+        }
       }
     ],
     "ropa.arriba": [
@@ -2603,6 +2660,30 @@
         "nombre": "Pin de estrella",
         "capas": {
           "accesorio": "../assets/kme/accesorio/pin.svg"
+        }
+      },
+      {
+        "id": "collage-lightstick-estudio",
+        "nombre": "Lightstick de estudio",
+        "coleccion": "collage-01",
+        "zona": "mano",
+        "indicePorCuerpo": {
+          "relajado": 0,
+          "recto": 1,
+          "amplio": 2
+        },
+        "miniatura": {
+          "recorte": "200 245 120 170",
+          "capas": [
+            "accesorio"
+          ]
+        },
+        "capas": {
+          "accesorio": [
+            "../assets/kme/accesorio/collage-lightstick-estudio-delgado.svg",
+            "../assets/kme/accesorio/collage-lightstick-estudio-medio.svg",
+            "../assets/kme/accesorio/collage-lightstick-estudio-grueso.svg"
+          ]
         }
       }
     ]

@@ -29,7 +29,7 @@ test('Torso y cintura de todos los pantalones y faldas comparten los bordes 170/
         assert.ok(Math.abs(piel[lado]-ropa[lado])<=1,`${p.id}/${q.id}: salto entre torso y ropa`);
       }casos++;
     }
-  }assert.equal(casos,336);
+  }assert.equal(casos,360); // 336 hasta el lote collage 01; su falda suma 8 tops × 3 cuerpos (E0079)
 });
 test('En todos los tops el ombligo tiene contraste y queda dentro de piel visible, por encima de cualquier cintura',async()=>{
   const c=await cargar();

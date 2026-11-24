@@ -66,7 +66,8 @@ export function montarEditorVisual(doc,catalogo){
       // Las opciones de ropa muestran el mismo dibujo en ambos montajes.
       // Elegir la parte inferior no debe sustituir una sudadera o chaqueta.
       const idEleccion=ruta==='ropa.abajo'&&p.anterior&&!catalogo.pieza('ropa.arriba',estado.avatar.ropa.arriba)?.cuerpoCompatible?p.anterior:p.id;
-      g.append(miniatura(label,seleccionada,a,capas,recorte,()=>estado.elegirPieza(ruta,idEleccion)));
+      // Una pieza puede traer su propio encuadre de miniatura (el lightstick está en la mano, no en la cabeza).
+      g.append(miniatura(label,seleccionada,a,p.miniatura?.capas||capas,p.miniatura?.recorte||recorte,()=>estado.elegirPieza(ruta,idEleccion)));
     }
   }
   function ojos(){

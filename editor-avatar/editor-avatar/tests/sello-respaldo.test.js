@@ -4,7 +4,8 @@ import { readFile } from 'node:fs/promises';
 import vm from 'node:vm';
 
 const archivo=new URL('../../../app/public/js/sello.js',import.meta.url);
-async function entorno({compatible=true,valido=true}={}){
+const filtroSvg=new URL('../../../app/public/js/svg-seguro.js',import.meta.url);
+async function entorno({compatible=true,valido=true,filtro=true}={}){
   const eventos=new Map(),ventana=new Map(),trabajos=new Map(),peticiones=[],envios=[];let n=0;
   const nodo=()=>({textContent:'',hidden:false,dataset:{},setAttribute(){},removeAttribute(){},replaceChildren(){},append(){}});
   const nodos=Object.fromEntries(['dibujo','avisos','ayuda','error','estado','cambios'].map(k=>[k,nodo()]));
@@ -17,7 +18,10 @@ async function entorno({compatible=true,valido=true}={}){
     window:{addEventListener(k,f){ventana.set(k,f);}},FormData:Datos,URLSearchParams,AbortController,DOMParser:class {},
     setTimeout(fn){trabajos.set(++n,fn);return n;},clearTimeout(i){trabajos.delete(i);},
     fetch:compatible?(url,opciones)=>new Promise((resolve,reject)=>peticiones.push({url,opciones,resolve,reject})):undefined};
-  await vm.runInNewContext(await readFile(archivo,'utf8'),contexto);
+  // Como en la página: primero el filtro de seguridad (svg-seguro.js, E0079), si se carga, y después sello.js.
+  vm.createContext(contexto);
+  if(filtro)vm.runInContext(await readFile(filtroSvg,'utf8'),contexto);
+  await vm.runInContext(await readFile(archivo,'utf8'),contexto);
   return {form,boton,nodos,eventos,peticiones,envios,
     async cambiar(palabra='luz'){form.valores=form.valores.filter(([k])=>k!=='palabra');form.valores.push(['palabra',palabra]);eventos.get('change')?.({target:{name:'palabra'}});for(const [i,fn]of [...trabajos]){trabajos.delete(i);fn();}await new Promise(r=>setImmediate(r));},
     async responder(i,{json=false,redirected=false,ok=true,datos={}}={}){peticiones[i].resolve({redirected,ok,headers:{get:()=>json?'application/json':'text/html'},json:async()=>datos});await new Promise(r=>setImmediate(r));},
@@ -32,6 +36,9 @@ test('El script oculta el botón de respaldo solo después de arrancar; el HTML 
 });
 test('Sin fetch compatible el respaldo sigue visible y no se intercepta el formulario',async()=>{
   const e=await entorno({compatible:false});assert.equal(e.boton.hidden,false);assert.equal(e.eventos.has('submit'),false);
+});
+test('Sin el filtro de seguridad (svg-seguro.js) no hay vista previa automática: el respaldo sigue visible',async()=>{
+  const e=await entorno({filtro:false});assert.equal(e.boton.hidden,false);assert.equal(e.eventos.has('submit'),false);
 });
 test('Una respuesta HTML por sesión caducada envía el formulario original con accion=vista, CSRF y versión, sin guardar ni entrar en bucle',async()=>{
   const e=await entorno();await e.cambiar();assert.equal(e.salir(),true);await e.responder(0,{redirected:true});

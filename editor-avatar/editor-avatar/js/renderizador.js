@@ -73,7 +73,15 @@ export function svgDelAvatar(catalogo, avatar, opciones = {}) {
   const idSvg = id || (estilos ? `avatar-svg-${++contador}` : null);
   const estilo = estilos ? `<style>${cssDeColores(avatar, '#' + idSvg)}</style>` : '';
   const tam = ancho ? ` width="${ancho}" height="${alto}"` : '';
-  return `<svg xmlns="http://www.w3.org/2000/svg"${idSvg ? ` id="${idSvg}"` : ''} viewBox="${recorte}" preserveAspectRatio="xMidYMid ${rellenar ? 'slice' : 'meet'}"${tam}>${estilo}${capas.map(c => contenido[c.id]).join('\n')}</svg>`;
+  const dibujo = idsUnicosCollage(capas.map(c => contenido[c.id]).join('\n'), idSvg || `avatar-${++contador}`);
+  return `<svg xmlns="http://www.w3.org/2000/svg"${idSvg ? ` id="${idSvg}"` : ''} viewBox="${recorte}" preserveAspectRatio="xMidYMid ${rellenar ? 'slice' : 'meet'}"${tam}>${estilo}${dibujo}</svg>`;
+}
+
+// Las piezas del lote collage (D067) traen ids fijos en sus patrones y recortes («collage-…»). Cada
+// dibujo les antepone su propio id, y también a sus referencias (url(#…), href="#…"), para que
+// varios avatares en una misma página no compartan definiciones. Las piezas anteriores no cambian.
+function idsUnicosCollage(svg, prefijo) {
+  return svg.replace(/(\sid="|url\(#|href="#)(collage-[\w-]+)/g, (_, antes, nombre) => `${antes}${prefijo}-${nombre}`);
 }
 
 /** Devuelve el avatar como PNG (data URL). */

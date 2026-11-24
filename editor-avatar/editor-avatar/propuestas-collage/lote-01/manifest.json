@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "fecha": "2026-11-24",
+  "estado": "Entrega gráfica preparada fuera del proyecto; pendiente de integrar y probar por Claude.",
+  "lienzo": {
+    "ancho": 400,
+    "alto": 480
+  },
+  "texturas": [
+    {
+      "archivo": "texturas/denim-gris-128.png",
+      "ancho": 128,
+      "alto": 128,
+      "bytes": 9712,
+      "origen": "Generada por ChatGPT con image_gen; reducción y preparación técnica en gris/alpha.",
+      "licencia": "Contenido generado; no se presenta como CC0 ni como foto de terceros."
+    },
+    {
+      "archivo": "texturas/denim-sombra-128.png",
+      "ancho": 128,
+      "alto": 128,
+      "bytes": 8724,
+      "origen": "Generada por ChatGPT con image_gen; reducción y preparación técnica en gris/alpha.",
+      "licencia": "Contenido generado; no se presenta como CC0 ni como foto de terceros."
+    },
+    {
+      "archivo": "texturas/resina-luz-160x240.png",
+      "ancho": 160,
+      "alto": 240,
+      "bytes": 12795,
+      "origen": "Generada por ChatGPT con image_gen; reducción y preparación técnica en gris/alpha.",
+      "licencia": "Contenido generado; no se presenta como CC0 ni como foto de terceros."
+    },
+    {
+      "archivo": "texturas/resina-sombra-160x240.png",
+      "ancho": 160,
+      "alto": 240,
+      "bytes": 9109,
+      "origen": "Generada por ChatGPT con image_gen; reducción y preparación técnica en gris/alpha.",
+      "licencia": "Contenido generado; no se presenta como CC0 ni como foto de terceros."
+    }
+  ],
+  "referencias": [
+    {
+      "silueta": "relajado",
+      "color": "#e83475",
+      "archivo": "referencias/avatar-delgado.png"
+    },
+    {
+      "silueta": "recto",
+      "color": "#557a9d",
+      "archivo": "referencias/avatar-medio.png"
+    },
+    {
+      "silueta": "amplio",
+      "color": "#9673b7",
+      "archivo": "referencias/avatar-grueso.png"
+    }
+  ],
+  "validacion": {
+    "dimensiones": true,
+    "texturasGrises": true,
+    "texturasMenos20KiB": true,
+    "denimBordesCoincidentes": true,
+    "renderSVGconSharp": true,
+    "recursosIncrustados": true
+  },
+  "noVerificado": [
+    "Editor real y guardado por cuenta",
+    "Sello Studio y su sanitizador",
+    "Exportación PNG/PDF del navegador",
+    "Agarre del lightstick con todos los brazos",
+    "Namespace de ids en varias composiciones de una página",
+    "Desbloqueo, probador y canje con Kpopis"
+  ]
+}

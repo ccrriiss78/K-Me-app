@@ -2,32 +2,46 @@
 
 App web para fans del K-pop: el fan es protagonista y expresa su identidad con avatares, sellos y creaciones. *Sin fan no hay idol.*
 
-Este README explica cómo poner en marcha la **fase 1**: crear una cuenta ficticia (con el formulario de registro o con la herramienta local), entrar, ver el alias y cerrar sesión. La historia, decisiones y pendientes del proyecto están en `BITACORA_KME.md`.
+Proyecto de una estudiante de programación web, presentado el 1 de diciembre de 2026. Funciona **en local**, con cuentas ficticias. La historia, las decisiones y los pendientes están en `BITACORA_KME.md`; qué se construye y cómo, en `docs/TECH_SPEC.md`; las tablas, en `docs/MODELO_DATOS.md`.
+
+## Qué se puede hacer
+
+| Parte | Qué hace |
+| --- | --- |
+| **Cuenta** | Crear una cuenta con un usuario privado (solo para entrar) y un alias público, entrar, mantener la sesión abierta y salir. Sin correo. |
+| **Avatar Studio** | Crear avatares con el editor ilustrado de K-ME y guardarlos en la cuenta (hasta 20), volver a abrirlos, duplicarlos, borrarlos, imprimirlos y descargar su photocard en PDF. |
+| **Sello Studio** | Hacer un sello personal con una palabra en hangul comprobada en un diccionario oficial, uno de tus avatares o los dos, tu alias y adornos (hasta 20). Imprimirlo como photocard de 55 × 85 mm y descargarlo en PDF o PNG. |
+| **Imagen de perfil** | Elegir uno de tus avatares, uno de tus sellos o los dos. Sale en la cabecera, en un marco como el del logo, y en «Mi K-ME». |
+| **Connect** | Un muro de fans: publicar una emoción con tu diseño (una copia de tu avatar o de tu sello) y un mensaje de hasta 5 iconos, sin texto libre, y reaccionar a las publicaciones de otros fans. |
+| **Mi escenario** | HANGUL LIVE 001, «Tu voz. Nuestra luz»: una miniclase de 3 expresiones en coreano y 3 preguntas. Al acertarlas por primera vez da 20 **Kpopis** y el lightstick **Luz Hangul 001**, que se guarda en «Mis tesoros». |
 
 ## Organización de la carpeta
 
 | Ruta | Qué contiene |
 | --- | --- |
-| `app/` | Código de la aplicación (MVC), `package.json`, dependencias y configuración privada. **Todos los comandos de la app se ejecutan desde aquí.** |
-| `BITACORA_KME.md` | Único cuaderno del proyecto. |
-| `PROMPT_INICIAL_CLAUDE_KME.md` | Contexto y encargo de la primera fase. |
-| `K-ME.odt`, `K-ME_app.odt` | Documentos de concepto. |
+| `app/` | La aplicación (MVC), `package.json` y la configuración privada. **Todos los comandos de la app se ejecutan desde aquí.** |
+| `editor-avatar/editor-avatar/` | El editor de avatar. La app lo sirve en `/editor/…`; también se abre solo con `KME_ABRIR_MUESTRA.html`. |
+| `docs/` | `TECH_SPEC.md` (especificación), `MODELO_DATOS.md` (tablas) y documentos de trabajo. |
+| `BITACORA_KME.md` | El cuaderno del proyecto: sesiones, decisiones (D…), pruebas (V…) y pendientes (T…). |
+| `CLAUDE.md`, `AGENTS.md` | Normas para los asistentes de IA que han trabajado en el proyecto. |
 | `K-ME-logos-revisados-v1.1/` | Originales de marca. Solo se copian a `app/public/img/` los gráficos que la app sirve. |
+| `.githooks/` | La comprobación antes de cada commit (secretos, `.env`, correos). |
 
 Dentro de `app/`:
 
 ```
 src/config/        lectura de .env.local y conexión a PostgreSQL
-src/models/        acceso a datos (consultas SQL parametrizadas)
-src/services/      reglas de negocio (hash de contraseñas, comprobación de credenciales)
+src/catalogos/     listas cerradas: emociones, iconos, palabras en hangul, colores, retos y tesoros
+src/models/        acceso a datos (consultas SQL parametrizadas, siempre filtradas por la cuenta)
+src/services/      reglas de negocio (contraseñas, recetas, dibujo de sellos y avatares, retos, Kpopis)
 src/controllers/   reciben la petición y eligen la vista
 src/routes/        URL -> middleware -> controlador
-src/middleware/    sesión, CSRF, límite de intentos, acceso privado
+src/middleware/    sesión, CSRF, límite de intentos, acceso privado, perfil y saldo de la cabecera
 src/views/         plantillas EJS (HTML)
-public/            CSS e imágenes servidas al navegador
+public/            CSS, imágenes y JavaScript del navegador
 db/migrations/     SQL numerado, se aplica una sola vez cada uno
-scripts/           herramientas locales (migrar, crear cuenta, comprobar bd)
-tests/             pruebas automatizadas
+scripts/           herramientas locales (migrar, crear cuenta, comprobar la base de datos)
+tests/             pruebas automatizadas (una por funcionalidad, y el recorrido completo)
 ```
 
 ## Requisitos
@@ -89,7 +103,17 @@ npm run comprobar-bd
 npm run migrate
 ```
 
-`migrate` crea las tablas `usuarios`, `sesiones` y `schema_migrations`. Si lo ejecutas otra vez, no repite nada ni borra datos. La migración `003` separa el usuario del alias: en las cuentas que ya existían, el alias pasa a ser igual que el usuario. La `004` crea las tablas de Connect, `publicaciones` y `reacciones`.
+`migrate` aplica en orden las migraciones de `db/migrations/` que falten, cada una dentro de una transacción. Si lo ejecutas otra vez, no repite nada ni borra datos:
+
+| Migración | Qué hace |
+| --- | --- |
+| `001`, `002` | Cuentas y sesiones. |
+| `003` | Separa el usuario privado del alias público. |
+| `004` | Connect: publicaciones y reacciones. |
+| `005`, `006` | Sellos y avatares. |
+| `007` | Imagen de perfil (dos referencias en `usuarios`). |
+| `008` | Mensaje con iconos en las publicaciones. |
+| `009` | Mi escenario: progreso de los retos, Kpopis y tesoros. |
 
 ### 5. Crear una cuenta ficticia
 
@@ -98,20 +122,12 @@ Cada cuenta tiene dos nombres:
 - **Usuario:** privado. Solo sirve para entrar y no aparece en ningún sitio de la app.
 - **Alias:** público. Es el nombre que ven los demás fans. Tiene que ser distinto del usuario.
 
-Los dos tienen de 3 a 30 caracteres (letras, números o `_`) y no se pueden repetir, aunque cambien las mayúsculas. La contraseña tiene de 12 a 128 caracteres, sin reglas de composición: no hace falta mezclar mayúsculas, números ni símbolos. Se guarda como hash Argon2id.
+Los dos tienen de 3 a 30 caracteres (letras, números o `_`) y no se pueden repetir, aunque cambien las mayúsculas. El alias no puede llevar palabras ofensivas. La contraseña tiene de 12 a 128 caracteres, sin reglas de composición. Se guarda como hash Argon2id.
 
 Hay dos formas de crear una cuenta:
 
-- **En la web:** con la app arrancada (paso 6), abre `http://localhost:3000/registro`, o pulsa «Crea una» en la página de entrar. Al terminar te lleva a `/entrar` con el aviso «Cuenta creada. Ya puedes entrar.».
-- **Con la herramienta local:**
-
-  ```powershell
-  npm run crear-cuenta
-  ```
-
-  Pide usuario, alias y contraseña. La contraseña se teclea oculta, dos veces.
-
-Si tu cuenta se creó antes del 21/11/2026, su alias es igual que su usuario. Como el alias todavía no se puede cambiar, crea una cuenta nueva si quieres que sean distintos. Si además su contraseña tiene menos de 12 caracteres, el formulario de entrar no te deja enviarla.
+- **En la web:** con la app arrancada (paso 6), abre `/registro`, o pulsa «Crea una» en la página de entrar.
+- **Con la herramienta local:** `npm run crear-cuenta`. Pide usuario, alias y contraseña; la contraseña se teclea oculta, dos veces.
 
 ### 6. Arrancar la app
 
@@ -119,59 +135,103 @@ Si tu cuenta se creó antes del 21/11/2026, su alias es igual que su usuario. Co
 npm run dev
 ```
 
-Abre `http://localhost:3000`. El servidor se reinicia solo al guardar cambios en el código. Para pararlo: `Ctrl+C`.
+Abre `http://localhost:3000`. Si el puerto 3000 ya lo usa otra app, arráncala en el 3001:
+
+```powershell
+$env:PORT = '3001'; npm run dev
+```
+
+y abre `http://localhost:3001`. El servidor se reinicia solo al guardar cambios en el código. Para pararlo: `Ctrl+C`.
 
 ## Qué probar a mano
 
-1. Entra en `http://localhost:3000/mi-kme` sin haber iniciado sesión: debe llevarte a `/entrar`.
+Las direcciones son relativas: delante va `http://localhost:3000` (o `3001`). Para Connect hacen falta dos cuentas: una en la ventana normal y otra en una ventana InPrivate (Ctrl + Mayús + N).
+
+**Cuenta**
+
+1. Entra en `/mi-kme` sin haber iniciado sesión: debe llevarte a `/entrar`.
 2. Pon un usuario correcto con contraseña incorrecta: aparece «Los datos introducidos no son válidos.», el formulario sale vacío y sigues fuera. Con un usuario que no existe sale el mismo mensaje.
-3. Entra con la cuenta creada: ves «Mi K-ME» y la cabecera con tu **alias**. Tu usuario no aparece en ningún sitio.
-4. Abre otro navegador (o una ventana privada) y entra con la misma cuenta: funciona sin expulsar al primero.
-5. Pulsa «Salir»: vuelves a `/entrar` y `/mi-kme` vuelve a estar bloqueada.
-6. Falla la contraseña 11 veces seguidas: a partir de la 11ª aparece «Demasiados intentos» durante 15 minutos.
-7. Escribe una contraseña de menos de 12 caracteres en `/entrar`: el navegador no deja enviar el formulario.
-8. Entra sin marcar «Mantener sesión abierta» y mira la cookie `kme.sid` (F12 → Aplicación → Cookies → `http://localhost:3000`, columna «Expires»): caduca dentro de unas 24 h. Sal, vuelve a entrar marcando la casilla: ahora caduca dentro de unos 7 días.
-9. En un ordenador, el formulario de `/registro` se ve entero, a dos columnas, sin desplazar la página. Crea una cuenta: te lleva a `/entrar` con «Cuenta creada. Ya puedes entrar.» y todavía no estás dentro. Entra con el usuario y la contraseña que elegiste.
-10. En `/registro`, escribe dos contraseñas distintas: aparece «No se ha podido crear la cuenta. Revisa los datos y vuelve a intentarlo.» y el formulario sale vacío. Sale el mismo mensaje si el usuario ya existe: no se dice cuál es el problema.
-11. En `/registro`, usa el alias de otra cuenta: aparece «Ese alias ya lo usa otro fan.», el usuario sigue escrito y el cursor queda en el alias, vacío. Si el alias es igual que el usuario: «El alias tiene que ser distinto de tu usuario.», con el mismo comportamiento.
-12. Intenta registrarte 11 veces en menos de una hora: a partir del intento 11 aparece «Demasiados registros desde este equipo».
+3. Entra: ves «Mi K-ME» y la cabecera con tu **alias**. Tu usuario no aparece en ningún sitio.
+4. Pulsa «Salir»: vuelves a `/entrar` y `/mi-kme` vuelve a estar bloqueada.
+5. Falla la contraseña 11 veces seguidas: a partir de la 11.ª aparece «Demasiados intentos» durante 15 minutos.
+6. En `/registro`, usa el alias de otra cuenta: aparece «Ese alias ya lo usa otro fan.», el usuario sigue escrito y el cursor queda en el alias.
 
-**Connect, el muro de los fans.** Hacen falta dos cuentas: una en la ventana normal y otra en una ventana InPrivate (Ctrl + Mayús + N).
+**Avatar Studio**
 
-13. Con la sesión abierta, pulsa «Connect» en la cabecera. Elige una emoción (en el ordenador, en el panel de la derecha; en el móvil, en la fila de arriba, que se desliza) y pulsa «Publicar en el muro»: aparece «¡Publicado en el muro!» y tu publicación, arriba, con tu alias.
-14. Con la otra cuenta, pulsa varias veces una reacción de esa publicación: el número sube una vez por pulsación. Al llegar a 10 del mismo tipo, el botón ya no deja sumar más.
-15. Con esa misma cuenta, abre «Tus reacciones» y prueba «Quitar la última» y «Quitar todas las mías». Solo se quitan las tuyas.
-16. La otra cuenta no ve «Borrar» en una publicación que no es suya. Con la tuya, abre «Borrar» y confirma: aparece «Publicación borrada.» y desaparece del muro.
+7. Abre «Avatar Studio», crea un avatar, ponle nombre y pulsa «Guardar». Aparece en «Mis avatares»; ábrelo desde otro navegador y sigue igual.
+8. Ábrelo en dos pestañas, guarda en una y después en la otra: la segunda avisa del conflicto y ofrece «Guardar como copia».
 
-Las emociones y reacciones se cambian en `app/src/catalogos/connect.js`; sus dibujos están en `app/public/img/connect/`, y los colores y tamaños, en las variables `--connect-…` de `app/public/css/estilos.css`.
+**Sello Studio**
+
+9. Crea un sello con una palabra en hangul (debajo sale cómo se lee y qué significa), uno de tus avatares y algún adorno. Pulsa «Guardar sello».
+10. Pulsa «Photocard 55 × 85 mm (PDF)», imprímelo al 100 %, sin ajustar a la página, y mide la tarjeta: 55 × 85 mm. Prueba también «Imprimir» y «Descargar PNG».
+
+**Imagen de perfil**
+
+11. Sin imagen de perfil, la cabecera enseña un marco con tu inicial. Pulsa «Usar en mi perfil» en uno de tus avatares: la cara sale en ese marco, y «Mi K-ME» la enseña entera.
+
+**Connect**
+
+12. Pulsa «Connect», elige una emoción, añade un mensaje con iconos y pulsa «Publicar en el muro»: tu publicación lleva la cara de tu avatar.
+13. Con la otra cuenta, pulsa una reacción varias veces: el número sube una vez por pulsación, hasta 10 del mismo tipo.
+14. Edita o borra el avatar de la publicación: la publicación no cambia (es una copia).
+
+**Mi escenario**
+
+15. Abre «Mi escenario» y HANGUL LIVE 001. Lee las tres expresiones y empieza las preguntas. Falla una: ves qué significa lo que elegiste y puedes volver a probar.
+16. Acierta las tres: ganas 20 Kpopis, que salen en la cabecera, y Luz Hangul 001, que sale en «Mis tesoros» de «Mi K-ME».
+17. Repítela: «¡Completado otra vez!», y el saldo sigue en 20.
 
 ## Pruebas automatizadas
+
+Desde `app/`:
 
 ```powershell
 npm test
 ```
 
-Usan la base de datos de `.env.local`, crean cuentas con usuario `test_xxxx` y alias `fan_xxxx`, y las borran al terminar. Sin `.env.local` la prueba se marca como omitida, no como superada.
+Usan la base de datos de `.env.local`, crean cuentas con usuario `test_xxxx` y alias `fan_xxxx`, y las borran al terminar. Sin `.env.local` se marcan como omitidas, no como superadas. Entre ellas, `tests/recorrido-completo.test.js` hace la demo entera de principio a fin.
 
-## Seguridad implementada en esta fase
+Los tests del editor de avatar, desde `editor-avatar/editor-avatar/`:
 
-- Contraseñas de 12 a 128 caracteres, sin reglas de composición, guardadas con Argon2id (parámetros recomendados por OWASP), nunca en texto legible.
-- Al entrar, una contraseña de más de 128 caracteres se rechaza antes de calcular ningún hash, con el mensaje de siempre.
-- Sesiones en el servidor, guardadas en PostgreSQL; identificador regenerado al entrar; destruidas al salir. Caducan tras 24 horas sin uso, o tras 7 días si se marca «Mantener sesión abierta» (sin marcar por defecto). Cada visita renueva el plazo.
-- Cookie `HttpOnly`, `SameSite=Lax`; `Secure` se activa con `COOKIE_SECURE=true` cuando haya HTTPS.
-- Token CSRF por sesión en todos los formularios.
-- Límite de 10 intentos de entrada por IP cada 15 minutos, y de 10 intentos de registro por IP cada hora (también cuentan los fallidos).
-- Usuario privado y alias público: quien ve tu alias no sabe con qué nombre entras.
-- Mensajes de error sin pistas: al entrar, el mismo mensaje si falla el usuario o la contraseña; al registrarse, el mismo mensaje y el mismo código (400) para todos los errores de datos, también si el usuario ya existe.
-- Tras un error, los formularios salen vacíos y el campo del usuario lleva `autocomplete="off"`, por si el dispositivo es compartido.
-- Sin correo: K-ME funciona solo en local.
-- Consultas SQL siempre parametrizadas; validación de usuario, alias y contraseña en el servidor.
-- Cabeceras de seguridad con Helmet (CSP, nosniff, etc.).
-- Secretos solo en `.env.local`, excluido de Git. El usuario de base de datos `kme_app` no es superusuario.
-- Tiempo de respuesta parecido para usuario inexistente y contraseña incorrecta.
+```powershell
+node --test "tests/*.test.js"
+```
 
-## Pendiente (no incluido en la fase 1)
+## Seguridad
 
-- Recuperación de contraseña, cambio de alias, borrado de cuenta.
-- HTTPS y configuración de despliegue (cookie `Secure`, `trust proxy`).
-- Registro de intentos fallidos por cuenta, además de por IP.
+- **Contraseñas:**
+  - de 12 a 128 caracteres, guardadas con Argon2id, nunca en texto legible;
+  - más de 128 se rechazan antes de calcular el hash;
+  - tiempo de respuesta parecido para usuario inexistente y contraseña incorrecta.
+- **Sesiones:**
+  - guardadas en el servidor, en PostgreSQL, con el identificador regenerado al entrar;
+  - caducan tras 24 horas sin uso, o 7 días con «Mantener sesión abierta»;
+  - cookie `HttpOnly` y `SameSite=Lax`.
+- **Formularios:**
+  - token CSRF en todos los formularios;
+  - límite de 10 intentos de entrada por IP cada 15 minutos y de 10 registros por hora;
+  - mensajes de error sin pistas, y formularios vacíos tras un error.
+- **Datos de cada cuenta:**
+  - cada consulta filtra por la cuenta de la sesión: un avatar, un sello o un progreso de otra cuenta «no existe» (404);
+  - cada recurso tiene su test de «otra cuenta no puede».
+- **Recompensas:**
+  - el acierto, los Kpopis y los tesoros los decide solo el servidor;
+  - la base de datos impide cobrar dos veces la misma recompensa.
+- **Contenido:**
+  - sin texto libre en Connect ni en los sellos: emociones, iconos, palabras y adornos salen de listas cerradas;
+  - lo que escribe el usuario se pinta siempre escapado.
+- **Navegador:** cabeceras de seguridad con Helmet, con una política de contenido (CSP) sin scripts en línea.
+- **Secretos y Git:**
+  - los secretos solo están en `.env.local`, fuera de Git;
+  - el usuario de base de datos `kme_app` no es superusuario;
+  - una comprobación antes de cada commit bloquea los `.env`, las contraseñas, las claves y los tokens.
+- **Privacidad:** sin correo ni datos personales; las cuentas de prueba son ficticias.
+
+## Pendiente (después del 1 de diciembre)
+
+- Recuperación de contraseña, cambio de alias y borrado de cuenta.
+- HTTPS y despliegue (cookie `Secure`, `trust proxy`).
+- Canjear Kpopis, nuevos retos, el encuentro previo a un concierto y los intercambios.
+- La dirección visual de collage editorial (D067): más opciones con detalle fotográfico para el avatar (las dos primeras, la falda con bolsillos de tela y el lightstick de estudio, ya están) y su extensión a la interfaz.
+- Revisar 안녕하세요 y 고마워요 con una persona que hable coreano.
