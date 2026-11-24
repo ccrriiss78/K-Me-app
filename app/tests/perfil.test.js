@@ -128,7 +128,7 @@ test('Imagen de perfil: un avatar, un sello o los dos, siempre de la propia cuen
     }
   });
 
-  await t.test('2. sin imagen de perfil, la cabecera queda como antes, «Mi K-ME» invita a elegirla y cada avatar y sello ofrece «Usar en mi perfil»', async () => {
+  await t.test('2. sin imagen de perfil, la cabecera enseña la inicial e invita a elegirla, «Mi K-ME» también, y cada avatar y sello ofrece «Usar en mi perfil»', async () => {
     navA = await entrarComo(A);
     navB = await entrarComo(B);
     const avatar = await navA.api('/studio/avatares', { nombre: 'Avatar del perfil', receta: receta({ rostro: 'ovalado' }) });
@@ -140,7 +140,12 @@ test('Imagen de perfil: un avatar, un sello o los dos, siempre de la propia cuen
 
     const mi = await navA.pedir('/mi-kme');
     assert.equal(mi.estado, 200);
-    assert.doesNotMatch(cabecera(mi.html), /data-perfil-cabecera/, 'la cabecera no lleva imagen');
+    // La zona de la foto de perfil está siempre (la autora, E0077): sin imagen, un círculo con la
+    // inicial que invita a elegirla y lleva a «Tu imagen de perfil» en Mi K-ME.
+    const arriba = cabecera(mi.html);
+    assert.doesNotMatch(arriba, /data-perfil-cabecera="(avatar|sello)"/, 'la cabecera no lleva imagen');
+    assert.match(arriba, /<a class="perfil-cabecera perfil-cabecera--vacia" href="\/mi-kme#titulo-perfil" data-perfil-cabecera="vacia" aria-label="Elige tu imagen de perfil" title="Elige tu imagen de perfil"><span aria-hidden="true">F<\/span><\/a>/);
+    assert.match(arriba, new RegExp(`<span class="nav__alias">Hola, <strong>${A.alias}</strong></span>`), 'el saludo, aparte de la imagen');
     assert.ok(principal(mi.html).includes(SIN_PERFIL), 'Mi K-ME invita a elegirla');
     assert.match((await navA.pedir('/studio/avatares')).html, botonUsar('avatar', idAvatar), 'en «Mis avatares»');
     assert.match((await navA.pedir('/studio/sellos')).html, botonUsar('sello', idSello), 'en «Mis sellos»');
@@ -155,6 +160,8 @@ test('Imagen de perfil: un avatar, un sello o los dos, siempre de la propia cuen
     const mi = await navA.pedir('/mi-kme');
     const arriba = cabecera(mi.html);
     assert.match(arriba, /data-perfil-cabecera="avatar"[^>]*>\s*<svg/, 'la cabecera lleva el avatar');
+    assert.match(arriba, /<a class="perfil-cabecera" href="\/mi-kme#titulo-perfil" data-perfil-cabecera="avatar" aria-label="Tu imagen de perfil, en Mi K-ME">/, 'como foto de perfil que lleva a Mi K-ME');
+    assert.doesNotMatch(arriba, /perfil-cabecera--vacia/);
     assert.doesNotMatch(arriba, PIERNAS, 'en la cabecera, solo la cara');
     const centro = principal(mi.html);
     assert.match(centro, /data-perfil="avatar"[\s\S]*?<svg/, 'Mi K-ME lleva el avatar');
@@ -206,7 +213,7 @@ test('Imagen de perfil: un avatar, un sello o los dos, siempre de la propia cuen
     assert.match(sello.html, /Ese sello no existe\./);
     assert.deepEqual(await perfilEnBd(B.id), { avatar: null, sello: null }, 'B sigue sin imagen');
     assert.deepEqual(await perfilEnBd(A.id), { avatar: idAvatar, sello: idSello }, 'el perfil de A no cambia');
-    assert.doesNotMatch(cabecera((await navB.pedir('/mi-kme')).html), /data-perfil-cabecera/);
+    assert.match(cabecera((await navB.pedir('/mi-kme')).html), /data-perfil-cabecera="vacia"/, 'B sigue con la inicial');
   });
 
   await t.test('8. un id que no es un número válido no existe (404)', async () => {
@@ -236,12 +243,12 @@ test('Imagen de perfil: un avatar, un sello o los dos, siempre de la propia cuen
     assert.deepEqual(await perfilEnBd(A.id), { avatar: null, sello: idSello });
   });
 
-  await t.test('11. borrar el sello del perfil lo quita también: la cabecera vuelve a como era antes', async () => {
+  await t.test('11. borrar el sello del perfil lo quita también: la cabecera vuelve a la inicial', async () => {
     const borrado = await navA.enviar(`/studio/sellos/${idSello}/eliminar`);
     assert.equal(borrado.estado, 302, 'se borra el sello');
     const mi = await navA.pedir('/mi-kme');
     assert.equal(mi.estado, 200);
-    assert.doesNotMatch(cabecera(mi.html), /data-perfil-cabecera/);
+    assert.match(cabecera(mi.html), /data-perfil-cabecera="vacia"/);
     assert.ok(principal(mi.html).includes(SIN_PERFIL), 'Mi K-ME vuelve a invitar a elegirla');
     assert.deepEqual(await perfilEnBd(A.id), { avatar: null, sello: null });
   });

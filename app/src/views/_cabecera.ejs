@@ -32,10 +32,16 @@
         <a href="/escenario"<% if ((locals.rutaActual || '').startsWith('/escenario')) { %> aria-current="page"<% } %>>Mi escenario</a>
       </nav>
       <nav class="nav" aria-label="Sesión">
-        <%# Imagen de perfil (D044): la cara del avatar o, si solo hay sello, el sello. El SVG lo dibuja
-            el servidor a partir de recetas validadas, nunca algo enviado por el navegador. Es
-            decorativa: al lado va el alias. Sin imagen de perfil, la cabecera queda como antes. %>
-        <span class="nav__alias"><% if (locals.perfilSesion && perfilSesion.cabecera) { %><span class="perfil-cabecera" data-perfil-cabecera="<%= perfilSesion.cabecera.tipo %>" aria-hidden="true"><% if (perfilSesion.cabecera.tipo === 'avatar') { %><%- perfilSesion.cabecera.svg %><% } else { %><%- include('_sello', { dibujo: perfilSesion.cabecera.dibujo, ancho: perfilSesion.cabecera.ancho, clase: 'sello--cabecera' }) %><% } %></span> <% } %>Hola, <strong><%= aliasSesion %></strong></span>
+        <%# Foto de perfil (D044; zona propia desde E0077, a petición de la autora): la cara del avatar
+            o, si solo hay sello, el sello. Lleva a «Tu imagen de perfil» en Mi K-ME. Sin imagen, un
+            círculo con la inicial del alias que invita a elegirla. El SVG lo dibuja el servidor a
+            partir de recetas validadas, nunca algo enviado por el navegador. %>
+        <% if (locals.perfilSesion && perfilSesion.cabecera) { %>
+        <a class="perfil-cabecera" href="/mi-kme#titulo-perfil" data-perfil-cabecera="<%= perfilSesion.cabecera.tipo %>" aria-label="Tu imagen de perfil, en Mi K-ME"><% if (perfilSesion.cabecera.tipo === 'avatar') { %><%- perfilSesion.cabecera.svg %><% } else { %><%- include('_sello', { dibujo: perfilSesion.cabecera.dibujo, ancho: perfilSesion.cabecera.ancho, clase: 'sello--cabecera' }) %><% } %></a>
+        <% } else { %>
+        <a class="perfil-cabecera perfil-cabecera--vacia" href="/mi-kme#titulo-perfil" data-perfil-cabecera="vacia" aria-label="Elige tu imagen de perfil" title="Elige tu imagen de perfil"><span aria-hidden="true"><%= aliasSesion.charAt(0).toUpperCase() %></span></a>
+        <% } %>
+        <span class="nav__alias">Hola, <strong><%= aliasSesion %></strong></span>
         <%# Saldo de Kpopis (D063): lo calcula el servidor (middleware/kpopis.js). Lleva a «Mis Kpopis».
             En el móvil se ve solo el número con el icono; la palabra sigue ahí para los lectores de pantalla. %>
         <% if (locals.kpopisSesion) { %>

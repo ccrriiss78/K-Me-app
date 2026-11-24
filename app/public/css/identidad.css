@@ -146,15 +146,30 @@
 .reacciones-mas__opciones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .4rem; }
 .reacciones-mas__opciones .reaccion { display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; gap: .4rem; text-align: left; border-radius: 6px; padding: .5rem; }
 .reaccion__nombre { min-width: 0; overflow-wrap: anywhere; font-size: .8rem; line-height: 1.25; }
-/* Imagen de perfil (D044, D055; T039). El tamaño y el sitio se cambian aquí, sin tocar el servidor. */
-.nav__alias { display: inline-flex; align-items: center; gap: .45rem; }
-.perfil-cabecera { display: inline-flex; flex: none; }
+/* Foto de perfil (D044, D055; T039; zona propia desde E0077). El tamaño y el sitio se cambian aquí,
+   sin tocar el servidor. Es un enlace a «Tu imagen de perfil» en Mi K-ME. */
+/* «Hola,» no se parte; si no cabe, el que baja de línea es el alias. */
+.nav__alias { white-space: nowrap; }
+.nav__alias strong { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
+.perfil-cabecera { display: inline-flex; flex: none; text-decoration: none; }
 .perfil-cabecera svg { display: block; }
-.perfil-cabecera[data-perfil-cabecera="avatar"] {
-  width: 40px; height: 40px; overflow: hidden; border: 1px solid var(--kme-tinta); border-radius: 50%;
+/* En un marco como el del logo (la autora, E0077): vertical, con la proporción del logo y del sello
+   (88,5 × 126,8) y esquinas redondeadas, como una photocard junto al logo. */
+.perfil-cabecera[data-perfil-cabecera="avatar"], .perfil-cabecera--vacia {
+  width: 38px; height: 54px; overflow: hidden; border: 2px solid var(--kme-tinta); border-radius: 8px;
   background: #fff; box-shadow: 2px 2px 0 var(--kme-acento);
 }
-.perfil-cabecera[data-perfil-cabecera="avatar"] svg { width: 100%; height: 100%; }
+/* La cara, más grande dentro del marco (el recorte del rostro deja margen alrededor). */
+.perfil-cabecera[data-perfil-cabecera="avatar"] svg { width: 100%; height: 100%; transform: scale(1.5); }
+/* El sello ya trae su marco: solo se ajusta al mismo tamaño. */
+.perfil-cabecera[data-perfil-cabecera="sello"] svg { width: 38px; height: 54px; }
+.perfil-cabecera:hover { box-shadow: 3px 3px 0 var(--kme-acento); }
+/* Sin foto: el marco vacío con la inicial, con borde de puntos, que invita a llenarlo. */
+.perfil-cabecera--vacia {
+  align-items: center; justify-content: center; border-style: dashed; background: var(--color-rosa-suave);
+  color: var(--kme-tinta); font-size: 1.2rem; font-weight: 900;
+}
+.perfil-cabecera--vacia:hover { background: #fff; }
 .perfil {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, max-content)); gap: 1.25rem;
   margin: 1.5rem 0; padding: 1.25rem; background: #fff; border: 1px solid var(--kme-tinta);
@@ -258,10 +273,9 @@
   .menu { gap: 0; justify-content: space-between; }
   .menu a { padding: .6rem .5rem; font-size: .83rem; }
   .nav { gap: .6rem; }
-  .nav__alias { max-width: 15ch; font-size: .75rem; }
-  /* «Hola,» no se parte; si no cabe, el que baja de línea es el alias. */
-  .nav__alias { max-width: 20ch; white-space: nowrap; }
-  .nav__alias strong { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
+  .nav__alias { max-width: 20ch; font-size: .75rem; }
+  .perfil-cabecera[data-perfil-cabecera="avatar"], .perfil-cabecera--vacia { width: 32px; height: 46px; border-radius: 7px; }
+  .perfil-cabecera[data-perfil-cabecera="sello"] svg { width: 32px; height: 46px; }
   /* Con «Mi escenario», el menú tiene 5 apartados: pasa a dos filas en lugar de cortarse. */
   .menu { flex-wrap: wrap; justify-content: center; column-gap: .15rem; }
   /* El saldo, compacto: el icono y el número. «Kpopis» queda solo para los lectores de pantalla. */
