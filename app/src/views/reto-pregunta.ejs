@@ -1,0 +1,59 @@
+<%- include('_cabecera') %>
+<%# Una pregunta de la miniclase (D062). Las opciones van solo en hangul y lectura. Tras responder,
+    acierte o falle, la traducción y para qué sirve (lo decide el servidor, retoService.responder).
+    Si falla, la pregunta sigue para volver a probar (regla a). Al acertar todas, el final. %>
+<% const r = locals.resultado; const final = locals.final; %>
+<section class="tarjeta escenario" aria-labelledby="titulo-pregunta">
+  <p class="escenario__miga"><a class="enlace" href="/escenario/<%= reto.id %>"><%= reto.titulo %> · <%= reto.lema %></a></p>
+  <h1 id="titulo-pregunta">Pregunta <%= pregunta.numero %> de <%= reto.preguntas.length %></h1>
+  <% if (!final) { %>
+    <p class="progreso">Aciertos: <%= estado.aciertos %> de <%= estado.total %></p>
+  <% } %>
+
+  <% if (locals.error) { %>
+    <p class="aviso aviso--error" role="alert"><%= error %></p>
+  <% } %>
+
+  <% if (r && r.acierto) { %>
+    <div class="resultado resultado--bien">
+      <p class="resultado__pregunta"><%= pregunta.texto %></p>
+      <p class="resultado__texto">¡Bien! <span lang="ko"><%= r.elegida.hangul %></span> (<%= r.elegida.lectura %>) = «<%= r.elegida.significado %>». <%= pregunta.bien %></p>
+    </div>
+  <% } else if (r) { %>
+    <div class="resultado resultado--mal">
+      <p class="resultado__texto"><span lang="ko"><%= r.elegida.hangul %></span> (<%= r.elegida.lectura %>) = «<%= r.elegida.significado %>»: sirve para <%= r.elegida.sirvePara %>. Aquí toca <%= pregunta.toca %>. Prueba otra vez.</p>
+    </div>
+  <% } %>
+
+  <% if (final) { %>
+    <div class="final">
+      <img class="final__tesoro" src="<%= final.recompensa.tesoro.imagen %>" alt="" width="120" height="165">
+      <div>
+        <% if (final.primeraVez) { %>
+          <p class="final__titulo">¡<%= reto.titulo %> completado! Has ganado <%= final.recompensa.kpopis %> y <%= final.recompensa.tesoro.nombre %>, que ya está en Mis tesoros.</p>
+          <p class="final__kpopis"><img src="<%= final.recompensa.iconoKpopi %>" alt="" width="24" height="24"> +<%= final.recompensa.kpopis %></p>
+        <% } else { %>
+          <p class="final__titulo">¡Completado otra vez! La recompensa ya la ganaste el <%= final.ganadoEl %>: es tuya para siempre.</p>
+        <% } %>
+        <p class="final__acciones">
+          <a class="boton boton--enlace" href="/mi-kme#mis-tesoros">Ver Mis tesoros</a>
+          <a class="boton boton--enlace boton--secundario" href="/escenario">Volver a Mi escenario</a>
+        </p>
+      </div>
+    </div>
+  <% } else if (r && r.acierto) { %>
+    <p><a class="boton boton--enlace" href="/escenario/<%= reto.id %>/preguntas/<%= locals.siguiente %>">Siguiente pregunta</a></p>
+  <% } else { %>
+    <form method="post" action="/escenario/<%= reto.id %>/preguntas/<%= pregunta.numero %>" class="pregunta">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <fieldset class="pregunta__opciones">
+        <legend class="pregunta__texto"><%= pregunta.texto %></legend>
+        <% for (const o of opciones) { %>
+          <label class="opcion"><input type="radio" name="respuesta" value="<%= o.id %>" required> <span class="opcion__hangul" lang="ko"><%= o.hangul %></span> <span class="opcion__lectura"><%= o.lectura %></span></label>
+        <% } %>
+      </fieldset>
+      <button type="submit" class="boton">Comprobar</button>
+    </form>
+  <% } %>
+</section>
+<%- include('_pie') %>

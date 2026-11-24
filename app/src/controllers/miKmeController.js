@@ -4,6 +4,7 @@
 
 import { buscarPorId } from '../models/usuarioModel.js';
 import { imagenesMiKme } from '../services/perfilService.js';
+import { misRecompensas } from '../services/recompensaService.js';
 
 export async function mostrarMiKme(req, res, next) {
   try {
@@ -13,7 +14,9 @@ export async function mostrarMiKme(req, res, next) {
       return req.session.destroy(() => res.redirect('/entrar'));
     }
     const perfil = imagenesMiKme(res.locals.perfilSesion, cuenta.alias);
-    res.render('mi-kme', { titulo: 'Mi K-ME', cuenta, perfil });
+    // «Mis Kpopis» y «Mis tesoros» (D063, D064).
+    const recompensas = await misRecompensas(req.session.usuarioId);
+    res.render('mi-kme', { titulo: 'Mi K-ME', cuenta, perfil, recompensas });
   } catch (err) {
     next(err);
   }

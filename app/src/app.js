@@ -8,6 +8,7 @@ import { cargarEnv } from './config/env.js';
 import { crearMiddlewareSesion } from './middleware/sesion.js';
 import { tokenCsrf } from './middleware/csrf.js';
 import { cargarPerfil } from './middleware/perfil.js';
+import { cargarKpopis } from './middleware/kpopis.js';
 import { rutas } from './routes/index.js';
 
 const raiz = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -52,6 +53,8 @@ export function crearApp() {
   });
   // Imagen de perfil de quien tiene la sesión, para la cabecera y las listas (D044, D055).
   app.use(cargarPerfil);
+  // Saldo de Kpopis de quien tiene la sesión, para la cabecera (D063).
+  app.use(cargarKpopis);
 
   app.use(rutas);
 

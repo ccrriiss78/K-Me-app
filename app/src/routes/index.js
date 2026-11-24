@@ -15,6 +15,9 @@ import {
   borrarAvatares,
 } from '../controllers/avatarController.js';
 import { elegirAvatarPerfil, elegirSelloPerfil } from '../controllers/perfilController.js';
+import {
+  mostrarEscenario, mostrarReto, mostrarPregunta, responderPregunta,
+} from '../controllers/escenarioController.js';
 import { requiereSesion, requiereSesionOJson } from '../middleware/requiereSesion.js';
 import { comprobarCsrf } from '../middleware/csrf.js';
 import { limiteIntentosLogin, limiteRegistro } from '../middleware/limiteIntentos.js';
@@ -43,6 +46,13 @@ rutas.post('/connect/publicaciones', requiereSesion, comprobarCsrf, publicar);
 rutas.post('/connect/publicaciones/:id/reacciones', requiereSesion, comprobarCsrf, reaccionar);
 rutas.post('/connect/publicaciones/:id/reacciones/quitar', requiereSesion, comprobarCsrf, quitarReacciones);
 rutas.post('/connect/publicaciones/:id/eliminar', requiereSesion, comprobarCsrf, eliminarPublicacion);
+
+// Mi escenario (D062): los retos, de momento la miniclase HANGUL LIVE 001. Todo privado; responder,
+// con CSRF. El servidor decide si se acierta y entrega la recompensa (una sola vez).
+rutas.get('/escenario', requiereSesion, mostrarEscenario);
+rutas.get('/escenario/:reto', requiereSesion, mostrarReto);
+rutas.get('/escenario/:reto/preguntas/:numero', requiereSesion, mostrarPregunta);
+rutas.post('/escenario/:reto/preguntas/:numero', requiereSesion, comprobarCsrf, responderPregunta);
 
 // Sello Studio (D041): los sellos personales de cada cuenta. Todo privado; cada POST, con CSRF.
 // «vista-previa» y «nuevo» van antes que «:id» para que no se lean como un id.

@@ -36,6 +36,42 @@
       </figure>
     <% } %>
   </section>
+  <%# Mis tesoros (D064, «Mi álbum vivo»): los objetos ganados, con su origen y la fecha. Se ganan,
+      nunca se compran. Los dibujos salen del catálogo (src/catalogos/recompensas.js). %>
+  <section class="tesoros" id="mis-tesoros" aria-labelledby="titulo-tesoros">
+    <h2 id="titulo-tesoros">Mis tesoros</h2>
+    <% if (recompensas.tesoros.length === 0) { %>
+      <p>Todavía no tienes tesoros. Gana el primero en <a class="enlace" href="/escenario/hangul-live-001">HANGUL LIVE 001</a>.</p>
+    <% } else { %>
+      <ul class="tesoros__lista">
+        <% for (const t of recompensas.tesoros) { %>
+          <li class="tesoro" data-tesoro="<%= t.id %>">
+            <img class="tesoro__imagen" src="<%= t.imagen %>" alt="" width="96" height="132">
+            <span class="tesoro__nombre"><%= t.nombre %></span>
+            <span class="tesoro__origen"><%= t.clase %> · <%= t.origen %></span>
+            <span class="tesoro__fecha">ganado el <time datetime="<%= t.fechaIso %>"><%= t.fecha %></time></span>
+          </li>
+        <% } %>
+      </ul>
+    <% } %>
+  </section>
+  <%# Mis Kpopis (D063): el saldo y sus movimientos. De momento solo se ganan; el canje, después. %>
+  <section class="kpopis" id="mis-kpopis" aria-labelledby="titulo-kpopis">
+    <h2 id="titulo-kpopis">Mis Kpopis</h2>
+    <p class="kpopis__saldo"><img src="<%= recompensas.iconoKpopi %>" alt="" width="32" height="32"><strong><%= recompensas.saldo %></strong></p>
+    <p class="nota">De momento se ganan en Mi escenario. Todavía no se pueden gastar.</p>
+    <% if (recompensas.movimientos.length === 0) { %>
+      <p>Todavía no tienes movimientos.</p>
+    <% } else { %>
+      <h3 class="kpopis__subtitulo">Movimientos</h3>
+      <ol class="kpopis__movimientos">
+        <% for (const m of recompensas.movimientos) { %>
+          <li><strong><%= m.cantidad %></strong> · <%= m.concepto %> · <time datetime="<%= m.fechaIso %>"><%= m.fecha %></time></li>
+        <% } %>
+      </ol>
+    <% } %>
+  </section>
+  <p><a class="boton boton--enlace" href="/escenario">Ir a Mi escenario</a></p>
   <p><a class="boton boton--enlace" href="/studio/avatares">Crear tus avatares en Avatar Studio</a></p>
   <p><a class="boton boton--enlace" href="/studio/sellos">Crear tus sellos en Sello Studio</a></p>
   <p><a class="boton boton--enlace" href="/connect">Ir al muro de Connect</a></p>

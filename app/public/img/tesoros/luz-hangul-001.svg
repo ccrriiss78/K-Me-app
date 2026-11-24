@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 220">
+  <!-- Luz Hangul 001 (D064): el lightstick de HANGUL LIVE 001, «Tu voz. Nuestra luz».
+       La bola de luz con una estrella y ondas de voz a los lados (tu voz), el halo (nuestra luz),
+       el mango con una banda amarilla y las rayitas del logo, y la correa con la etiqueta 001.
+       Sin hangul en el dibujo. Dibujo del asistente; la autora lo acepta «de momento» (24/11/2026, E0073).
+       Colores de la paleta: negro, blanco, fucsia K-ME, lavanda y amarillo. -->
+  <circle cx="80" cy="70" r="66" fill="#c5b1e3" opacity=".35"/>
+  <circle cx="80" cy="70" r="56" fill="#e83475" opacity=".14"/>
+  <path d="M30 50a28 28 0 0 0 0 40M20 43a37 37 0 0 0 0 54M130 50a28 28 0 0 1 0 40M140 43a37 37 0 0 1 0 54" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round"/>
+  <rect x="58" y="106" width="44" height="20" rx="7" fill="#000"/>
+  <circle cx="80" cy="70" r="44" fill="#fff" stroke="#000" stroke-width="5"/>
+  <path d="M80 44c2.2 15.5 6.5 21.8 24 26-17.5 4.2-21.8 10.5-24 26-2.2-15.5-6.5-21.8-24-26 17.5-4.2 21.8-10.5 24-26z" fill="#e83475"/>
+  <path d="M102 45.5l1.6 3.6 3.6 1.6-3.6 1.6-1.6 3.6-1.6-3.6-3.6-1.6 3.6-1.6z" fill="#ffd000" stroke="#000" stroke-width="1.2" stroke-linejoin="round"/>
+  <rect x="67" y="122" width="26" height="80" rx="13" fill="#000"/>
+  <rect x="67" y="136" width="26" height="7" fill="#ffd000"/>
+  <path d="M75 188l4-8M82 188l4-8" stroke="#e83475" stroke-width="3" stroke-linecap="round"/>
+  <path d="M80 200c0 12-14 15-20 9" fill="none" stroke="#e83475" stroke-width="4" stroke-linecap="round"/>
+  <g transform="rotate(-12 48 205)">
+    <rect x="33" y="196" width="30" height="18" rx="4" fill="#fff" stroke="#000" stroke-width="2.5"/>
+    <text x="48" y="209.5" font-family="system-ui, sans-serif" font-size="11" font-weight="800" text-anchor="middle">001</text>
+  </g>
+</svg>

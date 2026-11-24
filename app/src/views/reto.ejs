@@ -1,0 +1,39 @@
+<%- include('_cabecera') %>
+<%# La miniclase (D062): primero las 3 expresiones, con su lectura, su traducción y su fuente;
+    después, las preguntas. Los textos salen del catálogo (src/catalogos/hangul-live.js). %>
+<section class="tarjeta escenario" aria-labelledby="titulo-reto">
+  <p class="escenario__miga"><a class="enlace" href="/escenario">Mi escenario</a></p>
+  <div class="reto-cartel">
+    <h1 id="titulo-reto"><%= reto.titulo %> <span class="reto-cartel__lema"><span class="reto-cartel__punto" aria-hidden="true">· </span><%= reto.lema %></span></h1>
+  </div>
+  <p class="escenario__entrada"><%= reto.entrada %></p>
+
+  <h2 class="escenario__subtitulo">Las 3 expresiones</h2>
+  <ol class="expresiones">
+    <% for (const e of reto.expresiones) { %>
+      <li class="expresion">
+        <p class="expresion__hangul" lang="ko"><%= e.hangul %></p>
+        <p class="expresion__lectura"><%= e.lectura %></p>
+        <p class="expresion__traduccion"><%= e.traduccion %></p>
+        <p class="expresion__explicacion"><%= e.explicacion %></p>
+        <p class="expresion__fuente">Fuente: <a class="enlace" href="<%= e.fuente.enlace %>" rel="noopener noreferrer"><%= e.fuente.diccionario %>, entrada <span lang="ko"><%= e.fuente.entrada %></span></a></p>
+      </li>
+    <% } %>
+  </ol>
+  <p class="aviso aviso--revision" lang="es"><%= reto.aviso %></p>
+
+  <div class="reto-accion">
+    <% if (estado.aciertos > 0) { %>
+      <p>Llevas <%= estado.aciertos %> de <%= estado.total %> preguntas acertadas.</p>
+      <a class="boton boton--enlace" href="/escenario/<%= reto.id %>/preguntas/<%= estado.siguiente %>">Seguir con las preguntas</a>
+    <% } else { %>
+      <a class="boton boton--enlace" href="/escenario/<%= reto.id %>/preguntas/1">Empezar las preguntas</a>
+    <% } %>
+    <% if (estado.completadoEl) { %>
+      <p class="nota">Lo completaste el <%= estado.completadoEl %>. Puedes repetirlo cuando quieras.</p>
+    <% } else { %>
+      <p class="nota">Recompensa la primera vez que aciertes las 3: <%= recompensa.kpopis %> y <%= recompensa.tesoro.nombre %>.</p>
+    <% } %>
+  </div>
+</section>
+<%- include('_pie') %>

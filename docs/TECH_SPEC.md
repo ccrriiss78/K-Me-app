@@ -1,6 +1,6 @@
 # TECH_SPEC · K-ME
 
-**Estado:** versión 1.17 · 24/11/2026 · Responde al pendiente T012 de `BITACORA_KME.md`. Revisada con la autora: acepta las propuestas de Q1 a Q6 y decide Q7 a Q10 con cambios (ver §6). El 18/11 decide Q11, el alcance del MVP (§5.1) y los nombres de los logos (§4.0). El 19/11 sustituye el círculo cromático por la paleta de la app (§2.5). El 21/11 separa el usuario privado del alias público y añade el registro por formulario (§1). Ese mismo día se incorporan las decisiones del editor de avatar trabajadas con ChatGPT en otra carpeta (§2.2, §2.6, §3.3), y se decide que «Mi ambiente» también usa solo la paleta (§2.6, Q14). El 22/11 decide qué lleva el sello (§4.1, D041), protege el alias frente a palabras ofensivas (§1, D042), aprueba el catálogo de hangul comprobado (§4.2, D043), y decide que la imagen de perfil pueda ser un avatar, un sello o los dos (D044) y que el sello se pueda imprimir y descargar (D045). El 22 y 23/11 amplía la paleta del sello con colores vivos (D046). El 23/11 elige de momento la composición A+C para sellos y exige coherencia del tratamiento visual entre pantallas (§2.7, D047). El 24/11 decide guardar la imagen de perfil como referencia, con dos claves foráneas (§4.3, D055), borrar varios o todos (§3.6, D058) y cómo va Avatar Studio dentro de la app (§3.6, D059).
+**Estado:** versión 1.18 · 24/11/2026 · Responde al pendiente T012 de `BITACORA_KME.md`. Revisada con la autora: acepta las propuestas de Q1 a Q6 y decide Q7 a Q10 con cambios (ver §6). El 18/11 decide Q11, el alcance del MVP (§5.1) y los nombres de los logos (§4.0). El 19/11 sustituye el círculo cromático por la paleta de la app (§2.5). El 21/11 separa el usuario privado del alias público y añade el registro por formulario (§1). Ese mismo día se incorporan las decisiones del editor de avatar trabajadas con ChatGPT en otra carpeta (§2.2, §2.6, §3.3), y se decide que «Mi ambiente» también usa solo la paleta (§2.6, Q14). El 22/11 decide qué lleva el sello (§4.1, D041), protege el alias frente a palabras ofensivas (§1, D042), aprueba el catálogo de hangul comprobado (§4.2, D043), y decide que la imagen de perfil pueda ser un avatar, un sello o los dos (D044) y que el sello se pueda imprimir y descargar (D045). El 22 y 23/11 amplía la paleta del sello con colores vivos (D046). El 23/11 elige de momento la composición A+C para sellos y exige coherencia del tratamiento visual entre pantallas (§2.7, D047). El 24/11 decide guardar la imagen de perfil como referencia, con dos claves foráneas (§4.3, D055), borrar varios o todos (§3.6, D058) y cómo va Avatar Studio dentro de la app (§3.6, D059). Ese mismo día aprueba los textos, los dibujos, la regla y el sitio de HANGUL LIVE 001, los Kpopis y «Mis tesoros» (§5.2, D066).
 
 Este documento dice **qué se construye y cómo**. La bitácora dice qué ha pasado y por qué; `CLAUDE.md` dice cómo trabaja el agente.
 
@@ -517,6 +517,17 @@ Cada paso es un encargo de `/nueva-funcionalidad`, con plan, tests en rojo, revi
   - el asistente dibuja el lightstick para que la autora lo revise;
   - «Mis tesoros» («Mi álbum vivo») enseña el objeto ganado, su origen y la fecha;
   - ponérselo al avatar sigue pendiente (T029).
+- **[DECIDIDO 24/11, D066; hecho en E0073] Cómo queda construido:**
+  - **Textos y dibujos:** los aprobados por la autora, en `src/catalogos/hangul-live.js` y `recompensas.js`; se pueden cambiar allí sin tocar la base de datos.
+  - **Regla a:** cada pregunta se repite hasta acertar; la miniclase se completa al acertar las 3, en cualquier orden. Al completarla, la ronda se vacía para poder repetirla.
+  - **Sitio:** «Mi escenario» en el menú; el saldo en la cabecera (en el móvil, el icono y el número); «Mis tesoros» y «Mis Kpopis» en «Mi K-ME».
+  - **Rutas (todas privadas):** `GET /escenario`, `GET /escenario/:reto` y `GET`/`POST /escenario/:reto/preguntas/:numero` (con CSRF). Responder pinta el resultado en la misma página.
+  - **Base de datos (migración 009):**
+    - `retos_progreso`: cuenta, reto, `aciertos` de la ronda y `completado_en` de la primera vez;
+    - `kpopis_movimientos`: el saldo es su suma; `UNIQUE (id_usuario, clave)` impide cobrar dos veces;
+    - `tesoros_usuario`: cada tesoro, una vez por cuenta.
+  - **Recompensa:** el acierto que completa la ronda y la entrega van en una transacción.
+  - **Tests:** `tests/escenario.test.js`.
 - **[PROPUESTA, P026]** Calendario y tabla del plan ampliado (bitácora). Si HANGUL LIVE, los Kpopis o «Mis tesoros» no están en verde el viernes 27 por la noche, se quedan fuera enteros, sin pantallas que aparenten funcionar.
 - **[PROPUESTA, P027]** Animaciones de MY STAGE:
   - solo K-ME Bounce (el SVG entero, respetando «reducir movimiento»), si sobra tiempo;
@@ -620,6 +631,7 @@ Cada paso es un encargo de `/nueva-funcionalidad`, con plan, tests en rojo, revi
 | — | Diseño de cada publicación | (24/11, D060) Desarrolla Q7 y Q11: copia del perfil (avatar; si no, sello; si no, inicial) o de un avatar o sello elegido; en el muro, la cara del avatar (§5.1) |
 | — | Mensaje con iconos | (24/11, D061) De 1 a 5 iconos de una lista cerrada (emociones, reacciones y universo K-pop), sin texto libre (§5.1) |
 | — | Retos y monedas | (24/11, D062–D064) HANGUL LIVE 001 como primer reto; «Kpopi» y «Kpopis»; «Luz Hangul 001» en «Mis tesoros» (§5.2) |
+| — | HANGUL LIVE: regla y sitio | (24/11, D066) Textos y dibujos aprobados; cada pregunta, hasta acertar (regla a); «Mi escenario» en el menú, el saldo en la cabecera y «Mis tesoros» en «Mi K-ME» (§5.2) |
 
 ---
 
@@ -651,3 +663,4 @@ Este documento **se puede cambiar** cuando la app avance. Cada cambio se hace as
 | 1.15 | 24/11/2026 | §4.3: imagen de perfil (D044) guardada como referencia con dos claves foráneas en `usuarios` (D055, migración 007): rutas `POST /perfil/avatar` y `POST /perfil/sello`, la cara del avatar (o el sello) en la cabecera y los dos en «Mi K-ME». §3.6 y §5.1: el avatar ya va dentro del sello (T034). |
 | 1.16 | 24/11/2026 | §3.6: el editor aprobado dentro de la app, con nombre, «Guardar», conflicto y límite (T037, D059); validación de la receta con `kme-receta.js`; borrar varios o todos (D058). |
 | 1.17 | 24/11/2026 | §5.1: Connect con el diseño de cada fan (D060) y el mensaje con iconos (D061), migración 008. §5.2: lo que entra antes de congelar el código (D062–D064) y las propuestas P026–P028. §6: tres filas nuevas. |
+| 1.18 | 24/11/2026 | §5.2: cómo queda construido HANGUL LIVE 001 con los Kpopis y «Mis tesoros» (D066): regla a, sitio, rutas y migración 009. §6: una fila nueva. |

@@ -1,0 +1,35 @@
+<%- include('_cabecera') %>
+<%# «Mi escenario» (D040, D062): los retos de la cuenta. De momento solo hay uno, HANGUL LIVE 001:
+    no se enseñan eventos que todavía no funcionan. Estilos en /css/escenario.css. %>
+<section class="tarjeta escenario" aria-labelledby="titulo-escenario">
+  <h1 id="titulo-escenario">Mi escenario</h1>
+  <p class="escenario__entrada">Retos para aprender y ganar tesoros. Tu progreso se guarda en tu cuenta.</p>
+  <ul class="retos">
+    <% for (const { reto, recompensa, estado } of tarjetas) { %>
+      <li class="reto-tarjeta" data-reto="<%= reto.id %>">
+        <div class="reto-tarjeta__cartel">
+          <p class="reto-tarjeta__titulo"><%= reto.titulo %></p>
+          <p class="reto-tarjeta__lema"><%= reto.lema %></p>
+        </div>
+        <div class="reto-tarjeta__cuerpo">
+          <p class="reto-tarjeta__estado">
+            <% if (estado.completadoEl) { %>
+              <span class="etiqueta etiqueta--hecho">Completado el <%= estado.completadoEl %></span>
+            <% } %>
+            <% if (estado.aciertos > 0) { %>
+              <span class="etiqueta">En curso: <%= estado.aciertos %> de <%= estado.total %></span>
+            <% } else if (!estado.completadoEl) { %>
+              <span class="etiqueta">Sin empezar</span>
+            <% } %>
+          </p>
+          <div class="recompensa">
+            <img class="recompensa__tesoro" src="<%= recompensa.tesoro.imagen %>" alt="" width="48" height="66">
+            <p>Recompensa: <strong><img class="icono-kpopi" src="<%= recompensa.iconoKpopi %>" alt="" width="18" height="18"><%= recompensa.kpopis %></strong> y <strong><%= recompensa.tesoro.nombre %></strong><% if (estado.completadoEl) { %>, ya ganada<% } %>.</p>
+          </div>
+          <a class="boton boton--enlace" href="/escenario/<%= reto.id %>"><%= estado.completadoEl && estado.aciertos === 0 ? 'Repetir' : (estado.aciertos > 0 ? 'Seguir' : 'Empezar') %></a>
+        </div>
+      </li>
+    <% } %>
+  </ul>
+</section>
+<%- include('_pie') %>

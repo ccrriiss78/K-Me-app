@@ -1,0 +1,105 @@
+/* MI ESCENARIO (D040, D062): la lista de retos, la miniclase HANGUL LIVE 001 y sus preguntas.
+   Solo se carga en esas páginas (estilosExtra). Sigue la gramática común de identidad.css (tinta,
+   papel y gesto; controles de 44 px como mínimo) con un acento de escenario: el cartel negro con
+   el lema en amarillo, como la luz de un lightstick. Colores: los de la marca y la interfaz. */
+
+.tarjeta.escenario { max-width: 760px; }
+.escenario__miga { margin: 0 0 .8rem; font-size: .9rem; }
+.escenario__entrada { font-size: 1.05rem; }
+.escenario__subtitulo { margin: 1.5rem 0 .8rem; font-size: 1.15rem; font-weight: 900; letter-spacing: -.02em; }
+
+/* Etiquetas de estado: «Sin empezar», «En curso: 1 de 3», «Completado el…». */
+.etiqueta {
+  display: inline-block; margin: 0 .4rem .4rem 0; padding: .2rem .6rem;
+  border: 1px solid var(--kme-tinta); background: #fff; font-size: .8rem; font-weight: 800;
+}
+.etiqueta--hecho { background: var(--kme-tinta); color: #fff; box-shadow: 2px 2px 0 var(--kme-acento); }
+
+/* El cartel: negro, con el título en blanco y el lema en amarillo. */
+.reto-cartel, .reto-tarjeta__cartel {
+  position: relative; padding: 1.1rem 1.25rem; background: #000; color: #fff;
+  box-shadow: 5px 5px 0 var(--color-rosa-suave);
+}
+.reto-cartel h1 { margin: 0; color: #fff; font-weight: 900; letter-spacing: -.03em; }
+.reto-cartel__lema, .reto-tarjeta__lema { color: #ffd000; }
+.reto-cartel__lema { font-weight: 800; }
+
+/* «Mi escenario»: la tarjeta de cada reto. */
+.retos { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: 1.5rem; }
+.reto-tarjeta { border: 1px solid var(--kme-tinta); background: #fff; }
+.reto-tarjeta__cartel { box-shadow: none; }
+.reto-tarjeta__titulo { margin: 0; font-size: 1.6rem; font-weight: 900; letter-spacing: -.03em; line-height: 1.1; }
+.reto-tarjeta__lema { margin: .3rem 0 0; font-weight: 800; }
+.reto-tarjeta__cuerpo { padding: 1rem 1.25rem 1.25rem; }
+.reto-tarjeta__estado { margin: 0 0 .6rem; }
+.reto-tarjeta .boton { margin-top: .4rem; }
+.recompensa { display: flex; align-items: center; gap: .8rem; }
+.recompensa p { margin: 0; }
+.recompensa__tesoro { flex: none; width: 48px; height: auto; }
+.icono-kpopi { width: 18px; height: 18px; margin-right: .2em; vertical-align: -3px; }
+
+/* La miniclase: las 3 expresiones. */
+.expresiones {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;
+}
+.expresion {
+  padding: 1rem; background: #fff; border: 1px solid var(--kme-tinta); border-radius: 6px;
+  box-shadow: 4px 4px 0 var(--color-rosa-suave);
+}
+.expresion p { margin: 0 0 .5rem; }
+.expresion__hangul { font-size: 2rem; font-weight: 800; line-height: 1.2; }
+.expresion__lectura { color: var(--color-texto-suave); font-weight: 700; }
+.expresion__traduccion { font-weight: 800; }
+.expresion__explicacion { font-size: .95rem; }
+.expresion__fuente { font-size: .8rem; color: var(--color-texto-suave); }
+.expresion__fuente .enlace { overflow-wrap: anywhere; }
+.aviso--revision { margin-top: 1rem; background: #fff; border: 1px dashed var(--kme-contorno); font-size: .9rem; }
+.reto-accion { margin-top: 1.25rem; }
+.reto-accion p { margin: .6rem 0 0; }
+
+/* Una pregunta: las opciones, grandes y fáciles de pulsar. */
+.progreso { margin: 0 0 1rem; font-weight: 700; font-size: .9rem; }
+.pregunta__opciones { margin: 0; padding: 0; border: 0; display: grid; gap: .6rem; }
+.pregunta__texto { margin: 0 0 .9rem; padding: 0; font-size: 1.15rem; font-weight: 800; }
+.opcion {
+  display: flex; align-items: center; flex-wrap: wrap; gap: .4rem .9rem; min-height: 56px;
+  padding: .6rem 1rem; background: #fff; border: 1.5px solid var(--kme-contorno); border-radius: 6px; cursor: pointer;
+}
+.opcion input { width: 1.2rem; height: 1.2rem; margin: 0; accent-color: var(--kme-tinta); }
+.opcion:hover { border-color: var(--kme-tinta); }
+.opcion:has(input:checked) { border-color: var(--kme-tinta); background: var(--color-rosa-suave); box-shadow: 3px 3px 0 var(--kme-acento); }
+.opcion:has(input:focus-visible) { outline: 3px solid var(--kme-tinta); outline-offset: 3px; }
+.opcion__hangul { font-size: 1.6rem; font-weight: 800; line-height: 1.2; }
+.opcion__lectura { color: var(--color-texto-suave); font-weight: 700; }
+
+/* Lo que se ve tras responder: el texto dice si es correcto; el color solo lo acompaña.
+   Acierto, en magenta (el rosa suave y el fucsia de la marca); fallo, desaturado, en gris, para
+   que no se confundan (la autora, E0073: «no quiero que sea azul, mejor magenta o desaturado»). */
+.resultado { margin: 0 0 1rem; padding: .9rem 1rem; border: 2px solid; border-radius: 6px; }
+.resultado p { margin: 0; }
+.resultado p + p { margin-top: .5rem; }
+.resultado [lang="ko"] { font-size: 1.15em; font-weight: 800; }
+.resultado--bien { border-color: var(--kme-acento); background: var(--color-rosa-suave); box-shadow: 4px 4px 0 var(--kme-acento); }
+.resultado--mal { border-color: var(--kme-contorno); background: var(--color-fondo); }
+.resultado__pregunta { font-size: .9rem; }
+.resultado__texto { font-weight: 700; }
+
+/* El final: el tesoro ganado (el dibujo ya lleva su halo lavanda) y los enlaces. */
+.final {
+  display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem;
+  background: #fff; border: 1px solid var(--kme-tinta); box-shadow: 5px 5px 0 #ffd000;
+}
+.final__tesoro { flex: none; width: 120px; height: auto; }
+.final__titulo { margin: 0 0 .6rem; font-size: 1.15rem; font-weight: 900; }
+.final__kpopis { display: flex; align-items: center; gap: .4rem; margin: 0 0 .6rem; font-weight: 800; }
+.final__acciones { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0; }
+.final__acciones .boton { margin: 0; }
+
+@media (max-width: 600px) {
+  .reto-cartel h1 { font-size: 1.35rem; }
+  .reto-cartel__lema { display: block; }
+  .reto-cartel__punto { display: none; }
+  .final { flex-direction: column; text-align: center; }
+  .final__kpopis, .final__acciones { justify-content: center; }
+}

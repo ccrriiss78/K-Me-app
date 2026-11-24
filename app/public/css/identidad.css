@@ -197,6 +197,34 @@
   .sello-editor__acciones .boton { flex-basis: 100%; }
   .contenido:has(> .sellos-studio)::before { background-size: 86vw auto; background-position: right bottom 1rem; }
 }
+/* Kpopis y Mis tesoros (D063, D064). El saldo, en la cabecera, junto al alias; en «Mi K-ME», el
+   saldo con sus movimientos y los tesoros ganados, con la misma tarjeta que la imagen de perfil. */
+.saldo-kpopis {
+  display: inline-flex; align-items: center; gap: .35rem; min-height: 36px; padding: .2rem .7rem .2rem .3rem;
+  border: 1px solid var(--kme-tinta); border-radius: 999px; background: #fff; color: var(--kme-tinta);
+  font-size: .85rem; font-weight: 800; text-decoration: none; white-space: nowrap;
+}
+.saldo-kpopis:hover { background: var(--color-rosa-suave); }
+.saldo-kpopis img { display: block; flex: none; }
+.tesoros, .kpopis {
+  margin: 1.5rem 0; padding: 1.25rem; background: #fff; border: 1px solid var(--kme-tinta);
+  box-shadow: 5px 5px 0 var(--color-rosa-suave);
+}
+.tesoros > h2, .kpopis > h2 { margin: 0 0 .8rem; font-size: 1.15rem; font-weight: 900; letter-spacing: -.02em; }
+.tesoros > p, .kpopis > p { margin: 0 0 .6rem; }
+.tesoros__lista { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
+.tesoro {
+  display: grid; justify-items: center; gap: .25rem; padding: .9rem .6rem; text-align: center;
+  background: var(--color-fondo); border: 1px solid var(--color-borde); border-radius: 6px;
+}
+.tesoro__imagen { width: 96px; height: auto; }
+.tesoro__nombre { font-weight: 800; }
+.tesoro__origen, .tesoro__fecha { font-size: .8rem; color: var(--color-texto-suave); }
+.kpopis__saldo { display: flex; align-items: center; gap: .5rem; font-size: 1.3rem; }
+.kpopis__saldo img { flex: none; }
+.kpopis__subtitulo { margin: 1rem 0 .4rem; font-size: 1rem; font-weight: 800; }
+.kpopis__movimientos { margin: 0; padding-left: 1.2rem; font-size: .9rem; }
+
 @media (max-width: 600px) {
   .cabecera { gap: .5rem; }
   .marca img { height: 48px; }
@@ -204,6 +232,14 @@
   .menu a { padding: .6rem .5rem; font-size: .83rem; }
   .nav { gap: .6rem; }
   .nav__alias { max-width: 15ch; font-size: .75rem; }
+  /* Con «Mi escenario», el menú tiene 5 apartados: pasa a dos filas en lugar de cortarse. */
+  .menu { flex-wrap: wrap; justify-content: center; column-gap: .15rem; }
+  /* El saldo, compacto: el icono y el número. «Kpopis» queda solo para los lectores de pantalla. */
+  .saldo-kpopis { min-height: 32px; padding: .15rem .55rem .15rem .25rem; font-size: .8rem; }
+  .saldo-kpopis__nombre {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
   .nav .boton { margin: 0; padding: .4rem .7rem; }
 }
 @media (prefers-reduced-motion: reduce) {
