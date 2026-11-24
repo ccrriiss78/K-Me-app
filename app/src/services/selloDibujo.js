@@ -172,7 +172,7 @@ function encajarSvgAvatar(svg, caja, recorte) {
 }
 
 // composicion: la receta ya validada (selloService). alias: el alias público de la cuenta.
-// avatarSvg: el avatar dibujado, si lo hay (hasta que Avatar Studio guarde avatares, no lo hay).
+// avatarSvg: el avatar dibujado por selloService.dibujar, si lo hay; sin él, se marca su hueco.
 export function prepararDibujo(composicion, { alias = '', avatarSvg = null } = {}) {
   const color = (id) => buscarColor(id)?.valor ?? '#000000';
   const palabra = composicion.palabra ? buscarPalabra(composicion.palabra.id) : null;

@@ -8,6 +8,8 @@
 //   NOMBRE_NO_VALIDO, LIMITE, VERSION y NO_EXISTE.
 
 import * as Sello from '../models/selloModel.js';
+import * as Avatar from '../models/avatarModel.js';
+import { dibujarAvatar } from './avatarCatalogo.js';
 import {
   MAX_SELLOS, MAX_MOTIVOS, LARGO_NOMBRE_SELLO, buscarColor, buscarMotivo, buscarEncuadre,
 } from '../catalogos/sello.js';
@@ -84,18 +86,18 @@ export function leerNombre(cuerpo = {}) {
   return nombre;
 }
 
-// Avatares guardados de la cuenta, para elegir uno en el sello.
-// PENDIENTE: Avatar Studio todavía no guarda avatares en la app (falta la tabla «avatares»,
-// TECH_SPEC §3.5). Cuando exista, devolverá [{ id, nombre, composicion }] de esta cuenta
-// (WHERE id_usuario = $1). Hasta entonces no hay ninguno, y el sello no usa avatares de muestra.
-export async function avataresGuardados(/* idUsuario */) {
-  return [];
+// Avatares guardados de la cuenta de la sesión ([{ id, nombre, composicion }]), para elegir uno en
+// el sello. Solo los suyos: el modelo filtra por idUsuario. Nunca se usa un avatar de muestra.
+export async function avataresGuardados(idUsuario) {
+  return Avatar.listar(idUsuario);
 }
 
-// Datos para dibujar un sello. El avatar todavía no se puede dibujar en el servidor (el dibujador
-// está en el editor de ChatGPT): si una receta lo lleva, se marca su hueco.
+// Datos para dibujar un sello. Si lleva avatar, se dibuja su COPIA (no el avatar guardado, que puede
+// haber cambiado o no existir ya) con el dibujador de Avatar Studio y el encuadre elegido.
 export function dibujar(composicion, alias) {
-  return prepararDibujo(composicion, { alias, avatarSvg: null });
+  const avatar = composicion.avatar;
+  const avatarSvg = avatar ? dibujarAvatar(avatar.copia, { encuadre: avatar.encuadre }) : null;
+  return prepararDibujo(composicion, { alias, avatarSvg });
 }
 
 export { avisosDeContraste };
