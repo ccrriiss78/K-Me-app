@@ -25,6 +25,16 @@
             <span class="avatares-lista__dibujo" aria-hidden="true"><%- a.dibujo %></span>
             <span class="avatares-lista__nombre"><%= a.nombre %></span>
           </a>
+          <%# Imagen de perfil (D044): versión funcional; el diseño lo hará ChatGPT. %>
+          <% if (locals.perfilSesion && perfilSesion.idAvatar === String(a.id)) { %>
+            <p class="perfil-marca">En tu perfil</p>
+          <% } else { %>
+            <form method="post" action="/perfil/avatar">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <input type="hidden" name="avatar" value="<%= a.id %>">
+              <button type="submit" class="boton boton--pequeno boton--secundario">Usar en mi perfil</button>
+            </form>
+          <% } %>
           <form method="post" action="/studio/avatares/<%= a.id %>/duplicar">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <button type="submit" class="boton boton--pequeno boton--secundario">Duplicar</button>

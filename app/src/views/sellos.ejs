@@ -30,6 +30,16 @@
           <span class="sellos-lista__nombre" id="sello-nombre-<%= s.id %>"><%= s.nombre %></span>
           <span class="sello-card__editar">Abrir y editar <span aria-hidden="true">↗</span></span>
         </a>
+        <%# Imagen de perfil (D044): versión funcional; el diseño lo hará ChatGPT. %>
+        <% if (locals.perfilSesion && perfilSesion.idSello === String(s.id)) { %>
+          <p class="perfil-marca">En tu perfil</p>
+        <% } else { %>
+          <form method="post" action="/perfil/sello">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <input type="hidden" name="sello" value="<%= s.id %>">
+            <button type="submit" class="boton boton--pequeno boton--secundario" aria-label="Usar <%= s.nombre %> en mi perfil">Usar en mi perfil</button>
+          </form>
+        <% } %>
         <form method="post" action="/studio/sellos/<%= s.id %>/duplicar" class="sello-card__acciones">
           <input type="hidden" name="_csrf" value="<%= csrfToken %>">
           <button type="submit" class="boton boton--pequeno boton--secundario" aria-label="Duplicar <%= s.nombre %>">Duplicar</button>

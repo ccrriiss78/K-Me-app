@@ -13,6 +13,7 @@ import {
 import {
   mostrarAvatares, nuevoAvatar, abrirAvatar, crearAvatar, guardarAvatar, duplicarAvatar, eliminarAvatar, erroresJsonAvatar,
 } from '../controllers/avatarController.js';
+import { elegirAvatarPerfil, elegirSelloPerfil } from '../controllers/perfilController.js';
 import { requiereSesion, requiereSesionOJson } from '../middleware/requiereSesion.js';
 import { comprobarCsrf } from '../middleware/csrf.js';
 import { limiteIntentosLogin, limiteRegistro } from '../middleware/limiteIntentos.js';
@@ -31,6 +32,9 @@ rutas.post('/registro', limiteRegistro, comprobarCsrf, procesarRegistro);
 rutas.post('/salir', comprobarCsrf, cerrarSesion);
 
 rutas.get('/mi-kme', requiereSesion, mostrarMiKme);
+// Imagen de perfil (D044, D055): el id de un avatar o de un sello propio, o vacío para quitarlo.
+rutas.post('/perfil/avatar', requiereSesion, comprobarCsrf, elegirAvatarPerfil);
+rutas.post('/perfil/sello', requiereSesion, comprobarCsrf, elegirSelloPerfil);
 
 // Connect mínimo (D038): el muro de los fans. Todo privado; cada POST, con CSRF.
 rutas.get('/connect', requiereSesion, mostrarMuro);

@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { cargarEnv } from './config/env.js';
 import { crearMiddlewareSesion } from './middleware/sesion.js';
 import { tokenCsrf } from './middleware/csrf.js';
+import { cargarPerfil } from './middleware/perfil.js';
 import { rutas } from './routes/index.js';
 
 const raiz = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -49,6 +50,8 @@ export function crearApp() {
     res.locals.rutaActual = req.path;
     next();
   });
+  // Imagen de perfil de quien tiene la sesión, para la cabecera y las listas (D044, D055).
+  app.use(cargarPerfil);
 
   app.use(rutas);
 

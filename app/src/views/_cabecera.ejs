@@ -27,7 +27,10 @@
         <a href="/connect"<% if (locals.rutaActual === '/connect') { %> aria-current="page"<% } %>>Connect</a>
       </nav>
       <nav class="nav" aria-label="Sesión">
-        <span class="nav__alias">Hola, <strong><%= aliasSesion %></strong></span>
+        <%# Imagen de perfil (D044): la cara del avatar o, si solo hay sello, el sello. El SVG lo dibuja
+            el servidor a partir de recetas validadas, nunca algo enviado por el navegador. Es
+            decorativa: al lado va el alias. Sin imagen de perfil, la cabecera queda como antes. %>
+        <span class="nav__alias"><% if (locals.perfilSesion && perfilSesion.cabecera) { %><span class="perfil-cabecera" data-perfil-cabecera="<%= perfilSesion.cabecera.tipo %>" aria-hidden="true"><% if (perfilSesion.cabecera.tipo === 'avatar') { %><%- perfilSesion.cabecera.svg %><% } else { %><%- include('_sello', { dibujo: perfilSesion.cabecera.dibujo, ancho: perfilSesion.cabecera.ancho, clase: 'sello--cabecera' }) %><% } %></span> <% } %>Hola, <strong><%= aliasSesion %></strong></span>
         <form method="post" action="/salir" class="nav__form">
           <input type="hidden" name="_csrf" value="<%= csrfToken %>">
           <button type="submit" class="boton boton--secundario">Salir</button>

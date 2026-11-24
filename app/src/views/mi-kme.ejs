@@ -6,6 +6,36 @@
     <dt>Alias</dt><dd><%= cuenta.alias %></dd>
     <dt>Cuenta creada</dt><dd><time datetime="<%= cuenta.creado_en.toISOString() %>"><%= cuenta.creado_en.toLocaleString('es-ES') %></time></dd>
   </dl>
+  <%# Imagen de perfil (D044, D055): versión funcional; el diseño lo hará ChatGPT. Los SVG los dibuja
+      el servidor a partir de recetas validadas. %>
+  <section class="perfil" aria-labelledby="titulo-perfil">
+    <h2 id="titulo-perfil">Tu imagen de perfil</h2>
+    <% if (!perfil.avatar && !perfil.sello) { %>
+      <p>Todavía no has elegido tu imagen de perfil. Puedes usar uno de tus avatares, uno de tus sellos o los dos: pulsa «Usar en mi perfil» en Avatar Studio o en Sello Studio.</p>
+    <% } %>
+    <% if (perfil.avatar) { %>
+      <figure class="perfil__imagen" data-perfil="avatar">
+        <span role="img" aria-label="Tu avatar de perfil: <%= perfil.avatar.nombre %>"><%- perfil.avatar.svg %></span>
+        <figcaption><%= perfil.avatar.nombre %></figcaption>
+        <form method="post" action="/perfil/avatar">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <input type="hidden" name="avatar" value="">
+          <button type="submit" class="boton boton--pequeno boton--secundario">Quitar el avatar del perfil</button>
+        </form>
+      </figure>
+    <% } %>
+    <% if (perfil.sello) { %>
+      <figure class="perfil__imagen" data-perfil="sello">
+        <%- include('_sello', { dibujo: perfil.sello.dibujo, ancho: perfil.sello.ancho, clase: 'sello--perfil' }) %>
+        <figcaption><%= perfil.sello.nombre %></figcaption>
+        <form method="post" action="/perfil/sello">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <input type="hidden" name="sello" value="">
+          <button type="submit" class="boton boton--pequeno boton--secundario">Quitar el sello del perfil</button>
+        </form>
+      </figure>
+    <% } %>
+  </section>
   <p><a class="boton boton--enlace" href="/studio/avatares">Crear tus avatares en Avatar Studio</a></p>
   <p><a class="boton boton--enlace" href="/studio/sellos">Crear tus sellos en Sello Studio</a></p>
   <p><a class="boton boton--enlace" href="/connect">Ir al muro de Connect</a></p>

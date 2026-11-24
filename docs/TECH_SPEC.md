@@ -1,6 +1,6 @@
 # TECH_SPEC · K-ME
 
-**Estado:** versión 1.14 · 23/11/2026 · Responde al pendiente T012 de `BITACORA_KME.md`. Revisada con la autora: acepta las propuestas de Q1 a Q6 y decide Q7 a Q10 con cambios (ver §6). El 18/11 decide Q11, el alcance del MVP (§5.1) y los nombres de los logos (§4.0). El 19/11 sustituye el círculo cromático por la paleta de la app (§2.5). El 21/11 separa el usuario privado del alias público y añade el registro por formulario (§1). Ese mismo día se incorporan las decisiones del editor de avatar trabajadas con ChatGPT en otra carpeta (§2.2, §2.6, §3.3), y se decide que «Mi ambiente» también usa solo la paleta (§2.6, Q14). El 22/11 decide qué lleva el sello (§4.1, D041), protege el alias frente a palabras ofensivas (§1, D042), aprueba el catálogo de hangul comprobado (§4.2, D043), y decide que la imagen de perfil pueda ser un avatar, un sello o los dos (D044) y que el sello se pueda imprimir y descargar (D045). El 22 y 23/11 amplía la paleta del sello con colores vivos (D046). El 23/11 elige de momento la composición A+C para sellos y exige coherencia del tratamiento visual entre pantallas (§2.7, D047).
+**Estado:** versión 1.15 · 24/11/2026 · Responde al pendiente T012 de `BITACORA_KME.md`. Revisada con la autora: acepta las propuestas de Q1 a Q6 y decide Q7 a Q10 con cambios (ver §6). El 18/11 decide Q11, el alcance del MVP (§5.1) y los nombres de los logos (§4.0). El 19/11 sustituye el círculo cromático por la paleta de la app (§2.5). El 21/11 separa el usuario privado del alias público y añade el registro por formulario (§1). Ese mismo día se incorporan las decisiones del editor de avatar trabajadas con ChatGPT en otra carpeta (§2.2, §2.6, §3.3), y se decide que «Mi ambiente» también usa solo la paleta (§2.6, Q14). El 22/11 decide qué lleva el sello (§4.1, D041), protege el alias frente a palabras ofensivas (§1, D042), aprueba el catálogo de hangul comprobado (§4.2, D043), y decide que la imagen de perfil pueda ser un avatar, un sello o los dos (D044) y que el sello se pueda imprimir y descargar (D045). El 22 y 23/11 amplía la paleta del sello con colores vivos (D046). El 23/11 elige de momento la composición A+C para sellos y exige coherencia del tratamiento visual entre pantallas (§2.7, D047). El 24/11 decide guardar la imagen de perfil como referencia, con dos claves foráneas (§4.3, D055).
 
 Este documento dice **qué se construye y cómo**. La bitácora dice qué ha pasado y por qué; `CLAUDE.md` dice cómo trabaja el agente.
 
@@ -224,7 +224,7 @@ Ejemplo de `composicion`:
 | `POST /studio/avatares/:id/eliminar` | Elimina (si era el activo, la cuenta se queda sin activo) |
 
 **[HECHO 23/11, D052, E0067] Así ha quedado en el servidor (contrato v1 con ChatGPT):**
-- **Tabla `avatares`** (migración `006_avatares.sql`, nueva): `id`, `id_usuario`, `nombre` (de 1 a 40 caracteres), `composicion` (la receta, JSONB), `version`, `creado_en` y `actualizado_en`. La imagen de perfil (D044) irá en otra migración. No hay `…/activar` todavía.
+- **Tabla `avatares`** (migración `006_avatares.sql`, nueva): `id`, `id_usuario`, `nombre` (de 1 a 40 caracteres), `composicion` (la receta, JSONB), `version`, `creado_en` y `actualizado_en`. La imagen de perfil (D044) va en otra migración, la 007 (D055, §4.3). No hay `…/activar`: se usa `POST /perfil/avatar`.
 - **Receta:** el objeto del editor (claves de `editor-avatar/editor-avatar/datos/kme.json` → `porDefecto`), como mucho 8 KB. El servidor la completa con `normalizarAvatar` del editor y la **valida** campo a campo:
   - las piezas, con el catálogo;
   - los colores, en hexadecimal y del catálogo;
@@ -408,6 +408,16 @@ El sello **no** guarda el hangul copiado, sino el `id` de la palabra. Así, si s
 
 **[DECIDIDO 22/11, D044; pendiente de implementar]** El fan elige su **imagen de perfil**: un avatar, un sello o los dos. Se verá en la cabecera, en «Mi K-ME» y junto a sus publicaciones de Connect. Sustituye a «no hay sello activo». Cada publicación guardará su copia del diseño (Q7, Q11).
 
+**[DECIDIDO 24/11, D055; HECHO en el servidor, E0069]** La imagen de perfil se guarda como **referencia**, no como copia: el perfil enseña siempre la versión actual.
+- **Datos:** dos columnas en `usuarios`, `id_avatar_perfil` e `id_sello_perfil` (migración `007_perfil.sql`), con clave foránea, que pueden ir vacías y con `ON DELETE SET NULL`: si se borra ese avatar o ese sello, el perfil se queda sin él.
+- **Propiedad:** la consulta que elige comprueba que el avatar o el sello son de la cuenta; si no, 404 («Ese avatar no existe.» / «Ese sello no existe.»).
+- **Rutas:** `POST /perfil/avatar` (campo `avatar`) y `POST /perfil/sello` (campo `sello`), con sesión y CSRF. El id elige; vacío, quita. Las dos vuelven a «Mi K-ME».
+- **Dónde se ve (24/11, a propuesta del asistente):**
+  - cabecera: la cara del avatar o, si solo hay sello, el sello; sin imagen de perfil, queda como antes;
+  - «Mi K-ME»: los dos, con «Quitar»;
+  - «Mis avatares» y «Mis sellos»: «Usar en mi perfil», y «En tu perfil» en el elegido.
+- El tamaño y el sitio son diseño (ChatGPT): se pueden cambiar sin tocar el servidor. Tests en `tests/perfil.test.js`.
+
 **[DECIDIDO 22/11, D045; pendiente de implementar]** El sello se podrá **imprimir**, a tamaño photocard 55 × 85 mm como el avatar, y **descargar** en PDF y en PNG. Para el PDF se copiará a la app el generador del editor (`kme-impresion.js`), sin tocar la carpeta de ChatGPT.
 
 ---
@@ -444,9 +454,9 @@ Cada paso es un encargo de `/nueva-funcionalidad`, con plan, tests en rojo, revi
   - guardar con versión, duplicar, borrar y el límite de 20.
 
   Pendiente:
-  - el avatar dentro del sello, que espera a Avatar Studio (§4.1);
+  - ~~el avatar dentro del sello~~ (hecho el 24/11, T034, E0068: el editor ofrece los avatares guardados de la cuenta y el sello dibuja su copia con el encuadre);
   - la aprobación visual de la autora del diseño de ChatGPT, los 3 adornos nuevos y el tamaño del avatar (hechos en E0058–E0060);
-  - la imagen de perfil (D044);
+  - ~~la imagen de perfil (D044)~~ (parte de servidor hecha el 24/11, D055, E0069; falta su diseño);
   - imprimir y descargar (D045).
 - **[DECIDIDO]** Forma de trabajar: «rápido pero seguro». El agente puede escribir bloques grandes sin pedir permiso en cada paso, pero se mantienen los tests de seguridad y de «otra cuenta no puede», `npm test` en verde y un resumen explicado al final de cada día.
 - **[DECIDIDO 22/11, D038; resuelve la pregunta de las emociones y reacciones]** La autora encarga al asistente las listas y el diseño gráfico de Connect, «como versión definitiva pero con posibilidad de cambiar cualquier aspecto»:
@@ -584,3 +594,4 @@ Este documento **se puede cambiar** cuando la app avance. Cada cambio se hace as
 | 1.12 | 23/11/2026 | D048 (§2.7): sin collage detrás de las creaciones; identidad en cabeceras, controles y detalles exteriores. Corrige la colocación de recursos de D047 tras la revisión de la autora. |
 | 1.13 | 23/11/2026 | D049 (§5.1): seis reacciones nuevas y «Más reacciones» en Connect; autorización concreta de catálogo y tests a ChatGPT. D050 (§2.7): collage en el fondo general de la colección, con tarjetas más compactas, blancas y opacas; el dibujo conserva una superficie limpia. |
 | 1.14 | 23/11/2026 | §3.6: Avatar Studio en el servidor, según el contrato v1 con ChatGPT (D052): tabla `avatares` (migración 006), receta validada con el catálogo del editor, páginas y rutas JSON, versión con 409, límite de 20, editor servido desde su carpeta y dibujo en Node. Falta el cliente de ChatGPT y `kme-receta.js` (T037). |
+| 1.15 | 24/11/2026 | §4.3: imagen de perfil (D044) guardada como referencia con dos claves foráneas en `usuarios` (D055, migración 007): rutas `POST /perfil/avatar` y `POST /perfil/sello`, la cara del avatar (o el sello) en la cabecera y los dos en «Mi K-ME». §3.6 y §5.1: el avatar ya va dentro del sello (T034). |
