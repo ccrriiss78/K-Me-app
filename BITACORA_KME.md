@@ -2,7 +2,7 @@
 
 > **El hilo conductor de K-ME es personalizar un producto para que el fan tenga el protagonismo que merece dentro del mundo del K-pop.** La primera conversación exploraba un posible proyecto de máquina de vending; esa era una forma posible de materializar la idea. El propósito de dar protagonismo al fan es lo que conecta aquel origen con el proyecto actual.
 
-- **Revisión del archivo:** R0074.
+- **Revisión del archivo:** R0075.
 - **Carpeta actual del proyecto:** `C:\Users\<usuario>\Desktop\ACTIVA2026\k-me` (renombrada por la autora; véase E0006).
 - **Última actualización:** 2026-11-24 · Europe/Madrid.
 - **Responsable de las decisiones:** la autora del proyecto.
@@ -402,6 +402,7 @@ Actualización del editor: E0042 amplía el trabajo de E0015–E0031 con recurso
 | V090 | 2026-11-24 | Ejecutado por el asistente (E0074), tests escritos antes del código, con un módulo vacío para que fallaran por lo que comprueban. | En rojo por lo que comprueban: **`sello-impresion` 0 de 9** (sin tamaño, sin tarjeta, sin PDF, sin nombre de archivo y sin el bloque en el editor). |
 | V091 | 2026-11-24 | Ejecutado por el asistente (E0074), con la base local `kme_dev`. | Correcta. **`sello-impresion` 9 de 9:** 55 × 85 mm y 650 × 1004 píxeles; el sello entero, centrado, sin recortar ni estirar; sin sello no se prepara nada; PDF A4 con la tarjeta, guías de corte y el aviso del 100 %; **el PDF de la app da los mismos bytes que el del editor**; el nombre del archivo sin acentos, símbolos ni carpetas; en el editor (nuevo y guardado), los tres botones ocultos hasta que arranca el script y el aviso sin JavaScript. **`npm test` completo: 239 de 239**, 0 fallos y 0 omitidos. **Prueba del asistente en Chrome sin ventana**, con el script real y un sello real (palabra 사랑, avatar, adornos y alias): el bloque aparece; «PNG» y «PDF» preparan `kme-sello-mi-sello-amor-55x85.png` (650 × 1004, revisado a la vista) y `…pdf` (A4 con la tarjeta, las guías y el aviso; abierto y revisado); «Imprimir» deja en la impresión de Chrome solo la tarjeta, de unos 55 mm de ancho, en una página. Captura del editor en el ordenador y en el móvil. **Sin impresión en papel ni revisión de la autora** (T036). |
 | V092 | 2026-11-24 | Ejecutado por el asistente (E0075), con la base local `kme_dev`. | Correcta. Prueba de collage (D067), solo estilos y dos dibujos de grano, sin cambiar el HTML: **`npm test` completo: 239 de 239**, 0 fallos y 0 omitidos. **Capturas del asistente** de la app real, recorrida con una cuenta de prueba que se borró al terminar: «Mi escenario», la miniclase, la recompensa y «Mi K-ME», en el ordenador y en el móvil (marco de 390 px). En la primera versión, el grano oscuro se veía detrás del dibujo del tesoro, como ruido; se dejó solo en el marco y más suave. Los textos siguen sobre superficies lisas, salvo el título del cartel, blanco sobre negro con un grano claro muy suave. **Sin revisión de la autora en el navegador.** |
+| V093 | 2026-11-24 | Ejecutado por el asistente (E0076), con la base local `kme_dev`. Test escrito después de las partes que comprueba (todas existían): no hubo fase en rojo. | Correcta. **`recorrido-completo` 8 de 8:** crear la cuenta con el formulario y entrar (alias visible, usuario privado nunca, 0 Kpopis); guardar un avatar y volver a abrirlo; un sello con 사랑 y ese avatar, con «Imprimir o descargar»; avatar y sello en el perfil (cabecera y «Mi K-ME»); publicar en Connect con el diseño del perfil y tres iconos, que otra fan ve con la cara del avatar y el mensaje, y su reacción le llega; HANGUL LIVE 001 con un fallo y 20 Kpopis; salir, y desde otro navegador siguen el perfil, los Kpopis, el tesoro, el avatar, el sello y la publicación. **`npm test` completo: 247 de 247**, 0 fallos y 0 omitidos. |
 
 Las pruebas V005–V008 son resultados declarados por Claude y distinguidos de la comprobación documental V009. Los escenarios siguientes siguen pendientes para el producto completo:
 
@@ -2273,6 +2274,24 @@ Las respuestas se añaden en la sesión correspondiente, con ejemplos. No rellen
 - **Siguiente paso:** el test del recorrido completo. La autora revisará la prueba de collage cuando acabe el desarrollo de la app («ya lo trabajare cuando acabe el desarrollo de la app»), y pide subirla tal como está («haz commit y subelo conforme todo esta planteado»).
 - **Revisión resultante:** R0074.
 
+### E0076 · 2026-11-24 · Test del recorrido completo de la demo
+
+- **Autoría y entorno:** autora y asistente (Claude Code) en el ordenador de la autora; ella lo sigue desde el móvil con Remote Control.
+- **Objetivo:** el test del recorrido completo previsto para el jueves 26 (D054): una red de seguridad que haga la demo de principio a fin antes de congelar el código.
+- **Base leída:** R0074, E0075; D054; los tests de cada parte (registro, avatares, sellos con avatar, perfil, Connect, Connect con diseño y escenario), para usar sus mismos campos y rutas.
+- **Hechos y trabajo realizado:**
+  - E0075 subido (commit `4e1eccf`) a petición de la autora («haz commit y subelo conforme todo esta planteado»);
+  - `tests/recorrido-completo.test.js`: 7 pasos en orden, con una cuenta que se registra con el formulario y otra que reacciona; las dos se borran al terminar.
+- **Decisiones confirmadas:** ninguna nueva.
+- **Decidido por el asistente sin preguntar:** el test no repite cada regla (de eso se encargan los tests de cada parte); comprueba que las partes encajan y que lo guardado sigue ahí al volver a entrar desde otro navegador.
+- **Propuestas sin confirmar:** ninguna.
+- **Cambios o correcciones:** ninguno en la app.
+- **Pruebas:** V093 (`recorrido-completo` 8 de 8; `npm test` 247 de 247). Sin fase en rojo: el test se escribió después de las partes que comprueba.
+- **Problemas y pendientes:** la prueba de la autora en el navegador (viernes 27): T036, T039, T040, T041 y T043; el README y el modelo de datos (sábado 28).
+- **Aprendizaje:** un test de recorrido entero no sustituye a los de cada parte, pero avisa si un cambio rompe cómo encajan (por ejemplo, la cabecera, que comparten todas las páginas).
+- **Siguiente paso:** el README (todavía dice «fase 1») y el modelo de datos, para tenerlos listos antes de la prueba de la autora.
+- **Revisión resultante:** R0075.
+
 <!-- AÑADIR AQUÍ LAS NUEVAS SESIONES, EN ORDEN DE REGISTRO. NO BORRAR E0001. -->
 
 ## 10. Plantilla para una nueva sesión
@@ -2457,5 +2476,6 @@ PROPUESTA PROCEDENTE DEL OTRO CHAT:
 | R0072 | 2026-11-24 | E0073 | D065: el harness impide a Claude leer los `.env` reales (`.claude/settings.json`). D066: textos, dibujos, regla a y sitio de HANGUL LIVE 001. T042 terminado: «Mi escenario», HANGUL LIVE 001, Kpopis y «Mis tesoros» (migración 009). V088 (rojo) y V089 (`npm test` 230 de 230; capturas de la app real). Nuevo T043: revisión en el navegador. TECH_SPEC v1.18. |
 | R0073 | 2026-11-24 | E0074 | D045 hecha: imprimir y descargar el sello (photocard 55 × 85 mm, PDF A4 con guías y PNG a 300 ppp), con la copia del generador del editor. T035 terminado; la revisión pasa a T036. V090 (rojo) y V091 (`npm test` 239 de 239; pruebas en Chrome sin ventana). Cabecera del móvil sin «Hola,» partido. D067: dirección visual de collage editorial que explorar (sin implementar). TECH_SPEC v1.19. |
 | R0074 | 2026-11-24 | E0075 | D067 avanza: prueba de collage hecha en código (grano, cinta y borde rasgado) en «Mi escenario» y las recompensas; las opciones fotográficas del avatar, con ChatGPT (prompt). V092 (`npm test` 239 de 239; capturas). TECH_SPEC v1.20. |
+| R0075 | 2026-11-24 | E0076 | Test del recorrido completo de la demo (D054): cuenta, avatar, sello con avatar, perfil, Connect con diseño, iconos y reacción, HANGUL LIVE y Kpopis, y todo guardado al volver a entrar. V093 (`npm test` 247 de 247). |
 
 <!-- FIN DE LA BITÁCORA. Las revisiones posteriores deben conservar las entradas históricas. -->
