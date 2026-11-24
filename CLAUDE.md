@@ -103,7 +103,7 @@ Las reglas de secretos, datos ficticios y Git están en «Seguridad y Git», jus
 ## Seguridad y Git
 El repositorio de GitHub (`ccrriiss78/K-Me-app`) es **público**: lo que se sube lo puede ver cualquiera y, aunque se borre después, queda en el historial.
 - Nunca entran en Git: `.env` ni ningún `.env.*` (salvo `.env.example`, con valores ficticios), contraseñas, claves, tokens, cookies, identificadores de sesión, copias de la base de datos, registros (logs) ni datos personales.
-- Nunca leas, muestres ni copies el contenido de `app/.env.local` ni de otros secretos.
+- Nunca leas, muestres ni copies el contenido de `app/.env.local` ni de otros secretos. Desde el 24/11/2026 lo impide también el harness: `.claude/settings.json` (en Git) prohíbe leer `.env`, `.env.local` y parecidos en cualquier carpeta, pero no `.env.example`. Comprobado con un archivo de mentira; los tests siguen leyendo su configuración, porque la carga Node. No quites esas reglas sin que la autora lo pida.
 - Usuarios de prueba y de demo: siempre ficticios y con los datos mínimos. Nunca nombres, correos, fotos ni datos de personas reales.
 - Nada de secretos en el código, los tests, las semillas, el README, la bitácora, los mensajes de commit, los mensajes de error ni el chat.
 - Al empezar una sesión, `git status` (si falla, dilo; no des el árbol por limpio). Los cambios sin commit que no son tuyos son de otra sesión o de ChatGPT: avisa a la autora y consérvalos intactos. No los deshagas (`git checkout .`, `git restore .`, `git stash`, `git reset`) ni los metas en tus commits.
