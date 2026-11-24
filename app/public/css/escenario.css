@@ -96,7 +96,36 @@
 .final__acciones { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0; }
 .final__acciones .boton { margin: 0; }
 
+/* Collage editorial (D067), prueba selectiva (E0075). Las variables, en identidad.css.
+   - El cartel: grano de papel claro sobre el negro, un trozo de cinta lavanda y el borde de abajo
+     rasgado. El título sigue en blanco sobre negro.
+   - La recompensa: el tesoro como una foto de marco blanco, con cinta fucsia. */
+.reto-cartel, .reto-tarjeta__cartel { background: var(--collage-grano-claro) 0 0 / 180px 180px, #000; }
+.reto-cartel { box-shadow: none; margin-bottom: 1.4rem; }
+.reto-cartel::after, .reto-tarjeta__cartel::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -9px; height: 10px; background: inherit; pointer-events: none;
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 95% 90%, 89% 30%, 82% 80%, 76% 20%, 69% 100%, 62% 35%, 55% 85%, 48% 25%, 41% 95%, 34% 30%, 27% 80%, 20% 20%, 13% 90%, 7% 35%, 0 75%);
+}
+.reto-cartel::before, .reto-tarjeta__cartel::before {
+  content: ''; position: absolute; z-index: 1; top: -11px; left: 18px; width: 92px; height: 26px;
+  background: var(--collage-cinta-lavanda); clip-path: var(--collage-cinta-forma);
+  transform: rotate(-5deg); pointer-events: none;
+}
+.reto-tarjeta__cuerpo { padding-top: 1.5rem; }
+.final { position: relative; }
+.final__tesoro {
+  box-sizing: content-box; padding: 8px 8px 18px;
+  background: linear-gradient(#fff, #fff) content-box, var(--collage-grano-oscuro) 0 0 / 180px 180px, #fff;
+  box-shadow: 0 0 0 1px var(--color-borde), 3px 4px 0 rgb(0 0 0 / .12); transform: rotate(-3deg);
+}
+.final::before {
+  content: ''; position: absolute; z-index: 1; top: .6rem; left: calc(1.25rem + 68px); width: 70px; height: 22px;
+  background: var(--collage-cinta); clip-path: var(--collage-cinta-forma);
+  transform: translateX(-50%) rotate(4deg); pointer-events: none;
+}
+
 @media (max-width: 600px) {
+  .final::before { left: 50%; }
   .reto-cartel h1 { font-size: 1.35rem; }
   .reto-cartel__lema { display: block; }
   .reto-cartel__punto { display: none; }

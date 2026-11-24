@@ -218,6 +218,33 @@
   background: var(--color-fondo); border: 1px solid var(--color-borde); border-radius: 6px;
 }
 .tesoro__imagen { width: 96px; height: auto; }
+
+/* Collage editorial (D067), prueba selectiva (E0075): materiales dibujados en código, sin fotos.
+   - Grano de papel (public/img/collage/), cinta adhesiva semitransparente y borde rasgado.
+   - Solo en «Mi escenario» y en las recompensas; son pseudoelementos que no reciben clics.
+   - Los textos y los controles siguen sobre superficies limpias.
+   - Si no gusta, se quita este bloque y el de escenario.css: el HTML no cambia. */
+:root {
+  --collage-grano-claro: url('/img/collage/grano-claro.svg');
+  --collage-grano-oscuro: url('/img/collage/grano-oscuro.svg');
+  --collage-cinta: rgb(232 52 117 / .6);          /* fucsia K-ME, translúcido */
+  --collage-cinta-lavanda: rgb(197 177 227 / .85); /* lavanda de la paleta, translúcido */
+  /* Los extremos de la cinta, cortados a mano. */
+  --collage-cinta-forma: polygon(3% 0, 97% 0, 100% 22%, 96% 45%, 100% 68%, 97% 100%, 3% 100%, 0 78%, 4% 55%, 0 32%);
+}
+/* El tesoro, como una foto de marco blanco sujeta con cinta. */
+.tesoro { position: relative; padding-top: 1.2rem; }
+.tesoro__imagen {
+  /* El grano, solo en el marco: encima, blanco liso donde va el dibujo (content-box). */
+  box-sizing: content-box; padding: 8px 8px 16px;
+  background: linear-gradient(#fff, #fff) content-box, var(--collage-grano-oscuro) 0 0 / 180px 180px, #fff;
+  box-shadow: 0 0 0 1px var(--color-borde), 3px 4px 0 rgb(0 0 0 / .1); transform: rotate(-2.5deg);
+}
+.tesoro::before {
+  content: ''; position: absolute; z-index: 1; top: .55rem; left: 50%; width: 64px; height: 20px;
+  background: var(--collage-cinta); clip-path: var(--collage-cinta-forma);
+  transform: translateX(-50%) rotate(3deg); pointer-events: none;
+}
 .tesoro__nombre { font-weight: 800; }
 .tesoro__origen, .tesoro__fecha { font-size: .8rem; color: var(--color-texto-suave); }
 .kpopis__saldo { display: flex; align-items: center; gap: .5rem; font-size: 1.3rem; }

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+  <!-- Grano de papel oscuro para superficies claras (D067, prueba de collage en código, E0075).
+       Ruido generado por el navegador (feTurbulence), sin fotografías: motas negras casi
+       transparentes. Se repite sin costuras (stitchTiles). Solo decoración. -->
+  <filter id="grano" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  .55 0 0 0 -.33"/>
+  </filter>
+  <rect width="180" height="180" filter="url(#grano)"/>
+</svg>
