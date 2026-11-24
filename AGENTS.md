@@ -16,15 +16,25 @@ Trabajar únicamente en k-me.
 El editor está en editor-avatar/editor-avatar/.
 No usar la ruta anterior ni trabajar en la copia antigua.
 
-## Trabajo simultáneo y reparto de zonas
-Claude Code y ChatGPT trabajan a la vez en esta carpeta.
+## Reparto de responsabilidades (D056, desde el 24/11/2026)
+Durante esta etapa, Claude Code es el ÚNICO agente que edita K-ME,
+incluida la presentación visual: vistas .ejs, CSS, imágenes,
+JavaScript del navegador y el editor de avatar (editor-avatar/).
+Sustituye al reparto por zonas anterior (D028), que queda en suspenso.
 
-Zona de ChatGPT:
-- Todo editor-avatar/, incluidos sus tests y recursos.
-- app/public/css/.
-- Diseño y presentación de las vistas .ejs en app/src/views/.
-- app/public/img/ y app/public/js/ (imágenes y JavaScript del navegador).
-- AGENTS.md, solo con aprobación de la autora.
+ChatGPT:
+- Ayuda a la autora con la dirección artística, la revisión de capturas
+  y la redacción de indicaciones, que ella traslada a Claude.
+- No edita ningún archivo del proyecto mientras dure esta etapa,
+  tampoco la bitácora.
+
+Cambio de responsable:
+- Solo mediante un traspaso explícito que decida la autora, una vez
+  terminado el trabajo en curso y comunicado el estado de los archivos:
+  qué está a medias, qué se ha tocado y qué queda pendiente.
+
+Siguen vigentes todas las demás normas: seguridad, TDD, pruebas,
+aprobación de commits y protección del trabajo ajeno.
 
 En las vistas, conservar:
 - Los textos que comprueban los tests.
@@ -40,32 +50,26 @@ En las vistas y el CSS, además:
   archivos de app/public/js/.
 - Contraste AA, foco visible, uso con teclado y prefers-reduced-motion.
 
-Zona de Claude:
-- Login, registro y sesiones en app/src/, salvo su presentación.
-- Tests de app/.
-- Scripts de app/.
-- Base de datos y migraciones.
-- Hooks y CLAUDE.md.
-- Código de servidor de Avatar Studio, Sello Studio y Connect: rutas,
-  controladores, servicios y modelos.
-- package.json y dependencias de app/.
-- README.md.
-- .gitignore, .gitattributes y la configuración de Git.
+En el editor de avatar (editor-avatar/editor-avatar/), además:
+- Reutilizar sus módulos, dibujos, catálogo y recursos.
+- Conservar las opciones y el diseño aprobados: una mejora de
+  organización no elimina opciones.
+- Pasar sus tests desde su carpeta: node --test "tests/*.test.js".
+  Algunos comprueban huellas SHA-256 de los dibujos.
 
-Zona compartida (una herramienta cada vez):
-- BITACORA_KME.md.
-- docs/TECH_SPEC.md: solo recoge decisiones de la autora;
+Documentos:
+- docs/TECH_SPEC.md solo recoge decisiones de la autora;
   cada cambio sube su versión.
+- BITACORA_KME.md: durante esta etapa solo escribe Claude.
 
 Ningún agente los modifica:
 - Los originales de la raíz: K-ME-logos-revisados-v1.1/, KME_Studio_Kit_01/,
-  KME_Rostros_Sin_Pelo/, los .zip y los .odt.
+  KME_Rostros_Sin_Pelo/, los .zip y los .odt. A la app solo se copian
+  los gráficos que sirve, sin regenerarlos ni aproximarlos; si falta
+  un recurso, se avisa a la autora antes de recrearlo.
 
-Cualquier archivo que no esté en ninguna zona: preguntar a la autora
-antes de editarlo.
-
-Si una tarea requiere modificar la zona de Claude, parar y preguntar
-a la autora. No ampliar el alcance por iniciativa propia.
+Cualquier archivo o tarea que no esté contemplado: preguntar a la autora
+antes de editarlo. No ampliar el alcance por iniciativa propia.
 
 ## Protección del trabajo ajeno
 - Al empezar, ejecutar git status. Si falla, informar del error;
@@ -104,7 +108,7 @@ a la autora. No ampliar el alcance por iniciativa propia.
 - Seguir TDD: escribir primero los tests y comprobar que fallan
   por el comportamiento que se quiere implementar.
 - No modificar tests existentes sin aprobación de la autora.
-- Los tests de app/ corresponden a Claude.
+- Los tests de app/ y los del editor los mantiene Claude (D056).
 - No ejecutar npm install sin avisar previamente.
 - Consultar antes de incorporar bibliotecas o tecnologías nuevas.
 - No cambiar la paleta de colores sin aprobación de la autora.
@@ -114,15 +118,15 @@ a la autora. No ampliar el alcance por iniciativa propia.
 ## Bitácora compartida y cierre
 - Al terminar cada sesión, registrar el trabajo en BITACORA_KME.md
   siguiendo su protocolo.
-- La bitácora es compartida: solo una herramienta escribe cada vez.
+- Solo una herramienta escribe en la bitácora cada vez; durante la
+  etapa de D056, solo Claude.
 - Releerla justo antes de guardar; si ha cambiado, integrar la
   actualización sobre la versión vigente sin pisar otras entradas.
 - Conservar el historial, evitar duplicados y aumentar la revisión
   una sola vez por actualización.
 - Distinguir propuestas, decisiones, cambios realizados,
   pruebas ejecutadas y pendientes.
-- No modificar CLAUDE.md: corresponde a Claude. Si algo debería
-  cambiar en él, proponerlo en el resumen final y en la bitácora;
-  la autora se lo pedirá a Claude.
+- CLAUDE.md lo mantiene Claude. Otro agente que crea que algo
+  debería cambiar en él lo propone a la autora, que se lo pedirá a Claude.
 - Presentar al terminar los archivos propios modificados,
   la validación realizada y los pendientes.
