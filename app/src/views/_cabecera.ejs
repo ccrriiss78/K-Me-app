@@ -7,6 +7,10 @@
   <link rel="icon" href="/img/favicon-kme.ico">
   <link rel="stylesheet" href="/css/estilos.css">
   <link rel="stylesheet" href="/css/identidad.css">
+  <%# Hojas de estilo propias de una página (por ejemplo, el editor de Avatar Studio). %>
+  <% for (const hoja of (locals.estilosExtra || [])) { %>
+  <link rel="stylesheet" href="<%= hoja %>">
+  <% } %>
 </head>
 <body>
   <%# Páginas de entrada («Entrar» y «Crear cuenta», que solo se ven sin sesión): sin barra de

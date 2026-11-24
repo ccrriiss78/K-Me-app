@@ -16,7 +16,7 @@ for (const lista of Object.values(datos.piezas)) for (const pieza of lista) {
     }
   }
 }
-const modulos = ['utilidades','kme-ajuste-ropa','catalogo','kme-maquillaje','kme-grosores','colores','estado','kme-iris-acuarela','kme-cabello-acuarela','kme-cabello-pinceladas','renderizador','kme-ropa','kme-opciones-ojos','../assets/kme/marcos','kme-marcos','kme-impresion','kme-editor-visual','kme-vista-visual','kme-ambiente-visual'];
+const modulos = ['utilidades','kme-ajuste-ropa','catalogo','kme-maquillaje','kme-grosores','colores','estado','kme-iris-acuarela','kme-cabello-acuarela','kme-cabello-pinceladas','renderizador','kme-ropa','kme-opciones-ojos','../assets/kme/marcos','kme-marcos','kme-impresion','kme-receta','kme-editor-visual','kme-vista-visual','kme-ambiente-visual'];
 let codigo = '';
 for (const modulo of modulos) {
   codigo += '\n' + (await leerArchivo(`js/${modulo}.js`))

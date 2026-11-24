@@ -15,6 +15,7 @@ import {
 } from '../catalogos/sello.js';
 import { buscarPalabra } from '../catalogos/hangul.js';
 import { prepararDibujo, avisosDeContraste } from './selloDibujo.js';
+import { leerIds, pideTodos } from './borrarVarios.js';
 
 function errorSello(codigo) {
   const e = new Error(codigo);
@@ -142,6 +143,23 @@ export async function duplicar({ idUsuario, idSello }) {
 
 export async function eliminar({ idUsuario, idSello }) {
   if (!(await Sello.eliminar({ idUsuario, idSello: leerId(idSello) }))) throw errorSello('NO_EXISTE');
+}
+
+// Borrar varios o todos (D058). Primero, lo que se va a borrar, para confirmarlo: los elegidos o,
+// con «todos», todos los de la cuenta. Solo salen los de esta cuenta.
+export async function prepararBorrado({ idUsuario, cuerpo }) {
+  if (pideTodos(cuerpo)) return (await Sello.listar(idUsuario)).map((f) => ({ id: String(f.id), nombre: f.nombre }));
+  const ids = leerIds(cuerpo?.ids, MAX_SELLOS);
+  return ids.length ? Sello.buscarVarios({ idUsuario, ids }) : [];
+}
+
+// Después de confirmar: borra los ids confirmados que son de esta cuenta y dice cuántos.
+// NADA_QUE_BORRAR si no hay ninguno (tampoco si todos eran de otra cuenta).
+export async function borrarVarios({ idUsuario, cuerpo }) {
+  const ids = leerIds(cuerpo?.ids, MAX_SELLOS);
+  const borrados = ids.length ? await Sello.eliminarVarios({ idUsuario, ids }) : 0;
+  if (!borrados) throw errorSello('NADA_QUE_BORRAR');
+  return borrados;
 }
 
 // Receta para la vista previa: la del formulario, o null si todavía no es válida.

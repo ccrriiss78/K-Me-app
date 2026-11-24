@@ -1,19 +1,89 @@
 <%- include('_cabecera') %>
 <%#
-  Editor de Avatar Studio (contrato v1 con ChatGPT). Vista funcional de Claude; su diseño es zona de
-  ChatGPT. El editor lo monta public/js/avatar-studio.js (ChatGPT) en #avatar-studio, con:
+  Avatar Studio dentro de la app (T037; contrato v1, D052; dirección visual D057).
+  Lleva el editor APROBADO tal cual: el marcado de editor-avatar/editor-avatar/kme-muestras.html,
+  con los mismos ids y textos, y además el nombre del avatar y «Guardar». Lo monta
+  public/js/avatar-studio.js en #avatar-studio, con:
   - data-id y data-version: vacíos en un avatar nuevo; los del avatar guardado al editarlo;
   - data-csrf: el token que el script envía en el cuerpo JSON («_csrf»);
   - data-catalogo: el catálogo del editor, servido desde su carpeta (/editor/…).
-  Sin scripts en línea (CSP): solo el archivo externo. Conserva estos atributos si se rediseña.
+  Los estilos del editor van limitados a .avatar-studio (/editor/css/kme-muestras-app.css, generado
+  por scripts/css-para-app.mjs); los de las partes propias de la app, en /css/avatar-studio.css.
+  Sin scripts en línea (CSP): solo archivos externos. Conserva estos ids y atributos si se rediseña.
 -%>
-<section class="tarjeta avatar-studio" aria-labelledby="titulo-avatar">
-  <p><a href="/studio/avatares">← Mis avatares</a></p>
-  <h1 id="titulo-avatar">Avatar Studio</h1>
-  <div id="avatar-studio" data-id="<%= id %>" data-version="<%= version %>" data-csrf="<%= csrfToken %>" data-catalogo="/editor/datos/kme.json" data-nombre="<%= nombre %>">
-    <p class="nota">Cargando el editor…</p>
+<div class="avatar-studio-pagina">
+<div class="avatar-studio" id="avatar-studio" data-id="<%= id %>" data-version="<%= version %>" data-csrf="<%= csrfToken %>" data-catalogo="/editor/datos/kme.json" data-nombre="<%= nombre %>">
+  <header class="site-header">
+    <div class="marca">
+      <img src="/img/K-ME-Studio.svg" alt="K-ME Studio" width="50" height="72">
+      <div><p class="nombre-marca">K-ME<span>STUDIO</span></p></div>
+    </div>
+    <p class="lema-principal">Sin <strong>fan</strong> no hay <strong>idol</strong>.</p>
+    <details id="mi-ambiente" class="mi-ambiente">
+      <summary id="abrir-ambiente"><span aria-hidden="true" class="punto-ambiente"></span>Mi ambiente</summary>
+      <div class="contenido-ambiente">
+        <div class="titulo-ambiente"><div><p class="eyebrow">HAZLO TUYO</p><h2>Tu espacio, tu color.</h2></div><button type="button" id="cerrar-ambiente" aria-label="Cerrar Mi ambiente">×</button></div>
+        <div id="opciones-ambiente"></div>
+        <p class="nota-ambiente">Esta vista previa dura mientras mantengas la página abierta.</p>
+      </div>
+    </details>
+  </header>
+  <p class="volver-avatares"><a href="/studio/avatares">← Mis avatares</a></p>
+  <section class="presentacion" aria-label="Crea tu avatar">
+    <div class="titulo-estudio"><p class="eyebrow">K-ME / AVATAR STUDIO</p><h1>Hazlo <span>muy tú.</span></h1></div>
+    <div class="intro-derecha"><span class="comillas-marca" aria-hidden="true"></span><p class="nota-taller">Aquí se viene<br>a crear.</p></div>
+  </section>
+
+  <%# Guardar en la cuenta (contrato v1). Los mensajes se anuncian a los lectores de pantalla. %>
+  <form id="guardar-avatar" class="guardar-avatar">
+    <div class="guardar-avatar__fila">
+      <label for="nombre-avatar">Nombre del avatar</label>
+      <input id="nombre-avatar" name="nombre" type="text" value="<%= nombre %>" maxlength="40" required autocomplete="off">
+      <button type="submit" class="guardar-avatar__boton">Guardar</button>
+    </div>
+    <p id="estado-guardado" class="guardar-avatar__estado" role="status" aria-live="polite"></p>
+    <div id="acciones-conflicto" class="guardar-avatar__conflicto" hidden>
+      <button type="button" id="guardar-copia">Guardar como copia</button>
+      <a id="recargar-avatar" href="">Ver la versión guardada (se pierden estos cambios)</a>
+    </div>
+    <div id="panel-limite" class="panel-limite" hidden></div>
+  </form>
+
+  <div class="editor-visual">
+    <section class="escenario" aria-label="Vista previa y bases">
+      <div class="rotulo-escenario"><span>ASÍ VA TU CREACIÓN</span><span class="estrella-decorativa" aria-hidden="true">✦</span></div>
+      <div class="photocard">
+        <div class="cabecera-photocard"><span>K-ME ORIGINAL</span><span id="numero-photocard">01</span></div>
+        <div id="avatar-grande" class="avatar-grande" role="img" aria-label="Tu avatar con los cambios elegidos"></div>
+        <div class="pie-photocard"><strong>HECHO POR TI.</strong><span class="firma-kme" aria-hidden="true"></span></div>
+      </div>
+      <div class="bases-bloque"><p class="microtitulo">Empieza por aquí <span aria-hidden="true">↘</span></p><div id="selector-bases" class="selector-bases" role="group" aria-label="Elige una base"></div></div>
+      <div class="acciones">
+        <button type="button" id="deshacer" disabled>Deshacer</button>
+        <button type="button" id="restaurar">Restaurar base</button>
+      </div>
+      <section class="impresion-avatar" aria-label="Imprimir tu avatar">
+        <p class="microtitulo">IMPRIME TU CREACIÓN</p>
+        <div class="botones-impresion" role="group" aria-label="Opciones de impresión">
+          <button type="button" id="imprimir-avatar"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z"/><path d="M16 11h1"/></svg><strong>Imprimir avatar</strong><span>Tamaño libre</span></button>
+          <button type="button" id="imprimir-55x85" aria-describedby="ayuda-photocards"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 17h8M10 19h4M12 6v6m-3-3h6"/></svg><strong>Photocard</strong><span>PDF · 55 × 85 mm</span></button>
+          <button type="button" id="imprimir-54x86" aria-describedby="ayuda-photocards"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 17h8M10 19h4M12 6v6m-3-3h6"/></svg><strong>Photocard</strong><span>PDF · 54 × 86 mm</span></button>
+        </div>
+        <div class="ayudas-impresion">
+          <p id="ayuda-photocards">Descarga el PDF e imprímelo en tamaño real.</p>
+        </div>
+        <p id="estado-impresion" role="status"></p>
+      </section>
+    </section>
+    <section class="mesa-edicion" aria-label="Personaliza tu avatar">
+      <div class="cabecera-mesa"><p class="microtitulo">DALE TU TOQUE</p><span class="directo"><i aria-hidden="true"></i>Vista al instante</span></div>
+      <nav id="categorias" class="categorias" aria-label="Partes del avatar"></nav>
+      <div id="panel-editor" class="panel-editor" tabindex="0" role="region" aria-label="Opciones de la categoría"></div>
+    </section>
   </div>
+  <p id="estado" class="estado" role="status">Preparando las piezas…</p>
   <noscript><p class="aviso aviso--error">Avatar Studio necesita JavaScript para diseñar el avatar.</p></noscript>
-</section>
+</div>
+</div>
 <script type="module" src="/js/avatar-studio.js"></script>
 <%- include('_pie') %>

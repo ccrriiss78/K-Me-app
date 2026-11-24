@@ -1,13 +1,14 @@
 <%- include('_cabecera') %>
 <%#
-  «Mis avatares» (Avatar Studio, contrato v1). Vista funcional de Claude; su diseño es zona de
-  ChatGPT (AGENTS.md). Se conservan los textos y enlaces que comprueba tests/avatares.test.js.
+  «Mis avatares» (Avatar Studio, contrato v1). Vista funcional; desde D056 la mantiene Claude.
+  Se conservan los textos y enlaces que comprueban tests/avatares.test.js y tests/borrar-varios.test.js.
   Las miniaturas las dibuja el servidor con el dibujador del editor, a partir de la receta ya
   validada (nunca algo enviado por el navegador): por eso se insertan sin escapar.
 -%>
 <section class="tarjeta avatares-studio" aria-labelledby="titulo-avatares">
   <h1 id="titulo-avatares">Mis avatares</h1>
   <% if (eliminado) { %><p class="aviso aviso--ok" role="status">Avatar borrado.</p><% } %>
+  <% if (locals.borrados) { %><p class="aviso aviso--ok" role="status"><%= borrados === 1 ? 'Se ha borrado 1 avatar.' : `Se han borrado ${borrados} avatares.` %></p><% } %>
   <% if (error) { %><p class="aviso aviso--error" role="alert"><%= error %></p><% } %>
 
   <% if (!avatares.length) { %>
@@ -18,9 +19,18 @@
   <% } %>
 
   <% if (avatares.length) { %>
+    <%# Borrar varios o todos (D058): las casillas de cada avatar pertenecen a este formulario
+        (atributo form), porque en HTML no se puede poner un formulario dentro de otro. Antes de
+        borrar se pide confirmación. %>
+    <form method="post" id="borrar-varios" action="/studio/avatares/borrar" class="borrar-varios">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <button type="submit" class="boton boton--pequeno boton--secundario">Borrar los seleccionados</button>
+      <button type="submit" name="todos" value="si" class="boton boton--pequeno boton--peligro">Borrar todos</button>
+    </form>
     <ul class="avatares-lista">
       <% avatares.forEach((a) => { %>
         <li class="avatares-lista__elemento">
+          <label class="borrar-varios__casilla"><input type="checkbox" name="ids" value="<%= a.id %>" form="borrar-varios"> <span>Elegir para borrar<span class="solo-lectores">: <%= a.nombre %></span></span></label>
           <a href="/studio/avatares/<%= a.id %>" class="avatares-lista__abrir">
             <span class="avatares-lista__dibujo" aria-hidden="true"><%- a.dibujo %></span>
             <span class="avatares-lista__nombre"><%= a.nombre %></span>

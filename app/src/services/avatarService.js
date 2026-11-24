@@ -8,19 +8,19 @@
 // - piezas (rostro, ojos.estilo, ropa.arriba…): el id tiene que existir en el catálogo, en ese campo;
 // - colores: hexadecimal #rrggbb y uno de los colores del catálogo del editor (sus paletas y nombres);
 // - version: un número entero;
-// - el resto (grosorCejas, pelo.acabado, pelo.mechones, maquillaje.grosorLabios, fondo…):
-//   PROVISIONAL, solo formato seguro (null o un id de letras minúsculas, números y guiones). Se
-//   sustituirá por la lista exacta de valores que prepara ChatGPT en js/kme-receta.js
-//   (valoresPermitidos), la única fuente de verdad acordada en el contrato.
+// - el resto (grosorCejas, pelo.acabado, pelo.mechones, maquillaje.grosorLabios, fondo…): uno de
+//   los valores de la lista exacta del editor, kme-receta.js (valoresPermitidos), la única fuente
+//   de verdad acordada en el contrato (T037). Una opción sin lista no admite ningún valor.
 
 import * as Avatar from '../models/avatarModel.js';
 import { obtenerCatalogo, normalizarReceta } from './avatarCatalogo.js';
+import { valoresPermitidos } from '../../../editor-avatar/editor-avatar/js/kme-receta.js';
+import { leerIds, pideTodos } from './borrarVarios.js';
 
 export const MAX_AVATARES = 20; // Q1
 export const MAX_BYTES_RECETA = 8192;
 const LARGO_NOMBRE = { min: 1, max: 40 };
 const HEX = /^#[0-9a-f]{6}$/i;
-const ID_SEGURO = /^[a-z0-9][a-z0-9-]{0,59}$/;
 
 function errorAvatar(codigo, extra = {}) {
   const e = new Error(codigo);
@@ -33,7 +33,9 @@ function errorAvatar(codigo, extra = {}) {
 let reglas = null;
 function reglasDeCampos() {
   if (reglas) return reglas;
-  const { datos } = obtenerCatalogo();
+  const catalogo = obtenerCatalogo();
+  const { datos } = catalogo;
+  const listas = valoresPermitidos(catalogo);
   const colores = new Set();
   JSON.stringify(datos, (clave, valor) => {
     if (typeof valor === 'string' && HEX.test(valor)) colores.add(valor.toLowerCase());
@@ -54,7 +56,8 @@ function reglasDeCampos() {
       } else if (ruta === 'version') {
         valido = (v) => Number.isInteger(v) && v >= 1 && v <= 1000;
       } else {
-        valido = (v) => v === null || (typeof v === 'string' && ID_SEGURO.test(v)); // provisional
+        const permitidos = listas[ruta] ?? [];
+        valido = (v) => permitidos.includes(v);
       }
       reglas.push({ ruta, valido });
     }
@@ -135,6 +138,23 @@ export async function duplicar({ idUsuario, idAvatar }) {
 
 export async function eliminar({ idUsuario, idAvatar }) {
   if (!(await Avatar.eliminar({ idUsuario, idAvatar: leerId(idAvatar) }))) throw errorAvatar('NO_EXISTE');
+}
+
+// Borrar varios o todos (D058). Primero, lo que se va a borrar, para confirmarlo: los elegidos o,
+// con «todos», todos los de la cuenta. Solo salen los de esta cuenta.
+export async function prepararBorrado({ idUsuario, cuerpo }) {
+  if (pideTodos(cuerpo)) return (await Avatar.listar(idUsuario)).map((f) => ({ id: String(f.id), nombre: f.nombre }));
+  const ids = leerIds(cuerpo?.ids, MAX_AVATARES);
+  return ids.length ? Avatar.buscarVarios({ idUsuario, ids }) : [];
+}
+
+// Después de confirmar: borra los ids confirmados que son de esta cuenta y dice cuántos.
+// NADA_QUE_BORRAR si no hay ninguno (tampoco si todos eran de otra cuenta).
+export async function borrarVarios({ idUsuario, cuerpo }) {
+  const ids = leerIds(cuerpo?.ids, MAX_AVATARES);
+  const borrados = ids.length ? await Avatar.eliminarVarios({ idUsuario, ids }) : 0;
+  if (!borrados) throw errorAvatar('NADA_QUE_BORRAR');
+  return borrados;
 }
 
 export { resumen };

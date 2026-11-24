@@ -4,6 +4,8 @@ import { marcosDisponibles } from './kme-marcos.js';
 import { opcionesMaquillaje, coloresMaquillaje } from './kme-maquillaje.js';
 import { grosoresKme } from './kme-grosores.js';
 import { estilosMechonesKme, coloresMechonesKme } from './kme-cabello-pinceladas.js';
+import { acabadosPeloKme } from './kme-receta.js';
+import { normalizarAvatar } from './estado.js';
 
 export class EditorVisual {
   constructor(catalogo){
@@ -31,6 +33,12 @@ export class EditorVisual {
     if(!marcosDisponibles.some(m=>m.id===id))throw new Error('Marco no disponible');
     if(this.marco===id)return;this.guardar();this.marcos[this.base]=id;
   }
+  // Abre un avatar guardado (por ejemplo, el de la cuenta en la app) en la base actual: se completa
+  // con los valores por defecto, se trabaja sobre una copia y empieza sin historial.
+  cargarAvatar(receta){
+    this.avatares[this.base]=normalizarAvatar(structuredClone(receta),this.catalogo.datos.porDefecto);
+    this.historiales[this.base]=[];
+  }
   cambiarBase(indice){if(!Number.isInteger(indice)||!this.avatares[indice])throw new Error('Base no válida');this.base=indice;}
   elegirPieza(ruta,id){
     if(!this.catalogo.pieza(ruta,id))throw new Error('Pieza no válida');
@@ -44,7 +52,7 @@ export class EditorVisual {
   elegirExpresion(expresion){this.elegirOjos(this.ojos.familia,expresion);}
   elegirGrosorLabios(grosor){this.elegirGrosor('maquillaje.grosorLabios',grosor);}
   elegirAcabadoPelo(acabado){
-    if(!['tinta','acuarela','pinceladas'].includes(acabado))throw new Error('Acabado no válido');
+    if(!acabadosPeloKme.includes(acabado))throw new Error('Acabado no válido');
     if((this.avatar.pelo.acabado||'tinta')===acabado)return;
     this.guardar();this.avatar.pelo.acabado=acabado;
   }

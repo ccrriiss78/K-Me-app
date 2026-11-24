@@ -2,7 +2,7 @@
 
 > **El hilo conductor de K-ME es personalizar un producto para que el fan tenga el protagonismo que merece dentro del mundo del K-pop.** La primera conversación exploraba un posible proyecto de máquina de vending; esa era una forma posible de materializar la idea. El propósito de dar protagonismo al fan es lo que conecta aquel origen con el proyecto actual.
 
-- **Revisión del archivo:** R0069.
+- **Revisión del archivo:** R0070.
 - **Carpeta actual del proyecto:** `C:\Users\<usuario>\Desktop\ACTIVA2026\k-me` (renombrada por la autora; véase E0006).
 - **Última actualización:** 2026-11-24 · Europe/Madrid.
 - **Responsable de las decisiones:** la autora del proyecto.
@@ -244,6 +244,8 @@ Todas estas decisiones están vigentes en esta revisión. Los cambios futuros de
 | D055 | **Imagen de perfil (D044) guardada como referencia:** dos columnas nuevas en `usuarios`, `id_avatar_perfil` e `id_sello_perfil`, con clave foránea, que pueden ir vacías y con `ON DELETE SET NULL`. Si se borra ese avatar o ese sello, el perfil vuelve a la inicial; si se edita, el perfil enseña el cambio. El servicio comprueba además que son de la cuenta (test de «otra cuenta no puede»). | El perfil enseña lo que el fan tiene elegido ahora; las publicaciones, en cambio, guardan su copia (Q11). Con la clave foránea, la base de datos garantiza que lo elegido existe. | E0068, 24/11/2026: a la propuesta del asistente, «2 ok». | **Hecho en el servidor (E0069, V083):** migración 007, rutas `POST /perfil/avatar` y `/perfil/sello`, cabecera, «Mi K-ME» y botones «Usar en mi perfil». Dónde se ve, a propuesta del asistente y aceptado por la autora en E0069: en la cabecera, la cara del avatar o, si solo hay sello, el sello; en «Mi K-ME», los dos. Falta el diseño (ChatGPT, T039). |
 | D056 | **Claude, único agente que edita K-ME durante esta etapa**, incluida la presentación visual (vistas, CSS, imágenes, JavaScript del navegador) y el editor de avatar. ChatGPT ayuda a la autora con la dirección artística, la revisión de capturas y la redacción de indicaciones, que ella traslada a Claude, sin editar ningún archivo. Cambiar de responsable requiere un traspaso explícito, con el trabajo en curso terminado y el estado de los archivos comunicado. Claude asume T037, T038 y T039. Se conservan las demás normas (seguridad, TDD, pruebas y aprobación de commits). Deja en suspenso D028. | Avanzar con continuidad: con dos agentes, el servidor esperaba al editor de ChatGPT (T037), que bloqueaba la demo. | E0070, 24/11/2026: «Confirmo que, durante esta etapa, Claude será el único agente que edite K-ME. ChatGPT me ayudará con dirección artística y revisión, sin editar simultáneamente», y «Te autorizo a asumir también T037, T038 y T039». No autoriza commits, subidas, dependencias nuevas ni ampliar funcionalidades. | Aplicada en E0070: `AGENTS.md` y `CLAUDE.md` actualizados. Antes del cambio no había en el proyecto ningún cambio de ChatGPT sin guardar (`git status`). |
 | D057 | **Dirección visual para la implementación**, dada por la autora: (1) el fan es el protagonista; identidad personal, creatividad, emoción y pertenencia al K-pop; se mantiene «Sin fan no hay idol»; (2) se usan los originales aprobados del logo general y de K-ME Studio, sin regenerarlos ni aproximarlos; negro, blanco y fucsia, y las paletas de personalización aprobadas; si falta un recurso, se avisa antes de recrearlo; (3) «Mi rincón fan»: estudio creativo con photocards y diseño editorial K-pop; etiquetas, trazos gestuales, papel, cinta, estrellas y profundidad suave, con moderación; collage en el fondo y los márgenes, superficies limpias para creaciones y controles; (4) el avatar o el sello, lo bastante grande para apreciar los cambios; tarjetas de colección distinguibles; controles agrupados, una acción principal reconocible y navegación coherente; (5) avatar: conservar piezas, opciones y diversidad de rostros, ojos, peinados y expresiones; prendas que encajan; miniaturas que muestran la pieza; organizar sin quitar opciones; (6) una familia común de tipografías, botones, espacios, campos y mensajes; lectura, contraste, foco, teclado, móvil y movimiento reducido; (7) reutilizar el editor y sus recursos; conservar autenticación, sesiones, CSRF, nombres de campos y comportamiento comprobado; TDD, y distinguir entre implementado, probado con tests y revisado en el navegador; (8) enseñar a la autora cada recorrido completo con su estado real; los ajustes visuales que pida se aplican conservando lo aprobado; las propuestas nuevas de diseño o alcance esperan su decisión. | Desarrolla D040 («Mi rincón fan») para que Claude implemente la presentación visual. | E0070, 24/11/2026: mensaje de la autora con los ocho puntos, junto con la propuesta de D056. | Vigente. Resumen en `CLAUDE.md`. |
+| D058 | **Borrar varios o todos** en «Mis avatares» y en «Mis sellos»: una casilla en cada uno, «Borrar los seleccionados» y «Borrar todos», siempre con confirmación (número y nombres; borrar es definitivo, Q2). En el editor de Avatar Studio, al llegar al límite de 20, se eligen allí mismo los que se borran, sin salir ni perder el diseño. Solo se borra lo de la propia cuenta. | Con 20 creaciones, borrar de una en una es pesado, y al llegar al límite hay que poder hacer sitio. | E0071, 24/11/2026: «Si llega al máximo tiene opción de seleccionar los que quieras borrar o la de borrar todos; si no lo hay, se necesita». A la propuesta del asistente (también en sellos y con confirmación): «Todo ok». | Hecho en E0071 (V084, V085). |
+| D059 | **Avatar Studio en la app:** «Mi ambiente» va dentro del editor, como en la muestra (dura mientras la página está abierta); el marco (portaphotocard) no se guarda de momento, porque solo se ve en pantalla y guardarlo cambiaría la receta; el nombre por defecto es «Mi avatar» (de 1 a 40 caracteres); los estilos del editor se usan tal cual, en una copia **generada** y limitada al editor (no hay un segundo diseño hecho a mano). | Conservar las opciones y el diseño aprobados del editor sin estropear la cabecera ni el resto de la app. | E0071, 24/11/2026: a las cuatro recomendaciones del asistente, «Todo ok». Confirma también el nombre «Mi avatar» que E0067 dejó como propuesta. | Hecho en E0071 (V085). Guardar el marco queda como mejora para después. |
 
 ## 5. Propuestas conservadas, alcance y cuestiones abiertas
 
@@ -380,6 +382,8 @@ Actualización del editor: E0042 amplía el trabajo de E0015–E0031 con recurso
 | V081 | 2026-11-24 | Ejecutado por el asistente (E0068), con la base local `kme_dev`. | Correcta. **`sello-avatar` 7 de 7:** el editor del sello ofrece los avatares de la cuenta; el sello guarda la copia con su origen y su encuadre; se dibuja el avatar, no el hueco, en el editor, en «Mis sellos» y en la vista previa; el rostro sin piernas y el cuerpo entero con ellas; otra cuenta no ve tu avatar ni puede usarlo (400); editar o borrar después el avatar original no cambia ni rompe el sello. **`npm test` completo: 163 de 163**, 0 fallos y 0 omitidos. Sin prueba en el navegador. |
 | V082 | 2026-11-24 | Ejecutado por el asistente (E0069), test escrito antes del código. | En rojo por lo que comprueba: `perfil` 0 de 11. Las rutas `/perfil/…` no existen: 404 en lugar de 302 (elegir y sin sesión), de 403 (sin CSRF) o del 404 con «Ese avatar no existe.»; «Mi K-ME» no invita a elegir la imagen y la cabecera no la enseña. Ningún fallo por errores de SQL: las comprobaciones de las páginas van antes que las de la base de datos. |
 | V083 | 2026-11-24 | Ejecutado por el asistente (E0069), con la base local `kme_dev` y la migración 007 aplicada. | Correcta. **`perfil` 11 de 11:** sin sesión, a /entrar; sin imagen, la cabecera queda como antes y «Mi K-ME» invita a elegirla; «Usar en mi perfil» en las dos listas y «En tu perfil» en el elegido; con avatar, su cara en la cabecera (sin piernas) y en «Mi K-ME» con «Quitar»; con los dos, «Mi K-ME» enseña ambos; solo sello, el sello en la cabecera; editar el avatar cambia la cabecera (es una referencia); otra cuenta no puede (404, sin cambiar ningún perfil); ids raros, 404; sin CSRF, 403; borrar el avatar o el sello lo quita del perfil sin errores. **`npm test` completo: 175 de 175**, 0 fallos y 0 omitidos. Sin prueba en el navegador. |
+| V084 | 2026-11-24 | Ejecutado por el asistente (E0071), tests escritos antes del código, en tres bloques. | En rojo por lo que comprueban. **Bloque 1:** `kme-receta` (editor) 1 de 5, `avatar-receta-valores` 0 de 2 (se aceptaban «extra-fino», «neon»…) y el 5b de `sello-avatar` (texto antiguo del sello). **Bloque 2:** `borrar-varios` 2 de 11 (las rutas no existían: 404; ya pasaban «sin sesión» y «sin CSRF»). **Bloque 3:** `css-para-app` (editor) 0 de 5, `avatar-studio-cliente` 0 de 6 y `avatar-studio-pagina` 0 de 3. Para no fallar por falta de archivo, `kme-receta.js`, `css-para-app.mjs` y `avatar-studio-guardado.js` empezaron vacíos. |
+| V085 | 2026-11-24 | Ejecutado por el asistente (E0071), con la base local `kme_dev`. | Correcta. **App: `npm test` 200 de 200**, 0 fallos y 0 omitidos. **Editor: 151 de 151**, 0 fallos y 0 omitidos, con la muestra regenerada (`KME_ABRIR_MUESTRA.html`). Lo comprobado: las 7 opciones solo aceptan los valores del editor; el editor abre un avatar guardado; el sello sin avatares invita a crear uno; borrar varios y todos con confirmación, en singular y plural, en JSON y sin poder tocar lo de otra cuenta; los estilos limitados al editor y al día; el guardado del cliente (crear, guardar con versión, conflicto, copia, límite, borrar, 401, 403, 400, 413 y sin conexión); la página con el editor entero, el nombre y «Guardar»; el logo K-ME Studio idéntico al original (SHA-256), y los scripts con todo lo que importan. **Sin prueba en el navegador:** falta que la autora lo revise (T040). |
 
 Las pruebas V005–V008 son resultados declarados por Claude y distinguidos de la comprobación documental V009. Los escenarios siguientes siguen pendientes para el producto completo:
 
@@ -436,9 +440,10 @@ Estados permitidos: pendiente, en curso, bloqueado, terminado o descartado. Solo
 | T034 | Avatar dentro del sello: guardar los avatares por cuenta (Avatar Studio, tabla `avatares`) y dibujar un avatar en el servidor a partir de su receta. | Terminado | Creado en E0057. La receta del sello ya guarda la copia (`origen`, `encuadre`, `copia`) y conserva la copia al volver a guardar. Hoy el servidor rechaza cualquier avatar y el editor dice «Todavía no tienes avatares guardados». E0058 corrige la limitación que se suponía: Catalogo y svgDelAvatar YA funcionan en Node si se precargan los archivos locales (V065); cargarCatalogo y PNG sí dependen del navegador. Nota de integración entregada, con normalización frente a validación, conFondo:false, capas de cabeza e ids únicos. No se ha implementado servidor de avatares. E0060: los recortes y la lista de capas de la cabeza ya están en `src/catalogos/sello.js`. Se propone ajustar el recorte a cada avatar (P025). E0067: los avatares ya se guardan en la cuenta en el servidor (D052, V079), y `dibujarAvatar` (en `services/avatarCatalogo.js`) los dibuja en Node con el encuadre del sello. Falta que el sello use `avataresGuardados` y ese dibujo, y que ChatGPT conecte el editor (T037). E0068: hecho. El sello ofrece los avatares guardados de la cuenta y dibuja la copia con su encuadre (V080, V081). Falta la prueba de la autora en el navegador (T036), que necesita el editor de T037 para crear avatares desde la app. |
 | T035 | Imagen de perfil (D044) e imprimir y descargar el sello (D045). | En curso | Creado en E0057, después de Sello Studio. E0069: imagen de perfil hecha en el servidor (D055, V083); falta su diseño (T039). Falta imprimir y descargar (D045). |
 | T036 | La autora prueba Sello Studio en su navegador y revisa la lista de palabras no permitidas en el alias (D042). | Pendiente | Creado en E0057. K-ME queda en marcha en el puerto 3001. |
-| T037 | Parte de Avatar Studio que es zona de ChatGPT (D052): `js/kme-receta.js` con `valoresPermitidos(catalogo)` y sus tests; el cliente `app/public/js/avatar-studio.js`; y el diseño de «Mis avatares» y del editor. | Pendiente | Creado en E0067. El servidor está hecho y en verde (V079). Cuando exista `kme-receta.js`, Claude cambia la validación provisional de las 8 opciones que no son piezas ni colores (grosores, acabado, mechones, fondo…) por esa lista, con sus tests. **E0070: pasa a Claude (D056).** |
-| T038 | Texto del editor del sello cuando no hay avatares (`sello-editor.ejs`, zona de ChatGPT): «Cuando Avatar Studio los guarde en tu cuenta, podrás añadir uno aquí» ya no es cierto. Propuesta: invitar a crear uno en Avatar Studio, con un enlace. Hay que conservar el comienzo «Todavía no tienes avatares guardados», que comprueban los tests. | Pendiente | Creado en E0068, al terminar T034. E0070: pasa a Claude (D056). |
+| T037 | Parte de Avatar Studio que es zona de ChatGPT (D052): `js/kme-receta.js` con `valoresPermitidos(catalogo)` y sus tests; el cliente `app/public/js/avatar-studio.js`; y el diseño de «Mis avatares» y del editor. | Pendiente | Creado en E0067. El servidor está hecho y en verde (V079). Cuando exista `kme-receta.js`, Claude cambia la validación provisional de las 8 opciones que no son piezas ni colores (grosores, acabado, mechones, fondo…) por esa lista, con sus tests. **E0070: pasa a Claude (D056).** **E0071: hecho y probado con tests (V085):** `kme-receta.js` con la lista exacta, usada por el editor y por el servidor; `cargarAvatar` en el editor; `public/js/avatar-studio.js` y `avatar-studio-guardado.js`; la página con el editor aprobado entero, el nombre y «Guardar»; los estilos limitados al editor (generados). Falta la revisión en el navegador (T040). |
+| T038 | Texto del editor del sello cuando no hay avatares (`sello-editor.ejs`, zona de ChatGPT): «Cuando Avatar Studio los guarde en tu cuenta, podrás añadir uno aquí» ya no es cierto. Propuesta: invitar a crear uno en Avatar Studio, con un enlace. Hay que conservar el comienzo «Todavía no tienes avatares guardados», que comprueban los tests. | Terminado | Creado en E0068, al terminar T034. E0070: pasa a Claude (D056). E0071: «Todavía no tienes avatares guardados. Crea uno en Avatar Studio y podrás añadirlo a tu sello», con enlace a `/studio/avatares/nuevo` (V085). |
 | T039 | Diseño de la imagen de perfil (zona de ChatGPT): la imagen en la cabecera (`.perfil-cabecera`, `data-perfil-cabecera`), la sección «Tu imagen de perfil» de «Mi K-ME» (`data-perfil`) y los botones «Usar en mi perfil» y la marca «En tu perfil» de «Mis avatares» y «Mis sellos». Claude los dejó funcionales y sin estilos. El tamaño y el sitio se pueden cambiar sin tocar el servidor. Hay que conservar los textos y los atributos que comprueba `tests/perfil.test.js`, los nombres de los campos (`avatar`, `sello`) y el `_csrf`. | Pendiente | Creado en E0069. E0070: pasa a Claude (D056). |
+| T040 | La autora prueba Avatar Studio en su navegador (ordenador y móvil): crear y guardar un avatar; volver a abrirlo; cambiar el nombre; «Mi ambiente»; imprimir y las dos photocards en PDF; el aviso al salir sin guardar; el conflicto (abrir el mismo avatar en dos pestañas y guardar en las dos); el límite de 20 con el borrado allí mismo; «Borrar los seleccionados» y «Borrar todos» en «Mis avatares» y «Mis sellos»; que la cabecera y el menú de la app no cambian. | Pendiente | Creado en E0071. Todo está probado con tests (V085), pero no en un navegador: el asistente no puede verlo en esta sesión. |
 
 ## 8. Aprendizajes y preguntas para valorar el proceso
 
@@ -2049,6 +2054,65 @@ Las respuestas se añaden en la sesión correspondiente, con ejemplos. No rellen
 - **Siguiente paso:** estudiar el editor y proponer a la autora el plan de T037, con los tests en rojo.
 - **Revisión resultante:** R0069.
 
+### E0071 · 2026-11-24 · Avatar Studio dentro de la app (T037), texto del sello (T038) y borrar varios (D058)
+
+- **Autoría y entorno:** autora y asistente (Claude Code) en el ordenador de la autora; ella lo sigue desde el móvil con Remote Control.
+- **Objetivo:** conectar el editor aprobado con la cuenta (T037), arreglar el texto del sello sin avatares (T038) y poder borrar varios o todos al llegar al límite (D058).
+- **Base leída:** R0069, E0070; el editor (`kme-muestras.html`, `kme-vista-visual.js`, `kme-editor-visual.js`, `estado.js`, `kme-impresion.js`, `kme-ambiente-visual.js`, `css/kme-muestras.css`, `scripts/empaquetar-muestra.mjs`) y el contrato v1 (D052).
+- **Hechos y trabajo realizado:**
+  - **Primero, el plan.** El asistente lo propone y la autora pide además borrar varios o todos (D058). Con «Todo ok» aprueba el plan, D058 y D059, y los dos commits pendientes: `09803e2` (E0069) y `b8ea752` (E0069–E0070), subidos a GitHub.
+  - **Hallazgo:** la validación provisional del servidor aceptaba valores inventados en 7 opciones de la receta (por ejemplo, «extra-fino»).
+  - **Bloque 1, la receta y el texto del sello:**
+    - `js/kme-receta.js` (`valoresPermitidos`, `acabadosPeloKme`) es la única fuente de verdad;
+    - el servidor (`avatarService.js`) usa esa lista en lugar del formato provisional;
+    - el editor la usa para los acabados y gana `cargarAvatar`;
+    - `empaquetar-muestra.mjs` incluye el módulo nuevo, y la muestra se regenera;
+    - texto nuevo del sello sin avatares (T038).
+  - **Bloque 2, borrar varios (D058):**
+    - rutas `POST /studio/avatares/borrar` (también en JSON) y `POST /studio/sellos/borrar`, antes que las de `:id`;
+    - las reglas comunes, en `services/borrarVarios.js`;
+    - `buscarVarios` y `eliminarVarios` en los modelos, siempre con `WHERE id_usuario = $1`;
+    - la página de confirmación `borrar-varios.ejs`;
+    - casillas con el atributo `form` en las dos listas.
+  - **Bloque 3, el editor en la app:**
+    - `scripts/css-para-app.mjs` genera `css/kme-muestras-app.css`: los estilos aprobados, limitados a `.avatar-studio`, con las variables en `:root` para «Mi ambiente»;
+    - `avatar-editor.ejs` lleva el marcado de la muestra con los mismos ids, más el nombre y «Guardar»;
+    - `public/js/avatar-studio.js` monta el editor con sus módulos (`/editor/js/…`), abre el avatar guardado, guarda, gestiona el conflicto («Guardar como copia») y el límite (borrar allí mismo y guardar);
+    - `public/js/avatar-studio-guardado.js` habla con el servidor y se prueba sin navegador;
+    - `public/css/avatar-studio.css` tiene los estilos de las partes propias de la app;
+    - el logo `K-ME-Studio.svg`, copiado byte a byte del original a `app/public/img/`;
+    - `_cabecera.ejs` admite hojas de estilo propias de una página (`estilosExtra`).
+- **Decisiones confirmadas:** D058 y D059.
+- **Decidido por el asistente sin preguntar:**
+  - la barra del nombre y «Guardar», entre la presentación y el editor;
+  - la cabecera de K-ME Studio de la muestra (logo, lema y «Mi ambiente») debajo de la de la app, y el enlace «← Mis avatares»;
+  - al borrar en el límite, el avatar se guarda solo;
+  - el navegador pregunta antes de salir con cambios sin guardar;
+  - los dos campos antiguos de maquillaje (`maquillaje.sombra` y `maquillaje.labial`) solo admiten `null`, porque el editor visual no los usa;
+  - la confirmación envía exactamente los ids que enseña: si mientras tanto se crea otro, no se borra.
+- **Propuestas sin confirmar:** guardar el marco, más adelante (D059).
+- **Cambios o correcciones:**
+  - la validación de las 7 opciones pasa de un formato provisional a una lista exacta;
+  - el texto del sello sin avatares;
+  - «Mis avatares» y «Mis sellos» tienen casillas.
+- **Pruebas:**
+  - V084: rojo en los tres bloques;
+  - V085: la app, 200 de 200; el editor, 151 de 151.
+- **Problemas y pendientes:**
+  - T037, hecho y probado con tests; falta revisarlo en el navegador (T040, nuevo).
+  - T038 terminado.
+  - Siguen T035 (impresión del sello), T036 y T039 (diseño del perfil).
+  - Riesgos que solo el navegador puede confirmar:
+    - la impresión y el PDF con la protección de la app (CSP);
+    - la posición del panel de «Mi ambiente» bajo la cabecera de la app;
+    - cómo se ve en el móvil.
+- **Aprendizaje:** con un generador que limita el CSS aprobado, el diseño del editor sigue siendo uno solo, y un test avisa si la copia se queda atrasada.
+- **Siguiente paso:**
+  - la autora revisa Avatar Studio en el navegador (T040);
+  - diseño de la imagen de perfil (T039);
+  - Connect con el diseño de cada fan.
+- **Revisión resultante:** R0070.
+
 <!-- AÑADIR AQUÍ LAS NUEVAS SESIONES, EN ORDEN DE REGISTRO. NO BORRAR E0001. -->
 
 ## 10. Plantilla para una nueva sesión
@@ -2228,5 +2292,6 @@ PROPUESTA PROCEDENTE DEL OTRO CHAT:
 | R0067 | 2026-11-24 | E0068 | D054: la autora aprueba el orden y las fechas (congelar el código el 28/11). D055: imagen de perfil con claves foráneas. P025 aplazada hasta después del 1/12. T034 terminado: el sello ofrece los avatares guardados de la cuenta y dibuja su copia con el encuadre. V080 (rojo) y V081 (`npm test` 163 de 163). Nuevo T038 para ChatGPT. |
 | R0068 | 2026-11-24 | E0069 | Imagen de perfil en el servidor (D044, D055): migración 007 con dos claves foráneas, rutas `POST /perfil/avatar` y `/perfil/sello`, cabecera, «Mi K-ME» y «Usar en mi perfil». V082 (rojo) y V083 (`npm test` 175 de 175). T035 en curso. Nuevo T039 para ChatGPT (diseño del perfil). TECH_SPEC v1.15. |
 | R0069 | 2026-11-24 | E0070 | D056: Claude, único agente que edita K-ME en esta etapa (D028 en suspenso); asume T037, T038 y T039. D057: dirección visual para la implementación. `AGENTS.md` y `CLAUDE.md` actualizados. |
+| R0070 | 2026-11-24 | E0071 | T037: Avatar Studio dentro de la app (editor aprobado, nombre, «Guardar», conflicto y límite); `kme-receta.js` sustituye la validación provisional. T038 terminado. D058: borrar varios o todos, con confirmación. D059: «Mi ambiente», marco sin guardar, «Mi avatar» y estilos generados. V084 (rojo) y V085 (app 200 de 200, editor 151 de 151). Nuevo T040: revisión en el navegador. TECH_SPEC v1.16. |
 
 <!-- FIN DE LA BITÁCORA. Las revisiones posteriores deben conservar las entradas históricas. -->

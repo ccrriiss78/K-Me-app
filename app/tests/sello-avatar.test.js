@@ -189,6 +189,14 @@ test('Avatar en el sello: el sello lleva una copia de un avatar guardado de la c
     assert.deepEqual(vista.cuerpo, { error: 'Esa opción no existe.' });
   });
 
+  await t.test('5b. sin avatares guardados, el editor del sello invita a crear uno en Avatar Studio (T038)', async () => {
+    const r = await navB.pedir('/studio/sellos/nuevo');
+    assert.equal(r.estado, 200);
+    assert.match(r.html, /Todavía no tienes avatares guardados\./);
+    assert.match(r.html, /<a[^>]*href="\/studio\/avatares\/nuevo"[^>]*>Crea uno en Avatar Studio<\/a>/);
+    assert.doesNotMatch(r.html, /Cuando Avatar Studio los guarde en tu cuenta/, 'el texto antiguo ya no es cierto');
+  });
+
   await t.test('6. editar después el avatar original no cambia el sello: lleva una copia', async () => {
     const antes = (await selloEnBd(idSello)).composicion.avatar;
     const r = await navA.api(`/studio/avatares/${idAvatar}`, { nombre: 'Avatar cambiado', receta: receta({ rostro: 'redondo', boca: 'sonrisa' }), version: 1 });

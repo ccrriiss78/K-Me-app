@@ -7,6 +7,7 @@
 
 import * as avatares from '../services/avatarService.js';
 import { dibujarAvatar } from '../services/avatarCatalogo.js';
+import { estaConfirmado, leerBorrados } from '../services/borrarVarios.js';
 
 const ERRORES = {
   OPCION_NO_VALIDA: [400, 'Esa opción no existe.'],
@@ -31,30 +32,76 @@ function noExiste(res) {
   return res.status(404).render('error', { titulo: 'No encontrado', mensaje: 'Ese avatar no existe.' });
 }
 
+// La página «Mis avatares», con un aviso o un error si los hay.
+async function pintarLista(req, res, estado = 200, { error = null } = {}) {
+  const filas = await avatares.verAvatares(req.session.usuarioId);
+  res.status(estado).render('avatares', {
+    titulo: 'Mis avatares',
+    avatares: filas.map((f) => ({ ...avatares.resumen(f), dibujo: dibujarAvatar(f.composicion, { encuadre: 'cuerpo' }) })),
+    maximo: avatares.MAX_AVATARES,
+    eliminado: req.query.eliminado === '1',
+    borrados: leerBorrados(req.query.borrados, avatares.MAX_AVATARES),
+    error,
+  });
+}
+
 // «Mis avatares» (página) o su lista en JSON.
 export async function mostrarAvatares(req, res, next) {
   try {
-    const filas = await avatares.verAvatares(req.session.usuarioId);
     if (quiereJson(req)) {
+      const filas = await avatares.verAvatares(req.session.usuarioId);
       return res.json({
         maximo: avatares.MAX_AVATARES,
         avatares: filas.map((f) => ({ ...avatares.resumen(f), actualizadoEn: f.actualizado_en.toISOString() })),
       });
     }
-    res.render('avatares', {
-      titulo: 'Mis avatares',
-      avatares: filas.map((f) => ({ ...avatares.resumen(f), dibujo: dibujarAvatar(f.composicion, { encuadre: 'cuerpo' }) })),
-      maximo: avatares.MAX_AVATARES,
-      eliminado: req.query.eliminado === '1',
-      error: null,
-    });
+    await pintarLista(req, res);
   } catch (err) {
     next(err);
   }
 }
 
+// Borrar varios o todos (D058).
+// - Formulario sin «confirmar»: página de confirmación con el número y los nombres (no borra nada).
+// - Con «confirmar»: borra los ids confirmados y vuelve a la lista con «?borrados=N».
+// - JSON (el editor, al llegar al límite): siempre con «confirmar»; responde { borrados }.
+const NADA_QUE_BORRAR = 'Elige al menos un avatar para borrar.';
+export async function borrarAvatares(req, res, next) {
+  const json = quiereJson(req);
+  const idUsuario = req.session.usuarioId;
+  const cuerpo = req.body ?? {};
+  try {
+    if (!estaConfirmado(cuerpo)) {
+      if (json) return res.status(400).json({ error: 'Falta la confirmación.' });
+      const lista = await avatares.prepararBorrado({ idUsuario, cuerpo });
+      if (!lista.length) return await pintarLista(req, res, 400, { error: NADA_QUE_BORRAR });
+      return res.render('borrar-varios', {
+        titulo: 'Borrar avatares', lista, singular: 'avatar', plural: 'avatares',
+        accion: '/studio/avatares/borrar', volver: '/studio/avatares',
+        aviso: 'Los sellos que lleven alguno de estos avatares conservan su copia. Si alguno es tu imagen de perfil, el perfil se quedará sin él.',
+      });
+    }
+    const borrados = await avatares.borrarVarios({ idUsuario, cuerpo });
+    if (json) return res.json({ borrados });
+    res.redirect(`/studio/avatares?borrados=${borrados}`);
+  } catch (err) {
+    if (err.codigo !== 'NADA_QUE_BORRAR') return next(err);
+    if (json) return res.status(400).json({ error: NADA_QUE_BORRAR });
+    try {
+      await pintarLista(req, res, 400, { error: NADA_QUE_BORRAR });
+    } catch (e) {
+      next(e);
+    }
+  }
+}
+
 function pintarEditor(req, res, { id = '', version = '', nombre = 'Mi avatar' } = {}) {
-  res.render('avatar-editor', { titulo: id ? 'Editar avatar' : 'Nuevo avatar', id, version, nombre });
+  res.render('avatar-editor', {
+    titulo: id ? 'Editar avatar' : 'Nuevo avatar', id, version, nombre,
+    // Los estilos aprobados del editor, limitados a su contenedor (T037).
+    // y los de las partes propias de la app (nombre, «Guardar», límite).
+    estilosExtra: ['/editor/css/kme-muestras-app.css', '/css/avatar-studio.css'],
+  });
 }
 
 export function nuevoAvatar(req, res) {

@@ -61,6 +61,23 @@ export async function guardar({ idUsuario, idAvatar, version, nombre, composicio
   return rows[0]?.version ?? null;
 }
 
+// Los avatares de la cuenta con estos ids, para confirmar el borrado (D058). Los de otra cuenta no salen.
+export async function buscarVarios({ idUsuario, ids }) {
+  const { rows } = await consulta(
+    `SELECT id::text AS id, nombre FROM avatares
+      WHERE id_usuario = $1 AND id = ANY($2::bigint[])
+      ORDER BY actualizado_en DESC, id DESC`,
+    [idUsuario, ids],
+  );
+  return rows;
+}
+
+// Borra los avatares de la cuenta con estos ids y dice cuántos ha borrado (D058).
+export async function eliminarVarios({ idUsuario, ids }) {
+  const { rowCount } = await consulta('DELETE FROM avatares WHERE id_usuario = $1 AND id = ANY($2::bigint[])', [idUsuario, ids]);
+  return rowCount;
+}
+
 export async function eliminar({ idUsuario, idAvatar }) {
   const { rowCount } = await consulta('DELETE FROM avatares WHERE id = $1 AND id_usuario = $2', [idAvatar, idUsuario]);
   return rowCount > 0;

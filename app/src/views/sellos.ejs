@@ -8,6 +8,7 @@
     <% if (sellos.length < maximo) { %><a class="boton studio-crear" href="/studio/sellos/nuevo">Crear un sello <span aria-hidden="true">＋</span></a><% } %>
   </header>
   <% if (eliminado) { %><p class="aviso aviso--ok" role="status">Sello borrado.</p><% } %>
+  <% if (locals.borrados) { %><p class="aviso aviso--ok" role="status"><%= borrados === 1 ? 'Se ha borrado 1 sello.' : `Se han borrado ${borrados} sellos.` %></p><% } %>
   <% if (error) { %><p class="aviso aviso--error" role="alert"><%= error %></p><% } %>
   <% if (!sellos.length) { %>
     <div class="sellos-vacio">
@@ -20,9 +21,18 @@
     </div>
   <% } else { %>
     <p class="sellos-conteo">Tienes <strong><%= sellos.length %></strong> de <%= maximo %> sellos.</p>
+    <%# Borrar varios o todos (D058): las casillas de cada sello pertenecen a este formulario
+        (atributo form), porque en HTML no se puede poner un formulario dentro de otro. Antes de
+        borrar se pide confirmación. %>
+    <form method="post" id="borrar-varios" action="/studio/sellos/borrar" class="borrar-varios">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <button type="submit" class="boton boton--pequeno boton--secundario">Borrar los seleccionados</button>
+      <button type="submit" name="todos" value="si" class="boton boton--pequeno boton--peligro">Borrar todos</button>
+    </form>
     <ul class="sellos-lista">
       <% sellos.forEach((s, i) => { %>
       <li class="sellos-lista__elemento">
+        <label class="borrar-varios__casilla"><input type="checkbox" name="ids" value="<%= s.id %>" form="borrar-varios"> <span>Elegir para borrar<span class="solo-lectores">: <%= s.nombre %></span></span></label>
         <a class="sello-card__abrir" href="/studio/sellos/<%= s.id %>" aria-labelledby="sello-nombre-<%= s.id %>">
           <div class="sello-card__papel"><span class="sello-card__numero" aria-hidden="true"><%= String(i + 1).padStart(2, '0') %></span>
             <%- include('_sello', { dibujo: s.dibujo, ancho: 170, clase: 'sello--miniatura' }) %>

@@ -1137,6 +1137,30 @@ function montarImpresion(doc,catalogo,vista,acciones={}){
   botones[0].addEventListener('click',()=>tarjeta('55x85'));botones[1].addEventListener('click',()=>tarjeta('54x86'));
 }
 
+// VALORES PERMITIDOS de la receta del avatar (contrato v1 con la app, D052; T037).
+// Las piezas y los colores se comprueban con el catálogo (kme.json). Las demás opciones de la
+// receta tienen aquí su lista EXACTA: es la única fuente de verdad del editor y del servidor de la
+// app (app/src/services/avatarService.js). Si se añade una opción a «porDefecto», hay que darle su
+// lista aquí: el test tests/kme-receta.test.js lo comprueba.
+
+// Acabados del cabello que ofrece el editor (EditorVisual.elegirAcabadoPelo usa esta misma lista).
+const acabadosPeloKme = ['tinta', 'acuarela', 'pinceladas'];
+
+function valoresPermitidos(catalogo) {
+  return {
+    grosorCejas: [...grosoresKme],
+    'maquillaje.grosorLabios': [...grosoresKme],
+    'pelo.acabado': [...acabadosPeloKme],
+    'pelo.mechones': estilosMechonesKme.map(([id]) => id),
+    // Sin fondo propio: el fondo lo pone el sello o la página. Si algún día el catálogo trae fondos,
+    // también valen sus ids.
+    fondo: ['ninguno', ...(catalogo.datos.piezas.fondo ?? []).map((p) => p.id)],
+    // Campos del editor anterior (colores.js): el editor visual no los cambia nunca.
+    'maquillaje.sombra': [null],
+    'maquillaje.labial': [null],
+  };
+}
+
 
 class EditorVisual {
   constructor(catalogo){
@@ -1164,6 +1188,12 @@ class EditorVisual {
     if(!marcosDisponibles.some(m=>m.id===id))throw new Error('Marco no disponible');
     if(this.marco===id)return;this.guardar();this.marcos[this.base]=id;
   }
+  // Abre un avatar guardado (por ejemplo, el de la cuenta en la app) en la base actual: se completa
+  // con los valores por defecto, se trabaja sobre una copia y empieza sin historial.
+  cargarAvatar(receta){
+    this.avatares[this.base]=normalizarAvatar(structuredClone(receta),this.catalogo.datos.porDefecto);
+    this.historiales[this.base]=[];
+  }
   cambiarBase(indice){if(!Number.isInteger(indice)||!this.avatares[indice])throw new Error('Base no válida');this.base=indice;}
   elegirPieza(ruta,id){
     if(!this.catalogo.pieza(ruta,id))throw new Error('Pieza no válida');
@@ -1177,7 +1207,7 @@ class EditorVisual {
   elegirExpresion(expresion){this.elegirOjos(this.ojos.familia,expresion);}
   elegirGrosorLabios(grosor){this.elegirGrosor('maquillaje.grosorLabios',grosor);}
   elegirAcabadoPelo(acabado){
-    if(!['tinta','acuarela','pinceladas'].includes(acabado))throw new Error('Acabado no válido');
+    if(!acabadosPeloKme.includes(acabado))throw new Error('Acabado no válido');
     if((this.avatar.pelo.acabado||'tinta')===acabado)return;
     this.guardar();this.avatar.pelo.acabado=acabado;
   }

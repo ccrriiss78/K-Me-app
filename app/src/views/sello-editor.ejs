@@ -48,7 +48,7 @@
       <fieldset class="sello-bloque">
         <legend class="solo-lectores">Avatar</legend>
         <% if (!avatares.length && !tieneCopiaAvatar) { %>
-          <p class="sello-avatar-pendiente">Todavía no tienes avatares guardados. Cuando Avatar Studio los guarde en tu cuenta, podrás añadir uno aquí.</p>
+          <p class="sello-avatar-pendiente">Todavía no tienes avatares guardados. <a href="/studio/avatares/nuevo">Crea uno en Avatar Studio</a> y podrás añadirlo a tu sello.</p>
           <input type="hidden" name="avatar" value="">
         <% } else { %>
           <label for="avatar">Avatar del sello</label>

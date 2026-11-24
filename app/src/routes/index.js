@@ -8,10 +8,11 @@ import {
   mostrarMuro, publicar, reaccionar, quitarReacciones, eliminarPublicacion,
 } from '../controllers/connectController.js';
 import {
-  mostrarSellos, nuevoSello, crearSello, abrirSello, guardarSello, duplicarSello, eliminarSello, vistaPrevia,
+  mostrarSellos, nuevoSello, crearSello, abrirSello, guardarSello, duplicarSello, eliminarSello, vistaPrevia, borrarSellos,
 } from '../controllers/selloController.js';
 import {
   mostrarAvatares, nuevoAvatar, abrirAvatar, crearAvatar, guardarAvatar, duplicarAvatar, eliminarAvatar, erroresJsonAvatar,
+  borrarAvatares,
 } from '../controllers/avatarController.js';
 import { elegirAvatarPerfil, elegirSelloPerfil } from '../controllers/perfilController.js';
 import { requiereSesion, requiereSesionOJson } from '../middleware/requiereSesion.js';
@@ -49,6 +50,7 @@ rutas.get('/studio/sellos', requiereSesion, mostrarSellos);
 rutas.get('/studio/sellos/nuevo', requiereSesion, nuevoSello);
 rutas.get('/studio/sellos/vista-previa', requiereSesion, vistaPrevia);
 rutas.post('/studio/sellos', requiereSesion, comprobarCsrf, crearSello);
+rutas.post('/studio/sellos/borrar', requiereSesion, comprobarCsrf, borrarSellos); // varios o todos (D058)
 rutas.get('/studio/sellos/:id', requiereSesion, abrirSello);
 rutas.post('/studio/sellos/:id', requiereSesion, comprobarCsrf, guardarSello);
 rutas.post('/studio/sellos/:id/duplicar', requiereSesion, comprobarCsrf, duplicarSello);
@@ -61,6 +63,7 @@ const leerJson = express.json({ limit: '16kb' });
 rutas.get('/studio/avatares', requiereSesionOJson, mostrarAvatares);
 rutas.get('/studio/avatares/nuevo', requiereSesion, nuevoAvatar);
 rutas.post('/studio/avatares', requiereSesionOJson, leerJson, comprobarCsrf, crearAvatar);
+rutas.post('/studio/avatares/borrar', requiereSesionOJson, leerJson, comprobarCsrf, borrarAvatares); // varios o todos (D058)
 rutas.get('/studio/avatares/:id', requiereSesionOJson, abrirAvatar);
 rutas.post('/studio/avatares/:id', requiereSesionOJson, leerJson, comprobarCsrf, guardarAvatar);
 rutas.post('/studio/avatares/:id/duplicar', requiereSesionOJson, leerJson, comprobarCsrf, duplicarAvatar);

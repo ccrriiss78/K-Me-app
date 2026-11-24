@@ -1,0 +1,26 @@
+<%- include('_cabecera') %>
+<%#
+  Confirmación de «Borrar los seleccionados» y «Borrar todos» (D058), común a avatares y sellos.
+  Recibe: titulo, lista ([{ id, nombre }], solo de la cuenta), singular y plural («avatar», «avatares»),
+  accion (a dónde se confirma), volver (la lista) y aviso (qué pasa con lo que los usa).
+  Se confirman exactamente los ids que se enseñan: si mientras tanto se crea otro, no se borra.
+-%>
+<% const cuantos = lista.length === 1 ? `1 ${singular}` : `${lista.length} ${plural}`; -%>
+<section class="tarjeta borrar-confirmar" aria-labelledby="titulo-borrar">
+  <h1 id="titulo-borrar"><%= titulo %></h1>
+  <p>Se borrarán para siempre <strong><%= cuantos %></strong>:</p>
+  <ul class="borrar-confirmar__lista">
+    <% lista.forEach((e) => { %><li><%= e.nombre %></li><% }) %>
+  </ul>
+  <p class="nota"><%= aviso %></p>
+  <form method="post" action="<%= accion %>" class="borrar-confirmar__acciones">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+<% lista.forEach((e) => { -%>
+    <input type="hidden" name="ids" value="<%= e.id %>">
+<% }) -%>
+    <input type="hidden" name="confirmar" value="si">
+    <button type="submit" class="boton boton--peligro">Sí, borrar <%= cuantos %></button>
+    <a class="boton boton--secundario" href="<%= volver %>">Cancelar</a>
+  </form>
+</section>
+<%- include('_pie') %>

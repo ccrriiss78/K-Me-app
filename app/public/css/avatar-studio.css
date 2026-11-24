@@ -1,0 +1,54 @@
+/* AVATAR STUDIO EN LA APP (T037; dirección visual D057).
+   Solo las partes propias de la app: el ancho de la página, el nombre y «Guardar», el aviso de
+   conflicto y el panel del límite. El editor usa sus estilos aprobados, limitados a su contenedor
+   (/editor/css/kme-muestras-app.css, generado). Colores: los del editor (--ui-…) y la familia de
+   controles aprobada (D047, D053): botón principal negro con texto blanco, fucsia con texto negro,
+   bordes de campo #6e737b. */
+
+.contenido:has(> .avatar-studio-pagina) { padding-inline: 0; }
+.avatar-studio-pagina { width: 100%; max-width: 1300px; }
+.avatar-studio { border-radius: 24px; padding-bottom: 24px; }
+.avatar-studio [hidden] { display: none !important; }
+
+.volver-avatares { margin: 12px 0 0; }
+.volver-avatares a { font-weight: 700; }
+
+.guardar-avatar {
+  margin: 0 0 24px; padding: 16px 18px;
+  background: var(--ui-panel); border: 1px solid var(--ui-ink); border-radius: 18px;
+}
+.guardar-avatar__fila { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.guardar-avatar label { font-weight: 800; }
+.guardar-avatar input[type="text"] {
+  flex: 1 1 220px; min-width: 0; font: inherit; padding: 10px 12px;
+  border: 1px solid #6e737b; border-radius: 12px; background: #fff; color: #000;
+}
+.guardar-avatar input:focus-visible,
+.guardar-avatar button:focus-visible,
+.guardar-avatar a:focus-visible { outline: 3px solid var(--ui-accent-text); outline-offset: 3px; }
+
+.guardar-avatar button {
+  font: inherit; font-weight: 800; padding: 10px 20px; border-radius: 999px;
+  border: 1px solid #000; background: #000; color: #fff; cursor: pointer;
+}
+.guardar-avatar button:disabled { opacity: .55; cursor: default; }
+.guardar-avatar button.secundario { background: #fff; color: #000; }
+.guardar-avatar button.peligro { background: var(--brand-pink); color: #000; }
+
+.guardar-avatar__estado { margin: 10px 0 0; font-weight: 700; }
+.guardar-avatar__estado:empty { display: none; }
+.guardar-avatar__conflicto { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 10px; }
+
+.panel-limite { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--ui-line); }
+.panel-limite h2 { font-size: 1.05rem; margin: 0 0 8px; letter-spacing: 0; }
+.panel-limite ul {
+  list-style: none; padding: 0; margin: 0 0 12px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 6px 14px;
+}
+.panel-limite label { font-weight: 600; display: flex; gap: 8px; align-items: center; }
+.panel-limite__acciones { display: flex; flex-wrap: wrap; gap: 10px; }
+
+@media (max-width: 760px) {
+  .avatar-studio { border-radius: 0; }
+  .guardar-avatar button { width: 100%; }
+}

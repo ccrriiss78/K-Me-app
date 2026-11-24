@@ -8,6 +8,7 @@ import {
   COLORES, MOTIVOS, ENCUADRES, MAX_MOTIVOS, MAX_SELLOS, DISENO_INICIAL,
 } from '../catalogos/sello.js';
 import { PALABRAS_HANGUL, GRUPOS_HANGUL, buscarPalabra } from '../catalogos/hangul.js';
+import { estaConfirmado, leerBorrados } from '../services/borrarVarios.js';
 
 const ERRORES = {
   OPCION_NO_VALIDA: [400, 'Esa opción no existe.'],
@@ -99,12 +100,48 @@ async function responderErrorEditor(err, req, res, next, extra = {}) {
   }
 }
 
+// La página «Mis sellos», con un aviso o un error si los hay.
+async function pintarLista(req, res, estado = 200, { error = null } = {}) {
+  const lista = await sellos.verSellos({ idUsuario: req.session.usuarioId, alias: req.session.alias });
+  res.status(estado).render('sellos', {
+    titulo: 'Mis sellos', sellos: lista, maximo: MAX_SELLOS, eliminado: req.query.eliminado === '1',
+    borrados: leerBorrados(req.query.borrados, MAX_SELLOS), error,
+  });
+}
+
 export async function mostrarSellos(req, res, next) {
   try {
-    const lista = await sellos.verSellos({ idUsuario: req.session.usuarioId, alias: req.session.alias });
-    res.render('sellos', { titulo: 'Mis sellos', sellos: lista, maximo: MAX_SELLOS, eliminado: req.query.eliminado === '1', error: null });
+    await pintarLista(req, res);
   } catch (err) {
     next(err);
+  }
+}
+
+// Borrar varios o todos (D058). Sin «confirmar», una página de confirmación con el número y los
+// nombres (no borra nada); con «confirmar», borra los ids confirmados y vuelve con «?borrados=N».
+const NADA_QUE_BORRAR = 'Elige al menos un sello para borrar.';
+export async function borrarSellos(req, res, next) {
+  const idUsuario = req.session.usuarioId;
+  const cuerpo = req.body ?? {};
+  try {
+    if (!estaConfirmado(cuerpo)) {
+      const lista = await sellos.prepararBorrado({ idUsuario, cuerpo });
+      if (!lista.length) return await pintarLista(req, res, 400, { error: NADA_QUE_BORRAR });
+      return res.render('borrar-varios', {
+        titulo: 'Borrar sellos', lista, singular: 'sello', plural: 'sellos',
+        accion: '/studio/sellos/borrar', volver: '/studio/sellos',
+        aviso: 'Si alguno es tu imagen de perfil, el perfil se quedará sin él.',
+      });
+    }
+    const borrados = await sellos.borrarVarios({ idUsuario, cuerpo });
+    res.redirect(`/studio/sellos?borrados=${borrados}`);
+  } catch (err) {
+    if (err.codigo !== 'NADA_QUE_BORRAR') return next(err);
+    try {
+      await pintarLista(req, res, 400, { error: NADA_QUE_BORRAR });
+    } catch (e) {
+      next(e);
+    }
   }
 }
 

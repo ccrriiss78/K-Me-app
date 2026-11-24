@@ -65,3 +65,20 @@ export async function eliminar({ idUsuario, idSello }) {
   const { rowCount } = await consulta('DELETE FROM sellos WHERE id = $1 AND id_usuario = $2', [idSello, idUsuario]);
   return rowCount > 0;
 }
+
+// Los sellos de la cuenta con estos ids, para confirmar el borrado (D058). Los de otra cuenta no salen.
+export async function buscarVarios({ idUsuario, ids }) {
+  const { rows } = await consulta(
+    `SELECT id::text AS id, nombre FROM sellos
+      WHERE id_usuario = $1 AND id = ANY($2::bigint[])
+      ORDER BY actualizado_en DESC, id DESC`,
+    [idUsuario, ids],
+  );
+  return rows;
+}
+
+// Borra los sellos de la cuenta con estos ids y dice cuántos ha borrado (D058).
+export async function eliminarVarios({ idUsuario, ids }) {
+  const { rowCount } = await consulta('DELETE FROM sellos WHERE id_usuario = $1 AND id = ANY($2::bigint[])', [idUsuario, ids]);
+  return rowCount;
+}
