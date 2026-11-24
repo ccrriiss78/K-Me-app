@@ -1,6 +1,6 @@
 // RUTAS: relacionan cada URL con su controlador y los middleware que la protegen.
 
-import { Router } from 'express';
+import express, { Router } from 'express';
 import { mostrarEntrar, procesarEntrar, cerrarSesion } from '../controllers/authController.js';
 import { mostrarRegistro, procesarRegistro } from '../controllers/registroController.js';
 import { mostrarMiKme } from '../controllers/miKmeController.js';
@@ -10,7 +10,10 @@ import {
 import {
   mostrarSellos, nuevoSello, crearSello, abrirSello, guardarSello, duplicarSello, eliminarSello, vistaPrevia,
 } from '../controllers/selloController.js';
-import { requiereSesion } from '../middleware/requiereSesion.js';
+import {
+  mostrarAvatares, nuevoAvatar, abrirAvatar, crearAvatar, guardarAvatar, duplicarAvatar, eliminarAvatar, erroresJsonAvatar,
+} from '../controllers/avatarController.js';
+import { requiereSesion, requiereSesionOJson } from '../middleware/requiereSesion.js';
 import { comprobarCsrf } from '../middleware/csrf.js';
 import { limiteIntentosLogin, limiteRegistro } from '../middleware/limiteIntentos.js';
 
@@ -46,6 +49,19 @@ rutas.get('/studio/sellos/:id', requiereSesion, abrirSello);
 rutas.post('/studio/sellos/:id', requiereSesion, comprobarCsrf, guardarSello);
 rutas.post('/studio/sellos/:id/duplicar', requiereSesion, comprobarCsrf, duplicarSello);
 rutas.post('/studio/sellos/:id/eliminar', requiereSesion, comprobarCsrf, eliminarSello);
+
+// Avatar Studio (contrato v1 con ChatGPT): páginas y rutas JSON para el script del editor.
+// Sin sesión, las peticiones JSON reciben 401 en JSON. Los POST leen JSON (hasta 16 kB; la receta,
+// como mucho 8 kB) antes del CSRF, que va en el cuerpo («_csrf»). «nuevo» va antes que «:id».
+const leerJson = express.json({ limit: '16kb' });
+rutas.get('/studio/avatares', requiereSesionOJson, mostrarAvatares);
+rutas.get('/studio/avatares/nuevo', requiereSesion, nuevoAvatar);
+rutas.post('/studio/avatares', requiereSesionOJson, leerJson, comprobarCsrf, crearAvatar);
+rutas.get('/studio/avatares/:id', requiereSesionOJson, abrirAvatar);
+rutas.post('/studio/avatares/:id', requiereSesionOJson, leerJson, comprobarCsrf, guardarAvatar);
+rutas.post('/studio/avatares/:id/duplicar', requiereSesionOJson, leerJson, comprobarCsrf, duplicarAvatar);
+rutas.post('/studio/avatares/:id/eliminar', requiereSesionOJson, leerJson, comprobarCsrf, eliminarAvatar);
+rutas.use('/studio/avatares', erroresJsonAvatar);
 
 // Pequeña ruta de salud para comprobar que el servidor responde (no requiere sesión).
 rutas.get('/salud', (req, res) => res.json({ ok: true, app: 'k-me', fase: 1 }));

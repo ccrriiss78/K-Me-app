@@ -22,6 +22,7 @@
       <%# Menú principal: aria-current marca la página en la que estás. %>
       <nav class="menu" aria-label="Principal">
         <a href="/mi-kme"<% if (locals.rutaActual === '/mi-kme') { %> aria-current="page"<% } %>>Mi K-ME</a>
+        <a href="/studio/avatares"<% if ((locals.rutaActual || '').startsWith('/studio/avatares')) { %> aria-current="page"<% } %>>Avatar Studio</a>
         <a href="/studio/sellos"<% if ((locals.rutaActual || '').startsWith('/studio/sellos')) { %> aria-current="page"<% } %>>Sello Studio</a>
         <a href="/connect"<% if (locals.rutaActual === '/connect') { %> aria-current="page"<% } %>>Connect</a>
       </nav>

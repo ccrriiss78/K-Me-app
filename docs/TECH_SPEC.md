@@ -1,6 +1,6 @@
 # TECH_SPEC · K-ME
 
-**Estado:** versión 1.13 · 23/11/2026 · Responde al pendiente T012 de `BITACORA_KME.md`. Revisada con la autora: acepta las propuestas de Q1 a Q6 y decide Q7 a Q10 con cambios (ver §6). El 18/11 decide Q11, el alcance del MVP (§5.1) y los nombres de los logos (§4.0). El 19/11 sustituye el círculo cromático por la paleta de la app (§2.5). El 21/11 separa el usuario privado del alias público y añade el registro por formulario (§1). Ese mismo día se incorporan las decisiones del editor de avatar trabajadas con ChatGPT en otra carpeta (§2.2, §2.6, §3.3), y se decide que «Mi ambiente» también usa solo la paleta (§2.6, Q14). El 22/11 decide qué lleva el sello (§4.1, D041), protege el alias frente a palabras ofensivas (§1, D042), aprueba el catálogo de hangul comprobado (§4.2, D043), y decide que la imagen de perfil pueda ser un avatar, un sello o los dos (D044) y que el sello se pueda imprimir y descargar (D045). El 22 y 23/11 amplía la paleta del sello con colores vivos (D046). El 23/11 elige de momento la composición A+C para sellos y exige coherencia del tratamiento visual entre pantallas (§2.7, D047).
+**Estado:** versión 1.14 · 23/11/2026 · Responde al pendiente T012 de `BITACORA_KME.md`. Revisada con la autora: acepta las propuestas de Q1 a Q6 y decide Q7 a Q10 con cambios (ver §6). El 18/11 decide Q11, el alcance del MVP (§5.1) y los nombres de los logos (§4.0). El 19/11 sustituye el círculo cromático por la paleta de la app (§2.5). El 21/11 separa el usuario privado del alias público y añade el registro por formulario (§1). Ese mismo día se incorporan las decisiones del editor de avatar trabajadas con ChatGPT en otra carpeta (§2.2, §2.6, §3.3), y se decide que «Mi ambiente» también usa solo la paleta (§2.6, Q14). El 22/11 decide qué lleva el sello (§4.1, D041), protege el alias frente a palabras ofensivas (§1, D042), aprueba el catálogo de hangul comprobado (§4.2, D043), y decide que la imagen de perfil pueda ser un avatar, un sello o los dos (D044) y que el sello se pueda imprimir y descargar (D045). El 22 y 23/11 amplía la paleta del sello con colores vivos (D046). El 23/11 elige de momento la composición A+C para sellos y exige coherencia del tratamiento visual entre pantallas (§2.7, D047).
 
 Este documento dice **qué se construye y cómo**. La bitácora dice qué ha pasado y por qué; `CLAUDE.md` dice cómo trabaja el agente.
 
@@ -116,6 +116,10 @@ Cada punto lleva una etiqueta:
   - Negro sobre ese fucsia da 5,18:1, y blanco sobre el fucsia oscuro `#b9235a`, 6,09:1.
   - El borde de los campos (`#e4dde0` sobre blanco) da 1,34:1.
   - D047 permite aplicar la familia de controles común: en E0063 se usan botones principales oscuros con texto blanco, pestañas fucsias con texto negro y bordes de campos `#6e737b`. Contrastes calculados: 17,40:1, 5,18:1 y 4,77:1, respectivamente. La revisión visual y de foco en navegador de esta versión sigue pendiente; los resultados anteriores describen la versión previa.
+  - **[DECIDIDO 24/11, D053]** La autora elige texto **negro sobre el fucsia**, salvo que el diseño de la interfaz pida otra cosa. El arreglo de E0063 ya lo cumple; falta comprobarlo en el navegador.
+- **[DECIDIDO 24/11, D054]** Plan hasta la presentación del **1 de diciembre de 2026**:
+  - primero, la demo de principio a fin: cuenta, Avatar Studio, sello con su avatar, imagen de perfil, Connect con el diseño de cada fan e impresión;
+  - retos, monedas, eventos y lightsticks, si da tiempo; si no, se presentan como ideas de futuro.
 
 ---
 
@@ -218,6 +222,26 @@ Ejemplo de `composicion`:
 | `POST /studio/avatares/:id/activar` | Lo elige como avatar activo |
 | `GET /studio/avatares/:id/eliminar` | Pide confirmación |
 | `POST /studio/avatares/:id/eliminar` | Elimina (si era el activo, la cuenta se queda sin activo) |
+
+**[HECHO 23/11, D052, E0067] Así ha quedado en el servidor (contrato v1 con ChatGPT):**
+- **Tabla `avatares`** (migración `006_avatares.sql`, nueva): `id`, `id_usuario`, `nombre` (de 1 a 40 caracteres), `composicion` (la receta, JSONB), `version`, `creado_en` y `actualizado_en`. La imagen de perfil (D044) irá en otra migración. No hay `…/activar` todavía.
+- **Receta:** el objeto del editor (claves de `editor-avatar/editor-avatar/datos/kme.json` → `porDefecto`), como mucho 8 KB. El servidor la completa con `normalizarAvatar` del editor y la **valida** campo a campo:
+  - las piezas, con el catálogo;
+  - los colores, en hexadecimal y del catálogo;
+  - las otras 8 opciones, de momento solo con un formato seguro, hasta que llegue `kme-receta.js` de ChatGPT (`valoresPermitidos`).
+
+  No sustituye a la tabla de piezas de §3.5: el catálogo es el del editor.
+- **Páginas:** `GET /studio/avatares` («Mis avatares», con miniaturas dibujadas en el servidor), `GET /studio/avatares/nuevo` y `GET /studio/avatares/:id`. El editor lo monta `app/public/js/avatar-studio.js` (ChatGPT) en `#avatar-studio`.
+- **Rutas JSON** (`Accept` o cuerpo JSON, con `_csrf` en el cuerpo):
+  - listar y leer;
+  - `POST /studio/avatares` (201);
+  - `POST /studio/avatares/:id` con `version` (200, o 409 con la versión del servidor, sin sobrescribir);
+  - `…/duplicar` (201) y `…/eliminar` (200; también por formulario, que vuelve a «Mis avatares»).
+
+  Errores como `{ error }`: 400, 401 sin sesión, 403 sin CSRF, 404 si es de otra cuenta, 409 en el límite de 20 y 413.
+- **El editor se sirve desde su carpeta:** solo `/editor/js`, `/editor/css`, `/editor/datos`, `/editor/assets` y `/editor/vendor`.
+- **Dibujo en Node:** `services/avatarCatalogo.js` usa `Catalogo` y `svgDelAvatar` del editor, sin fondo y con ids únicos. Con encuadre, usa el recorte y las capas de `ENCUADRES` (§4.1).
+- **Tests:** `tests/avatar-receta.test.js` y `tests/avatares.test.js`.
 
 ---
 
@@ -559,3 +583,4 @@ Este documento **se puede cambiar** cuando la app avance. Cada cambio se hace as
 | 1.11 | 23/11/2026 | D047 (§2.7): la autora elige de momento el mockup A+C para sellos, conservando el orden y la lectura de A y mezclando recursos gráficos y artísticos de A y C. Tratamiento coherente entre todas las pantallas; paleta y logo conservados. Se registra el arreglo de contraste de los controles comunes y la revisión visual pendiente. |
 | 1.12 | 23/11/2026 | D048 (§2.7): sin collage detrás de las creaciones; identidad en cabeceras, controles y detalles exteriores. Corrige la colocación de recursos de D047 tras la revisión de la autora. |
 | 1.13 | 23/11/2026 | D049 (§5.1): seis reacciones nuevas y «Más reacciones» en Connect; autorización concreta de catálogo y tests a ChatGPT. D050 (§2.7): collage en el fondo general de la colección, con tarjetas más compactas, blancas y opacas; el dibujo conserva una superficie limpia. |
+| 1.14 | 23/11/2026 | §3.6: Avatar Studio en el servidor, según el contrato v1 con ChatGPT (D052): tabla `avatares` (migración 006), receta validada con el catálogo del editor, páginas y rutas JSON, versión con 409, límite de 20, editor servido desde su carpeta y dibujo en Node. Falta el cliente de ChatGPT y `kme-receta.js` (T037). |

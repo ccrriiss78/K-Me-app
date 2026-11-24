@@ -6,8 +6,8 @@
     <dt>Alias</dt><dd><%= cuenta.alias %></dd>
     <dt>Cuenta creada</dt><dd><time datetime="<%= cuenta.creado_en.toISOString() %>"><%= cuenta.creado_en.toLocaleString('es-ES') %></time></dd>
   </dl>
+  <p><a class="boton boton--enlace" href="/studio/avatares">Crear tus avatares en Avatar Studio</a></p>
   <p><a class="boton boton--enlace" href="/studio/sellos">Crear tus sellos en Sello Studio</a></p>
   <p><a class="boton boton--enlace" href="/connect">Ir al muro de Connect</a></p>
-  <p class="nota">Próximamente: Avatar Studio.</p>
 </section>
 <%- include('_pie') %>

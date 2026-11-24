@@ -19,6 +19,10 @@ export function comprobarCsrf(req, res, next) {
     && recibido.length === esperado.length
     && crypto.timingSafeEqual(Buffer.from(recibido), Buffer.from(esperado));
   if (!valido) {
+    // Un script que envía JSON (Avatar Studio) recibe el error en JSON; un formulario, la página de error.
+    if (req.is('application/json')) {
+      return res.status(403).json({ error: 'El formulario ha caducado o no es válido. Vuelve a intentarlo.' });
+    }
     return res.status(403).render('error', {
       titulo: 'Petición rechazada',
       mensaje: 'El formulario ha caducado o no es válido. Vuelve a intentarlo.',

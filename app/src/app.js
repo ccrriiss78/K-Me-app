@@ -31,6 +31,13 @@ export function crearApp() {
   }));
   app.use(express.urlencoded({ extended: false, limit: '10kb' }));
   app.use(express.static(path.join(raiz, 'public'), { index: false }));
+  // El editor de avatar (zona de ChatGPT) se sirve desde su propia carpeta, sin copiarlo, para que
+  // Avatar Studio lo use dentro de la app (contrato v1). Solo estas cinco subcarpetas: nada de
+  // propuestas, tests, scripts ni páginas de revisión.
+  const carpetaEditor = path.join(raiz, '..', 'editor-avatar', 'editor-avatar');
+  for (const sub of ['js', 'css', 'datos', 'assets', 'vendor']) {
+    app.use(`/editor/${sub}`, express.static(path.join(carpetaEditor, sub), { index: false, dotfiles: 'ignore', redirect: false }));
+  }
 
   app.use(crearMiddlewareSesion(config));
   app.use(tokenCsrf);

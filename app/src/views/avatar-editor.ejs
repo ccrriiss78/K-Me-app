@@ -1,0 +1,19 @@
+<%- include('_cabecera') %>
+<%#
+  Editor de Avatar Studio (contrato v1 con ChatGPT). Vista funcional de Claude; su diseño es zona de
+  ChatGPT. El editor lo monta public/js/avatar-studio.js (ChatGPT) en #avatar-studio, con:
+  - data-id y data-version: vacíos en un avatar nuevo; los del avatar guardado al editarlo;
+  - data-csrf: el token que el script envía en el cuerpo JSON («_csrf»);
+  - data-catalogo: el catálogo del editor, servido desde su carpeta (/editor/…).
+  Sin scripts en línea (CSP): solo el archivo externo. Conserva estos atributos si se rediseña.
+-%>
+<section class="tarjeta avatar-studio" aria-labelledby="titulo-avatar">
+  <p><a href="/studio/avatares">← Mis avatares</a></p>
+  <h1 id="titulo-avatar">Avatar Studio</h1>
+  <div id="avatar-studio" data-id="<%= id %>" data-version="<%= version %>" data-csrf="<%= csrfToken %>" data-catalogo="/editor/datos/kme.json" data-nombre="<%= nombre %>">
+    <p class="nota">Cargando el editor…</p>
+  </div>
+  <noscript><p class="aviso aviso--error">Avatar Studio necesita JavaScript para diseñar el avatar.</p></noscript>
+</section>
+<script type="module" src="/js/avatar-studio.js"></script>
+<%- include('_pie') %>

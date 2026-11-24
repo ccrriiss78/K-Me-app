@@ -1,0 +1,46 @@
+<%- include('_cabecera') %>
+<%#
+  «Mis avatares» (Avatar Studio, contrato v1). Vista funcional de Claude; su diseño es zona de
+  ChatGPT (AGENTS.md). Se conservan los textos y enlaces que comprueba tests/avatares.test.js.
+  Las miniaturas las dibuja el servidor con el dibujador del editor, a partir de la receta ya
+  validada (nunca algo enviado por el navegador): por eso se insertan sin escapar.
+-%>
+<section class="tarjeta avatares-studio" aria-labelledby="titulo-avatares">
+  <h1 id="titulo-avatares">Mis avatares</h1>
+  <% if (eliminado) { %><p class="aviso aviso--ok" role="status">Avatar borrado.</p><% } %>
+  <% if (error) { %><p class="aviso aviso--error" role="alert"><%= error %></p><% } %>
+
+  <% if (!avatares.length) { %>
+    <p>Todavía no tienes avatares. Crea el primero con el editor de Avatar Studio.</p>
+  <% } %>
+  <% if (avatares.length < maximo) { %>
+    <p><a class="boton" href="/studio/avatares/nuevo">Crear un avatar</a></p>
+  <% } %>
+
+  <% if (avatares.length) { %>
+    <ul class="avatares-lista">
+      <% avatares.forEach((a) => { %>
+        <li class="avatares-lista__elemento">
+          <a href="/studio/avatares/<%= a.id %>" class="avatares-lista__abrir">
+            <span class="avatares-lista__dibujo" aria-hidden="true"><%- a.dibujo %></span>
+            <span class="avatares-lista__nombre"><%= a.nombre %></span>
+          </a>
+          <form method="post" action="/studio/avatares/<%= a.id %>/duplicar">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button type="submit" class="boton boton--pequeno boton--secundario">Duplicar</button>
+          </form>
+          <details>
+            <summary>Borrar</summary>
+            <p>Se borrará para siempre.</p>
+            <form method="post" action="/studio/avatares/<%= a.id %>/eliminar">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <button type="submit" class="boton boton--pequeno boton--peligro">Sí, borrar</button>
+            </form>
+          </details>
+        </li>
+      <% }) %>
+    </ul>
+    <p class="nota">Tienes <%= avatares.length %> de <%= maximo %> avatares.</p>
+  <% } %>
+</section>
+<%- include('_pie') %>
