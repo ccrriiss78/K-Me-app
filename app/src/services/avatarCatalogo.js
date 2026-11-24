@@ -52,12 +52,17 @@ export function normalizarReceta(receta) {
 // Dibuja un avatar YA VALIDADO como SVG, sin su capa de fondo (en el sello se ve el fondo del
 // sello) y con un id propio en cada dibujo (svgDelAvatar numera los ids: no se repiten en una página).
 // encuadre: «rostro» (solo las capas de la cabeza) o «cuerpo»; sin encuadre, el lienzo entero.
-export function dibujarAvatar(receta, { encuadre = null } = {}) {
+// alto (opcional, con encuadre): alto en píxeles; el ancho sale con la proporción del encuadre. El
+// CSS puede cambiar después el tamaño sin tocar el servidor.
+export function dibujarAvatar(receta, { encuadre = null, alto = null } = {}) {
   const e = encuadre ? buscarEncuadre(encuadre) : null;
   const opciones = { conFondo: false };
   if (e) {
     opciones.recorte = `${e.recorte.x} ${e.recorte.y} ${e.recorte.ancho} ${e.recorte.alto}`;
     if (e.capas) opciones.soloCapas = e.capas;
   }
-  return svgDelAvatar(obtenerCatalogo(), receta, opciones);
+  const svg = svgDelAvatar(obtenerCatalogo(), receta, opciones);
+  if (!e || !alto) return svg;
+  const ancho = Math.round((alto * e.recorte.ancho) / e.recorte.alto);
+  return svg.replace(/^<svg\b/, `<svg width="${ancho}" height="${alto}"`);
 }

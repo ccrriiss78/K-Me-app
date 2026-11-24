@@ -1,6 +1,6 @@
 # TECH_SPEC · K-ME
 
-**Estado:** versión 1.16 · 24/11/2026 · Responde al pendiente T012 de `BITACORA_KME.md`. Revisada con la autora: acepta las propuestas de Q1 a Q6 y decide Q7 a Q10 con cambios (ver §6). El 18/11 decide Q11, el alcance del MVP (§5.1) y los nombres de los logos (§4.0). El 19/11 sustituye el círculo cromático por la paleta de la app (§2.5). El 21/11 separa el usuario privado del alias público y añade el registro por formulario (§1). Ese mismo día se incorporan las decisiones del editor de avatar trabajadas con ChatGPT en otra carpeta (§2.2, §2.6, §3.3), y se decide que «Mi ambiente» también usa solo la paleta (§2.6, Q14). El 22/11 decide qué lleva el sello (§4.1, D041), protege el alias frente a palabras ofensivas (§1, D042), aprueba el catálogo de hangul comprobado (§4.2, D043), y decide que la imagen de perfil pueda ser un avatar, un sello o los dos (D044) y que el sello se pueda imprimir y descargar (D045). El 22 y 23/11 amplía la paleta del sello con colores vivos (D046). El 23/11 elige de momento la composición A+C para sellos y exige coherencia del tratamiento visual entre pantallas (§2.7, D047). El 24/11 decide guardar la imagen de perfil como referencia, con dos claves foráneas (§4.3, D055), borrar varios o todos (§3.6, D058) y cómo va Avatar Studio dentro de la app (§3.6, D059).
+**Estado:** versión 1.17 · 24/11/2026 · Responde al pendiente T012 de `BITACORA_KME.md`. Revisada con la autora: acepta las propuestas de Q1 a Q6 y decide Q7 a Q10 con cambios (ver §6). El 18/11 decide Q11, el alcance del MVP (§5.1) y los nombres de los logos (§4.0). El 19/11 sustituye el círculo cromático por la paleta de la app (§2.5). El 21/11 separa el usuario privado del alias público y añade el registro por formulario (§1). Ese mismo día se incorporan las decisiones del editor de avatar trabajadas con ChatGPT en otra carpeta (§2.2, §2.6, §3.3), y se decide que «Mi ambiente» también usa solo la paleta (§2.6, Q14). El 22/11 decide qué lleva el sello (§4.1, D041), protege el alias frente a palabras ofensivas (§1, D042), aprueba el catálogo de hangul comprobado (§4.2, D043), y decide que la imagen de perfil pueda ser un avatar, un sello o los dos (D044) y que el sello se pueda imprimir y descargar (D045). El 22 y 23/11 amplía la paleta del sello con colores vivos (D046). El 23/11 elige de momento la composición A+C para sellos y exige coherencia del tratamiento visual entre pantallas (§2.7, D047). El 24/11 decide guardar la imagen de perfil como referencia, con dos claves foráneas (§4.3, D055), borrar varios o todos (§3.6, D058) y cómo va Avatar Studio dentro de la app (§3.6, D059).
 
 Este documento dice **qué se construye y cómo**. La bitácora dice qué ha pasado y por qué; `CLAUDE.md` dice cómo trabaja el agente.
 
@@ -480,12 +480,51 @@ Cada paso es un encargo de `/nueva-funcionalidad`, con plan, tests en rojo, revi
   - **Borrar una publicación:** solo la tuya, con confirmación. Si es de otra cuenta, la respuesta es 404.
   - **Dibujos:** las caritas de las emociones usan el marco y las rayitas del logo (`public/img/connect/emociones/`). Los iconos de las reacciones son de una sola tinta y el botón los pinta de su color (`public/img/connect/reacciones/`). Colores y tamaños, en variables `--connect-…` de `estilos.css`.
   - **Organización:** en el ordenador, el muro a la izquierda y «Publicar» en un panel a la derecha que se queda fijo al bajar; en el móvil, las emociones en una fila que se desliza. Así el muro se ve nada más entrar.
-  - Mientras Avatar Studio no guarde diseños, cada publicación muestra una photocard con la inicial del alias. La columna `diseno` de la publicación recibirá la copia del diseño (Q7, Q11).
-  - Los retos siguen sin reglas: se especifican con la autora.
+  - ~~Mientras Avatar Studio no guarde diseños, cada publicación muestra una photocard con la inicial del alias.~~ **[DECIDIDO 24/11, D060; hecho en E0072]** Al publicar se elige «¿Con qué diseño?»:
+    - las opciones son «Mi imagen de perfil» (por defecto), uno de tus avatares o uno de tus sellos;
+    - la columna `diseno` guarda una **copia** (`tipo`, `origen`, `copia`): editar o borrar después el original no cambia la publicación;
+    - sin elegir, se copia el avatar del perfil; si no hay, el sello del perfil; si no hay ninguno, el muro enseña la inicial;
+    - en la photocard del muro va la cara del avatar o el sello entero;
+    - un avatar o sello de otra cuenta, o un valor raro, da 404 «Ese diseño no existe. Elige otro.» y no se publica nada;
+    - si no hay diseños, el enlace «Crea uno en Avatar Studio». Crear un avatar en el momento de publicar queda fuera del MVP.
+  - **[DECIDIDO 24/11, D061; hecho en E0072] Mensaje con iconos**, opcional y sin texto libre:
+    - de 1 a 5 iconos de una lista cerrada, en el orden elegido, que se pueden repetir; se guarda en la columna `iconos` (migración 008, con un tope de 5 también en la base de datos);
+    - la lista (`ICONOS_MENSAJE` en `src/catalogos/connect.js`) tiene 14 caritas de emociones, 15 reacciones y 9 iconos del universo K-pop: 7 dibujados nuevos en `public/img/connect/mensaje/`, más la estrella y la nota del sello;
+    - un icono inventado o más de 5 dan 400 «Elige hasta 5 iconos de la lista.»;
+    - sin JavaScript se compone con 5 desplegables; con JavaScript, con una paleta (`public/js/connect-publicar.js`) que rellena esos mismos desplegables.
+  - Los retos: el primero, HANGUL LIVE 001, ya tiene reglas (D062, §5.2). Los demás se especifican con la autora.
 
 ### 5.2 Ideas de la autora para después del MVP (22/11/2026)
 
-**[PROPUESTA]** Recogidas para no perderlas; nada de esto está decidido ni se construye en el MVP (bitácora, P014–P018):
+**Actualización del 24/11 (E0072): lo que entra antes de congelar el código.** La autora pide el máximo funcional posible para el 1/12, conservando el recorrido principal, las pruebas y la coherencia visual (D040, D057), sin descartar de entrada las ampliaciones. La congelación sigue siendo el sábado 28 por la noche (D054).
+
+- **[DECIDIDO, D062] HANGUL LIVE 001, «Tu voz. Nuestra luz», primer reto (miniclase).** Combina cultura fan y coreano cotidiano, en «Mi escenario» (D040).
+  - **Contenido:** 안녕하세요, 고마워요 y 파이팅. Solo 파이팅 tiene entrada propia en el diccionario del NIKL. Las otras dos se aceptan solo para la miniclase, con la fuente de su palabra base (안녕하다, 고맙다), la explicación de que son la forma educada y la marca «pendiente de revisar por una persona que hable coreano». El catálogo del sello no cambia (D043).
+  - **Cómo funciona:**
+    - primero enseña las 3 expresiones, con su hangul, su lectura y su significado;
+    - después, 3 preguntas de elegir entre las 3 expresiones, con las opciones solo en hangul y lectura;
+    - tras cada respuesta, acierte o falle, la traducción y por qué se usa;
+    - se puede repetir sin límite, y el progreso es individual, guardado en la cuenta.
+  - **Recompensa:** solo la primera vez que se aciertan las 3, y nunca dos veces: 20 Kpopis y «Luz Hangul 001».
+  - **Fuera:** micrófono, audio generado y vídeo.
+  - **Textos:** los exactos se aprueban antes de programarlos.
+- **[DECIDIDO, D063] Kpopis:**
+  - nombre «Kpopi» y «Kpopis», de momento, con un icono propio de moneda;
+  - saldo y movimientos por cuenta, calculados solo en el servidor; cada recompensa única tiene una clave que la base de datos no deja repetir;
+  - antes de congelar el código, solo da Kpopis HANGUL LIVE; el canje, después;
+  - los objetos de evento no se compran.
+- **[DECIDIDO, D064] «Luz Hangul 001» y «Mis tesoros» mínimo:**
+  - el asistente dibuja el lightstick para que la autora lo revise;
+  - «Mis tesoros» («Mi álbum vivo») enseña el objeto ganado, su origen y la fecha;
+  - ponérselo al avatar sigue pendiente (T029).
+- **[PROPUESTA, P026]** Calendario y tabla del plan ampliado (bitácora). Si HANGUL LIVE, los Kpopis o «Mis tesoros» no están en verde el viernes 27 por la noche, se quedan fuera enteros, sin pantallas que aparenten funcionar.
+- **[PROPUESTA, P027]** Animaciones de MY STAGE:
+  - solo K-ME Bounce (el SVG entero, respetando «reducir movimiento»), si sobra tiempo;
+  - Annyeong y Fighting! necesitan un avatar articulado.
+- **[PROPUESTA, P028]** Encuentro previo mínimo, después de la presentación: una barra común para varias cuentas, que se actualiza cada pocos segundos, con meta y objeto para quien participó. Distinto de una escena local.
+- **Siguen abiertos:** qué se canjea y a qué precio, los intercambios, las reglas del encuentro previo y el vídeo (P021).
+
+**[PROPUESTA]** Recogidas para no perderlas; nada de esto está decidido ni se construye en el MVP (bitácora, P014–P018). *(24/11: lo que ya se ha concretado está justo arriba.)*
 
 - **Monedas** que se ganan reaccionando, publicando, creando retos o participando en eventos. Servirían para conseguir objetos, pero nunca los exclusivos de un evento.
 - **Eventos de distintos tipos:** conciertos, encuentros para intercambiar accesorios u otros que se ocurran. Cada tipo tendrá sus reglas. En un **concierto**:
@@ -578,6 +617,9 @@ Cada paso es un encargo de `/nueva-funcionalidad`, con plan, tests en rojo, revi
 | — | Imagen de perfil | (22/11, D044) Un avatar, un sello o los dos; pendiente de implementar (§4.3) |
 | — | Imprimir el sello | (22/11, D045) Photocard 55 × 85 mm, PDF y PNG; pendiente de implementar (§4.3) |
 | — | Paleta del sello | (22 y 23/11, D046) Más 9 colores vivos: rojo, amarillo y 7 de «Mi ambiente»; 35 en total (§4.1) |
+| — | Diseño de cada publicación | (24/11, D060) Desarrolla Q7 y Q11: copia del perfil (avatar; si no, sello; si no, inicial) o de un avatar o sello elegido; en el muro, la cara del avatar (§5.1) |
+| — | Mensaje con iconos | (24/11, D061) De 1 a 5 iconos de una lista cerrada (emociones, reacciones y universo K-pop), sin texto libre (§5.1) |
+| — | Retos y monedas | (24/11, D062–D064) HANGUL LIVE 001 como primer reto; «Kpopi» y «Kpopis»; «Luz Hangul 001» en «Mis tesoros» (§5.2) |
 
 ---
 
@@ -608,3 +650,4 @@ Este documento **se puede cambiar** cuando la app avance. Cada cambio se hace as
 | 1.14 | 23/11/2026 | §3.6: Avatar Studio en el servidor, según el contrato v1 con ChatGPT (D052): tabla `avatares` (migración 006), receta validada con el catálogo del editor, páginas y rutas JSON, versión con 409, límite de 20, editor servido desde su carpeta y dibujo en Node. Falta el cliente de ChatGPT y `kme-receta.js` (T037). |
 | 1.15 | 24/11/2026 | §4.3: imagen de perfil (D044) guardada como referencia con dos claves foráneas en `usuarios` (D055, migración 007): rutas `POST /perfil/avatar` y `POST /perfil/sello`, la cara del avatar (o el sello) en la cabecera y los dos en «Mi K-ME». §3.6 y §5.1: el avatar ya va dentro del sello (T034). |
 | 1.16 | 24/11/2026 | §3.6: el editor aprobado dentro de la app, con nombre, «Guardar», conflicto y límite (T037, D059); validación de la receta con `kme-receta.js`; borrar varios o todos (D058). |
+| 1.17 | 24/11/2026 | §5.1: Connect con el diseño de cada fan (D060) y el mensaje con iconos (D061), migración 008. §5.2: lo que entra antes de congelar el código (D062–D064) y las propuestas P026–P028. §6: tres filas nuevas. |

@@ -33,8 +33,54 @@
         <% }) %>
       </div>
     </fieldset>
+
+    <%# El diseño que acompaña a la emoción (Q7, Q11): la publicación guarda una copia. %>
+    <% const disenos = locals.disenos ?? { avatares: [], sellos: [] }; %>
+    <div class="publicar__grupo publicar__diseno">
+      <label for="diseno" class="publicar__pregunta">¿Con qué diseño?</label>
+      <select id="diseno" name="diseno" class="publicar__desplegable" aria-describedby="ayuda-diseno">
+        <option value="" selected>Mi imagen de perfil</option>
+        <% if (disenos.avatares.length) { %><optgroup label="Mis avatares">
+          <% disenos.avatares.forEach((a) => { %><option value="avatar:<%= a.id %>"><%= a.nombre %></option>
+        <% }) %></optgroup><% } %>
+        <% if (disenos.sellos.length) { %><optgroup label="Mis sellos">
+          <% disenos.sellos.forEach((s) => { %><option value="sello:<%= s.id %>"><%= s.nombre %></option>
+        <% }) %></optgroup><% } %>
+      </select>
+      <p id="ayuda-diseno" class="nota">Si no eliges, va tu imagen de perfil, o tu inicial si no tienes. Se guarda una copia: aunque después cambies o borres el diseño, la publicación no cambia.</p>
+      <% if (!disenos.avatares.length && !disenos.sellos.length) { %>
+        <p class="nota">Todavía no tienes avatares ni sellos. <a href="/studio/avatares/nuevo">Crea uno en Avatar Studio</a>.</p>
+      <% } %>
+    </div>
+
+    <%# Mensaje con iconos (opcional): sin JavaScript, 5 desplegables; con JavaScript, el script
+        public/js/connect-publicar.js los esconde y pone una paleta con los dibujos, que rellena
+        esos mismos desplegables (son los que se envían). %>
+    <% if (locals.iconosMensaje) { %>
+    <details class="mensaje">
+      <summary>Añadir un mensaje con iconos <span class="mensaje__opcional">(opcional)</span></summary>
+      <fieldset class="publicar__grupo mensaje__grupo-campos" data-mensaje>
+        <legend class="solo-lectores">Mensaje con iconos</legend>
+        <p class="nota">Hasta <%= maxIconos %> iconos, en el orden que quieras.</p>
+        <div class="mensaje__desplegables" data-mensaje-desplegables>
+          <% for (let n = 1; n <= maxIconos; n++) { %>
+            <label class="mensaje__desplegable">
+              <span>Icono <%= n %></span>
+              <select name="iconos" class="publicar__desplegable">
+                <option value="">Ninguno</option>
+                <% gruposIconos.forEach((g) => { %><optgroup label="<%= g.texto %>">
+                  <% iconosMensaje.filter((i) => i.grupo === g.id).forEach((i) => { %><option value="<%= i.id %>" data-icono="<%= i.icono %>"><%= i.texto %></option>
+                <% }) %></optgroup>
+                <% }) %>
+              </select>
+            </label>
+          <% } %>
+        </div>
+      </fieldset>
+    </details>
+    <% } %>
+
     <div class="publicar__pie">
-      <p class="nota">Tu publicación llevará tu avatar cuando Avatar Studio esté listo. Mientras tanto, tu inicial.</p>
       <button type="submit" class="boton publicar__boton">Publicar en el muro</button>
     </div>
   </form>
@@ -49,7 +95,15 @@
         <% publicaciones.forEach((p) => { %>
           <li>
             <article id="publicacion-<%= p.id %>" class="publicacion" data-publicacion="<%= p.id %>" aria-labelledby="autor-<%= p.id %>">
-              <div class="photocard" aria-hidden="true"><span class="photocard__inicial"><%= p.inicial %></span></div>
+              <%# La photocard lleva la copia del diseño (la cara del avatar o el sello entero) o, si
+                  no hay, la inicial. Los SVG los genera el servidor (nunca el navegador). %>
+              <% if (p.dibujo && p.dibujo.tipo === 'avatar') { %>
+                <div class="photocard photocard--avatar" data-diseno="avatar" role="img" aria-label="Avatar de <%= p.alias %>"><%- p.dibujo.svg %></div>
+              <% } else if (p.dibujo && p.dibujo.tipo === 'sello') { %>
+                <div class="photocard photocard--sello" data-diseno="sello" role="img" aria-label="Sello de <%= p.alias %>"><%- include('_sello', { dibujo: p.dibujo.dibujo, ancho: p.dibujo.ancho, clase: 'sello--muro' }) %></div>
+              <% } else { %>
+                <div class="photocard" aria-hidden="true"><span class="photocard__inicial"><%= p.inicial %></span></div>
+              <% } %>
               <div class="publicacion__cuerpo">
                 <p class="publicacion__cabeza">
                   <strong id="autor-<%= p.id %>" class="publicacion__alias"><%= p.alias %></strong>
@@ -59,6 +113,11 @@
                   <img src="<%= p.emocion.icono %>" alt="" width="48" height="48">
                   <span><%= p.emocion.texto %></span>
                 </p>
+                <% if (p.mensaje && p.mensaje.length) { %>
+                  <ul class="mensaje-iconos" aria-label="Mensaje con iconos">
+                    <% p.mensaje.forEach((i) => { %><li><img src="<%= i.icono %>" alt="<%= i.texto %>" width="28" height="28"></li><% }) %>
+                  </ul>
+                <% } %>
 
                 <%- include('_reacciones', { p }) %>
 
@@ -110,4 +169,5 @@
   </details>
 </template>
 <script src="/js/connect.js" defer></script>
+<script src="/js/connect-publicar.js" defer></script>
 <%- include('_pie') %>

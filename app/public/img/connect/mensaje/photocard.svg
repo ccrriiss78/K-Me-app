@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!-- Photocard: una tarjeta un poco girada con la silueta de quien sale en ella. Una tinta. -->
+  <g transform="rotate(-8 12 12)">
+    <path fill-rule="evenodd" d="M7.5 2h9a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3h-9a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zm0 2a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z"/>
+    <circle cx="12" cy="9.6" r="2.7"/>
+    <path d="M7.9 18.2c.4-2.9 2-4.5 4.1-4.5s3.7 1.6 4.1 4.5z"/>
+  </g>
+</svg>

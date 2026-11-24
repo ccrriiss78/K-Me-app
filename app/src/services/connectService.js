@@ -1,11 +1,29 @@
 // SERVICIO de Connect (D038): las reglas del muro. No sabe nada de HTTP ni de vistas.
 // Si algo falla, lanza un error con codigo: EMOCION_NO_VALIDA, REACCION_NO_VALIDA,
-// OPCION_NO_VALIDA o NO_EXISTE (publicación que no existe o que no es de quien la quiere borrar).
+// OPCION_NO_VALIDA, ICONOS_NO_VALIDOS, DISENO_NO_EXISTE (avatar o sello que no es de la cuenta) o
+// NO_EXISTE (publicación que no existe o que no es de quien la quiere borrar).
+//
+// El diseño de cada publicación (Q7, Q11; E0072) es una COPIA del avatar o del sello: si después se
+// editan o se borran, la publicación no cambia. Sin elegir, la imagen de perfil (el avatar; si no
+// hay, el sello); si no hay ninguna, el muro enseña la inicial.
 
 import * as Publicacion from '../models/publicacionModel.js';
+import * as Avatar from '../models/avatarModel.js';
+import * as Sello from '../models/selloModel.js';
+import * as Perfil from '../models/perfilModel.js';
+import { dibujarAvatar } from './avatarCatalogo.js';
+import { dibujar as dibujarSello } from './selloService.js';
 import {
-  REACCIONES, MAX_REACCIONES_POR_TIPO, EMOCION_RETIRADA, buscarEmocion, buscarReaccion,
+  REACCIONES, MAX_REACCIONES_POR_TIPO, EMOCION_RETIRADA, MAX_ICONOS_MENSAJE,
+  buscarEmocion, buscarReaccion, buscarIconoMensaje,
 } from '../catalogos/connect.js';
+
+// Tamaño del diseño en la photocard del muro (76 × 100 px; el CSS lo ajusta en el móvil).
+// Del avatar se ve la cara: el cuerpo entero quedaría diminuto.
+const ALTO_CARA_MURO = 70;
+const ANCHO_SELLO_MURO = 66;
+// Valor del desplegable «Diseño»: vacío (la imagen de perfil), «avatar:id» o «sello:id».
+const VALOR_DISENO = /^(avatar|sello):([1-9]\d{0,17})$/;
 
 function errorConCodigo(codigo) {
   const e = new Error(codigo);
@@ -55,6 +73,18 @@ export async function estadoReacciones({ idUsuario, idPublicacion }) {
   return construirReacciones(totales, mias);
 }
 
+// Lo que se dibuja en la photocard de una publicación: la cara del avatar o el sello entero
+// (con el alias de quien publica), o null para enseñar la inicial.
+function dibujoDelDiseno(diseno, alias) {
+  if (diseno?.tipo === 'avatar') {
+    return { tipo: 'avatar', svg: dibujarAvatar(diseno.copia, { encuadre: 'rostro', alto: ALTO_CARA_MURO }) };
+  }
+  if (diseno?.tipo === 'sello') {
+    return { tipo: 'sello', dibujo: dibujarSello(diseno.copia, alias), ancho: ANCHO_SELLO_MURO };
+  }
+  return null;
+}
+
 // El muro tal como lo ve quien tiene la sesión abierta, listo para la vista.
 export async function verMuro({ idUsuario, ahora = new Date() }) {
   const filas = await Publicacion.listarMuro({ idUsuario });
@@ -64,6 +94,9 @@ export async function verMuro({ idUsuario, ahora = new Date() }) {
       id: p.id,
       alias: p.alias,
       inicial: p.alias.charAt(0).toUpperCase(),
+      dibujo: dibujoDelDiseno(p.diseno, p.alias),
+      // Un icono que ya no está en el catálogo no se ve (como una emoción retirada, sin romper el muro).
+      mensaje: (p.iconos ?? []).map(buscarIconoMensaje).filter(Boolean),
       esMia: p.es_mia,
       creadoEn: p.creado_en,
       hace: haceCuanto(p.creado_en, ahora),
@@ -74,10 +107,47 @@ export async function verMuro({ idUsuario, ahora = new Date() }) {
   });
 }
 
-export async function publicar({ idUsuario, emocion }) {
+// Los diseños que se ofrecen en «Publicar»: los avatares y sellos de la cuenta, por su nombre.
+export async function disenosParaPublicar(idUsuario) {
+  const [avatares, sellos] = await Promise.all([Avatar.listar(idUsuario), Sello.listar(idUsuario)]);
+  const opcion = (f) => ({ id: String(f.id), nombre: f.nombre });
+  return { avatares: avatares.map(opcion), sellos: sellos.map(opcion) };
+}
+
+// El mensaje con iconos: llegan los 5 desplegables (los vacíos no cuentan). Cada icono tiene que
+// estar en el catálogo y no pueden ser más de MAX_ICONOS_MENSAJE.
+export function leerIconos(valor) {
+  const lista = valor === undefined ? [] : [].concat(valor);
+  if (!lista.every((v) => typeof v === 'string')) throw errorConCodigo('ICONOS_NO_VALIDOS');
+  const iconos = lista.filter((v) => v !== '');
+  if (iconos.length > MAX_ICONOS_MENSAJE || !iconos.every(buscarIconoMensaje)) throw errorConCodigo('ICONOS_NO_VALIDOS');
+  return iconos;
+}
+
+// La copia del diseño elegido, siempre de la propia cuenta: un avatar o sello de otra cuenta «no
+// existe». Vacío = la imagen de perfil del momento (Q11), que también se copia.
+async function copiarDiseno({ idUsuario, valor }) {
+  if (valor === undefined || valor === '') {
+    const { avatar, sello } = await Perfil.leer(idUsuario);
+    if (avatar) return { tipo: 'avatar', origen: avatar.id, copia: avatar.composicion };
+    if (sello) return { tipo: 'sello', origen: sello.id, copia: sello.composicion };
+    return null;
+  }
+  const elegido = typeof valor === 'string' ? VALOR_DISENO.exec(valor) : null;
+  if (!elegido) throw errorConCodigo('DISENO_NO_EXISTE');
+  const [, tipo, id] = elegido;
+  const fila = tipo === 'avatar'
+    ? await Avatar.buscar({ idUsuario, idAvatar: id })
+    : await Sello.buscar({ idUsuario, idSello: id });
+  if (!fila) throw errorConCodigo('DISENO_NO_EXISTE');
+  return { tipo, origen: String(fila.id), copia: fila.composicion };
+}
+
+export async function publicar({ idUsuario, emocion, diseno, iconos }) {
   if (typeof emocion !== 'string' || !buscarEmocion(emocion)) throw errorConCodigo('EMOCION_NO_VALIDA');
-  // El diseño de la publicación (Q7, Q11) llegará con Avatar Studio; hasta entonces, sin diseño.
-  return Publicacion.crearPublicacion({ idUsuario, emocion });
+  const mensaje = leerIconos(iconos);
+  const copia = await copiarDiseno({ idUsuario, valor: diseno });
+  return Publicacion.crearPublicacion({ idUsuario, emocion, diseno: copia, iconos: mensaje });
 }
 
 // Suma una reacción. Devuelve 'sumada' o 'tope' (ya había dado el máximo de ese tipo).

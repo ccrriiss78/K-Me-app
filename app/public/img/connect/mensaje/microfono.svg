@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!-- Micrófono: la rejilla redonda, el aro y el mango que se estrecha, con dos ondas de sonido. Una tinta. -->
+  <circle cx="12" cy="7" r="4.8"/>
+  <rect x="9" y="11.4" width="6" height="2.2" rx="1"/>
+  <path d="M9.9 13.4h4.2l-.9 8.2a1.2 1.2 0 0 1-2.4 0z"/>
+  <path d="M4.2 4.4a6.5 6.5 0 0 0 0 5.2M19.8 4.4a6.5 6.5 0 0 1 0 5.2" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round"/>
+</svg>

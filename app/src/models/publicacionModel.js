@@ -4,10 +4,11 @@
 
 import { consulta } from '../config/db.js';
 
-export async function crearPublicacion({ idUsuario, emocion, diseno = null }) {
+// «diseno»: la copia del avatar o del sello (o null); «iconos»: los ids del mensaje, en orden.
+export async function crearPublicacion({ idUsuario, emocion, diseno = null, iconos = [] }) {
   const { rows } = await consulta(
-    'INSERT INTO publicaciones (id_usuario, emocion, diseno) VALUES ($1, $2, $3) RETURNING id, creado_en',
-    [idUsuario, emocion, diseno],
+    'INSERT INTO publicaciones (id_usuario, emocion, diseno, iconos) VALUES ($1, $2, $3, $4) RETURNING id, creado_en',
+    [idUsuario, emocion, diseno, iconos],
   );
   return rows[0];
 }
@@ -17,7 +18,7 @@ export async function crearPublicacion({ idUsuario, emocion, diseno = null }) {
 // dado quien mira.
 export async function listarMuro({ idUsuario, limite = 50 }) {
   const { rows } = await consulta(
-    `SELECT p.id, p.emocion, p.diseno, p.creado_en, u.alias,
+    `SELECT p.id, p.emocion, p.diseno, p.iconos, p.creado_en, u.alias,
             (p.id_usuario = $1) AS es_mia,
             COALESCE((SELECT json_object_agg(t.tipo, t.n)
                         FROM (SELECT tipo, count(*)::int AS n FROM reacciones r

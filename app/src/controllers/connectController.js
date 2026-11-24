@@ -6,20 +6,28 @@
 // Sin JavaScript, todo funciona igual, recargando.
 
 import * as connect from '../services/connectService.js';
-import { EMOCIONES, MAX_REACCIONES_POR_TIPO } from '../catalogos/connect.js';
+import {
+  EMOCIONES, MAX_REACCIONES_POR_TIPO, ICONOS_MENSAJE, GRUPOS_ICONOS, MAX_ICONOS_MENSAJE,
+} from '../catalogos/connect.js';
 
 const ERRORES_VISIBLES = {
   EMOCION_NO_VALIDA: 'Elige una emoción de la lista.',
   REACCION_NO_VALIDA: 'Esa reacción no existe.',
   OPCION_NO_VALIDA: 'Esa opción no existe.',
+  ICONOS_NO_VALIDOS: 'Elige hasta 5 iconos de la lista.',
 };
 
 async function pintarMuro(req, res, estado, extra = {}) {
-  const publicaciones = await connect.verMuro({ idUsuario: req.session.usuarioId });
+  const idUsuario = req.session.usuarioId;
+  const [publicaciones, disenos] = await Promise.all([connect.verMuro({ idUsuario }), connect.disenosParaPublicar(idUsuario)]);
   res.status(estado).render('connect', {
     titulo: 'Connect',
     emociones: EMOCIONES,
     maxReacciones: MAX_REACCIONES_POR_TIPO,
+    disenos,
+    iconosMensaje: ICONOS_MENSAJE,
+    gruposIconos: GRUPOS_ICONOS,
+    maxIconos: MAX_ICONOS_MENSAJE,
     publicaciones,
     error: null,
     publicada: false,
@@ -37,6 +45,9 @@ function responderError(err, req, res, next) {
     if (json) return res.status(404).json({ error: 'Esa publicación no existe.' });
     return res.status(404).render('error', { titulo: 'No encontrado', mensaje: 'Esa publicación no existe.' });
   }
+  // Un avatar o sello que no es de la cuenta (o que se acaba de borrar en otra pestaña): 404, como
+  // en el resto de K-ME, pero con el muro y el formulario para elegir otro.
+  if (err.codigo === 'DISENO_NO_EXISTE') return pintarMuro(req, res, 404, { error: 'Ese diseño no existe. Elige otro.' }).catch(next);
   const mensaje = ERRORES_VISIBLES[err.codigo];
   if (mensaje && json) return res.status(400).json({ error: mensaje });
   if (mensaje) return pintarMuro(req, res, 400, { error: mensaje }).catch(next);
@@ -61,7 +72,8 @@ export async function mostrarMuro(req, res, next) {
 
 export async function publicar(req, res, next) {
   try {
-    await connect.publicar({ idUsuario: req.session.usuarioId, emocion: req.body.emocion });
+    const { emocion, diseno, iconos } = req.body;
+    await connect.publicar({ idUsuario: req.session.usuarioId, emocion, diseno, iconos });
     res.redirect('/connect?publicada=1');
   } catch (err) {
     responderError(err, req, res, next);

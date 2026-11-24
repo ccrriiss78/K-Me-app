@@ -53,5 +53,41 @@ export const REACCIONES = [
 // Lo que se muestra si una publicación guarda una emoción que ya no está en la lista.
 export const EMOCION_RETIRADA = { id: null, texto: 'Emoción retirada', icono: '/img/connect/emociones/calma.svg' };
 
+// MENSAJE CON ICONOS (E0072): además de la emoción, quien publica puede añadir un mensaje de 1 a 5
+// iconos de esta lista cerrada, en el orden que quiera, como una frase con emojis. Sin texto libre.
+// - «id»: lo que se guarda (columna «iconos» de la publicación, migración 008). No cambies el id de
+//   uno ya usado: en las publicaciones guardadas, un id que ya no está en la lista no se ve.
+// - Emociones y reacciones usan los mismos dibujos de arriba. Los del universo K-pop están en
+//   public/img/connect/mensaje/ (de una tinta, como las reacciones), más la estrella y la nota de los
+//   adornos del sello.
+// Para añadir uno, añade una línea con un id nuevo y su dibujo.
+export const MAX_ICONOS_MENSAJE = 5;
+
+export const GRUPOS_ICONOS = [
+  { id: 'emociones', texto: 'Emociones' },
+  { id: 'reacciones', texto: 'Reacciones' },
+  { id: 'kpop', texto: 'Universo K-pop' },
+];
+
+const ICONOS_KPOP = [
+  ['corazon-dedos', 'Corazón con los dedos', '/img/connect/mensaje/corazon-dedos.svg'],
+  ['microfono', 'Micrófono', '/img/connect/mensaje/microfono.svg'],
+  ['photocard', 'Photocard', '/img/connect/mensaje/photocard.svg'],
+  ['album', 'Álbum', '/img/connect/mensaje/album.svg'],
+  ['entrada', 'Entrada de concierto', '/img/connect/mensaje/entrada.svg'],
+  ['pancarta', 'Pancarta', '/img/connect/mensaje/pancarta.svg'],
+  ['camara', 'Cámara (fancam)', '/img/connect/mensaje/camara.svg'],
+  ['estrella', 'Estrella', '/img/sello/motivos/estrella.svg'],
+  ['nota', 'Nota musical', '/img/sello/motivos/nota.svg'],
+];
+
+export const ICONOS_MENSAJE = [
+  ...EMOCIONES.map((e) => ({ id: `cara-${e.id}`, grupo: 'emociones', texto: e.texto, icono: e.icono })),
+  ...REACCIONES.map((r) => ({ id: `reaccion-${r.id}`, grupo: 'reacciones', texto: r.texto, icono: r.icono })),
+  ...ICONOS_KPOP.map(([id, texto, icono]) => ({ id: `kpop-${id}`, grupo: 'kpop', texto, icono })),
+];
+
+export const buscarIconoMensaje = (id) => ICONOS_MENSAJE.find((i) => i.id === id) ?? null;
+
 export const buscarEmocion = (id) => EMOCIONES.find((e) => e.id === id) ?? null;
 export const buscarReaccion = (id) => REACCIONES.find((r) => r.id === id) ?? null;

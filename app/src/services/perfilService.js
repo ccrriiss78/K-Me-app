@@ -7,7 +7,6 @@
 import * as Perfil from '../models/perfilModel.js';
 import { dibujarAvatar } from './avatarCatalogo.js';
 import { dibujar as dibujarSello } from './selloService.js';
-import { buscarEncuadre } from '../catalogos/sello.js';
 
 function errorPerfil(codigo) {
   const e = new Error(codigo);
@@ -26,11 +25,7 @@ const ALTO_MI_KME = 200;
 const ANCHO_SELLO_CABECERA = 28; // el sello tiene la proporción del logo: 28 de ancho, 40 de alto
 const ANCHO_SELLO_MI_KME = 140;
 
-function avatarConTamano(composicion, encuadre, alto) {
-  const { recorte } = buscarEncuadre(encuadre);
-  const ancho = Math.round((alto * recorte.ancho) / recorte.alto);
-  return dibujarAvatar(composicion, { encuadre }).replace(/^<svg\b/, `<svg width="${ancho}" height="${alto}"`);
-}
+const avatarConTamano = (composicion, encuadre, alto) => dibujarAvatar(composicion, { encuadre, alto });
 
 export async function elegirAvatar({ idUsuario, valor }) {
   const id = texto(valor);
