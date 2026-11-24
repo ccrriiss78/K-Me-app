@@ -545,6 +545,21 @@ h1 { margin-top: 0; font-size: 1.5rem; }
 .sello-editor__ayuda [lang="ko"] { font-weight: 800; font-size: 1.2em; }
 .sello-editor__avisos { text-align: left; padding: .7rem .8rem .7rem 1.8rem; border-left: 3px solid var(--color-marca-oscuro); background: #fdecef; font-size: .85rem; }
 .sello-editor__estado { font-size: .8rem; color: #5a5a5a; min-height: 1.5em; margin: .6rem 0; }
+/* Imprimir o descargar el sello (D045): debajo de la vista previa, con la familia de botones del studio. */
+.sello-impresion { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--studio-linea); text-align: left; }
+.sello-impresion > .studio-antetitulo { margin-bottom: .3rem; }
+.sello-impresion > .nota { margin: 0 0 .7rem; }
+.sello-impresion__botones { display: flex; flex-wrap: wrap; gap: .5rem; }
+.sello-impresion__botones .boton { flex: 1 1 140px; margin: 0; }
+.sello-impresion [data-sello-impresion-estado] { min-height: 1.5em; margin: .6rem 0 0; }
+/* Al imprimir con «Imprimir», solo sale la photocard, a su tamaño real. */
+.sello-hoja { display: none; }
+@media print {
+  html.imprimiendo-sello body > :not(.sello-hoja) { display: none !important; }
+  html.imprimiendo-sello body { background: #fff; }
+  html.imprimiendo-sello .sello-hoja { display: block; }
+  html.imprimiendo-sello .sello-hoja img { display: block; width: 55mm; height: 85mm; }
+}
 .sello-editor__cambios { font-size: .85rem; margin: .5rem 0 1rem; }
 .sello-editor__cambios[data-pendiente="true"] { font-weight: 750; }
 .sello-editor__acciones { display: flex; justify-content: center; flex-wrap: wrap; gap: .65rem; }

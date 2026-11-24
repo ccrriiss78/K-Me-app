@@ -1,6 +1,6 @@
 # TECH_SPEC · K-ME
 
-**Estado:** versión 1.18 · 24/11/2026 · Responde al pendiente T012 de `BITACORA_KME.md`. Revisada con la autora: acepta las propuestas de Q1 a Q6 y decide Q7 a Q10 con cambios (ver §6). El 18/11 decide Q11, el alcance del MVP (§5.1) y los nombres de los logos (§4.0). El 19/11 sustituye el círculo cromático por la paleta de la app (§2.5). El 21/11 separa el usuario privado del alias público y añade el registro por formulario (§1). Ese mismo día se incorporan las decisiones del editor de avatar trabajadas con ChatGPT en otra carpeta (§2.2, §2.6, §3.3), y se decide que «Mi ambiente» también usa solo la paleta (§2.6, Q14). El 22/11 decide qué lleva el sello (§4.1, D041), protege el alias frente a palabras ofensivas (§1, D042), aprueba el catálogo de hangul comprobado (§4.2, D043), y decide que la imagen de perfil pueda ser un avatar, un sello o los dos (D044) y que el sello se pueda imprimir y descargar (D045). El 22 y 23/11 amplía la paleta del sello con colores vivos (D046). El 23/11 elige de momento la composición A+C para sellos y exige coherencia del tratamiento visual entre pantallas (§2.7, D047). El 24/11 decide guardar la imagen de perfil como referencia, con dos claves foráneas (§4.3, D055), borrar varios o todos (§3.6, D058) y cómo va Avatar Studio dentro de la app (§3.6, D059). Ese mismo día aprueba los textos, los dibujos, la regla y el sitio de HANGUL LIVE 001, los Kpopis y «Mis tesoros» (§5.2, D066).
+**Estado:** versión 1.19 · 24/11/2026 · Responde al pendiente T012 de `BITACORA_KME.md`. Revisada con la autora: acepta las propuestas de Q1 a Q6 y decide Q7 a Q10 con cambios (ver §6). El 18/11 decide Q11, el alcance del MVP (§5.1) y los nombres de los logos (§4.0). El 19/11 sustituye el círculo cromático por la paleta de la app (§2.5). El 21/11 separa el usuario privado del alias público y añade el registro por formulario (§1). Ese mismo día se incorporan las decisiones del editor de avatar trabajadas con ChatGPT en otra carpeta (§2.2, §2.6, §3.3), y se decide que «Mi ambiente» también usa solo la paleta (§2.6, Q14). El 22/11 decide qué lleva el sello (§4.1, D041), protege el alias frente a palabras ofensivas (§1, D042), aprueba el catálogo de hangul comprobado (§4.2, D043), y decide que la imagen de perfil pueda ser un avatar, un sello o los dos (D044) y que el sello se pueda imprimir y descargar (D045). El 22 y 23/11 amplía la paleta del sello con colores vivos (D046). El 23/11 elige de momento la composición A+C para sellos y exige coherencia del tratamiento visual entre pantallas (§2.7, D047). El 24/11 decide guardar la imagen de perfil como referencia, con dos claves foráneas (§4.3, D055), borrar varios o todos (§3.6, D058) y cómo va Avatar Studio dentro de la app (§3.6, D059). Ese mismo día aprueba los textos, los dibujos, la regla y el sitio de HANGUL LIVE 001, los Kpopis y «Mis tesoros» (§5.2, D066).
 
 Este documento dice **qué se construye y cómo**. La bitácora dice qué ha pasado y por qué; `CLAUDE.md` dice cómo trabaja el agente.
 
@@ -101,6 +101,16 @@ Cada punto lleva una etiqueta:
 - **[DECIDIDO 23/11, D047]** Para sellos, la autora elige **de momento el mockup A+C, «Fuerza con orden»**: distribución y lectura de A (creación grande a la izquierda y edición agrupada a la derecha), con pinceladas, papel rasgado y trama editorial de A y C. El sello conserva el protagonismo; los controles quedan en superficies limpias. Este tratamiento debe ser **coherente en todas las pantallas**: familia tipográfica, navegación, botones, foco, contraste y recursos gráficos comunes, adaptando la intensidad a cada función. No convierte las otras composiciones concretas de los mockups en diseños aprobados ni cambia la paleta, los logos o el contenido del sello.
 - **[DECIDIDO 23/11, D048]** Tras ver la implementación, la autora rechaza el collage detrás de los sellos porque dificulta distinguirlos. Miniaturas, vista previa y zona de marca del estado vacío quedan sobre una superficie limpia. La identidad se expresa en cabeceras, tipografía, subrayados, botones y detalles exteriores de las tarjetas. Este criterio corrige la colocación de recursos de D047; se mantienen su orden de lectura y la coherencia entre pantallas.
 - **[DECIDIDO 23/11, D050]** La autora propone colocar el collage en el fondo general de Mis sellos, con tarjetas algo más pequeñas por encima. Se admite en los huecos y márgenes de la colección; las tarjetas son blancas y opacas y la vista previa del editor conserva su superficie limpia. Amplía D048 sin volver a decorar directamente el área de cada creación.
+- **[DECIDIDO 24/11, D067] Dirección que explorar: collage editorial** de ilustración, fotografía y materiales táctiles.
+  - **Avatares:** conservan su estilo ilustrado. Se añaden **como opciones** ojos de apariencia fotográfica, tejidos y fragmentos fotográficos en prendas y accesorios, sin quitar ninguna opción.
+  - **Extensión:** se lleva con coherencia a la interfaz, los escenarios y las recompensas. Los materiales se usan de forma selectiva, y los controles y los textos quedan sobre superficies legibles (D048, D050).
+  - **Logos:** los originales, con sus trazos exactos. La conexión con el collage se hace con sus soportes y aplicaciones.
+  - **Referencias:** las imágenes exploratorias de ChatGPT orientan la dirección artística; no son piezas preparadas ni integradas.
+  - **[PREGUNTA] Alcance y calendario:** qué entra antes de congelar el código (28/11), y quién prepara las fotografías y los tejidos, con qué licencia. Mientras siga abierta, no se implementa.
+  - **Notas técnicas:**
+    - para imprimir y descargar, la fotografía tiene que ir dentro del SVG;
+    - la vista previa del sello rechaza hoy `<image>`;
+    - cada opción nueva del avatar pasa por el catálogo y por `kme-receta.js`.
 - **Límites:**
   - es una dirección, no un diseño cerrado;
   - llevarla al resto de pantallas depende de que a la autora le guste el resultado concreto;
@@ -430,7 +440,14 @@ El sello **no** guarda el hangul copiado, sino el `id` de la palabra. Así, si s
   - «Mis avatares» y «Mis sellos»: «Usar en mi perfil», y «En tu perfil» en el elegido.
 - El tamaño y el sitio son diseño (ChatGPT): se pueden cambiar sin tocar el servidor. Tests en `tests/perfil.test.js`.
 
-**[DECIDIDO 22/11, D045; pendiente de implementar]** El sello se podrá **imprimir**, a tamaño photocard 55 × 85 mm como el avatar, y **descargar** en PDF y en PNG. Para el PDF se copiará a la app el generador del editor (`kme-impresion.js`), sin tocar la carpeta de ChatGPT.
+**[DECIDIDO 22/11, D045; hecho en E0074]** El sello se podrá **imprimir**, a tamaño photocard 55 × 85 mm como el avatar, y **descargar** en PDF y en PNG. Para el PDF se copiará a la app el generador del editor (`kme-impresion.js`), sin tocar la carpeta de ChatGPT.
+
+- **Dónde:** en el editor del sello, debajo de la vista previa, con lo que se ve en ella (aunque no esté guardado). Necesita JavaScript; sin él, un aviso.
+- **La tarjeta:** el sello entero (lienzo 354 × 507), centrado en 55 × 85 mm con un margen, sin recortar ni estirar, sobre el fondo de la photocard del avatar.
+- **«Imprimir»:** al imprimir, la página solo enseña la tarjeta, a su tamaño real (`@media print`), sin abrir otra ventana.
+- **PDF:** hoja A4 con la tarjeta centrada, guías de corte y «Imprimir al 100 %», con la copia de `crearPdfPhotocard` (un test comprueba que da los mismos bytes que el original).
+- **PNG:** la tarjeta a 300 ppp (650 × 1004 píxeles).
+- **Archivos:** `public/js/kme-photocard.js` (sin navegador, con tests) y `public/js/sello-impresion.js`; tests en `tests/sello-impresion.test.js`.
 
 ---
 
@@ -626,7 +643,7 @@ Cada paso es un encargo de `/nueva-funcionalidad`, con plan, tests en rojo, revi
 | Q14 | Color en «Mi ambiente» | (21/11) Solo la paleta de la app, sin selector libre ni círculo cromático, «de momento»: la autora podrá revisarlo después del MVP si hay tiempo (§2.6, D024) |
 | — | Alias | (22/11, D042) Al crear la cuenta se rechazan los alias con palabras no permitidas, también con variantes (§1) |
 | — | Imagen de perfil | (22/11, D044) Un avatar, un sello o los dos; pendiente de implementar (§4.3) |
-| — | Imprimir el sello | (22/11, D045) Photocard 55 × 85 mm, PDF y PNG; pendiente de implementar (§4.3) |
+| — | Imprimir el sello | (22/11, D045) Photocard 55 × 85 mm, PDF y PNG; hecho en E0074 (§4.3) |
 | — | Paleta del sello | (22 y 23/11, D046) Más 9 colores vivos: rojo, amarillo y 7 de «Mi ambiente»; 35 en total (§4.1) |
 | — | Diseño de cada publicación | (24/11, D060) Desarrolla Q7 y Q11: copia del perfil (avatar; si no, sello; si no, inicial) o de un avatar o sello elegido; en el muro, la cara del avatar (§5.1) |
 | — | Mensaje con iconos | (24/11, D061) De 1 a 5 iconos de una lista cerrada (emociones, reacciones y universo K-pop), sin texto libre (§5.1) |
@@ -664,3 +681,4 @@ Este documento **se puede cambiar** cuando la app avance. Cada cambio se hace as
 | 1.16 | 24/11/2026 | §3.6: el editor aprobado dentro de la app, con nombre, «Guardar», conflicto y límite (T037, D059); validación de la receta con `kme-receta.js`; borrar varios o todos (D058). |
 | 1.17 | 24/11/2026 | §5.1: Connect con el diseño de cada fan (D060) y el mensaje con iconos (D061), migración 008. §5.2: lo que entra antes de congelar el código (D062–D064) y las propuestas P026–P028. §6: tres filas nuevas. |
 | 1.18 | 24/11/2026 | §5.2: cómo queda construido HANGUL LIVE 001 con los Kpopis y «Mis tesoros» (D066): regla a, sitio, rutas y migración 009. §6: una fila nueva. |
+| 1.19 | 24/11/2026 | §4.3 y §6: imprimir y descargar el sello (D045), hecho: dónde, la tarjeta, «Imprimir», PDF y PNG. §2.7: dirección de collage editorial que explorar (D067), con su pregunta de alcance. |

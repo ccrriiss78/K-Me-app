@@ -232,6 +232,9 @@
   .menu a { padding: .6rem .5rem; font-size: .83rem; }
   .nav { gap: .6rem; }
   .nav__alias { max-width: 15ch; font-size: .75rem; }
+  /* «Hola,» no se parte; si no cabe, el que baja de línea es el alias. */
+  .nav__alias { max-width: 20ch; white-space: nowrap; }
+  .nav__alias strong { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
   /* Con «Mi escenario», el menú tiene 5 apartados: pasa a dos filas en lugar de cortarse. */
   .menu { flex-wrap: wrap; justify-content: center; column-gap: .15rem; }
   /* El saldo, compacto: el icono y el número. «Kpopis» queda solo para los lectores de pantalla. */

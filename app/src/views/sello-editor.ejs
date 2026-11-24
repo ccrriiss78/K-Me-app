@@ -23,6 +23,19 @@
       <ul class="sello-editor__avisos" data-sello-avisos<% if (!avisos.length) { %> hidden<% } %>><% avisos.forEach((a) => { %><li><%= a %></li><% }) %></ul>
       <p class="aviso aviso--error" data-sello-error role="alert" hidden></p>
       <p class="sello-editor__estado" data-sello-estado role="status" aria-live="polite" aria-atomic="true">Vista previa de tu sello.</p>
+      <%# Imprimir y descargar (D045, T035): necesita JavaScript (public/js/sello-impresion.js), que
+          muestra el bloque al arrancar. Usa lo que se ve en la vista previa. %>
+      <div class="sello-impresion" data-sello-impresion hidden>
+        <p class="studio-antetitulo">Imprimir o descargar</p>
+        <p class="nota">Photocard de 55 × 85 mm con lo que ves en la vista previa, aunque no lo hayas guardado.</p>
+        <div class="sello-impresion__botones">
+          <button type="button" class="boton boton--secundario" data-imprimir="imprimir">Imprimir</button>
+          <button type="button" class="boton boton--secundario" data-imprimir="pdf">Photocard 55 × 85 mm (PDF)</button>
+          <button type="button" class="boton boton--secundario" data-imprimir="png">Descargar PNG</button>
+        </div>
+        <p class="nota" data-sello-impresion-estado role="status" aria-live="polite"></p>
+      </div>
+      <noscript><p class="nota">Para imprimir o descargar el sello hace falta JavaScript.</p></noscript>
     </div>
     <div class="sello-editor__opciones">
       <nav class="sello-categorias" data-sello-categorias aria-label="Opciones del sello">
@@ -129,4 +142,5 @@
 </section>
 <script src="/js/sello.js" defer></script>
 <script src="/js/sello-paneles.js" defer></script>
+<script type="module" src="/js/sello-impresion.js"></script>
 <%- include('_pie') %>
