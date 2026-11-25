@@ -1,0 +1,178 @@
+{
+  "version": 1,
+  "fecha": "2026-11-25",
+  "familia": "collage-k-ojos-iris-fotografico",
+  "lienzo": {
+    "ancho": 400,
+    "alto": 480
+  },
+  "estado": "Lote adicional, aprobación visual pendiente",
+  "origen": {
+    "textura": "Iris sintético generado con image_gen; preparación gris/alpha. Sin imágenes de personas reales.",
+    "vectores": "Anclajes, pupila-logo, brillo y párpados de los ojos redondos actuales, sin alterar sus paths."
+  },
+  "archivos": [
+    {
+      "archivo": "catalogo-propuesto.json",
+      "bytes": 1945,
+      "sha256": "50dda1b01cff35feb913b8b679d9a96ee350ca4fb0385c60c5ceffc1fa4fe061"
+    },
+    {
+      "archivo": "LEEME_PARA_CLAUDE.md",
+      "bytes": 2512,
+      "sha256": "8e029382d7f248bce559ee4792dfd8ce8fb8f9f04b969db522cb3061847d7bea"
+    },
+    {
+      "archivo": "referencias/delgado.png",
+      "bytes": 64071,
+      "sha256": "bab2f12580a8ccf1bb43bd1951f160256653cd7a26a016c8071e6cc0a86b003e",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/delgado.svg",
+      "bytes": 36199,
+      "sha256": "57146eaab7892ecc4e0fdf89b16f0ecddfc62a9835e8e7013536f3b07cf53541"
+    },
+    {
+      "archivo": "referencias/detalle-0.png",
+      "bytes": 44399,
+      "sha256": "3178a717ada1554f532228b3fec6084fb5b486bbfd4fcd161ddaeabe4f54f270",
+      "ancho": 750,
+      "alto": 275
+    },
+    {
+      "archivo": "referencias/detalle-1.png",
+      "bytes": 46446,
+      "sha256": "379839f5f8e3c9636c9d04979c12357d483cc9d89162fd6696a9a1bde4603c92",
+      "ancho": 750,
+      "alto": 275
+    },
+    {
+      "archivo": "referencias/detalle-2.png",
+      "bytes": 44544,
+      "sha256": "dbb17152baa671e3d28f7b4c1e87ed8f143a07d591c8280a9dd2d5d6da7ba39e",
+      "ancho": 750,
+      "alto": 275
+    },
+    {
+      "archivo": "referencias/DETALLE.png",
+      "bytes": 93587,
+      "sha256": "03e7881da85c11b9e2f3a714e03f1b8c4f8779bb1de67a27fe21f26edf7e0bf7",
+      "ancho": 1100,
+      "alto": 620
+    },
+    {
+      "archivo": "referencias/expresion-abiertos.png",
+      "bytes": 36819,
+      "sha256": "f091ef857dffddecfbff43e754e7df63b16aa1a7a70b3df195ffc5116845cdf9",
+      "ancho": 510,
+      "alto": 210
+    },
+    {
+      "archivo": "referencias/expresion-abiertos.svg",
+      "bytes": 30205,
+      "sha256": "8486db81975a0d78f14dd5de6458a42ac5d0e2774c14466b13e4e615735464fb"
+    },
+    {
+      "archivo": "referencias/expresion-cerrados.png",
+      "bytes": 2762,
+      "sha256": "d9ae1228688570f8e122a904fa992009cba9a048400632175629d0ff756842dc",
+      "ancho": 510,
+      "alto": 210
+    },
+    {
+      "archivo": "referencias/expresion-cerrados.svg",
+      "bytes": 2433,
+      "sha256": "4bbe6c32295b2fd5644dfc01b624cb0a6304ebfbfa82878d1a786f5c9d0f85e7"
+    },
+    {
+      "archivo": "referencias/expresion-guino-derecho.png",
+      "bytes": 21750,
+      "sha256": "95fe7c092d0f80f5c8b00f94c03772398c8d7cb0e2aaf02944c56bc548564f4a",
+      "ancho": 510,
+      "alto": 210
+    },
+    {
+      "archivo": "referencias/expresion-guino-derecho.svg",
+      "bytes": 29451,
+      "sha256": "4f78937b42212e1f9b0a505d7a966c3535e1c15770a393de0bf09e1b5d5eac34"
+    },
+    {
+      "archivo": "referencias/expresion-guino-izquierdo.png",
+      "bytes": 21812,
+      "sha256": "52dffc67e8a07957a2592a2a20db4d94a2437881a9cfcf0c955c1221c9c0ed22",
+      "ancho": 510,
+      "alto": 210
+    },
+    {
+      "archivo": "referencias/expresion-guino-izquierdo.svg",
+      "bytes": 29457,
+      "sha256": "05beaa5c28ad02dac0193c319444b0fc4b6ba67ea7e5035db18dc98ad4099f69"
+    },
+    {
+      "archivo": "referencias/grueso.png",
+      "bytes": 70727,
+      "sha256": "35dcc891e19281e36c9f3ebff6bb7a3dff09ed894f0b5addc762fb9bdeb5f51b",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/grueso.svg",
+      "bytes": 36291,
+      "sha256": "6328d4482d59a072c52273e0b28c407d149501665f1a077e8593c278de057238"
+    },
+    {
+      "archivo": "referencias/medio.png",
+      "bytes": 66093,
+      "sha256": "7359089e2fdf7d9e391ea49b83992467900942a6b0826019ad0d980fb5bbb1dc",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/medio.svg",
+      "bytes": 35740,
+      "sha256": "37112139a6a325625c1a4b5c41f0f06b73bc4db6996da7322f03be4f0a301a3a"
+    },
+    {
+      "archivo": "referencias/TRES_SILUETAS.png",
+      "bytes": 78935,
+      "sha256": "ab0a9593e024350d6937d08be2ac105453de58fd2e00e5ae4566e057c17e3292",
+      "ancho": 1100,
+      "alto": 500
+    },
+    {
+      "archivo": "svg/collage-k-ojos-iris-fotografico-abiertos.svg",
+      "bytes": 28277,
+      "sha256": "bffe679bcfe40c5108606a7f2f9f08f8812efcea936eb9e3af80ea662164f275"
+    },
+    {
+      "archivo": "svg/collage-k-ojos-iris-fotografico-cerrados.svg",
+      "bytes": 541,
+      "sha256": "6f6ab4be8b5633293bcc5da7c28318bd77a4eb12754f308d5fc5a4937fb31409"
+    },
+    {
+      "archivo": "svg/collage-k-ojos-iris-fotografico-guino-derecho.svg",
+      "bytes": 27535,
+      "sha256": "3daff1cdfeac41ab2c0ebf6281c727999e7797cb7a0b93a03f1db01dffe2f718"
+    },
+    {
+      "archivo": "svg/collage-k-ojos-iris-fotografico-guino-izquierdo.svg",
+      "bytes": 27541,
+      "sha256": "7d1b865d6f64189044f93368bad9f334e9eff877a6489734f70d2bdd09b1865e"
+    },
+    {
+      "archivo": "texturas/iris-fotografico-gris-alpha.png",
+      "bytes": 19491,
+      "sha256": "b476ccfcfd9864696418cf2ed4b39c8cc6511f9d8ed8d2075b0ac9d373762763",
+      "ancho": 128,
+      "alto": 128
+    },
+    {
+      "archivo": "VERIFICACION.json",
+      "bytes": 1591,
+      "sha256": "ab0f6bd09d67465210e3f8bf1834ad60774994b81d0708df24b26f97f0b21947"
+    }
+  ],
+  "comprobaciones": "VERIFICACION.json; validación XML incluida en la entrega general."
+}

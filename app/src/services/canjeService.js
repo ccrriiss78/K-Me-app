@@ -40,8 +40,15 @@ export async function comprobarPropiedad(idUsuario, receta) {
 // La vista previa: el avatar de presentación con la pieza, en la variante de su cuerpo. No gasta nada.
 function vistaPrevia(pieza) {
   const receta = recetaPorDefecto();
-  const variante = obtenerCatalogo().piezas(pieza.ruta).find((p) => p.familia === pieza.familia && p.cuerpoCompatible === receta.cuerpo);
-  if (pieza.ruta === 'ropa.arriba') receta.ropa = { ...receta.ropa, arriba: variante.id, colorArriba: pieza.colorMuestra ?? receta.ropa.colorArriba };
+  if (pieza.ruta === 'accesorio') {
+    // Un accesorio, solo: sin los auriculares de la receta por defecto. El catálogo elige su variante.
+    receta.accesorio = pieza.familia;
+    receta.accesoriosExtra = [];
+  } else {
+    const variante = obtenerCatalogo().piezas(pieza.ruta).find((p) => p.familia === pieza.familia && p.cuerpoCompatible === receta.cuerpo);
+    if (pieza.ruta === 'ropa.arriba') receta.ropa = { ...receta.ropa, arriba: variante.id, colorArriba: pieza.colorMuestra ?? receta.ropa.colorArriba };
+    if (pieza.ruta === 'ropa.abajo') receta.ropa = { ...receta.ropa, abajo: variante.id, colorAbajo: pieza.colorMuestra ?? receta.ropa.colorAbajo };
+  }
   return dibujarAvatar(receta, { encuadre: 'cuerpo', alto: 220 });
 }
 

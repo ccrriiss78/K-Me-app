@@ -1,0 +1,39 @@
+{
+  "familia": "collage-k-lazo-saten",
+  "nombre": "Lazo Satén Stage",
+  "coleccion": "Colección K · Encore",
+  "estado": "Gráficos externos preparados; no integrado. No aplicar automáticamente este JSON.",
+  "canje": {
+    "modalidadPropuesta": "canje",
+    "precioPropuestoKpopis": 10,
+    "precioConfirmado": false,
+    "unidad": "familia completa; incluye todas las variantes corporales",
+    "gratisPropuesto": false
+  },
+  "parte": "accesorio",
+  "zona": "cabeza",
+  "color": {
+    "explicacion": "Fucsia fijo de la paleta actual, centro metálico neutro; sin campo propio. Un selector de color sería integración posterior de Claude.",
+    "campoNuevoSolicitado": null
+  },
+  "miniatura": {
+    "viewBox": "247 82 88 65",
+    "soloGrupo": "accesorio"
+  },
+  "variantes": [
+    {
+      "archivo": "svg/collage-k-lazo-saten.svg",
+      "variante": "universal",
+      "bytes": 26841,
+      "sha256": "c2e111fa2c13658f93586d7177d180dfefb88346287dc3ad0f26ab8ca82ba32a",
+      "cuerpo": "universal",
+      "anclaje": [
+        288,
+        103
+      ]
+    }
+  ],
+  "ruta": "accesorio",
+  "notaCapas": "Zona semántica propuesta. Claude debe mapearla al contrato vigente. Conservar gorro < auriculares < gafas < pin; lightstick en la mano. El lazo no reemplaza el pin existente.",
+  "rostro": "puede incluirse"
+}

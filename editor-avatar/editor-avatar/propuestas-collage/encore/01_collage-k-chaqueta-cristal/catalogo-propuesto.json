@@ -1,0 +1,73 @@
+{
+  "familia": "collage-k-chaqueta-cristal",
+  "nombre": "Chaqueta Cristal Stage",
+  "coleccion": "Colección K · Encore",
+  "estado": "Gráficos externos preparados; no integrado. No aplicar automáticamente este JSON.",
+  "canje": {
+    "modalidadPropuesta": "canje",
+    "precioPropuestoKpopis": 25,
+    "precioConfirmado": false,
+    "unidad": "familia completa; incluye todas las variantes corporales",
+    "gratisPropuesto": false
+  },
+  "parte": "superior",
+  "zona": "ropa_arriba",
+  "color": {
+    "explicacion": "ropa.colorArriba; clases f-arriba, f-arriba-claro y f-arriba-oscuro. Sin campo nuevo.",
+    "campoNuevoSolicitado": null
+  },
+  "miniatura": {
+    "viewBox": "118 284 164 73",
+    "soloGrupo": "superior"
+  },
+  "variantes": [
+    {
+      "archivo": "svg/collage-k-chaqueta-cristal-delgado.svg",
+      "variante": "delgado",
+      "bytes": 29361,
+      "sha256": "5476e2284213f4bc305f7ef71b1b3eee06707124259c4f477a43d7af5e7ab425",
+      "cuerpo": "relajado",
+      "cinturasCompatibles": [
+        350,
+        370
+      ]
+    },
+    {
+      "archivo": "svg/collage-k-chaqueta-cristal-medio.svg",
+      "variante": "medio",
+      "bytes": 28712,
+      "sha256": "d7f1c20ea6edcf844882242b9fd08b7d79dd935f15f441890bf44515c8310e89",
+      "cuerpo": "recto",
+      "cinturasCompatibles": [
+        350,
+        370
+      ]
+    },
+    {
+      "archivo": "svg/collage-k-chaqueta-cristal-grueso.svg",
+      "variante": "grueso",
+      "bytes": 29341,
+      "sha256": "0e902efb87cf43bb7be28e12ea1aba4829fa938c0235c5d60a88d3e39e3c4a34",
+      "cuerpo": "amplio",
+      "cinturasCompatibles": [
+        350,
+        370
+      ]
+    }
+  ],
+  "ruta": "ropa.arriba",
+  "perfilIntegrado": true,
+  "topCorto": false,
+  "ocultaCapas": [
+    "cuerpo"
+  ],
+  "gruposPorCapa": {
+    "anatomia": "perfil",
+    "torso": "torso",
+    "ropa_arriba": "superior"
+  },
+  "cinturasCompatibles": [
+    350,
+    370
+  ]
+}

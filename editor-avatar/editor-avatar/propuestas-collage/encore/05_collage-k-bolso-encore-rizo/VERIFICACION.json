@@ -1,0 +1,82 @@
+{
+  "resultado": "correcto",
+  "xml": [
+    {
+      "archivo": "05_collage-k-bolso-encore-rizo/svg/collage-k-bolso-encore-rizo-delgado.svg",
+      "xml": "correcto",
+      "imagenesPNG": 2,
+      "ids": 4
+    },
+    {
+      "archivo": "05_collage-k-bolso-encore-rizo/svg/collage-k-bolso-encore-rizo-grueso.svg",
+      "xml": "correcto",
+      "imagenesPNG": 2,
+      "ids": 4
+    },
+    {
+      "archivo": "05_collage-k-bolso-encore-rizo/svg/collage-k-bolso-encore-rizo-medio.svg",
+      "xml": "correcto",
+      "imagenesPNG": 2,
+      "ids": 4
+    }
+  ],
+  "comprobadoFuera": [
+    {
+      "tipo": "PNG neutro con transparencia",
+      "archivo": "texturas/rizo-gris-alpha.png",
+      "bytes": 18929,
+      "medidas": [
+        112,
+        145
+      ],
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "PNG neutro con transparencia",
+      "archivo": "texturas/saten-gris-alpha.png",
+      "bytes": 17679,
+      "medidas": [
+        256,
+        256
+      ],
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Render completo dentro del lienzo",
+      "archivo": "svg/collage-k-bolso-encore-rizo-delgado.svg",
+      "limites": {
+        "x": 220.33333333333334,
+        "y": 293.3333333333333,
+        "derecha": 318,
+        "abajo": 399.6666666666667
+      },
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Render completo dentro del lienzo",
+      "archivo": "svg/collage-k-bolso-encore-rizo-medio.svg",
+      "limites": {
+        "x": 228.33333333333334,
+        "y": 293.3333333333333,
+        "derecha": 326,
+        "abajo": 399.6666666666667
+      },
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Render completo dentro del lienzo",
+      "archivo": "svg/collage-k-bolso-encore-rizo-grueso.svg",
+      "limites": {
+        "x": 236.33333333333334,
+        "y": 293.3333333333333,
+        "derecha": 334,
+        "abajo": 399.6666666666667
+      },
+      "resultado": "correcto"
+    }
+  ],
+  "pendienteDeClaude": [
+    "Integración por Claude: catálogo y ranuras, editor real, todas las poses y rostros, combinación con gorro/auriculares/gafas/pin/lightstick, guardado/recarga, cuenta y canje, sello y exportación PNG/PDF."
+  ],
+  "suiteApp": "No ejecutada: esta entrega solo prepara y comprueba gráficos externos."
+}

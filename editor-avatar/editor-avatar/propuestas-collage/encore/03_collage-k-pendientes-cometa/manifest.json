@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "fecha": "2026-11-25",
+  "familia": "collage-k-pendientes-cometa",
+  "nombre": "Pendientes Cometa",
+  "lienzo": {
+    "ancho": 400,
+    "alto": 480,
+    "viewBox": "0 0 400 480"
+  },
+  "aprobacion": "Autora: «Me gusta adelante», sobre la lámina ENCORE · PROPUESTAS de esta conversación. Los SVG adaptan el diseño al tamaño y anatomía actuales.",
+  "precioConfirmado": false,
+  "origen": {
+    "direccion": "Lámina aprobada generada con image_gen, adjunta en la entrega general.",
+    "vectores": "Dibujados por ChatGPT; anatomía y calzado reutilizados de prendas actuales de K-ME, sin modificar esos archivos.",
+    "texturas": [
+      {
+        "archivo": "texturas/cristales-gris-alpha.png",
+        "origen": "Imagen original generada con image_gen; recorte de su panel, reducción a un máximo de 256 px y conversión a luz/sombra gris con transparencia. Sin fotos de terceros.",
+        "bytes": 16675
+      }
+    ]
+  },
+  "archivos": [
+    {
+      "archivo": "catalogo-propuesto.json",
+      "bytes": 1343,
+      "sha256": "4108f09b6f2d6ac7d4710201e4c5b05c6345515ef3d0b70758b53e03a9aab48a"
+    },
+    {
+      "archivo": "LEEME_PARA_CLAUDE.md",
+      "bytes": 4659,
+      "sha256": "3c8c6efb42da525b63bbde6830c6378bb1cf1d486d004398a148ef7a99ebe15e"
+    },
+    {
+      "archivo": "referencias/delgado.png",
+      "bytes": 63257,
+      "sha256": "b89e8143bb42fc0a1a7005822b8e554a52eecffbc3ce80b0f94f4cc3efcd41e4",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/delgado.svg",
+      "bytes": 35230,
+      "sha256": "901586f446aa57efcda0c9c40054090c4782027d9c0bc16f40a4f688d05eb6d7"
+    },
+    {
+      "archivo": "referencias/DETALLE.png",
+      "bytes": 19922,
+      "sha256": "b3c70f1f3004c5d1a4c367289121736b44af66e089adf2b8bafb7635dc3da175",
+      "ancho": 420,
+      "alto": 300
+    },
+    {
+      "archivo": "referencias/grueso.png",
+      "bytes": 70073,
+      "sha256": "e30fc7183d4b5c2502761f88a5f10b73d2d1382fb28001b19a1b1b46e15cc309",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/grueso.svg",
+      "bytes": 35259,
+      "sha256": "8bea5bfdb86738cbfdb43dc6ae1579b996070effdd405441bab2e72b7a88d46f"
+    },
+    {
+      "archivo": "referencias/medio.png",
+      "bytes": 65228,
+      "sha256": "2420e0f3c994b7f1fbd2d9f621256042f5e2e6b9b098b0cfdf435ce02cc2ff8b",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/medio.svg",
+      "bytes": 34649,
+      "sha256": "975587bf7f8e178963e7f1c9d9a051ea6b8402f42bbfe5b34cbf49309b5e960e"
+    },
+    {
+      "archivo": "referencias/miniatura.svg",
+      "bytes": 26216,
+      "sha256": "ed9a9b0c0d1280d484b2f18c234f7ecce047dda05399d3c821ac85b946b4621c"
+    },
+    {
+      "archivo": "referencias/PIEZA.png",
+      "bytes": 12604,
+      "sha256": "167f2734b2df33e79835e6e1ae9e0c2cf713070aacd1a0821bd9d0da9681557a",
+      "ancho": 600,
+      "alto": 360
+    },
+    {
+      "archivo": "referencias/TRES_SILUETAS.png",
+      "bytes": 71780,
+      "sha256": "d7610be573d8b2c162b57076c7bb196791f759007274334c1185fb6321d66dba",
+      "ancho": 1100,
+      "alto": 500
+    },
+    {
+      "archivo": "svg/collage-k-pendientes-cometa.svg",
+      "bytes": 26183,
+      "sha256": "8cce5657c6b764fecd6d311745d913ccaac0c7b96002e440ec980ecff0cdf17a"
+    },
+    {
+      "archivo": "texturas/cristales-gris-alpha.png",
+      "bytes": 16675,
+      "sha256": "b5c768b4a2e3c78e8b60a55d13cc08cc29115f75ae27a22b2a5d8920be939322",
+      "ancho": 192,
+      "alto": 192
+    },
+    {
+      "archivo": "VERIFICACION.json",
+      "bytes": 1073,
+      "sha256": "ca9a8134964f2d07f54bcf3a584fa7e68274a4fba31ab52fbcbb5f9408d95888"
+    }
+  ],
+  "comprobaciones": {
+    "externas": "VERIFICACION.json: XML, imágenes, neutralidad, render y geometría.",
+    "cinturas": null,
+    "editor": "Pendiente de Claude; ninguna prueba de la app o exportación en navegador ejecutada."
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "familia": "collage-k-falda-saten",
+  "nombre": "Falda Satén Encore",
+  "coleccion": "Colección K · Encore",
+  "estado": "Gráficos externos preparados; no integrado. No aplicar automáticamente este JSON.",
+  "canje": {
+    "modalidadPropuesta": "canje",
+    "precioPropuestoKpopis": 20,
+    "precioConfirmado": false,
+    "unidad": "familia completa; incluye todas las variantes corporales",
+    "gratisPropuesto": false
+  },
+  "parte": "inferior",
+  "zona": "ropa_abajo",
+  "color": {
+    "explicacion": "ropa.colorAbajo; clase f-abajo. Sin campo nuevo. Cadena y lazo en metal neutro.",
+    "campoNuevoSolicitado": null
+  },
+  "miniatura": {
+    "viewBox": "131 342 138 59",
+    "soloGrupo": "prenda"
+  },
+  "variantes": [
+    {
+      "archivo": "svg/collage-k-falda-saten-delgado.svg",
+      "variante": "delgado",
+      "bytes": 28786,
+      "sha256": "e24b9091c22a06c6e8d6036bb3bcdbf251ac925dd5dfa122a185ee6d6f52ab26",
+      "cuerpo": "relajado",
+      "cinturaY": 350
+    },
+    {
+      "archivo": "svg/collage-k-falda-saten-medio.svg",
+      "variante": "medio",
+      "bytes": 28759,
+      "sha256": "5a5ef1352295291121e60e538598ce6a38f496b26c4e6ad6779937cd8bf13c4c",
+      "cuerpo": "recto",
+      "cinturaY": 350
+    },
+    {
+      "archivo": "svg/collage-k-falda-saten-grueso.svg",
+      "variante": "grueso",
+      "bytes": 28774,
+      "sha256": "b90cde9bb3a5fbc78c3eea64cf1b500284c5a433c1a839f0a105c97f57934089",
+      "cuerpo": "amplio",
+      "cinturaY": 350
+    }
+  ],
+  "ruta": "ropa.abajo",
+  "reemplazaCapas": [
+    "piernas"
+  ],
+  "gruposPorCapa": {
+    "piernas": "piernas",
+    "ropa_abajo": "prenda"
+  },
+  "cinturaY": 350,
+  "calzadoIncluido": true
+}

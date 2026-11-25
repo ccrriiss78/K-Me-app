@@ -1,0 +1,38 @@
+{
+  "resultado": "correcto",
+  "xml": [
+    {
+      "archivo": "06_collage-k-lazo-saten/svg/collage-k-lazo-saten.svg",
+      "xml": "correcto",
+      "imagenesPNG": 1,
+      "ids": 3
+    }
+  ],
+  "comprobadoFuera": [
+    {
+      "tipo": "PNG neutro con transparencia",
+      "archivo": "texturas/saten-gris-alpha.png",
+      "bytes": 17679,
+      "medidas": [
+        256,
+        256
+      ],
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Render completo dentro del lienzo",
+      "archivo": "svg/collage-k-lazo-saten.svg",
+      "limites": {
+        "x": 252,
+        "y": 89.66666666666667,
+        "derecha": 325,
+        "abajo": 140
+      },
+      "resultado": "correcto"
+    }
+  ],
+  "pendienteDeClaude": [
+    "Integración por Claude: catálogo y ranuras, editor real, todas las poses y rostros, combinación con gorro/auriculares/gafas/pin/lightstick, guardado/recarga, cuenta y canje, sello y exportación PNG/PDF."
+  ],
+  "suiteApp": "No ejecutada: esta entrega solo prepara y comprueba gráficos externos."
+}

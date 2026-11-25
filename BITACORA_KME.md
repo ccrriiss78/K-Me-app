@@ -2,7 +2,7 @@
 
 > **El hilo conductor de K-ME es personalizar un producto para que el fan tenga el protagonismo que merece dentro del mundo del K-pop.** La primera conversación exploraba un posible proyecto de máquina de vending; esa era una forma posible de materializar la idea. El propósito de dar protagonismo al fan es lo que conecta aquel origen con el proyecto actual.
 
-- **Revisión del archivo:** R0083.
+- **Revisión del archivo:** R0086.
 - **Carpeta actual del proyecto:** `C:\Users\<usuario>\Desktop\ACTIVA2026\k-me` (renombrada por la autora; véase E0006).
 - **Última actualización:** 2026-11-25 · Europe/Madrid.
 - **Responsable de las decisiones:** la autora del proyecto.
@@ -261,6 +261,8 @@ Todas estas decisiones están vigentes en esta revisión. Los cambios futuros de
 | D072 | **Lote collage 04: la Chaqueta Denim Collage, como opción nueva** de ropa superior. Es una chaqueta abierta de manga corta con camiseta interior, sobre la silueta de Denim Layer, que no cambia. Tres ids por cuerpo, con el color de la ropa de arriba y el vaquero del lote 01. Sin canje ni precio; su disponibilidad provisional, como la del top, pendiente de la autora. | Sigue D067 y D069–D070. | E0081, la autora: «Añade las tres variantes como opciones nuevas, conservando todas las prendas y recetas actuales. Sigue la guía y verifica la integración con los tests correspondientes.» | Hecho en E0081 (V100). Falta su revisión (T045). |
 | D073 | **Lote collage 05, alternativa MVP: la falda con botas de piel negras, como opción nueva de ropa inferior.** Tres ids por cuerpo; sus piernas, con las botas, sustituyen a las del cuerpo. La falda lleva `ropa.colorAbajo` y las botas son negras fijas. **El selector de calzado independiente no se construye antes del 1/12**: se diseñará junto con los varios accesorios (D071), porque los dos amplían la receta. Las botas cumplen las reglas del editor (calzado compacto, y ≤ 432, y su marca `data-parte="calzado"`) tras una corrección de ChatGPT. | Es la opción sin sistema nuevo y sin riesgo antes de congelar el código. | E0082: el asistente compara A (falda con botas) y B (selector de calzado) y recomienda A ahora y B después; la autora: «ok». | Hecho en E0082 (V102). Falta su revisión (T045). |
 | D074 | **Colección «K» y canje de Kpopis, antes del 1/12** (cambia D063, que dejaba el canje para después).<br>**La pestaña:** «Colección «K»», con la K entre las comillas fucsias del logo, más resaltada que las demás y abierta al entrar en K-ME Studio. Las piezas especiales (lotes collage) están solo ahí.<br>**Canjear:** dentro, el botón «Canjear Kpopis» lleva a un catálogo con las piezas que aún no tienes, su precio y su vista previa, que no gasta nada. Al canjear se restan los Kpopis y la pieza pasa a ser de la cuenta.<br>**Primeras piezas de canje:** el Top Destello y la Chaqueta Denim Collage, a 20 Kpopis; las demás especiales, gratis. La autora añadirá más con ChatGPT.<br>**Avatar de presentación:** un avatar nuevo empieza con especiales gratis (gorro y falda con botas). Los ojos con iris fotográfico, cuando lleguen. | La autora quiere que lo especial se vea y se pueda conseguir con las monedas. | E0083, la autora: «1a pero esta pestaña deberá verse más resaltada… botón para canjear monedas… le reste las monedas que toque», «Las especiales solo ahí y serán las que se vean más al cargar», «De momento pon dos piezas especiales de las que hay ya en el catálogo de canjear por monedas». | Hecho en E0083 (V104). Falta su revisión en el navegador (T046). |
+| D075 | **Colección Encore: seis familias especiales de canje** (dirección D067), preparadas por ChatGPT fuera del proyecto: Chaqueta Cristal Stage, Falda Satén Encore, Pendientes Cometa, Brazalete Fanchant, Bolso Encore con Rizo (bolso, portaphotocard y peluche, una sola pieza) y Lazo Satén Stage.<br>**Integración:** aditiva y solo en Colección «K». La ropa usa sus colores de siempre y los accesorios no tienen campo de color. Cada familia se canjea entera.<br>**Precios propuestos:** 25, 20, 10, 10, 30 y 10 Kpopis, **sin confirmar**.<br>**Lote 07 (iris fotográfico):** se guarda aparte, sin activarlo ni sustituir los ojos actuales, hasta su revisión visual. | La autora quiere más piezas especiales para canjear. Su dirección artística manda: identidad ilustrada y materiales fotográficos selectivos. | E0086, la autora (por medio de ChatGPT): «He aprobado las seis propuestas de la colección Encore… Integra estas seis familias, una por una», «Los precios siguen siendo propuestas pendientes de confirmar», «consérvalo como propuesta aparte». | Hecho en E0086 (V110, V111). Falta su revisión (T048) y decidir los precios y los ojos. El límite de imágenes, en D076. |
+| D076 | **El filtro de la vista previa del sello admite 16 imágenes por dibujo** (antes, 8). Cada imagen sigue con sus límites: PNG incrustado, 20 KiB y 256 px como mucho. Un test exige que la combinación más cargada del catálogo quepa (hoy, 12). | Con Encore, lo más cargado del catálogo llegaba a 12 imágenes. Con más de 8, la vista previa del sello no se actualizaba. | E0087, la autora: «1. Lo subimos a 16», a la recomendación del asistente. | Hecho en E0087 (V112). |
 
 ## 5. Propuestas conservadas, alcance y cuestiones abiertas
 
@@ -296,6 +298,7 @@ Estas propuestas aparecen en las fuentes, pero no se convierten en acuerdos nuev
 | P026 | **Plan ampliado hasta la congelación** (E0072), a petición de la autora («conseguir el máximo funcional posible»). Versión mínima de cada ampliación, con su esfuerzo (horas del asistente, con tests) y si cabe antes del sábado 28: Connect con diseño, 5 h, sí; mensaje con iconos, 3 h, sí; HANGUL LIVE 001, 6 h, sí; Kpopis (saldo, movimientos y recompensa única), 4 h, sí; «Mis tesoros» con el objeto ganado, 4 h, sí si hay dibujo; canje, 1 día más los objetos nuevos, no; encuentro previo colectivo, 1,5–2 días, no; animaciones, solo K-ME Bounce y opcional; vídeo de YouTube e intercambios, no. Calendario: mié 25, Connect; jue 26, impresión, test del recorrido completo y HANGUL LIVE; vie 27, prueba de la autora y arreglos, Kpopis; sáb 28, «Mis tesoros», README y modelo de datos, y congelación por la noche (D054 se mantiene; el lunes 30 queda de margen). Si HANGUL LIVE, Kpopis o «Mis tesoros» no están en verde el viernes por la noche, se quedan fuera enteros, sin pantallas a medias. | La autora responde a las cinco preguntas sin objetar el plan (D061–D064). Connect se adelantó al martes 24 (E0072). Lo que no entre se presenta como idea de futuro, nunca como una pantalla que aparenta funcionar. |
 | P027 | **Animaciones de MY STAGE** (propuesta de la autora con ChatGPT): Annyeong (inclinación suave, sonrisa o guiño), K-ME Bounce (rebote y balanceo del avatar completo) y Fighting! (gesto breve de ánimo, con el lightstick iluminado). | Las pruebas visuales anteriores no quedaron resueltas: no son animaciones listas. Valoración del asistente (E0072): K-ME Bounce se puede hacer moviendo el SVG entero, sin tocar el encaje de las prendas y respetando «reducir movimiento»; Annyeong con la cabeza o un guiño y Fighting con el brazo necesitan un avatar articulado. Solo Bounce, si sobra tiempo y con el visto bueno de la autora. |
 | P028 | **Encuentro previo en versión mínima** (desarrolla P019): una barra común para varias cuentas, que se actualiza preguntando al servidor cada pocos segundos (sin librerías nuevas), con una meta y el objeto del evento para quien participó. | Distinto de una escena local (solo el propio avatar). Necesita reglas (fórmula, duración, quién recibe) y 1,5–2 días: después de la presentación (E0072). El vídeo conserva su revisión técnica y de condiciones pendiente (P021). |
+| P029 | **Guion de la demo y plan B** (E0085), borrador del asistente para el ensayo del domingo (D054): `docs/GUION_DEMO.md`, con lo que hay que preparar el mismo día, el recorrido de unos 10 minutos con lo que se cuenta en cada paso, el plan B por niveles y el ensayo. Las capturas del plan B las hace `privado/plan-b/capturas-plan-b.mjs` (fuera de Git), probado en E0085 con 18 capturas. Se repite el sábado 28, después de congelar. | Sin confirmar. La autora decide la duración, si crea la cuenta en directo, si imprime en directo y cómo enseña el apartado «por dentro». |
 
 **Visión futura documentada:** comunidad local, eventos, noticias, tiendas, compras colectivas, productos físicos y posible línea empresarial de personalización (F02–F03). No hay evidencia de servicios operativos. F01 propone dejarlos fuera de los servicios reales de noviembre; falta ratificar el recorte final de la demo.
 
@@ -424,6 +427,11 @@ Actualización del editor: E0042 amplía el trabajo de E0015–E0031 con recurso
 | V105 | 2026-11-25 | Ejecutado por el asistente (E0084), tests escritos antes del código. | **En rojo, por lo que comprueban:** `varios-accesorios` del editor, los 7 (sin ranuras, sin `accesoriosExtra`, sin `alternarAccesorio`, sin la ayuda); `avatar-accesorios` de la app, 4 de 6 (listas mal formadas aceptadas, el lightstick en el rostro y el guardado); `photocard-estilos`, 1 de 1 (los estilos de Connect alcanzaban la tarjeta del editor). Para que el rojo no fuera por un módulo sin exportar, primero se puso `accesoriosExtraValidos` vacía. |
 | V106 | 2026-11-25 | Ejecutado por el asistente (E0084), con la base local `kme_dev`. | Correcta. **App 275 de 275** y **editor 182 de 182**. **Editor, `varios-accesorios`, 7:** ranuras y orden en el catálogo; el dibujo sigue el orden de las ranuras se elijan como se elijan; un avatar anterior se dibuja exactamente igual; poner, quitar, «Sin accesorio» y «Deshacer»; la misma ranura sustituye; la regla de la receta; la vista (ayuda, botones pulsados, miniatura con un solo accesorio, color del gorro aunque no sea el último). **App:** `avatar-accesorios`, 6 (acepta hasta los cinco; un avatar anterior; 7 listas mal formadas, 400 «Esa opción no existe.»; el rostro sin el lightstick y con el gorro y las gafas; guardar y recuperar en la cuenta) y `photocard-estilos`, 1. Adaptados `collage-lote-01` y `collage-lotes-02-03`, que comprueban la ficha exacta del lightstick y del gorro (ahora con su `ranura`). |
 | V107 | 2026-11-25 | Ejecutado por el asistente (E0084) en Chrome sin ventana, con una cuenta de prueba que se borra al terminar. | **Contraste (T030):** un script mide cada texto visible (4,5:1, o 3:1 si es grande) y el borde de cada campo (3:1) en 18 páginas y estados reales (entrar, registro, Mi K-ME, editor en «K», «Accesorios» y «Ropa», Mis avatares, canje con y sin saldo, Mi escenario, miniclase, fallo y acierto, Connect con publicaciones, Mis sellos y el editor del sello): **0 fallos**. Una página de control con tres fallos puestos a propósito los detecta los tres. Solo el estado normal, sin pasar el ratón ni el foco. **Móvil (390 y 504 px):** la tarjeta del editor medía 83 px de alto y el avatar (293 px) tapaba «Guardar», porque la clase `photocard` de Connect le daba 100 px; tras limitar esos estilos a `.publicacion`, mide 356 px y empieza debajo de «Guardar». Connect sigue igual. Capturas de «K», «Accesorios», el catálogo de canje (con y sin saldo) y la combinación de accesorios. **Sin revisión de la autora** (T047, guía del viernes). |
+| V108 | 2026-11-25 | Ejecutado por el asistente (E0085) en Chrome sin ventana, a 390 × 844 px dentro de un iframe, con una cuenta de prueba que se borra al terminar. | **Revisión del móvil en 17 páginas y estados:** contenido que se sale por los lados, controles tapados por otro elemento (como el avatar sobre «Guardar» antes de E0084), controles de menos de 24 × 24 px (WCAG 2.5.8) y controles sin foco visible. Una página de control con un fallo de cada tipo los detecta los cinco. **0 fallos reales.** Quedan cuatro avisos de tamaño que cumplen: las casillas de «Entrar» y «Mis avatares» y las opciones de la miniclase van dentro de su `label`, que también se pulsa, y «Borrar» de Connect (22 px de alto) no tiene otros controles al lado. La primera pasada dio falsos «tapados» dentro de `<details>` cerrados; se corrigió el script. Solo el estado inicial de cada página. |
+| V109 | 2026-11-25 | Ejecutado por el asistente (E0086), tests escritos antes del catálogo y del código. | **En rojo, por lo que comprueban:** `collage-encore` del editor, los 12 (sin las entradas del catálogo, sin la copia de los pendientes para el ovalado y sin la elección del anclaje del brazalete); `encore` de la app, 6 de 8 (sin el canje de Encore, sin su vista previa, con el bolso en el recorte del rostro, y un accesorio de canje en `accesoriosExtra` se guardaba sin ser tuyo porque no estaba en el canje). |
+| V110 | 2026-11-25 | Ejecutado por el asistente (E0086), con la base local `kme_dev`. | Correcta. **App 283 de 283, más 1 pendiente marcado** (`todo`: la combinación más cargada del catálogo llega a 12 imágenes y el filtro del sello admite 8). **Editor 194 de 194.** **`collage-encore` (12):** las entradas exactas del catálogo y el orden de ranuras; los 17 dibujos idénticos a los de la entrega (SHA-256 del manifest) y seguros; la copia del ovalado solo cambia los anclajes; la chaqueta con los tres cuerpos y las dos cinturas; la falda con su calzado compacto; un solo brazalete y el anclaje adecuado; los pendientes por rostro; el orden de capas con ocho accesorios; el lazo y el pin se sustituyen; ids únicos y 7 imágenes con las seis piezas; el editor (solo en «K», miniaturas con textura, lo bloqueado no sale). **`encore` de la app (8):** canje y editor; las seis juntas y el lazo con el pin rechazado; el cuerpo entero y el rostro sin el bolso ni el brazalete; 7 de 8 imágenes; el catálogo con la vista previa y el precio de cada una; 403 sin canjear; canje de pendientes y lazo con los 20 Kpopis de HANGUL, guardado y recarga. Adaptados: `canje` (la lista de piezas y las bloqueadas), `varios-accesorios` (las ranuras) y los recuentos de cinturas (384 → 408). |
+| V111 | 2026-11-25 | Ejecutado por el asistente (E0086) en Chrome sin ventana, con una cuenta de prueba que se borra al terminar. | **Encaje:** el brazalete con las 20 prendas de arriba y los tres cuerpos; los pendientes y el lazo con los tres rostros y cuatro peinados (con el ovalado, los pendientes flotaban fuera de la oreja: se añadió su copia); combinaciones con el gorro, los auriculares, el pin y el lightstick (el lazo tapaba el pin: misma ranura). **App real:** el editor abre el avatar guardado con las seis piezas; el catálogo de canje enseña las ocho piezas con su precio y vista previa; el sello con el avatar de cuerpo entero; la vista previa del sello pasa el filtro con 7 imágenes; la imagen de perfil, con el lazo y los pendientes y sin el bolso; el editor en el móvil. **Exportación**, con el código del editor en el navegador: PNG del avatar y photocard en PDF (`%PDF-1.4`, 128 400 bytes), con las seis piezas a la vista. **Lote 07:** sus cuatro expresiones y el color del iris con 4 colores naturales y 4 de fantasía de la paleta, en una hoja aparte (sin integrar). **Sin revisión de la autora** (T048). |
+| V112 | 2026-11-25 | Ejecutado por el asistente (E0087). | **En rojo primero:** el test de la combinación más cargada (antes `todo`) falla con el filtro en 8. **Después, correcta:** **app 284 de 284**, sin pendientes. El test exige 16 y calcula lo más cargado del catálogo (12). **En Chrome sin ventana**, con el filtro real (`svg-seguro.js`): el avatar más cargado (top, falda con botas, lightstick, gorro, pendientes, auriculares, gafas, lazo, bolso y brazalete) se acepta con 12 imágenes, y un dibujo con 17 se rechaza. |
 
 Las pruebas V005–V008 son resultados declarados por Claude y distinguidos de la comprobación documental V009. Los escenarios siguientes siguen pendientes para el producto completo:
 
@@ -491,6 +499,7 @@ Estados permitidos: pendiente, en curso, bloqueado, terminado o descartado. Solo
 | T045 | La autora prueba el gorro de punto (con su color) y el Top Destello en su navegador; decide qué hacer con los moños bajo el gorro, la disponibilidad provisional del top y el diseño de varios accesorios (D071). | Pendiente | Creado en E0080. Probado con tests (V098) y en Chrome por el asistente. E0081: también la Chaqueta Denim Collage (D072, V100) y su disponibilidad provisional. E0082: también la falda con botas de piel (D073, V102). E0083: la disponibilidad del top y la chaqueta la resuelve el canje (D074). E0084: el diseño de varios accesorios, aprobado y hecho (D071); su prueba pasa a T047. |
 | T046 | La autora prueba en su navegador Colección «K» y el canje: entrar en K-ME Studio (pestaña «K» abierta y avatar de presentación), completar HANGUL LIVE, canjear el Top Destello con sus 20 Kpopis, verlo en «K» y en «Mis Kpopis», y comprobar que no se puede canjear sin saldo. Elige los precios y las piezas siguientes. | Pendiente | Creado en E0083. Probado con tests (V104) y en Chrome por el asistente. |
 | T047 | La autora prueba en su navegador los varios accesorios (D071): poner el gorro, los auriculares y las gafas a la vez, quitarlos pulsándolos, «Sin accesorio», «Deshacer», los cinco a la vez, el color del gorro, guardar y volver a abrir; y en el móvil, que la tarjeta del editor quede debajo de «Guardar». Decide si el pin fucsia sobre el gorro fucsia se distingue bastante. | Pendiente | Creado en E0084. Probado con tests (V106) y en Chrome por el asistente (V107). Va en `docs/GUIA_PRUEBA_VIERNES.md`, pasos 4 y 8. |
+| T048 | La autora prueba Encore en su navegador: canjear una pieza, ponerse las seis (con los tres cuerpos y los tres rostros), guardar, sello y photocard. Decide:<br>- los precios (propuestos: 25, 20, 10, 10, 30 y 10 Kpopis);<br>- el límite de imágenes del filtro del sello (8; lo más cargado del catálogo llega a 12);<br>- si el lazo y el pin deben sustituirse;<br>- la copia de los pendientes para el ovalado;<br>- los ojos del lote 07. | Pendiente | Creado en E0086. Probado con tests (V110) y en Chrome por el asistente (V111). E0087: el límite de imágenes, decidido (D076). |
 
 ## 8. Aprendizajes y preguntas para valorar el proceso
 
@@ -2544,6 +2553,84 @@ Las respuestas se añaden en la sesión correspondiente, con ejemplos. No rellen
 - **Siguiente paso:** aprobación del commit; la prueba de la autora con la guía; los lotes de ChatGPT.
 - **Revisión resultante:** R0083.
 
+### E0085 · 2026-11-25 · Revisión del móvil, guion de la demo y plan B
+
+- **Autoría y entorno:** autora y asistente (Claude Code) en el ordenador de la autora; ella lo sigue desde el móvil con Remote Control.
+- **Objetivo:** la autora aprueba subir E0084 («Súbelos») y pide seguir adelantando «lo que consideres» mientras ChatGPT termina sus lotes.
+- **Base leída:** R0083; D054 (el plan hasta la presentación: ensayo y plan B el domingo 29); las rutas de la app y el formulario del sello.
+- **Hechos y trabajo realizado:**
+  - **Commit de E0084:** `6436019`, subido.
+  - **Revisión del móvil:** un script en Chrome sin ventana revisa las 17 páginas y estados (V108). No hacía falta cambiar nada.
+  - **Guion de la demo y plan B:** la propuesta P029, en `docs/GUION_DEMO.md`.
+  - **Capturas del plan B:** `privado/plan-b/capturas-plan-b.mjs`, fuera de Git. Recorre la demo con una cuenta ficticia que borra al terminar y deja 18 capturas y un índice en `privado/plan-b/capturas/`. Probado.
+- **Decisiones confirmadas:** ninguna nueva.
+- **Decidido por el asistente sin preguntar:**
+  - qué adelantar: la revisión del móvil y el plan B, porque el fallo de la tarjeta (E0084) no lo detectaba ningún test;
+  - el script del plan B, fuera de Git;
+  - los supuestos del guion: 10 minutos y una cuenta nueva en directo.
+- **Propuestas sin confirmar:** P029.
+- **Pruebas:** V108.
+- **Problemas y pendientes:** las preguntas de P029; repetir las capturas el sábado 28, después de congelar.
+- **Aprendizaje:** un script que mide una página tiene que saltarse lo que no se ve. El contenido de un `<details>` cerrado tiene medidas aunque no se pinte, y daba falsos «tapados».
+- **Siguiente paso:** la aprobación del commit; los lotes de ChatGPT; la prueba de la autora del viernes.
+- **Revisión resultante:** R0084.
+
+### E0086 · 2026-11-25 · Colección Encore
+
+- **Autoría y entorno:** autora y asistente (Claude Code) en el ordenador de la autora; ella lo sigue desde el móvil con Remote Control. La entrega gráfica es de ChatGPT, fuera del proyecto.
+- **Objetivo:** integrar las seis familias de Encore aprobadas por la autora (D075) y guardar aparte el lote 07 de ojos.
+- **Base leída:**
+  - `ENTREGA_PARA_CLAUDE.md`, `COMPROBACIONES_GENERALES.json` y, de cada lote, el LEEME, el manifest, el catálogo propuesto y la verificación;
+  - las imágenes reales `CONJUNTO_REAL.png` y `SEIS_PIEZAS_REALES.png`;
+  - R0084; D067, D071 y D074.
+  - No había ninguna versión anterior de Encore en el proyecto.
+- **Hechos y trabajo realizado:**
+  - **Copia:** los 17 SVG, sin cambios, y la documentación de cada lote en `propuestas-collage/encore/`. No se copiaron las referencias grandes ni `PROMPT_PARA_CLAUDE.txt`, que lleva la ruta del ordenador de la autora y no puede ir al repositorio público.
+  - **Pruebas antes de fijar el catálogo** (V111): el lazo tapaba el pin y, con el rostro ovalado, los pendientes flotaban fuera de la oreja.
+  - **Catálogo:** seis familias en `collage-encore` y tres ranuras nuevas (orejas, bolso, muñeca); el lazo va en la del pin.
+  - **Código:**
+    - `indiceVariante` en `catalogo.js`, para elegir la variante por rostro y por prenda de arriba;
+    - el canje, con las seis familias y sus precios propuestos;
+    - la vista previa del canje, también para la falda y los accesorios;
+    - el recorte del rostro, solo con los accesorios de la cabeza.
+  - **Copia adaptada:** `collage-k-pendientes-cometa-ovalado.svg`, en la que solo cambian los anclajes.
+  - **Lote 07:** guardado en `propuestas-collage/encore/07_…`, sin catálogo. Hoja de revisión con las expresiones y los colores.
+  - **Notas:** `propuestas-collage/encore/INTEGRADO.md`.
+- **Decisiones confirmadas:** D075.
+- **Decidido por el asistente sin preguntar:**
+  - el lazo, en la ranura del pin (se pisan);
+  - el orden de capas: los pendientes, bajo los auriculares; el bolso, el brazalete y luego el lightstick;
+  - la copia de los pendientes para el ovalado (14 unidades hacia dentro y 4 hacia abajo);
+  - el nombre «Bolso Encore con Rizo»;
+  - los colores de muestra de la chaqueta (fucsia) y de la falda (tinta) en el catálogo de canje;
+  - las miniaturas: un solo pendiente y el brazalete algo más amplio;
+  - zonas: el bolso «cuerpo» y el brazalete «muñeca», fuera del recorte del rostro;
+  - no poner el iris en el catálogo hasta su revisión.
+- **Propuestas sin confirmar:** los precios; el lote 07.
+- **Pruebas:** V109, V110 y V111.
+- **Problemas y pendientes:**
+  - T048;
+  - **el límite de 8 imágenes del filtro de la vista previa del sello:** lo más cargado del catálogo ya llega a 12. Con más de 8, esa vista previa no se actualiza; guardar el sello sí funciona. Lo decide la autora; queda un test marcado como pendiente.
+- **Aprendizaje:** las piezas que dependen de la cara o del brazo necesitan una variante por rostro o por prenda. Hay que probarlas con todas las combinaciones antes de dar el encaje por bueno.
+- **Siguiente paso:** las decisiones de T048 y la aprobación del commit.
+- **Revisión resultante:** R0085.
+
+### E0087 · 2026-11-25 · Límite de imágenes del sello a 16
+
+- **Autoría y entorno:** autora y asistente (Claude Code); ella lo sigue desde el móvil con Remote Control.
+- **Objetivo:** aplicar la decisión de la autora sobre el límite de imágenes (D076).
+- **Base leída:** E0086 y `app/public/js/svg-seguro.js`.
+- **Hechos y trabajo realizado:**
+  - `MAX_IMAGENES` pasa de 8 a 16 en `svg-seguro.js`;
+  - el test pendiente (`todo`) de `app/tests/encore.test.js` pasa a ser normal y exige 16;
+  - comprobación en Chrome con el filtro real.
+- **Decisiones confirmadas:** D076.
+- **Decidido por el asistente sin preguntar:** que el test cuente cualquier parte del avatar con texturas, no solo la ropa y los accesorios, para que también avise si llega el iris del lote 07.
+- **Pruebas:** V112.
+- **Problemas y pendientes:** T048 (precios, lazo y pin, la copia de los pendientes para el ovalado, el lote 07).
+- **Siguiente paso:** la aprobación del commit.
+- **Revisión resultante:** R0086.
+
 <!-- AÑADIR AQUÍ LAS NUEVAS SESIONES, EN ORDEN DE REGISTRO. NO BORRAR E0001. -->
 
 ## 10. Plantilla para una nueva sesión
@@ -2737,5 +2824,8 @@ PROPUESTA PROCEDENTE DEL OTRO CHAT:
 | R0081 | 2026-11-25 | E0082 | D073: falda con botas de piel (alternativa MVP del lote 05), con las botas corregidas por ChatGPT para cumplir las reglas del calzado; el selector de calzado, después del 1/12. V101 y V102 (editor 173 de 173, app 256 de 256, Chrome). TECH_SPEC v1.25. |
 | R0082 | 2026-11-25 | E0083 | D074: Colección «K» (pestaña resaltada y abierta al cargar, especiales solo ahí) y canje de Kpopis (migración 010, catálogo con Top Destello y Chaqueta a 20 Kpopis, comprobación al guardar), avatar de presentación. V103 y V104 (app 268 de 268, editor 175 de 175, Chrome). Nuevo T046. TECH_SPEC v1.26. |
 | R0083 | 2026-11-25 | E0084 | D071 hecho: varios accesorios a la vez (`accesoriosExtra`, ranuras). Arreglo de la tarjeta del editor en el móvil (estilos de la photocard de Connect limitados a `.publicacion`). Contraste medido en Chrome, 0 fallos (T030). Guía de la prueba del viernes (`docs/GUIA_PRUEBA_VIERNES.md`). V105 a V107 (app 275 de 275, editor 182 de 182). Nuevo T047. TECH_SPEC v1.27. |
+| R0084 | 2026-11-25 | E0085 | Revisión del móvil en todas las páginas, 0 fallos reales (V108). P029: guion de la demo y plan B (`docs/GUION_DEMO.md`) y el script de las capturas del plan B (fuera de Git). TECH_SPEC v1.28. |
+| R0085 | 2026-11-25 | E0086 | D075: Colección Encore integrada (seis familias en Colección «K» y en el canje, con los precios propuestos), variantes por rostro y por prenda de arriba, nuevas ranuras de accesorio. El lote 07 de ojos, guardado como propuesta. V109 a V111 (app 283 de 283 y 1 pendiente, editor 194 de 194, Chrome). Nuevo T048. TECH_SPEC v1.29. |
+| R0086 | 2026-11-25 | E0087 | D076: el filtro de la vista previa del sello admite 16 imágenes. V112 (app 284 de 284, Chrome). TECH_SPEC v1.30. |
 
 <!-- FIN DE LA BITÁCORA. Las revisiones posteriores deben conservar las entradas históricas. -->

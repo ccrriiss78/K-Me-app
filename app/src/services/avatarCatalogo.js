@@ -63,9 +63,12 @@ export function dibujarAvatar(receta, { encuadre = null, alto = null } = {}) {
     if (e.capas) opciones.soloCapas = e.capas;
     // El recorte del rostro solo lleva la cabeza: un accesorio de la mano (el lightstick del lote
     // collage, «zona: mano») se quedaría cortado junto a la barbilla. Con el cuerpo entero, sí sale.
-    // Con varios accesorios (D071), se quitan solo los de la mano y los demás siguen puestos.
+    // Con varios accesorios (D071), se quitan solo los de fuera de la cabeza y los demás siguen
+    // puestos. De la cabeza son los que no dicen zona (gafas, auriculares, pin) y los de «zona:
+    // cabeza» (gorro, pendientes, lazo); el lightstick (mano), el brazalete (muñeca) y el bolso
+    // (cuerpo), no (Encore, E0086).
     if (e.capas) {
-      const cabeza = obtenerCatalogo().accesoriosPuestos(receta).filter((p) => p.zona !== 'mano').map((p) => p.id);
+      const cabeza = obtenerCatalogo().accesoriosPuestos(receta).filter((p) => !p.zona || p.zona === 'cabeza').map((p) => p.id);
       dibujada = { ...receta, accesorio: cabeza.at(-1) ?? 'ninguno', accesoriosExtra: cabeza.slice(0, -1) };
     }
   }

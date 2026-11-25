@@ -1,0 +1,47 @@
+{
+  "resultado": "correcto",
+  "textura": {
+    "bytes": 19491,
+    "ancho": 128,
+    "alto": 128,
+    "grisExacto": true,
+    "transparencia": true
+  },
+  "expresiones": [
+    {
+      "expresion": "abiertos",
+      "irisVisibles": 2,
+      "pupilasYParpadosActualesConservados": true,
+      "brillosActualesConservados": true,
+      "resultado": "correcto"
+    },
+    {
+      "expresion": "guino-izquierdo",
+      "irisVisibles": 1,
+      "pupilasYParpadosActualesConservados": true,
+      "brillosActualesConservados": true,
+      "resultado": "correcto"
+    },
+    {
+      "expresion": "guino-derecho",
+      "irisVisibles": 1,
+      "pupilasYParpadosActualesConservados": true,
+      "brillosActualesConservados": true,
+      "resultado": "correcto"
+    },
+    {
+      "expresion": "cerrados",
+      "irisVisibles": 0,
+      "pupilasYParpadosActualesConservados": true,
+      "brillosActualesConservados": true,
+      "resultado": "correcto"
+    }
+  ],
+  "render": "Cuatro expresiones y tres colores de paleta renderizados offline con el dibujador actual.",
+  "pendientes": [
+    "Revisión y aprobación visual de la autora: el iris no estaba incluido en la lámina de las seis prendas/accesorios.",
+    "Integración aditiva por Claude; miniaturas, todos los rostros, maquillaje, guardado, presentación y exportación PNG/PDF en navegador.",
+    "Comprobar presupuesto total de imágenes: las seis piezas de Encore juntas usan 7; estos iris usan 1 adicional (8 en total con ojos abiertos). No añadir otra pieza fotográfica sin volver a contar."
+  ],
+  "suiteApp": "No ejecutada."
+}

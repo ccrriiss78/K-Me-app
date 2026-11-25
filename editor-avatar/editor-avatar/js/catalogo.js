@@ -100,6 +100,19 @@ export class Catalogo {
       .sort((a, b) => orden.indexOf(a.ranura) - orden.indexOf(b.ranura));
   }
 
+  /**
+   * Qué archivo de la pieza se dibuja, si trae varios (null = todos):
+   * - indicePorRostro: según el rostro (los pendientes de Encore cuelgan de la oreja de cada uno);
+   * - indiceSinPerfilIntegrado: según el cuerpo, si la prenda de arriba NO es de perfil integrado
+   *   (el brazalete de Encore se ancla sobre la camiseta integrada);
+   * - indicePorCuerpo: según el cuerpo.
+   */
+  indiceVariante(p, avatar) {
+    if (p.indicePorRostro) return p.indicePorRostro[avatar.rostro] ?? 0;
+    const sinPerfil = p.indiceSinPerfilIntegrado && !this.pieza('ropa.arriba', avatar.ropa?.arriba)?.perfilIntegrado;
+    return (sinPerfil ? p.indiceSinPerfilIntegrado : p.indicePorCuerpo)?.[avatar.cuerpo];
+  }
+
   /** Devuelve { idCapa: 'contenido SVG' } con las piezas fijas y las elegidas. */
   contenido(avatar) {
     const salida = {};
@@ -112,7 +125,7 @@ export class Catalogo {
       // Un SVG puede reunir ropa y piel, manteniendo la ropa delante de las piernas.
       for (const capa in p.capas) {
         if (!salida[capa]) continue;
-        const indice = p.indicePorCuerpo?.[avatar.cuerpo];
+        const indice = this.indiceVariante(p, avatar);
         const elegidos = indice == null ? p.capas[capa] : [p.capas[capa][indice]];
         const partes = elegidos.map(a => {
           const svg = this.archivos.get(a);

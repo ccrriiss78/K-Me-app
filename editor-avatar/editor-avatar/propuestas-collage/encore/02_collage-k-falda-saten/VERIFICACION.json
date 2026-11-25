@@ -1,0 +1,90 @@
+{
+  "resultado": "correcto",
+  "xml": [
+    {
+      "archivo": "02_collage-k-falda-saten/svg/collage-k-falda-saten-delgado.svg",
+      "xml": "correcto",
+      "imagenesPNG": 1,
+      "ids": 4
+    },
+    {
+      "archivo": "02_collage-k-falda-saten/svg/collage-k-falda-saten-grueso.svg",
+      "xml": "correcto",
+      "imagenesPNG": 1,
+      "ids": 4
+    },
+    {
+      "archivo": "02_collage-k-falda-saten/svg/collage-k-falda-saten-medio.svg",
+      "xml": "correcto",
+      "imagenesPNG": 1,
+      "ids": 4
+    }
+  ],
+  "comprobadoFuera": [
+    {
+      "tipo": "PNG neutro con transparencia",
+      "archivo": "texturas/saten-gris-alpha.png",
+      "bytes": 17679,
+      "medidas": [
+        256,
+        256
+      ],
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Render completo dentro del lienzo",
+      "archivo": "svg/collage-k-falda-saten-delgado.svg",
+      "limites": {
+        "x": 151,
+        "y": 347,
+        "derecha": 247,
+        "abajo": 432
+      },
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Piernas y calzado actuales conservados; cota real con trazo",
+      "variante": "delgado",
+      "calzadoAbajo": 432,
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Render completo dentro del lienzo",
+      "archivo": "svg/collage-k-falda-saten-medio.svg",
+      "limites": {
+        "x": 146.33333333333334,
+        "y": 347,
+        "derecha": 254.33333333333334,
+        "abajo": 432
+      },
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Piernas y calzado actuales conservados; cota real con trazo",
+      "variante": "medio",
+      "calzadoAbajo": 432,
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Render completo dentro del lienzo",
+      "archivo": "svg/collage-k-falda-saten-grueso.svg",
+      "limites": {
+        "x": 138.33333333333334,
+        "y": 347,
+        "derecha": 262,
+        "abajo": 432
+      },
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Piernas y calzado actuales conservados; cota real con trazo",
+      "variante": "grueso",
+      "calzadoAbajo": 432,
+      "resultado": "correcto"
+    }
+  ],
+  "pendienteDeClaude": [
+    "Integración por Claude: catálogo y ranuras, editor real, todas las poses y rostros, combinación con gorro/auriculares/gafas/pin/lightstick, guardado/recarga, cuenta y canje, sello y exportación PNG/PDF."
+  ],
+  "suiteApp": "No ejecutada: esta entrega solo prepara y comprueba gráficos externos."
+}

@@ -1,0 +1,77 @@
+{
+  "familia": "collage-k-brazalete-fanchant",
+  "nombre": "Brazalete Fanchant",
+  "coleccion": "Colección K · Encore",
+  "estado": "Gráficos externos preparados; no integrado. No aplicar automáticamente este JSON.",
+  "canje": {
+    "modalidadPropuesta": "canje",
+    "precioPropuestoKpopis": 10,
+    "precioConfirmado": false,
+    "unidad": "familia completa; incluye todas las variantes corporales",
+    "gratisPropuesto": false
+  },
+  "parte": "accesorio",
+  "zona": "muneca-izquierda",
+  "color": {
+    "explicacion": "Metal neutro y estrella fucsia fija de la paleta actual; sin campo de color propio.",
+    "campoNuevoSolicitado": null
+  },
+  "miniatura": {
+    "viewBox": "112 334 61 30",
+    "soloGrupo": "accesorio"
+  },
+  "variantes": [
+    {
+      "archivo": "svg/collage-k-brazalete-fanchant-delgado.svg",
+      "variante": "delgado",
+      "bytes": 16125,
+      "sha256": "7edb6dd21a5d5ec0ee93639301a7336465cd77eec7b79a1cfbfe1b9052705a5d",
+      "cuerpo": "relajado",
+      "anclaje": "perfil-integrado"
+    },
+    {
+      "archivo": "svg/collage-k-brazalete-fanchant-camiseta-delgado.svg",
+      "variante": "camiseta-delgado",
+      "bytes": 16188,
+      "sha256": "95b6549f70f4cad587def872de6406d84b303e39966faeee8d677148934a205c",
+      "cuerpo": "relajado",
+      "anclaje": "camiseta-integrada"
+    },
+    {
+      "archivo": "svg/collage-k-brazalete-fanchant-medio.svg",
+      "variante": "medio",
+      "bytes": 16111,
+      "sha256": "debcfdf495b0abd4a4ff3548d1b58cdeb9698fc86899b15c42915cb0bf962315",
+      "cuerpo": "recto",
+      "anclaje": "perfil-integrado"
+    },
+    {
+      "archivo": "svg/collage-k-brazalete-fanchant-camiseta-medio.svg",
+      "variante": "camiseta-medio",
+      "bytes": 16174,
+      "sha256": "d832f2d8ad256eb054d3a2bec792f7e38c55395df8662ba52b601767518caccc",
+      "cuerpo": "recto",
+      "anclaje": "camiseta-integrada"
+    },
+    {
+      "archivo": "svg/collage-k-brazalete-fanchant-grueso.svg",
+      "variante": "grueso",
+      "bytes": 16118,
+      "sha256": "83199500573bef9771a0c0470e1008dbdb2d1e163b39e8b5d19b7c1396861294",
+      "cuerpo": "amplio",
+      "anclaje": "perfil-integrado"
+    },
+    {
+      "archivo": "svg/collage-k-brazalete-fanchant-camiseta-grueso.svg",
+      "variante": "camiseta-grueso",
+      "bytes": 16181,
+      "sha256": "69377de7eb2da41b94a86e3c5367f383cc6747f9bd3359213e5459d354a56941",
+      "cuerpo": "amplio",
+      "anclaje": "camiseta-integrada"
+    }
+  ],
+  "ruta": "accesorio",
+  "notaCapas": "Zona semántica propuesta. Claude debe mapearla al contrato vigente. Conservar gorro < auriculares < gafas < pin; lightstick en la mano. El lazo no reemplaza el pin existente.",
+  "rostro": "excluir del encuadre de rostro",
+  "anclaje": "Principal: brazos de perfil integrado. Alternativa camiseta: archivos con sufijo camiseta-[cuerpo]. Elegir solo un anclaje por avatar; no duplicar el brazalete."
+}

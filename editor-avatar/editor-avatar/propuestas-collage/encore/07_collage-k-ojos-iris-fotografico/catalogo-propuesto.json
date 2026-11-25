@@ -1,0 +1,54 @@
+{
+  "familia": "collage-k-ojos-iris-fotografico",
+  "nombre": "Iris fotográfico generado",
+  "ruta": "ojos.estilo",
+  "estado": "Opción adicional preparada; integración pendiente",
+  "color": "ojos.color, clase f-ojos, paleta actual. No hay campo nuevo.",
+  "miniatura": {
+    "viewBox": "125 180 150 55"
+  },
+  "variantes": [
+    {
+      "id": "collage-k-ojos-iris-fotografico-abiertos",
+      "archivo": "svg/collage-k-ojos-iris-fotografico-abiertos.svg",
+      "expresion": "abiertos",
+      "irisVisibles": 2,
+      "imagenesPNG": 1,
+      "bytes": 28277,
+      "sha256": "bffe679bcfe40c5108606a7f2f9f08f8812efcea936eb9e3af80ea662164f275"
+    },
+    {
+      "id": "collage-k-ojos-iris-fotografico-guino-izquierdo",
+      "archivo": "svg/collage-k-ojos-iris-fotografico-guino-izquierdo.svg",
+      "expresion": "guino-izquierdo",
+      "irisVisibles": 1,
+      "imagenesPNG": 1,
+      "bytes": 27541,
+      "sha256": "7d1b865d6f64189044f93368bad9f334e9eff877a6489734f70d2bdd09b1865e"
+    },
+    {
+      "id": "collage-k-ojos-iris-fotografico-guino-derecho",
+      "archivo": "svg/collage-k-ojos-iris-fotografico-guino-derecho.svg",
+      "expresion": "guino-derecho",
+      "irisVisibles": 1,
+      "imagenesPNG": 1,
+      "bytes": 27535,
+      "sha256": "3daff1cdfeac41ab2c0ebf6281c727999e7797cb7a0b93a03f1db01dffe2f718"
+    },
+    {
+      "id": "collage-k-ojos-iris-fotografico-cerrados",
+      "archivo": "svg/collage-k-ojos-iris-fotografico-cerrados.svg",
+      "expresion": "cerrados",
+      "irisVisibles": 0,
+      "imagenesPNG": 0,
+      "bytes": 541,
+      "sha256": "6f6ab4be8b5633293bcc5da7c28318bd77a4eb12754f308d5fc5a4937fb31409"
+    }
+  ],
+  "canje": {
+    "modalidadPropuesta": "gratis",
+    "precioPropuestoKpopis": 0,
+    "confirmado": false
+  },
+  "presentacion": "Propuesto como opción para el avatar de presentación; Claude debe confirmar su selección por defecto con la autora, sin cambiar creaciones guardadas."
+}

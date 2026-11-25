@@ -1,0 +1,87 @@
+{
+  "resultado": "correcto",
+  "xml": [
+    {
+      "archivo": "01_collage-k-chaqueta-cristal/svg/collage-k-chaqueta-cristal-delgado.svg",
+      "xml": "correcto",
+      "imagenesPNG": 1,
+      "ids": 4
+    },
+    {
+      "archivo": "01_collage-k-chaqueta-cristal/svg/collage-k-chaqueta-cristal-grueso.svg",
+      "xml": "correcto",
+      "imagenesPNG": 1,
+      "ids": 4
+    },
+    {
+      "archivo": "01_collage-k-chaqueta-cristal/svg/collage-k-chaqueta-cristal-medio.svg",
+      "xml": "correcto",
+      "imagenesPNG": 1,
+      "ids": 4
+    }
+  ],
+  "comprobadoFuera": [
+    {
+      "tipo": "PNG neutro con transparencia",
+      "archivo": "texturas/cristales-gris-alpha.png",
+      "bytes": 16675,
+      "medidas": [
+        192,
+        192
+      ],
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Render completo dentro del lienzo",
+      "archivo": "svg/collage-k-chaqueta-cristal-delgado.svg",
+      "limites": {
+        "x": 141.66666666666666,
+        "y": 259.3333333333333,
+        "derecha": 258.3333333333333,
+        "abajo": 376.3333333333333
+      },
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Perfil, torso y brazos actuales conservados",
+      "variante": "delgado",
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Render completo dentro del lienzo",
+      "archivo": "svg/collage-k-chaqueta-cristal-medio.svg",
+      "limites": {
+        "x": 133.66666666666666,
+        "y": 259.3333333333333,
+        "derecha": 266.3333333333333,
+        "abajo": 376.3333333333333
+      },
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Perfil, torso y brazos actuales conservados",
+      "variante": "medio",
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Render completo dentro del lienzo",
+      "archivo": "svg/collage-k-chaqueta-cristal-grueso.svg",
+      "limites": {
+        "x": 120.66666666666667,
+        "y": 259.3333333333333,
+        "derecha": 279.3333333333333,
+        "abajo": 376.3333333333333
+      },
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Perfil, torso y brazos actuales conservados",
+      "variante": "grueso",
+      "resultado": "correcto"
+    }
+  ],
+  "pendienteDeClaude": [
+    "Integración por Claude: catálogo y ranuras, editor real, todas las poses y rostros, combinación con gorro/auriculares/gafas/pin/lightstick, guardado/recarga, cuenta y canje, sello y exportación PNG/PDF."
+  ],
+  "suiteApp": "No ejecutada: esta entrega solo prepara y comprueba gráficos externos."
+}

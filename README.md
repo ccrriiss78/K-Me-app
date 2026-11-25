@@ -13,7 +13,7 @@ Proyecto de una estudiante de programación web, presentado el 1 de diciembre de
 | **Sello Studio** | Hacer un sello personal con una palabra en hangul comprobada en un diccionario oficial, uno de tus avatares o los dos, tu alias y adornos (hasta 20). Imprimirlo como photocard de 55 × 85 mm y descargarlo en PDF o PNG. |
 | **Imagen de perfil** | Elegir uno de tus avatares, uno de tus sellos o los dos. Sale en la cabecera, en un marco como el del logo, y en «Mi K-ME». |
 | **Connect** | Un muro de fans: publicar una emoción con tu diseño (una copia de tu avatar o de tu sello) y un mensaje de hasta 5 iconos, sin texto libre, y reaccionar a las publicaciones de otros fans. |
-| **Colección «K»** | La pestaña de las piezas especiales de K-ME Studio, abierta al entrar. Con el botón «Canjear Kpopis» se abre el catálogo de canje: el Top Destello y la Chaqueta Denim Collage cuestan 20 Kpopis cada una, y se puede ver cómo quedan antes de canjear. |
+| **Colección «K»** | La pestaña de las piezas especiales de K-ME Studio, abierta al entrar. Con el botón «Canjear Kpopis» se abre el catálogo de canje: el Top Destello y la Chaqueta Denim Collage cuestan 20 Kpopis cada una. La colección Encore añade seis piezas más (chaqueta, falda, pendientes, brazalete, bolso con su peluche Rizo y lazo), con precios todavía por confirmar. Antes de canjear se puede ver cómo queda cada pieza. |
 | **Mi escenario** | HANGUL LIVE 001, «Tu voz. Nuestra luz»: una miniclase de 3 expresiones en coreano y 3 preguntas. Al acertarlas por primera vez da 20 **Kpopis** y el lightstick **Luz Hangul 001**, que se guarda en «Mis tesoros». |
 
 ## Organización de la carpeta

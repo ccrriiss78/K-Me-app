@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "fecha": "2026-11-25",
+  "familia": "collage-k-chaqueta-cristal",
+  "nombre": "Chaqueta Cristal Stage",
+  "lienzo": {
+    "ancho": 400,
+    "alto": 480,
+    "viewBox": "0 0 400 480"
+  },
+  "aprobacion": "Autora: «Me gusta adelante», sobre la lámina ENCORE · PROPUESTAS de esta conversación. Los SVG adaptan el diseño al tamaño y anatomía actuales.",
+  "precioConfirmado": false,
+  "origen": {
+    "direccion": "Lámina aprobada generada con image_gen, adjunta en la entrega general.",
+    "vectores": "Dibujados por ChatGPT; anatomía y calzado reutilizados de prendas actuales de K-ME, sin modificar esos archivos.",
+    "texturas": [
+      {
+        "archivo": "texturas/cristales-gris-alpha.png",
+        "origen": "Imagen original generada con image_gen; recorte de su panel, reducción a un máximo de 256 px y conversión a luz/sombra gris con transparencia. Sin fotos de terceros.",
+        "bytes": 16675
+      }
+    ]
+  },
+  "archivos": [
+    {
+      "archivo": "catalogo-propuesto.json",
+      "bytes": 1916,
+      "sha256": "bb7d7673a483fe0bfe70422e288bbc6c342d7873edd5f7549777e9b6a5359f5a"
+    },
+    {
+      "archivo": "LEEME_PARA_CLAUDE.md",
+      "bytes": 4672,
+      "sha256": "2ea7fca8f4387581eb32463a98a1b4b3b72649a8c4c7b6e903db55e603f2b5fa"
+    },
+    {
+      "archivo": "referencias/delgado.png",
+      "bytes": 73941,
+      "sha256": "1ac6326115d92e46ea211723322ac73538c75a8fad83dec8638a17610e5ad683",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/delgado.svg",
+      "bytes": 34410,
+      "sha256": "eed63b0b6172883b7aa6428684859e711f7aafd12d4d266e8cac2514572246cb"
+    },
+    {
+      "archivo": "referencias/DETALLE.png",
+      "bytes": 42516,
+      "sha256": "109342a7930744ecfe11d80c8116eab34c6be1db5d009e2c90bedb12e34e36e6",
+      "ancho": 420,
+      "alto": 300
+    },
+    {
+      "archivo": "referencias/grueso.png",
+      "bytes": 84787,
+      "sha256": "85b303b18b11a65cd2bda94994a13b41b07addb309b98361a4dd4f8466b9a44a",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/grueso.svg",
+      "bytes": 34456,
+      "sha256": "d1a4b83caacc7ec0add3ae2479042e118ab40eb4285e51385b756f8ee39d3328"
+    },
+    {
+      "archivo": "referencias/medio.png",
+      "bytes": 74184,
+      "sha256": "aa3684be8344c631b8f61fd7b490964eb52627b5caaf70251c5894b4e4db33a8",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/medio.svg",
+      "bytes": 33793,
+      "sha256": "67c138aa8edaa373dc58d1d0938cb1a85fd2d19f8b5651523f184ba7e488f5ac"
+    },
+    {
+      "archivo": "referencias/miniatura.svg",
+      "bytes": 26944,
+      "sha256": "32754bd1d62fa9171aab39208c3355f22655b6e09ad1d5363e1ab95822623a2e"
+    },
+    {
+      "archivo": "referencias/PIEZA.png",
+      "bytes": 74552,
+      "sha256": "a65e2f1f9509e7d0f082e906a3c466f7061172d6c3e7bf538d96e872b9881547",
+      "ancho": 600,
+      "alto": 360
+    },
+    {
+      "archivo": "referencias/TRES_SILUETAS.png",
+      "bytes": 78410,
+      "sha256": "b6a32e99d3daed20350c3d8e1fd550049678cc2df90b6d7209231fd0dbaa3bfd",
+      "ancho": 1100,
+      "alto": 500
+    },
+    {
+      "archivo": "svg/collage-k-chaqueta-cristal-delgado.svg",
+      "bytes": 29361,
+      "sha256": "5476e2284213f4bc305f7ef71b1b3eee06707124259c4f477a43d7af5e7ab425"
+    },
+    {
+      "archivo": "svg/collage-k-chaqueta-cristal-grueso.svg",
+      "bytes": 29341,
+      "sha256": "0e902efb87cf43bb7be28e12ea1aba4829fa938c0235c5d60a88d3e39e3c4a34"
+    },
+    {
+      "archivo": "svg/collage-k-chaqueta-cristal-medio.svg",
+      "bytes": 28712,
+      "sha256": "d7f1c20ea6edcf844882242b9fd08b7d79dd935f15f441890bf44515c8310e89"
+    },
+    {
+      "archivo": "texturas/cristales-gris-alpha.png",
+      "bytes": 16675,
+      "sha256": "b5c768b4a2e3c78e8b60a55d13cc08cc29115f75ae27a22b2a5d8920be939322",
+      "ancho": 192,
+      "alto": 192
+    },
+    {
+      "archivo": "VERIFICACION.json",
+      "bytes": 2491,
+      "sha256": "2134c65a00a0a3653e0c9896b9de1e556599e1e91724ed90514886dcff265285"
+    }
+  ],
+  "comprobaciones": {
+    "externas": "VERIFICACION.json: XML, imágenes, neutralidad, render y geometría.",
+    "cinturas": "18 combinaciones comprobadas por muestreo central (tres cuerpos × dos cinturas × tres colores); ver COMPROBACIONES_GENERALES.json.",
+    "editor": "Pendiente de Claude; ninguna prueba de la app o exportación en navegador ejecutada."
+  }
+}

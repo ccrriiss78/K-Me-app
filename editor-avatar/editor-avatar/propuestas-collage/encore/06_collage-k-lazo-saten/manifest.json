@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "fecha": "2026-11-25",
+  "familia": "collage-k-lazo-saten",
+  "nombre": "Lazo Satén Stage",
+  "lienzo": {
+    "ancho": 400,
+    "alto": 480,
+    "viewBox": "0 0 400 480"
+  },
+  "aprobacion": "Autora: «Me gusta adelante», sobre la lámina ENCORE · PROPUESTAS de esta conversación. Los SVG adaptan el diseño al tamaño y anatomía actuales.",
+  "precioConfirmado": false,
+  "origen": {
+    "direccion": "Lámina aprobada generada con image_gen, adjunta en la entrega general.",
+    "vectores": "Dibujados por ChatGPT; anatomía y calzado reutilizados de prendas actuales de K-ME, sin modificar esos archivos.",
+    "texturas": [
+      {
+        "archivo": "texturas/saten-gris-alpha.png",
+        "origen": "Imagen original generada con image_gen; recorte de su panel, reducción a un máximo de 256 px y conversión a luz/sombra gris con transparencia. Sin fotos de terceros.",
+        "bytes": 17679
+      }
+    ]
+  },
+  "archivos": [
+    {
+      "archivo": "catalogo-propuesto.json",
+      "bytes": 1319,
+      "sha256": "c20bc8dc15fc8c91de154177168f32092fdf7c51e4f5d39a853591115999b86c"
+    },
+    {
+      "archivo": "LEEME_PARA_CLAUDE.md",
+      "bytes": 4573,
+      "sha256": "19c88a1832dbf31802e90e3b5c139e95600ae2d811727529b1bebfde703b86d4"
+    },
+    {
+      "archivo": "referencias/delgado.png",
+      "bytes": 85507,
+      "sha256": "649808bf37bb127d4f35bbe9a97246e6e83a5c3300505cd2a875918e173ca410",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/delgado.svg",
+      "bytes": 35873,
+      "sha256": "cbddd1a8fcc832ea5f6f906637bb3f8043de8d47ccb2223987f10c94b3ae8e4d"
+    },
+    {
+      "archivo": "referencias/DETALLE.png",
+      "bytes": 102757,
+      "sha256": "0c21776c63e4053388298304a89827ca42f2893d53b6fd15285c32c0e10863cf",
+      "ancho": 420,
+      "alto": 300
+    },
+    {
+      "archivo": "referencias/grueso.png",
+      "bytes": 92446,
+      "sha256": "c5f6c090800e078d1f47fec36c5122294718d75c96763923c174e41b6cb8a645",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/grueso.svg",
+      "bytes": 35903,
+      "sha256": "90388107f4f767fd10a2dacd2ddc3634538f613bdad03d22e14a56786cbd0099"
+    },
+    {
+      "archivo": "referencias/medio.png",
+      "bytes": 87128,
+      "sha256": "f876809b0b6da3646eff75a758245c9d8fa54018232ee9b39efd57411125b7f5",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/medio.svg",
+      "bytes": 35294,
+      "sha256": "4a6e2b4a93d15a9c50a3941060894cb1754d089785145dbcdc6dfe844a6bb961"
+    },
+    {
+      "archivo": "referencias/miniatura.svg",
+      "bytes": 26872,
+      "sha256": "555ceb2c792499d9be5d224df0f08272f0a7a2e6bedc3eab5e79a202e98778d5"
+    },
+    {
+      "archivo": "referencias/PIEZA.png",
+      "bytes": 142846,
+      "sha256": "86f8c4df002c889128637537f2460b3c1464727adf4e5cb663398a1b9aea4c77",
+      "ancho": 600,
+      "alto": 360
+    },
+    {
+      "archivo": "referencias/TRES_SILUETAS.png",
+      "bytes": 75970,
+      "sha256": "e2897e81089fb00b5056684c89bcd70a3421013aee9f149931c33106f9a0ec1d",
+      "ancho": 1100,
+      "alto": 500
+    },
+    {
+      "archivo": "svg/collage-k-lazo-saten.svg",
+      "bytes": 26841,
+      "sha256": "c2e111fa2c13658f93586d7177d180dfefb88346287dc3ad0f26ab8ca82ba32a"
+    },
+    {
+      "archivo": "texturas/saten-gris-alpha.png",
+      "bytes": 17679,
+      "sha256": "2237224f3cf600b57bbb34fd5c87ca6718c7f93e4116392597ebc963908bf398",
+      "ancho": 256,
+      "alto": 256
+    },
+    {
+      "archivo": "VERIFICACION.json",
+      "bytes": 1034,
+      "sha256": "69934965d5cbd588cbd8356c23ef7e7d586708d4d2d01137a6d712f7a08a64cc"
+    }
+  ],
+  "comprobaciones": {
+    "externas": "VERIFICACION.json: XML, imágenes, neutralidad, render y geometría.",
+    "cinturas": null,
+    "editor": "Pendiente de Claude; ninguna prueba de la app o exportación en navegador ejecutada."
+  }
+}

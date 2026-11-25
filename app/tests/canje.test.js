@@ -74,10 +74,19 @@ after(async () => {
   } finally { await new Promise((ok) => servidor.close(ok)); await cerrarPool(); }
 });
 
-test('El catálogo de canje tiene el Top Destello y la Chaqueta Denim Collage, a 20 Kpopis, y existen en el editor con sus tres cuerpos', () => {
-  assert.deepEqual(CANJE.map((p) => [p.familia, p.precio]), [[TOP, 20], [CHAQUETA, 20]]);
+test('El catálogo de canje: el Top Destello y la Chaqueta Denim Collage a 20 Kpopis, y Encore con sus precios propuestos; cada familia existe en el editor', () => {
+  assert.deepEqual(CANJE.map((p) => [p.familia, p.precio]), [
+    [TOP, 20], [CHAQUETA, 20],
+    // Encore (E0086): precios propuestos por ChatGPT, pendientes de que la autora los confirme.
+    ['collage-k-chaqueta-cristal', 25], ['collage-k-falda-saten', 20], ['collage-k-pendientes-cometa', 10],
+    ['collage-k-brazalete-fanchant', 10], ['collage-k-bolso-encore-rizo', 30], ['collage-k-lazo-saten', 10],
+  ]);
   const c = obtenerCatalogo();
-  for (const p of CANJE) assert.equal(c.piezas(p.ruta).filter((x) => x.familia === p.familia).length, 3, p.familia);
+  for (const p of CANJE) {
+    // La ropa, una pieza por cuerpo; un accesorio, una sola pieza con sus variantes dentro.
+    const piezas = c.piezas(p.ruta).filter((x) => (x.familia ?? x.id) === p.familia);
+    assert.equal(piezas.length, p.ruta === 'accesorio' ? 1 : 3, p.familia);
+  }
 });
 
 test('Canje en Colección «K»', { skip: !hayConfiguracion() && 'falta app/.env.local' }, async (t) => {
@@ -132,9 +141,10 @@ test('Canje en Colección «K»', { skip: !hayConfiguracion() && 'falta app/.env
   await t.test('K-ME Studio pasa al editor el catálogo de canje y las piezas que aún no tienes', async () => {
     const pagA = (await navA.pedir('/studio/avatares/nuevo')).html;
     assert.match(pagA, /data-url-canje="\/studio\/coleccion-k"/);
-    assert.match(pagA, /data-bloqueadas="\[&#34;collage-chaqueta-denim&#34;\]"/, 'A ya tiene el top: solo falta la chaqueta');
+    const bloqueadas = (html) => JSON.parse(/data-bloqueadas="([^"]+)"/.exec(html)[1].replace(/&#34;/g, '"'));
+    assert.deepEqual(bloqueadas(pagA), CANJE.map((p) => p.familia).filter((f) => f !== TOP), 'A ya tiene el top: le faltan las demás');
     const pagB = (await navB.pedir('/studio/avatares/nuevo')).html;
-    assert.match(pagB, /data-bloqueadas="\[&#34;collage-top-lentejuelas&#34;,&#34;collage-chaqueta-denim&#34;\]"/);
+    assert.deepEqual(bloqueadas(pagB), CANJE.map((p) => p.familia), 'B no tiene ninguna');
     // Un avatar nuevo empieza con el de presentación: especiales gratis, válido y sin piezas de canje.
     const presentacion = JSON.parse(/data-presentacion="([^"]+)"/.exec(pagB)[1].replace(/&#34;/g, '"'));
     assert.equal(presentacion.accesorio, 'collage-gorro-punto');

@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "fecha": "2026-11-25",
+  "familia": "collage-k-falda-saten",
+  "nombre": "Falda Satén Encore",
+  "lienzo": {
+    "ancho": 400,
+    "alto": 480,
+    "viewBox": "0 0 400 480"
+  },
+  "aprobacion": "Autora: «Me gusta adelante», sobre la lámina ENCORE · PROPUESTAS de esta conversación. Los SVG adaptan el diseño al tamaño y anatomía actuales.",
+  "precioConfirmado": false,
+  "origen": {
+    "direccion": "Lámina aprobada generada con image_gen, adjunta en la entrega general.",
+    "vectores": "Dibujados por ChatGPT; anatomía y calzado reutilizados de prendas actuales de K-ME, sin modificar esos archivos.",
+    "texturas": [
+      {
+        "archivo": "texturas/saten-gris-alpha.png",
+        "origen": "Imagen original generada con image_gen; recorte de su panel, reducción a un máximo de 256 px y conversión a luz/sombra gris con transparencia. Sin fotos de terceros.",
+        "bytes": 17679
+      }
+    ]
+  },
+  "archivos": [
+    {
+      "archivo": "catalogo-propuesto.json",
+      "bytes": 1685,
+      "sha256": "cc1e8c6457f47d2bec8b26e2a34400a56db6cfe13ff3ee304e800581dd9141a8"
+    },
+    {
+      "archivo": "LEEME_PARA_CLAUDE.md",
+      "bytes": 4595,
+      "sha256": "ea5dae42a7aef7321b1d5f45eeb0eec6b798f7c87c2b6326b454c1aac265e3f8"
+    },
+    {
+      "archivo": "referencias/delgado.png",
+      "bytes": 75324,
+      "sha256": "728f777ac3ba63024717d6e63da51abe768bad680fd06a091cea9da4ac15a2e5",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/delgado.svg",
+      "bytes": 36472,
+      "sha256": "d13a946d8d664b05e6d9bfabfd924c5516feb0700bc8936ef9780114296619d1"
+    },
+    {
+      "archivo": "referencias/DETALLE.png",
+      "bytes": 41322,
+      "sha256": "ce8b88b3453f84c3dfd76c54ef0c94d8d984458ea07da5e0e35e104ddbf1d2d6",
+      "ancho": 420,
+      "alto": 300
+    },
+    {
+      "archivo": "referencias/grueso.png",
+      "bytes": 85332,
+      "sha256": "5c9332904992ded20c9c5c5f013ace43b44ef80fe2258302ece73200818535ac",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/grueso.svg",
+      "bytes": 36492,
+      "sha256": "98b6546d948c3caa7786a2a12cff617d1d9dfd0884857388f584a5bde5dfb9ab"
+    },
+    {
+      "archivo": "referencias/medio.png",
+      "bytes": 78750,
+      "sha256": "eaa03a3a197d9d039019aa6d8be4501a37a841893d7857c99875d273a0e84cab",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/medio.svg",
+      "bytes": 35870,
+      "sha256": "bd47a70cec50e4adbaaa34d280a67c57a64e6e0b46ba13f0d8a4b6a110253eea"
+    },
+    {
+      "archivo": "referencias/miniatura.svg",
+      "bytes": 27977,
+      "sha256": "96f7711443b4fbc6bd21110218f38f8f701683508b6d7b599ff815cb31c6154f"
+    },
+    {
+      "archivo": "referencias/PIEZA.png",
+      "bytes": 68581,
+      "sha256": "93700a9b4c5c1eb8c19248b18ddfa1f6becd037b5ac5d846b027c6feddf1eb1f",
+      "ancho": 600,
+      "alto": 360
+    },
+    {
+      "archivo": "referencias/TRES_SILUETAS.png",
+      "bytes": 79036,
+      "sha256": "bdbd021a5ccbfa1b6106fc0da4206df00c403bc6c55f838dcdffedd9a37ff343",
+      "ancho": 1100,
+      "alto": 500
+    },
+    {
+      "archivo": "svg/collage-k-falda-saten-delgado.svg",
+      "bytes": 28786,
+      "sha256": "e24b9091c22a06c6e8d6036bb3bcdbf251ac925dd5dfa122a185ee6d6f52ab26"
+    },
+    {
+      "archivo": "svg/collage-k-falda-saten-grueso.svg",
+      "bytes": 28774,
+      "sha256": "b90cde9bb3a5fbc78c3eea64cf1b500284c5a433c1a839f0a105c97f57934089"
+    },
+    {
+      "archivo": "svg/collage-k-falda-saten-medio.svg",
+      "bytes": 28759,
+      "sha256": "5a5ef1352295291121e60e538598ce6a38f496b26c4e6ad6779937cd8bf13c4c"
+    },
+    {
+      "archivo": "texturas/saten-gris-alpha.png",
+      "bytes": 17679,
+      "sha256": "2237224f3cf600b57bbb34fd5c87ca6718c7f93e4116392597ebc963908bf398",
+      "ancho": 256,
+      "alto": 256
+    },
+    {
+      "archivo": "VERIFICACION.json",
+      "bytes": 2445,
+      "sha256": "07dacbec791c881b6cdbe137a318db17a40702838672e6026c2a29fb0651b7d3"
+    }
+  ],
+  "comprobaciones": {
+    "externas": "VERIFICACION.json: XML, imágenes, neutralidad, render y geometría.",
+    "cinturas": null,
+    "editor": "Pendiente de Claude; ninguna prueba de la app o exportación en navegador ejecutada."
+  }
+}

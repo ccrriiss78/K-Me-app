@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "fecha": "2026-11-25",
+  "familia": "collage-k-bolso-encore-rizo",
+  "nombre": "Bolso Encore + Rizo",
+  "lienzo": {
+    "ancho": 400,
+    "alto": 480,
+    "viewBox": "0 0 400 480"
+  },
+  "aprobacion": "Autora: «Me gusta adelante», sobre la lámina ENCORE · PROPUESTAS de esta conversación. Los SVG adaptan el diseño al tamaño y anatomía actuales.",
+  "precioConfirmado": false,
+  "origen": {
+    "direccion": "Lámina aprobada generada con image_gen, adjunta en la entrega general.",
+    "vectores": "Dibujados por ChatGPT; anatomía y calzado reutilizados de prendas actuales de K-ME, sin modificar esos archivos.",
+    "texturas": [
+      {
+        "archivo": "texturas/saten-gris-alpha.png",
+        "origen": "Imagen original generada con image_gen; recorte de su panel, reducción a un máximo de 256 px y conversión a luz/sombra gris con transparencia. Sin fotos de terceros.",
+        "bytes": 17679
+      },
+      {
+        "archivo": "texturas/rizo-gris-alpha.png",
+        "origen": "Peluche de personaje ficticio generado con image_gen a partir de la lámina aprobada; fondo transparente original, reducción técnica y neutralización exacta RGB.",
+        "bytes": 18929
+      }
+    ]
+  },
+  "archivos": [
+    {
+      "archivo": "catalogo-propuesto.json",
+      "bytes": 2063,
+      "sha256": "2abc79b1bd38ffb2e34f542d192ef3f5c1bb083e8d9267c33632f129e2b5e4e9"
+    },
+    {
+      "archivo": "LEEME_PARA_CLAUDE.md",
+      "bytes": 4961,
+      "sha256": "1ea92fa5161ca1ae318bf8858c60eb7ab23914d6d9c1805340c382be58abb4d1"
+    },
+    {
+      "archivo": "referencias/delgado.png",
+      "bytes": 88273,
+      "sha256": "e6d284916d733e54d35656cd121cdef04b1e09166631ab591c9e936c25605ccd",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/delgado.svg",
+      "bytes": 62724,
+      "sha256": "bb85abe0bb66fb8ec7b1ccd136135bf57b5aaa145602d7ab906666caa83f635b"
+    },
+    {
+      "archivo": "referencias/DETALLE.png",
+      "bytes": 44331,
+      "sha256": "7db43b0a0e67b09999600082ac22250a8f5d45345b215987c1c0e7f55cec3eef",
+      "ancho": 420,
+      "alto": 300
+    },
+    {
+      "archivo": "referencias/grueso.png",
+      "bytes": 94587,
+      "sha256": "fcbd38d1da37fd51258a4962e211d4387b066c7c06d99823f7db558b4a8d42c0",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/grueso.svg",
+      "bytes": 62744,
+      "sha256": "3343dc2ac17857bf33ca323d47c93b1be050990307dcf79d60703d6dabb3707b"
+    },
+    {
+      "archivo": "referencias/medio.png",
+      "bytes": 90482,
+      "sha256": "fd381143a835504659fc5c30750c94a3ce6556822de518b7540b37a27f61b9ce",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/medio.svg",
+      "bytes": 62123,
+      "sha256": "6e4107ac55f5b18802335dd194b80b5e8ff9f8834213f3db3e5926f0e17addfa"
+    },
+    {
+      "archivo": "referencias/miniatura.svg",
+      "bytes": 53721,
+      "sha256": "c5098c4d1c4b8e0c8216d8fe6abbfce12f2ea0b2c32c049d7af4f4009f200b75"
+    },
+    {
+      "archivo": "referencias/PIEZA.png",
+      "bytes": 60711,
+      "sha256": "4a5bbabb78368cee6fba3b8834ef122f265d43a1d8be516f0bf5df170ab53a92",
+      "ancho": 600,
+      "alto": 360
+    },
+    {
+      "archivo": "referencias/TRES_SILUETAS.png",
+      "bytes": 89382,
+      "sha256": "7b6b68cccd4ff0cf669311019ae351501f7834e561102e2feeafb974df328fd0",
+      "ancho": 1100,
+      "alto": 500
+    },
+    {
+      "archivo": "svg/collage-k-bolso-encore-rizo-delgado.svg",
+      "bytes": 53707,
+      "sha256": "3a30c6d334ac7b7965e578cf9652a820025e2aede18af025134bb407ab0b1c45"
+    },
+    {
+      "archivo": "svg/collage-k-bolso-encore-rizo-grueso.svg",
+      "bytes": 53696,
+      "sha256": "ddb389677b4f229cd3d4bd4bcb046b107f5f5b943c65bf0a321d14a83334dedb"
+    },
+    {
+      "archivo": "svg/collage-k-bolso-encore-rizo-medio.svg",
+      "bytes": 53683,
+      "sha256": "6ab21165ed05c2ef66141e589ba21f5cd28e2d1129b7ea95b98cd9b34695752d"
+    },
+    {
+      "archivo": "texturas/rizo-gris-alpha.png",
+      "bytes": 18929,
+      "sha256": "6de0242b780eb2b0d2b1597910f8dc18d4f7a9c7d409f0f677ef959f19313a52",
+      "ancho": 112,
+      "alto": 145
+    },
+    {
+      "archivo": "texturas/saten-gris-alpha.png",
+      "bytes": 17679,
+      "sha256": "2237224f3cf600b57bbb34fd5c87ca6718c7f93e4116392597ebc963908bf398",
+      "ancho": 256,
+      "alto": 256
+    },
+    {
+      "archivo": "VERIFICACION.json",
+      "bytes": 2271,
+      "sha256": "ea7955324fc679512e20704bc79a9a520cee4aaa63b8a72accb0d639999d5f3c"
+    }
+  ],
+  "comprobaciones": {
+    "externas": "VERIFICACION.json: XML, imágenes, neutralidad, render y geometría.",
+    "cinturas": null,
+    "editor": "Pendiente de Claude; ninguna prueba de la app o exportación en navegador ejecutada."
+  }
+}

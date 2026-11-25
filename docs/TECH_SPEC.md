@@ -1,6 +1,6 @@
 # TECH_SPEC · K-ME
 
-**Estado:** versión 1.27 · 25/11/2026 · Responde al pendiente T012 de `BITACORA_KME.md`. Revisada con la autora: acepta las propuestas de Q1 a Q6 y decide Q7 a Q10 con cambios (ver §6). El 18/11 decide Q11, el alcance del MVP (§5.1) y los nombres de los logos (§4.0). El 19/11 sustituye el círculo cromático por la paleta de la app (§2.5). El 21/11 separa el usuario privado del alias público y añade el registro por formulario (§1). Ese mismo día se incorporan las decisiones del editor de avatar trabajadas con ChatGPT en otra carpeta (§2.2, §2.6, §3.3), y se decide que «Mi ambiente» también usa solo la paleta (§2.6, Q14). El 22/11 decide qué lleva el sello (§4.1, D041), protege el alias frente a palabras ofensivas (§1, D042), aprueba el catálogo de hangul comprobado (§4.2, D043), y decide que la imagen de perfil pueda ser un avatar, un sello o los dos (D044) y que el sello se pueda imprimir y descargar (D045). El 22 y 23/11 amplía la paleta del sello con colores vivos (D046). El 23/11 elige de momento la composición A+C para sellos y exige coherencia del tratamiento visual entre pantallas (§2.7, D047). El 24/11 decide guardar la imagen de perfil como referencia, con dos claves foráneas (§4.3, D055), borrar varios o todos (§3.6, D058) y cómo va Avatar Studio dentro de la app (§3.6, D059). Ese mismo día aprueba los textos, los dibujos, la regla y el sitio de HANGUL LIVE 001, los Kpopis y «Mis tesoros» (§5.2, D066).
+**Estado:** versión 1.30 · 25/11/2026 · Responde al pendiente T012 de `BITACORA_KME.md`. Revisada con la autora: acepta las propuestas de Q1 a Q6 y decide Q7 a Q10 con cambios (ver §6). El 18/11 decide Q11, el alcance del MVP (§5.1) y los nombres de los logos (§4.0). El 19/11 sustituye el círculo cromático por la paleta de la app (§2.5). El 21/11 separa el usuario privado del alias público y añade el registro por formulario (§1). Ese mismo día se incorporan las decisiones del editor de avatar trabajadas con ChatGPT en otra carpeta (§2.2, §2.6, §3.3), y se decide que «Mi ambiente» también usa solo la paleta (§2.6, Q14). El 22/11 decide qué lleva el sello (§4.1, D041), protege el alias frente a palabras ofensivas (§1, D042), aprueba el catálogo de hangul comprobado (§4.2, D043), y decide que la imagen de perfil pueda ser un avatar, un sello o los dos (D044) y que el sello se pueda imprimir y descargar (D045). El 22 y 23/11 amplía la paleta del sello con colores vivos (D046). El 23/11 elige de momento la composición A+C para sellos y exige coherencia del tratamiento visual entre pantallas (§2.7, D047). El 24/11 decide guardar la imagen de perfil como referencia, con dos claves foráneas (§4.3, D055), borrar varios o todos (§3.6, D058) y cómo va Avatar Studio dentro de la app (§3.6, D059). Ese mismo día aprueba los textos, los dibujos, la regla y el sitio de HANGUL LIVE 001, los Kpopis y «Mis tesoros» (§5.2, D066).
 
 Este documento dice **qué se construye y cómo**. La bitácora dice qué ha pasado y por qué; `CLAUDE.md` dice cómo trabaja el agente.
 
@@ -130,6 +130,14 @@ Cada punto lleva una etiqueta:
       - **Al guardar un avatar:** el servidor rechaza una pieza de canje que no es tuya (403).
       - **Piezas de canje:** el Top Destello y la Chaqueta Denim Collage, a 20 Kpopis (`src/catalogos/canje.js`).
       - **Presentación:** un avatar nuevo empieza con especiales gratis (`src/catalogos/presentacion.js`).
+    - **[DECIDIDO 25/11, D075; hecho en E0086] Colección Encore:** seis familias especiales de canje, solo en Colección «K» (`collage-encore`). Notas de integración en `editor-avatar/editor-avatar/propuestas-collage/encore/INTEGRADO.md`.
+      - **Ropa:** Chaqueta Cristal Stage y Falda Satén Encore, una por cuerpo, con los colores de la ropa.
+      - **Accesorios** (sin color propio): Pendientes Cometa (ranura `orejas`), Brazalete Fanchant (`muneca`), Bolso Encore con Rizo (`bolso`, una sola pieza) y Lazo Satén Stage (en la ranura del `pin`, porque se pisan). Orden de capas: gorro, orejas, auriculares, gafas, pin, bolso, muñeca, mano.
+      - **Variantes:** `indicePorRostro` (los pendientes, con una copia para el rostro ovalado) e `indiceSinPerfilIntegrado` (el brazalete sobre la camiseta integrada).
+      - **Rostro:** el recorte del rostro solo lleva los accesorios de la cabeza.
+      - **[PREGUNTA]** Los precios propuestos (25, 20, 10, 10, 30 y 10 Kpopis), sin confirmar.
+      - **[DECIDIDO 25/11, D076]** El filtro de la vista previa del sello admite 16 imágenes por dibujo (lo más cargado del catálogo llega a 12); un test avisa si un lote nuevo lo supera.
+      - **[PROPUESTA]** El lote 07 (iris fotográfico), guardado sin integrar.
     - **[DECIDIDO 25/11, D071; hecho en E0084] Varios accesorios a la vez:** todos combinables, en un orden fijo de capas.
       - **Receta:** `accesorio` es el último elegido y `accesoriosExtra`, la lista de los demás (`[]` por defecto). Un avatar con uno solo se guarda igual que antes; no hace falta migración.
       - **Catálogo:** `ranurasAccesorio` fija el orden de dibujo (gorro, auriculares, gafas, pin, mano) y cada accesorio declara su `ranura`. Dos de la misma ranura no van a la vez: el nuevo sustituye al anterior. Un accesorio nuevo tiene que traer su ranura.
@@ -159,6 +167,7 @@ Cada punto lleva una etiqueta:
 - **[DECIDIDO 24/11, D054]** Plan hasta la presentación del **1 de diciembre de 2026**:
   - primero, la demo de principio a fin: cuenta, Avatar Studio, sello con su avatar, imagen de perfil, Connect con el diseño de cada fan e impresión;
   - retos, monedas, eventos y lightsticks, si da tiempo; si no, se presentan como ideas de futuro.
+- **[PROPUESTA, P029]** Guion de la demo y plan B (`docs/GUION_DEMO.md`): el recorrido de unos 10 minutos y el plan B por niveles (capturas, el editor sin servidor, vídeo del ensayo). Las capturas las genera `privado/plan-b/capturas-plan-b.mjs`, fuera de Git, después de congelar. Pendiente de la autora.
 
 ---
 
@@ -719,3 +728,6 @@ Este documento **se puede cambiar** cuando la app avance. Cada cambio se hace as
 | 1.25 | 25/11/2026 | §2.7: lote collage 05 (D073), falda con botas de piel; el selector de calzado, después del 1/12. |
 | 1.26 | 25/11/2026 | §2.7: Colección «K» y canje de Kpopis (D074): pestaña, catálogo, rutas, migración 010, propiedad al guardar y avatar de presentación. |
 | 1.27 | 25/11/2026 | §2.7: varios accesorios a la vez (D071), de pregunta a decidido y hecho: `accesoriosExtra`, ranuras y regla común. |
+| 1.28 | 25/11/2026 | §2: propuesta P029, guion de la demo y plan B. |
+| 1.29 | 25/11/2026 | §2.7: Colección Encore (D075), con sus ranuras y variantes; preguntas abiertas sobre los precios y el límite de imágenes del sello. |
+| 1.30 | 25/11/2026 | §2.7: el filtro del sello admite 16 imágenes (D076). |

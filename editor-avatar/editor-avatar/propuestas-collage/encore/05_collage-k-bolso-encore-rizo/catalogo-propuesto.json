@@ -1,0 +1,62 @@
+{
+  "familia": "collage-k-bolso-encore-rizo",
+  "nombre": "Bolso Encore + Rizo",
+  "coleccion": "Colección K · Encore",
+  "estado": "Gráficos externos preparados; no integrado. No aplicar automáticamente este JSON.",
+  "canje": {
+    "modalidadPropuesta": "canje",
+    "precioPropuestoKpopis": 30,
+    "precioConfirmado": false,
+    "unidad": "familia completa; incluye todas las variantes corporales",
+    "gratisPropuesto": false
+  },
+  "parte": "accesorio",
+  "zona": "bolso",
+  "color": {
+    "explicacion": "Bolso tinta, correa y portaphotocard fucsias de la paleta actual; Rizo gris. Sin campo de color propio.",
+    "campoNuevoSolicitado": null
+  },
+  "miniatura": {
+    "viewBox": "215 289 133 115",
+    "soloGrupo": "accesorio"
+  },
+  "variantes": [
+    {
+      "archivo": "svg/collage-k-bolso-encore-rizo-delgado.svg",
+      "variante": "delgado",
+      "bytes": 53707,
+      "sha256": "3a30c6d334ac7b7965e578cf9652a820025e2aede18af025134bb407ab0b1c45",
+      "cuerpo": "relajado",
+      "conjuntoIndivisible": true
+    },
+    {
+      "archivo": "svg/collage-k-bolso-encore-rizo-medio.svg",
+      "variante": "medio",
+      "bytes": 53683,
+      "sha256": "6ab21165ed05c2ef66141e589ba21f5cd28e2d1129b7ea95b98cd9b34695752d",
+      "cuerpo": "recto",
+      "conjuntoIndivisible": true
+    },
+    {
+      "archivo": "svg/collage-k-bolso-encore-rizo-grueso.svg",
+      "variante": "grueso",
+      "bytes": 53696,
+      "sha256": "ddb389677b4f229cd3d4bd4bcb046b107f5f5b943c65bf0a321d14a83334dedb",
+      "cuerpo": "amplio",
+      "conjuntoIndivisible": true
+    }
+  ],
+  "ruta": "accesorio",
+  "notaCapas": "Zona semántica propuesta. Claude debe mapearla al contrato vigente. Conservar gorro < auriculares < gafas < pin; lightstick en la mano. El lazo no reemplaza el pin existente.",
+  "rostro": "excluir del encuadre de rostro",
+  "conjunto": {
+    "componentes": [
+      "bolso",
+      "portaphotocard ficticia",
+      "peluche Rizo"
+    ],
+    "unaFamilia": true,
+    "noCobrarComponentesPorSeparado": true,
+    "tarjetaPersonalizable": false
+  }
+}

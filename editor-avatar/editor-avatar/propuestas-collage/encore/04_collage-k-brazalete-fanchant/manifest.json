@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "fecha": "2026-11-25",
+  "familia": "collage-k-brazalete-fanchant",
+  "nombre": "Brazalete Fanchant",
+  "lienzo": {
+    "ancho": 400,
+    "alto": 480,
+    "viewBox": "0 0 400 480"
+  },
+  "aprobacion": "Autora: «Me gusta adelante», sobre la lámina ENCORE · PROPUESTAS de esta conversación. Los SVG adaptan el diseño al tamaño y anatomía actuales.",
+  "precioConfirmado": false,
+  "origen": {
+    "direccion": "Lámina aprobada generada con image_gen, adjunta en la entrega general.",
+    "vectores": "Dibujados por ChatGPT; anatomía y calzado reutilizados de prendas actuales de K-ME, sin modificar esos archivos.",
+    "texturas": [
+      {
+        "archivo": "texturas/metal-gris-alpha.png",
+        "origen": "Imagen original generada con image_gen; recorte de su panel, reducción a un máximo de 256 px y conversión a luz/sombra gris con transparencia. Sin fotos de terceros.",
+        "bytes": 10698
+      }
+    ]
+  },
+  "archivos": [
+    {
+      "archivo": "catalogo-propuesto.json",
+      "bytes": 2897,
+      "sha256": "f440db86330351389519c1f1f3ec3b06e7324817059c74235196736cafd3cc1c"
+    },
+    {
+      "archivo": "LEEME_PARA_CLAUDE.md",
+      "bytes": 5338,
+      "sha256": "07496d8f65db37bfc0562ad20b37f85a457cd888c4d7956fa0c03876405b1bda"
+    },
+    {
+      "archivo": "referencias/delgado.png",
+      "bytes": 63050,
+      "sha256": "5b28998eb5aaad0c784a0b017ab8ebcdfe5c9e5e52d168cf698e754856555d63",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/delgado.svg",
+      "bytes": 25067,
+      "sha256": "06ead9e904e47df28b72d8928cc25d1ad7e901987b9b3f17fca76e3324dd0d0e"
+    },
+    {
+      "archivo": "referencias/DETALLE.png",
+      "bytes": 19526,
+      "sha256": "331d8e14cbf28eee3f972fd97fb1ec0624d5f544c6996c40e16dc7f419cf88cd",
+      "ancho": 420,
+      "alto": 300
+    },
+    {
+      "archivo": "referencias/grueso.png",
+      "bytes": 69969,
+      "sha256": "5a23c8cba4f9279db44c9f958dad393335ee8842db129e1f19b2f4c22ee88bc8",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/grueso.svg",
+      "bytes": 25096,
+      "sha256": "b7d28f6a05f1ef98dc53adc1378a0668d6b99b3f03e3018bf0fa155c6ad2df42"
+    },
+    {
+      "archivo": "referencias/medio.png",
+      "bytes": 65262,
+      "sha256": "f17adee456c6de9404ff8bf2282873a0de891847ff376c0266d6809ae60b6b94",
+      "ancho": 800,
+      "alto": 960
+    },
+    {
+      "archivo": "referencias/medio.svg",
+      "bytes": 24486,
+      "sha256": "a81cca5dda2572436ffd909978c2c3f3c649e478a28665ce10a62967dbd0ce9b"
+    },
+    {
+      "archivo": "referencias/miniatura.svg",
+      "bytes": 16144,
+      "sha256": "06febd1c00c1c4e88d65efe86fd0c43a9d4ac6e919decfe28a052968e66e90ce"
+    },
+    {
+      "archivo": "referencias/PIEZA.png",
+      "bytes": 32073,
+      "sha256": "cb779180f587d9209283622a48d4037401787cdf2d6d69b1a5604f46482d5401",
+      "ancho": 600,
+      "alto": 360
+    },
+    {
+      "archivo": "referencias/TRES_SILUETAS.png",
+      "bytes": 72048,
+      "sha256": "0c28ec6609a17b437992e5b59269ce0f3132591b21a741441e41b173c82f8c28",
+      "ancho": 1100,
+      "alto": 500
+    },
+    {
+      "archivo": "svg/collage-k-brazalete-fanchant-camiseta-delgado.svg",
+      "bytes": 16188,
+      "sha256": "95b6549f70f4cad587def872de6406d84b303e39966faeee8d677148934a205c"
+    },
+    {
+      "archivo": "svg/collage-k-brazalete-fanchant-camiseta-grueso.svg",
+      "bytes": 16181,
+      "sha256": "69377de7eb2da41b94a86e3c5367f383cc6747f9bd3359213e5459d354a56941"
+    },
+    {
+      "archivo": "svg/collage-k-brazalete-fanchant-camiseta-medio.svg",
+      "bytes": 16174,
+      "sha256": "d832f2d8ad256eb054d3a2bec792f7e38c55395df8662ba52b601767518caccc"
+    },
+    {
+      "archivo": "svg/collage-k-brazalete-fanchant-delgado.svg",
+      "bytes": 16125,
+      "sha256": "7edb6dd21a5d5ec0ee93639301a7336465cd77eec7b79a1cfbfe1b9052705a5d"
+    },
+    {
+      "archivo": "svg/collage-k-brazalete-fanchant-grueso.svg",
+      "bytes": 16118,
+      "sha256": "83199500573bef9771a0c0470e1008dbdb2d1e163b39e8b5d19b7c1396861294"
+    },
+    {
+      "archivo": "svg/collage-k-brazalete-fanchant-medio.svg",
+      "bytes": 16111,
+      "sha256": "debcfdf495b0abd4a4ff3548d1b58cdeb9698fc86899b15c42915cb0bf962315"
+    },
+    {
+      "archivo": "texturas/metal-gris-alpha.png",
+      "bytes": 10698,
+      "sha256": "4ee28b48486f04a74ac6721bc8df252360f48fd435c8c0b40f5b419b2b7a3053",
+      "ancho": 256,
+      "alto": 256
+    },
+    {
+      "archivo": "VERIFICACION.json",
+      "bytes": 3486,
+      "sha256": "f025d70688e14693db572803c145adcfd93b3a8fa8c7c8b7a45a450cd7ef730e"
+    }
+  ],
+  "comprobaciones": {
+    "externas": "VERIFICACION.json: XML, imágenes, neutralidad, render y geometría.",
+    "cinturas": null,
+    "editor": "Pendiente de Claude; ninguna prueba de la app o exportación en navegador ejecutada."
+  }
+}

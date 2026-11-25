@@ -1,0 +1,123 @@
+{
+  "resultado": "correcto",
+  "xml": [
+    {
+      "archivo": "04_collage-k-brazalete-fanchant/svg/collage-k-brazalete-fanchant-camiseta-delgado.svg",
+      "xml": "correcto",
+      "imagenesPNG": 1,
+      "ids": 3
+    },
+    {
+      "archivo": "04_collage-k-brazalete-fanchant/svg/collage-k-brazalete-fanchant-camiseta-grueso.svg",
+      "xml": "correcto",
+      "imagenesPNG": 1,
+      "ids": 3
+    },
+    {
+      "archivo": "04_collage-k-brazalete-fanchant/svg/collage-k-brazalete-fanchant-camiseta-medio.svg",
+      "xml": "correcto",
+      "imagenesPNG": 1,
+      "ids": 3
+    },
+    {
+      "archivo": "04_collage-k-brazalete-fanchant/svg/collage-k-brazalete-fanchant-delgado.svg",
+      "xml": "correcto",
+      "imagenesPNG": 1,
+      "ids": 3
+    },
+    {
+      "archivo": "04_collage-k-brazalete-fanchant/svg/collage-k-brazalete-fanchant-grueso.svg",
+      "xml": "correcto",
+      "imagenesPNG": 1,
+      "ids": 3
+    },
+    {
+      "archivo": "04_collage-k-brazalete-fanchant/svg/collage-k-brazalete-fanchant-medio.svg",
+      "xml": "correcto",
+      "imagenesPNG": 1,
+      "ids": 3
+    }
+  ],
+  "comprobadoFuera": [
+    {
+      "tipo": "PNG neutro con transparencia",
+      "archivo": "texturas/metal-gris-alpha.png",
+      "bytes": 10698,
+      "medidas": [
+        256,
+        256
+      ],
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Render completo dentro del lienzo",
+      "archivo": "svg/collage-k-brazalete-fanchant-delgado.svg",
+      "limites": {
+        "x": 142.66666666666666,
+        "y": 338,
+        "derecha": 165,
+        "abajo": 359.6666666666667
+      },
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Render completo dentro del lienzo",
+      "archivo": "svg/collage-k-brazalete-fanchant-camiseta-delgado.svg",
+      "limites": {
+        "x": 134.66666666666666,
+        "y": 338,
+        "derecha": 157,
+        "abajo": 359.6666666666667
+      },
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Render completo dentro del lienzo",
+      "archivo": "svg/collage-k-brazalete-fanchant-medio.svg",
+      "limites": {
+        "x": 130.66666666666666,
+        "y": 338,
+        "derecha": 153,
+        "abajo": 359.6666666666667
+      },
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Render completo dentro del lienzo",
+      "archivo": "svg/collage-k-brazalete-fanchant-camiseta-medio.svg",
+      "limites": {
+        "x": 126.66666666666667,
+        "y": 338,
+        "derecha": 149,
+        "abajo": 359.6666666666667
+      },
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Render completo dentro del lienzo",
+      "archivo": "svg/collage-k-brazalete-fanchant-grueso.svg",
+      "limites": {
+        "x": 118.66666666666667,
+        "y": 338,
+        "derecha": 141,
+        "abajo": 359.6666666666667
+      },
+      "resultado": "correcto"
+    },
+    {
+      "tipo": "Render completo dentro del lienzo",
+      "archivo": "svg/collage-k-brazalete-fanchant-camiseta-grueso.svg",
+      "limites": {
+        "x": 118.66666666666667,
+        "y": 338,
+        "derecha": 141,
+        "abajo": 359.6666666666667
+      },
+      "resultado": "correcto"
+    }
+  ],
+  "pendienteDeClaude": [
+    "Integración por Claude: catálogo y ranuras, editor real, todas las poses y rostros, combinación con gorro/auriculares/gafas/pin/lightstick, guardado/recarga, cuenta y canje, sello y exportación PNG/PDF."
+  ],
+  "suiteApp": "No ejecutada: esta entrega solo prepara y comprueba gráficos externos."
+}

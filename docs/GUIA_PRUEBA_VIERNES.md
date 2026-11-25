@@ -1,6 +1,6 @@
 # Guía de la prueba en el navegador · viernes 27/11/2026
 
-Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu navegador (T024, T030, T036, T039, T040, T041, T043, T044, T045, T046 y T047). Todo está probado con tests y en Chrome sin ventana por el asistente, **pero no por ti**: esta prueba es la que cuenta.
+Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu navegador (T024, T030, T036, T039, T040, T041, T043, T044, T045, T046, T047 y T048). Todo está probado con tests y en Chrome sin ventana por el asistente, **pero no por ti**: esta prueba es la que cuenta.
 
 - ★ = sale en la demo del 1/12. Si vas justa de tiempo, haz primero lo marcado.
 - Si algo falla: haz una captura, apunta el número del paso y sigue. Al final me pasas la lista.
@@ -35,6 +35,17 @@ Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu nave
 - [ ] ★ Vuelve al editor → el top sale en la pestaña «K»; la chaqueta, no.
 - [ ] «Mi K-ME» → «Mis Kpopis»: «−20 Kpopis · Canje: Top Destello».
 - [ ] **Decide:** los precios y las próximas piezas de canje.
+
+## 3b. Colección Encore (T048)
+
+- [ ] ★ En el catálogo de canje salen las seis piezas de Encore, con su precio propuesto y su vista previa. Con 10 Kpopis, canjea los pendientes o el lazo.
+- [ ] Para probar las seis sin gastar: pídeme que se las dé a tu cuenta de prueba, como en los tests.
+- [ ] ★ En «K»: la chaqueta y la falda de tu cuerpo, y los cuatro accesorios. Póntelos todos a la vez.
+- [ ] Cambia de cuerpo («Cuerpo») y de rostro («Cara»): la ropa cambia de variante; los pendientes cuelgan de la oreja también con el rostro ovalado; el brazalete va en la muñeca.
+- [ ] El lazo y el pin: al poner uno se quita el otro.
+- [ ] Guarda, vuelve a abrir, haz un sello «Cuerpo entero» y descarga la photocard en PDF.
+- [ ] Haz un sello «Cuerpo entero» con un avatar muy cargado (las seis piezas de Encore y más accesorios): la vista previa se actualiza (el límite ya es de 16 imágenes).
+- [ ] **Decide:** los precios y los ojos del lote 07.
 
 ## 4. Avatar Studio (T040, T044, T045, T047)
 

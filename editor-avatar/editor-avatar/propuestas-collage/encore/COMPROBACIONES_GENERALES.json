@@ -1,0 +1,190 @@
+{
+  "fecha": "2026-11-25",
+  "externas": [
+    {
+      "familia": "collage-k-chaqueta-cristal",
+      "comprobaciones": 7,
+      "resultado": "correcto"
+    },
+    {
+      "familia": "collage-k-falda-saten",
+      "comprobaciones": 7,
+      "resultado": "correcto"
+    },
+    {
+      "familia": "collage-k-pendientes-cometa",
+      "comprobaciones": 2,
+      "resultado": "correcto"
+    },
+    {
+      "familia": "collage-k-brazalete-fanchant",
+      "comprobaciones": 7,
+      "resultado": "correcto"
+    },
+    {
+      "familia": "collage-k-bolso-encore-rizo",
+      "comprobaciones": 5,
+      "resultado": "correcto"
+    },
+    {
+      "familia": "collage-k-lazo-saten",
+      "comprobaciones": 2,
+      "resultado": "correcto"
+    }
+  ],
+  "pendientes": [
+    "Integración por Claude: catálogo y ranuras, editor real, todas las poses y rostros, combinación con gorro/auriculares/gafas/pin/lightstick, guardado/recarga, cuenta y canje, sello y exportación PNG/PDF."
+  ],
+  "suiteApp": "No ejecutada: esta entrega solo prepara y comprueba gráficos externos.",
+  "cinturas": [
+    {
+      "variante": "delgado",
+      "cintura": 350,
+      "colorPaleta": "#e83475",
+      "resultado": "correcto",
+      "muestreo": "Franja central x190..210, y[cintura-3..cintura+3], alpha >240. No es una comprobación exhaustiva de todos los píxeles del cuerpo."
+    },
+    {
+      "variante": "delgado",
+      "cintura": 350,
+      "colorPaleta": "#557a9d",
+      "resultado": "correcto",
+      "muestreo": "Franja central x190..210, y[cintura-3..cintura+3], alpha >240. No es una comprobación exhaustiva de todos los píxeles del cuerpo."
+    },
+    {
+      "variante": "delgado",
+      "cintura": 350,
+      "colorPaleta": "#fffaf7",
+      "resultado": "correcto",
+      "muestreo": "Franja central x190..210, y[cintura-3..cintura+3], alpha >240. No es una comprobación exhaustiva de todos los píxeles del cuerpo."
+    },
+    {
+      "variante": "delgado",
+      "cintura": 370,
+      "colorPaleta": "#e83475",
+      "resultado": "correcto",
+      "muestreo": "Franja central x190..210, y[cintura-3..cintura+3], alpha >240. No es una comprobación exhaustiva de todos los píxeles del cuerpo."
+    },
+    {
+      "variante": "delgado",
+      "cintura": 370,
+      "colorPaleta": "#557a9d",
+      "resultado": "correcto",
+      "muestreo": "Franja central x190..210, y[cintura-3..cintura+3], alpha >240. No es una comprobación exhaustiva de todos los píxeles del cuerpo."
+    },
+    {
+      "variante": "delgado",
+      "cintura": 370,
+      "colorPaleta": "#fffaf7",
+      "resultado": "correcto",
+      "muestreo": "Franja central x190..210, y[cintura-3..cintura+3], alpha >240. No es una comprobación exhaustiva de todos los píxeles del cuerpo."
+    },
+    {
+      "variante": "medio",
+      "cintura": 350,
+      "colorPaleta": "#e83475",
+      "resultado": "correcto",
+      "muestreo": "Franja central x190..210, y[cintura-3..cintura+3], alpha >240. No es una comprobación exhaustiva de todos los píxeles del cuerpo."
+    },
+    {
+      "variante": "medio",
+      "cintura": 350,
+      "colorPaleta": "#557a9d",
+      "resultado": "correcto",
+      "muestreo": "Franja central x190..210, y[cintura-3..cintura+3], alpha >240. No es una comprobación exhaustiva de todos los píxeles del cuerpo."
+    },
+    {
+      "variante": "medio",
+      "cintura": 350,
+      "colorPaleta": "#fffaf7",
+      "resultado": "correcto",
+      "muestreo": "Franja central x190..210, y[cintura-3..cintura+3], alpha >240. No es una comprobación exhaustiva de todos los píxeles del cuerpo."
+    },
+    {
+      "variante": "medio",
+      "cintura": 370,
+      "colorPaleta": "#e83475",
+      "resultado": "correcto",
+      "muestreo": "Franja central x190..210, y[cintura-3..cintura+3], alpha >240. No es una comprobación exhaustiva de todos los píxeles del cuerpo."
+    },
+    {
+      "variante": "medio",
+      "cintura": 370,
+      "colorPaleta": "#557a9d",
+      "resultado": "correcto",
+      "muestreo": "Franja central x190..210, y[cintura-3..cintura+3], alpha >240. No es una comprobación exhaustiva de todos los píxeles del cuerpo."
+    },
+    {
+      "variante": "medio",
+      "cintura": 370,
+      "colorPaleta": "#fffaf7",
+      "resultado": "correcto",
+      "muestreo": "Franja central x190..210, y[cintura-3..cintura+3], alpha >240. No es una comprobación exhaustiva de todos los píxeles del cuerpo."
+    },
+    {
+      "variante": "grueso",
+      "cintura": 350,
+      "colorPaleta": "#e83475",
+      "resultado": "correcto",
+      "muestreo": "Franja central x190..210, y[cintura-3..cintura+3], alpha >240. No es una comprobación exhaustiva de todos los píxeles del cuerpo."
+    },
+    {
+      "variante": "grueso",
+      "cintura": 350,
+      "colorPaleta": "#557a9d",
+      "resultado": "correcto",
+      "muestreo": "Franja central x190..210, y[cintura-3..cintura+3], alpha >240. No es una comprobación exhaustiva de todos los píxeles del cuerpo."
+    },
+    {
+      "variante": "grueso",
+      "cintura": 350,
+      "colorPaleta": "#fffaf7",
+      "resultado": "correcto",
+      "muestreo": "Franja central x190..210, y[cintura-3..cintura+3], alpha >240. No es una comprobación exhaustiva de todos los píxeles del cuerpo."
+    },
+    {
+      "variante": "grueso",
+      "cintura": 370,
+      "colorPaleta": "#e83475",
+      "resultado": "correcto",
+      "muestreo": "Franja central x190..210, y[cintura-3..cintura+3], alpha >240. No es una comprobación exhaustiva de todos los píxeles del cuerpo."
+    },
+    {
+      "variante": "grueso",
+      "cintura": 370,
+      "colorPaleta": "#557a9d",
+      "resultado": "correcto",
+      "muestreo": "Franja central x190..210, y[cintura-3..cintura+3], alpha >240. No es una comprobación exhaustiva de todos los píxeles del cuerpo."
+    },
+    {
+      "variante": "grueso",
+      "cintura": 370,
+      "colorPaleta": "#fffaf7",
+      "resultado": "correcto",
+      "muestreo": "Franja central x190..210, y[cintura-3..cintura+3], alpha >240. No es una comprobación exhaustiva de todos los píxeles del cuerpo."
+    }
+  ],
+  "conjuntos": [
+    {
+      "variante": "delgado",
+      "imagenesPNG": 7,
+      "maximo": 8,
+      "idsUnicos": true,
+      "resultado": "correcto"
+    },
+    {
+      "variante": "medio",
+      "imagenesPNG": 7,
+      "maximo": 8,
+      "idsUnicos": true,
+      "resultado": "correcto"
+    },
+    {
+      "variante": "grueso",
+      "imagenesPNG": 7,
+      "maximo": 8,
+      "idsUnicos": true,
+      "resultado": "correcto"
+    }
+  ]
+}

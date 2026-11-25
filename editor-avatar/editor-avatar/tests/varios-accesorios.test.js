@@ -32,11 +32,15 @@ const TITULO = { [GORRO]: '<title>Gorro de punto', auriculares: '<title>Auricula
 const conGorra = (d) => d.piezas.accesorio.push({ id: 'gorra-prueba', nombre: 'Gorra de prueba', ranura: 'gorro', capas: {} });
 const avatarCon = (c, accesorio, accesoriosExtra) => ({ ...structuredClone(c.porDefecto), accesorio, accesoriosExtra });
 
-test('Catálogo: cada accesorio tiene su ranura, en el orden gorro, auriculares, gafas, pin y mano; la receta gana «accesoriosExtra» vacío', async () => {
+test('Catálogo: cada accesorio tiene su ranura, en el orden gorro, orejas, auriculares, gafas, pin, bolso, muñeca y mano; la receta gana «accesoriosExtra» vacío', async () => {
   const c = await cargar();
-  assert.deepEqual(c.datos.ranurasAccesorio, ['gorro', 'auriculares', 'gafas', 'pin', 'mano']);
+  // Encore (E0086) añade orejas, bolso y muñeca; su lazo va en la ranura del pin.
+  assert.deepEqual(c.datos.ranurasAccesorio, ['gorro', 'orejas', 'auriculares', 'gafas', 'pin', 'bolso', 'muneca', 'mano']);
   const ranura = Object.fromEntries(c.piezas('accesorio').map((p) => [p.id, p.ranura]));
-  assert.deepEqual(ranura, { ninguno: undefined, gafas: 'gafas', auriculares: 'auriculares', pin: 'pin', [LUZ]: 'mano', [GORRO]: 'gorro' });
+  assert.deepEqual(ranura, {
+    ninguno: undefined, gafas: 'gafas', auriculares: 'auriculares', pin: 'pin', [LUZ]: 'mano', [GORRO]: 'gorro',
+    'collage-k-pendientes-cometa': 'orejas', 'collage-k-brazalete-fanchant': 'muneca', 'collage-k-bolso-encore-rizo': 'bolso', 'collage-k-lazo-saten': 'pin',
+  });
   assert.equal(c.porDefecto.accesorio, 'auriculares', 'el valor anterior no cambia');
   assert.deepEqual(c.porDefecto.accesoriosExtra, []);
 });

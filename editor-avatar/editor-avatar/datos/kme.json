@@ -1591,6 +1591,48 @@
           "piernas": "../assets/kme/ropa_abajo/collage-falda-botas-piel-grueso.svg",
           "ropa_abajo": "../assets/kme/ropa_abajo/collage-falda-botas-piel-grueso.svg"
         }
+      },
+      {
+        "id": "collage-k-falda-saten-delgado",
+        "nombre": "Falda Satén Encore · delgado",
+        "familia": "collage-k-falda-saten",
+        "coleccion": "collage-encore",
+        "cuerpoCompatible": "relajado",
+        "cinturaY": 350,
+        "reemplazaCapas": ["piernas"],
+        "gruposPorCapa": {"piernas": "piernas", "ropa_abajo": "prenda"},
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/collage-k-falda-saten-delgado.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/collage-k-falda-saten-delgado.svg"
+        }
+      },
+      {
+        "id": "collage-k-falda-saten-medio",
+        "nombre": "Falda Satén Encore · medio",
+        "familia": "collage-k-falda-saten",
+        "coleccion": "collage-encore",
+        "cuerpoCompatible": "recto",
+        "cinturaY": 350,
+        "reemplazaCapas": ["piernas"],
+        "gruposPorCapa": {"piernas": "piernas", "ropa_abajo": "prenda"},
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/collage-k-falda-saten-medio.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/collage-k-falda-saten-medio.svg"
+        }
+      },
+      {
+        "id": "collage-k-falda-saten-grueso",
+        "nombre": "Falda Satén Encore · grueso",
+        "familia": "collage-k-falda-saten",
+        "coleccion": "collage-encore",
+        "cuerpoCompatible": "amplio",
+        "cinturaY": 350,
+        "reemplazaCapas": ["piernas"],
+        "gruposPorCapa": {"piernas": "piernas", "ropa_abajo": "prenda"},
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/collage-k-falda-saten-grueso.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/collage-k-falda-saten-grueso.svg"
+        }
       }
     ],
     "ropa.arriba": [
@@ -2679,6 +2721,57 @@
           "ropa_arriba": "../assets/kme/ropa_arriba/collage-chaqueta-denim-grueso.svg",
           "piernas": "../assets/kme/cuerpo/amplio.svg"
         }
+      },
+      {
+        "id": "collage-k-chaqueta-cristal-delgado",
+        "nombre": "Chaqueta Cristal Stage · delgado",
+        "coleccion": "collage-encore",
+        "familia": "collage-k-chaqueta-cristal",
+        "cuerpoCompatible": "relajado",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": ["cuerpo"],
+        "gruposPorCapa": {"anatomia": "perfil", "torso": "torso", "ropa_arriba": "superior"},
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/collage-k-chaqueta-cristal-delgado.svg",
+          "torso": "../assets/kme/ropa_arriba/collage-k-chaqueta-cristal-delgado.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/collage-k-chaqueta-cristal-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "collage-k-chaqueta-cristal-medio",
+        "nombre": "Chaqueta Cristal Stage · medio",
+        "coleccion": "collage-encore",
+        "familia": "collage-k-chaqueta-cristal",
+        "cuerpoCompatible": "recto",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": ["cuerpo"],
+        "gruposPorCapa": {"anatomia": "perfil", "torso": "torso", "ropa_arriba": "superior"},
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/collage-k-chaqueta-cristal-medio.svg",
+          "torso": "../assets/kme/ropa_arriba/collage-k-chaqueta-cristal-medio.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/collage-k-chaqueta-cristal-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "collage-k-chaqueta-cristal-grueso",
+        "nombre": "Chaqueta Cristal Stage · grueso",
+        "coleccion": "collage-encore",
+        "familia": "collage-k-chaqueta-cristal",
+        "cuerpoCompatible": "amplio",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": ["cuerpo"],
+        "gruposPorCapa": {"anatomia": "perfil", "torso": "torso", "ropa_arriba": "superior"},
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/collage-k-chaqueta-cristal-grueso.svg",
+          "torso": "../assets/kme/ropa_arriba/collage-k-chaqueta-cristal-grueso.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/collage-k-chaqueta-cristal-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
       }
     ],
     "pelo.estilo": [
@@ -2849,6 +2942,80 @@
         "capas": {
           "accesorio": "../assets/kme/accesorio/collage-gorro-punto.svg"
         }
+      },
+      {
+        "id": "collage-k-pendientes-cometa",
+        "nombre": "Pendientes Cometa",
+        "coleccion": "collage-encore",
+        "zona": "cabeza",
+        "ranura": "orejas",
+        "indicePorRostro": {"redondo": 0, "ovalado": 1, "cuadrado": 0},
+        "miniatura": {
+          "recorte": "75 207 24 54",
+          "capas": ["accesorio"]
+        },
+        "capas": {
+          "accesorio": [
+            "../assets/kme/accesorio/collage-k-pendientes-cometa.svg",
+            "../assets/kme/accesorio/collage-k-pendientes-cometa-ovalado.svg"
+          ]
+        }
+      },
+      {
+        "id": "collage-k-brazalete-fanchant",
+        "nombre": "Brazalete Fanchant",
+        "coleccion": "collage-encore",
+        "zona": "muneca",
+        "ranura": "muneca",
+        "indicePorCuerpo": {"relajado": 0, "recto": 1, "amplio": 2},
+        "indiceSinPerfilIntegrado": {"relajado": 3, "recto": 4, "amplio": 5},
+        "miniatura": {
+          "recorte": "108 328 70 42",
+          "capas": ["accesorio"]
+        },
+        "capas": {
+          "accesorio": [
+            "../assets/kme/accesorio/collage-k-brazalete-fanchant-delgado.svg",
+            "../assets/kme/accesorio/collage-k-brazalete-fanchant-medio.svg",
+            "../assets/kme/accesorio/collage-k-brazalete-fanchant-grueso.svg",
+            "../assets/kme/accesorio/collage-k-brazalete-fanchant-camiseta-delgado.svg",
+            "../assets/kme/accesorio/collage-k-brazalete-fanchant-camiseta-medio.svg",
+            "../assets/kme/accesorio/collage-k-brazalete-fanchant-camiseta-grueso.svg"
+          ]
+        }
+      },
+      {
+        "id": "collage-k-bolso-encore-rizo",
+        "nombre": "Bolso Encore con Rizo",
+        "coleccion": "collage-encore",
+        "zona": "cuerpo",
+        "ranura": "bolso",
+        "indicePorCuerpo": {"relajado": 0, "recto": 1, "amplio": 2},
+        "miniatura": {
+          "recorte": "215 289 133 115",
+          "capas": ["accesorio"]
+        },
+        "capas": {
+          "accesorio": [
+            "../assets/kme/accesorio/collage-k-bolso-encore-rizo-delgado.svg",
+            "../assets/kme/accesorio/collage-k-bolso-encore-rizo-medio.svg",
+            "../assets/kme/accesorio/collage-k-bolso-encore-rizo-grueso.svg"
+          ]
+        }
+      },
+      {
+        "id": "collage-k-lazo-saten",
+        "nombre": "Lazo Satén Stage",
+        "coleccion": "collage-encore",
+        "zona": "cabeza",
+        "ranura": "pin",
+        "miniatura": {
+          "recorte": "247 82 88 65",
+          "capas": ["accesorio"]
+        },
+        "capas": {
+          "accesorio": "../assets/kme/accesorio/collage-k-lazo-saten.svg"
+        }
       }
     ]
   },
@@ -2951,7 +3118,7 @@
     ]
   },
   "categorias": [],
-  "ranurasAccesorio": ["gorro", "auriculares", "gafas", "pin", "mano"],
+  "ranurasAccesorio": ["gorro", "orejas", "auriculares", "gafas", "pin", "bolso", "muneca", "mano"],
   "porDefecto": {
     "version": 1,
     "rostro": "redondo",

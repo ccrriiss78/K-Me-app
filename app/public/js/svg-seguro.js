@@ -5,13 +5,15 @@
 // - Los enlaces internos («#…») se permiten; los externos, no.
 // - Desde el lote collage 01 (D067, E0079), una pieza del avatar puede llevar texturas: solo
 //   <image> con un PNG incrustado en base64, válido (firma y cabecera PNG), de 20 KiB como mucho,
-//   256 px por lado como mucho, y hasta 8 imágenes por dibujo. Nunca una dirección de fuera.
+//   256 px por lado como mucho, y hasta 16 imágenes por dibujo (D076: con Encore, lo más cargado
+//   del catálogo llega a 12; el test de app/tests/encore.test.js avisa si se pasa). Nunca una
+//   dirección de fuera.
 // Script clásico: deja window.KME_SVG para sello.js (se carga antes, con defer). Sin dependencias.
 (() => {
   'use strict';
   const MAX_BYTES = 20 * 1024;
   const MAX_LADO = 256;
-  const MAX_IMAGENES = 8;
+  const MAX_IMAGENES = 16;
   const FIRMA_PNG = '\x89PNG\r\n\x1a\n';
   const PROHIBIDOS = 'parsererror, script, foreignObject, iframe, object, embed, a, animate, set';
 

@@ -1,0 +1,39 @@
+{
+  "familia": "collage-k-pendientes-cometa",
+  "nombre": "Pendientes Cometa",
+  "coleccion": "Colección K · Encore",
+  "estado": "Gráficos externos preparados; no integrado. No aplicar automáticamente este JSON.",
+  "canje": {
+    "modalidadPropuesta": "canje",
+    "precioPropuestoKpopis": 10,
+    "precioConfirmado": false,
+    "unidad": "familia completa; incluye todas las variantes corporales",
+    "gratisPropuesto": false
+  },
+  "parte": "accesorio",
+  "zona": "orejas",
+  "color": {
+    "explicacion": "Sin campo propio: fucsia decorativo de la paleta actual y metal neutro fijos. No hereda el color de la camiseta ni del gorro.",
+    "campoNuevoSolicitado": null
+  },
+  "miniatura": {
+    "viewBox": "72 207 256 54",
+    "soloGrupo": "accesorio"
+  },
+  "variantes": [
+    {
+      "archivo": "svg/collage-k-pendientes-cometa.svg",
+      "variante": "universal",
+      "bytes": 26183,
+      "sha256": "8cce5657c6b764fecd6d311745d913ccaac0c7b96002e440ec980ecff0cdf17a",
+      "cuerpo": "universal-rostro-redondo",
+      "anclajesOrejas": [
+        86,
+        314
+      ]
+    }
+  ],
+  "ruta": "accesorio",
+  "notaCapas": "Zona semántica propuesta. Claude debe mapearla al contrato vigente. Conservar gorro < auriculares < gafas < pin; lightstick en la mano. El lazo no reemplaza el pin existente.",
+  "rostro": "puede incluirse"
+}
