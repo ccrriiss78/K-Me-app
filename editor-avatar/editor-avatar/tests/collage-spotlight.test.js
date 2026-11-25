@@ -238,6 +238,26 @@ test('Lo visible de Spotlight dice Spotlight: ni sus nombres, ni sus miniaturas,
   }
 });
 
+test('En «K», Spotlight tiene su propio apartado: el título COLECCIÓN K · SPOTLIGHT, el lema debajo y sus piezas a continuación; las demás especiales, antes', async () => {
+  const c = await cargar(), doc = documentoVisual();
+  const vista = montarEditorVisual(doc, c, { categoriaInicial: 'coleccion' });
+  const v = VARIANTE[vista.estado.avatar.cuerpo];
+  const hijos = doc.getElementById('panel-editor').children;
+  const contiene = (n, etiqueta) => n.getAttribute?.('aria-label') === etiqueta || (n.children || []).some(m => contiene(m, etiqueta));
+  const texto = (n) => (n.textContent || '') + (n.children || []).map(texto).join(' ');
+  const donde = (etiqueta) => hijos.findIndex(n => contiene(n, etiqueta));
+  const apartado = hijos.findIndex(n => /COLECCIÓN K · SPOTLIGHT/.test(texto(n)));
+  assert.ok(apartado > 0, 'hay un apartado Spotlight');
+  assert.match(texto(hijos[apartado]), /COLECCIÓN K · SPOTLIGHT[\s\S]*Brilla en tu propio escenario/, 'el lema, debajo del título');
+  for (const etiqueta of [`Parte superior: Chaqueta Cristal Spotlight · ${v}`, `Parte inferior: Falda Satén Spotlight · ${v}`, 'Accesorio: Pulseras Fanchant', 'Accesorio: Pines Fan Signal', 'Accesorio: Lazo Satén Spotlight']) {
+    assert.ok(donde(etiqueta) > apartado, `${etiqueta}: bajo Spotlight`);
+  }
+  for (const etiqueta of ['Accesorio: Gorro de punto', `Parte superior: Top Destello · ${v}`, `Parte superior: Chaqueta Cristal Stage · ${v}`]) {
+    assert.ok(donde(etiqueta) >= 0 && donde(etiqueta) < apartado, `${etiqueta}: antes, fuera de Spotlight`);
+  }
+  assert.equal(hijos.filter(n => /Puedes llevar varios a la vez/.test(texto(n))).length, 1, 'la ayuda de los accesorios, una sola vez');
+});
+
 test('En el editor, Spotlight sale en Colección «K» (sin canje: no está en las bloqueadas) y no en «Ropa» ni «Accesorios»', async () => {
   const c = await cargar(), doc = documentoVisual();
   const vista = montarEditorVisual(doc, c, { categoriaInicial: 'coleccion', bloqueadas: ['collage-k-chaqueta-cristal', 'collage-k-falda-saten'] });

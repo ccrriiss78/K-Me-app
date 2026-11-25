@@ -67,11 +67,11 @@ export function montarEditorVisual(doc,catalogo,opciones={}){
     }
     seccion(titulo).append(g);
   }
-  function piezas(titulo,ruta,capas,recorte,opciones=catalogo.piezas(ruta)){
+  function piezas(titulo,ruta,capas,recorte,opciones=catalogo.piezas(ruta),conAyuda=true){
     const s=seccion(titulo);
     // Varios accesorios a la vez (D071): cada uno se pone y se quita pulsándolo.
     const esAccesorio=ruta==='accesorio',puestos=esAccesorio?estado.accesoriosPuestos:null;
-    if(esAccesorio)s.append(nodo('p','Puedes llevar varios a la vez: pulsa uno para ponerlo y otra vez para quitarlo.','ayuda-accesorios'));
+    if(esAccesorio&&conAyuda)s.append(nodo('p','Puedes llevar varios a la vez: pulsa uno para ponerlo y otra vez para quitarlo.','ayuda-accesorios'));
     const g=grilla(s);
     for(const p of opciones){
       const a=structuredClone(estado.avatar);seleccionarPiezaKme(catalogo,a,ruta,p.id);
@@ -180,17 +180,32 @@ export function montarEditorVisual(doc,catalogo,opciones={}){
       panel.append(nodo('p','Piezas especiales de K-ME. Las de canje se consiguen con Kpopis.','intro-coleccion'));
       if(urlCanje){const a=nodo('a','Canjear Kpopis','boton-canje');a.href=urlCanje;a.setAttribute('aria-label','Canjear Kpopis');panel.append(a);}
       const delCuerpo=p=>especial(p)&&disponible(p)&&(!p.cuerpoCompatible||p.cuerpoCompatible===estado.avatar.cuerpo);
-      const arriba=catalogo.piezas('ropa.arriba').filter(delCuerpo),abajo=catalogo.piezas('ropa.abajo').filter(delCuerpo);
-      const accesorios=catalogo.piezas('accesorio').filter(p=>especial(p)&&disponible(p));
-      if(arriba.length){piezas('Parte superior','ropa.arriba',['ropa_arriba'],'100 282 200 100',arriba);colorear('Color de arriba','ropa.colorArriba',catalogo.paleta('arriba'));}
-      if(abajo.length){piezas('Parte inferior','ropa.abajo',['piernas','ropa_abajo'],'130 338 140 110',abajo);colorear('Color de abajo','ropa.colorAbajo',catalogo.paleta('abajo'));}
-      if(accesorios.length){
-        piezas('Accesorio','accesorio',['cabeza','ojos','accesorio'],'65 60 270 215',accesorios);
-        // Un accesorio puesto con color propio (el gorro, lote collage 02) lo elige con la paleta de la
-        // ropa, aunque no sea el último elegido.
-        for(const puesto of catalogo.accesoriosPuestos(estado.avatar).filter(p=>p.rutaColor&&especial(p))){
-          colorear(puesto.tituloColor||'Color del accesorio',puesto.rutaColor,catalogo.paleta('arriba'));
+      // Las colecciones con título propio en el catálogo (Spotlight, D078) van en su apartado, después
+      // de las demás especiales: el título, el lema debajo y sus piezas. Cada paleta de color y la
+      // ayuda de los accesorios salen una sola vez.
+      const conTitulo=catalogo.datos.colecciones||{},hecho=new Set();
+      const bloque=(filtro)=>{
+        const arriba=catalogo.piezas('ropa.arriba').filter(p=>delCuerpo(p)&&filtro(p)),abajo=catalogo.piezas('ropa.abajo').filter(p=>delCuerpo(p)&&filtro(p));
+        const accesorios=catalogo.piezas('accesorio').filter(p=>especial(p)&&disponible(p)&&filtro(p));
+        if(arriba.length){piezas('Parte superior','ropa.arriba',['ropa_arriba'],'100 282 200 100',arriba);if(!hecho.has('arriba')){hecho.add('arriba');colorear('Color de arriba','ropa.colorArriba',catalogo.paleta('arriba'));}}
+        if(abajo.length){piezas('Parte inferior','ropa.abajo',['piernas','ropa_abajo'],'130 338 140 110',abajo);if(!hecho.has('abajo')){hecho.add('abajo');colorear('Color de abajo','ropa.colorAbajo',catalogo.paleta('abajo'));}}
+        if(accesorios.length){
+          piezas('Accesorio','accesorio',['cabeza','ojos','accesorio'],'65 60 270 215',accesorios,!hecho.has('ayuda'));hecho.add('ayuda');
+          // Un accesorio puesto con color propio (el gorro, lote collage 02) lo elige con la paleta de la
+          // ropa, aunque no sea el último elegido.
+          for(const puesto of catalogo.accesoriosPuestos(estado.avatar).filter(p=>p.rutaColor&&especial(p)&&filtro(p))){
+            colorear(puesto.tituloColor||'Color del accesorio',puesto.rutaColor,catalogo.paleta('arriba'));
+          }
         }
+      };
+      bloque(p=>!conTitulo[p.coleccion]);
+      for(const [coleccion,{titulo,lema}] of Object.entries(conTitulo)){
+        const suya=p=>p.coleccion===coleccion&&especial(p)&&disponible(p)&&(!p.cuerpoCompatible||p.cuerpoCompatible===estado.avatar.cuerpo);
+        if(!['ropa.arriba','ropa.abajo','accesorio'].some(r=>catalogo.piezas(r).some(suya)))continue;
+        const cabecera=nodo('div',null,'cabecera-coleccion');cabecera.append(nodo('h3',titulo,'titulo-coleccion'));
+        if(lema)cabecera.append(nodo('p','«'+lema+'»','lema-coleccion'));
+        panel.append(cabecera);
+        bloque(p=>p.coleccion===coleccion);
       }
     }else if(estado.categoria==='ropa'){
       const compatibles=catalogo.piezas('ropa.arriba').filter(p=>!especial(p)&&(p.cuerpoCompatible===estado.avatar.cuerpo||(!p.cuerpoCompatible&&p.id!=='camiseta')));

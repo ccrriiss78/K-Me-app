@@ -46,7 +46,7 @@ Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu nave
 - [ ] Guarda, vuelve a abrir, haz un sello «Cuerpo entero» y descarga la photocard en PDF.
 - [ ] Haz un sello «Cuerpo entero» con un avatar muy cargado (las seis piezas de Encore y más accesorios): la vista previa se actualiza (el límite ya es de 16 imágenes).
 - [ ] **Decide:** los precios y los ojos del lote 07.
-- [ ] **COLECCIÓN K · SPOTLIGHT (T049), propuestas sin canje:** en «K», las piezas con «Spotlight» en el nombre, las Pulseras Fanchant y los Pines Fan Signal. Combínalas con los tres cuerpos y rostros; las pulseras, con camiseta y con chaqueta. Al pasar el ratón por una miniatura, el nombre que sale también dice Spotlight. **Decide** cuáles se quedan, sus precios, y si Rizo necesita más contraste.
+- [ ] **COLECCIÓN K · SPOTLIGHT (T049), propuestas sin canje:** en «K», baja hasta su apartado: el título, el lema «Brilla en tu propio escenario» y debajo sus piezas (las que llevan «Spotlight» en el nombre, las Pulseras Fanchant y los Pines Fan Signal). Combínalas con los tres cuerpos y rostros; las pulseras, con camiseta y con chaqueta. Al pasar el ratón por una miniatura, el nombre que sale también dice Spotlight. **Decide** cuáles se quedan, sus precios, y si Rizo necesita más contraste.
 
 ## 4. Avatar Studio (T040, T044, T045, T047)
 

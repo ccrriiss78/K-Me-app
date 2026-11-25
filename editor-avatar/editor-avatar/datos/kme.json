@@ -3317,6 +3317,9 @@
     ]
   },
   "categorias": [],
+  "colecciones": {
+    "collage-spotlight": {"titulo": "COLECCIÓN K · SPOTLIGHT", "lema": "Brilla en tu propio escenario"}
+  },
   "ranurasAccesorio": ["gorro", "orejas", "auriculares", "gafas", "pin", "pecho", "bolso", "muneca", "mano"],
   "porDefecto": {
     "version": 1,

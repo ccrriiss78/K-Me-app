@@ -1,6 +1,6 @@
 # COLECCIÓN K · SPOTLIGHT · cómo se integró (Claude, 25/11/2026, E0088 y E0089)
 
-**Nombre visible aprobado por la autora (D078):** COLECCIÓN K · SPOTLIGHT. **Lema propuesto:** «Brilla en tu propio escenario» (sin confirmar; hoy no se muestra en la app).
+**Nombre visible aprobado por la autora (D078):** COLECCIÓN K · SPOTLIGHT. **Lema:** «Brilla en tu propio escenario». Se ve en la pestaña «K», debajo del título del apartado Spotlight (E0091).
 
 ## De dónde viene
 
@@ -64,5 +64,5 @@ Cada archivo del ZIP se usa una sola vez; el test `collage-spotlight` lo comprue
 
 - La revisión de la autora (T049).
 - Los precios y el canje.
-- El lema queda solo apuntado; no se muestra en la app (decisión de la autora, E0090).
+- El lema: E0090 lo dejó solo apuntado y E0091 lo enseña en la app. En «K», un apartado propio con el título, el lema debajo y las piezas Spotlight (`colecciones` en `kme.json`).
 - Rizo destaca poco sobre fondo blanco.

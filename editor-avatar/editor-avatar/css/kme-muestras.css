@@ -110,6 +110,9 @@ h1>span:after{content:"";position:absolute;z-index:-1;left:-3%;right:-6%;height:
 .marca-color{display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#fff;color:#211e24;border:1px solid #211e24;font-size:.65rem;font-weight:800}
 .color-elegido{font-size:.76rem;color:var(--ui-muted);margin:10px 0 0}
 .ayuda-accesorios{font-size:.8rem;line-height:1.5;color:var(--ui-muted);margin:0 0 10px}
+.cabecera-coleccion{margin:26px 0 14px;padding-top:16px;border-top:2px solid #e83475}
+.titulo-coleccion{margin:0;font-size:.95rem;font-weight:800;letter-spacing:.06em;color:#211e24}
+.lema-coleccion{margin:4px 0 0;font-size:.85rem;font-style:italic;color:var(--ui-muted)}
 .selector-maquillaje{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
 .opcion-maquillaje{min-height:44px;padding:8px 12px;border:1px solid var(--ui-muted);border-radius:16px;background:var(--ui-panel);color:var(--ui-ink);font-size:.78rem}
 .opcion-maquillaje[aria-pressed=true]{border-color:var(--ui-accent-text);box-shadow:inset 0 0 0 1px var(--ui-accent-text);background:var(--ui-accent-soft)}
