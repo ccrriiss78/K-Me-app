@@ -87,7 +87,8 @@ test('Lote collage 01: se añaden la falda con bolsillos de tela (una por cuerpo
   const luz = d.piezas.accesorio.find(x => x.id === LIGHTSTICK);
   assert.deepEqual(luz, {
     // «zona: mano»: no es un accesorio de la cabeza; los recortes del rostro lo dejan fuera.
-    id: LIGHTSTICK, nombre: 'Lightstick de estudio', coleccion: 'collage-01', zona: 'mano',
+    // «ranura: mano» (D071): se combina con los accesorios de la cabeza y se dibuja el último.
+    id: LIGHTSTICK, nombre: 'Lightstick de estudio', coleccion: 'collage-01', zona: 'mano', ranura: 'mano',
     indicePorCuerpo: { relajado: 0, recto: 1, amplio: 2 },
     miniatura: { recorte: '200 245 120 170', capas: ['accesorio'] },
     capas: { accesorio: Object.values(VARIANTE).map(v => `../assets/kme/accesorio/collage-lightstick-estudio-${v}.svg`) },

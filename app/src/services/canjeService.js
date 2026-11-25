@@ -30,7 +30,9 @@ export async function familiasBloqueadas(idUsuario) {
 export async function comprobarPropiedad(idUsuario, receta) {
   const bloqueadas = new Set(await familiasBloqueadas(idUsuario));
   if (!bloqueadas.size) return;
-  for (const [ruta, id] of [['ropa.arriba', receta.ropa?.arriba], ['ropa.abajo', receta.ropa?.abajo], ['accesorio', receta.accesorio]]) {
+  // Con varios accesorios (D071), también cada uno de «accesoriosExtra».
+  const extra = Array.isArray(receta.accesoriosExtra) ? receta.accesoriosExtra : [];
+  for (const [ruta, id] of [['ropa.arriba', receta.ropa?.arriba], ['ropa.abajo', receta.ropa?.abajo], ['accesorio', receta.accesorio], ...extra.map((x) => ['accesorio', x])]) {
     if (id && bloqueadas.has(familiaDe(ruta, id))) throw errorCanje('PIEZA_NO_ES_TUYA');
   }
 }

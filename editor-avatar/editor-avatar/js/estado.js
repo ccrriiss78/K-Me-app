@@ -9,7 +9,11 @@ export function normalizarAvatar(avatar, porDefecto) {
   const r = clonar(porDefecto);
   if (!avatar || typeof avatar !== 'object') return r;
   for (const k in r) {
-    if (r[k] && typeof r[k] === 'object') {
+    // Una lista (accesoriosExtra, D071) se copia tal cual llega: si no es una lista, la validación
+    // del servidor la rechaza. Sin el campo (un avatar anterior), queda la lista por defecto.
+    if (Array.isArray(r[k])) {
+      if (k in avatar) r[k] = Array.isArray(avatar[k]) ? [...avatar[k]] : avatar[k];
+    } else if (r[k] && typeof r[k] === 'object') {
       if (avatar[k] && typeof avatar[k] === 'object') {
         for (const j in r[k]) if (j in avatar[k]) r[k][j] = avatar[k][j];
       }

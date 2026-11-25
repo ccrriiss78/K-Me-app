@@ -92,7 +92,7 @@ Además está la tabla `sesiones` (las sesiones abiertas, la gestiona `connect-p
 | --- | --- | --- | --- |
 | `usuarios` | Las cuentas: usuario privado, alias público, hash de la contraseña y la imagen de perfil. | 001, 003, 007 | Usuario y alias únicos sin distinguir mayúsculas (D020). Nunca se guarda la contraseña, solo su hash Argon2id. |
 | `sesiones` | Las sesiones abiertas (24 h, o 7 días con «Mantener sesión abierta»). | 002 | La cookie solo lleva el identificador; los datos están en el servidor. |
-| `avatares` | Los avatares de Avatar Studio, como **receta** (qué pieza y qué color en cada capa), no como imagen. | 006 | Hasta 20 por cuenta. `version` evita que dos pestañas se pisen al guardar (409). La receta se valida con el catálogo del editor (`kme-receta.js`). |
+| `avatares` | Los avatares de Avatar Studio, como **receta** (qué pieza y qué color en cada capa), no como imagen. | 006 | Hasta 20 por cuenta. `version` evita que dos pestañas se pisen al guardar (409). La receta se valida con el catálogo del editor (`kme-receta.js`). Desde E0084 puede llevar varios accesorios (`accesoriosExtra`, D071) sin migración: es un campo más del JSON, y un avatar anterior se completa con la lista vacía. |
 | `sellos` | Los sellos de Sello Studio, también como receta. | 005 | Hasta 20 por cuenta. Si llevan avatar, guardan una **copia** de su receta (D041, T034). |
 | `publicaciones` | El muro de Connect: una emoción, el diseño que la acompaña y el mensaje con iconos. | 004, 008 | Sin texto libre. El diseño es una **copia** (D060). De 0 a 5 iconos, comprobado también por la base de datos. |
 | `reacciones` | Cada pulsación de una reacción. | 004 | Hasta 10 del mismo tipo por persona y publicación (lo comprueba el servidor). |

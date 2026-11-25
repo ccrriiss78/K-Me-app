@@ -63,8 +63,10 @@ export function dibujarAvatar(receta, { encuadre = null, alto = null } = {}) {
     if (e.capas) opciones.soloCapas = e.capas;
     // El recorte del rostro solo lleva la cabeza: un accesorio de la mano (el lightstick del lote
     // collage, «zona: mano») se quedaría cortado junto a la barbilla. Con el cuerpo entero, sí sale.
-    if (e.capas && obtenerCatalogo().pieza('accesorio', receta.accesorio)?.zona === 'mano') {
-      dibujada = { ...receta, accesorio: 'ninguno' };
+    // Con varios accesorios (D071), se quitan solo los de la mano y los demás siguen puestos.
+    if (e.capas) {
+      const cabeza = obtenerCatalogo().accesoriosPuestos(receta).filter((p) => p.zona !== 'mano').map((p) => p.id);
+      dibujada = { ...receta, accesorio: cabeza.at(-1) ?? 'ninguno', accesoriosExtra: cabeza.slice(0, -1) };
     }
   }
   const svg = svgDelAvatar(obtenerCatalogo(), dibujada, opciones);

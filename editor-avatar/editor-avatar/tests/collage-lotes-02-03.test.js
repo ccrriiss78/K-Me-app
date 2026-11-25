@@ -61,7 +61,8 @@ test('Lotes 02 y 03: se añaden el gorro de punto y el Top Destello (uno por cue
     assert.equal(halter.capas.ropa_arriba, `../assets/kme/ropa_arriba/top-halter-${variante}.svg`, 'el halter original no cambia');
   }
   assert.deepEqual(d.piezas.accesorio.find(p => p.id === GORRO), {
-    id: GORRO, nombre: 'Gorro de punto', coleccion: 'collage-02', zona: 'cabeza', rutaColor: 'colorGorro', tituloColor: 'Color del gorro',
+    // «ranura: gorro» (D071): se combina con los demás accesorios y se dibuja debajo de todos.
+    id: GORRO, nombre: 'Gorro de punto', coleccion: 'collage-02', zona: 'cabeza', ranura: 'gorro', rutaColor: 'colorGorro', tituloColor: 'Color del gorro',
     miniatura: { recorte: '70 10 260 150', capas: ['accesorio'] },
     capas: { accesorio: '../assets/kme/accesorio/collage-gorro-punto.svg' },
   });

@@ -9,6 +9,20 @@ import { estilosMechonesKme } from './kme-cabello-pinceladas.js';
 // Acabados del cabello que ofrece el editor (EditorVisual.elegirAcabadoPelo usa esta misma lista).
 export const acabadosPeloKme = ['tinta', 'acuarela', 'pinceladas'];
 
+// VARIOS ACCESORIOS A LA VEZ (D071). «accesorio» es el último elegido y «accesoriosExtra», los demás
+// puestos. La regla, la misma para el editor y el servidor: una lista de ids distintos del catálogo,
+// sin «ninguno» ni el principal, solo si hay principal, y como mucho uno por ranura.
+export function accesoriosExtraValidos(catalogo, avatar) {
+  const extra = avatar?.accesoriosExtra;
+  if (!Array.isArray(extra)) return false;
+  if (!extra.length) return true;
+  const ids = [avatar.accesorio, ...extra];
+  if (avatar.accesorio === 'ninguno' || new Set(ids).size !== ids.length) return false;
+  const piezas = ids.map((id) => (typeof id === 'string' ? catalogo.pieza('accesorio', id) : null));
+  if (piezas.some((p) => !p?.ranura)) return false;
+  return new Set(piezas.map((p) => p.ranura)).size === piezas.length;
+}
+
 export function valoresPermitidos(catalogo) {
   return {
     grosorCejas: [...grosoresKme],

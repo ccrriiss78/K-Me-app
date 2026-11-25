@@ -14,7 +14,7 @@
 
 import * as Avatar from '../models/avatarModel.js';
 import { obtenerCatalogo, normalizarReceta } from './avatarCatalogo.js';
-import { valoresPermitidos } from '../../../editor-avatar/editor-avatar/js/kme-receta.js';
+import { valoresPermitidos, accesoriosExtraValidos } from '../../../editor-avatar/editor-avatar/js/kme-receta.js';
 import { leerIds, pideTodos } from './borrarVarios.js';
 import { comprobarPropiedad } from './canjeService.js';
 
@@ -47,6 +47,12 @@ function reglasDeCampos() {
   const recorrer = (objeto, prefijo) => {
     for (const [clave, porDefecto] of Object.entries(objeto)) {
       const ruta = prefijo ? `${prefijo}.${clave}` : clave;
+      // Varios accesorios a la vez (D071): la lista se valida entera, con la regla del editor.
+      if (ruta === 'accesoriosExtra') {
+        reglas.push({ ruta, valido: (v, receta) => accesoriosExtraValidos(catalogo, receta) });
+        continue;
+      }
+      if (Array.isArray(porDefecto)) { reglas.push({ ruta, valido: () => false }); continue; }
       if (porDefecto && typeof porDefecto === 'object') { recorrer(porDefecto, ruta); continue; }
       let valido;
       if (datos.piezas[ruta]) {
@@ -74,7 +80,7 @@ export function leerReceta(receta) {
   if (Buffer.byteLength(JSON.stringify(receta), 'utf8') > MAX_BYTES_RECETA) throw errorAvatar('RECETA_DEMASIADO_GRANDE');
   const normal = normalizarReceta(receta);
   for (const { ruta, valido } of reglasDeCampos()) {
-    if (!valido(valorEn(normal, ruta))) throw errorAvatar('OPCION_NO_VALIDA', { campo: ruta });
+    if (!valido(valorEn(normal, ruta), normal)) throw errorAvatar('OPCION_NO_VALIDA', { campo: ruta });
   }
   return normal;
 }

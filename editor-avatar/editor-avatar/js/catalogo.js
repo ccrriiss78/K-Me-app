@@ -85,14 +85,29 @@ export class Catalogo {
     return ocultas;
   }
 
+  /**
+   * Los accesorios puestos (D071): el principal («accesorio») y los demás («accesoriosExtra»), sin
+   * repetir y en el orden de sus ranuras (ranurasAccesorio: gorro, auriculares, gafas, pin, mano),
+   * de atrás hacia delante. Así el dibujo no depende del orden en que se eligieron.
+   */
+  accesoriosPuestos(avatar) {
+    const orden = this.datos.ranurasAccesorio || [];
+    const extra = Array.isArray(avatar.accesoriosExtra) ? avatar.accesoriosExtra : [];
+    const vistos = new Set();
+    return [avatar.accesorio, ...extra]
+      .map(id => this.pieza('accesorio', id))
+      .filter(p => p && !vistos.has(p.id) && vistos.add(p.id))
+      .sort((a, b) => orden.indexOf(a.ranura) - orden.indexOf(b.ranura));
+  }
+
   /** Devuelve { idCapa: 'contenido SVG' } con las piezas fijas y las elegidas. */
   contenido(avatar) {
     const salida = {};
     const reemplazos = {};
     this.capas.forEach(c => { salida[c.id] = []; });
     for (const f of this.datos.fijas) salida[f.capa]?.push(this.archivos.get(f.archivo));
-    for (const ruta of this.rutas()) {
-      const p = this.pieza(ruta, leer(avatar, ruta));
+    const elegidas = this.rutas().filter(ruta => ruta !== 'accesorio').map(ruta => this.pieza(ruta, leer(avatar, ruta)));
+    for (const p of [...elegidas, ...this.accesoriosPuestos(avatar)]) {
       if (!p) continue;
       // Un SVG puede reunir ropa y piel, manteniendo la ropa delante de las piernas.
       for (const capa in p.capas) {

@@ -42,8 +42,31 @@ export class EditorVisual {
   cambiarBase(indice){if(!Number.isInteger(indice)||!this.avatares[indice])throw new Error('Base no válida');this.base=indice;}
   elegirPieza(ruta,id){
     if(!this.catalogo.pieza(ruta,id))throw new Error('Pieza no válida');
-    if(leer(this.avatar,ruta)===id)return;
+    if(leer(this.avatar,ruta)===id&&(ruta!=='accesorio'||!this.avatar.accesoriosExtra?.length))return;
     this.guardar();seleccionarPiezaKme(this.catalogo,this.avatar,ruta,id);
+    // Elegir un accesorio así lo deja solo, como antes de D071.
+    if(ruta==='accesorio')this.avatar.accesoriosExtra=[];
+  }
+  // VARIOS ACCESORIOS A LA VEZ (D071). Los puestos, del más antiguo al último elegido.
+  get accesoriosPuestos(){
+    const a=this.avatar,extra=Array.isArray(a.accesoriosExtra)?a.accesoriosExtra:[];
+    return [...extra,a.accesorio].filter(id=>id&&id!=='ninguno');
+  }
+  // Pulsar un accesorio lo pone o lo quita sin tocar los demás; uno de la misma ranura sustituye al
+  // que había y «ninguno» los quita todos. El último elegido queda en «accesorio» y los demás, en
+  // «accesoriosExtra»: así un avatar con uno solo se guarda igual que antes.
+  alternarAccesorio(id){
+    const pieza=this.catalogo.pieza('accesorio',id);
+    if(!pieza)throw new Error('Accesorio no válido');
+    const puestos=this.accesoriosPuestos;
+    let nuevos;
+    if(id==='ninguno')nuevos=[];
+    else if(puestos.includes(id))nuevos=puestos.filter(x=>x!==id);
+    else nuevos=[...puestos.filter(x=>this.catalogo.pieza('accesorio',x)?.ranura!==pieza.ranura),id];
+    if(id==='ninguno'&&!puestos.length)return;
+    this.guardar();
+    this.avatar.accesorio=nuevos.at(-1)??'ninguno';
+    this.avatar.accesoriosExtra=nuevos.slice(0,-1);
   }
   elegirForma(familia){
     const especial=this.catalogo.pieza('ojos.estilo',this.avatar.ojos.estilo)?.expresionEspecial;

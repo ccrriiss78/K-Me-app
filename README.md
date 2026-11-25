@@ -9,7 +9,7 @@ Proyecto de una estudiante de programación web, presentado el 1 de diciembre de
 | Parte | Qué hace |
 | --- | --- |
 | **Cuenta** | Crear una cuenta con un usuario privado (solo para entrar) y un alias público, entrar, mantener la sesión abierta y salir. Sin correo. |
-| **Avatar Studio** | Crear avatares con el editor ilustrado de K-ME y guardarlos en la cuenta (hasta 20), volver a abrirlos, duplicarlos, borrarlos, imprimirlos y descargar su photocard en PDF. |
+| **Avatar Studio** | Crear avatares con el editor ilustrado de K-ME y guardarlos en la cuenta (hasta 20), volver a abrirlos, duplicarlos, borrarlos, imprimirlos y descargar su photocard en PDF. Se pueden llevar varios accesorios a la vez (gorro, auriculares, gafas, pin y lightstick). |
 | **Sello Studio** | Hacer un sello personal con una palabra en hangul comprobada en un diccionario oficial, uno de tus avatares o los dos, tu alias y adornos (hasta 20). Imprimirlo como photocard de 55 × 85 mm y descargarlo en PDF o PNG. |
 | **Imagen de perfil** | Elegir uno de tus avatares, uno de tus sellos o los dos. Sale en la cabecera, en un marco como el del logo, y en «Mi K-ME». |
 | **Connect** | Un muro de fans: publicar una emoción con tu diseño (una copia de tu avatar o de tu sello) y un mensaje de hasta 5 iconos, sin texto libre, y reaccionar a las publicaciones de otros fans. |

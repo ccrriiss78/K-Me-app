@@ -68,17 +68,24 @@ export function montarEditorVisual(doc,catalogo,opciones={}){
     seccion(titulo).append(g);
   }
   function piezas(titulo,ruta,capas,recorte,opciones=catalogo.piezas(ruta)){
-    const g=grilla(seccion(titulo));
+    const s=seccion(titulo);
+    // Varios accesorios a la vez (D071): cada uno se pone y se quita pulsándolo.
+    const esAccesorio=ruta==='accesorio',puestos=esAccesorio?estado.accesoriosPuestos:null;
+    if(esAccesorio)s.append(nodo('p','Puedes llevar varios a la vez: pulsa uno para ponerlo y otra vez para quitarlo.','ayuda-accesorios'));
+    const g=grilla(s);
     for(const p of opciones){
       const a=structuredClone(estado.avatar);seleccionarPiezaKme(catalogo,a,ruta,p.id);
+      // La miniatura de un accesorio lo enseña solo.
+      if(esAccesorio)a.accesoriosExtra=[];
       const label=titulo+': '+p.nombre;
       const actual=leer(estado.avatar,ruta);
-      const seleccionada=actual===p.id||(ruta==='ropa.abajo'&&p.anterior===actual);
+      const seleccionada=esAccesorio?(p.id==='ninguno'?!puestos.length:puestos.includes(p.id)):actual===p.id||(ruta==='ropa.abajo'&&p.anterior===actual);
       // Las opciones de ropa muestran el mismo dibujo en ambos montajes.
       // Elegir la parte inferior no debe sustituir una sudadera o chaqueta.
       const idEleccion=ruta==='ropa.abajo'&&p.anterior&&!catalogo.pieza('ropa.arriba',estado.avatar.ropa.arriba)?.cuerpoCompatible?p.anterior:p.id;
+      const accion=esAccesorio?()=>estado.alternarAccesorio(p.id):()=>estado.elegirPieza(ruta,idEleccion);
       // Una pieza puede traer su propio encuadre de miniatura (el lightstick está en la mano, no en la cabeza).
-      g.append(miniatura(label,seleccionada,a,p.miniatura?.capas||capas,p.miniatura?.recorte||recorte,()=>estado.elegirPieza(ruta,idEleccion)));
+      g.append(miniatura(label,seleccionada,a,p.miniatura?.capas||capas,p.miniatura?.recorte||recorte,accion));
     }
   }
   function ojos(){
@@ -179,9 +186,11 @@ export function montarEditorVisual(doc,catalogo,opciones={}){
       if(abajo.length){piezas('Parte inferior','ropa.abajo',['piernas','ropa_abajo'],'130 338 140 110',abajo);colorear('Color de abajo','ropa.colorAbajo',catalogo.paleta('abajo'));}
       if(accesorios.length){
         piezas('Accesorio','accesorio',['cabeza','ojos','accesorio'],'65 60 270 215',accesorios);
-        // Un accesorio con color propio (el gorro, lote collage 02) lo elige con la paleta de la ropa.
-        const puesto=catalogo.pieza('accesorio',estado.avatar.accesorio);
-        if(puesto?.rutaColor)colorear(puesto.tituloColor||'Color del accesorio',puesto.rutaColor,catalogo.paleta('arriba'));
+        // Un accesorio puesto con color propio (el gorro, lote collage 02) lo elige con la paleta de la
+        // ropa, aunque no sea el último elegido.
+        for(const puesto of catalogo.accesoriosPuestos(estado.avatar).filter(p=>p.rutaColor&&especial(p))){
+          colorear(puesto.tituloColor||'Color del accesorio',puesto.rutaColor,catalogo.paleta('arriba'));
+        }
       }
     }else if(estado.categoria==='ropa'){
       const compatibles=catalogo.piezas('ropa.arriba').filter(p=>!especial(p)&&(p.cuerpoCompatible===estado.avatar.cuerpo||(!p.cuerpoCompatible&&p.id!=='camiseta')));

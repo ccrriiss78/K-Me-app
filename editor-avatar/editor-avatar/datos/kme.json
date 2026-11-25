@@ -2788,6 +2788,7 @@
       {
         "id": "gafas",
         "nombre": "Gafas redondas",
+        "ranura": "gafas",
         "capas": {
           "accesorio": "../assets/kme/accesorio/gafas.svg"
         }
@@ -2795,6 +2796,7 @@
       {
         "id": "auriculares",
         "nombre": "Auriculares de estrella",
+        "ranura": "auriculares",
         "capas": {
           "accesorio": "../assets/kme/accesorio/auriculares.svg"
         }
@@ -2802,6 +2804,7 @@
       {
         "id": "pin",
         "nombre": "Pin de estrella",
+        "ranura": "pin",
         "capas": {
           "accesorio": "../assets/kme/accesorio/pin.svg"
         }
@@ -2811,6 +2814,7 @@
         "nombre": "Lightstick de estudio",
         "coleccion": "collage-01",
         "zona": "mano",
+        "ranura": "mano",
         "indicePorCuerpo": {
           "relajado": 0,
           "recto": 1,
@@ -2835,6 +2839,7 @@
         "nombre": "Gorro de punto",
         "coleccion": "collage-02",
         "zona": "cabeza",
+        "ranura": "gorro",
         "rutaColor": "colorGorro",
         "tituloColor": "Color del gorro",
         "miniatura": {
@@ -2946,6 +2951,7 @@
     ]
   },
   "categorias": [],
+  "ranurasAccesorio": ["gorro", "auriculares", "gafas", "pin", "mano"],
   "porDefecto": {
     "version": 1,
     "rostro": "redondo",
@@ -2992,7 +2998,8 @@
     },
     "accesorio": "auriculares",
     "colorGorro": "#c5b1e3",
-    "fondo": "ninguno"
+    "fondo": "ninguno",
+    "accesoriosExtra": []
   },
   "bases": [
     {
