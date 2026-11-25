@@ -1,0 +1,60 @@
+{
+  "estado": "Alternativa propuesta, no aplicada al proyecto",
+  "familia": "collage-falda-botas-piel",
+  "ruta": "ropa.abajo",
+  "colorBotas": "Negro fijo #282126",
+  "colorFalda": "ropa.colorAbajo existente",
+  "piezas": [
+    {
+      "id": "collage-falda-botas-piel-delgado",
+      "nombre": "Falda con botas de piel · delgado",
+      "familia": "collage-falda-botas-piel",
+      "cuerpoCompatible": "relajado",
+      "reemplazaCapas": [
+        "piernas"
+      ],
+      "gruposPorCapa": {
+        "piernas": "piernas",
+        "ropa_abajo": "prenda"
+      },
+      "capas": {
+        "piernas": "svg/collage-falda-botas-piel-delgado.svg",
+        "ropa_abajo": "svg/collage-falda-botas-piel-delgado.svg"
+      }
+    },
+    {
+      "id": "collage-falda-botas-piel-medio",
+      "nombre": "Falda con botas de piel · medio",
+      "familia": "collage-falda-botas-piel",
+      "cuerpoCompatible": "recto",
+      "reemplazaCapas": [
+        "piernas"
+      ],
+      "gruposPorCapa": {
+        "piernas": "piernas",
+        "ropa_abajo": "prenda"
+      },
+      "capas": {
+        "piernas": "svg/collage-falda-botas-piel-medio.svg",
+        "ropa_abajo": "svg/collage-falda-botas-piel-medio.svg"
+      }
+    },
+    {
+      "id": "collage-falda-botas-piel-grueso",
+      "nombre": "Falda con botas de piel · grueso",
+      "familia": "collage-falda-botas-piel",
+      "cuerpoCompatible": "amplio",
+      "reemplazaCapas": [
+        "piernas"
+      ],
+      "gruposPorCapa": {
+        "piernas": "piernas",
+        "ropa_abajo": "prenda"
+      },
+      "capas": {
+        "piernas": "svg/collage-falda-botas-piel-grueso.svg",
+        "ropa_abajo": "svg/collage-falda-botas-piel-grueso.svg"
+      }
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "fecha": "2026-11-25",
+  "familia": "collage-botas-piel",
+  "lienzo": {
+    "ancho": 400,
+    "alto": 480
+  },
+  "origen": "Textura generada por ChatGPT; forma vectorial nueva. Avatares de referencia de K-ME.",
+  "licencia": "Contenido generado, sin fotos de terceros; no se presenta como CC0 ni exclusivo.",
+  "aplicacion": "Base vectorial + sombras negras alpha y luces blancas alpha, recortadas por el contorno, sin mix-blend-mode. Material al 100%.",
+  "coloresFijos": [
+    "Suela/contorno #282126",
+    "Costuras #fffaf7",
+    "Herrajes #ede0cb"
+  ],
+  "texturas": [
+    {
+      "archivo": "texturas/piel-gris-256.png",
+      "ancho": 256,
+      "alto": 256,
+      "bytes": 7894
+    },
+    {
+      "archivo": "texturas/piel-sombra-256.png",
+      "ancho": 256,
+      "alto": 256,
+      "bytes": 6506
+    },
+    {
+      "archivo": "texturas/piel-luz-256.png",
+      "ancho": 256,
+      "alto": 256,
+      "bytes": 7179
+    }
+  ],
+  "referencias": [
+    {
+      "cuerpo": "relajado",
+      "color": "#282126",
+      "archivo": "referencias/avatar-delgado.png",
+      "metodo": "Capa calzado propuesta añadida a la composición externa; no es una opción actual del editor."
+    },
+    {
+      "cuerpo": "recto",
+      "color": "#793549",
+      "archivo": "referencias/avatar-medio.png",
+      "metodo": "Capa calzado propuesta añadida a la composición externa; no es una opción actual del editor."
+    },
+    {
+      "cuerpo": "amplio",
+      "color": "#557a9d",
+      "archivo": "referencias/avatar-grueso.png",
+      "metodo": "Capa calzado propuesta añadida a la composición externa; no es una opción actual del editor."
+    }
+  ],
+  "verificado": [
+    "Tamaño, gris exacto y alpha",
+    "Bordes del patrón iguales",
+    "PNG incrustados sin recursos externos",
+    "Rasterización y composición externa en tres cuerpos con falda"
+  ],
+  "pendiente": [
+    "Decidir integración de calzado: no existe selector/campo en contrato actual",
+    "Encaje con pantalones, vestidos y otras piernas",
+    "Color de botas: muestras de referencia, sin campo actual",
+    "Pruebas de editor, servidor, guardar/recargar y exportación PNG/PDF",
+    "Catálogo de monedas, precio y probador no implementados"
+  ],
+  "alternativaMvp": "Tres SVG nuevos de falda con botas negras; catálogo orientativo separado, composición offline con la ruta ropa.abajo actual. No aplicado al proyecto."
+}

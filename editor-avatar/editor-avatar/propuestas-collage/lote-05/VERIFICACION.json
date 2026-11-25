@@ -1,0 +1,38 @@
+[
+  {
+    "archivo": "collage-falda-botas-piel-delgado.svg",
+    "curvasCContornoMarcado": 20,
+    "curvasPorBota": 10,
+    "maxYCoordenadasCalzado": 429.6,
+    "maxYTodoElGrupo": 429.6,
+    "cotaConMargenTrazo": 431,
+    "piernasIntactas": true,
+    "faldaIntacta": true,
+    "defsIdsImagenesIntactos": true,
+    "sha256": "b47d071a696e0956d9edefecb4c7c4d1f5a839ba5abd18e5e8fc4cd838cd30d6"
+  },
+  {
+    "archivo": "collage-falda-botas-piel-medio.svg",
+    "curvasCContornoMarcado": 20,
+    "curvasPorBota": 10,
+    "maxYCoordenadasCalzado": 429.6,
+    "maxYTodoElGrupo": 429.6,
+    "cotaConMargenTrazo": 431,
+    "piernasIntactas": true,
+    "faldaIntacta": true,
+    "defsIdsImagenesIntactos": true,
+    "sha256": "07ccc4f0a5a2d8cc009691ee991ced8cf9358f52f9929416c3cf8eff6800beeb"
+  },
+  {
+    "archivo": "collage-falda-botas-piel-grueso.svg",
+    "curvasCContornoMarcado": 20,
+    "curvasPorBota": 10,
+    "maxYCoordenadasCalzado": 429.6,
+    "maxYTodoElGrupo": 429.6,
+    "cotaConMargenTrazo": 431,
+    "piernasIntactas": true,
+    "faldaIntacta": true,
+    "defsIdsImagenesIntactos": true,
+    "sha256": "880694e42f80958382e86a44b4db70df6db326ecf2a6d5476182d6091a428962"
+  }
+]

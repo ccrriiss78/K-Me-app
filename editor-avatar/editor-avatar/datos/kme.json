@@ -1549,6 +1549,48 @@
           "piernas": "../assets/kme/ropa_abajo/collage-falda-bolsillos-grueso.svg",
           "ropa_abajo": "../assets/kme/ropa_abajo/collage-falda-bolsillos-grueso.svg"
         }
+      },
+      {
+        "id": "collage-falda-botas-piel-delgado",
+        "nombre": "Falda con botas de piel · delgado",
+        "familia": "collage-falda-botas-piel",
+        "coleccion": "collage-05",
+        "cuerpoCompatible": "relajado",
+        "cinturaY": 350,
+        "reemplazaCapas": ["piernas"],
+        "gruposPorCapa": {"piernas": "piernas", "ropa_abajo": "prenda"},
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/collage-falda-botas-piel-delgado.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/collage-falda-botas-piel-delgado.svg"
+        }
+      },
+      {
+        "id": "collage-falda-botas-piel-medio",
+        "nombre": "Falda con botas de piel · medio",
+        "familia": "collage-falda-botas-piel",
+        "coleccion": "collage-05",
+        "cuerpoCompatible": "recto",
+        "cinturaY": 350,
+        "reemplazaCapas": ["piernas"],
+        "gruposPorCapa": {"piernas": "piernas", "ropa_abajo": "prenda"},
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/collage-falda-botas-piel-medio.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/collage-falda-botas-piel-medio.svg"
+        }
+      },
+      {
+        "id": "collage-falda-botas-piel-grueso",
+        "nombre": "Falda con botas de piel · grueso",
+        "familia": "collage-falda-botas-piel",
+        "coleccion": "collage-05",
+        "cuerpoCompatible": "amplio",
+        "cinturaY": 350,
+        "reemplazaCapas": ["piernas"],
+        "gruposPorCapa": {"piernas": "piernas", "ropa_abajo": "prenda"},
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/collage-falda-botas-piel-grueso.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/collage-falda-botas-piel-grueso.svg"
+        }
       }
     ],
     "ropa.arriba": [

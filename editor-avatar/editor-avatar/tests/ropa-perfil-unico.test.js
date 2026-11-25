@@ -28,5 +28,5 @@ test('Las prendas largas llegan a la cintura elegida, alta o baja, y los tops co
     if(p.topCorto){assert.ok(maxY<340);assert.match(svg,/data-parte="ombligo"/);}
     else {assert.equal(maxY,q.cinturaY||350,p.id+'/'+q.id);assert.doesNotMatch(svg,/data-parte="ombligo"/);}
     n++;
-  }assert.equal(n,360); // 336 hasta el lote collage 01; su falda suma 8 tops × 3 cuerpos (E0079)
+  }assert.equal(n,384); // 336 hasta el lote collage 01; cada falda nueva suma 8 tops × 3 cuerpos (lote 01, E0079; lote 05, E0082)
 });

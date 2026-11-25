@@ -1,0 +1,32 @@
+{
+  "estado": "Propuesta gráfica. No es un parche del catálogo vigente: falta ruta/capa de calzado.",
+  "idFamilia": "collage-botas-piel",
+  "nombre": "Botas de piel collage",
+  "capaPropuesta": "calzado",
+  "piezas": [
+    {
+      "id": "collage-botas-piel-delgado",
+      "nombre": "Botas de piel collage · delgado",
+      "cuerpoCompatible": "relajado",
+      "archivo": "svg/collage-botas-piel-delgado.svg"
+    },
+    {
+      "id": "collage-botas-piel-medio",
+      "nombre": "Botas de piel collage · medio",
+      "cuerpoCompatible": "recto",
+      "archivo": "svg/collage-botas-piel-medio.svg"
+    },
+    {
+      "id": "collage-botas-piel-grueso",
+      "nombre": "Botas de piel collage · grueso",
+      "cuerpoCompatible": "amplio",
+      "archivo": "svg/collage-botas-piel-grueso.svg"
+    }
+  ],
+  "color": {
+    "clase": "f-calzado-collage",
+    "rutaEnReceta": null,
+    "referencia": "#282126"
+  },
+  "disponibilidad": "Catálogo especial propuesto; sin precio ni canje."
+}
