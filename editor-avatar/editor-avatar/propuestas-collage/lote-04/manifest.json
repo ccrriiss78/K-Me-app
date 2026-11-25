@@ -1,0 +1,55 @@
+{
+  "fecha": "2026-11-25",
+  "familia": "collage-chaqueta-denim",
+  "lienzo": {
+    "ancho": 400,
+    "alto": 480
+  },
+  "forma": "Silueta y anatomía de Denim Layer existente; composición nueva de bolsillos, solapas, puños y costuras. Los archivos originales no cambian.",
+  "origenTextura": "Denim generado por ChatGPT para el lote 01; reutilizado sin generar otra fotografía.",
+  "licencia": "Material generado; sin terceros; no se atribuye CC0 ni exclusividad.",
+  "aplicacion": "Base f-arriba + variantes claro/oscuro ya existentes. Sombras alpha recortadas: 0.28 en cuerpo y 1 en detalles. Interior y costuras blanco cálido fijo, contorno tinta; sin colores metálicos nuevos.",
+  "texturas": [
+    {
+      "archivo": "texturas/denim-gris-128.png",
+      "ancho": 128,
+      "alto": 128,
+      "bytes": 9712
+    },
+    {
+      "archivo": "texturas/denim-sombra-128.png",
+      "ancho": 128,
+      "alto": 128,
+      "bytes": 8724
+    }
+  ],
+  "referencias": [
+    {
+      "cuerpo": "relajado",
+      "color": "#557a9d",
+      "archivo": "referencias/avatar-delgado.png"
+    },
+    {
+      "cuerpo": "recto",
+      "color": "#c5b1e3",
+      "archivo": "referencias/avatar-medio.png"
+    },
+    {
+      "cuerpo": "amplio",
+      "color": "#e83475",
+      "archivo": "referencias/avatar-grueso.png"
+    }
+  ],
+  "verificado": [
+    "Texturas grises, <=256px y <=20KiB",
+    "Bordes exactos",
+    "Solo imágenes PNG incrustadas",
+    "Rasterización offline y composición en tres cuerpos"
+  ],
+  "pendiente": [
+    "Integración catálogo/validación con TDD por Claude",
+    "Editor real, miniaturas, guardado/recarga y exportación PNG/PDF",
+    "Otras cinturas y solapes con accesorios",
+    "Probador, precio y canje: propuestas, sin implementación"
+  ]
+}

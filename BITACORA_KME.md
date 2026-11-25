@@ -2,7 +2,7 @@
 
 > **El hilo conductor de K-ME es personalizar un producto para que el fan tenga el protagonismo que merece dentro del mundo del K-pop.** La primera conversación exploraba un posible proyecto de máquina de vending; esa era una forma posible de materializar la idea. El propósito de dar protagonismo al fan es lo que conecta aquel origen con el proyecto actual.
 
-- **Revisión del archivo:** R0079.
+- **Revisión del archivo:** R0080.
 - **Carpeta actual del proyecto:** `C:\Users\<usuario>\Desktop\ACTIVA2026\k-me` (renombrada por la autora; véase E0006).
 - **Última actualización:** 2026-11-25 · Europe/Madrid.
 - **Responsable de las decisiones:** la autora del proyecto.
@@ -258,6 +258,7 @@ Todas estas decisiones están vigentes en esta revisión. Los cambios futuros de
 | D069 | **Lote collage 01: la falda con bolsillos de tela y el lightstick de estudio, como opciones NUEVAS del avatar** (primer paso de D067). Los preparó ChatGPT: formas vectoriales y texturas generadas, sin personas ni marcas. Entran sin quitar ni cambiar ninguna pieza, id, receta ni avatar anterior. Las texturas van incrustadas como PNG pequeños. Hay que comprobar los ids internos del SVG, las imágenes incrustadas, Sello Studio y la exportación en PNG y PDF. Sin commits ni subidas sin la aprobación de la autora. | La autora quiere detalles fotográficos en prendas y accesorios nuevos, sin cambiar los actuales (E0075). | E0079, la autora reenvía las indicaciones de ChatGPT: «Integra estas dos piezas como opciones NUEVAS, con TDD, conservando todas las piezas, ids y avatares anteriores…». | Hecho en E0079 (V095, V096). Falta la revisión de la autora en el navegador (T044). |
 | D070 | **Lotes collage 02 y 03: el gorro de punto y el Top Destello, como opciones nuevas.** El gorro lleva un **color propio de la paleta de la ropa**, en un campo nuevo de la receta (`colorGorro`, lavanda por defecto), sin enlazarlo al de la camiseta. Las recetas anteriores se completan solas y no cambian. El top es el halter con lentejuelas, una variante por cuerpo, con el color de la ropa de arriba; el halter original no cambia. El gorro, disponible desde el principio. **El canje del top no se construye** (sin precio ni tienda). Su disponibilidad provisional, pendiente de la autora. | Sigue D067 y lo resuelto en D069. | E0080, indicaciones de ChatGPT que reenvía la autora: «Revisa el contrato vigente y resuelve el enlace a la paleta… No vincules silenciosamente su color al de la camiseta», «Si necesitas decidir su disponibilidad provisional, consúltamelo». | Hecho en E0080 (V098). Pendientes: disponibilidad del top y revisión de la autora (T045). |
 | D071 | **Varios accesorios a la vez, salvo los incompatibles** (petición de la autora). Propuesta del asistente, sin implementar: uno por zona (cabeza: gorro, auriculares o pin; cara: gafas; mano: lightstick), con las recetas anteriores intactas y la validación en el servidor. | Hoy la receta guarda un solo accesorio. | E0080, la autora: «solo me deja seleccionar un accesorio, pero debería poderme dejar por ejemplo coger el lightstick… y el gorro a la vez, siempre que no sean incompatibles». | Pedida; diseño pendiente de su visto bueno. |
+| D072 | **Lote collage 04: la Chaqueta Denim Collage, como opción nueva** de ropa superior. Es una chaqueta abierta de manga corta con camiseta interior, sobre la silueta de Denim Layer, que no cambia. Tres ids por cuerpo, con el color de la ropa de arriba y el vaquero del lote 01. Sin canje ni precio; su disponibilidad provisional, como la del top, pendiente de la autora. | Sigue D067 y D069–D070. | E0081, la autora: «Añade las tres variantes como opciones nuevas, conservando todas las prendas y recetas actuales. Sigue la guía y verifica la integración con los tests correspondientes.» | Hecho en E0081 (V100). Falta su revisión (T045). |
 
 ## 5. Propuestas conservadas, alcance y cuestiones abiertas
 
@@ -412,6 +413,8 @@ Actualización del editor: E0042 amplía el trabajo de E0015–E0031 con recurso
 | V096 | 2026-11-25 | Ejecutado por el asistente (E0079), con la base local `kme_dev`. | Correcta. **Editor 158 de 158:** el lote (6 tests); la regla nueva de texturas en `kme-assets`; `sello-respaldo` con un test nuevo («sin el filtro, el respaldo sigue visible»). Dos tests de cintura cuentan ahora 360 combinaciones en vez de 336: la falda nueva suma 24, y cumple las mismas reglas. **App 255 de 255:** `avatar-collage` 8 de 8 (el filtro acepta las 9 texturas y rechaza enlaces externos, JPEG, SVG, PNG grandes o falsos; el servidor guarda y devuelve la receta; las recetas antiguas siguen valiendo; Mi K-ME, Connect y el sello sin ids repetidos; la vista previa con texturas; el lightstick fuera del rostro). **En Chrome sin ventana:** el filtro acepta la vista previa real (3 imágenes) y rechaza un enlace externo, un JPEG y un script; la photocard del avatar del editor y la del sello en PNG llevan las texturas, revisadas a la vista; el editor real de Avatar Studio con las dos piezas elegidas, con clics simulados. **Sin revisión de la autora** (T044). |
 | V097 | 2026-11-25 | Ejecutado por el asistente (E0080), tests escritos antes de integrar. | En rojo por lo que comprueban: **`collage-lotes-02-03` (editor) 0 de 5** (sin piezas, sin colorGorro, sin color en el menú); el del lote 01, ya ajustado para admitir lotes nuevos, seguía pasando. Después, un fallo más: el editor rechazaba el color («Color no válido») hasta añadir `colorGorro` a su lista de paletas. Los tests nuevos de la app se escribieron después de integrar en el editor: no tuvieron fase en rojo. |
 | V098 | 2026-11-25 | Ejecutado por el asistente (E0080), con la base local `kme_dev`. | Correcta. **Editor 163 de 163** y **app 256 de 256**, 0 fallos y 0 omitidos. Lo nuevo: catálogo y halter intactos; solo PNG incrustados; top con el color de arriba y gorro con el suyo; una receta anterior se completa con la lavanda sin cambiar lo demás; ids únicos con varios avatares; en el editor (simulado), el top, el gorro, su miniatura y «Color del gorro» solo con el gorro puesto; en el servidor, el gorro con un color de la paleta (201), con uno de fuera (400) y una receta sin el campo (lavanda); el filtro acepta las 16 texturas de los tres lotes. **En Chrome sin ventana:** el editor real con clics (Top Destello en fucsia, gorro y «Color del gorro: Denim»), la photocard en PNG con gorro, lentejuelas y vaquero, y el filtro con la vista previa real (4 imágenes aceptadas; enlace externo, JPEG y script rechazados). **Hoja del gorro** con los 11 peinados y los 3 rostros: encaja; con `mono` y `doble-mono-lazos` asoma parte del moño. **Sin revisión de la autora** (T045). |
+| V099 | 2026-11-25 | Ejecutado por el asistente (E0081), tests escritos antes de integrar. | En rojo por lo que comprueban: **`collage-lote-04` (editor) 0 de 5**. Pasaron después de añadir solo el catálogo y los dibujos, sin tocar código: lo resuelto en los lotes 01 a 03 bastó. |
+| V100 | 2026-11-25 | Ejecutado por el asistente (E0081), con la base local `kme_dev`. | Correcta. **Editor 168 de 168** y **app 256 de 256**. Lo nuevo: Denim Layer intacto; solo PNG incrustados; con los tres cuerpos y las dos cinturas (350 y 370), el bajo de la chaqueta y el recorte de su textura llegan a la cintura; el color de arriba; ids únicos con varios avatares; la miniatura con textura en el editor (simulado); el servidor guarda la receta; el filtro acepta las 19 texturas de los cuatro lotes. Los tests de la app de este lote se añadieron después de integrar. **En Chrome sin ventana:** el editor real con la chaqueta y el color Denim elegidos con clics; la photocard en PNG con el vaquero en bolsillos, solapas y puños; el filtro con la vista previa real (3 imágenes aceptadas; enlace externo, JPEG y script rechazados). **Sin revisión de la autora** (T045). |
 
 Las pruebas V005–V008 son resultados declarados por Claude y distinguidos de la comprobación documental V009. Los escenarios siguientes siguen pendientes para el producto completo:
 
@@ -476,7 +479,7 @@ Estados permitidos: pendiente, en curso, bloqueado, terminado o descartado. Solo
 | T042 | HANGUL LIVE 001, Kpopis y «Mis tesoros» mínimo (D062–D064): enseñar a la autora los textos exactos de la miniclase y de las preguntas; dibujar «Luz Hangul 001» y el icono del Kpopi; después, tests en rojo y construir el progreso por cuenta, la recompensa única (sin cobrarla dos veces), el saldo con sus movimientos y la página de «Mis tesoros». | Terminado | Creado en E0072. Dentro del plan P026, antes de congelar el código el sábado 28; si el viernes por la noche no está en verde, se queda fuera entero. E0073: textos y dibujos aprobados (D066); construido con tests (V088, V089) el martes 24, antes de lo previsto. La revisión en el navegador sigue en T043. |
 | T043 | La autora prueba «Mi escenario» en su navegador (ordenador y móvil): la miniclase entera, fallar y volver a probar, acertar las 3, ver los 20 Kpopis en la cabecera y «Luz Hangul 001» en «Mis tesoros», repetirla sin volver a ganar nada; si le gustan los textos, los dibujos y el sitio de cada cosa. | Pendiente | Creado en E0073. Probado con tests (V089) y en capturas del asistente, no por la autora. |
 | T044 | La autora prueba las piezas del lote collage 01 en su navegador: la falda con bolsillos y el lightstick en Avatar Studio (con los tres cuerpos), guardar el avatar, ponerlo en el perfil, un sello «Cuerpo entero» con él, imprimirlo y descargarlo. Revisa con ChatGPT los cruces del lightstick con otros brazos, prendas y peinados. | Pendiente | Creado en E0079. Probado con tests (V096) y en Chrome por el asistente, no por la autora. |
-| T045 | La autora prueba el gorro de punto (con su color) y el Top Destello en su navegador; decide qué hacer con los moños bajo el gorro, la disponibilidad provisional del top y el diseño de varios accesorios (D071). | Pendiente | Creado en E0080. Probado con tests (V098) y en Chrome por el asistente. |
+| T045 | La autora prueba el gorro de punto (con su color) y el Top Destello en su navegador; decide qué hacer con los moños bajo el gorro, la disponibilidad provisional del top y el diseño de varios accesorios (D071). | Pendiente | Creado en E0080. Probado con tests (V098) y en Chrome por el asistente. E0081: también la Chaqueta Denim Collage (D072, V100) y su disponibilidad provisional. |
 
 ## 8. Aprendizajes y preguntas para valorar el proceso
 
@@ -2412,6 +2415,29 @@ Las respuestas se añaden en la sesión correspondiente, con ejemplos. No rellen
 - **Siguiente paso:** respuestas de la autora (varios accesorios, disponibilidad del top) y su aprobación del commit.
 - **Revisión resultante:** R0079.
 
+### E0081 · 2026-11-25 · Lote collage 04: Chaqueta Denim Collage
+
+- **Autoría y entorno:** autora y asistente (Claude Code) en el ordenador de la autora; ella lo sigue desde el móvil con Remote Control. La pieza la preparó ChatGPT fuera del repositorio.
+- **Objetivo:** subir E0080 e integrar el lote 04 con TDD (D072).
+- **Base leída:** R0079, E0080; el LEEME, el catálogo propuesto, el manifest, las referencias y los SVG del lote; la entrada de Denim Layer y el ajuste del bajo (`kme-ajuste-ropa.js`).
+- **Hechos y trabajo realizado:**
+  - E0080 subido (commit `1523f4a`, 28 archivos) con el «súbelo» de la autora;
+  - el zip, descomprimido fuera del proyecto;
+  - `tests/collage-lote-04.test.js` (en rojo, 0 de 5);
+  - los 3 SVG, copiados sin cambios; los tres ids en `kme.json`, con la entrada de Denim Layer y sus propios archivos;
+  - la muestra autónoma, regenerada;
+  - la app: `avatar-collage.test.js` cuenta 19 texturas y guarda una receta con la chaqueta;
+  - `propuestas-collage/lote-04/`: LEEME, manifest y catálogo propuesto. Las texturas son las del lote 01 (el mismo vaquero) y no se duplicaron.
+- **Decisiones confirmadas:** D072.
+- **Decidido por el asistente sin preguntar:** `coleccion: "collage-04"`; comprobar las dos cinturas que existen (350 y 370), también en el recorte de la textura.
+- **Propuestas sin confirmar:** siguen D071 (varios accesorios) y la disponibilidad provisional del top y de la chaqueta.
+- **Cambios o correcciones:** ninguno en el código: el catálogo y los dibujos bastaron.
+- **Pruebas:** V099 (rojo) y V100 (editor 168 de 168, app 256 de 256, Chrome).
+- **Problemas y pendientes:** T045.
+- **Aprendizaje:** cuando las reglas comunes están resueltas y probadas (ids únicos, texturas, filtro), una pieza nueva solo necesita catálogo, dibujos y sus tests.
+- **Siguiente paso:** respuestas de la autora (D071, disponibilidad del top y la chaqueta, moños bajo el gorro) y su aprobación del commit.
+- **Revisión resultante:** R0080.
+
 <!-- AÑADIR AQUÍ LAS NUEVAS SESIONES, EN ORDEN DE REGISTRO. NO BORRAR E0001. -->
 
 ## 10. Plantilla para una nueva sesión
@@ -2601,5 +2627,6 @@ PROPUESTA PROCEDENTE DEL OTRO CHAT:
 | R0077 | 2026-11-25 | E0078 | README reescrito para la demo (qué hace K-ME, migraciones 001–009, puerto 3001, 17 pruebas a mano, seguridad y pendientes) y nuevo `docs/MODELO_DATOS.md` (diagrama, tablas y las tres ideas del diseño). |
 | R0078 | 2026-11-25 | E0079 | D069: lote collage 01 integrado (falda con bolsillos de tela por cuerpo y lightstick de estudio) sin cambiar nada anterior; ids únicos por dibujo; filtro `svg-seguro.js` para la vista previa del sello; el lightstick, fuera del recorte del rostro. V095 (rojo) y V096 (editor 158 de 158, app 255 de 255, Chrome). Nuevo T044. TECH_SPEC v1.22. |
 | R0079 | 2026-11-25 | E0080 | D070: gorro de punto (con `colorGorro` de la paleta) y Top Destello integrados. D071: varios accesorios a la vez, pedido y pendiente de diseño. V097 (rojo) y V098 (editor 163 de 163, app 256 de 256, Chrome). Nuevo T045. TECH_SPEC v1.23. |
+| R0080 | 2026-11-25 | E0081 | D072: Chaqueta Denim Collage integrada (tres ids por cuerpo, sobre Denim Layer). V099 (rojo) y V100 (editor 168 de 168, app 256 de 256, Chrome). TECH_SPEC v1.24. |
 
 <!-- FIN DE LA BITÁCORA. Las revisiones posteriores deben conservar las entradas históricas. -->

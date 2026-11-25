@@ -2586,6 +2586,57 @@
           "ropa_arriba": "../assets/kme/ropa_arriba/collage-top-lentejuelas-grueso.svg",
           "piernas": "../assets/kme/cuerpo/amplio.svg"
         }
+      },
+      {
+        "id": "collage-chaqueta-denim-delgado",
+        "nombre": "Chaqueta Denim Collage · delgado",
+        "coleccion": "collage-04",
+        "familia": "collage-chaqueta-denim",
+        "cuerpoCompatible": "relajado",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": ["cuerpo"],
+        "gruposPorCapa": {"anatomia": "perfil", "torso": "torso", "ropa_arriba": "superior"},
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/collage-chaqueta-denim-delgado.svg",
+          "torso": "../assets/kme/ropa_arriba/collage-chaqueta-denim-delgado.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/collage-chaqueta-denim-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "collage-chaqueta-denim-medio",
+        "nombre": "Chaqueta Denim Collage · medio",
+        "coleccion": "collage-04",
+        "familia": "collage-chaqueta-denim",
+        "cuerpoCompatible": "recto",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": ["cuerpo"],
+        "gruposPorCapa": {"anatomia": "perfil", "torso": "torso", "ropa_arriba": "superior"},
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/collage-chaqueta-denim-medio.svg",
+          "torso": "../assets/kme/ropa_arriba/collage-chaqueta-denim-medio.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/collage-chaqueta-denim-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "collage-chaqueta-denim-grueso",
+        "nombre": "Chaqueta Denim Collage · grueso",
+        "coleccion": "collage-04",
+        "familia": "collage-chaqueta-denim",
+        "cuerpoCompatible": "amplio",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": ["cuerpo"],
+        "gruposPorCapa": {"anatomia": "perfil", "torso": "torso", "ropa_arriba": "superior"},
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/collage-chaqueta-denim-grueso.svg",
+          "torso": "../assets/kme/ropa_arriba/collage-chaqueta-denim-grueso.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/collage-chaqueta-denim-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
       }
     ],
     "pelo.estilo": [

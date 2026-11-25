@@ -21,6 +21,7 @@ const PIEZAS = [
   ...['delgado', 'medio', 'grueso'].flatMap((v) => [
     `assets/kme/ropa_abajo/collage-falda-bolsillos-${v}.svg`, `assets/kme/accesorio/collage-lightstick-estudio-${v}.svg`,
     `assets/kme/ropa_arriba/collage-top-lentejuelas-${v}.svg`, // lote 03
+    `assets/kme/ropa_arriba/collage-chaqueta-denim-${v}.svg`, // lote 04
   ]),
   'assets/kme/accesorio/collage-gorro-punto.svg', // lote 02
 ];
@@ -52,7 +53,7 @@ test('El filtro de la vista previa acepta las texturas del lote: PNG incrustados
       texturas++;
     }
   }
-  assert.equal(texturas, 16, 'lote 01: 3 faldas con una y 3 lightsticks con dos; lote 02: el gorro, una; lote 03: 3 tops con dos');
+  assert.equal(texturas, 19, 'lote 01: 3 faldas con una y 3 lightsticks con dos; lote 02: el gorro, una; lote 03: 3 tops con dos; lote 04: 3 chaquetas con una');
   assert.equal(pngIncrustadoValido(png()), true, 'un PNG pequeño y bien formado');
 });
 
@@ -162,6 +163,11 @@ test('Lote collage 01 en la app', { skip: !hayConfiguracion() && 'falta app/.env
     const vieja = await pedir('/studio/avatares', { metodo: 'POST', json: { _csrf: await token(), nombre: 'Receta de antes', receta: sinCampo } });
     assert.equal(vieja.estado, 201);
     assert.equal((await consulta('SELECT composicion FROM avatares WHERE id = $1', [vieja.cuerpo.id])).rows[0].composicion.colorGorro, '#c5b1e3');
+    // Lote 04: la Chaqueta Denim Collage, con el color de arriba.
+    const chaqueta = { ...nueva, ropa: { ...nueva.ropa, arriba: 'collage-chaqueta-denim-grueso', colorArriba: '#557a9d' } };
+    const conChaqueta = await pedir('/studio/avatares', { metodo: 'POST', json: { _csrf: await token(), nombre: 'Chaqueta collage', receta: chaqueta } });
+    assert.equal(conChaqueta.estado, 201);
+    assert.equal((await consulta('SELECT composicion FROM avatares WHERE id = $1', [conChaqueta.cuerpo.id])).rows[0].composicion.ropa.arriba, 'collage-chaqueta-denim-grueso');
     const dibujo = (await import('../src/services/avatarCatalogo.js')).dibujarAvatar(guardada, { encuadre: 'cuerpo' });
     assert.match(dibujo, /\.f-gorro-collage\{fill:#557a9d\}/);
     assert.match(dibujo, /data-parte="tejido-collage"/);

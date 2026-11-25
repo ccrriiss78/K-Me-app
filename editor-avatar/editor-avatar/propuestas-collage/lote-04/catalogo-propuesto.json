@@ -1,0 +1,77 @@
+{
+  "idFamilia": "collage-chaqueta-denim",
+  "nombre": "Chaqueta Denim Collage",
+  "capa": "ropa superior",
+  "piezas": [
+    {
+      "id": "collage-chaqueta-denim-delgado",
+      "nombre": "Chaqueta Denim Collage · delgado",
+      "coleccion": "collage",
+      "familia": "collage-chaqueta-denim",
+      "cuerpoCompatible": "relajado",
+      "perfilIntegrado": true,
+      "topCorto": false,
+      "ocultaCapas": [
+        "cuerpo"
+      ],
+      "gruposPorCapa": {
+        "anatomia": "perfil",
+        "torso": "torso",
+        "ropa_arriba": "superior"
+      },
+      "capas": {
+        "anatomia": "svg/collage-chaqueta-denim-delgado.svg",
+        "torso": "svg/collage-chaqueta-denim-delgado.svg",
+        "ropa_arriba": "svg/collage-chaqueta-denim-delgado.svg",
+        "piernas": "../assets/kme/cuerpo/relajado.svg"
+      }
+    },
+    {
+      "id": "collage-chaqueta-denim-medio",
+      "nombre": "Chaqueta Denim Collage · medio",
+      "coleccion": "collage",
+      "familia": "collage-chaqueta-denim",
+      "cuerpoCompatible": "recto",
+      "perfilIntegrado": true,
+      "topCorto": false,
+      "ocultaCapas": [
+        "cuerpo"
+      ],
+      "gruposPorCapa": {
+        "anatomia": "perfil",
+        "torso": "torso",
+        "ropa_arriba": "superior"
+      },
+      "capas": {
+        "anatomia": "svg/collage-chaqueta-denim-medio.svg",
+        "torso": "svg/collage-chaqueta-denim-medio.svg",
+        "ropa_arriba": "svg/collage-chaqueta-denim-medio.svg",
+        "piernas": "../assets/kme/cuerpo/recto.svg"
+      }
+    },
+    {
+      "id": "collage-chaqueta-denim-grueso",
+      "nombre": "Chaqueta Denim Collage · grueso",
+      "coleccion": "collage",
+      "familia": "collage-chaqueta-denim",
+      "cuerpoCompatible": "amplio",
+      "perfilIntegrado": true,
+      "topCorto": false,
+      "ocultaCapas": [
+        "cuerpo"
+      ],
+      "gruposPorCapa": {
+        "anatomia": "perfil",
+        "torso": "torso",
+        "ropa_arriba": "superior"
+      },
+      "capas": {
+        "anatomia": "svg/collage-chaqueta-denim-grueso.svg",
+        "torso": "svg/collage-chaqueta-denim-grueso.svg",
+        "ropa_arriba": "svg/collage-chaqueta-denim-grueso.svg",
+        "piernas": "../assets/kme/cuerpo/amplio.svg"
+      }
+    }
+  ],
+  "disponibilidad": "Propuesta para catálogo especial; sin precio ni canje."
+}
