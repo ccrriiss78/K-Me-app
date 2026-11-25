@@ -2535,6 +2535,57 @@
           "ropa_arriba": "../assets/kme/ropa_arriba/top-holgado-grueso.svg",
           "piernas": "../assets/kme/cuerpo/amplio.svg"
         }
+      },
+      {
+        "id": "collage-top-lentejuelas-delgado",
+        "nombre": "Top Destello · delgado",
+        "coleccion": "collage-03",
+        "familia": "collage-top-lentejuelas",
+        "cuerpoCompatible": "relajado",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": ["cuerpo"],
+        "gruposPorCapa": {"anatomia": "perfil", "torso": "torso", "ropa_arriba": "superior"},
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/collage-top-lentejuelas-delgado.svg",
+          "torso": "../assets/kme/ropa_arriba/collage-top-lentejuelas-delgado.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/collage-top-lentejuelas-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "collage-top-lentejuelas-medio",
+        "nombre": "Top Destello · medio",
+        "coleccion": "collage-03",
+        "familia": "collage-top-lentejuelas",
+        "cuerpoCompatible": "recto",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": ["cuerpo"],
+        "gruposPorCapa": {"anatomia": "perfil", "torso": "torso", "ropa_arriba": "superior"},
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/collage-top-lentejuelas-medio.svg",
+          "torso": "../assets/kme/ropa_arriba/collage-top-lentejuelas-medio.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/collage-top-lentejuelas-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "collage-top-lentejuelas-grueso",
+        "nombre": "Top Destello · grueso",
+        "coleccion": "collage-03",
+        "familia": "collage-top-lentejuelas",
+        "cuerpoCompatible": "amplio",
+        "perfilIntegrado": true,
+        "topCorto": true,
+        "ocultaCapas": ["cuerpo"],
+        "gruposPorCapa": {"anatomia": "perfil", "torso": "torso", "ropa_arriba": "superior"},
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/collage-top-lentejuelas-grueso.svg",
+          "torso": "../assets/kme/ropa_arriba/collage-top-lentejuelas-grueso.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/collage-top-lentejuelas-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
       }
     ],
     "pelo.estilo": [
@@ -2685,6 +2736,21 @@
             "../assets/kme/accesorio/collage-lightstick-estudio-grueso.svg"
           ]
         }
+      },
+      {
+        "id": "collage-gorro-punto",
+        "nombre": "Gorro de punto",
+        "coleccion": "collage-02",
+        "zona": "cabeza",
+        "rutaColor": "colorGorro",
+        "tituloColor": "Color del gorro",
+        "miniatura": {
+          "recorte": "70 10 260 150",
+          "capas": ["accesorio"]
+        },
+        "capas": {
+          "accesorio": "../assets/kme/accesorio/collage-gorro-punto.svg"
+        }
       }
     ]
   },
@@ -2832,6 +2898,7 @@
       "colorAbajo": "#282126"
     },
     "accesorio": "auriculares",
+    "colorGorro": "#c5b1e3",
     "fondo": "ninguno"
   },
   "bases": [

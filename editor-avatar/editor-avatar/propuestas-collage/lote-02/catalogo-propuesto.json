@@ -1,0 +1,15 @@
+{
+  "id": "collage-gorro-punto",
+  "nombre": "Gorro de punto",
+  "capa": "accesorio",
+  "capas": {
+    "accesorio": [
+      "svg/collage-gorro-punto.svg"
+    ]
+  },
+  "claseColor": "f-gorro-collage",
+  "colorReferencia": "#c5b1e3",
+  "rutaColorEnReceta": null,
+  "nota": "El contrato inspeccionado no tiene color independiente de gorro. Claude debe acordar o implementar su enlace a paleta sin modificar recetas antiguas. No añadir una clave por copia automática.",
+  "disponibilidad": "Propuesta: incluido desde el principio, sin precio confirmado."
+}

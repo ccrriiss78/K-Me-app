@@ -28,6 +28,9 @@ export function coloresDelAvatar(a) {
     'arriba-claro': tono(a.ropa.colorArriba, 0.45),
     'abajo': a.ropa.colorAbajo,
     'abajo-oscuro': tono(a.ropa.colorAbajo, -0.18),
+    // Gorro de punto (lote collage 02): su propio color de la paleta, nunca el de la camiseta.
+    // Lavanda si la receta es anterior al campo.
+    'gorro-collage': a.colorGorro || '#c5b1e3',
   };
 }
 

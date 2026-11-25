@@ -2,6 +2,7 @@
   "nota": "Catálogo kme.json ANTES del lote collage 01 (25/11/2026, E0079): ningún id puede desaparecer y porDefecto y las bases no cambian. Huellas SHA-256 de JSON.stringify(porDefecto) y JSON.stringify(bases).",
   "porDefectoSha256": "1a84e7f67f8e4f5a4ac505dc5b0f714dadcb230c4ea07b89286e94fe21b1df90",
   "basesSha256": "4f54ea41e62b11498403831041782609fcaf4b07c6d56fab3845e152e45b825a",
+  "porDefectoAnterior": {"version":1,"rostro":"redondo","cuerpo":"relajado","cejas":"suaves","grosorCejas":"medio","piel":"#fff5ef","ojos":{"estilo":"redondos-guino-derecho","color":"#775d43"},"boca":"risa","maquillaje":{"sombra":null,"labial":null,"sombraEstilo":"nada","labios":"nada","grosorLabios":"fino","colorLabios":"#cc7797","delineado":"nada","brillo":"nada","gemas":"nada","colorSombra":"#9673b7","colorDelineado":"#282126","colorBrillo":"#ede0cb","colorGemas":"#cc7797","colorRubor":"#cc7797","mejillas":"acuarela"},"pelo":{"estilo":"mono","color":"#282126","acabado":"tinta","mechones":"sin","mechon1":"#e83475","mechon2":"#9673b7","mechon3":"#00c6e8"},"ropa":{"arriba":"camiseta-integrada-delgado","colorArriba":"#fffaf7","abajo":"falda-integrada-delgado","colorAbajo":"#282126"},"accesorio":"auriculares","fondo":"ninguno"},
   "piezas": {
     "rostro": ["redondo","ovalado","cuadrado"],
     "cuerpo": ["relajado","recto","amplio"],

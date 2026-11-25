@@ -1,6 +1,6 @@
 # TECH_SPEC · K-ME
 
-**Estado:** versión 1.22 · 25/11/2026 · Responde al pendiente T012 de `BITACORA_KME.md`. Revisada con la autora: acepta las propuestas de Q1 a Q6 y decide Q7 a Q10 con cambios (ver §6). El 18/11 decide Q11, el alcance del MVP (§5.1) y los nombres de los logos (§4.0). El 19/11 sustituye el círculo cromático por la paleta de la app (§2.5). El 21/11 separa el usuario privado del alias público y añade el registro por formulario (§1). Ese mismo día se incorporan las decisiones del editor de avatar trabajadas con ChatGPT en otra carpeta (§2.2, §2.6, §3.3), y se decide que «Mi ambiente» también usa solo la paleta (§2.6, Q14). El 22/11 decide qué lleva el sello (§4.1, D041), protege el alias frente a palabras ofensivas (§1, D042), aprueba el catálogo de hangul comprobado (§4.2, D043), y decide que la imagen de perfil pueda ser un avatar, un sello o los dos (D044) y que el sello se pueda imprimir y descargar (D045). El 22 y 23/11 amplía la paleta del sello con colores vivos (D046). El 23/11 elige de momento la composición A+C para sellos y exige coherencia del tratamiento visual entre pantallas (§2.7, D047). El 24/11 decide guardar la imagen de perfil como referencia, con dos claves foráneas (§4.3, D055), borrar varios o todos (§3.6, D058) y cómo va Avatar Studio dentro de la app (§3.6, D059). Ese mismo día aprueba los textos, los dibujos, la regla y el sitio de HANGUL LIVE 001, los Kpopis y «Mis tesoros» (§5.2, D066).
+**Estado:** versión 1.23 · 25/11/2026 · Responde al pendiente T012 de `BITACORA_KME.md`. Revisada con la autora: acepta las propuestas de Q1 a Q6 y decide Q7 a Q10 con cambios (ver §6). El 18/11 decide Q11, el alcance del MVP (§5.1) y los nombres de los logos (§4.0). El 19/11 sustituye el círculo cromático por la paleta de la app (§2.5). El 21/11 separa el usuario privado del alias público y añade el registro por formulario (§1). Ese mismo día se incorporan las decisiones del editor de avatar trabajadas con ChatGPT en otra carpeta (§2.2, §2.6, §3.3), y se decide que «Mi ambiente» también usa solo la paleta (§2.6, Q14). El 22/11 decide qué lleva el sello (§4.1, D041), protege el alias frente a palabras ofensivas (§1, D042), aprueba el catálogo de hangul comprobado (§4.2, D043), y decide que la imagen de perfil pueda ser un avatar, un sello o los dos (D044) y que el sello se pueda imprimir y descargar (D045). El 22 y 23/11 amplía la paleta del sello con colores vivos (D046). El 23/11 elige de momento la composición A+C para sellos y exige coherencia del tratamiento visual entre pantallas (§2.7, D047). El 24/11 decide guardar la imagen de perfil como referencia, con dos claves foráneas (§4.3, D055), borrar varios o todos (§3.6, D058) y cómo va Avatar Studio dentro de la app (§3.6, D059). Ese mismo día aprueba los textos, los dibujos, la regla y el sitio de HANGUL LIVE 001, los Kpopis y «Mis tesoros» (§5.2, D066).
 
 Este documento dice **qué se construye y cómo**. La bitácora dice qué ha pasado y por qué; `CLAUDE.md` dice cómo trabaja el agente.
 
@@ -116,6 +116,12 @@ Cada punto lleva una etiqueta:
       - **Vista previa del sello:** la filtra `app/public/js/svg-seguro.js`, que admite solo esos PNG.
       - **Recorte del rostro:** deja fuera los accesorios de la mano.
       - **Detalles:** `editor-avatar/editor-avatar/propuestas-collage/lote-01/INTEGRADO.md`.
+    - **[DECIDIDO 25/11, D070; hecho en E0080] Lotes collage 02 y 03:**
+      - **Gorro de punto:** accesorio con su propio color, el campo nuevo `colorGorro` de la receta (paleta de la ropa, lavanda por defecto). Las recetas anteriores se completan solas.
+      - **Top Destello:** el halter con lentejuelas, tres ids por cuerpo, con `ropa.colorArriba`.
+      - **Sin canje:** no hay precio ni tienda. La disponibilidad provisional del top está pendiente.
+      - **Detalles:** `propuestas-collage/lote-02/INTEGRADO.md`.
+    - **[PREGUNTA, D071] Varios accesorios a la vez:** propuesta «uno por zona» (cabeza: gorro, auriculares o pin; cara: gafas; mano: lightstick), pendiente del visto bueno de la autora.
   - **Notas técnicas:**
     - para imprimir y descargar, la fotografía tiene que ir dentro del SVG;
     - la vista previa del sello rechaza hoy `<image>`;
@@ -694,3 +700,4 @@ Este documento **se puede cambiar** cuando la app avance. Cada cambio se hace as
 | 1.20 | 24/11/2026 | §2.7: alcance de D067 antes de congelar (prueba de collage en código, hecha) y cómo se añadirán las opciones fotográficas del avatar. |
 | 1.21 | 24/11/2026 | §4.3: zona propia de foto de perfil en la cabecera, en un marco como el del logo, con la inicial si no hay imagen (D068). |
 | 1.22 | 25/11/2026 | §2.7: lote collage 01 integrado (D069): falda con bolsillos de tela, lightstick de estudio, texturas incrustadas, ids únicos y filtro de la vista previa del sello. |
+| 1.23 | 25/11/2026 | §2.7: lotes 02 y 03 (D070): gorro de punto con `colorGorro` y Top Destello. Pregunta D071: varios accesorios a la vez. |

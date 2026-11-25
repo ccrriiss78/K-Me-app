@@ -163,7 +163,12 @@ export function montarEditorVisual(doc,catalogo){
       colorear('Color de arriba','ropa.colorArriba',catalogo.paleta('arriba'));
       piezas('Parte inferior','ropa.abajo',['piernas','ropa_abajo'],'130 338 140 110',catalogo.piezas('ropa.abajo').filter(p=>p.cuerpoCompatible===estado.avatar.cuerpo));
       colorear('Color de abajo','ropa.colorAbajo',catalogo.paleta('abajo'));
-    }else piezas('Accesorio','accesorio',['cabeza','ojos','accesorio'],'65 60 270 215');
+    }else{
+      piezas('Accesorio','accesorio',['cabeza','ojos','accesorio'],'65 60 270 215');
+      // Un accesorio con color propio (el gorro, lote collage 02) lo elige con la paleta de la ropa.
+      const puesto=catalogo.pieza('accesorio',estado.avatar.accesorio);
+      if(puesto?.rutaColor)colorear(puesto.tituloColor||'Color del accesorio',puesto.rutaColor,catalogo.paleta('arriba'));
+    }
   }
   function pintar(){
     // Vaciar las opciones puede reducir momentáneamente su altura y reiniciar la barra.

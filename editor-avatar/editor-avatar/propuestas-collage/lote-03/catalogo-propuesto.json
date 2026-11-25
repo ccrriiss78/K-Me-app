@@ -1,0 +1,77 @@
+{
+  "idFamilia": "collage-top-lentejuelas",
+  "nombre": "Top Destello",
+  "capa": "ropa superior",
+  "piezas": [
+    {
+      "id": "collage-top-lentejuelas-delgado",
+      "nombre": "Top Destello · delgado",
+      "coleccion": "collage",
+      "familia": "collage-top-lentejuelas",
+      "cuerpoCompatible": "relajado",
+      "perfilIntegrado": true,
+      "topCorto": true,
+      "ocultaCapas": [
+        "cuerpo"
+      ],
+      "gruposPorCapa": {
+        "anatomia": "perfil",
+        "torso": "torso",
+        "ropa_arriba": "superior"
+      },
+      "capas": {
+        "anatomia": "svg/collage-top-lentejuelas-delgado.svg",
+        "torso": "svg/collage-top-lentejuelas-delgado.svg",
+        "ropa_arriba": "svg/collage-top-lentejuelas-delgado.svg",
+        "piernas": "../assets/kme/cuerpo/relajado.svg"
+      }
+    },
+    {
+      "id": "collage-top-lentejuelas-medio",
+      "nombre": "Top Destello · medio",
+      "coleccion": "collage",
+      "familia": "collage-top-lentejuelas",
+      "cuerpoCompatible": "recto",
+      "perfilIntegrado": true,
+      "topCorto": true,
+      "ocultaCapas": [
+        "cuerpo"
+      ],
+      "gruposPorCapa": {
+        "anatomia": "perfil",
+        "torso": "torso",
+        "ropa_arriba": "superior"
+      },
+      "capas": {
+        "anatomia": "svg/collage-top-lentejuelas-medio.svg",
+        "torso": "svg/collage-top-lentejuelas-medio.svg",
+        "ropa_arriba": "svg/collage-top-lentejuelas-medio.svg",
+        "piernas": "../assets/kme/cuerpo/recto.svg"
+      }
+    },
+    {
+      "id": "collage-top-lentejuelas-grueso",
+      "nombre": "Top Destello · grueso",
+      "coleccion": "collage",
+      "familia": "collage-top-lentejuelas",
+      "cuerpoCompatible": "amplio",
+      "perfilIntegrado": true,
+      "topCorto": true,
+      "ocultaCapas": [
+        "cuerpo"
+      ],
+      "gruposPorCapa": {
+        "anatomia": "perfil",
+        "torso": "torso",
+        "ropa_arriba": "superior"
+      },
+      "capas": {
+        "anatomia": "svg/collage-top-lentejuelas-grueso.svg",
+        "torso": "svg/collage-top-lentejuelas-grueso.svg",
+        "ropa_arriba": "svg/collage-top-lentejuelas-grueso.svg",
+        "piernas": "../assets/kme/cuerpo/amplio.svg"
+      }
+    }
+  ],
+  "disponibilidad": "Propuesta de catálogo especial; sin precio aprobado ni canje implementado."
+}

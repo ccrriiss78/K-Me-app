@@ -1,0 +1,61 @@
+{
+  "fecha": "2026-11-25",
+  "familia": "collage-top-lentejuelas",
+  "lienzo": {
+    "ancho": 400,
+    "alto": 480
+  },
+  "forma": "Corte halter actual de K-ME, reutilizado en una pieza nueva. Originales intactos.",
+  "origenTextura": "Generada por ChatGPT; preparación técnica en gris y alpha.",
+  "licencia": "Material generado sin terceros; no se atribuye CC0 ni exclusividad.",
+  "aplicacion": "Base f-arriba usa ropa.colorArriba; sombras negras alpha + reflejos blancos alpha, recortados por forma vectorial; sin mezcla multiplicar ni color metálico fijo.",
+  "texturas": [
+    {
+      "archivo": "texturas/lentejuelas-gris-256.png",
+      "ancho": 256,
+      "alto": 256,
+      "bytes": 12676
+    },
+    {
+      "archivo": "texturas/lentejuelas-sombra-256.png",
+      "ancho": 256,
+      "alto": 256,
+      "bytes": 12660
+    },
+    {
+      "archivo": "texturas/lentejuelas-luz-256.png",
+      "ancho": 256,
+      "alto": 256,
+      "bytes": 7327
+    }
+  ],
+  "referencias": [
+    {
+      "cuerpo": "relajado",
+      "color": "#e83475",
+      "archivo": "referencias/avatar-delgado.png"
+    },
+    {
+      "cuerpo": "recto",
+      "color": "#9673b7",
+      "archivo": "referencias/avatar-medio.png"
+    },
+    {
+      "cuerpo": "amplio",
+      "color": "#282126",
+      "archivo": "referencias/avatar-grueso.png"
+    }
+  ],
+  "verificado": [
+    "Texturas <=256px y <=20KiB; gris y alpha",
+    "Bordes del patrón iguales",
+    "SVG sin recursos externos ni contenido activo",
+    "Rasterización offline con catálogo y dibujador actuales"
+  ],
+  "pendiente": [
+    "Catálogo y validador del servidor por Claude con TDD",
+    "Pruebas en editor, miniaturas y guardado/recarga",
+    "Sello Studio y exportación PNG/PDF del navegador",
+    "Probador, pertenencia y canje: solo propuestas, sin lógica en este lote"
+  ]
+}

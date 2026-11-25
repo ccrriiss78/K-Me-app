@@ -17,9 +17,13 @@ import { readFile } from 'node:fs/promises';
 import { recetaPorDefecto } from '../src/services/avatarCatalogo.js';
 
 const EDITOR = new URL('../../editor-avatar/editor-avatar/', import.meta.url);
-const PIEZAS = ['delgado', 'medio', 'grueso'].flatMap((v) => [
-  `assets/kme/ropa_abajo/collage-falda-bolsillos-${v}.svg`, `assets/kme/accesorio/collage-lightstick-estudio-${v}.svg`,
-]);
+const PIEZAS = [
+  ...['delgado', 'medio', 'grueso'].flatMap((v) => [
+    `assets/kme/ropa_abajo/collage-falda-bolsillos-${v}.svg`, `assets/kme/accesorio/collage-lightstick-estudio-${v}.svg`,
+    `assets/kme/ropa_arriba/collage-top-lentejuelas-${v}.svg`, // lote 03
+  ]),
+  'assets/kme/accesorio/collage-gorro-punto.svg', // lote 02
+];
 
 // El filtro del navegador, cargado como lo carga la página (un script clásico que deja window.KME_SVG).
 async function filtro() {
@@ -48,7 +52,7 @@ test('El filtro de la vista previa acepta las texturas del lote: PNG incrustados
       texturas++;
     }
   }
-  assert.equal(texturas, 9, '3 faldas con una textura y 3 lightsticks con dos');
+  assert.equal(texturas, 16, 'lote 01: 3 faldas con una y 3 lightsticks con dos; lote 02: el gorro, una; lote 03: 3 tops con dos');
   assert.equal(pngIncrustadoValido(png()), true, 'un PNG pequeño y bien formado');
 });
 
@@ -141,6 +145,26 @@ test('Lote collage 01 en la app', { skip: !hayConfiguracion() && 'falta app/.env
     assert.equal(guardada.accesorio, 'collage-lightstick-estudio');
     const antigua = await pedir('/studio/avatares', { metodo: 'POST', json: { _csrf: await token(), nombre: 'De siempre', receta: recetaPorDefecto() } });
     assert.equal(antigua.estado, 201);
+  });
+
+  await t.test('lotes 02 y 03: el servidor guarda el gorro con su color de la paleta y el Top Destello; rechaza un color de fuera; una receta sin colorGorro recibe la lavanda', async () => {
+    const nueva = { ...recetaPorDefecto(), cuerpo: 'amplio', accesorio: 'collage-gorro-punto', colorGorro: '#557a9d' };
+    nueva.ropa = { ...nueva.ropa, arriba: 'collage-top-lentejuelas-grueso', colorArriba: '#e83475', abajo: 'falda-integrada-grueso' };
+    const r = await pedir('/studio/avatares', { metodo: 'POST', json: { _csrf: await token(), nombre: 'Gorro y destello', receta: nueva } });
+    assert.equal(r.estado, 201);
+    const guardada = (await consulta('SELECT composicion FROM avatares WHERE id = $1', [r.cuerpo.id])).rows[0].composicion;
+    assert.equal(guardada.colorGorro, '#557a9d');
+    assert.equal(guardada.ropa.arriba, 'collage-top-lentejuelas-grueso');
+    const fuera = await pedir('/studio/avatares', { metodo: 'POST', json: { _csrf: await token(), nombre: 'Color inventado', receta: { ...nueva, colorGorro: '#123456' } } });
+    assert.equal(fuera.estado, 400, 'solo colores del catálogo');
+    const { colorGorro, ...sinCampo } = recetaPorDefecto();
+    assert.ok(colorGorro, 'el campo existe por defecto');
+    const vieja = await pedir('/studio/avatares', { metodo: 'POST', json: { _csrf: await token(), nombre: 'Receta de antes', receta: sinCampo } });
+    assert.equal(vieja.estado, 201);
+    assert.equal((await consulta('SELECT composicion FROM avatares WHERE id = $1', [vieja.cuerpo.id])).rows[0].composicion.colorGorro, '#c5b1e3');
+    const dibujo = (await import('../src/services/avatarCatalogo.js')).dibujarAvatar(guardada, { encuadre: 'cuerpo' });
+    assert.match(dibujo, /\.f-gorro-collage\{fill:#557a9d\}/);
+    assert.match(dibujo, /data-parte="tejido-collage"/);
   });
 
   await t.test('con ese avatar en el perfil, Mi K-ME (cabecera y cuerpo entero) lleva sus texturas y no repite ningún id', async () => {

@@ -1,0 +1,62 @@
+{
+  "fecha": "2026-11-25",
+  "id": "collage-gorro-punto",
+  "nombre": "Gorro de punto",
+  "capa": "accesorio",
+  "lienzo": {
+    "ancho": 400,
+    "alto": 480
+  },
+  "origen": "Textura generada por ChatGPT; preparación técnica a escala de grises y alpha. Forma vectorial creada para K-ME.",
+  "licencia": "Contenido generado, sin fotografías de terceros; no se presenta como CC0 ni como garantía de exclusividad.",
+  "aplicacion": "Base de color vectorial; patrón de sombras negras con transparencia. Opacidad 0.42 en copa y 1 en vuelta. Sin modo multiplicar.",
+  "texturas": [
+    {
+      "archivo": "texturas/punto-gris-128.png",
+      "ancho": 128,
+      "alto": 128,
+      "bytes": 19843
+    },
+    {
+      "archivo": "texturas/punto-sombra-128.png",
+      "ancho": 128,
+      "alto": 128,
+      "bytes": 13955
+    }
+  ],
+  "referencias": [
+    {
+      "pelo": "corto",
+      "color": "#c5b1e3",
+      "archivo": "referencias/avatar-corto.png",
+      "estado": "Revisar visualmente; integración en app pendiente"
+    },
+    {
+      "pelo": "bob",
+      "color": "#e83475",
+      "archivo": "referencias/avatar-bob.png",
+      "estado": "Revisar visualmente; integración en app pendiente"
+    },
+    {
+      "pelo": "corto-dos-bloques",
+      "color": "#557a9d",
+      "archivo": "referencias/avatar-corto-dos-bloques.png",
+      "estado": "Revisar visualmente; integración en app pendiente"
+    }
+  ],
+  "validacion": {
+    "limitesTexturas": true,
+    "grises": true,
+    "bordesIguales": true,
+    "imagenPNGIncrustada": true,
+    "renderOffline": true
+  },
+  "pendientes": [
+    "Compatibilidad visual con todos los rostros y peinados; moños y recogidos no certificados",
+    "Enlace del color del accesorio al contrato validado y la paleta",
+    "Catálogo y validación del servidor mediante TDD por Claude",
+    "Namespace único de defs y url por cada instancia de avatar",
+    "Permitidos seguros de image en Sello Studio",
+    "Editor, guardar/recargar, miniaturas, exportación PNG/PDF en navegador"
+  ]
+}

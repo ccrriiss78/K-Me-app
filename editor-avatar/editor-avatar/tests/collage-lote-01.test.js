@@ -56,11 +56,21 @@ test('Lote collage 01: se añaden la falda con bolsillos de tela (una por cuerpo
     const actuales = d.piezas[ruta].map(p => p.id);
     for (const id of lista) assert.ok(actuales.includes(id), `${ruta}: ha desaparecido ${id}`);
   }
+  // Los lotes collage solo AÑADEN piezas, siempre con ids «collage-…» (lotes 01, 02 y 03).
   for (const ruta of Object.keys(d.piezas)) {
-    const nuevas = { 'ropa.abajo': 3, accesorio: 1 }[ruta] ?? 0;
-    assert.equal(d.piezas[ruta].length, anteriores.piezas[ruta].length + nuevas, `${ruta}: solo se añaden las piezas del lote`);
+    for (const p of d.piezas[ruta]) {
+      if (!anteriores.piezas[ruta].includes(p.id)) assert.match(p.id, /^collage-/, `${ruta}: pieza añadida ${p.id}`);
+    }
   }
-  assert.equal(sha(d.porDefecto), anteriores.porDefectoSha256, 'porDefecto no cambia');
+  // porDefecto conserva todos sus valores anteriores; desde el lote 02 solo se le añaden campos nuevos.
+  assert.equal(sha(anteriores.porDefectoAnterior), anteriores.porDefectoSha256, 'la copia guardada es la original');
+  const conserva = (antes, ahora, ruta = '') => {
+    for (const [k, v] of Object.entries(antes)) {
+      if (v && typeof v === 'object') conserva(v, ahora?.[k], `${ruta}${k}.`);
+      else assert.equal(ahora?.[k], v, `porDefecto.${ruta}${k} no cambia`);
+    }
+  };
+  conserva(anteriores.porDefectoAnterior, d.porDefecto);
   assert.equal(sha(d.bases), anteriores.basesSha256, 'las bases no cambian');
 
   for (const [cuerpo, id] of Object.entries(FALDAS)) {

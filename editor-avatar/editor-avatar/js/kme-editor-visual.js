@@ -78,7 +78,8 @@ export class EditorVisual {
       if(leer(this.avatar,ruta)===color)return;
       this.guardar();escribir(this.avatar,ruta,color);return;
     }
-    const paletas={'piel':'piel','ojos.color':'ojos','pelo.color':'pelo','ropa.colorArriba':'arriba','ropa.colorAbajo':'abajo'};
+    // colorGorro (lote collage 02): la paleta de la ropa, como el resto de prendas.
+    const paletas={'piel':'piel','ojos.color':'ojos','pelo.color':'pelo','ropa.colorArriba':'arriba','ropa.colorAbajo':'abajo','colorGorro':'arriba'};
     if(opcionesMaquillaje.some(opcion=>'maquillaje.'+opcion.color===ruta)){
       if(!coloresMaquillaje(this.catalogo).includes(color))throw new Error('Color no válido');
       if(leer(this.avatar,ruta)===color)return;
