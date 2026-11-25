@@ -13,8 +13,10 @@ async function cargar(){
 test('Todas las miniaturas superiores muestran solo ropa, sin cuello, piel, abdomen, piernas ni prendas inferiores',async()=>{
   const c=await cargar(),doc=documentoVisual(),vista=montarEditorVisual(doc,c);
   for(const cuerpo of c.piezas('cuerpo')){
-    vista.estado.elegirPieza('cuerpo',cuerpo.id);doc.buscar('Categoría: Ropa').click();
+    vista.estado.elegirPieza('cuerpo',cuerpo.id);
     for(const p of c.piezas('ropa.arriba').filter(p=>p.cuerpoCompatible===cuerpo.id||(!p.cuerpoCompatible&&p.id!=='camiseta'))){
+      // Las piezas especiales (lotes collage) están en la pestaña Colección «K» (E0083).
+      doc.buscar((p.coleccion||'').startsWith('collage-')?'Categoría: Colección «K»':'Categoría: Ropa').click();
       const b=doc.buscar('Parte superior: '+p.nombre);assert.ok(b,p.id);
       assert.match(b.innerHTML,/class="f-arriba"/);
       assert.doesNotMatch(b.innerHTML,/<(?:path|circle|g)[^>]*(?:class="f-piel"|data-parte="(?:cuello|brazo-[^"]+|piernas|abdomen|ombligo)"|class="f-abajo"|data-perfil=)/,p.id);

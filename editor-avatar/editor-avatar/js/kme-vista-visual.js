@@ -7,10 +7,21 @@ import { svgPhotocard } from './kme-impresion.js';
 import { opcionesMaquillaje, coloresMaquillaje } from './kme-maquillaje.js';
 import { estilosMechonesKme, coloresMechonesKme } from './kme-cabello-pinceladas.js';
 
-export function montarEditorVisual(doc,catalogo){
+// opciones (E0083): bloqueadas = familias de canje que la cuenta todavía no tiene (no se ofrecen);
+// urlCanje = la página del catálogo de canje (sin ella, no hay botón: por ejemplo, en la muestra);
+// categoriaInicial = la pestaña abierta al cargar (K-ME Studio abre «coleccion»).
+export function montarEditorVisual(doc,catalogo,opciones={}){
   const estado=new EditorVisual(catalogo),el=id=>doc.getElementById(id);
-  const categorias=[['cara','Cara'],['ojos','Ojos'],['expresion','Boca y mejillas'],['maquillaje','Maquillaje'],['cabello','Cabello'],['cuerpo','Cuerpo'],['ropa','Ropa'],['accesorios','Accesorios'],['marcos','Marcos']];
+  // Colección «K»: las piezas especiales (lotes collage) van solo en su pestaña, la primera y la que
+  // se abre al cargar. Las de canje que no son tuyas no aparecen.
+  const bloqueadas=new Set(opciones.bloqueadas||[]),urlCanje=opciones.urlCanje||null;
+  const especial=p=>(p.coleccion||'').startsWith('collage-');
+  const disponible=p=>!bloqueadas.has(p.familia||p.id);
+  // K-ME Studio (la app) la abre al cargar con opciones.categoriaInicial; la muestra sigue en «Ojos».
+  if(opciones.categoriaInicial)estado.categoria=opciones.categoriaInicial;
+  const categorias=[['coleccion','Colección «K»'],['cara','Cara'],['ojos','Ojos'],['expresion','Boca y mejillas'],['maquillaje','Maquillaje'],['cabello','Cabello'],['cuerpo','Cuerpo'],['ropa','Ropa'],['accesorios','Accesorios'],['marcos','Marcos']];
   const trazosIconos={
+    coleccion:'<path d="M8 4V20M8 13L17 4M11 10L18 20"/><path d="M2 5L4 9M5 5L7 9"/>',
     cara:'<path d="M6 8Q6 3 12 3T18 8V14Q18 21 12 21T6 14Z"/><path d="M9 11H9.1M15 11H15.1M9 16Q12 19 15 16"/>',
     ojos:'<path d="M2 12Q12 1 22 12Q12 23 2 12Z"/><circle cx="12" cy="12" r="3"/>',
     expresion:'<path d="M3 10Q12 15 21 10Q20 21 12 21Q4 21 3 10Z"/><path d="M5 11Q12 3 19 11"/>',
@@ -157,17 +168,29 @@ export function montarEditorVisual(doc,catalogo){
       }
     }else if(estado.categoria==='cuerpo'){
       piezas('Tamaño','cuerpo',['cuerpo','torso','piernas','ropa_abajo','ropa_arriba'],'90 254 220 190');
+    }else if(estado.categoria==='coleccion'){
+      const panel=el('panel-editor');
+      panel.append(nodo('p','Piezas especiales de K-ME. Las de canje se consiguen con Kpopis.','intro-coleccion'));
+      if(urlCanje){const a=nodo('a','Canjear Kpopis','boton-canje');a.href=urlCanje;a.setAttribute('aria-label','Canjear Kpopis');panel.append(a);}
+      const delCuerpo=p=>especial(p)&&disponible(p)&&(!p.cuerpoCompatible||p.cuerpoCompatible===estado.avatar.cuerpo);
+      const arriba=catalogo.piezas('ropa.arriba').filter(delCuerpo),abajo=catalogo.piezas('ropa.abajo').filter(delCuerpo);
+      const accesorios=catalogo.piezas('accesorio').filter(p=>especial(p)&&disponible(p));
+      if(arriba.length){piezas('Parte superior','ropa.arriba',['ropa_arriba'],'100 282 200 100',arriba);colorear('Color de arriba','ropa.colorArriba',catalogo.paleta('arriba'));}
+      if(abajo.length){piezas('Parte inferior','ropa.abajo',['piernas','ropa_abajo'],'130 338 140 110',abajo);colorear('Color de abajo','ropa.colorAbajo',catalogo.paleta('abajo'));}
+      if(accesorios.length){
+        piezas('Accesorio','accesorio',['cabeza','ojos','accesorio'],'65 60 270 215',accesorios);
+        // Un accesorio con color propio (el gorro, lote collage 02) lo elige con la paleta de la ropa.
+        const puesto=catalogo.pieza('accesorio',estado.avatar.accesorio);
+        if(puesto?.rutaColor)colorear(puesto.tituloColor||'Color del accesorio',puesto.rutaColor,catalogo.paleta('arriba'));
+      }
     }else if(estado.categoria==='ropa'){
-      const compatibles=catalogo.piezas('ropa.arriba').filter(p=>p.cuerpoCompatible===estado.avatar.cuerpo||(!p.cuerpoCompatible&&p.id!=='camiseta'));
+      const compatibles=catalogo.piezas('ropa.arriba').filter(p=>!especial(p)&&(p.cuerpoCompatible===estado.avatar.cuerpo||(!p.cuerpoCompatible&&p.id!=='camiseta')));
       piezas('Parte superior','ropa.arriba',['ropa_arriba'],'100 282 200 100',compatibles);
       colorear('Color de arriba','ropa.colorArriba',catalogo.paleta('arriba'));
-      piezas('Parte inferior','ropa.abajo',['piernas','ropa_abajo'],'130 338 140 110',catalogo.piezas('ropa.abajo').filter(p=>p.cuerpoCompatible===estado.avatar.cuerpo));
+      piezas('Parte inferior','ropa.abajo',['piernas','ropa_abajo'],'130 338 140 110',catalogo.piezas('ropa.abajo').filter(p=>!especial(p)&&p.cuerpoCompatible===estado.avatar.cuerpo));
       colorear('Color de abajo','ropa.colorAbajo',catalogo.paleta('abajo'));
     }else{
-      piezas('Accesorio','accesorio',['cabeza','ojos','accesorio'],'65 60 270 215');
-      // Un accesorio con color propio (el gorro, lote collage 02) lo elige con la paleta de la ropa.
-      const puesto=catalogo.pieza('accesorio',estado.avatar.accesorio);
-      if(puesto?.rutaColor)colorear(puesto.tituloColor||'Color del accesorio',puesto.rutaColor,catalogo.paleta('arriba'));
+      piezas('Accesorio','accesorio',['cabeza','ojos','accesorio'],'65 60 270 215',catalogo.piezas('accesorio').filter(p=>!especial(p)));
     }
   }
   function pintar(){
@@ -190,7 +213,7 @@ export function montarEditorVisual(doc,catalogo){
     });
     el('categorias').replaceChildren();
     for(const [id,nombre]of categorias){
-      const b=boton('Categoría: '+nombre,estado.categoria===id,()=>{estado.categoria=id;},'categoria');
+      const b=boton('Categoría: '+nombre,estado.categoria===id,()=>{estado.categoria=id;},id==='coleccion'?'categoria categoria--k':'categoria');
       b.innerHTML='<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+trazosIconos[id]+'</svg>';
       b.append(nodo('span',nombre));el('categorias').append(b);
     }

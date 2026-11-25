@@ -157,18 +157,20 @@ test('Al cambiar de cuerpo, la falda cambia a su variante, como las demás prend
 
 test('En el editor, la falda sale en «Parte inferior» para su cuerpo y el lightstick en «Accesorio», con una miniatura donde se ve entero', async () => {
   const c = await cargar(), doc = documentoVisual(), vista = montarEditorVisual(doc, c);
-  doc.buscar('Categoría: Ropa').click();
+  // Desde E0083, las piezas especiales están solo en la pestaña Colección «K».
+  doc.buscar('Categoría: Colección «K»').click();
   const falda = doc.buscar('Parte inferior: Falda con bolsillos de tela · ' + VARIANTE[vista.estado.avatar.cuerpo]);
   assert.ok(falda, 'la falda de su cuerpo está en «Parte inferior»');
   falda.click();
   assert.equal(vista.estado.avatar.ropa.abajo, FALDAS[vista.estado.avatar.cuerpo]);
   assert.equal(doc.buscar('Parte inferior: Falda con bolsillos de tela · ' + VARIANTE[vista.estado.avatar.cuerpo]).getAttribute('aria-pressed'), 'true');
-  doc.buscar('Categoría: Accesorios').click();
   const luz = doc.buscar('Accesorio: Lightstick de estudio');
-  assert.ok(luz, 'el lightstick está en «Accesorio»');
+  assert.ok(luz, 'el lightstick está en «Accesorio» de Colección «K»');
   assert.match(luz.innerHTML, /viewBox="200 245 120 170"/, 'su miniatura enfoca el lightstick');
   assert.match(luz.innerHTML, /<image\b/);
-  assert.match(doc.buscar('Accesorio: Gafas redondas')?.innerHTML ?? '', /viewBox="65 60 270 215"/, 'los demás accesorios conservan su miniatura');
   luz.click();
   assert.equal(vista.estado.avatar.accesorio, LIGHTSTICK);
+  doc.buscar('Categoría: Accesorios').click();
+  assert.match(doc.buscar('Accesorio: Gafas redondas')?.innerHTML ?? '', /viewBox="65 60 270 215"/, 'los demás accesorios conservan su miniatura');
+  assert.equal(doc.buscar('Accesorio: Lightstick de estudio'), undefined, 'las especiales no salen en «Accesorios»');
 });

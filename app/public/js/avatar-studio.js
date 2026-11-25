@@ -30,7 +30,10 @@ async function iniciar() {
   const guardado = crearGuardado({ fetch: (url, opciones) => window.fetch(url, { credentials: 'same-origin', ...opciones }), csrf, id, version });
   const catalogo = await cargarCatalogo(urlCatalogo);
   montarAmbienteVisual(document);
-  const vista = montarEditorVisual(document, catalogo);
+  // Colección «K» (E0083): abierta al cargar, sin las piezas de canje que la cuenta aún no tiene.
+  let bloqueadas = [];
+  try { bloqueadas = JSON.parse(raiz.dataset.bloqueadas || '[]'); } catch { /* sin bloqueos */ }
+  const vista = montarEditorVisual(document, catalogo, { categoriaInicial: 'coleccion', bloqueadas, urlCanje: raiz.dataset.urlCanje || null });
 
   // Un avatar guardado se abre con su receta de la cuenta.
   if (id) {
@@ -40,6 +43,9 @@ async function iniciar() {
     vista.estado.cargarAvatar(datos.receta);
     guardado.estado.version = datos.version;
     vista.actualizar();
+  } else if (raiz.dataset.presentacion) {
+    // Un avatar nuevo empieza con el de presentación, con piezas especiales de Colección «K» (E0083).
+    try { vista.estado.cargarAvatar(JSON.parse(raiz.dataset.presentacion)); vista.actualizar(); } catch { /* el de siempre */ }
   }
   montarImpresion(document, catalogo, vista);
 

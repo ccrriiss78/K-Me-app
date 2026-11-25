@@ -15,6 +15,7 @@ import {
   borrarAvatares,
 } from '../controllers/avatarController.js';
 import { elegirAvatarPerfil, elegirSelloPerfil } from '../controllers/perfilController.js';
+import { mostrarCatalogo as mostrarCatalogoCanje, canjear as canjearPieza } from '../controllers/canjeController.js';
 import {
   mostrarEscenario, mostrarReto, mostrarPregunta, responderPregunta,
 } from '../controllers/escenarioController.js';
@@ -65,6 +66,10 @@ rutas.get('/studio/sellos/:id', requiereSesion, abrirSello);
 rutas.post('/studio/sellos/:id', requiereSesion, comprobarCsrf, guardarSello);
 rutas.post('/studio/sellos/:id/duplicar', requiereSesion, comprobarCsrf, duplicarSello);
 rutas.post('/studio/sellos/:id/eliminar', requiereSesion, comprobarCsrf, eliminarSello);
+
+// Colección «K» (E0083): catálogo de canje de Kpopis. Privado; canjear, con CSRF.
+rutas.get('/studio/coleccion-k', requiereSesion, mostrarCatalogoCanje);
+rutas.post('/studio/coleccion-k/canjear', requiereSesion, comprobarCsrf, canjearPieza);
 
 // Avatar Studio (contrato v1 con ChatGPT): páginas y rutas JSON para el script del editor.
 // Sin sesión, las peticiones JSON reciben 401 en JSON. Los POST leen JSON (hasta 16 kB; la receta,

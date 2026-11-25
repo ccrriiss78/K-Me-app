@@ -5,6 +5,7 @@
 import * as Recompensa from '../models/recompensaModel.js';
 import { textoKpopis, buscarTesoro, KPOPI } from '../catalogos/recompensas.js';
 import { buscarReto } from '../catalogos/hangul-live.js';
+import { buscarCanje } from '../catalogos/canje.js';
 
 // Las fechas, como día/mes/año en la hora de Madrid («24/11/2026»).
 const formatoFecha = new Intl.DateTimeFormat('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric', timeZone: 'Europe/Madrid' });
@@ -14,7 +15,9 @@ export const fechaCorta = (fecha) => formatoFecha.format(fecha);
 function concepto(clave) {
   const [tipo, id] = clave.split(':');
   const reto = tipo === 'reto' ? buscarReto(id) : null;
-  return reto ? `${reto.titulo} completado` : clave;
+  if (reto) return `${reto.titulo} completado`;
+  const pieza = tipo === 'canje' ? buscarCanje(id) : null; // un gasto en Colección «K» (E0083)
+  return pieza ? `Canje: ${pieza.nombre}` : clave;
 }
 
 // El saldo de la cabecera, para todas las páginas.
@@ -34,7 +37,7 @@ export async function misRecompensas(idUsuario) {
     saldo: textoKpopis(saldo),
     iconoKpopi: KPOPI.icono,
     movimientos: movimientos.map((m) => ({
-      cantidad: `+${textoKpopis(m.cantidad)}`,
+      cantidad: `${m.cantidad > 0 ? '+' : '−'}${textoKpopis(Math.abs(m.cantidad))}`,
       concepto: concepto(m.clave),
       fecha: fechaCorta(m.creado_en),
       fechaIso: m.creado_en.toISOString(),

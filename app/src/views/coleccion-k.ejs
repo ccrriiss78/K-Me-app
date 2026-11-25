@@ -1,0 +1,32 @@
+<%- include('_cabecera') %>
+<%# Colección «K» · canje de Kpopis (E0083). Cada pieza, con su vista previa (no gasta nada), su
+    precio y «Canjear». El servidor comprueba el saldo y la cobra una sola vez. Las vistas previas
+    las dibuja el servidor a partir del catálogo, nunca algo enviado por el navegador. %>
+<section class="tarjeta coleccion-k" aria-labelledby="titulo-coleccion">
+  <p class="escenario__miga"><a class="enlace" href="/studio/avatares">← K-ME Studio</a></p>
+  <h1 id="titulo-coleccion">Colección <span class="marca-k"><span class="marca-k__comilla" aria-hidden="true">«</span>K<span class="marca-k__comilla" aria-hidden="true">»</span></span></h1>
+  <p>Piezas especiales que se canjean con Kpopis. Mira cómo quedan antes de canjear: la vista previa no gasta nada.</p>
+  <p class="coleccion-k__saldo"><img src="<%= iconoKpopi %>" alt="" width="24" height="24"> Tienes <%= saldo %></p>
+  <% if (mensaje) { %><p class="aviso aviso--ok" role="status"><%= mensaje %></p><% } %>
+  <% if (error) { %><p class="aviso aviso--error" role="alert"><%= error %></p><% } %>
+  <ul class="coleccion-k__lista">
+    <% for (const p of piezas) { %>
+      <li class="pieza-k" data-pieza="<%= p.familia %>">
+        <div class="pieza-k__vista" role="img" aria-label="Vista previa: <%= p.nombre %>"><%- p.svg %></div>
+        <p class="pieza-k__nombre"><%= p.nombre %></p>
+        <p class="pieza-k__precio"><img src="<%= iconoKpopi %>" alt="" width="18" height="18"> <%= p.precioTexto %></p>
+        <% if (p.tuya) { %>
+          <p class="etiqueta etiqueta--hecho">Ya es tuya</p>
+        <% } else { %>
+          <form method="post" action="/studio/coleccion-k/canjear" class="pieza-k__canjear">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <input type="hidden" name="familia" value="<%= p.familia %>">
+            <button type="submit" class="boton">Canjear</button>
+          </form>
+        <% } %>
+      </li>
+    <% } %>
+  </ul>
+  <p class="nota">Lo que canjeas aparece en la pestaña Colección «K» de K-ME Studio, para todos tus avatares.</p>
+</section>
+<%- include('_pie') %>

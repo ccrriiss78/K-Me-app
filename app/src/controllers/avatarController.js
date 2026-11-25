@@ -6,8 +6,10 @@
 // Todas son privadas (requiereSesionOJson) y los POST llevan CSRF (ver routes/index.js).
 
 import * as avatares from '../services/avatarService.js';
-import { dibujarAvatar } from '../services/avatarCatalogo.js';
+import { dibujarAvatar, recetaPorDefecto } from '../services/avatarCatalogo.js';
 import { estaConfirmado, leerBorrados } from '../services/borrarVarios.js';
+import { familiasBloqueadas } from '../services/canjeService.js';
+import { recetaPresentacion } from '../catalogos/presentacion.js';
 
 const ERRORES = {
   OPCION_NO_VALIDA: [400, 'Esa opción no existe.'],
@@ -16,6 +18,7 @@ const ERRORES = {
   LIMITE: [409, `Ya tienes ${avatares.MAX_AVATARES} avatares, el máximo. Borra uno para crear otro.`],
   VERSION: [409, 'Este avatar ha cambiado desde que lo abriste.'],
   NO_EXISTE: [404, 'Ese avatar no existe.'],
+  PIEZA_NO_ES_TUYA: [403, 'Esa prenda todavía no es tuya: canjéala en Colección «K».'],
 };
 
 // ¿Lo pide un script (JSON) o el navegador (una página)?
@@ -95,17 +98,21 @@ export async function borrarAvatares(req, res, next) {
   }
 }
 
-function pintarEditor(req, res, { id = '', version = '', nombre = 'Mi avatar' } = {}) {
+async function pintarEditor(req, res, { id = '', version = '', nombre = 'Mi avatar' } = {}) {
+  // Colección «K» (E0083): las piezas de canje que la cuenta aún no tiene no se ofrecen en el editor.
+  const bloqueadas = await familiasBloqueadas(req.session.usuarioId);
+  // Un avatar nuevo empieza con el de presentación (E0083); uno guardado, con su receta.
+  const presentacion = id ? null : avatares.leerReceta(recetaPresentacion(recetaPorDefecto()));
   res.render('avatar-editor', {
-    titulo: id ? 'Editar avatar' : 'Nuevo avatar', id, version, nombre,
+    titulo: id ? 'Editar avatar' : 'Nuevo avatar', id, version, nombre, bloqueadas, presentacion,
     // Los estilos aprobados del editor, limitados a su contenedor (T037).
     // y los de las partes propias de la app (nombre, «Guardar», límite).
     estilosExtra: ['/editor/css/kme-muestras-app.css', '/css/avatar-studio.css'],
   });
 }
 
-export function nuevoAvatar(req, res) {
-  pintarEditor(req, res);
+export async function nuevoAvatar(req, res, next) {
+  try { await pintarEditor(req, res); } catch (err) { next(err); }
 }
 
 // El editor con un avatar guardado (página) o el avatar en JSON.
@@ -114,7 +121,7 @@ export async function abrirAvatar(req, res, next) {
   try {
     const fila = await avatares.abrir({ idUsuario: req.session.usuarioId, idAvatar: req.params.id });
     if (json) return res.json({ ...avatares.resumen(fila), receta: fila.composicion });
-    pintarEditor(req, res, { id: String(fila.id), version: String(fila.version), nombre: fila.nombre });
+    await pintarEditor(req, res, { id: String(fila.id), version: String(fila.version), nombre: fila.nombre });
   } catch (err) {
     if (!json && err.codigo === 'NO_EXISTE') return noExiste(res);
     if (json) return responderErrorJson(err, res, next);

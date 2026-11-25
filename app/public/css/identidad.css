@@ -234,6 +234,23 @@
 }
 .tesoro__imagen { width: 96px; height: auto; }
 
+/* Colección «K» (E0083): la marca «K», con las comillas fucsias, y el catálogo de canje. */
+.marca-k { white-space: nowrap; }
+.marca-k__comilla { color: var(--kme-acento); }
+.tarjeta.coleccion-k { max-width: 760px; }
+.coleccion-k__saldo { display: inline-flex; align-items: center; gap: .4rem; font-weight: 800; }
+.coleccion-k__lista { list-style: none; margin: 1rem 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+.pieza-k {
+  display: grid; justify-items: center; gap: .4rem; padding: 1rem; background: #fff;
+  border: 1px solid var(--kme-tinta); box-shadow: 5px 5px 0 var(--color-rosa-suave); text-align: center;
+}
+.pieza-k__vista svg { display: block; height: 220px; width: auto; }
+.pieza-k__nombre { margin: 0; font-weight: 900; }
+.pieza-k__precio { margin: 0; display: inline-flex; align-items: center; gap: .3rem; font-weight: 800; }
+.pieza-k__canjear { margin: 0; }
+.pieza-k__canjear .boton { margin: 0; }
+.pieza-k .etiqueta { display: inline-block; margin: 0; padding: .2rem .6rem; border: 1px solid var(--kme-tinta); background: var(--kme-tinta); color: #fff; font-size: .8rem; font-weight: 800; }
+
 /* Collage editorial (D067), prueba selectiva (E0075): materiales dibujados en código, sin fotos.
    - Grano de papel (public/img/collage/), cinta adhesiva semitransparente y borde rasgado.
    - Solo en «Mi escenario» y en las recompensas; son pseudoelementos que no reciben clics.

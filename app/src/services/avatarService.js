@@ -16,6 +16,7 @@ import * as Avatar from '../models/avatarModel.js';
 import { obtenerCatalogo, normalizarReceta } from './avatarCatalogo.js';
 import { valoresPermitidos } from '../../../editor-avatar/editor-avatar/js/kme-receta.js';
 import { leerIds, pideTodos } from './borrarVarios.js';
+import { comprobarPropiedad } from './canjeService.js';
 
 export const MAX_AVATARES = 20; // Q1
 export const MAX_BYTES_RECETA = 8192;
@@ -107,6 +108,7 @@ export async function abrir({ idUsuario, idAvatar }) {
 export async function crear({ idUsuario, nombre, receta }) {
   const limpio = leerNombreAvatar(nombre);
   const composicion = leerReceta(receta);
+  await comprobarPropiedad(idUsuario, composicion); // una pieza de canje, solo si es tuya (E0083)
   const id = await Avatar.crearSiCabe({ idUsuario, nombre: limpio, composicion, maximo: MAX_AVATARES });
   if (!id) throw errorAvatar('LIMITE');
   return { id: String(id), nombre: limpio, version: 1 };
@@ -118,6 +120,7 @@ export async function guardar({ idUsuario, idAvatar, nombre, receta, version }) 
   const actual = await abrir({ idUsuario, idAvatar });
   const limpio = leerNombreAvatar(nombre);
   const composicion = leerReceta(receta);
+  await comprobarPropiedad(idUsuario, composicion); // una pieza de canje, solo si es tuya (E0083)
   if (!Number.isInteger(version) || version < 1) throw errorAvatar('VERSION', { version: actual.version });
   const nueva = await Avatar.guardar({ idUsuario, idAvatar: actual.id, version, nombre: limpio, composicion });
   if (nueva === null) {

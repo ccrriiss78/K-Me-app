@@ -1,6 +1,6 @@
 # Modelo de datos de K-ME
 
-Estado a 25/11/2026, con las migraciones `001` a `009` aplicadas (`app/db/migrations/`). Base de datos: PostgreSQL. Este documento explica **qué se guarda, dónde y por qué**. Las decisiones que se citan (D…) están en `BITACORA_KME.md`, y el detalle técnico, en `docs/TECH_SPEC.md`.
+Estado a 25/11/2026, con las migraciones `001` a `010` aplicadas (`app/db/migrations/`). Base de datos: PostgreSQL. Este documento explica **qué se guarda, dónde y por qué**. Las decisiones que se citan (D…) están en `BITACORA_KME.md`, y el detalle técnico, en `docs/TECH_SPEC.md`.
 
 ## La idea en una frase
 
@@ -20,6 +20,7 @@ erDiagram
   usuarios ||--o{ retos_progreso : "avanza en"
   usuarios ||--o{ kpopis_movimientos : "gana"
   usuarios ||--o{ tesoros_usuario : "guarda"
+  usuarios ||--o{ piezas_usuario : "canjea"
 
   usuarios {
     bigint id PK
@@ -66,7 +67,7 @@ erDiagram
   kpopis_movimientos {
     bigint id PK
     bigint id_usuario FK
-    int cantidad "mayor que 0"
+    int cantidad "distinta de 0; gasto, negativa"
     varchar clave "única por cuenta"
   }
   tesoros_usuario {
@@ -74,6 +75,12 @@ erDiagram
     varchar id_tesoro PK "id del catálogo"
     varchar origen "reto que lo dio"
     timestamptz ganado_en
+  }
+  piezas_usuario {
+    bigint id_usuario PK
+    varchar id_familia PK "familia de canje"
+    varchar origen "canje"
+    timestamptz obtenida_en
   }
 ```
 
@@ -90,8 +97,9 @@ Además está la tabla `sesiones` (las sesiones abiertas, la gestiona `connect-p
 | `publicaciones` | El muro de Connect: una emoción, el diseño que la acompaña y el mensaje con iconos. | 004, 008 | Sin texto libre. El diseño es una **copia** (D060). De 0 a 5 iconos, comprobado también por la base de datos. |
 | `reacciones` | Cada pulsación de una reacción. | 004 | Hasta 10 del mismo tipo por persona y publicación (lo comprueba el servidor). |
 | `retos_progreso` | El progreso de cada cuenta en cada reto (HANGUL LIVE 001). | 009 | `aciertos`: preguntas acertadas en la ronda actual; al acertarlas todas, la ronda se vacía para poder repetirla. `completado_en`: la primera vez. |
-| `kpopis_movimientos` | Los Kpopis ganados. El saldo es la suma. | 009 | `UNIQUE (id_usuario, clave)`: una recompensa nunca se cobra dos veces, ni con dos respuestas a la vez. De momento solo se gana (`cantidad > 0`); el canje llegará con su propia migración. |
+| `kpopis_movimientos` | Los Kpopis ganados y gastados. El saldo es la suma. | 009, 010 | `UNIQUE (id_usuario, clave)`: una recompensa nunca se cobra dos veces, ni con dos respuestas a la vez, y un canje (`canje:<familia>`) nunca se paga dos veces. |
 | `tesoros_usuario` | Los tesoros ganados («Mis tesoros»). | 009 | Cada tesoro, una vez por cuenta (clave primaria doble). |
+| `piezas_usuario` | Las piezas especiales canjeadas en Colección «K» (por familia: sus tres cuerpos). | 010 | Una vez por cuenta. Desde la 010, `kpopis_movimientos` admite gastos (cantidad negativa, nunca 0). El canje bloquea la cuenta mientras comprueba el saldo, así nunca queda en negativo. Al guardar un avatar, el servidor exige que las piezas de canje sean tuyas. |
 
 ## Tres ideas que explican el diseño
 

@@ -110,7 +110,7 @@ test('Varios avatares con la falda con botas en una página no repiten ids, y ca
 
 test('En el editor, sale en «Parte inferior» de su cuerpo, con falda y botas en la miniatura, y se elige', async () => {
   const c = await cargar(), doc = documentoVisual(), vista = montarEditorVisual(doc, c);
-  doc.buscar('Categoría: Ropa').click();
+  doc.buscar('Categoría: Colección «K»').click(); // las especiales, solo en Colección «K» (E0083)
   const cuerpo = vista.estado.avatar.cuerpo;
   const boton = doc.buscar(`Parte inferior: Falda con botas de piel · ${VARIANTE[cuerpo]}`);
   assert.ok(boton);

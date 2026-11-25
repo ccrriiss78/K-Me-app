@@ -48,6 +48,21 @@
 .panel-limite label { font-weight: 600; display: flex; gap: 8px; align-items: center; }
 .panel-limite__acciones { display: flex; flex-wrap: wrap; gap: 10px; }
 
+/* Colección «K» (E0083): la pestaña de las piezas especiales, más resaltada que las demás (negra,
+   con la sombra fucsia de la marca), y el botón «Canjear Kpopis» dentro de ella. */
+.avatar-studio .categoria--k { background: #282126; color: #fff; border-color: #282126; box-shadow: 2px 3px 0 #e83475; }
+.avatar-studio .categoria--k > span { font-weight: 800; }
+.avatar-studio .categoria--k[aria-pressed=true] { background: #282126; color: #fff; border-color: #e83475; box-shadow: 3px 4px 0 #e83475; }
+.avatar-studio .categoria--k:hover:not([aria-pressed=true]) { background: #3a3036; }
+.avatar-studio .intro-coleccion { margin: 0 0 10px; font-size: .9rem; }
+.avatar-studio .boton-canje {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin: 0 0 14px; padding: 10px 16px;
+  background: #ffd000; color: #282126; border: 1.5px solid #282126; border-radius: 999px; font-weight: 800;
+  text-decoration: none; box-shadow: 2px 2px 0 #282126;
+}
+.avatar-studio .boton-canje::before { content: ''; width: 20px; height: 20px; background: url('/img/kpopi.svg') center / contain no-repeat; }
+.avatar-studio .boton-canje:hover, .avatar-studio .boton-canje:focus-visible { background: #f6ad19; }
+
 @media (max-width: 760px) {
   .avatar-studio { border-radius: 0; }
   .guardar-avatar button { width: 100%; }

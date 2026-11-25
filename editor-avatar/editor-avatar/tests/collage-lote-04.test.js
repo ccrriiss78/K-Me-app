@@ -93,7 +93,7 @@ test('Varios avatares con la chaqueta en una página no repiten ids, y cada refe
 
 test('En el editor, la chaqueta sale en «Parte superior» de su cuerpo, con su textura en la miniatura, y se elige', async () => {
   const c = await cargar(), doc = documentoVisual(), vista = montarEditorVisual(doc, c);
-  doc.buscar('Categoría: Ropa').click();
+  doc.buscar('Categoría: Colección «K»').click(); // las especiales, solo en Colección «K» (E0083)
   const cuerpo = vista.estado.avatar.cuerpo;
   const boton = doc.buscar(`Parte superior: Chaqueta Denim Collage · ${VARIANTE[cuerpo]}`);
   assert.ok(boton);

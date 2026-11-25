@@ -114,12 +114,14 @@ test('Varios avatares con el gorro y el top en una página no repiten ids, y cad
 
 test('En el editor: el top en «Parte superior» de su cuerpo, el gorro en «Accesorio» con su miniatura, y su color en la paleta solo con el gorro puesto', async () => {
   const c = await cargar(), doc = documentoVisual(), vista = montarEditorVisual(doc, c);
+  // Desde E0083, las piezas especiales están solo en la pestaña Colección «K».
   doc.buscar('Categoría: Ropa').click();
+  assert.equal(doc.buscar('Parte superior: Top Destello · delgado'), undefined, 'no sale en «Ropa»');
+  doc.buscar('Categoría: Colección «K»').click();
   const cuerpo = vista.estado.avatar.cuerpo;
+  assert.equal(doc.buscar('Color del gorro: Lavanda'), undefined, 'sin gorro, no se ofrece su color');
   doc.buscar(`Parte superior: Top Destello · ${VARIANTE[cuerpo]}`).click();
   assert.equal(vista.estado.avatar.ropa.arriba, TOPS[cuerpo]);
-  doc.buscar('Categoría: Accesorios').click();
-  assert.equal(doc.buscar('Color del gorro: Lavanda'), undefined, 'sin gorro, no se ofrece su color');
   const gorro = doc.buscar('Accesorio: Gorro de punto');
   assert.match(gorro.innerHTML, /viewBox="70 10 260 150"/);
   gorro.click();

@@ -12,7 +12,9 @@
   Sin scripts en línea (CSP): solo archivos externos. Conserva estos ids y atributos si se rediseña.
 -%>
 <div class="avatar-studio-pagina">
-<div class="avatar-studio" id="avatar-studio" data-id="<%= id %>" data-version="<%= version %>" data-csrf="<%= csrfToken %>" data-catalogo="/editor/datos/kme.json" data-nombre="<%= nombre %>">
+<%# data-bloqueadas: familias de canje que la cuenta aún no tiene (JSON escapado); data-url-canje: el
+    catálogo de Colección «K» (E0083). El editor abre la pestaña «K» al cargar. %>
+<div class="avatar-studio" id="avatar-studio" data-id="<%= id %>" data-version="<%= version %>" data-csrf="<%= csrfToken %>" data-catalogo="/editor/datos/kme.json" data-nombre="<%= nombre %>" data-bloqueadas="<%= JSON.stringify(bloqueadas) %>" data-url-canje="/studio/coleccion-k"<% if (locals.presentacion) { %> data-presentacion="<%= JSON.stringify(presentacion) %>"<% } %>>
   <header class="site-header">
     <div class="marca">
       <img src="/img/K-ME-Studio.svg" alt="K-ME Studio" width="50" height="72">

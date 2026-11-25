@@ -150,6 +150,8 @@ test('Lote collage 01 en la app', { skip: !hayConfiguracion() && 'falta app/.env
   });
 
   await t.test('lotes 02 y 03: el servidor guarda el gorro con su color de la paleta y el Top Destello; rechaza un color de fuera; una receta sin colorGorro recibe la lavanda', async () => {
+    // El top y la chaqueta son de canje (E0083): esta cuenta de prueba los tiene ya (lo prueba canje.test.js).
+    await consulta("INSERT INTO piezas_usuario (id_usuario, id_familia, origen) VALUES ($1, 'collage-top-lentejuelas', 'canje'), ($1, 'collage-chaqueta-denim', 'canje')", [A.id]);
     const nueva = { ...recetaPorDefecto(), cuerpo: 'amplio', accesorio: 'collage-gorro-punto', colorGorro: '#557a9d' };
     nueva.ropa = { ...nueva.ropa, arriba: 'collage-top-lentejuelas-grueso', colorArriba: '#e83475', abajo: 'falda-integrada-grueso' };
     const r = await pedir('/studio/avatares', { metodo: 'POST', json: { _csrf: await token(), nombre: 'Gorro y destello', receta: nueva } });
