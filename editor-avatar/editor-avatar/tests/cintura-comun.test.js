@@ -29,7 +29,7 @@ test('Torso y cintura de todos los pantalones y faldas comparten los bordes 170/
         assert.ok(Math.abs(piel[lado]-ropa[lado])<=1,`${p.id}/${q.id}: salto entre torso y ropa`);
       }casos++;
     }
-  }assert.equal(casos,408); // 336 hasta el lote collage 01; cada falda nueva suma 8 tops × 3 cuerpos (lote 01, E0079; lote 05, E0082; Falda Satén Encore, E0086)
+  }assert.equal(casos,432); // 336 hasta el lote collage 01; cada falda nueva suma 8 tops × 3 cuerpos (lote 01, E0079; lote 05, E0082; Falda Satén Encore, E0086; la del lote 06, E0088)
 });
 test('En todos los tops el ombligo tiene contraste y queda dentro de piel visible, por encima de cualquier cintura',async()=>{
   const c=await cargar();

@@ -161,6 +161,6 @@ test('El filtro de la vista previa del sello admite 16 imágenes, y la combinaci
   const porRanura = {};
   for (const p of c.piezas('accesorio').filter((x) => x.ranura)) porRanura[p.ranura] = Math.max(porRanura[p.ranura] ?? 0, max([p]));
   const peor = c.rutas().filter((r) => r !== 'accesorio').reduce((suma, r) => suma + max(c.piezas(r)), 0) + Object.values(porRanura).reduce((a, b) => a + b, 0);
-  assert.equal(peor, 12, 'hoy: top o falda de dos texturas, y gorro, pendientes, lazo, bolso, brazalete y lightstick');
+  assert.equal(peor, 13, 'hoy: top o falda de dos texturas, y gorro, pendientes, lazo, pines (lote 06, E0088), bolso, brazalete y lightstick');
   assert.ok(peor <= maximo, `${peor} imágenes de ${maximo}`);
 });

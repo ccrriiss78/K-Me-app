@@ -1,6 +1,6 @@
 # Guía de la prueba en el navegador · viernes 27/11/2026
 
-Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu navegador (T024, T030, T036, T039, T040, T041, T043, T044, T045, T046, T047 y T048). Todo está probado con tests y en Chrome sin ventana por el asistente, **pero no por ti**: esta prueba es la que cuenta.
+Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu navegador (T024, T030, T036, T039, T040, T041, T043, T044, T045, T046, T047, T048 y T049). Todo está probado con tests y en Chrome sin ventana por el asistente, **pero no por ti**: esta prueba es la que cuenta.
 
 - ★ = sale en la demo del 1/12. Si vas justa de tiempo, haz primero lo marcado.
 - Si algo falla: haz una captura, apunta el número del paso y sigue. Al final me pasas la lista.
@@ -46,6 +46,7 @@ Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu nave
 - [ ] Guarda, vuelve a abrir, haz un sello «Cuerpo entero» y descarga la photocard en PDF.
 - [ ] Haz un sello «Cuerpo entero» con un avatar muy cargado (las seis piezas de Encore y más accesorios): la vista previa se actualiza (el límite ya es de 16 imágenes).
 - [ ] **Decide:** los precios y los ojos del lote 07.
+- [ ] **COLECCIÓN K · SPOTLIGHT (T049), propuestas sin canje:** en «K», las piezas con «Spotlight» en el nombre, las Pulseras Fanchant y los Pines Fan Signal. Combínalas con los tres cuerpos y rostros; las pulseras, con camiseta y con chaqueta. Al pasar el ratón por una miniatura, el nombre que sale también dice Spotlight. **Decide** cuáles se quedan, sus precios, y si Rizo necesita más contraste.
 
 ## 4. Avatar Studio (T040, T044, T045, T047)
 

@@ -1,0 +1,182 @@
+[
+  {
+    "archivo": "svg/collage-k-pendientes-cometa.svg",
+    "bytes": 23746,
+    "imagenes": 1,
+    "familia": "collage-k-pendientes-cometa"
+  },
+  {
+    "archivo": "svg/collage-k-lazo-saten.svg",
+    "bytes": 18859,
+    "imagenes": 1,
+    "familia": "collage-k-lazo-saten"
+  },
+  {
+    "archivo": "svg/collage-k-chaqueta-cristal-delgado.svg",
+    "bytes": 30815,
+    "imagenes": 1,
+    "familia": "collage-k-chaqueta-cristal",
+    "cuerpo": "relajado"
+  },
+  {
+    "archivo": "svg/collage-k-falda-saten-delgado.svg",
+    "bytes": 21757,
+    "imagenes": 1,
+    "familia": "collage-k-falda-saten",
+    "cuerpo": "relajado"
+  },
+  {
+    "archivo": "svg/collage-k-pulseras-fanchant-delgado.svg",
+    "bytes": 23794,
+    "imagenes": 1,
+    "familia": "collage-k-pulseras-fanchant",
+    "cuerpo": "relajado"
+  },
+  {
+    "archivo": "svg/collage-k-pines-fan-signal-delgado.svg",
+    "bytes": 23206,
+    "imagenes": 1,
+    "familia": "collage-k-pines-fan-signal",
+    "cuerpo": "relajado"
+  },
+  {
+    "archivo": "svg/collage-k-bolso-encore-delgado.svg",
+    "bytes": 21680,
+    "imagenes": 1,
+    "familia": "collage-k-bolso-encore",
+    "cuerpo": "relajado"
+  },
+  {
+    "archivo": "svg/collage-k-peluche-rizo-delgado.svg",
+    "bytes": 8206,
+    "imagenes": 1,
+    "familia": "collage-k-peluche-rizo",
+    "cuerpo": "relajado"
+  },
+  {
+    "archivo": "svg/collage-k-pulseras-fanchant-camiseta-delgado.svg",
+    "bytes": 23875,
+    "imagenes": 1,
+    "familia": "collage-k-pulseras-fanchant",
+    "cuerpo": "relajado",
+    "tipo": "Anclaje alternativo para brazos de camiseta integrada"
+  },
+  {
+    "archivo": "svg/composicion-bolso-encore-rizo-delgado.svg",
+    "bytes": 29865,
+    "imagenes": 2,
+    "tipo": "Composición opcional para ranura única, no una decisión de canje."
+  },
+  {
+    "archivo": "svg/collage-k-chaqueta-cristal-medio.svg",
+    "bytes": 30029,
+    "imagenes": 1,
+    "familia": "collage-k-chaqueta-cristal",
+    "cuerpo": "recto"
+  },
+  {
+    "archivo": "svg/collage-k-falda-saten-medio.svg",
+    "bytes": 21712,
+    "imagenes": 1,
+    "familia": "collage-k-falda-saten",
+    "cuerpo": "recto"
+  },
+  {
+    "archivo": "svg/collage-k-pulseras-fanchant-medio.svg",
+    "bytes": 23776,
+    "imagenes": 1,
+    "familia": "collage-k-pulseras-fanchant",
+    "cuerpo": "recto"
+  },
+  {
+    "archivo": "svg/collage-k-pines-fan-signal-medio.svg",
+    "bytes": 23192,
+    "imagenes": 1,
+    "familia": "collage-k-pines-fan-signal",
+    "cuerpo": "recto"
+  },
+  {
+    "archivo": "svg/collage-k-bolso-encore-medio.svg",
+    "bytes": 21648,
+    "imagenes": 1,
+    "familia": "collage-k-bolso-encore",
+    "cuerpo": "recto"
+  },
+  {
+    "archivo": "svg/collage-k-peluche-rizo-medio.svg",
+    "bytes": 8206,
+    "imagenes": 1,
+    "familia": "collage-k-peluche-rizo",
+    "cuerpo": "recto"
+  },
+  {
+    "archivo": "svg/collage-k-pulseras-fanchant-camiseta-medio.svg",
+    "bytes": 23857,
+    "imagenes": 1,
+    "familia": "collage-k-pulseras-fanchant",
+    "cuerpo": "recto",
+    "tipo": "Anclaje alternativo para brazos de camiseta integrada"
+  },
+  {
+    "archivo": "svg/composicion-bolso-encore-rizo-medio.svg",
+    "bytes": 29831,
+    "imagenes": 2,
+    "tipo": "Composición opcional para ranura única, no una decisión de canje."
+  },
+  {
+    "archivo": "svg/collage-k-chaqueta-cristal-grueso.svg",
+    "bytes": 30782,
+    "imagenes": 1,
+    "familia": "collage-k-chaqueta-cristal",
+    "cuerpo": "amplio"
+  },
+  {
+    "archivo": "svg/collage-k-falda-saten-grueso.svg",
+    "bytes": 21736,
+    "imagenes": 1,
+    "familia": "collage-k-falda-saten",
+    "cuerpo": "amplio"
+  },
+  {
+    "archivo": "svg/collage-k-pulseras-fanchant-grueso.svg",
+    "bytes": 23785,
+    "imagenes": 1,
+    "familia": "collage-k-pulseras-fanchant",
+    "cuerpo": "amplio"
+  },
+  {
+    "archivo": "svg/collage-k-pines-fan-signal-grueso.svg",
+    "bytes": 23199,
+    "imagenes": 1,
+    "familia": "collage-k-pines-fan-signal",
+    "cuerpo": "amplio"
+  },
+  {
+    "archivo": "svg/collage-k-bolso-encore-grueso.svg",
+    "bytes": 21665,
+    "imagenes": 1,
+    "familia": "collage-k-bolso-encore",
+    "cuerpo": "amplio"
+  },
+  {
+    "archivo": "svg/collage-k-peluche-rizo-grueso.svg",
+    "bytes": 8207,
+    "imagenes": 1,
+    "familia": "collage-k-peluche-rizo",
+    "cuerpo": "amplio"
+  },
+  {
+    "archivo": "svg/collage-k-pulseras-fanchant-camiseta-grueso.svg",
+    "bytes": 23866,
+    "imagenes": 1,
+    "familia": "collage-k-pulseras-fanchant",
+    "cuerpo": "amplio",
+    "tipo": "Anclaje alternativo para brazos de camiseta integrada"
+  },
+  {
+    "archivo": "svg/composicion-bolso-encore-rizo-grueso.svg",
+    "bytes": 29850,
+    "imagenes": 2,
+    "tipo": "Composición opcional para ranura única, no una decisión de canje."
+  }
+]

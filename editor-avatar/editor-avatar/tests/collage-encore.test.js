@@ -61,6 +61,8 @@ test('Encore: la chaqueta y la falda entran como tres ids nuevos cada una, uno p
     assert.deepEqual(d.piezas['ropa.abajo'].find(p => p.id === `collage-k-falda-saten-${v}`), {
       id: `collage-k-falda-saten-${v}`, nombre: `Falda Satén Encore · ${v}`, familia: 'collage-k-falda-saten', coleccion: 'collage-encore',
       cuerpoCompatible: cuerpo, cinturaY: 350, reemplazaCapas: ['piernas'], gruposPorCapa: { piernas: 'piernas', ropa_abajo: 'prenda' },
+      // E0088: la miniatura enseña solo la falda (sin piernas ni calzado), como pidió la autora.
+      miniatura: { recorte: '131 340 138 63', capas: ['ropa_abajo'] },
       capas: { piernas: abajo, ropa_abajo: abajo },
     });
   }
@@ -96,7 +98,8 @@ test('Encore: los cuatro accesorios, cada uno en su ranura, sin campo de color, 
     miniatura: { recorte: '247 82 88 65', capas: ['accesorio'] },
     capas: { accesorio: ACC(LA) },
   });
-  assert.deepEqual(d.ranurasAccesorio, ['gorro', 'orejas', 'auriculares', 'gafas', 'pin', 'bolso', 'muneca', 'mano']);
+  // E0088: el lote 06 añade «pecho» (los pines), entre el pin y el bolso.
+  assert.deepEqual(d.ranurasAccesorio, ['gorro', 'orejas', 'auriculares', 'gafas', 'pin', 'pecho', 'bolso', 'muneca', 'mano']);
   for (const p of [por(PE), por(BR), por(BO), por(LA)]) assert.equal(p.rutaColor, undefined, `${p.id}: sin color propio`);
   assert.deepEqual(d.porDefecto.accesoriosExtra, [], 'porDefecto no gana campos con Encore');
 });

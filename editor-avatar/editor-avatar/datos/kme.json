@@ -1601,6 +1601,7 @@
         "cinturaY": 350,
         "reemplazaCapas": ["piernas"],
         "gruposPorCapa": {"piernas": "piernas", "ropa_abajo": "prenda"},
+        "miniatura": {"recorte": "131 340 138 63", "capas": ["ropa_abajo"]},
         "capas": {
           "piernas": "../assets/kme/ropa_abajo/collage-k-falda-saten-delgado.svg",
           "ropa_abajo": "../assets/kme/ropa_abajo/collage-k-falda-saten-delgado.svg"
@@ -1615,6 +1616,7 @@
         "cinturaY": 350,
         "reemplazaCapas": ["piernas"],
         "gruposPorCapa": {"piernas": "piernas", "ropa_abajo": "prenda"},
+        "miniatura": {"recorte": "131 340 138 63", "capas": ["ropa_abajo"]},
         "capas": {
           "piernas": "../assets/kme/ropa_abajo/collage-k-falda-saten-medio.svg",
           "ropa_abajo": "../assets/kme/ropa_abajo/collage-k-falda-saten-medio.svg"
@@ -1629,9 +1631,55 @@
         "cinturaY": 350,
         "reemplazaCapas": ["piernas"],
         "gruposPorCapa": {"piernas": "piernas", "ropa_abajo": "prenda"},
+        "miniatura": {"recorte": "131 340 138 63", "capas": ["ropa_abajo"]},
         "capas": {
           "piernas": "../assets/kme/ropa_abajo/collage-k-falda-saten-grueso.svg",
           "ropa_abajo": "../assets/kme/ropa_abajo/collage-k-falda-saten-grueso.svg"
+        }
+      },
+      {
+        "id": "collage-k06-falda-saten-delgado",
+        "nombre": "Falda Satén Spotlight · delgado",
+        "familia": "collage-k06-falda-saten",
+        "coleccion": "collage-spotlight",
+        "cuerpoCompatible": "relajado",
+        "cinturaY": 350,
+        "reemplazaCapas": ["piernas"],
+        "gruposPorCapa": {"piernas": "piernas", "ropa_abajo": "prenda"},
+        "miniatura": {"recorte": "132 340 136 63", "capas": ["ropa_abajo"]},
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/collage-k06-falda-saten-delgado.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/collage-k06-falda-saten-delgado.svg"
+        }
+      },
+      {
+        "id": "collage-k06-falda-saten-medio",
+        "nombre": "Falda Satén Spotlight · medio",
+        "familia": "collage-k06-falda-saten",
+        "coleccion": "collage-spotlight",
+        "cuerpoCompatible": "recto",
+        "cinturaY": 350,
+        "reemplazaCapas": ["piernas"],
+        "gruposPorCapa": {"piernas": "piernas", "ropa_abajo": "prenda"},
+        "miniatura": {"recorte": "132 340 136 63", "capas": ["ropa_abajo"]},
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/collage-k06-falda-saten-medio.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/collage-k06-falda-saten-medio.svg"
+        }
+      },
+      {
+        "id": "collage-k06-falda-saten-grueso",
+        "nombre": "Falda Satén Spotlight · grueso",
+        "familia": "collage-k06-falda-saten",
+        "coleccion": "collage-spotlight",
+        "cuerpoCompatible": "amplio",
+        "cinturaY": 350,
+        "reemplazaCapas": ["piernas"],
+        "gruposPorCapa": {"piernas": "piernas", "ropa_abajo": "prenda"},
+        "miniatura": {"recorte": "132 340 136 63", "capas": ["ropa_abajo"]},
+        "capas": {
+          "piernas": "../assets/kme/ropa_abajo/collage-k06-falda-saten-grueso.svg",
+          "ropa_abajo": "../assets/kme/ropa_abajo/collage-k06-falda-saten-grueso.svg"
         }
       }
     ],
@@ -2772,6 +2820,57 @@
           "ropa_arriba": "../assets/kme/ropa_arriba/collage-k-chaqueta-cristal-grueso.svg",
           "piernas": "../assets/kme/cuerpo/amplio.svg"
         }
+      },
+      {
+        "id": "collage-k06-chaqueta-cristal-delgado",
+        "nombre": "Chaqueta Cristal Spotlight · delgado",
+        "coleccion": "collage-spotlight",
+        "familia": "collage-k06-chaqueta-cristal",
+        "cuerpoCompatible": "relajado",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": ["cuerpo"],
+        "gruposPorCapa": {"anatomia": "perfil", "torso": "torso", "ropa_arriba": "superior"},
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/collage-k06-chaqueta-cristal-delgado.svg",
+          "torso": "../assets/kme/ropa_arriba/collage-k06-chaqueta-cristal-delgado.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/collage-k06-chaqueta-cristal-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      {
+        "id": "collage-k06-chaqueta-cristal-medio",
+        "nombre": "Chaqueta Cristal Spotlight · medio",
+        "coleccion": "collage-spotlight",
+        "familia": "collage-k06-chaqueta-cristal",
+        "cuerpoCompatible": "recto",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": ["cuerpo"],
+        "gruposPorCapa": {"anatomia": "perfil", "torso": "torso", "ropa_arriba": "superior"},
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/collage-k06-chaqueta-cristal-medio.svg",
+          "torso": "../assets/kme/ropa_arriba/collage-k06-chaqueta-cristal-medio.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/collage-k06-chaqueta-cristal-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      {
+        "id": "collage-k06-chaqueta-cristal-grueso",
+        "nombre": "Chaqueta Cristal Spotlight · grueso",
+        "coleccion": "collage-spotlight",
+        "familia": "collage-k06-chaqueta-cristal",
+        "cuerpoCompatible": "amplio",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": ["cuerpo"],
+        "gruposPorCapa": {"anatomia": "perfil", "torso": "torso", "ropa_arriba": "superior"},
+        "capas": {
+          "anatomia": "../assets/kme/ropa_arriba/collage-k06-chaqueta-cristal-grueso.svg",
+          "torso": "../assets/kme/ropa_arriba/collage-k06-chaqueta-cristal-grueso.svg",
+          "ropa_arriba": "../assets/kme/ropa_arriba/collage-k06-chaqueta-cristal-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
       }
     ],
     "pelo.estilo": [
@@ -3016,6 +3115,106 @@
         "capas": {
           "accesorio": "../assets/kme/accesorio/collage-k-lazo-saten.svg"
         }
+      },
+      {
+        "id": "collage-k06-pendientes-cometa",
+        "nombre": "Pendientes Cometa Spotlight",
+        "coleccion": "collage-spotlight",
+        "zona": "cabeza",
+        "ranura": "orejas",
+        "retitular": true,
+        "indicePorRostro": {"redondo": 0, "ovalado": 1, "cuadrado": 0},
+        "miniatura": {"recorte": "72 207 30 48", "capas": ["accesorio"]},
+        "capas": {
+          "accesorio": [
+            "../assets/kme/accesorio/collage-k06-pendientes-cometa.svg",
+            "../assets/kme/accesorio/collage-k06-pendientes-cometa-ovalado.svg"
+          ]
+        }
+      },
+      {
+        "id": "collage-k06-pulseras-fanchant",
+        "nombre": "Pulseras Fanchant",
+        "coleccion": "collage-spotlight",
+        "zona": "muneca",
+        "ranura": "muneca",
+        "retitular": true,
+        "indicePorCuerpo": {"relajado": 0, "recto": 1, "amplio": 2},
+        "indiceSinPerfilIntegrado": {"relajado": 3, "recto": 4, "amplio": 5},
+        "miniatura": {"recorte": "112 328 62 38", "capas": ["accesorio"]},
+        "capas": {
+          "accesorio": [
+            "../assets/kme/accesorio/collage-k06-pulseras-fanchant-delgado.svg",
+            "../assets/kme/accesorio/collage-k06-pulseras-fanchant-medio.svg",
+            "../assets/kme/accesorio/collage-k06-pulseras-fanchant-grueso.svg",
+            "../assets/kme/accesorio/collage-k06-pulseras-fanchant-camiseta-delgado.svg",
+            "../assets/kme/accesorio/collage-k06-pulseras-fanchant-camiseta-medio.svg",
+            "../assets/kme/accesorio/collage-k06-pulseras-fanchant-camiseta-grueso.svg"
+          ]
+        }
+      },
+      {
+        "id": "collage-k06-pines-fan-signal",
+        "nombre": "Pines Fan Signal",
+        "coleccion": "collage-spotlight",
+        "zona": "cuerpo",
+        "ranura": "pecho",
+        "retitular": true,
+        "indicePorCuerpo": {"relajado": 0, "recto": 1, "amplio": 2},
+        "miniatura": {"recorte": "138 296 124 48", "capas": ["accesorio"]},
+        "capas": {
+          "accesorio": [
+            "../assets/kme/accesorio/collage-k06-pines-fan-signal-delgado.svg",
+            "../assets/kme/accesorio/collage-k06-pines-fan-signal-medio.svg",
+            "../assets/kme/accesorio/collage-k06-pines-fan-signal-grueso.svg"
+          ]
+        }
+      },
+      {
+        "id": "collage-k06-bolso-encore",
+        "nombre": "Bolso Spotlight con photocard",
+        "coleccion": "collage-spotlight",
+        "zona": "cuerpo",
+        "ranura": "bolso",
+        "retitular": true,
+        "indicePorCuerpo": {"relajado": 0, "recto": 1, "amplio": 2},
+        "miniatura": {"recorte": "212 285 136 125", "capas": ["accesorio"]},
+        "capas": {
+          "accesorio": [
+            "../assets/kme/accesorio/collage-k06-bolso-encore-delgado.svg",
+            "../assets/kme/accesorio/collage-k06-bolso-encore-medio.svg",
+            "../assets/kme/accesorio/collage-k06-bolso-encore-grueso.svg"
+          ]
+        }
+      },
+      {
+        "id": "collage-k06-bolso-encore-rizo",
+        "nombre": "Bolso Spotlight con photocard y Rizo",
+        "coleccion": "collage-spotlight",
+        "zona": "cuerpo",
+        "ranura": "bolso",
+        "retitular": true,
+        "indicePorCuerpo": {"relajado": 0, "recto": 1, "amplio": 2},
+        "miniatura": {"recorte": "212 285 136 125", "capas": ["accesorio"]},
+        "capas": {
+          "accesorio": [
+            "../assets/kme/accesorio/collage-k06-bolso-encore-rizo-delgado.svg",
+            "../assets/kme/accesorio/collage-k06-bolso-encore-rizo-medio.svg",
+            "../assets/kme/accesorio/collage-k06-bolso-encore-rizo-grueso.svg"
+          ]
+        }
+      },
+      {
+        "id": "collage-k06-lazo-saten",
+        "nombre": "Lazo Satén Spotlight",
+        "coleccion": "collage-spotlight",
+        "zona": "cabeza",
+        "ranura": "pin",
+        "retitular": true,
+        "miniatura": {"recorte": "245 80 95 75", "capas": ["accesorio"]},
+        "capas": {
+          "accesorio": "../assets/kme/accesorio/collage-k06-lazo-saten.svg"
+        }
       }
     ]
   },
@@ -3118,7 +3317,7 @@
     ]
   },
   "categorias": [],
-  "ranurasAccesorio": ["gorro", "orejas", "auriculares", "gafas", "pin", "bolso", "muneca", "mano"],
+  "ranurasAccesorio": ["gorro", "orejas", "auriculares", "gafas", "pin", "pecho", "bolso", "muneca", "mano"],
   "porDefecto": {
     "version": 1,
     "rostro": "redondo",

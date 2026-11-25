@@ -2,7 +2,7 @@
 
 > **El hilo conductor de K-ME es personalizar un producto para que el fan tenga el protagonismo que merece dentro del mundo del K-pop.** La primera conversación exploraba un posible proyecto de máquina de vending; esa era una forma posible de materializar la idea. El propósito de dar protagonismo al fan es lo que conecta aquel origen con el proyecto actual.
 
-- **Revisión del archivo:** R0086.
+- **Revisión del archivo:** R0089.
 - **Carpeta actual del proyecto:** `C:\Users\<usuario>\Desktop\ACTIVA2026\k-me` (renombrada por la autora; véase E0006).
 - **Última actualización:** 2026-11-25 · Europe/Madrid.
 - **Responsable de las decisiones:** la autora del proyecto.
@@ -263,6 +263,8 @@ Todas estas decisiones están vigentes en esta revisión. Los cambios futuros de
 | D074 | **Colección «K» y canje de Kpopis, antes del 1/12** (cambia D063, que dejaba el canje para después).<br>**La pestaña:** «Colección «K»», con la K entre las comillas fucsias del logo, más resaltada que las demás y abierta al entrar en K-ME Studio. Las piezas especiales (lotes collage) están solo ahí.<br>**Canjear:** dentro, el botón «Canjear Kpopis» lleva a un catálogo con las piezas que aún no tienes, su precio y su vista previa, que no gasta nada. Al canjear se restan los Kpopis y la pieza pasa a ser de la cuenta.<br>**Primeras piezas de canje:** el Top Destello y la Chaqueta Denim Collage, a 20 Kpopis; las demás especiales, gratis. La autora añadirá más con ChatGPT.<br>**Avatar de presentación:** un avatar nuevo empieza con especiales gratis (gorro y falda con botas). Los ojos con iris fotográfico, cuando lleguen. | La autora quiere que lo especial se vea y se pueda conseguir con las monedas. | E0083, la autora: «1a pero esta pestaña deberá verse más resaltada… botón para canjear monedas… le reste las monedas que toque», «Las especiales solo ahí y serán las que se vean más al cargar», «De momento pon dos piezas especiales de las que hay ya en el catálogo de canjear por monedas». | Hecho en E0083 (V104). Falta su revisión en el navegador (T046). |
 | D075 | **Colección Encore: seis familias especiales de canje** (dirección D067), preparadas por ChatGPT fuera del proyecto: Chaqueta Cristal Stage, Falda Satén Encore, Pendientes Cometa, Brazalete Fanchant, Bolso Encore con Rizo (bolso, portaphotocard y peluche, una sola pieza) y Lazo Satén Stage.<br>**Integración:** aditiva y solo en Colección «K». La ropa usa sus colores de siempre y los accesorios no tienen campo de color. Cada familia se canjea entera.<br>**Precios propuestos:** 25, 20, 10, 10, 30 y 10 Kpopis, **sin confirmar**.<br>**Lote 07 (iris fotográfico):** se guarda aparte, sin activarlo ni sustituir los ojos actuales, hasta su revisión visual. | La autora quiere más piezas especiales para canjear. Su dirección artística manda: identidad ilustrada y materiales fotográficos selectivos. | E0086, la autora (por medio de ChatGPT): «He aprobado las seis propuestas de la colección Encore… Integra estas seis familias, una por una», «Los precios siguen siendo propuestas pendientes de confirmar», «consérvalo como propuesta aparte». | Hecho en E0086 (V110, V111). Falta su revisión (T048) y decidir los precios y los ojos. El límite de imágenes, en D076. |
 | D076 | **El filtro de la vista previa del sello admite 16 imágenes por dibujo** (antes, 8). Cada imagen sigue con sus límites: PNG incrustado, 20 KiB y 256 px como mucho. Un test exige que la combinación más cargada del catálogo quepa (hoy, 12). | Con Encore, lo más cargado del catálogo llegaba a 12 imágenes. Con más de 8, la vista previa del sello no se actualizaba. | E0087, la autora: «1. Lo subimos a 16», a la recomendación del asistente. | Hecho en E0087 (V112). |
+| D077 | **Encore · lote 06: todas las piezas que no son iguales a las aprobadas, como opciones nuevas y propuestas.** Es la entrega anterior a la aprobada (D075).<br>**Piezas:** su chaqueta, falda, pendientes y lazo (distintos de los aprobados); las Pulseras Fanchant, los Pines Fan Signal, el bolso con photocard y el bolso con photocard y Rizo.<br>**Sin canje ni precio**, en Colección «K». Las aprobadas no cambian.<br>**Canje (opción B):** Encore aprobado sigue en el canje como está, y el asistente da las piezas a la cuenta de prueba de la autora para que las vea. | La autora quiere poder ver y combinar todas las propuestas. | E0088, la autora: «1, quiero todo cuando si no son lo mismo», «2B». | Hecho en E0088 (V113, V114). Falta su revisión (T049) y saber a qué cuenta se dan las piezas. E0089: su nombre visible es Spotlight (D078). |
+| D078 | **El nombre visible del lote 06 es «COLECCIÓN K · SPOTLIGHT».** Lema propuesto: «Brilla en tu propio escenario».<br>**Encore** queda reservado para la colección anterior (D075).<br>**Qué cambia:** los títulos y las referencias visibles del lote 06 pasan a Spotlight. Las ocho familias del ZIP, que llegó con «Encore» en su nombre, se identifican por su contenido, para no duplicarlas.<br>**Qué no cambia:** los ids técnicos y los nombres de archivo, por la compatibilidad con recetas y canjes. Tampoco cambian la identidad de K-ME ni los logos. | La autora quiere distinguir las dos colecciones. | E0089, la autora: «El nombre visible aprobado para el lote 06 es: COLECCIÓN K · SPOTLIGHT… Reservamos Encore para la colección anterior… Conserva los ids técnicos ya utilizados y los nombres de archivo». | Hecho en E0089 (V115). E0090: el lema queda solo apuntado bajo Spotlight, sin mostrarse en la app (la autora: «apuntado bajo de Spotlight»). |
 
 ## 5. Propuestas conservadas, alcance y cuestiones abiertas
 
@@ -299,6 +301,7 @@ Estas propuestas aparecen en las fuentes, pero no se convierten en acuerdos nuev
 | P027 | **Animaciones de MY STAGE** (propuesta de la autora con ChatGPT): Annyeong (inclinación suave, sonrisa o guiño), K-ME Bounce (rebote y balanceo del avatar completo) y Fighting! (gesto breve de ánimo, con el lightstick iluminado). | Las pruebas visuales anteriores no quedaron resueltas: no son animaciones listas. Valoración del asistente (E0072): K-ME Bounce se puede hacer moviendo el SVG entero, sin tocar el encaje de las prendas y respetando «reducir movimiento»; Annyeong con la cabeza o un guiño y Fighting con el brazo necesitan un avatar articulado. Solo Bounce, si sobra tiempo y con el visto bueno de la autora. |
 | P028 | **Encuentro previo en versión mínima** (desarrolla P019): una barra común para varias cuentas, que se actualiza preguntando al servidor cada pocos segundos (sin librerías nuevas), con una meta y el objeto del evento para quien participó. | Distinto de una escena local (solo el propio avatar). Necesita reglas (fórmula, duración, quién recibe) y 1,5–2 días: después de la presentación (E0072). El vídeo conserva su revisión técnica y de condiciones pendiente (P021). |
 | P029 | **Guion de la demo y plan B** (E0085), borrador del asistente para el ensayo del domingo (D054): `docs/GUION_DEMO.md`, con lo que hay que preparar el mismo día, el recorrido de unos 10 minutos con lo que se cuenta en cada paso, el plan B por niveles y el ensayo. Las capturas del plan B las hace `privado/plan-b/capturas-plan-b.mjs` (fuera de Git), probado en E0085 con 18 capturas. Se repite el sábado 28, después de congelar. | Sin confirmar. La autora decide la duración, si crea la cuenta en directo, si imprime en directo y cómo enseña el apartado «por dentro». |
+| P030 | **MVP de Intercambios** (E0090), a partir de una propuesta de ChatGPT que trajo la autora; retoma P017 y P018. Está en `docs/PROPUESTA_INTERCAMBIOS.md`:<br>- **Qué se intercambia:** una pieza de canje por otra, sin chat. Cada fan ofrece las suyas y los demás ven solo los alias de quienes las ofrecen. Se pide ofreciendo una pieza propia; el destinatario acepta o rechaza y el solicitante cancela.<br>- **Datos:** migración 011 con `ofertas_intercambio` y `solicitudes_intercambio`, que también es el historial. Basta mover familias; no hacen falta ejemplares.<br>- **Reglas propuestas (7):** la pieza entregada se conserva solo en ese avatar mientras no se quite; duplicar y «Guardar como copia» exigen la propiedad; usar el avatar tal cual (perfil, Connect, sello) se permite; volver a canjear con clave numerada; las pendientes se anulan al entregar la pieza; no se recibe lo que ya tienes; límite de 5 pendientes.<br>- **Aceptar:** en una transacción con bloqueos.<br>- **Impacto:** la clave del canje, el guardado y el duplicado de avatares.<br>- **Esfuerzo:** 6 a 8 h. | Sin confirmar. La autora decide las reglas (sobre todo la 1 y la 3) y si se hace el jueves 26 con un interruptor o después del 1/12. |
 
 **Visión futura documentada:** comunidad local, eventos, noticias, tiendas, compras colectivas, productos físicos y posible línea empresarial de personalización (F02–F03). No hay evidencia de servicios operativos. F01 propone dejarlos fuera de los servicios reales de noviembre; falta ratificar el recorte final de la demo.
 
@@ -432,6 +435,9 @@ Actualización del editor: E0042 amplía el trabajo de E0015–E0031 con recurso
 | V110 | 2026-11-25 | Ejecutado por el asistente (E0086), con la base local `kme_dev`. | Correcta. **App 283 de 283, más 1 pendiente marcado** (`todo`: la combinación más cargada del catálogo llega a 12 imágenes y el filtro del sello admite 8). **Editor 194 de 194.** **`collage-encore` (12):** las entradas exactas del catálogo y el orden de ranuras; los 17 dibujos idénticos a los de la entrega (SHA-256 del manifest) y seguros; la copia del ovalado solo cambia los anclajes; la chaqueta con los tres cuerpos y las dos cinturas; la falda con su calzado compacto; un solo brazalete y el anclaje adecuado; los pendientes por rostro; el orden de capas con ocho accesorios; el lazo y el pin se sustituyen; ids únicos y 7 imágenes con las seis piezas; el editor (solo en «K», miniaturas con textura, lo bloqueado no sale). **`encore` de la app (8):** canje y editor; las seis juntas y el lazo con el pin rechazado; el cuerpo entero y el rostro sin el bolso ni el brazalete; 7 de 8 imágenes; el catálogo con la vista previa y el precio de cada una; 403 sin canjear; canje de pendientes y lazo con los 20 Kpopis de HANGUL, guardado y recarga. Adaptados: `canje` (la lista de piezas y las bloqueadas), `varios-accesorios` (las ranuras) y los recuentos de cinturas (384 → 408). |
 | V111 | 2026-11-25 | Ejecutado por el asistente (E0086) en Chrome sin ventana, con una cuenta de prueba que se borra al terminar. | **Encaje:** el brazalete con las 20 prendas de arriba y los tres cuerpos; los pendientes y el lazo con los tres rostros y cuatro peinados (con el ovalado, los pendientes flotaban fuera de la oreja: se añadió su copia); combinaciones con el gorro, los auriculares, el pin y el lightstick (el lazo tapaba el pin: misma ranura). **App real:** el editor abre el avatar guardado con las seis piezas; el catálogo de canje enseña las ocho piezas con su precio y vista previa; el sello con el avatar de cuerpo entero; la vista previa del sello pasa el filtro con 7 imágenes; la imagen de perfil, con el lazo y los pendientes y sin el bolso; el editor en el móvil. **Exportación**, con el código del editor en el navegador: PNG del avatar y photocard en PDF (`%PDF-1.4`, 128 400 bytes), con las seis piezas a la vista. **Lote 07:** sus cuatro expresiones y el color del iris con 4 colores naturales y 4 de fantasía de la paleta, en una hoja aparte (sin integrar). **Sin revisión de la autora** (T048). |
 | V112 | 2026-11-25 | Ejecutado por el asistente (E0087). | **En rojo primero:** el test de la combinación más cargada (antes `todo`) falla con el filtro en 8. **Después, correcta:** **app 284 de 284**, sin pendientes. El test exige 16 y calcula lo más cargado del catálogo (12). **En Chrome sin ventana**, con el filtro real (`svg-seguro.js`): el avatar más cargado (top, falda con botas, lightstick, gorro, pendientes, auriculares, gafas, lazo, bolso y brazalete) se acepta con 12 imágenes, y un dibujo con 17 se rechaza. |
+| V113 | 2026-11-25 | Ejecutado por el asistente (E0088), tests escritos antes del catálogo. | **En rojo, por lo que comprueban:** `collage-encore-06` del editor, 7 de 8 (sin las entradas, sin los archivos `collage-k06-`, sin la copia del ovalado). El de ids que no chocan pasó desde el principio, con el catálogo de entonces. En la app no hizo falta código: `encore-06` pasó sin fase en rojo. |
+| V114 | 2026-11-25 | Ejecutado por el asistente (E0088), con la base local `kme_dev` y Chrome sin ventana. | Correcta. **Editor 202 de 202** y **app 289 de 289**.<br>**`collage-encore-06` (8):** entradas exactas y ranura `pecho`; los 23 dibujos con los bytes de `ARCHIVOS.json`, seguros; la copia del ovalado; chaqueta y falda con los tres cuerpos, las dos cinturas, los colores y el calzado compacto; pulseras sobre el brazo o la manga y pendientes por rostro; los pines delante de la ropa y bajo la correa; todo junto con ids únicos y 8 imágenes; ninguna pieza repite ids de otra que se lleve a la vez (todo el catálogo); el editor (solo en «K», miniaturas, la falda sin piernas).<br>**`encore-06` de la app (4):** fuera del canje; todo junto con cada cuerpo, 8 imágenes; el rostro con los pendientes y el lazo, sin pines, pulseras ni bolso; una cuenta sin canjes guarda, recarga y hace su sello «Rostro».<br>**Adaptados:** `collage-encore` (la miniatura de la falda aprobada y la ranura `pecho`), `varios-accesorios`, cinturas (408 → 432) y la combinación más cargada (12 → 13).<br>**Chrome:** ver INTEGRADO.md. El editor real de la app abre los tres avatares guardados (uno por cuerpo) igual que se guardaron. Las botas del lote 05 con la chaqueta del lote 06: sin problemas. **Sin revisión de la autora** (T049). |
+| V115 | 2026-11-25 | Ejecutado por el asistente (E0089), tests cambiados antes que el catálogo y el código. | **En rojo primero:** `collage-spotlight` (antes `collage-encore-06`), 6 de 9, con los nombres y la colección antiguos. **Después, correcta:** **editor 203 de 203** y **app 289 de 289**. Un test nuevo comprueba que ni los nombres, ni las miniaturas de «K», ni el avatar dibujado con las piezas Spotlight dicen «Encore», «lote 06», «Cristal Stage» ni «Satén Stage». El de la app comprueba los títulos del avatar dibujado con los tres cuerpos. **En Chrome sin ventana**, el editor real: el selector de «K» dice Spotlight y los tres avatares guardados se recargan iguales. **Sin revisión de la autora** (T049). |
 
 Las pruebas V005–V008 son resultados declarados por Claude y distinguidos de la comprobación documental V009. Los escenarios siguientes siguen pendientes para el producto completo:
 
@@ -500,6 +506,7 @@ Estados permitidos: pendiente, en curso, bloqueado, terminado o descartado. Solo
 | T046 | La autora prueba en su navegador Colección «K» y el canje: entrar en K-ME Studio (pestaña «K» abierta y avatar de presentación), completar HANGUL LIVE, canjear el Top Destello con sus 20 Kpopis, verlo en «K» y en «Mis Kpopis», y comprobar que no se puede canjear sin saldo. Elige los precios y las piezas siguientes. | Pendiente | Creado en E0083. Probado con tests (V104) y en Chrome por el asistente. |
 | T047 | La autora prueba en su navegador los varios accesorios (D071): poner el gorro, los auriculares y las gafas a la vez, quitarlos pulsándolos, «Sin accesorio», «Deshacer», los cinco a la vez, el color del gorro, guardar y volver a abrir; y en el móvil, que la tarjeta del editor quede debajo de «Guardar». Decide si el pin fucsia sobre el gorro fucsia se distingue bastante. | Pendiente | Creado en E0084. Probado con tests (V106) y en Chrome por el asistente (V107). Va en `docs/GUIA_PRUEBA_VIERNES.md`, pasos 4 y 8. |
 | T048 | La autora prueba Encore en su navegador: canjear una pieza, ponerse las seis (con los tres cuerpos y los tres rostros), guardar, sello y photocard. Decide:<br>- los precios (propuestos: 25, 20, 10, 10, 30 y 10 Kpopis);<br>- el límite de imágenes del filtro del sello (8; lo más cargado del catálogo llega a 12);<br>- si el lazo y el pin deben sustituirse;<br>- la copia de los pendientes para el ovalado;<br>- los ojos del lote 07. | Pendiente | Creado en E0086. Probado con tests (V110) y en Chrome por el asistente (V111). E0087: el límite de imágenes, decidido (D076). |
+| T049 | La autora prueba en su navegador las piezas del lote 06 (Colección «K», sin canje): la chaqueta y la falda con los tres cuerpos, los pendientes con los tres rostros, las pulseras con camiseta y con chaqueta, los pines, el bolso con y sin Rizo y el lazo; guarda, recarga y hace un sello. Decide:<br>- precios y canje;<br>- los nombres «(lote 06)»;<br>- si Rizo necesita más contraste;<br>- qué propuestas se quedan. | Pendiente | Creado en E0088. Probado con tests (V114) y en Chrome por el asistente. Falta que diga a qué cuenta de prueba se dan las piezas de Encore aprobado (D077, opción B). E0089: las piezas se llaman ahora Spotlight (D078); ya no hay «(lote 06)» en los nombres. Queda pendiente dónde se muestra el lema. |
 
 ## 8. Aprendizajes y preguntas para valorar el proceso
 
@@ -2631,6 +2638,92 @@ Las respuestas se añaden en la sesión correspondiente, con ejemplos. No rellen
 - **Siguiente paso:** la aprobación del commit.
 - **Revisión resultante:** R0086.
 
+### E0088 · 2026-11-25 · Encore · lote 06, como propuestas
+
+- **Autoría y entorno:** autora y asistente (Claude Code); ella lo sigue desde el móvil con Remote Control. Entrega gráfica de ChatGPT, fuera del proyecto: `KME_coleccion_K_Encore_lote06.zip`, que el asistente encontró en la carpeta temporal y extrajo en una carpeta aparte.
+- **Objetivo:** integrar el lote 06 en el probador (D077): primero la chaqueta y la falda, y después los accesorios.
+- **Base leída:**
+  - AGENTS.md, CLAUDE.md y la bitácora (R0086);
+  - del ZIP: el LEEME, las fichas, el catálogo propuesto, `ARCHIVOS.json` y las láminas.
+- **Hechos y trabajo realizado:**
+  - **Antes de editar:** el lote 06 era la entrega anterior a la aprobada (D075), con los mismos ids y otros dibujos, y pedía el límite de 8 y dejar el canje pendiente. El asistente paró y preguntó; la autora respondió «1, quiero todo cuando si no son lo mismo» y «2B».
+  - **Copia:** 23 dibujos con nombres `collage-k06-` y la copia de los pendientes para el ovalado. La documentación, en `propuestas-collage/encore-06/`; Rizo suelto, sin usar.
+  - **Catálogo:** chaqueta, falda y seis accesorios en `collage-encore-06`, sin canje. Ranura nueva `pecho`. Miniatura de solo la falda, también en la falda aprobada.
+  - **Comprobación en Chrome:** las prendas primero, en las tres siluetas, y después los accesorios. Detalles en `propuestas-collage/encore-06/INTEGRADO.md`.
+  - **El límite de imágenes se mantiene en 16** (D076), aunque el encargo hablaba de 8. Todo el lote 06 junto usa 8.
+- **Decisiones confirmadas:** D077.
+- **Decidido por el asistente sin preguntar:**
+  - los nombres con «(lote 06)» y los ids `collage-k06-`;
+  - la ranura `pecho` para los pines, entre el pin y el bolso;
+  - las pulseras, en la misma ranura que el brazalete;
+  - Rizo solo dentro del bolso (la composición del lote), nunca suelto;
+  - la copia de los pendientes para el ovalado;
+  - los encuadres de las miniaturas;
+  - que las piezas del lote 06 no estén en el canje.
+- **Propuestas sin confirmar:** todo el lote 06.
+- **Pruebas:** V113 y V114.
+- **Problemas y pendientes:**
+  - T049;
+  - dar las piezas de Encore aprobado a la cuenta de prueba de la autora: falta saber cuál;
+  - Rizo destaca poco sobre fondo blanco.
+- **Aprendizaje:** comprobar la fecha y el contenido de una entrega antes de integrarla. Este lote era anterior al aprobado y tenía sus mismos ids.
+- **Siguiente paso:** la cuenta de prueba de la autora, su revisión y la aprobación del commit.
+- **Revisión resultante:** R0087.
+
+### E0089 · 2026-11-25 · El lote 06 pasa a llamarse COLECCIÓN K · SPOTLIGHT
+
+- **Autoría y entorno:** autora y asistente (Claude Code); ella lo sigue desde el móvil con Remote Control.
+- **Objetivo:** aplicar el nombre visible aprobado (D078).
+- **Base leída:** D077, E0088, el catálogo del lote 06 y los títulos internos de sus SVG.
+- **Antes:** la autora preguntó qué era Encore y vio que el lote 06 necesitaba otro nombre. El asistente le propuso opciones y le enseñó cómo se llaman las demás piezas.
+- **Hechos y trabajo realizado:**
+  - **Nombres visibles:**
+    - Chaqueta Cristal Spotlight y Falda Satén Spotlight, de cada cuerpo;
+    - Pendientes Cometa Spotlight y Lazo Satén Spotlight;
+    - Bolso Spotlight con photocard y Bolso Spotlight con photocard y Rizo;
+    - las Pulseras Fanchant y los Pines Fan Signal no cambian.
+  - **Colección técnica:** `collage-spotlight`.
+  - **Títulos internos:** marca `retitular` en los seis accesorios. `catalogo.js` cambia sus títulos internos por el nombre visible al dibujar, sin tocar los archivos.
+  - **Archivos renombrados:** la carpeta de documentación pasa a `propuestas-collage/spotlight/`, y los tests a `collage-spotlight.test.js` (editor) y `spotlight.test.js` (app).
+  - **Notas:** `INTEGRADO.md`, con las ocho familias del ZIP identificadas por su contenido. Cada archivo se usa una vez, sin duplicados.
+  - **Sin cambios:** los ids, los nombres de archivo, los dibujos y los logos.
+- **Decisiones confirmadas:** D078.
+- **Decidido por el asistente sin preguntar:**
+  - los nombres exactos de cada pieza (cambiar «Stage», «Encore» y «(lote 06)» por «Spotlight»);
+  - dejar igual las pulseras y los pines;
+  - cambiar los títulos internos al dibujar en vez de editar los archivos;
+  - la colección técnica `collage-spotlight`;
+  - renombrar la carpeta y los tests.
+- **Propuestas sin confirmar:** el lema, que todavía no se muestra.
+- **Pruebas:** V115.
+- **Problemas y pendientes:** T049 (incluye dónde mostrar el lema); la cuenta de prueba para las piezas de Encore.
+- **Aprendizaje:** en los accesorios, el título interno del SVG también es visible: va dentro del dibujo y el navegador lo puede enseñar. Un cambio de nombre tiene que llegar hasta ahí.
+- **Siguiente paso:** la revisión de la autora y la aprobación del commit.
+- **Revisión resultante:** R0088.
+
+### E0090 · 2026-11-25 · Lema de Spotlight y propuesta de Intercambios
+
+- **Autoría y entorno:** autora y asistente (Claude Code); ella lo sigue desde el móvil con Remote Control.
+- **Objetivo:**
+  - dónde va el lema de Spotlight;
+  - valorar un MVP de «Intercambios» que la autora trae con un prompt de ChatGPT.
+- **Base leída:**
+  - P017, P018 y D054 (los intercambios, después del 1/12);
+  - el modelo de propiedad (`piezas_usuario`) y el canje (`canje:<familia>`);
+  - `avatarService.guardar` y `duplicar`.
+- **Hechos y trabajo realizado:**
+  - **Lema:** la autora: «apuntado bajo de Spotlight». Se deja solo en la documentación (D078, TECH_SPEC, INTEGRADO.md) y se quita de la guía del viernes.
+  - **Intercambios:** propuesta en `docs/PROPUESTA_INTERCAMBIOS.md` (P030): viabilidad y calendario, alcance mínimo, modelo entidad-relación (migración 011), siete reglas concretas, seguridad y concurrencia, impacto y plan de tests. **No se ha construido nada.**
+- **Decisiones confirmadas:** el lema, solo apuntado.
+- **Decidido por el asistente sin preguntar:**
+  - el detalle de la propuesta (las reglas 3 a 7, el límite, la clave numerada del canje);
+  - recomendar el jueves con un interruptor, solo si las reglas se cierran por la mañana.
+- **Propuestas sin confirmar:** P030.
+- **Pruebas:** ninguna (sin código).
+- **Problemas y pendientes:** las decisiones de P030; la cuenta de prueba para las piezas de Encore; la aprobación del commit.
+- **Siguiente paso:** las respuestas de la autora.
+- **Revisión resultante:** R0089.
+
 <!-- AÑADIR AQUÍ LAS NUEVAS SESIONES, EN ORDEN DE REGISTRO. NO BORRAR E0001. -->
 
 ## 10. Plantilla para una nueva sesión
@@ -2827,5 +2920,8 @@ PROPUESTA PROCEDENTE DEL OTRO CHAT:
 | R0084 | 2026-11-25 | E0085 | Revisión del móvil en todas las páginas, 0 fallos reales (V108). P029: guion de la demo y plan B (`docs/GUION_DEMO.md`) y el script de las capturas del plan B (fuera de Git). TECH_SPEC v1.28. |
 | R0085 | 2026-11-25 | E0086 | D075: Colección Encore integrada (seis familias en Colección «K» y en el canje, con los precios propuestos), variantes por rostro y por prenda de arriba, nuevas ranuras de accesorio. El lote 07 de ojos, guardado como propuesta. V109 a V111 (app 283 de 283 y 1 pendiente, editor 194 de 194, Chrome). Nuevo T048. TECH_SPEC v1.29. |
 | R0086 | 2026-11-25 | E0087 | D076: el filtro de la vista previa del sello admite 16 imágenes. V112 (app 284 de 284, Chrome). TECH_SPEC v1.30. |
+| R0087 | 2026-11-25 | E0088 | D077: las piezas del lote 06 distintas de las aprobadas, como propuestas sin canje en Colección «K»; ranura `pecho`; miniatura de solo la falda en las faldas Encore. V113 y V114 (editor 202 de 202, app 289 de 289, Chrome). Nuevo T049. TECH_SPEC v1.31. |
+| R0088 | 2026-11-25 | E0089 | D078: el lote 06 se llama COLECCIÓN K · SPOTLIGHT en todo lo visible; ids y archivos sin cambios; `retitular` para los títulos internos. V115 (editor 203 de 203, app 289 de 289, Chrome). TECH_SPEC v1.32. |
+| R0089 | 2026-11-25 | E0090 | El lema de Spotlight queda solo apuntado (D078). P030: propuesta del MVP de Intercambios, sin construir. TECH_SPEC v1.33. |
 
 <!-- FIN DE LA BITÁCORA. Las revisiones posteriores deben conservar las entradas históricas. -->

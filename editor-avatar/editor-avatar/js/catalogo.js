@@ -37,6 +37,9 @@ export async function cargarCatalogo(url = 'datos/catalogo.json') {
   return new Catalogo(datos, archivos);
 }
 
+// Un texto del catálogo dentro de un SVG: sin caracteres que rompan el XML.
+const escaparXml = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
 /** Quita la etiqueta <svg> exterior para poder apilar el contenido en otra capa. */
 function interiorSVG(texto) {
   const inicio = texto.search(/<svg[\s>]/);
@@ -128,7 +131,10 @@ export class Catalogo {
         const indice = this.indiceVariante(p, avatar);
         const elegidos = indice == null ? p.capas[capa] : [p.capas[capa][indice]];
         const partes = elegidos.map(a => {
-          const svg = this.archivos.get(a);
+          let svg = this.archivos.get(a);
+          // «retitular» (Spotlight, D078): los títulos internos del archivo llegaron con nombres
+          // antiguos; al dibujar se cambian por el nombre visible, sin tocar el archivo entregado.
+          if (p.retitular) svg = svg.replace(/<title>[\s\S]*?<\/title>/g, `<title>${escaparXml(p.nombre)}</title>`);
           return p.gruposPorCapa?.[capa] ? extraerGrupo(svg, p.gruposPorCapa[capa]) : svg;
         });
         if (p.reemplazaCapas?.includes(capa)) reemplazos[capa] = partes;

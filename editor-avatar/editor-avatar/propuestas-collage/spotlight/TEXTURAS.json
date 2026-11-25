@@ -1,0 +1,37 @@
+[
+  {
+    "archivo": "texturas/cristal-gris-256.png",
+    "ancho": 256,
+    "alto": 256,
+    "bytes": 15630,
+    "origen": "Generada por ChatGPT; preparación técnica en gris/alpha."
+  },
+  {
+    "archivo": "texturas/cristal-luz-sombra-256.png",
+    "ancho": 256,
+    "alto": 256,
+    "bytes": 15581,
+    "origen": "Generada por ChatGPT; preparación técnica en gris/alpha."
+  },
+  {
+    "archivo": "texturas/peluche-rizo-gris-128x176.png",
+    "ancho": 128,
+    "alto": 176,
+    "bytes": 5855,
+    "origen": "Generada por ChatGPT; preparación técnica en gris/alpha."
+  },
+  {
+    "archivo": "texturas/saten-gris-256.png",
+    "ancho": 256,
+    "alto": 256,
+    "bytes": 11721,
+    "origen": "Generada por ChatGPT; preparación técnica en gris/alpha."
+  },
+  {
+    "archivo": "texturas/saten-luz-sombra-256.png",
+    "ancho": 256,
+    "alto": 256,
+    "bytes": 11511,
+    "origen": "Generada por ChatGPT; preparación técnica en gris/alpha."
+  }
+]

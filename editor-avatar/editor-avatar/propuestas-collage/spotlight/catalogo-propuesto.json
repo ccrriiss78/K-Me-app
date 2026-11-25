@@ -1,0 +1,522 @@
+{
+  "fecha": "2026-11-25",
+  "coleccion": "Colección K · Encore",
+  "estado": "Entrega gráfica externa; adaptar al contrato vigente, no aplicar automáticamente.",
+  "precios": null,
+  "piezas": [
+    {
+      "familia": "collage-k-pendientes-cometa",
+      "nombre": "Pendientes Cometa",
+      "capa": "accesorio",
+      "zona": "orejas",
+      "ruta": "accesorio",
+      "capas": {
+        "accesorio": [
+          "svg/collage-k-pendientes-cometa.svg"
+        ]
+      },
+      "claseColor": "f-k-pendientes",
+      "rutaColor": null,
+      "colorReferencia": "#e83475",
+      "material": "cristal",
+      "recorteDetalle": [
+        72,
+        207,
+        30,
+        48
+      ]
+    },
+    {
+      "familia": "collage-k-lazo-saten",
+      "nombre": "Lazo Satén Stage",
+      "capa": "accesorio",
+      "zona": "cabeza",
+      "ruta": "accesorio",
+      "capas": {
+        "accesorio": [
+          "svg/collage-k-lazo-saten.svg"
+        ]
+      },
+      "claseColor": "f-k-lazo",
+      "rutaColor": null,
+      "colorReferencia": "#e83475",
+      "material": "saten",
+      "recorteDetalle": [
+        245,
+        80,
+        95,
+        75
+      ]
+    },
+    {
+      "familia": "collage-k-chaqueta-cristal",
+      "nombre": "Chaqueta Cristal Stage · delgado",
+      "capa": "ropa superior",
+      "ruta": "ropa.arriba",
+      "pieza": {
+        "id": "collage-k-chaqueta-cristal-delgado",
+        "nombre": "Chaqueta Cristal Stage · delgado",
+        "coleccion": "collage-06",
+        "familia": "collage-k-chaqueta-cristal",
+        "cuerpoCompatible": "relajado",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "svg/collage-k-chaqueta-cristal-delgado.svg",
+          "torso": "svg/collage-k-chaqueta-cristal-delgado.svg",
+          "ropa_arriba": "svg/collage-k-chaqueta-cristal-delgado.svg",
+          "piernas": "../assets/kme/cuerpo/relajado.svg"
+        }
+      },
+      "material": "cristal",
+      "recorteDetalle": [
+        120,
+        283,
+        160,
+        83
+      ]
+    },
+    {
+      "familia": "collage-k-falda-saten",
+      "nombre": "Falda Satén Encore · delgado",
+      "capa": "ropa inferior",
+      "ruta": "ropa.abajo",
+      "pieza": {
+        "id": "collage-k-falda-saten-delgado",
+        "nombre": "Falda Satén Encore · delgado",
+        "familia": "collage-k-falda-saten",
+        "cuerpoCompatible": "relajado",
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "svg/collage-k-falda-saten-delgado.svg",
+          "ropa_abajo": "svg/collage-k-falda-saten-delgado.svg"
+        },
+        "coleccion": "collage-06"
+      },
+      "material": "saten",
+      "recorteDetalle": [
+        132,
+        340,
+        136,
+        63
+      ]
+    },
+    {
+      "familia": "collage-k-pulseras-fanchant",
+      "nombre": "Pulseras Fanchant",
+      "capa": "accesorio",
+      "ruta": "accesorio",
+      "zona": "munecas",
+      "cuerpo": "relajado",
+      "variante": "delgado",
+      "archivo": "svg/collage-k-pulseras-fanchant-delgado.svg",
+      "material": "cristal",
+      "claseColor": "f-k-pulseras",
+      "rutaColor": null,
+      "recorteDetalle": [
+        141,
+        337,
+        27,
+        22
+      ],
+      "alternativasAnclaje": {
+        "perfilIntegrado": "svg/collage-k-pulseras-fanchant-delgado.svg",
+        "camisetaIntegrada": "svg/collage-k-pulseras-fanchant-camiseta-delgado.svg",
+        "nota": "Comprobar brazos y mangas del resto de prendas antes de asignar automáticamente."
+      }
+    },
+    {
+      "familia": "collage-k-pines-fan-signal",
+      "nombre": "Pines Fan Signal",
+      "capa": "accesorio",
+      "ruta": "accesorio",
+      "zona": "torso",
+      "cuerpo": "relajado",
+      "variante": "delgado",
+      "archivo": "svg/collage-k-pines-fan-signal-delgado.svg",
+      "material": "cristal",
+      "claseColor": "f-k-pines",
+      "rutaColor": null,
+      "recorteDetalle": [
+        157,
+        301,
+        86,
+        39
+      ]
+    },
+    {
+      "familia": "collage-k-bolso-encore",
+      "nombre": "Bolso Encore con portaphotocard",
+      "capa": "accesorio",
+      "ruta": "accesorio",
+      "zona": "bolso",
+      "cuerpo": "relajado",
+      "variante": "delgado",
+      "archivo": "svg/collage-k-bolso-encore-delgado.svg",
+      "material": "saten",
+      "claseColor": "f-k-bolso",
+      "rutaColor": null,
+      "recorteDetalle": [
+        215,
+        289,
+        111,
+        118
+      ]
+    },
+    {
+      "familia": "collage-k-peluche-rizo",
+      "nombre": "Rizo · peluche de idol ficticio",
+      "capa": "accesorio",
+      "ruta": "accesorio",
+      "zona": "colgante-bolso",
+      "cuerpo": "relajado",
+      "variante": "delgado",
+      "archivo": "svg/collage-k-peluche-rizo-delgado.svg",
+      "material": "peluche",
+      "claseColor": null,
+      "rutaColor": null,
+      "recorteDetalle": [
+        287,
+        332,
+        38,
+        56
+      ],
+      "requiere": "collage-k-bolso-encore",
+      "noUsarSolo": true
+    },
+    {
+      "familia": "collage-k-chaqueta-cristal",
+      "nombre": "Chaqueta Cristal Stage · medio",
+      "capa": "ropa superior",
+      "ruta": "ropa.arriba",
+      "pieza": {
+        "id": "collage-k-chaqueta-cristal-medio",
+        "nombre": "Chaqueta Cristal Stage · medio",
+        "coleccion": "collage-06",
+        "familia": "collage-k-chaqueta-cristal",
+        "cuerpoCompatible": "recto",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "svg/collage-k-chaqueta-cristal-medio.svg",
+          "torso": "svg/collage-k-chaqueta-cristal-medio.svg",
+          "ropa_arriba": "svg/collage-k-chaqueta-cristal-medio.svg",
+          "piernas": "../assets/kme/cuerpo/recto.svg"
+        }
+      },
+      "material": "cristal",
+      "recorteDetalle": [
+        120,
+        283,
+        160,
+        83
+      ]
+    },
+    {
+      "familia": "collage-k-falda-saten",
+      "nombre": "Falda Satén Encore · medio",
+      "capa": "ropa inferior",
+      "ruta": "ropa.abajo",
+      "pieza": {
+        "id": "collage-k-falda-saten-medio",
+        "nombre": "Falda Satén Encore · medio",
+        "familia": "collage-k-falda-saten",
+        "cuerpoCompatible": "recto",
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "svg/collage-k-falda-saten-medio.svg",
+          "ropa_abajo": "svg/collage-k-falda-saten-medio.svg"
+        },
+        "coleccion": "collage-06"
+      },
+      "material": "saten",
+      "recorteDetalle": [
+        132,
+        340,
+        136,
+        63
+      ]
+    },
+    {
+      "familia": "collage-k-pulseras-fanchant",
+      "nombre": "Pulseras Fanchant",
+      "capa": "accesorio",
+      "ruta": "accesorio",
+      "zona": "munecas",
+      "cuerpo": "recto",
+      "variante": "medio",
+      "archivo": "svg/collage-k-pulseras-fanchant-medio.svg",
+      "material": "cristal",
+      "claseColor": "f-k-pulseras",
+      "rutaColor": null,
+      "recorteDetalle": [
+        129,
+        337,
+        27,
+        22
+      ],
+      "alternativasAnclaje": {
+        "perfilIntegrado": "svg/collage-k-pulseras-fanchant-medio.svg",
+        "camisetaIntegrada": "svg/collage-k-pulseras-fanchant-camiseta-medio.svg",
+        "nota": "Comprobar brazos y mangas del resto de prendas antes de asignar automáticamente."
+      }
+    },
+    {
+      "familia": "collage-k-pines-fan-signal",
+      "nombre": "Pines Fan Signal",
+      "capa": "accesorio",
+      "ruta": "accesorio",
+      "zona": "torso",
+      "cuerpo": "recto",
+      "variante": "medio",
+      "archivo": "svg/collage-k-pines-fan-signal-medio.svg",
+      "material": "cristal",
+      "claseColor": "f-k-pines",
+      "rutaColor": null,
+      "recorteDetalle": [
+        149,
+        301,
+        102,
+        39
+      ]
+    },
+    {
+      "familia": "collage-k-bolso-encore",
+      "nombre": "Bolso Encore con portaphotocard",
+      "capa": "accesorio",
+      "ruta": "accesorio",
+      "zona": "bolso",
+      "cuerpo": "recto",
+      "variante": "medio",
+      "archivo": "svg/collage-k-bolso-encore-medio.svg",
+      "material": "saten",
+      "claseColor": "f-k-bolso",
+      "rutaColor": null,
+      "recorteDetalle": [
+        223,
+        289,
+        111,
+        118
+      ]
+    },
+    {
+      "familia": "collage-k-peluche-rizo",
+      "nombre": "Rizo · peluche de idol ficticio",
+      "capa": "accesorio",
+      "ruta": "accesorio",
+      "zona": "colgante-bolso",
+      "cuerpo": "recto",
+      "variante": "medio",
+      "archivo": "svg/collage-k-peluche-rizo-medio.svg",
+      "material": "peluche",
+      "claseColor": null,
+      "rutaColor": null,
+      "recorteDetalle": [
+        295,
+        332,
+        38,
+        56
+      ],
+      "requiere": "collage-k-bolso-encore",
+      "noUsarSolo": true
+    },
+    {
+      "familia": "collage-k-chaqueta-cristal",
+      "nombre": "Chaqueta Cristal Stage · grueso",
+      "capa": "ropa superior",
+      "ruta": "ropa.arriba",
+      "pieza": {
+        "id": "collage-k-chaqueta-cristal-grueso",
+        "nombre": "Chaqueta Cristal Stage · grueso",
+        "coleccion": "collage-06",
+        "familia": "collage-k-chaqueta-cristal",
+        "cuerpoCompatible": "amplio",
+        "perfilIntegrado": true,
+        "topCorto": false,
+        "ocultaCapas": [
+          "cuerpo"
+        ],
+        "gruposPorCapa": {
+          "anatomia": "perfil",
+          "torso": "torso",
+          "ropa_arriba": "superior"
+        },
+        "capas": {
+          "anatomia": "svg/collage-k-chaqueta-cristal-grueso.svg",
+          "torso": "svg/collage-k-chaqueta-cristal-grueso.svg",
+          "ropa_arriba": "svg/collage-k-chaqueta-cristal-grueso.svg",
+          "piernas": "../assets/kme/cuerpo/amplio.svg"
+        }
+      },
+      "material": "cristal",
+      "recorteDetalle": [
+        120,
+        283,
+        160,
+        83
+      ]
+    },
+    {
+      "familia": "collage-k-falda-saten",
+      "nombre": "Falda Satén Encore · grueso",
+      "capa": "ropa inferior",
+      "ruta": "ropa.abajo",
+      "pieza": {
+        "id": "collage-k-falda-saten-grueso",
+        "nombre": "Falda Satén Encore · grueso",
+        "familia": "collage-k-falda-saten",
+        "cuerpoCompatible": "amplio",
+        "reemplazaCapas": [
+          "piernas"
+        ],
+        "gruposPorCapa": {
+          "piernas": "piernas",
+          "ropa_abajo": "prenda"
+        },
+        "capas": {
+          "piernas": "svg/collage-k-falda-saten-grueso.svg",
+          "ropa_abajo": "svg/collage-k-falda-saten-grueso.svg"
+        },
+        "coleccion": "collage-06"
+      },
+      "material": "saten",
+      "recorteDetalle": [
+        132,
+        340,
+        136,
+        63
+      ]
+    },
+    {
+      "familia": "collage-k-pulseras-fanchant",
+      "nombre": "Pulseras Fanchant",
+      "capa": "accesorio",
+      "ruta": "accesorio",
+      "zona": "munecas",
+      "cuerpo": "amplio",
+      "variante": "grueso",
+      "archivo": "svg/collage-k-pulseras-fanchant-grueso.svg",
+      "material": "cristal",
+      "claseColor": "f-k-pulseras",
+      "rutaColor": null,
+      "recorteDetalle": [
+        117,
+        337,
+        27,
+        22
+      ],
+      "alternativasAnclaje": {
+        "perfilIntegrado": "svg/collage-k-pulseras-fanchant-grueso.svg",
+        "camisetaIntegrada": "svg/collage-k-pulseras-fanchant-camiseta-grueso.svg",
+        "nota": "Comprobar brazos y mangas del resto de prendas antes de asignar automáticamente."
+      }
+    },
+    {
+      "familia": "collage-k-pines-fan-signal",
+      "nombre": "Pines Fan Signal",
+      "capa": "accesorio",
+      "ruta": "accesorio",
+      "zona": "torso",
+      "cuerpo": "amplio",
+      "variante": "grueso",
+      "archivo": "svg/collage-k-pines-fan-signal-grueso.svg",
+      "material": "cristal",
+      "claseColor": "f-k-pines",
+      "rutaColor": null,
+      "recorteDetalle": [
+        141,
+        301,
+        118,
+        39
+      ]
+    },
+    {
+      "familia": "collage-k-bolso-encore",
+      "nombre": "Bolso Encore con portaphotocard",
+      "capa": "accesorio",
+      "ruta": "accesorio",
+      "zona": "bolso",
+      "cuerpo": "amplio",
+      "variante": "grueso",
+      "archivo": "svg/collage-k-bolso-encore-grueso.svg",
+      "material": "saten",
+      "claseColor": "f-k-bolso",
+      "rutaColor": null,
+      "recorteDetalle": [
+        231,
+        289,
+        111,
+        118
+      ]
+    },
+    {
+      "familia": "collage-k-peluche-rizo",
+      "nombre": "Rizo · peluche de idol ficticio",
+      "capa": "accesorio",
+      "ruta": "accesorio",
+      "zona": "colgante-bolso",
+      "cuerpo": "amplio",
+      "variante": "grueso",
+      "archivo": "svg/collage-k-peluche-rizo-grueso.svg",
+      "material": "peluche",
+      "claseColor": null,
+      "rutaColor": null,
+      "recorteDetalle": [
+        303,
+        332,
+        38,
+        56
+      ],
+      "requiere": "collage-k-bolso-encore",
+      "noUsarSolo": true
+    }
+  ],
+  "composiciones": [
+    {
+      "cuerpo": "relajado",
+      "archivo": "referencias/conjunto-delgado.png",
+      "imagenes": 8,
+      "estado": "Composición externa de varias piezas; no demuestra selección múltiple en la app."
+    },
+    {
+      "cuerpo": "recto",
+      "archivo": "referencias/conjunto-medio.png",
+      "imagenes": 8,
+      "estado": "Composición externa de varias piezas; no demuestra selección múltiple en la app."
+    },
+    {
+      "cuerpo": "amplio",
+      "archivo": "referencias/conjunto-grueso.png",
+      "imagenes": 8,
+      "estado": "Composición externa de varias piezas; no demuestra selección múltiple en la app."
+    }
+  ]
+}

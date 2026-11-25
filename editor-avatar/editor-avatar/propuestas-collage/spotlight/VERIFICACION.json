@@ -1,0 +1,23 @@
+{
+  "svgVerificados": 26,
+  "materialesGrisesYLimites": "Comprobados en materiales.mjs y construcción",
+  "bordesTextilesIguales": true,
+  "idsYReferenciasCorrectos": true,
+  "imagenesPorConjunto": 8,
+  "geometriaNuevasPrendas": true,
+  "origen": "Solo recursos generados y formas propias de K-ME; fotos web consultadas como referencias, no incorporadas",
+  "pendientes": [
+    "Integración y TDD de Claude",
+    "Varias selecciones de accesorios, colores y dependencias bolso/peluche",
+    "Canje y precios de las ocho familias nuevas",
+    "Otros rostros, brazos, mangas y peinados",
+    "Pruebas de exportación y Sello Studio en navegador con otras combinaciones"
+  ],
+  "cotaContornoChaquetas": 350,
+  "testsExistentes": {
+    "archivo": "cuerpos-expresivos.test.js",
+    "entorno": "Copia externa con las dos familias de prendas nuevas",
+    "pasan": 3,
+    "fallan": 0
+  }
+}
