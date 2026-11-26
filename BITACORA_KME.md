@@ -2,7 +2,7 @@
 
 > **El hilo conductor de K-ME es personalizar un producto para que el fan tenga el protagonismo que merece dentro del mundo del K-pop.** La primera conversación exploraba un posible proyecto de máquina de vending; esa era una forma posible de materializar la idea. El propósito de dar protagonismo al fan es lo que conecta aquel origen con el proyecto actual.
 
-- **Revisión del archivo:** R0094.
+- **Revisión del archivo:** R0097.
 - **Carpeta actual del proyecto:** `C:\Users\<usuario>\Desktop\ACTIVA2026\k-me` (renombrada por la autora; véase E0006).
 - **Última actualización:** 2026-11-25 · Europe/Madrid.
 - **Responsable de las decisiones:** la autora del proyecto.
@@ -268,6 +268,7 @@ Todas estas decisiones están vigentes en esta revisión. Los cambios futuros de
 | D079 | **MVP de Intercambios antes de congelar:** se construye el **jueves 26 por la tarde (y parte de la noche)**, solo si lo demás que falta ya está terminado.<br>**Reglas:** las 1 a 7 de `docs/PROPUESTA_INTERCAMBIOS.md` (P030).<br>**Cómo:** con TDD, con dos cuentas y con un interruptor para ocultarlo si falla.<br>**El viernes 27,** en su prueba del navegador, la autora decide si se queda o se oculta.<br>**Punto de vuelta:** el commit `c560bc4` o el siguiente. | La autora quiere intentarlo, sabiendo los riesgos: toca el canje y el guardado de avatares, y quita tiempo al viernes. | E0091–E0092, la autora: «Ok reglas», «Si lo intentamos podemos liarla?», «1. Jueves por la tarde y algo de la noche si ya hemos acabado lo demás q falta». | **Anulada en E0093 por D080:** los intercambios no se construyen antes del 1/12; pasan a ser una de las propuestas que votan los fans («K-ME EXCHANGE»). |
 | D080 | **«K-ME · TÚ DECIDES»: votación de futuras experiencias** en «Mi K-ME», la primera pantalla tras entrar.<br>**Contenido:** título «¿Qué viene después?» y el texto «No solo formas parte de K-ME. También puedes decidir en qué se convierte». Tres propuestas futuras, marcadas como tales: K-ME EXCHANGE, MY STAGE y FAN EVENTS. Un solo botón, «¡Esta es mi favorita!».<br>**Reglas:** un voto por cuenta, guardado en PostgreSQL; se cambia y nunca se suma. Tras votar, los porcentajes reales, sin nombres.<br>**Iconos:** los prepara ChatGPT (T052; integrados en E0094).<br>**Sustituye a D079:** en la presentación se enseñan como futuro las funcionalidades que no están hechas. | La autora quiere que los fans participen en la evolución de K-ME y presentar así lo que aún no está hecho. | E0093, la autora: «He cambiado de parecer… presentaríamos a los usuarios las posibles funcionalidades», el encargo «K-ME · TÚ DECIDES» preparado con ChatGPT, «1. Sí 2. chat gpt preparará los dibujos». | Hecho en E0093 (V118), sin los iconos; con los iconos, E0094 (V119). Falta su revisión (T053). |
 | D081 | **Portada de «Mi K-ME» de la propuesta P031, sin la navegación deslizable.** La página, sin recuadro propio y hasta 1120 px. Primero la identidad (la imagen de perfil, con el alias y la fecha de alta) y la votación «TÚ DECIDES»: desde 1152 px, en dos columnas (272 px y el resto); por debajo, una encima de otra, con la imagen compacta (116 px de alto) junto a su nombre. Las tres tarjetas en fila solo si cada una mide 240 px o más. El recuadro de la votación, como las demás tarjetas; el fucsia, solo para la elegida. En el móvil, la votación sin recuadro. Todo lo demás sigue igual y en el mismo orden. | Dar protagonismo a la fan y a su avatar al entrar, y aprovechar el ancho del ordenador, sin tarjetas dentro de tarjetas. | E0095, la autora: «ok», a la pregunta «¿Reordeno «Mi K-ME» esta tarde (A), lo dejamos para después del 1/12 (B) o no lo hacemos (C)? ¿Subo los 26 archivos?», con la recomendación A del asistente. El asistente le dijo antes de empezar que lo entendía como A y subir, para que pudiera pararlo. | Hecho en E0095 (V120). Falta su revisión (T053). |
+| D082 | **Dirección visual de los tesoros y los recuerdos**, aprobada como referencia (TECH_SPEC §2.7).<br>**Color y materiales:** blanco, negro y fucsia siguen uniendo la identidad; los tesoros y los recuerdos pueden llevar lila, turquesa, dorado, plata, acabados irisados y purpurina localizada, según la experiencia. No indican niveles ni categorías superiores.<br>**Recuerdo:** obtenido por participar, sin aspecto de tienda ni de entrada.<br>**Textos y estados:** HTML accesible sobre fondo limpio.<br>**Primera aplicación, Luz Hangul 001:** su SVG original, sin redibujar, sobre un soporte lila suave con textura de papel, un detalle de plata irisada y brillo localizado; acento fucsia y contornos negros.<br>**Integración:** a la medida de «Mis tesoros», en cuadrícula en el ordenador y ajustada al ancho en el móvil; con los datos y reglas actuales; «Conseguido» solo si el tesoro es tuyo.<br>**Sin añadir:** rarezas, precios, recompensas ni funciones nuevas. | Dar más riqueza de color y materiales a K-ME sin perder la identidad ni la legibilidad. | E0096, la autora: «Quiero aplicar a «Mis tesoros» la dirección visual que hemos trabajado con ChatGPT y que apruebo como referencia», con las condiciones de cada punto. La maqueta de ChatGPT es dirección artística, no un recurso; no llegó a esta sesión. | Hecho en E0096 (V121), con CSS y el grano que ya existía. **E0097, referencia más reciente** (`entrega-chatgpt-tesoros-luz/`, «Quiero que Luz Hangul 001 parezca encendida, con luminosidad blanca y rosa en la esfera, halo suave y un pequeño reflejo sobre el fondo lila»): luz fija en capas de adorno y tarjeta en horizontal (V122). Texturas opcionales (T054). Falta su revisión en el navegador (guía, paso 2). |
 
 ## 5. Propuestas conservadas, alcance y cuestiones abiertas
 
@@ -447,6 +448,9 @@ Actualización del editor: E0042 amplía el trabajo de E0015–E0031 con recurso
 | V118 | 2026-11-25 | Ejecutado por el asistente (E0093), con la base local `kme_dev` (migración 011 aplicada) y Chrome sin ventana. | Correcta. **App 300 de 300**; el editor no cambia.<br>**`tu-decides` (11):**<br>- las tres propuestas y sus textos;<br>- porcentajes reales que suman 100;<br>- sin voto: el bloque en «Mi K-ME» antes del perfil, con las tres futuras, el botón, sin elegida y sin resultados;<br>- primer voto: 302, guardado, confirmación, elegida y porcentajes;<br>- cambiar sustituye: una fila por cuenta;<br>- persiste al salir y volver a entrar;<br>- otra cuenta no puede votar por otra: los campos `id_usuario` y `usuario` se ignoran;<br>- propuestas inválidas y vacías: 400 «Esa propuesta no existe.»;<br>- los porcentajes, iguales a los del recuento real, sin alias;<br>- sin sesión, a «Entrar», y sin CSRF, 403.<br>**Chrome:** «Mi K-ME» antes y después de votar, en el ordenador y en el móvil. La primera versión, a tres columnas, no cabía en el ordenador («K-ME EXCHANGE» se salía y la marca pisaba la etiqueta); se corrigió con columnas automáticas.<br>**Auditorías:** contraste, 0 fallos en las dos páginas; móvil a 390 px, 0 fallos.<br>**Teclado:** el foco en el radio oculto se ve como un contorno de 3 px en su tarjeta.<br>**Sin revisión de la autora** (T053). |
 | V119 | 2026-11-26 | Ejecutado por el asistente (E0094), tests escritos antes de integrar los iconos, con la base local `kme_dev` y Chrome sin ventana. | **En rojo primero, por lo que comprueban:** los 3 tests nuevos de `tu-decides` (el catálogo con `icono: null` y la página sin `<img>`). **Después, correcta:** **app 302 de 302**; el editor no cambia.<br>**Tests nuevos:**<br>- cada propuesta tiene su icono en `public/img/tu-decides/`, con el nombre previsto;<br>- los iconos son seguros y ligeros: `viewBox` de 48 × 48 sin tamaño fijo, 4 KB como mucho, solo `svg`, `g`, `path`, `circle`, `rect`, `ellipse`, `line` y `polygon`, sin texto, enlaces, eventos, estilos ni entidades, y solo negro, blanco y el fucsia del logo;<br>- en «Mi K-ME», cada tarjeta lleva su icono con `alt` vacío, y el servidor lo sirve como `image/svg+xml`.<br>**Archivos:** copiados byte a byte, con la misma huella SHA-256 que la entrega (653, 775 y 737 bytes).<br>**Chrome:**<br>- una hoja con los tres iconos a 48, 40 y 32 px, sobre blanco y sobre el rosa de la elegida: se distinguen en todos;<br>- «Mi K-ME» antes y después de votar, en el ordenador y en el móvil: el icono, a la izquierda de la etiqueta y el título, sin chocar con el ✓.<br>**Auditorías:** contraste, 0 fallos en las dos páginas (el control sí da sus 3 fallos a propósito); móvil a 390 px, 0 fallos.<br>**Teclado:** el contorno de 3 px en la tarjeta, igual que antes.<br>**Sin revisión de la autora** (T053). |
 | V120 | 2026-11-26 | Ejecutado por el asistente (E0095), test cambiado antes que la vista, con la base local `kme_dev` y Chrome sin ventana. | **En rojo primero:** el test 1 de `tu-decides`, por lo que comprueba (no había portada). **Después, correcta:** **app 302 de 302**.<br>**El test 1 ahora comprueba:** la identidad y la votación, juntas en la portada; primero la identidad; el alias y la fecha de alta en su tarjeta; después, Mis tesoros. Sustituye a «antes del perfil».<br>**Chrome:** cuatro estados de «Mi K-ME» (sin imagen de perfil; con avatar, antes y después de votar; con avatar y sello), a 1500, 1280, 900 y 390 px.<br>- desde 1152 px, dos columnas y las tres tarjetas en fila;<br>- a 900 px, la identidad con el avatar y el sello lado a lado, y las tarjetas en fila;<br>- a 390 px, la imagen compacta junto a su nombre y las tarjetas una debajo de otra.<br>«K-ME EXCHANGE» se partía en dos líneas en el ordenador: el hueco del ✓ pasó de toda la tarjeta a su cabecera.<br>**Auditorías:** contraste, 0 fallos en los cuatro estados, a 1280 y a 900 px (el control da sus 3 fallos); móvil a 390 px, 0 fallos en los cuatro.<br>**Teclado:** el contorno de 3 px en la tarjeta.<br>**Visto, sin arreglar:** a unos 900 px, la cabecera de la app (no cambiada) se aprieta y parte «Hola, fan_…»; ya pasaba antes.<br>**Sin revisión de la autora** (T053). |
+| V121 | 2026-11-26 | Ejecutado por el asistente (E0096), test cambiado antes que la vista, con la base local `kme_dev` y Chrome sin ventana. | **En rojo primero:** `escenario`, por lo que comprueba (no había «Conseguido»). **Después, correcta:** **app 302 de 302**.<br>**Lo que comprueba ahora `escenario`:**<br>- con Luz Hangul 001 ganado, su tarjeta lleva «Conseguido» en texto, además del nombre, el origen, la fecha y el SVG original (`/img/tesoros/luz-hangul-001.svg`);<br>- otra cuenta sin el tesoro no ve «Conseguido».<br>**Chrome:**<br>- «Mis tesoros» ampliado ×2: en el ordenador, la tarjeta de 255 px en la cuadrícula; en el móvil, en horizontal;<br>- se ven el papel lila con grano, el brillo, la cinta irisada, la purpurina y los datos sobre blanco;<br>- la página entera, a 1280 y a 390 px.<br>**Cabecera:** a 900 y 1150 px, el menú en su propia fila y el saludo entero; a 1160 px, todo en una fila.<br>**Auditorías:** contraste, 0 fallos en «Mi K-ME» con el tesoro y sin imagen de perfil, a 1280 y a 900 px (el control da sus 3); móvil a 390 px, 0 fallos en «Mi K-ME» y en Mi escenario. En Connect sigue el aviso de «Borrar» (22 px de alto), que ya se dio por bueno en V107.<br>**Sin revisión de la autora.** |
+| V122 | 2026-11-26 | Ejecutado por el asistente (E0097), tests escritos antes de la vista, con la base local `kme_dev` y Chrome sin ventana. | **En rojo primero:** `escenario`, por lo que comprueba (no había capa de luz junto al dibujo). El test nuevo `tesoros` (las medidas del dibujo, 160 × 220 y la bola en 80, 70 con radio 44) pasó desde el principio: vigila que el dibujo no cambie, porque la luz se coloca con esas medidas. **Después, correcta:** **app 303 de 303**.<br>**Chrome («Mis tesoros» con la sección real):**<br>- a tamaño real (1280 y 390 px) y ampliado ×2 (1280, 900 y 390) y ×4;<br>- la bola, blanca en el centro y rosa hacia el borde, con el reflejo curvo blanco;<br>- el halo rosa y lila detrás, sobre el papel, sin cortes;<br>- la estrella, el mango y los textos, sin brillo;<br>- la tarjeta en horizontal, de unos 530 px de ancho en el ordenador (caben dos por fila) y a lo ancho en el móvil;<br>- la esquina fucsia, la lámina irisada rasgada y la purpurina abajo.<br>**Auditorías:** contraste, 0 fallos en «Mi K-ME» con el tesoro y sin imagen de perfil, a 1280 y 900 px (el control da sus 3); móvil a 390 px, 0 fallos en «Mi K-ME» y en Mi escenario (en Connect, el aviso ya aceptado de «Borrar»).<br>**Sin revisión de la autora.** |
+| V123 | 2026-11-26 | Ejecutado por el asistente (E0097, a petición de la autora), test cambiado antes que la vista, con la base local `kme_dev` y Chrome sin ventana. | **En rojo primero:** `escenario` (esperaba «Conseguido el» y la fecha de hoy; la tarjeta decía «ganado el» en otra línea). **Después, correcta:** **app 303 de 303**.<br>**Chrome:**<br>- en el ordenador, «✓ Conseguido el 26/11/2026» en una línea;<br>- en el móvil, la fecha baja bajo la etiqueta, sin salirse.<br>**Auditorías:** contraste, 0 fallos a 1280 y 900 px; móvil, 0 fallos (el control y Connect, como en V122).<br>**Sin revisión de la autora.** |
 
 Las pruebas V005–V008 son resultados declarados por Claude y distinguidos de la comprobación documental V009. Los escenarios siguientes siguen pendientes para el producto completo:
 
@@ -520,6 +524,7 @@ Estados permitidos: pendiente, en curso, bloqueado, terminado o descartado. Solo
 | T051 | Construir el MVP de Intercambios (D079) el jueves 26 por la tarde. **Orden:**<br>1. commit limpio;<br>2. tests en rojo;<br>3. migración 011;<br>4. modelo, servicio y rutas;<br>5. páginas en Colección «K»;<br>6. regla del avatar antiguo, duplicar y clave numerada del canje;<br>7. el interruptor;<br>8. Chrome con dos cuentas. | Pendiente | Creado en E0092. Se empieza solo si lo demás que falta está terminado. **Criterio para cerrarlo:** todos los tests de la app y del editor en verde, el recorrido con dos cuentas visto en Chrome y la autora decide el viernes si se queda. **Anulada en E0093 (D080).** |
 | T052 | Integrar los tres iconos de «TÚ DECIDES» que prepara ChatGPT (`tu-decides-exchange.svg`, `tu-decides-my-stage.svg` y `tu-decides-fan-events.svg`). Van en `public/img/tu-decides/`, con su ruta en el catálogo y sus tests de seguridad: viewBox 48, sin `<image>`, scripts ni enlaces, y 4 KB como mucho. | Hecho | Creado en E0093. El prompt para ChatGPT se le dio a la autora. Integrados en E0094 (V119); su visto bueno va con T053. |
 | T053 | La autora prueba «TÚ DECIDES» en su navegador, en el ordenador y en el móvil: votar, ver la confirmación y los porcentajes, cambiar el voto, salir y volver a entrar, y votar con otra cuenta. Desde E0095, también los iconos y la portada nueva de «Mi K-ME» (D081), con y sin imagen de perfil, y con avatar y sello. | Pendiente | Creado en E0093. Probado con tests (V118, V119 y V120) y en Chrome por el asistente. |
+| T054 | **Texturas opcionales para los tesoros (D082):** la autora decide si las pide a ChatGPT. Hoy la purpurina y la lámina irisada son CSS; con estas dos, el acabado sería más real.<br>- **`tesoro-purpurina.png`:** 256 × 256 px, PNG con transparencia, repetible sin costuras. Motas de purpurina plateadas e irisadas (blanco, plata y un poco de lila, turquesa y rosa), poco densas, sobre fondo transparente. 20 KB como mucho.<br>- **`tesoro-lamina-irisada.png`:** 160 × 40 px, PNG con transparencia (el doble de la cinta, 78 × 20). Lámina de plata holográfica lisa, sin formas, texto ni logos: los bordes rasgados los pone el CSS. 12 KB como mucho.<br>- **Las dos:** originales, sin fotografías de personas, marcas ni productos reales. | Pendiente | Creado en E0096. Sin ellas, la tarjeta ya está completa. E0097: la cinta pasó a ser una esquina de lámina rasgada, de 80 × 68 px en el ordenador; la lámina sirve igual (el CSS la recorta). La luz de Luz Hangul 001 no necesita textura. |
 
 ## 8. Aprendizajes y preguntas para valorar el proceso
 
@@ -2862,6 +2867,86 @@ Las respuestas se añaden en la sesión correspondiente, con ejemplos. No rellen
 - **Siguiente paso:** la revisión de la autora y la aprobación del commit.
 - **Revisión resultante:** R0094.
 
+### E0096 · 2026-11-26 · Commit de la portada, cabecera a media anchura y tesoros como recuerdos
+
+- **Autoría y entorno:** autora y asistente (Claude Code); ella lo sigue desde el móvil con Remote Control. La dirección visual la trabajó la autora con ChatGPT.
+- **Objetivo:** subir la portada de «Mi K-ME»; arreglar la cabecera a unos 900 px; aplicar a «Mis tesoros» la dirección visual aprobada (D082), empezando por Luz Hangul 001.
+- **Base leída:** R0094; E0095; el catálogo `recompensas.js`, el SVG `luz-hangul-001.svg`, el grano de `public/img/collage/`, los estilos de los tesoros (`identidad.css`, también el bloque «Collage editorial» de E0075) y de la cabecera (`estilos.css`), `_cabecera.ejs` y `tests/escenario.test.js`.
+- **Hechos y trabajo realizado:**
+  - **Interpretación:** la autora contestó «Ok» a «¿Los subo?» y «¿Arreglo la cabecera a 900 px?»; el asistente le dijo que lo entendía como sí a las dos.
+  - **Commit `8e5020b`**, subido a GitHub: los 7 archivos de E0095.
+  - **La maqueta de ChatGPT** que cita la autora no llegó a la sesión; se trabajó con su descripción escrita.
+  - **Cabecera (`estilos.css`):** hasta 1150 px (antes, 600), el menú baja a su propia fila. Por encima de 600 px, se apretaba y partía el saludo.
+  - **Test primero:** `escenario` (V121), en rojo.
+  - **Tesoros:**
+    - **Vista (`mi-kme.ejs`):** cada tesoro, con un soporte (el dibujo) y la información (nombre, origen, fecha y «Conseguido»). La lista solo trae los tesoros de la cuenta.
+    - **Estilos (`identidad.css`):** el bloque «Mis tesoros como recuerdos» sustituye a la foto de marco blanco con cinta fucsia de E0075.
+    - **Materiales:** papel con `--tesoro-papel` (lila para Luz Hangul 001), grano al 45 %, brillo radial, purpurina con degradados, cinta de plata irisada con la forma de cinta que ya existía y el ✓ fucsia de «Conseguido».
+    - **Cuadrícula:** columnas de 220 px o más; en el móvil, la tarjeta en horizontal.
+  - **Chrome:** capturas ampliadas de «Mis tesoros», la página entera y la cabecera a tres anchos; auditorías de contraste y móvil.
+- **Decisiones confirmadas:** D082.
+- **Decidido por el asistente sin preguntar:**
+  - la cinta irisada como detalle de plata;
+  - la purpurina a los lados del objeto;
+  - «Conseguido» al final de los datos, con un ✓ fucsia de adorno;
+  - la tarjeta en horizontal en el móvil;
+  - un papel neutro (`#f3efe8`) para los tesoros futuros que no tengan aún el suyo;
+  - el corte de la cabecera en 1150 px.
+- **Propuestas sin confirmar:** las texturas de T054.
+- **Pruebas:** V121.
+- **Problemas y pendientes:**
+  - T054 (texturas opcionales);
+  - la revisión de la autora (guía, pasos 2 y 8);
+  - que reenvíe la maqueta, si quiere que se compare.
+- **Siguiente paso:** la aprobación del commit y la prueba del viernes.
+- **Revisión resultante:** R0095.
+
+### E0097 · 2026-11-26 · Luz Hangul 001 encendida
+
+- **Autoría y entorno:** autora y asistente (Claude Code); ella lo sigue desde el móvil con Remote Control. Referencia de ChatGPT, colocada con permiso de la autora en `entrega-chatgpt-tesoros-luz/`, en la raíz (`LEEME_PARA_CLAUDE.md` y `referencia-lightstick-luminoso.png`, una maqueta generada).
+- **Objetivo:** que Luz Hangul 001 parezca encendida, sin cambiar su SVG ni los datos, siguiendo la referencia más reciente.
+- **Base leída:**
+  - R0095;
+  - E0096;
+  - la entrega entera;
+  - el SVG, para comprobar las medidas que da ChatGPT: lienzo 160 × 220, bola en (80, 70), radio 44 y contorno 5. Coinciden.
+- **Hechos y trabajo realizado:**
+  - **Los 8 archivos de E0096:** siguen sin commit. La autora no ha contestado todavía a «¿Los subo?».
+  - **Tests primero (V122):** una aserción en `escenario` (la capa de luz, vacía y oculta a los lectores de pantalla, junto al dibujo original), en rojo, y `tests/tesoros.test.js` (las medidas del dibujo).
+  - **Vista (`mi-kme.ejs`):**
+    - el dibujo, dentro de `tesoro__objeto`, con la capa vacía `tesoro__luz` (`aria-hidden`);
+    - los datos, en el orden de la referencia: la clase («LIGHTSTICK»), el nombre, «Conseguido», «Origen: HANGUL LIVE 001» y la fecha.
+  - **Estilos (`identidad.css`):**
+    - **Luz:** fija, solo para `data-tesoro="luz-hangul-001"`, en proporción al ancho del objeto (`--tesoro-objeto`: 104 px en el ordenador y 80 en el móvil). Detrás, un halo radial; dentro de la bola, un rosado hacia el borde con sombra interior; el reflejo curvo, con el borde superior de un círculo girado.
+    - **Tarjeta:** en horizontal, con el soporte de 200 px (128 en el móvil); columnas de 360 px o más.
+    - **Soporte:** papel lila más intenso (`#ddd0f1`), esquina fucsia, esquina de lámina irisada rasgada (sustituye a la cinta) y purpurina abajo.
+  - **Chrome:** capturas a tamaño real y ampliadas, y auditorías.
+  - **La entrega de ChatGPT:** sin tocar, fuera de Git por ahora.
+- **Decisiones confirmadas:** ninguna nueva. Es la referencia más reciente de D082.
+- **Decidido por el asistente sin preguntar:**
+  - la tarjeta en horizontal también en el ordenador, como en la referencia;
+  - la palabra «Origen:» delante del origen;
+  - la clase en mayúsculas encima del nombre;
+  - la esquina de lámina en lugar de la cinta;
+  - la purpurina abajo;
+  - el papel lila algo más intenso.
+  - **No copiado:** «Un recuerdo de tu participación.», «Ejemplo de un tesoro conseguido» y «Propuesta de presentación».
+- **Pruebas:** V122.
+- **Problemas y pendientes:**
+  - T054 (texturas opcionales);
+  - qué hacer con la carpeta de la entrega (guardarla en `docs/propuestas/` o dejarla fuera de Git);
+  - el commit;
+  - la revisión de la autora.
+- **Siguiente paso:** las respuestas de la autora.
+- **Revisión resultante:** R0096.
+- **Después, la misma tarde:**
+  - **Petición:** la autora pidió que se viera la fecha en que lo consiguió: «Igual estaría bien que también pusiera la fecha en que lo consiguió».
+  - **Qué pasaba:** ya salía, pero abajo, pequeña y en gris («ganado el …»).
+  - **Cambio:** ahora va junto a la etiqueta, «✓ Conseguido el 26/11/2026», y la línea de abajo desaparece. Primero el test (V123).
+  - **Subida:** la autora pidió subirlo todo menos lo de ChatGPT: «sube todo menos la carpeta o archivo que te ha pasado chatgpt». Entran los 9 archivos de E0096 y E0097. `entrega-chatgpt-tesoros-luz/` se queda fuera de Git.
+  - **Otra entrega de ChatGPT:** ha aparecido `entrega-chatgpt-lightstick-encendido/` (por el nombre de los archivos, el lightstick de estudio del editor encendido, en tres versiones, con su `LEEME_PARA_CLAUDE.md`). Está sin leer y sin tocar, y también fuera de Git. Espera a que la autora diga qué hacer con ella.
+  - **Revisión resultante:** R0097.
+
 <!-- AÑADIR AQUÍ LAS NUEVAS SESIONES, EN ORDEN DE REGISTRO. NO BORRAR E0001. -->
 
 ## 10. Plantilla para una nueva sesión
@@ -3066,5 +3151,8 @@ PROPUESTA PROCEDENTE DEL OTRO CHAT:
 | R0092 | 2026-11-25 | E0093 | D080: «K-ME · TÚ DECIDES» en «Mi K-ME» (migración 011, voto por cuenta, porcentajes); anula D079 y T051. V117 y V118 (app 300 de 300, Chrome, auditorías). Nuevos T052 (iconos de ChatGPT) y T053. TECH_SPEC v1.36. |
 | R0093 | 2026-11-26 | E0094 | Iconos de «TÚ DECIDES» integrados (T052 hecho; V119, app 302 de 302, Chrome, auditorías). P031: propuesta de ChatGPT para redistribuir «Mi K-ME» y la navegación del móvil, sin confirmar. TECH_SPEC v1.37. |
 | R0094 | 2026-11-26 | E0095 | Commit `01d1e13`. D081: la portada de «Mi K-ME» de P031, sin la navegación deslizable (que sigue como propuesta). V120 (app 302 de 302, Chrome a cuatro anchos, auditorías). T053 ampliado. TECH_SPEC v1.38. |
+| R0095 | 2026-11-26 | E0096 | Commit `8e5020b`. D082: dirección visual de los tesoros y los recuerdos; Luz Hangul 001 como recuerdo en «Mis tesoros». La cabecera, con el menú en su fila hasta 1150 px. V121 (app 302 de 302, Chrome, auditorías). Nuevo T054 (texturas opcionales). TECH_SPEC v1.39. |
+| R0096 | 2026-11-26 | E0097 | Luz Hangul 001 encendida, con la referencia más reciente de ChatGPT (D082): luz fija en capas de adorno sobre el SVG original y tarjeta en horizontal. V122 (app 303 de 303, Chrome, auditorías). T054 actualizado. TECH_SPEC v1.40. |
+| R0097 | 2026-11-26 | E0097 | La fecha en que se ganó el tesoro, junto a la etiqueta: «Conseguido el …» (V123, app 303 de 303). TECH_SPEC v1.41. |
 
 <!-- FIN DE LA BITÁCORA. Las revisiones posteriores deben conservar las entradas históricas. -->

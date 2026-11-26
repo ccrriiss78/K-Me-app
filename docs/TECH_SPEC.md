@@ -1,6 +1,6 @@
 # TECH_SPEC · K-ME
 
-**Estado:** versión 1.38 · 26/11/2026 · Responde al pendiente T012 de `BITACORA_KME.md`. Revisada con la autora: acepta las propuestas de Q1 a Q6 y decide Q7 a Q10 con cambios (ver §6). El 18/11 decide Q11, el alcance del MVP (§5.1) y los nombres de los logos (§4.0). El 19/11 sustituye el círculo cromático por la paleta de la app (§2.5). El 21/11 separa el usuario privado del alias público y añade el registro por formulario (§1). Ese mismo día se incorporan las decisiones del editor de avatar trabajadas con ChatGPT en otra carpeta (§2.2, §2.6, §3.3), y se decide que «Mi ambiente» también usa solo la paleta (§2.6, Q14). El 22/11 decide qué lleva el sello (§4.1, D041), protege el alias frente a palabras ofensivas (§1, D042), aprueba el catálogo de hangul comprobado (§4.2, D043), y decide que la imagen de perfil pueda ser un avatar, un sello o los dos (D044) y que el sello se pueda imprimir y descargar (D045). El 22 y 23/11 amplía la paleta del sello con colores vivos (D046). El 23/11 elige de momento la composición A+C para sellos y exige coherencia del tratamiento visual entre pantallas (§2.7, D047). El 24/11 decide guardar la imagen de perfil como referencia, con dos claves foráneas (§4.3, D055), borrar varios o todos (§3.6, D058) y cómo va Avatar Studio dentro de la app (§3.6, D059). Ese mismo día aprueba los textos, los dibujos, la regla y el sitio de HANGUL LIVE 001, los Kpopis y «Mis tesoros» (§5.2, D066).
+**Estado:** versión 1.41 · 26/11/2026 · Responde al pendiente T012 de `BITACORA_KME.md`. Revisada con la autora: acepta las propuestas de Q1 a Q6 y decide Q7 a Q10 con cambios (ver §6). El 18/11 decide Q11, el alcance del MVP (§5.1) y los nombres de los logos (§4.0). El 19/11 sustituye el círculo cromático por la paleta de la app (§2.5). El 21/11 separa el usuario privado del alias público y añade el registro por formulario (§1). Ese mismo día se incorporan las decisiones del editor de avatar trabajadas con ChatGPT en otra carpeta (§2.2, §2.6, §3.3), y se decide que «Mi ambiente» también usa solo la paleta (§2.6, Q14). El 22/11 decide qué lleva el sello (§4.1, D041), protege el alias frente a palabras ofensivas (§1, D042), aprueba el catálogo de hangul comprobado (§4.2, D043), y decide que la imagen de perfil pueda ser un avatar, un sello o los dos (D044) y que el sello se pueda imprimir y descargar (D045). El 22 y 23/11 amplía la paleta del sello con colores vivos (D046). El 23/11 elige de momento la composición A+C para sellos y exige coherencia del tratamiento visual entre pantallas (§2.7, D047). El 24/11 decide guardar la imagen de perfil como referencia, con dos claves foráneas (§4.3, D055), borrar varios o todos (§3.6, D058) y cómo va Avatar Studio dentro de la app (§3.6, D059). Ese mismo día aprueba los textos, los dibujos, la regla y el sitio de HANGUL LIVE 001, los Kpopis y «Mis tesoros» (§5.2, D066).
 
 Este documento dice **qué se construye y cómo**. La bitácora dice qué ha pasado y por qué; `CLAUDE.md` dice cómo trabaja el agente.
 
@@ -107,7 +107,7 @@ Cada punto lleva una etiqueta:
   - **Logos:** los originales, con sus trazos exactos. La conexión con el collage se hace con sus soportes y aplicaciones.
   - **Referencias:** las imágenes exploratorias de ChatGPT orientan la dirección artística; no son piezas preparadas ni integradas.
   - **[DECIDIDO 24/11, E0075] Alcance antes de congelar:**
-    - **Hecho:** una prueba pequeña en la interfaz, con materiales dibujados en código y sin fotos: el cartel de «Mi escenario» y HANGUL LIVE (grano de papel, cinta lavanda y borde rasgado) y las recompensas (el tesoro como foto de marco blanco con cinta fucsia). Variables y bloques «Collage editorial» en `identidad.css` y `escenario.css`; grano en `public/img/collage/`.
+    - **Hecho:** una prueba pequeña en la interfaz, con materiales dibujados en código y sin fotos: el cartel de «Mi escenario» y HANGUL LIVE (grano de papel, cinta lavanda y borde rasgado) y las recompensas (el tesoro como foto de marco blanco con cinta fucsia; desde E0096, D082). Variables y bloques «Collage editorial» en `identidad.css` y `escenario.css`; grano en `public/img/collage/`.
     - **Opciones del avatar:** prendas, accesorios y ojos nuevos con detalle fotográfico, sin cambiar los actuales. Las piezas las prepara la autora con ChatGPT, con licencia clara y sin personas reales. Entran antes de congelar solo si llegan el jueves 26.
     - **[DECIDIDO 25/11, D069; hecho en E0079] Lote collage 01:**
       - **Piezas:** la falda con bolsillos de tela (tres ids, uno por cuerpo, como las demás prendas con piernas) y el lightstick de estudio (un id con `indicePorCuerpo`, `miniatura` propia y `zona: "mano"`).
@@ -174,6 +174,23 @@ Cada punto lleva una etiqueta:
   - primero, la demo de principio a fin: cuenta, Avatar Studio, sello con su avatar, imagen de perfil, Connect con el diseño de cada fan e impresión;
   - retos, monedas, eventos y lightsticks, si da tiempo; si no, se presentan como ideas de futuro.
 - **[PROPUESTA, P029]** Guion de la demo y plan B (`docs/GUION_DEMO.md`): el recorrido de unos 10 minutos y el plan B por niveles (capturas, el editor sin servidor, vídeo del ensayo). Las capturas las genera `privado/plan-b/capturas-plan-b.mjs`, fuera de Git, después de congelar. Pendiente de la autora.
+- **[DECIDIDO 26/11, D082] Dirección visual de los tesoros y los recuerdos**, trabajada por la autora con ChatGPT y aprobada como referencia:
+  - **Color y materiales:** blanco, negro y fucsia siguen uniendo la identidad. Los tesoros y los recuerdos pueden llevar lila, turquesa, dorado, plata, acabados irisados y purpurina localizada, según la experiencia de la que vienen.
+  - **Sin niveles:** el color y los materiales no indican rarezas, niveles ni categorías superiores.
+  - **Recuerdo, no compra:** se entiende como un recuerdo obtenido por participar, sin aspecto de tienda ni de entrada a un evento.
+  - **Legibilidad:** los textos y los estados son HTML accesible y van sobre fondo limpio. El objeto es su SVG original.
+  - **La maqueta de ChatGPT** es dirección artística, no un recurso.
+  - **Primera aplicación, hecha en E0096 (Luz Hangul 001 en «Mis tesoros»):**
+    - el SVG original, sobre un soporte de papel lila con grano, un brillo detrás del objeto, una cinta de plata irisada y purpurina alrededor;
+    - el nombre, el origen, la fecha y «Conseguido» (solo en los tesoros de la cuenta), sobre blanco;
+    - una cuadrícula de 220 px o más por columna, y la tarjeta en horizontal en el móvil.
+    - Todo en CSS con el grano que ya existía; sustituye al marco blanco con cinta fucsia de E0075.
+  - **Luz Hangul 001 encendida (E0097), con la referencia más reciente** (`entrega-chatgpt-tesoros-luz/`, en el ordenador de la autora y fuera de Git):
+    - **La luz:** fija, sin parpadeo, en capas de adorno colocadas con las medidas del dibujo (bola en 80, 70, radio 44; `tests/tesoros.test.js`). Detrás, un halo rosa y lila sobre el papel; dentro de la bola, blanco en el centro, rosa hacia el borde y un reflejo blanco curvo.
+    - **Sin brillo:** ni el mango, ni la tarjeta, ni los textos.
+    - **La tarjeta:** en horizontal (soporte a la izquierda, datos a la derecha), con esquina fucsia, esquina de lámina irisada rasgada y purpurina abajo.
+    - **Los datos:** la clase en mayúsculas, el nombre, «Conseguido el» con la fecha en que se ganó (a petición de la autora) y «Origen:».
+  - **[PENDIENTE de la autora, T054]** Dos texturas opcionales de ChatGPT, para un acabado más real de la purpurina y de la lámina irisada.
 
 ---
 
@@ -754,3 +771,6 @@ Este documento **se puede cambiar** cuando la app avance. Cada cambio se hace as
 | 1.36 | 25/11/2026 | §5.2: «K-ME · TÚ DECIDES» (D080), votación de futuras experiencias en «Mi K-ME»; D079 anulada. |
 | 1.37 | 26/11/2026 | §5.2: iconos de «TÚ DECIDES» integrados (T052); P031, propuesta de redistribuir «Mi K-ME», sin confirmar. |
 | 1.38 | 26/11/2026 | §5.2: la portada de «Mi K-ME» de P031 (D081), hecha; la navegación deslizable sigue como propuesta. |
+| 1.39 | 26/11/2026 | §2.7: dirección visual de los tesoros y los recuerdos (D082), con su primera aplicación en Luz Hangul 001; texturas opcionales pendientes (T054). |
+| 1.40 | 26/11/2026 | §2.7: Luz Hangul 001 encendida, con la referencia más reciente (E0097). |
+| 1.41 | 26/11/2026 | §2.7: «Conseguido el» con la fecha en que se ganó el tesoro. |

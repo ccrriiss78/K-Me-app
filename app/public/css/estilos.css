@@ -498,8 +498,10 @@ h1 { margin-top: 0; font-size: 1.5rem; }
   .emociones { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
 }
 
-/* Cabecera en pantallas estrechas: el menú baja a su propia fila, a lo ancho. */
-@media (max-width: 600px) {
+/* Cabecera en pantallas estrechas y medianas: el menú baja a su propia fila, a lo ancho. Hasta
+   1150 px: más estrecho, el logo, los cinco apartados, la foto, el saludo, el saldo y «Salir» no
+   caben en una fila y el saludo se partía (E0096). */
+@media (max-width: 1150px) {
   .cabecera { flex-wrap: wrap; row-gap: 0.5rem; }
   .menu { order: 3; width: 100%; margin-right: 0; }
   .menu a { white-space: nowrap; }

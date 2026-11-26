@@ -299,10 +299,15 @@ test('Mi escenario: HANGUL LIVE 001, Kpopis y Mis tesoros', { skip: !hayConfigur
 
     const mi = await navA.pedir('/mi-kme');
     const misTesoros = texto(seccion(mi.html, 'mis-tesoros'));
-    for (const frase of ['Mis tesoros', 'Luz Hangul 001', 'HANGUL LIVE 001', `ganado el ${hoy}`]) {
+    // «Conseguido el» y la fecha en que se ganó, juntos (E0097, a petición de la autora).
+    for (const frase of ['Mis tesoros', 'Luz Hangul 001', 'HANGUL LIVE 001', `Conseguido el ${hoy}`]) {
       assert.ok(misTesoros.includes(frase), `Mis tesoros: falta «${frase}»`);
     }
     assert.match(seccion(mi.html, 'mis-tesoros'), /src="\/img\/tesoros\/luz-hangul-001\.svg"/);
+    // «Conseguido» (D082, E0096): en la tarjeta del tesoro que es tuyo, en texto, no en una imagen.
+    assert.match(seccion(mi.html, 'mis-tesoros'), /data-tesoro="luz-hangul-001"[\s\S]*?class="tesoro__estado"[^>]*>[^<]*Conseguido/, 'Mis tesoros: falta «Conseguido» en su tarjeta');
+    // La luz de Luz Hangul 001 (E0097): una capa de adorno sobre el SVG original, vacía y oculta a los lectores de pantalla.
+    assert.match(seccion(mi.html, 'mis-tesoros'), /src="\/img\/tesoros\/luz-hangul-001\.svg"[^>]*>\s*<span class="tesoro__luz" aria-hidden="true"><\/span>/, 'Mis tesoros: falta la capa de luz junto al dibujo');
     const misKpopis = texto(seccion(mi.html, 'mis-kpopis'));
     for (const frase of ['Mis Kpopis', '20 Kpopis', '+20 Kpopis', 'HANGUL LIVE 001 completado', hoy]) {
       assert.ok(misKpopis.includes(frase), `Mis Kpopis: falta «${frase}»`);
@@ -349,6 +354,7 @@ test('Mi escenario: HANGUL LIVE 001, Kpopis y Mis tesoros', { skip: !hayConfigur
     const mi = await navB.pedir('/mi-kme');
     assert.ok(texto(seccion(mi.html, 'mis-tesoros')).includes('Todavía no tienes tesoros.'));
     assert.ok(!mi.html.includes('luz-hangul-001.svg'));
+    assert.ok(!texto(seccion(mi.html, 'mis-tesoros')).includes('Conseguido'), '«Conseguido» solo si el tesoro es tuyo');
     assert.ok(texto(seccion(mi.html, 'mis-kpopis')).includes('Todavía no tienes movimientos.'));
     // Lo que responde B no toca el progreso de A.
     await responder(navB, 1, 'annyeonghaseyo');

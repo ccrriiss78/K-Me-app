@@ -50,12 +50,25 @@
       <p>Todavía no tienes tesoros. Gana el primero en <a class="enlace" href="/escenario/hangul-live-001">HANGUL LIVE 001</a>.</p>
     <% } else { %>
       <ul class="tesoros__lista">
+        <%# Cada tesoro (D082; E0096 y E0097): a la izquierda, el soporte con los materiales de su
+            experiencia y el dibujo original, con su luz si se enciende (una capa de adorno vacía); a la
+            derecha, sobre blanco, los datos. Esta lista solo trae los tesoros de la cuenta, así que
+            «Conseguido» siempre es verdad. %>
         <% for (const t of recompensas.tesoros) { %>
           <li class="tesoro" data-tesoro="<%= t.id %>">
-            <img class="tesoro__imagen" src="<%= t.imagen %>" alt="" width="96" height="132">
-            <span class="tesoro__nombre"><%= t.nombre %></span>
-            <span class="tesoro__origen"><%= t.clase %> · <%= t.origen %></span>
-            <span class="tesoro__fecha">ganado el <time datetime="<%= t.fechaIso %>"><%= t.fecha %></time></span>
+            <div class="tesoro__soporte">
+              <span class="tesoro__objeto">
+                <img class="tesoro__imagen" src="<%= t.imagen %>" alt="" width="96" height="132">
+                <span class="tesoro__luz" aria-hidden="true"></span>
+              </span>
+            </div>
+            <div class="tesoro__info">
+              <span class="tesoro__clase"><%= t.clase %></span>
+              <span class="tesoro__nombre"><%= t.nombre %></span>
+              <%# «Conseguido el» y la fecha en que se ganó, que se lee seguido. %>
+              <span class="tesoro__conseguido"><span class="tesoro__estado">Conseguido</span> <span class="tesoro__fecha">el <time datetime="<%= t.fechaIso %>"><%= t.fecha %></time></span></span>
+              <span class="tesoro__origen"><strong>Origen:</strong> <%= t.origen %></span>
+            </div>
           </li>
         <% } %>
       </ul>

@@ -25,6 +25,14 @@ La autora es estudiante de programación web: explica cada bloque en español se
   - **Miniclase:** textos aprobados en `src/catalogos/hangul-live.js` (las 3 expresiones solo valen ahí; 안녕하세요 y 고마워요, pendientes de revisar por alguien que hable coreano). Cada pregunta se repite hasta acertar (regla a); al acertar las 3, la primera vez, 20 Kpopis y «Luz Hangul 001».
   - **Datos (migración `009_escenario.sql`):** `retos_progreso`, `kpopis_movimientos` (el saldo es su suma; `UNIQUE (id_usuario, clave)`: una recompensa nunca se cobra dos veces) y `tesoros_usuario`. El acierto que completa y la entrega van en una transacción (`models/retoModel.js`).
   - **Dónde se ve:** «Mi escenario» en el menú (`/escenario`); el saldo en la cabecera (middleware `cargarKpopis`; en el móvil, solo icono y número); «Mis tesoros» y «Mis Kpopis» en «Mi K-ME». Kpopi y tesoros en `src/catalogos/recompensas.js`; dibujos en `public/img/kpopi.svg` y `public/img/tesoros/`, aceptados «de momento»; estilos en `public/css/escenario.css` e `identidad.css`.
+  - **Tesoros como recuerdos (D082, E0096):** dirección visual aprobada como referencia (TECH_SPEC §2.7).
+    - **Color y materiales:** lila, turquesa, dorado, plata, irisados y purpurina, según la experiencia, nunca como nivel o rareza.
+    - **Tarjeta (horizontal):** a la izquierda, el SVG original del tesoro sobre un soporte de papel de color (`--tesoro-papel`, por su `data-tesoro`; Luz Hangul 001, lila); a la derecha, los datos sobre blanco, con «Conseguido el» y la fecha en que se ganó, en texto.
+    - **Cómo está hecho:** solo CSS y el grano de `public/img/collage/` (bloque «Mis tesoros como recuerdos» de `identidad.css`).
+    - **Un tesoro nuevo:** con su `--tesoro-papel` basta.
+    - **Luz Hangul 001 encendida (E0097):** halo, rosado y reflejo, en capas de adorno (`tesoro__objeto::before`, la capa vacía `tesoro__luz` y su `::before`). Se colocan con las medidas del dibujo, en proporción a `--tesoro-objeto`. Si cambias el SVG, `tests/tesoros.test.js` avisa: recoloca la luz.
+    - **Referencia de ChatGPT:** está en `entrega-chatgpt-tesoros-luz/` (raíz), **fuera de Git** por decisión de la autora (26/11/2026): no la subas. Es una maqueta, no un recurso.
+    - **Pendiente:** las texturas opcionales de ChatGPT (T054).
   - **Tests:** `tests/escenario.test.js`. Los Kpopis solo se gastan en el canje de Colección «K» (D074).
 - Sello Studio hecho (D041, E0057): «Mis sellos» y el editor en `/studio/sellos`.
   - **Contenido:** una palabra en hangul, el avatar o los dos, nunca vacío; alias opcional; **sin nombre personal ni texto libre**; hasta 3 de los 12 adornos (9 de las reacciones de Connect y estrella, nota y rayitas, dibujados por ChatGPT en `public/img/sello/motivos/`); paleta del sello de 35 colores: los 3 del logo, 9 vivos que pidió la autora (D046: rojo, amarillo y los vivos de «Mi ambiente») y los 23 de la ropa del editor.

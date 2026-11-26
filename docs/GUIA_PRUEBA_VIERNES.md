@@ -23,8 +23,9 @@ Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu nave
 - [ ] ★ «Mi escenario» → HANGUL LIVE 001 → lee la miniclase.
 - [ ] ★ Falla una pregunta a propósito → te deja volver a probar (sin perder nada).
 - [ ] ★ Acierta las 3 → el aviso en magenta, **20 Kpopis** en la cabecera y «Luz Hangul 001» en «Mis tesoros» (Mi K-ME).
+- [ ] ★ En «Mi K-ME», la tarjeta de Luz Hangul 001 en «Mis tesoros» (D082, E0097), en horizontal. A la izquierda, el lightstick encendido: bola blanca y rosa, con un reflejo curvo y un halo rosa sobre el papel lila; esquina fucsia, esquina de lámina irisada y purpurina abajo. A la derecha, sobre blanco: «LIGHTSTICK», el nombre, «Conseguido el» con la fecha de hoy y el origen. Mírala en el ordenador y en el móvil (390 px).
 - [ ] Repítela entera → no vuelve a dar Kpopis ni el tesoro.
-- [ ] **Decide:** ¿te gustan los textos, los dibujos y el sitio de cada cosa?
+- [ ] **Decide:** ¿te gustan los textos, los dibujos y el sitio de cada cosa? ¿Y los materiales del tesoro? ¿Pedimos a ChatGPT las texturas de purpurina y lámina irisada (T054)?
 
 ## 3. Colección «K» y canje (T046)
 
@@ -90,6 +91,7 @@ Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu nave
 - [ ] ★ Editor: la tarjeta del avatar queda **debajo** de «Guardar», sin taparlo (arreglado hoy, E0084).
 - [ ] ★ Pestaña «K», «Accesorios» y el catálogo de canje: se leen bien y se pulsan sin esfuerzo.
 - [ ] Mi escenario y Connect.
+- [ ] Con la ventana a unos 900 px de ancho (F12, 900): el menú baja a su propia fila y «Hola, …» no se parte (arreglado hoy, E0096).
 
 ## 8b. K-ME · TÚ DECIDES (T053)
 

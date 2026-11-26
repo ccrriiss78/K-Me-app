@@ -227,12 +227,14 @@
 }
 .tesoros > h2, .kpopis > h2 { margin: 0 0 .8rem; font-size: 1.15rem; font-weight: 900; letter-spacing: -.02em; }
 .tesoros > p, .kpopis > p { margin: 0 0 .6rem; }
-.tesoros__lista { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
+/* Una cuadrícula que admite más tesoros: columnas de 360 px o más (dos en el ordenador); en el móvil,
+   cada tarjeta a lo ancho. Cada tarjeta, en horizontal: el soporte con el objeto a la izquierda y los
+   datos a la derecha. Los materiales, en el bloque «Mis tesoros como recuerdos». */
+.tesoros__lista { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 1.25rem; }
 .tesoro {
-  display: grid; justify-items: center; gap: .25rem; padding: .9rem .6rem; text-align: center;
-  background: var(--color-fondo); border: 1px solid var(--color-borde); border-radius: 6px;
+  display: grid; grid-template-columns: 200px minmax(0, 1fr); overflow: hidden;
+  background: #fff; border: 1.5px solid var(--kme-tinta); border-radius: 10px; box-shadow: 4px 4px 0 var(--color-rosa-suave);
 }
-.tesoro__imagen { width: 96px; height: auto; }
 
 /* Colección «K» (E0083): la marca «K», con las comillas fucsias, y el catálogo de canje. */
 .marca-k { white-space: nowrap; }
@@ -264,21 +266,99 @@
   /* Los extremos de la cinta, cortados a mano. */
   --collage-cinta-forma: polygon(3% 0, 97% 0, 100% 22%, 96% 45%, 100% 68%, 97% 100%, 3% 100%, 0 78%, 4% 55%, 0 32%);
 }
-/* El tesoro, como una foto de marco blanco sujeta con cinta. */
-.tesoro { position: relative; padding-top: 1.2rem; }
-.tesoro__imagen {
-  /* El grano, solo en el marco: encima, blanco liso donde va el dibujo (content-box). */
-  box-sizing: content-box; padding: 8px 8px 16px;
-  background: linear-gradient(#fff, #fff) content-box, var(--collage-grano-oscuro) 0 0 / 180px 180px, #fff;
-  box-shadow: 0 0 0 1px var(--color-borde), 3px 4px 0 rgb(0 0 0 / .1); transform: rotate(-2.5deg);
+/* Mis tesoros como recuerdos (D082; E0096 y, encendido, E0097; antes, foto de marco blanco con cinta
+   fucsia, E0075). El dibujo original del tesoro, sin cambiarlo, sobre un soporte con los materiales de
+   la experiencia de la que viene: papel de color con grano, una esquina fucsia, una esquina de lámina
+   de plata irisada rasgada y purpurina abajo. Los datos, a la derecha, sobre blanco liso.
+   - El color y los materiales van con la experiencia, nunca con el valor: no indican niveles.
+   - Cada tesoro elige su papel con --tesoro-papel, por su data-tesoro. Luz Hangul 001: lila.
+   - Solo CSS y el grano que ya existía (public/img/collage/): sin fotos ni texturas nuevas. */
+.tesoro { --tesoro-papel: #f3efe8; --tesoro-objeto: 104px; }
+.tesoro[data-tesoro="luz-hangul-001"] { --tesoro-papel: #ddd0f1; }
+.tesoro__soporte {
+  position: relative; isolation: isolate; display: grid; place-items: center; min-height: 200px;
+  padding: 1.2rem 1rem; border-right: 1.5px solid var(--kme-tinta);
+  background:
+    radial-gradient(circle at 0 0, var(--kme-acento) 0 22px, transparent 23px),
+    radial-gradient(circle at 57% 91%, #fff 0 1.5px, transparent 2.1px),
+    radial-gradient(circle at 63% 95%, #8d96a3 0 1px, transparent 1.5px),
+    radial-gradient(circle at 70% 87%, #fff 0 1.1px, transparent 1.6px),
+    radial-gradient(circle at 76% 93%, #c3cad3 0 1.3px, transparent 1.8px),
+    radial-gradient(circle at 82% 86%, #fff 0 1.7px, transparent 2.3px),
+    radial-gradient(circle at 87% 95%, #9aa4b0 0 1px, transparent 1.5px),
+    radial-gradient(circle at 92% 89%, #fff 0 1.2px, transparent 1.7px),
+    radial-gradient(circle at 96% 82%, #c3cad3 0 1px, transparent 1.5px),
+    radial-gradient(circle at 11% 94%, #fff 0 1.2px, transparent 1.7px),
+    radial-gradient(circle at 18% 89%, #c3cad3 0 1px, transparent 1.5px),
+    linear-gradient(to top, rgb(255 255 255 / .5), rgb(255 255 255 / 0) 15%),
+    var(--tesoro-papel);
 }
-.tesoro::before {
-  content: ''; position: absolute; z-index: 1; top: .55rem; left: 50%; width: 64px; height: 20px;
-  background: var(--collage-cinta); clip-path: var(--collage-cinta-forma);
-  transform: translateX(-50%) rotate(3deg); pointer-events: none;
+/* El grano del papel, suave (detrás del dibujo). */
+.tesoro__soporte::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: var(--collage-grano-oscuro) 0 0 / 180px 180px; opacity: .45;
 }
-.tesoro__nombre { font-weight: 800; }
-.tesoro__origen, .tesoro__fecha { font-size: .8rem; color: var(--color-texto-suave); }
+/* La esquina de lámina de plata irisada, arrugada y con el borde rasgado. */
+.tesoro__soporte::after {
+  content: ''; position: absolute; top: 0; right: 0; width: 40%; height: 34%; pointer-events: none;
+  background:
+    repeating-linear-gradient(62deg, rgb(255 255 255 / .45) 0 2px, rgb(255 255 255 / 0) 2px 9px),
+    linear-gradient(135deg, #b9c1cb, #f6f8fa 18%, #dccff6 34%, #c6eee8 50%, #f9d9e7 64%, #eef1f5 78%, #aeb7c2);
+  clip-path: polygon(12% 0, 100% 0, 100% 100%, 93% 90%, 87% 84%, 80% 73%, 72% 67%, 64% 56%, 56% 50%, 48% 39%, 40% 33%, 31% 21%, 23% 15%, 16% 5%);
+}
+/* El objeto: el dibujo y, si se enciende, su luz. Las capas de luz se colocan en proporción a su
+   ancho (--tesoro-objeto) con las medidas del dibujo, que vigila tests/tesoros.test.js. */
+.tesoro__objeto { position: relative; isolation: isolate; display: block; width: var(--tesoro-objeto); }
+.tesoro__imagen { display: block; width: 100%; height: auto; filter: drop-shadow(0 6px 5px rgb(70 40 110 / .22)); }
+.tesoro__luz { display: none; }
+/* Luz Hangul 001, encendida (E0097). Luz fija, sin parpadeo, solo en la bola de luz del dibujo
+   (lienzo 160 × 220; centro en 80, 70; radio 44, y 41,5 por dentro del contorno negro). Ni el mango,
+   ni la tarjeta, ni los textos brillan.
+   - Detrás del dibujo: un halo rosa y lila que se derrama un poco sobre el papel.
+   - Dentro de la bola: un rosado que crece hacia el borde (la estrella queda limpia) y un reflejo
+     blanco curvo arriba a la izquierda. */
+.tesoro[data-tesoro="luz-hangul-001"] .tesoro__objeto::before {
+  content: ''; position: absolute; z-index: -1; pointer-events: none; border-radius: 50%;
+  left: calc(var(--tesoro-objeto) * -.225); top: calc(var(--tesoro-objeto) * -.2875);
+  width: calc(var(--tesoro-objeto) * 1.45); aspect-ratio: 1;
+  background: radial-gradient(circle, rgb(255 255 255 / .95) 0 30%, rgb(255 150 200 / .75) 40%, rgb(244 96 165 / .35) 52%, rgb(214 140 220 / .12) 63%, rgb(214 140 220 / 0) 71%);
+}
+.tesoro[data-tesoro="luz-hangul-001"] .tesoro__luz {
+  display: block; position: absolute; pointer-events: none; border-radius: 50%;
+  left: calc(var(--tesoro-objeto) * .2406); top: calc(var(--tesoro-objeto) * .1781);
+  width: calc(var(--tesoro-objeto) * .5188); aspect-ratio: 1;
+  background: radial-gradient(circle, rgb(255 255 255 / 0) 0 50%, rgb(255 160 205 / .38) 72%, rgb(255 105 172 / .72) 100%);
+  box-shadow: inset 0 0 calc(var(--tesoro-objeto) * .08) calc(var(--tesoro-objeto) * .02) rgb(255 70 150 / .55);
+}
+.tesoro[data-tesoro="luz-hangul-001"] .tesoro__luz::before {
+  content: ''; position: absolute; inset: 6%; border-radius: 50%;
+  border: calc(var(--tesoro-objeto) * .03) solid transparent; border-top-color: #fff;
+  transform: rotate(-48deg);
+}
+.tesoro__info { display: grid; align-content: center; gap: .2rem; padding: .9rem 1rem; background: #fff; }
+.tesoro__clase { font-size: .72rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+.tesoro__nombre { font-size: 1.15rem; font-weight: 900; line-height: 1.2; }
+.tesoro__origen { font-size: .82rem; color: var(--color-texto-suave); }
+.tesoro__origen strong { color: var(--kme-tinta); }
+/* «Conseguido el 26/11/2026»: la etiqueta y, a su lado, la fecha en que se ganó; si no caben en una
+   línea, la fecha baja. El ✓ fucsia es de adorno (el lector de pantalla solo lee las palabras). */
+.tesoro__conseguido { display: flex; flex-wrap: wrap; align-items: center; gap: .2rem .4rem; margin: .3rem 0 .35rem; }
+.tesoro__fecha { font-size: .85rem; font-weight: 800; color: var(--kme-tinta); white-space: nowrap; }
+.tesoro__estado {
+  display: inline-flex; align-items: center; gap: .35rem;
+  padding: .1rem .6rem .1rem .2rem; border: 1px solid var(--kme-tinta); border-radius: 999px;
+  background: #fff; font-size: .75rem; font-weight: 800;
+}
+.tesoro__estado::before {
+  content: "✓"; content: "✓" / ""; display: grid; place-items: center; width: 1.15rem; height: 1.15rem;
+  border-radius: 50%; background: var(--kme-acento); color: #000; font-size: .7rem; font-weight: 900;
+}
+/* En el móvil, la misma tarjeta, más estrecha: el soporte de 128 px y el objeto de 80. */
+@media (max-width: 520px) {
+  .tesoro { grid-template-columns: 128px minmax(0, 1fr); --tesoro-objeto: 80px; }
+  .tesoro__soporte { min-height: 170px; padding: 1rem .5rem; }
+  .tesoro__info { padding: .8rem .85rem; }
+}
 .kpopis__saldo { display: flex; align-items: center; gap: .5rem; font-size: 1.3rem; }
 .kpopis__saldo img { flex: none; }
 .kpopis__subtitulo { margin: 1rem 0 .4rem; font-size: 1rem; font-weight: 800; }
