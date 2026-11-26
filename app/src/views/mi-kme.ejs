@@ -6,6 +6,7 @@
     <dt>Alias</dt><dd><%= cuenta.alias %></dd>
     <dt>Cuenta creada</dt><dd><time datetime="<%= cuenta.creado_en.toISOString() %>"><%= cuenta.creado_en.toLocaleString('es-ES') %></time></dd>
   </dl>
+  <%- include('_tu-decides', { tuDecides }) %>
   <%# Imagen de perfil (D044, D055): versión funcional; el diseño lo hará ChatGPT. Los SVG los dibuja
       el servidor a partir de recetas validadas. %>
   <section class="perfil" aria-labelledby="titulo-perfil">

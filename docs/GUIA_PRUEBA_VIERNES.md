@@ -1,6 +1,6 @@
 # Guía de la prueba en el navegador · viernes 27/11/2026
 
-Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu navegador (T024, T030, T036, T039, T040, T041, T043, T044, T045, T046, T047, T048 y T049). Todo está probado con tests y en Chrome sin ventana por el asistente, **pero no por ti**: esta prueba es la que cuenta.
+Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu navegador (T024, T030, T036, T039, T040, T041, T043, T044, T045, T046, T047, T048, T049 y T053). Todo está probado con tests y en Chrome sin ventana por el asistente, **pero no por ti**: esta prueba es la que cuenta.
 
 - ★ = sale en la demo del 1/12. Si vas justa de tiempo, haz primero lo marcado.
 - Si algo falla: haz una captura, apunta el número del paso y sigue. Al final me pasas la lista.
@@ -90,6 +90,17 @@ Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu nave
 - [ ] ★ Editor: la tarjeta del avatar queda **debajo** de «Guardar», sin taparlo (arreglado hoy, E0084).
 - [ ] ★ Pestaña «K», «Accesorios» y el catálogo de canje: se leen bien y se pulsan sin esfuerzo.
 - [ ] Mi escenario y Connect.
+
+## 8b. K-ME · TÚ DECIDES (T053)
+
+- [ ] ★ Al entrar, en «Mi K-ME», el bloque «¿Qué viene después?» con las tres propuestas futuras, antes de «Tu imagen de perfil».
+- [ ] ★ Elige una tarjeta y pulsa «¡Esta es mi favorita!»: «¡Voto guardado!», tu tarjeta en fucsia con ✓ y los porcentajes.
+- [ ] Elige otra y vuelve a pulsar: cambia tu voto (no se suma). Sal y vuelve a entrar: sigue la tuya.
+- [ ] Vota con otra cuenta (la de prueba) y mira cómo cambian los porcentajes.
+- [ ] Con el teclado: Tab hasta las tarjetas, flechas para cambiar, Enter en el botón.
+- [ ] En el móvil (F12, 390 px): las tarjetas, una debajo de otra, y el botón a lo ancho.
+- [ ] Los iconos de ChatGPT, a la izquierda de «Propuesta futura» en cada tarjeta: se distinguen bien, también en la tarjeta elegida (rosa).
+- [ ] **Decide:** si te gustan los iconos y si quieres el bloque más compacto.
 
 ## 9. Teclado y contraste (T030)
 

@@ -1,0 +1,47 @@
+<%# «K-ME · TÚ DECIDES» (D080, E0093): los fans votan la propuesta futura que quieren primero.
+    Formulario normal, que funciona sin JavaScript: se elige una tarjeta (un radio dentro de su
+    etiqueta) y se pulsa el único botón. Después de votar, cada tarjeta enseña su porcentaje.
+    Recibe tuDecides (servicio tuDecidesService.verTuDecides) y csrfToken. %>
+<section class="tu-decides" id="tu-decides" aria-labelledby="titulo-tu-decides">
+  <p class="tu-decides__marca">K-ME · TÚ DECIDES</p>
+  <h2 id="titulo-tu-decides">¿Qué viene después?</h2>
+  <p class="tu-decides__texto">«No solo formas parte de K-ME. También puedes decidir en qué se convierte».</p>
+  <% if (tuDecides.guardado) { %>
+    <p class="tu-decides__aviso" role="status">¡Voto guardado! Puedes cambiarlo cuando quieras.</p>
+  <% } %>
+  <form method="post" action="/tu-decides" class="tu-decides__formulario">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <fieldset>
+      <legend class="solo-lectores">Elige la propuesta futura que quieres primero</legend>
+      <div class="tu-decides__tarjetas">
+        <% tuDecides.propuestas.forEach((p) => { %>
+          <label class="tu-decides__tarjeta">
+            <input type="radio" name="propuesta" value="<%= p.id %>" required<%= p.elegida ? ' checked' : '' %>>
+            <%# Cabecera: el icono (decorativo) a la izquierda, junto a la etiqueta y el título. %>
+            <span class="tu-decides__cabecera">
+              <% if (p.icono) { %><img class="tu-decides__icono" src="<%= p.icono %>" alt="" width="48" height="48"><% } %>
+              <span class="tu-decides__nombre">
+                <span class="tu-decides__etiqueta">Propuesta futura</span>
+                <strong class="tu-decides__titulo"><%= p.titulo %></strong>
+              </span>
+            </span>
+            <span class="tu-decides__descripcion"><%= p.texto %></span>
+            <% if (tuDecides.conResultados) { %>
+              <span class="tu-decides__resultado" data-porcentaje="<%= p.id %>">
+                <span class="tu-decides__barra" aria-hidden="true"><span style="width: <%= p.porcentaje %>%"></span></span>
+                <span class="tu-decides__cifra"><%= p.porcentaje %> %<span class="solo-lectores"> de los votos</span></span>
+              </span>
+            <% } %>
+          </label>
+        <% }) %>
+      </div>
+    </fieldset>
+    <button type="submit" class="boton">¡Esta es mi favorita!</button>
+    <% if (tuDecides.conResultados) { %>
+      <p class="tu-decides__total">Resultados con <%= tuDecides.total %> <%= tuDecides.total === 1 ? 'voto' : 'votos' %> de fans. Nadie ve quién vota qué.</p>
+    <% } else { %>
+      <p class="tu-decides__total">Cuando votes, verás cómo va la votación.</p>
+    <% } %>
+  </form>
+</section>
+<!-- fin tu-decides -->

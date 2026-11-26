@@ -15,6 +15,7 @@ import {
   borrarAvatares,
 } from '../controllers/avatarController.js';
 import { elegirAvatarPerfil, elegirSelloPerfil } from '../controllers/perfilController.js';
+import { votar as votarTuDecides } from '../controllers/tuDecidesController.js';
 import { mostrarCatalogo as mostrarCatalogoCanje, canjear as canjearPieza } from '../controllers/canjeController.js';
 import {
   mostrarEscenario, mostrarReto, mostrarPregunta, responderPregunta,
@@ -40,6 +41,8 @@ rutas.get('/mi-kme', requiereSesion, mostrarMiKme);
 // Imagen de perfil (D044, D055): el id de un avatar o de un sello propio, o vacío para quitarlo.
 rutas.post('/perfil/avatar', requiereSesion, comprobarCsrf, elegirAvatarPerfil);
 rutas.post('/perfil/sello', requiereSesion, comprobarCsrf, elegirSelloPerfil);
+// «K-ME · TÚ DECIDES» (D080): votar una propuesta futura desde «Mi K-ME». Un voto por cuenta.
+rutas.post('/tu-decides', requiereSesion, comprobarCsrf, votarTuDecides);
 
 // Connect mínimo (D038): el muro de los fans. Todo privado; cada POST, con CSRF.
 rutas.get('/connect', requiereSesion, mostrarMuro);

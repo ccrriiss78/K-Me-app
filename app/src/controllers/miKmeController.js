@@ -5,6 +5,7 @@
 import { buscarPorId } from '../models/usuarioModel.js';
 import { imagenesMiKme } from '../services/perfilService.js';
 import { misRecompensas } from '../services/recompensaService.js';
+import { verTuDecides } from '../services/tuDecidesService.js';
 
 export async function mostrarMiKme(req, res, next) {
   try {
@@ -16,7 +17,10 @@ export async function mostrarMiKme(req, res, next) {
     const perfil = imagenesMiKme(res.locals.perfilSesion, cuenta.alias);
     // «Mis Kpopis» y «Mis tesoros» (D063, D064).
     const recompensas = await misRecompensas(req.session.usuarioId);
-    res.render('mi-kme', { titulo: 'Mi K-ME', cuenta, perfil, recompensas });
+    // «K-ME · TÚ DECIDES» (D080): el voto de la cuenta y, si ya votó, los resultados. «?voto=guardado»
+    // llega de la redirección tras votar y enseña la confirmación.
+    const tuDecides = { ...(await verTuDecides(req.session.usuarioId)), guardado: req.query.voto === 'guardado' };
+    res.render('mi-kme', { titulo: 'Mi K-ME', cuenta, perfil, recompensas, tuDecides });
   } catch (err) {
     next(err);
   }

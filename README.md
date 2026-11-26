@@ -12,6 +12,7 @@ Proyecto de una estudiante de programación web, presentado el 1 de diciembre de
 | **Avatar Studio** | Crear avatares con el editor ilustrado de K-ME y guardarlos en la cuenta (hasta 20), volver a abrirlos, duplicarlos, borrarlos, imprimirlos y descargar su photocard en PDF. Se pueden llevar varios accesorios a la vez (gorro, auriculares, gafas, pin y lightstick). |
 | **Sello Studio** | Hacer un sello personal con una palabra en hangul comprobada en un diccionario oficial, uno de tus avatares o los dos, tu alias y adornos (hasta 20). Imprimirlo como photocard de 55 × 85 mm y descargarlo en PDF o PNG. |
 | **Imagen de perfil** | Elegir uno de tus avatares, uno de tus sellos o los dos. Sale en la cabecera, en un marco como el del logo, y en «Mi K-ME». |
+| **K-ME · TÚ DECIDES** | En «Mi K-ME», los fans votan qué propuesta futura quieren primero: K-ME EXCHANGE, MY STAGE o FAN EVENTS. Un voto por cuenta, que se puede cambiar; después de votar se ven los porcentajes, sin nombres. Son ideas para después de la presentación, no funciones disponibles. |
 | **Connect** | Un muro de fans: publicar una emoción con tu diseño (una copia de tu avatar o de tu sello) y un mensaje de hasta 5 iconos, sin texto libre, y reaccionar a las publicaciones de otros fans. |
 | **Colección «K»** | La pestaña de las piezas especiales de K-ME Studio, abierta al entrar. Con el botón «Canjear Kpopis» se abre el catálogo de canje: el Top Destello y la Chaqueta Denim Collage cuestan 20 Kpopis cada una. La colección Encore añade seis piezas más (chaqueta, falda, pendientes, brazalete, bolso con su peluche Rizo y lazo), con precios todavía por confirmar. Antes de canjear se puede ver cómo queda cada pieza. |
 | **Mi escenario** | HANGUL LIVE 001, «Tu voz. Nuestra luz»: una miniclase de 3 expresiones en coreano y 3 preguntas. Al acertarlas por primera vez da 20 **Kpopis** y el lightstick **Luz Hangul 001**, que se guarda en «Mis tesoros». |
@@ -182,6 +183,11 @@ Las direcciones son relativas: delante va `http://localhost:3000` (o `3001`). Pa
 15. Abre «Mi escenario» y HANGUL LIVE 001. Lee las tres expresiones y empieza las preguntas. Falla una: ves qué significa lo que elegiste y puedes volver a probar.
 16. Acierta las tres: ganas 20 Kpopis, que salen en la cabecera, y Luz Hangul 001, que sale en «Mis tesoros» de «Mi K-ME».
 17. Repítela: «¡Completado otra vez!», y el saldo sigue en 20.
+
+**K-ME · TÚ DECIDES**
+
+18. En «Mi K-ME», elige una de las tres propuestas y pulsa «¡Esta es mi favorita!»: sale «¡Voto guardado!» y los porcentajes.
+19. Elige otra y vuelve a pulsar: tu voto cambia, no se suma. Sal y vuelve a entrar: sigue elegida la tuya.
 
 ## Pruebas automatizadas
 

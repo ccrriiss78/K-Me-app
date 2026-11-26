@@ -1,0 +1,32 @@
+[
+  {
+    "archivo": "tu-decides-exchange.svg",
+    "bytes": 653,
+    "limites": [
+      3,
+      7,
+      45,
+      42
+    ]
+  },
+  {
+    "archivo": "tu-decides-my-stage.svg",
+    "bytes": 775,
+    "limites": [
+      3,
+      6,
+      42,
+      43
+    ]
+  },
+  {
+    "archivo": "tu-decides-fan-events.svg",
+    "bytes": 737,
+    "limites": [
+      3,
+      2,
+      44,
+      43
+    ]
+  }
+]

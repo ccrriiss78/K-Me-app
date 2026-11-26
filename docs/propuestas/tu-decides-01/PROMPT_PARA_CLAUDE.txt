@@ -1,0 +1,11 @@
+Te paso una propuesta gráfica de ChatGPT para «K-ME · TÚ DECIDES». Tú sigues siendo el único que edita el proyecto.
+
+Primero lee LEEME_PARA_CLAUDE.md y mira vista-previa.png, propuesta-escritorio.png y propuesta-movil.png. Los PNG propuesta-* son maquetas orientativas, no capturas ni cambios ya aprobados. No conviertas las maquetas en imágenes de fondo de la interfaz.
+
+Los tres SVG son los iconos de Exchange, My Stage y Fan Events, con los nombres previstos. Puedes integrarlos en public/img/tu-decides/ y enlazarlos en el catálogo existente, conservando textos, radios, nombres de campos, CSRF, voto por cuenta y porcentajes reales. Verifica las restricciones del brief y el aspecto real en Chrome a 48, 40 y 32 px sobre blanco y rosa. Mantén alt vacío junto a títulos accesibles y reserva el espacio del check para evitar solapes.
+
+La propuesta de redistribución da protagonismo al avatar al entrar: identidad a la izquierda y votación a la derecha en escritorio; identidad encima y votación debajo en móvil. Reduce marcos anidados y conserva la tipografía y la paleta actuales. Tiene medidas concretas en el LEEME. Valora su viabilidad y explícame cualquier conflicto antes de darla por aprobada; no la implementes hasta que yo confirme que quiero esta composición. La navegación horizontal en móvil también es una propuesta pendiente de mi elección.
+
+Conserva todas las funciones, los estados sin avatar/con sello, Mis tesoros, Mis Kpopis y las acciones actuales aunque no estén desarrollados en las maquetas. Los datos de estas maquetas son ficticios. No cambies los logos, los avatares guardados ni los dibujos existentes. No construyas las propuestas futuras: esta entrega es gráfica.
+
+Haz las comprobaciones de integración pertinentes y muestra el resultado. Registra solo los cambios realizados y las decisiones que yo confirme, distinguiendo las propuestas de lo aprobado.
