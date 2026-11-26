@@ -1,14 +1,12 @@
 <%- include('_cabecera') %>
-<section class="tarjeta" aria-labelledby="titulo-mi-kme">
+<%# Composición de la propuesta P031 (E0095): la página, sin recuadro propio. En la portada, primero la
+    identidad (la imagen de perfil, con el alias y la fecha de alta) y la votación «TÚ DECIDES»: en dos
+    columnas en el ordenador ancho; una debajo de otra en el móvil. Debajo, todo lo demás. %>
+<section class="tarjeta mi-kme" aria-labelledby="titulo-mi-kme">
   <h1 id="titulo-mi-kme">Mi K-ME</h1>
   <p class="saludo">Bienvenida, <strong><%= cuenta.alias %></strong>. Este es tu espacio privado.</p>
-  <dl class="datos">
-    <dt>Alias</dt><dd><%= cuenta.alias %></dd>
-    <dt>Cuenta creada</dt><dd><time datetime="<%= cuenta.creado_en.toISOString() %>"><%= cuenta.creado_en.toLocaleString('es-ES') %></time></dd>
-  </dl>
-  <%- include('_tu-decides', { tuDecides }) %>
-  <%# Imagen de perfil (D044, D055): versión funcional; el diseño lo hará ChatGPT. Los SVG los dibuja
-      el servidor a partir de recetas validadas. %>
+  <div class="mi-kme__portada">
+  <%# Imagen de perfil (D044, D055). Los SVG los dibuja el servidor a partir de recetas validadas. %>
   <section class="perfil" aria-labelledby="titulo-perfil">
     <h2 id="titulo-perfil">Tu imagen de perfil</h2>
     <% if (!perfil.avatar && !perfil.sello) { %>
@@ -36,7 +34,14 @@
         </form>
       </figure>
     <% } %>
+    <dl class="datos perfil__datos">
+      <dt>Alias</dt><dd><%= cuenta.alias %></dd>
+      <dt>Cuenta creada</dt><dd><time datetime="<%= cuenta.creado_en.toISOString() %>"><%= cuenta.creado_en.toLocaleString('es-ES') %></time></dd>
+    </dl>
   </section>
+  <%- include('_tu-decides', { tuDecides }) %>
+  </div>
+  <!-- fin portada -->
   <%# Mis tesoros (D064, «Mi álbum vivo»): los objetos ganados, con su origen y la fecha. Se ganan,
       nunca se compran. Los dibujos salen del catálogo (src/catalogos/recompensas.js). %>
   <section class="tesoros" id="mis-tesoros" aria-labelledby="titulo-tesoros">

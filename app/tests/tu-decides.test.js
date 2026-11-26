@@ -116,8 +116,13 @@ test('K-ME · TÚ DECIDES', { skip: !hayConfiguracion() && 'falta app/.env.local
     assert.match(b, /<form method="post" action="\/tu-decides"[\s\S]*name="_csrf"/);
     assert.equal(elegida(r.html), null);
     assert.doesNotMatch(b, /data-porcentaje/, 'sin resultados antes de votar');
-    // Va antes que el resto de «Mi K-ME»: es lo primero que se ve.
-    assert.ok(r.html.indexOf('id="tu-decides"') < r.html.indexOf('id="titulo-perfil"'));
+    // En la portada de «Mi K-ME» (P031, E0095): primero la identidad (la imagen de perfil, con el alias y
+    // la fecha de alta) y, al lado en el ordenador o debajo en el móvil, la votación; después, Mis tesoros.
+    const portada = /<div class="mi-kme__portada">([\s\S]*?)<!-- fin portada -->/.exec(r.html)?.[1] ?? '';
+    assert.ok(portada.includes('id="titulo-perfil"') && portada.includes('id="tu-decides"'), 'la identidad y la votación, juntas en la portada');
+    assert.ok(portada.indexOf('id="titulo-perfil"') < portada.indexOf('id="tu-decides"'), 'primero la identidad');
+    assert.match(/<section class="perfil"[\s\S]*?<\/section>/.exec(portada)?.[0] ?? '', /<dt>Alias<\/dt>[\s\S]*<dt>Cuenta creada<\/dt>/, 'el alias y la fecha de alta, en la tarjeta de identidad');
+    assert.ok(r.html.indexOf('<!-- fin portada -->') < r.html.indexOf('id="mis-tesoros"'), 'después, Mis tesoros');
     // Cada tarjeta, con su icono decorativo (alt vacío: el nombre ya lo dice el título), y el servidor lo sirve.
     for (const p of PROPUESTAS) {
       assert.match(b, new RegExp(`<img class="tu-decides__icono" src="/img/tu-decides/tu-decides-${p.id}\\.svg" alt=""`), `${p.id}: icono`);

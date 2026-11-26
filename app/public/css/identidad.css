@@ -307,25 +307,28 @@
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
 }
 
-/* «K-ME · TÚ DECIDES» (D080, E0093): el bloque de votación de «Mi K-ME». Blanco, tinta y fucsia;
-   tarjetas con contorno de tinta y sombra fucsia al elegirlas, como las opciones de Mi escenario.
-   Compacto: no ocupa la pantalla y deja ver el resto de «Mi K-ME». */
-.tu-decides { margin: 1.4rem 0 1.6rem; padding: 1.1rem 1.1rem 1.2rem; border: 2px solid var(--kme-tinta); border-radius: 14px; background: var(--kme-papel); box-shadow: 4px 4px 0 var(--kme-acento); }
+/* «K-ME · TÚ DECIDES» (D080, E0093): el bloque de votación de «Mi K-ME». El recuadro es como las
+   demás tarjetas de «Mi K-ME» (tinta y sombra rosa); el fucsia, solo para la tarjeta elegida (P031).
+   Es un contenedor: sus tarjetas se ponen en fila según el ancho del bloque, no el de la ventana. */
+.tu-decides { margin: 0; padding: 1.25rem; border: 1px solid var(--kme-tinta); background: #fff; box-shadow: 5px 5px 0 var(--color-rosa-suave); container-type: inline-size; }
 .tu-decides__marca { margin: 0; font-size: .72rem; font-weight: 900; letter-spacing: .12em; color: var(--kme-tinta); }
 .tu-decides__marca::after { content: ""; display: inline-block; width: 1.6rem; height: 3px; margin-left: .5rem; vertical-align: middle; border-radius: 2px; background: var(--kme-acento); }
 .tu-decides h2 { margin: .25rem 0 .3rem; font-size: 1.35rem; }
 .tu-decides__texto { margin: 0 0 .8rem; font-size: .95rem; }
 .tu-decides__aviso { margin: 0 0 .8rem; padding: .55rem .8rem; border-left: 4px solid var(--kme-acento); border-radius: 6px; background: var(--color-rosa-suave); font-weight: 800; color: var(--kme-tinta); }
 .tu-decides fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
-/* En fila solo si caben tres de 13rem; «Mi K-ME» es estrecha, así que lo normal es una debajo de otra. */
-.tu-decides__tarjetas { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: .6rem; }
-.tu-decides__tarjeta { position: relative; display: flex; flex-direction: column; gap: .3rem; padding: .75rem 2.6rem .8rem .85rem; border: 2px solid var(--kme-tinta); border-radius: 12px; background: #fff; cursor: pointer; overflow-wrap: anywhere; transition: box-shadow .15s, transform .15s; }
+/* Una debajo de otra; las tres en fila solo si cada una mide 240 px o más (3 × 240 + 2 huecos de 12),
+   para que nunca queden dos arriba y una sola abajo. */
+.tu-decides__tarjetas { display: grid; grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+@container (min-width: 744px) { .tu-decides__tarjetas { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.tu-decides__tarjeta { position: relative; display: flex; flex-direction: column; gap: .3rem; padding: .75rem .85rem .8rem; border: 2px solid var(--kme-tinta); border-radius: 12px; background: #fff; cursor: pointer; overflow-wrap: anywhere; transition: box-shadow .15s, transform .15s; }
 .tu-decides__tarjeta:hover { box-shadow: 3px 3px 0 var(--kme-tinta); }
 .tu-decides__tarjeta input { position: absolute; opacity: 0; width: 1px; height: 1px; }
 .tu-decides__tarjeta:has(input:focus-visible) { outline: 3px solid var(--kme-tinta); outline-offset: 3px; }
 .tu-decides__tarjeta:has(input:checked) { border-color: var(--kme-acento); background: var(--color-rosa-suave); box-shadow: 4px 4px 0 var(--kme-acento); }
 .tu-decides__tarjeta:has(input:checked)::after { content: "✓"; position: absolute; top: .55rem; right: .6rem; display: grid; place-items: center; width: 1.5rem; height: 1.5rem; border: 2px solid var(--kme-tinta); border-radius: 50%; background: var(--kme-acento); color: #000; font-weight: 900; font-size: .85rem; }
-.tu-decides__cabecera { display: flex; align-items: center; gap: .6rem; }
+/* La cabecera deja libre a la derecha el sitio del ✓ (solo ella llega a su altura). */
+.tu-decides__cabecera { display: flex; align-items: center; gap: .6rem; padding-right: 1.5rem; }
 .tu-decides__icono { flex: none; width: 48px; height: 48px; }
 .tu-decides__nombre { display: flex; flex-direction: column; gap: .25rem; min-width: 0; }
 .tu-decides__etiqueta { align-self: flex-start; padding: .1rem .45rem; border: 1px solid var(--kme-tinta); border-radius: 999px; font-size: .68rem; font-weight: 800; letter-spacing: .04em; }
@@ -340,7 +343,33 @@
 @media (max-width: 760px) {
   .tu-decides { padding: .9rem .85rem 1rem; }
   .tu-decides__tarjetas { gap: .55rem; }
-  .tu-decides__tarjeta { padding: .65rem 2.4rem .75rem .75rem; }
+  .tu-decides__tarjeta { padding: .65rem .75rem .75rem; }
   .tu-decides__icono { width: 40px; height: 40px; }
   .tu-decides .boton { width: 100%; }
+}
+
+/* «Mi K-ME» (propuesta P031 de ChatGPT, E0095): la página no lleva recuadro propio (cada apartado ya
+   es una tarjeta) y llega a 1120 px. La portada: la identidad y la votación.
+   - Desde 1152 px: la identidad a la izquierda (272 px) y la votación a la derecha.
+   - Por debajo: la identidad compacta (la imagen de 116 px de alto junto a su nombre) y, debajo, la votación.
+   - En el móvil, la votación sin recuadro, para no meter tarjetas dentro de tarjetas. */
+.tarjeta.mi-kme { max-width: 1120px; padding: 0; background: transparent; border: 0; }
+.mi-kme__portada { display: grid; gap: 1.5rem; align-items: start; margin: 1.25rem 0 1.5rem; }
+.mi-kme__portada > .perfil { margin: 0; }
+.perfil__datos { grid-column: 1 / -1; margin: 0; font-size: .85rem; }
+@media (min-width: 1152px) {
+  .mi-kme__portada { grid-template-columns: 272px minmax(0, 1fr); }
+  .mi-kme__portada > .perfil { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 1151px) {
+  .mi-kme__portada > .perfil { grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
+  .mi-kme .perfil__imagen { grid-template-columns: 96px minmax(0, 1fr); justify-items: start; align-items: center; column-gap: .9rem; }
+  .mi-kme .perfil__imagen > :first-child { display: grid; place-items: center; width: 96px; }
+  .mi-kme .perfil__imagen svg { width: auto; max-width: 96px; height: 116px; }
+  .mi-kme .perfil__imagen figcaption { text-align: left; }
+  .mi-kme .perfil__imagen form { grid-column: 1 / -1; width: 100%; }
+  .mi-kme .perfil__imagen .boton { width: 100%; }
+}
+@media (max-width: 760px) {
+  .mi-kme .tu-decides { padding: 0; border: 0; background: transparent; box-shadow: none; }
 }

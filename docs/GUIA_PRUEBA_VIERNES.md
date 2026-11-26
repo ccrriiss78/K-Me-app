@@ -93,14 +93,15 @@ Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu nave
 
 ## 8b. K-ME · TÚ DECIDES (T053)
 
-- [ ] ★ Al entrar, en «Mi K-ME», el bloque «¿Qué viene después?» con las tres propuestas futuras, antes de «Tu imagen de perfil».
+- [ ] ★ Al entrar, la portada nueva de «Mi K-ME» (D081). En el ordenador, a la izquierda, tu imagen de perfil con el alias y la fecha; a la derecha, «¿Qué viene después?» con las tres propuestas futuras en fila. En el móvil, tu imagen pequeña arriba y la votación debajo.
+- [ ] La portada sin imagen de perfil (con la cuenta nueva, antes de elegirla) y con un avatar y un sello a la vez.
 - [ ] ★ Elige una tarjeta y pulsa «¡Esta es mi favorita!»: «¡Voto guardado!», tu tarjeta en fucsia con ✓ y los porcentajes.
 - [ ] Elige otra y vuelve a pulsar: cambia tu voto (no se suma). Sal y vuelve a entrar: sigue la tuya.
 - [ ] Vota con otra cuenta (la de prueba) y mira cómo cambian los porcentajes.
 - [ ] Con el teclado: Tab hasta las tarjetas, flechas para cambiar, Enter en el botón.
 - [ ] En el móvil (F12, 390 px): las tarjetas, una debajo de otra, y el botón a lo ancho.
 - [ ] Los iconos de ChatGPT, a la izquierda de «Propuesta futura» en cada tarjeta: se distinguen bien, también en la tarjeta elegida (rosa).
-- [ ] **Decide:** si te gustan los iconos y si quieres el bloque más compacto.
+- [ ] **Decide:** si te gustan los iconos y la portada nueva (si no, se vuelve a la anterior).
 
 ## 9. Teclado y contraste (T030)
 
