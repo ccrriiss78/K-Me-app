@@ -99,7 +99,7 @@ Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu nave
 
 - [ ] ★ Al entrar, la portada nueva de «Mi K-ME» (D081). En el ordenador, a la izquierda, tu imagen de perfil con el alias y la fecha; a la derecha, «¿Qué viene después?» con las tres propuestas futuras en fila. En el móvil, tu imagen pequeña arriba y la votación debajo.
 - [ ] La portada sin imagen de perfil (con la cuenta nueva, antes de elegirla) y con un avatar y un sello a la vez.
-- [ ] ★ Elige una tarjeta y pulsa «¡Esta es mi favorita!»: «¡Voto guardado!», tu tarjeta en fucsia con ✓ y los porcentajes.
+- [ ] ★ Elige una tarjeta y pulsa «¡Esta es mi favorita!»: «¡Voto guardado!», tu tarjeta en fucsia con ✓ y los porcentajes. La página **no se recarga ni se mueve** (arreglado hoy, E0099); prueba también con la ventana a unos 900 px y en el móvil (390 px).
 - [ ] Elige otra y vuelve a pulsar: cambia tu voto (no se suma). Sal y vuelve a entrar: sigue la tuya.
 - [ ] Vota con otra cuenta (la de prueba) y mira cómo cambian los porcentajes.
 - [ ] Con el teclado: Tab hasta las tarjetas, flechas para cambiar, Enter en el botón.

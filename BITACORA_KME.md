@@ -2,7 +2,7 @@
 
 > **El hilo conductor de K-ME es personalizar un producto para que el fan tenga el protagonismo que merece dentro del mundo del K-pop.** La primera conversación exploraba un posible proyecto de máquina de vending; esa era una forma posible de materializar la idea. El propósito de dar protagonismo al fan es lo que conecta aquel origen con el proyecto actual.
 
-- **Revisión del archivo:** R0098.
+- **Revisión del archivo:** R0099.
 - **Carpeta actual del proyecto:** `C:\Users\<usuario>\Desktop\ACTIVA2026\k-me` (renombrada por la autora; véase E0006).
 - **Última actualización:** 2026-11-25 · Europe/Madrid.
 - **Responsable de las decisiones:** la autora del proyecto.
@@ -454,6 +454,7 @@ Actualización del editor: E0042 amplía el trabajo de E0015–E0031 con recurso
 | V123 | 2026-11-26 | Ejecutado por el asistente (E0097, a petición de la autora), test cambiado antes que la vista, con la base local `kme_dev` y Chrome sin ventana. | **En rojo primero:** `escenario` (esperaba «Conseguido el» y la fecha de hoy; la tarjeta decía «ganado el» en otra línea). **Después, correcta:** **app 303 de 303**.<br>**Chrome:**<br>- en el ordenador, «✓ Conseguido el 26/11/2026» en una línea;<br>- en el móvil, la fecha baja bajo la etiqueta, sin salirse.<br>**Auditorías:** contraste, 0 fallos a 1280 y 900 px; móvil, 0 fallos (el control y Connect, como en V122).<br>**Sin revisión de la autora.** |
 | V124 | 2026-11-26 | Ejecutado por el asistente (E0098, a petición de la autora), test antes que el CSS, con la base local `kme_dev` y Chrome sin ventana. | **En rojo primero:** `logo-entrada` (la hoja `identidad.css` aún tenía `.tarjeta--entrada::before`). **Después, correcta:** **app 304 de 304**.<br>**Chrome (1200 px):** «Entrar» y «Crear cuenta», sin la raya fucsia sobre el borde de la tarjeta; la de debajo del título, el logo, el lema y la sombra rosa siguen igual.<br>**Sin revisión de la autora.** |
 | V125 | 2026-11-26 | Ejecutado por el asistente (E0098, a petición de la autora), tests antes que el catálogo, con la base local `kme_dev` y Chrome sin ventana. | **En rojo primero:** `collage-lightstick-encendido` (editor, 7) y `lightstick-encendido` (app), porque la pieza no estaba en el catálogo ni sus dibujos en `assets/`. Al añadirla, falla como se esperaba la lista de ranuras de `varios-accesorios`, que se amplía. **Después, correctas:** **editor 211 de 211** y **app 311 de 311**.<br>**Comprobado:** cada variante, sin la luz, es byte a byte la de siempre; las huellas de los de siempre no cambian.<br>**Chrome:**<br>- los tres cuerpos, con camiseta, Chaqueta Denim, Chaqueta Cristal y Top Destello, y con el gorro y las gafas: sin cruces raros;<br>- el filtro `svg-seguro.js` acepta la vista previa real del sello con la luz y rechaza un script añadido;<br>- la photocard del sello en PNG sale encendida;<br>- en el editor real, la pestaña «K» la enseña al lado del de siempre.<br>**Límite:** a tamaño pequeño la diferencia es suave. **Sin revisión de la autora.** |
+| V126 | 2026-11-27 | Ejecutado por el asistente (E0099, a petición de la autora), tests antes que el código, con la base local `kme_dev` y Chrome sin ventana. | **En rojo primero:** pruebas 9 y 10 de `tu-decides` (con JSON, el servidor redirigía y respondía HTML). **Después, correcta:** **app 313 de 313**.<br>**Chrome (1280 × 760), página real con una cuenta de prueba y el voto enviado de verdad:** la página bajada 260 px antes de votar sigue en 260 px después; misma dirección (sin recargar); «¡Voto guardado!», la tarjeta elegida y los porcentajes; el foco, en el botón.<br>**Sin revisión de la autora** (guía, paso 8b). |
 
 Las pruebas V005–V008 son resultados declarados por Claude y distinguidos de la comprobación documental V009. Los escenarios siguientes siguen pendientes para el producto completo:
 
@@ -2997,6 +2998,42 @@ Las respuestas se añaden en la sesión correspondiente, con ejemplos. No rellen
   - commit y subida de E0098 (los 19 archivos aprobados).
 - **Siguiente paso:** revisar las opciones de «Mi K-ME» y contárselas a la autora.
 - **Revisión resultante:** R0098.
+- **Después:** commit `2b20042`, subido.
+
+### E0099 · 2026-11-27 · Votar sin recargar; propuestas para los mensajes de Connect
+
+- **Autoría y entorno:** autora y asistente (Claude Code); ella prueba la app y lo sigue desde el móvil con Remote Control.
+- **Objetivo:**
+  - quitar el movimiento de la página al votar en «TÚ DECIDES»;
+  - aclarar qué es un mensaje en el muro de Connect;
+  - proponer iconos nuevos para los mensajes.
+- **Base leída:** R0098; E0098.
+- **Hechos y trabajo realizado:**
+  - **El movimiento al votar:** la autora lo describió así: «como si alguien hubiese movido la barra lateral».
+    - **La causa:** votar recargaba la página y la redirección llevaba `#tu-decides`, así que el navegador saltaba hasta la votación.
+    - **El arreglo:** se le ofrecieron A (votar sin recargar) y B (quitar el salto), y eligió la A.
+    - **Tests primero (V126).** El controlador, si se le pide JSON, responde `{ html }` con la vista parcial `_tu-decides` (confirmación, elegida, porcentajes y un token nuevo), y 400 `{ error }` si la propuesta no existe.
+    - **El script `public/js/tu-decides.js`** envía el formulario por detrás y cambia el contenido de la sección, que se queda en su sitio. El aviso se escribe después para que lo lea el lector de pantalla, y el foco vuelve al botón sin desplazar la página. Si algo falla, envía el formulario de la forma normal.
+    - **Sin JavaScript,** todo sigue igual.
+  - **Opciones A, B y C de «Mi K-ME» (entrega de ChatGPT):**
+    - revisadas y contadas a la autora; el asistente recomendó la A;
+    - la autora las va a comprobar primero con ChatGPT: no se implementa nada;
+    - la carpeta `entrega-chatgpt-mi-kme-opciones/` sigue en la raíz, sin tocar y fuera de Git.
+  - **Connect (petición de la autora):**
+    - «no se entiende muy bien que sea un mensaje… si es un reto, si es mensaje etc antes del mensaje»;
+    - «me parecen muy pocos iconos, puedes inspirarte en la variedad que hay de emojis».
+    - Se le proponen un tipo de mensaje y una lista de iconos nuevos, en una tinta como los del universo K-pop. Esperan su decisión.
+- **Decisiones confirmadas:** la autora eligió votar sin recargar (opción A).
+- **Decidido por el asistente sin preguntar:**
+  - sin JavaScript se mantiene el salto a `#tu-decides`, que sirve para volver a la votación;
+  - el foco, en el botón.
+- **Pruebas:** V126.
+- **Problemas y pendientes:**
+  - el tipo de mensaje y los iconos nuevos de Connect;
+  - la elección de la autora entre las opciones de «Mi K-ME»;
+  - el commit de E0099.
+- **Siguiente paso:** las respuestas de la autora.
+- **Revisión resultante:** R0099.
 
 <!-- AÑADIR AQUÍ LAS NUEVAS SESIONES, EN ORDEN DE REGISTRO. NO BORRAR E0001. -->
 
@@ -3206,5 +3243,6 @@ PROPUESTA PROCEDENTE DEL OTRO CHAT:
 | R0096 | 2026-11-26 | E0097 | Luz Hangul 001 encendida, con la referencia más reciente de ChatGPT (D082): luz fija en capas de adorno sobre el SVG original y tarjeta en horizontal. V122 (app 303 de 303, Chrome, auditorías). T054 actualizado. TECH_SPEC v1.40. |
 | R0097 | 2026-11-26 | E0097 | La fecha en que se ganó el tesoro, junto a la etiqueta: «Conseguido el …» (V123, app 303 de 303). TECH_SPEC v1.41. |
 | R0098 | 2026-11-26 | E0098 | Sin la raya fucsia suelta sobre la tarjeta de «Entrar» y «Crear cuenta» (V124). Lightstick de estudio · encendido, opción nueva del editor (D083, V125: editor 211 de 211, app 311 de 311); T055. TECH_SPEC v1.42. |
+| R0099 | 2026-11-27 | E0099 | Votar en «TÚ DECIDES» sin recargar la página (V126, app 313 de 313). Propuestas para Connect (tipo de mensaje e iconos nuevos), pendientes de la autora. TECH_SPEC v1.43. |
 
 <!-- FIN DE LA BITÁCORA. Las revisiones posteriores deben conservar las entradas históricas. -->

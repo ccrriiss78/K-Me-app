@@ -85,13 +85,19 @@ after(async () => {
 
 function navegador() {
   let cookie = '';
-  async function pedir(ruta, { metodo = 'GET', datos } = {}) {
-    const res = await fetch(base + ruta, { method: metodo, redirect: 'manual', headers: { cookie, ...(datos ? { 'content-type': 'application/x-www-form-urlencoded' } : {}) }, body: datos ? new URLSearchParams(datos).toString() : undefined });
+  // «json»: lo que envía el script de la página (public/js/tu-decides.js): el formulario de siempre,
+  // pidiendo la respuesta en JSON.
+  async function pedir(ruta, { metodo = 'GET', datos, json = false } = {}) {
+    const res = await fetch(base + ruta, { method: metodo, redirect: 'manual', headers: { cookie, ...(datos ? { 'content-type': 'application/x-www-form-urlencoded' } : {}), ...(json ? { accept: 'application/json' } : {}) }, body: datos ? new URLSearchParams(datos).toString() : undefined });
     const c = res.headers.get('set-cookie'); if (c) cookie = c.split(';')[0];
-    return { estado: res.status, destino: res.headers.get('location'), html: await res.text() };
+    return { estado: res.status, destino: res.headers.get('location'), tipo: res.headers.get('content-type') ?? '', html: await res.text() };
   }
   const token = async () => /name="_csrf" value="([a-f0-9]+)"/.exec((await pedir(cookie ? '/mi-kme' : '/entrar')).html)[1];
-  return { pedir, enviar: async (ruta, datos) => pedir(ruta, { metodo: 'POST', datos: { _csrf: await token(), ...datos } }) };
+  return {
+    pedir,
+    enviar: async (ruta, datos) => pedir(ruta, { metodo: 'POST', datos: { _csrf: await token(), ...datos } }),
+    enviarJson: async (ruta, datos) => pedir(ruta, { metodo: 'POST', datos: { _csrf: await token(), ...datos }, json: true }),
+  };
 }
 async function entrar(cuenta) { const n = navegador(); assert.equal((await n.enviar('/entrar', { usuario: cuenta.usuario, password })).estado, 302); return n; }
 const bloque = (html) => /<section[^>]*id="tu-decides"[\s\S]*?<\/section>\s*<!-- fin tu-decides -->/.exec(html)?.[0] ?? '';
@@ -188,5 +194,34 @@ test('K-ME · TÚ DECIDES', { skip: !hayConfiguracion() && 'falta app/.env.local
     assert.equal((await anonimo.pedir('/tu-decides', { metodo: 'POST', datos: { propuesta: 'exchange' } })).destino, '/entrar');
     assert.equal((await navC.pedir('/tu-decides', { metodo: 'POST', datos: { propuesta: 'exchange' } })).estado, 403);
     assert.deepEqual(await votoDe(C.id), ['fan-events']);
+  });
+
+  // La autora (E0098): al votar, la página se recargaba y saltaba hasta la votación. Con JavaScript, el
+  // voto se envía por detrás y el servidor devuelve el bloque nuevo, que sustituye al anterior sin
+  // recargar ni mover la página. Sin JavaScript, todo sigue como en las pruebas 2 a 8.
+  await t.test('9. con JavaScript (pide JSON), votar no recarga: responde el bloque nuevo, con la confirmación, la elegida, los porcentajes y un token para volver a votar', async () => {
+    const pagina = (await navB.pedir('/mi-kme')).html;
+    assert.match(pagina, /<script src="\/js\/tu-decides\.js" defer><\/script>/, 'la página carga el script');
+    const script = await fetch(base + '/js/tu-decides.js');
+    assert.equal(script.status, 200);
+    assert.match(script.headers.get('content-type'), /javascript/);
+
+    const r = await navB.enviarJson('/tu-decides', { propuesta: 'my-stage' });
+    assert.equal(r.estado, 200, 'sin redirección');
+    assert.match(r.tipo, /^application\/json/);
+    const { html } = JSON.parse(r.html);
+    assert.deepEqual(await votoDe(B.id), ['my-stage'], 'el voto se guarda');
+    assert.ok(bloque(html), 'el bloque entero');
+    assert.match(texto(bloque(html)), /¡Voto guardado!/);
+    assert.equal(elegida(html), 'my-stage');
+    assert.match(bloque(html), /data-porcentaje/, 'con los resultados');
+    assert.match(bloque(html), /<form method="post" action="\/tu-decides"[\s\S]*name="_csrf" value="[a-f0-9]+"/, 'se puede volver a votar');
+  });
+
+  await t.test('10. con JavaScript, una propuesta que no existe: 400 en JSON con el mensaje, y no cambia nada', async () => {
+    const r = await navB.enviarJson('/tu-decides', { propuesta: 'intercambios' });
+    assert.equal(r.estado, 400);
+    assert.deepEqual(JSON.parse(r.html), { error: 'Esa propuesta no existe.' });
+    assert.deepEqual(await votoDe(B.id), ['my-stage']);
   });
 });
