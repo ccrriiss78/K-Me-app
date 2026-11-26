@@ -20,12 +20,8 @@
   content: ''; display: block; width: 70px; height: 8px; margin-top: .55rem;
   background: var(--kme-acento); clip-path: polygon(3% 36%, 93% 0, 100% 31%, 87% 46%, 91% 66%, 16% 100%, 0 79%);
 }
+/* Sin la raya fucsia suelta que iba encima del borde, a la derecha: la quitó la autora (E0098). */
 .tarjeta--entrada { position: relative; isolation: isolate; box-shadow: 5px 5px 0 var(--color-rosa-suave); }
-.tarjeta--entrada::before {
-  content: ''; position: absolute; top: -12px; right: 12px; width: 110px; height: 8px;
-  background: var(--kme-acento); transform: rotate(-3deg); pointer-events: none;
-  clip-path: polygon(4% 30%, 100% 0, 94% 58%, 98% 75%, 0 100%);
-}
 .formulario input { border-color: var(--kme-contorno); border-radius: var(--kme-radio-control); }
 .boton {
   min-height: 44px; background: var(--kme-tinta); color: #fff;

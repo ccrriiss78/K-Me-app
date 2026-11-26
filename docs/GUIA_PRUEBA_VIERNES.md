@@ -1,6 +1,6 @@
 # Guía de la prueba en el navegador · viernes 27/11/2026
 
-Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu navegador (T024, T030, T036, T039, T040, T041, T043, T044, T045, T046, T047, T048, T049 y T053). Todo está probado con tests y en Chrome sin ventana por el asistente, **pero no por ti**: esta prueba es la que cuenta.
+Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu navegador (T024, T030, T036, T039, T040, T041, T043, T044, T045, T046, T047, T048, T049, T053 y T055). Todo está probado con tests y en Chrome sin ventana por el asistente, **pero no por ti**: esta prueba es la que cuenta.
 
 - ★ = sale en la demo del 1/12. Si vas justa de tiempo, haz primero lo marcado.
 - Si algo falla: haz una captura, apunta el número del paso y sigue. Al final me pasas la lista.
@@ -17,6 +17,7 @@ Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu nave
 - [ ] ★ Crear cuenta con un alias que lleve una palabra no permitida → el aviso del alias, y el usuario se conserva.
 - [ ] ★ Crear la cuenta bien → entras en «Mi K-ME», con tu alias en la cabecera.
 - [ ] Revisa la lista de palabras no permitidas: `app/src/catalogos/palabras-no-permitidas.js`.
+- [ ] En «Entrar» y «Crear cuenta», ya no está la raya fucsia suelta encima de la tarjeta (E0098).
 
 ## 2. Mi escenario · HANGUL LIVE 001 (T043)
 
@@ -56,6 +57,7 @@ Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu nave
 - [ ] Añade el pin y el lightstick (en «K») → los cinco a la vez.
 - [ ] Cambia el color del gorro (en «K», debajo de los accesorios).
 - [ ] Prueba el lightstick, la falda con bolsillos y la falda con botas con los tres cuerpos («Cuerpo»).
+- [ ] ★ **Lightstick encendido (T055):** en «K», al lado del de siempre, «Lightstick de estudio · encendido». Elígelo con los tres cuerpos y con alguna chaqueta, y con el gorro y las gafas. Al elegir uno, el otro se quita. Guarda, vuelve a abrir, haz un sello «Cuerpo entero» y descarga la photocard: tiene que salir encendido. **Decide:** ¿se nota bastante la luz a tamaño pequeño?
 - [ ] ★ Ponle nombre y «Guardar» → sale en «Mis avatares». Ábrelo otra vez: está igual, con sus accesorios.
 - [ ] «Mi ambiente»: cambia el color.
 - [ ] ★ «Imprimir avatar» y las dos photocards en PDF.

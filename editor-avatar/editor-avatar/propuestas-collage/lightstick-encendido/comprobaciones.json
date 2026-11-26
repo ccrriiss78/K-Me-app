@@ -1,0 +1,55 @@
+{
+  "idOriginal": "collage-lightstick-estudio",
+  "catalogoOriginal": {
+    "id": "collage-lightstick-estudio",
+    "nombre": "Lightstick de estudio",
+    "coleccion": "collage-01",
+    "zona": "mano",
+    "ranura": "mano",
+    "indicePorCuerpo": {
+      "relajado": 0,
+      "recto": 1,
+      "amplio": 2
+    },
+    "miniatura": {
+      "recorte": "200 245 120 170",
+      "capas": [
+        "accesorio"
+      ]
+    },
+    "capas": {
+      "accesorio": [
+        "../assets/kme/accesorio/collage-lightstick-estudio-delgado.svg",
+        "../assets/kme/accesorio/collage-lightstick-estudio-medio.svg",
+        "../assets/kme/accesorio/collage-lightstick-estudio-grueso.svg"
+      ]
+    }
+  },
+  "variantes": [
+    {
+      "archivo": "collage-lightstick-estudio-encendido-delgado.svg",
+      "bytes": 32642,
+      "originalSha256": "0c3e6294ce5ec2a20dafd935850485c31775aa782265b64a9104dc1937d32273",
+      "texturasConservadas": true,
+      "agarreConservado": true,
+      "transform": "translate(-47 15)"
+    },
+    {
+      "archivo": "collage-lightstick-estudio-encendido-medio.svg",
+      "bytes": 32630,
+      "originalSha256": "ca3f9236a8644135df0dc3851b0b3af555e4e37da27d92b2d92ab20581f2fe09",
+      "texturasConservadas": true,
+      "agarreConservado": true,
+      "transform": "translate(-39 15)"
+    },
+    {
+      "archivo": "collage-lightstick-estudio-encendido-grueso.svg",
+      "bytes": 32636,
+      "originalSha256": "77e9d244d54ab1ba51f0de98a307a15e0ce811ec49e07f0aa063687968897890",
+      "texturasConservadas": true,
+      "agarreConservado": true,
+      "transform": "translate(-31 15)"
+    }
+  ],
+  "nota": "Solo se sustituyeron dibujos en memoria para la vista previa. No se modificó el catálogo del proyecto."
+}

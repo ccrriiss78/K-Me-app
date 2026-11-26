@@ -38,7 +38,8 @@ test('Catálogo: cada accesorio tiene su ranura, en el orden gorro, orejas, auri
   assert.deepEqual(c.datos.ranurasAccesorio, ['gorro', 'orejas', 'auriculares', 'gafas', 'pin', 'pecho', 'bolso', 'muneca', 'mano']);
   const ranura = Object.fromEntries(c.piezas('accesorio').map((p) => [p.id, p.ranura]));
   assert.deepEqual(ranura, {
-    ninguno: undefined, gafas: 'gafas', auriculares: 'auriculares', pin: 'pin', [LUZ]: 'mano', [GORRO]: 'gorro',
+    // El lightstick encendido (D083, E0098), en la mano, como el de siempre.
+    ninguno: undefined, gafas: 'gafas', auriculares: 'auriculares', pin: 'pin', [LUZ]: 'mano', [`${LUZ}-encendido`]: 'mano', [GORRO]: 'gorro',
     'collage-k-pendientes-cometa': 'orejas', 'collage-k-brazalete-fanchant': 'muneca', 'collage-k-bolso-encore-rizo': 'bolso', 'collage-k-lazo-saten': 'pin',
     'collage-k06-pendientes-cometa': 'orejas', 'collage-k06-pulseras-fanchant': 'muneca', 'collage-k06-pines-fan-signal': 'pecho',
     'collage-k06-bolso-encore': 'bolso', 'collage-k06-bolso-encore-rizo': 'bolso', 'collage-k06-lazo-saten': 'pin',

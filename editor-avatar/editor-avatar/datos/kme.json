@@ -3027,6 +3027,31 @@
         }
       },
       {
+        "id": "collage-lightstick-estudio-encendido",
+        "nombre": "Lightstick de estudio · encendido",
+        "coleccion": "collage-01",
+        "zona": "mano",
+        "ranura": "mano",
+        "indicePorCuerpo": {
+          "relajado": 0,
+          "recto": 1,
+          "amplio": 2
+        },
+        "miniatura": {
+          "recorte": "200 245 120 170",
+          "capas": [
+            "accesorio"
+          ]
+        },
+        "capas": {
+          "accesorio": [
+            "../assets/kme/accesorio/collage-lightstick-estudio-encendido-delgado.svg",
+            "../assets/kme/accesorio/collage-lightstick-estudio-encendido-medio.svg",
+            "../assets/kme/accesorio/collage-lightstick-estudio-encendido-grueso.svg"
+          ]
+        }
+      },
+      {
         "id": "collage-gorro-punto",
         "nombre": "Gorro de punto",
         "coleccion": "collage-02",

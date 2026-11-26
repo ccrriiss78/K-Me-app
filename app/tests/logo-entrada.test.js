@@ -71,6 +71,14 @@ test('logo de las páginas de entrada', { skip: !hayConfiguracion() && 'Sin app/
     });
   }
 
+  // La autora pidió quitarla el 26/11/2026 (E0098): era una raya fucsia suelta sobre el borde de arriba
+  // de la tarjeta, a la derecha (`.tarjeta--entrada::before`). La de debajo del título se queda.
+  await t.test('la tarjeta de entrada no lleva la raya fucsia suelta encima del borde', async () => {
+    const res = await fetch(base + '/css/identidad.css');
+    assert.equal(res.status, 200);
+    assert.doesNotMatch(await res.text(), /\.tarjeta--entrada::before/, 'sin la raya de adorno sobre la tarjeta');
+  });
+
   await t.test('las demás páginas (por ejemplo, la de error 404) conservan el logo pequeño en la cabecera', async () => {
     const { estado, html } = await pedir('/esta-pagina-no-existe');
     assert.equal(estado, 404);
