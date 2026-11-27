@@ -1,6 +1,6 @@
 # TECH_SPEC · K-ME
 
-**Estado:** versión 1.43 · 27/11/2026 · Responde al pendiente T012 de `BITACORA_KME.md`. Revisada con la autora: acepta las propuestas de Q1 a Q6 y decide Q7 a Q10 con cambios (ver §6). El 18/11 decide Q11, el alcance del MVP (§5.1) y los nombres de los logos (§4.0). El 19/11 sustituye el círculo cromático por la paleta de la app (§2.5). El 21/11 separa el usuario privado del alias público y añade el registro por formulario (§1). Ese mismo día se incorporan las decisiones del editor de avatar trabajadas con ChatGPT en otra carpeta (§2.2, §2.6, §3.3), y se decide que «Mi ambiente» también usa solo la paleta (§2.6, Q14). El 22/11 decide qué lleva el sello (§4.1, D041), protege el alias frente a palabras ofensivas (§1, D042), aprueba el catálogo de hangul comprobado (§4.2, D043), y decide que la imagen de perfil pueda ser un avatar, un sello o los dos (D044) y que el sello se pueda imprimir y descargar (D045). El 22 y 23/11 amplía la paleta del sello con colores vivos (D046). El 23/11 elige de momento la composición A+C para sellos y exige coherencia del tratamiento visual entre pantallas (§2.7, D047). El 24/11 decide guardar la imagen de perfil como referencia, con dos claves foráneas (§4.3, D055), borrar varios o todos (§3.6, D058) y cómo va Avatar Studio dentro de la app (§3.6, D059). Ese mismo día aprueba los textos, los dibujos, la regla y el sitio de HANGUL LIVE 001, los Kpopis y «Mis tesoros» (§5.2, D066).
+**Estado:** versión 1.47 · 27/11/2026 · Responde al pendiente T012 de `BITACORA_KME.md`. Revisada con la autora: acepta las propuestas de Q1 a Q6 y decide Q7 a Q10 con cambios (ver §6). El 18/11 decide Q11, el alcance del MVP (§5.1) y los nombres de los logos (§4.0). El 19/11 sustituye el círculo cromático por la paleta de la app (§2.5). El 21/11 separa el usuario privado del alias público y añade el registro por formulario (§1). Ese mismo día se incorporan las decisiones del editor de avatar trabajadas con ChatGPT en otra carpeta (§2.2, §2.6, §3.3), y se decide que «Mi ambiente» también usa solo la paleta (§2.6, Q14). El 22/11 decide qué lleva el sello (§4.1, D041), protege el alias frente a palabras ofensivas (§1, D042), aprueba el catálogo de hangul comprobado (§4.2, D043), y decide que la imagen de perfil pueda ser un avatar, un sello o los dos (D044) y que el sello se pueda imprimir y descargar (D045). El 22 y 23/11 amplía la paleta del sello con colores vivos (D046). El 23/11 elige de momento la composición A+C para sellos y exige coherencia del tratamiento visual entre pantallas (§2.7, D047). El 24/11 decide guardar la imagen de perfil como referencia, con dos claves foráneas (§4.3, D055), borrar varios o todos (§3.6, D058) y cómo va Avatar Studio dentro de la app (§3.6, D059). Ese mismo día aprueba los textos, los dibujos, la regla y el sitio de HANGUL LIVE 001, los Kpopis y «Mis tesoros» (§5.2, D066).
 
 Este documento dice **qué se construye y cómo**. La bitácora dice qué ha pasado y por qué; `CLAUDE.md` dice cómo trabaja el agente.
 
@@ -576,6 +576,11 @@ Cada paso es un encargo de `/nueva-funcionalidad`, con plan, tests en rojo, revi
     - la lista (`ICONOS_MENSAJE` en `src/catalogos/connect.js`) tiene 14 caritas de emociones, 15 reacciones y 9 iconos del universo K-pop: 7 dibujados nuevos en `public/img/connect/mensaje/`, más la estrella y la nota del sello;
     - un icono inventado o más de 5 dan 400 «Elige hasta 5 iconos de la lista.»;
     - sin JavaScript se compone con 5 desplegables; con JavaScript, con una paleta (`public/js/connect-publicar.js`) que rellena esos mismos desplegables.
+    - **[DECIDIDO 27/11, D084; hecho en E0099] Tipo de mensaje:**
+      - **Qué es:** al añadir iconos se elige de una lista cerrada (`TIPOS_MENSAJE`): Mensaje, Reto, Pregunta, Ánimo o Recomendación. Sin elegir, Mensaje.
+      - **Dónde se guarda:** columna `tipo_mensaje` (migración 012). Sin iconos es `NULL`.
+      - **En el muro:** sale delante de los iconos, en una etiqueta, y da nombre a la lista para los lectores de pantalla. Las publicaciones de antes se ven como «Mensaje».
+      - **Error:** un tipo inventado da 400 «Elige qué es tu mensaje de la lista.».
   - Los retos: el primero, HANGUL LIVE 001, ya tiene reglas (D062, §5.2). Los demás se especifican con la autora.
 
 ### 5.2 Ideas de la autora para después del MVP (22/11/2026)
@@ -592,6 +597,14 @@ Cada paso es un encargo de `/nueva-funcionalidad`, con plan, tests en rojo, revi
   - **Recompensa:** solo la primera vez que se aciertan las 3, y nunca dos veces: 20 Kpopis y «Luz Hangul 001».
   - **Fuera:** micrófono, audio generado y vídeo.
   - **Textos:** los exactos se aprueban antes de programarlos.
+- **[DECIDIDO 27/11, D086; hecho en E0101] HANGUL LIVE 002 y 003**, detrás de la 001, que no cambia:
+  - **002 · Lo que sentimos:** 사랑, 행복 y 미소. **003 · Nuestro escenario:** 무대, 최애 y 컴백. Son palabras del catálogo del sello (D043), con entrada propia en el Diccionario Básico de Coreano (comprobadas otra vez el 27/11); un test vigila que sigan siendo esas.
+  - **Recompensa:** 20 Kpopis la primera vez que se completa cada una, sin tesoro.
+  - **Navegación:** el botón «K» (la K con las comillas fucsias; se ilumina al pasar el ratón o con el foco, y con «reducir movimiento» solo cambia de color) para «Siguiente pregunta», «Siguiente clase» y «Terminar la clase». «← Clase anterior» para repasar. Todas las clases están abiertas.
+  - **[DECIDIDO 27/11, D087 (antes P032); hecho en E0102] Repasar:**
+    - repetir una clase ya completada da 5 Kpopis (`REPASO`), como mucho una vez al día por clase (día de Madrid);
+    - clave `repaso:<clase>:<día>` en `kpopis_movimientos`, sin migración;
+    - la recompensa de la clase sigue siendo solo para la primera vez.
 - **[DECIDIDO, D063] Kpopis:**
   - nombre «Kpopi» y «Kpopis», de momento, con un icono propio de moneda;
   - saldo y movimientos por cuenta, calculados solo en el servidor; cada recompensa única tiene una clave que la base de datos no deja repetir;
@@ -638,7 +651,16 @@ Cada paso es un encargo de `/nueva-funcionalidad`, con plan, tests en rojo, revi
     - **Resultados:** los porcentajes reales tras votar, sin nombres.
     - **Seguridad:** sesión, CSRF y SQL parametrizado; solo se aceptan las tres propuestas.
     - **Iconos:** los de ChatGPT, integrados en E0094 (T052): `public/img/tu-decides/`, decorativos, con tests de seguridad.
-    - **[DECIDIDO 26/11, D081; hecho en E0095]** Portada de «Mi K-ME» de la propuesta P031 de ChatGPT (`docs/propuestas/tu-decides-01/`): identidad y votación en dos columnas en el ordenador (desde 1152 px); identidad compacta encima en el móvil.
+    - **[DECIDIDO 26/11, D081; hecho en E0095; sustituido por D085]** Portada de «Mi K-ME» de la propuesta P031 de ChatGPT (`docs/propuestas/tu-decides-01/`): identidad y votación en dos columnas en el ordenador (desde 1152 px); identidad compacta encima en el móvil.
+    - **[DECIDIDO 27/11, D085; hecho en E0100] «Mi K-ME» como «Mi espacio»** (opción C de ChatGPT, `entrega-chatgpt-mi-kme-opciones/`):
+      - **Orden:** primero lo propio (la imagen de perfil grande, con el alias y la fecha de alta; Mis tesoros; Mis Kpopis; y «Tu sello de perfil» si hay avatar y sello) y después «TÚ DECIDES».
+      - **En el ordenador** (desde 880 px), la imagen a la izquierda (2/5) y lo demás a la derecha (3/5). **En el móvil**, uno debajo de otro.
+      - **Sin recuadros vacíos:** con solo sello, el sello ocupa la imagen de perfil.
+      - **Cabecera:**
+        - el logo, a 80 px de alto (64 en el móvil);
+        - la imagen de perfil, a su misma altura, con la misma proporción: la cara del avatar con su encuadre de rostro, o el sello entero;
+        - en el móvil, el alias se parte en líneas para que todo quepa en la fila del logo.
+      - **Tests:** `tests/mi-kme-espacio.test.js`.
     - **[PROPUESTA, P031]** Navegación deslizable en el móvil: espera la elección de la autora.
 - **Objetos distintos para cada fan**, para que no haya avatares iguales y den ganas de intercambiar.
 
@@ -783,3 +805,7 @@ Este documento **se puede cambiar** cuando la app avance. Cada cambio se hace as
 | 1.41 | 26/11/2026 | §2.7: «Conseguido el» con la fecha en que se ganó el tesoro. |
 | 1.42 | 26/11/2026 | §2.7: el lightstick de estudio encendido, opción nueva del editor (D083). |
 | 1.43 | 27/11/2026 | §5.2: votar en «TÚ DECIDES» sin recargar la página (E0099). |
+| 1.44 | 27/11/2026 | §5.1: tipo del mensaje de Connect (D084), migración 012. |
+| 1.45 | 27/11/2026 | §5.2: «Mi K-ME» como «Mi espacio» (D085), en lugar de la portada de D081; logo de 80 px e imagen de perfil de la cabecera a su altura. |
+| 1.46 | 27/11/2026 | §5.2: HANGUL LIVE 002 y 003 (D086), con el botón «K» y «Clase anterior»; P032 (Kpopis por repasar), propuesta. |
+| 1.47 | 27/11/2026 | §5.2: 5 Kpopis por repasar una clase, una vez al día (D087, antes P032). |

@@ -58,8 +58,9 @@ export async function responderPregunta(req, res, next) {
     const datos = await retos.responder({
       idUsuario, idReto: req.params.reto, numero: req.params.numero, respuesta: req.body?.respuesta,
     });
-    // Si se acaba de ganar la recompensa, la cabecera de esta misma página ya la cuenta.
-    if (datos.final?.primeraVez) res.locals.kpopisSesion = await saldoDeSesion(idUsuario);
+    // Si se acaba de ganar la recompensa (o los Kpopis de repasar, D087), la cabecera de esta misma
+    // página ya la cuenta.
+    if (datos.final?.primeraVez || datos.final?.repaso) res.locals.kpopisSesion = await saldoDeSesion(idUsuario);
     res.render('reto-pregunta', { titulo: datos.reto.titulo, estilosExtra: ESTILOS, ...datos, error: null });
   } catch (err) {
     responderError(err, req, res, next);

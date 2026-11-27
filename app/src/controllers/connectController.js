@@ -8,6 +8,7 @@
 import * as connect from '../services/connectService.js';
 import {
   EMOCIONES, MAX_REACCIONES_POR_TIPO, ICONOS_MENSAJE, GRUPOS_ICONOS, MAX_ICONOS_MENSAJE,
+  TIPOS_MENSAJE, TIPO_MENSAJE_POR_DEFECTO,
 } from '../catalogos/connect.js';
 
 const ERRORES_VISIBLES = {
@@ -15,6 +16,7 @@ const ERRORES_VISIBLES = {
   REACCION_NO_VALIDA: 'Esa reacción no existe.',
   OPCION_NO_VALIDA: 'Esa opción no existe.',
   ICONOS_NO_VALIDOS: 'Elige hasta 5 iconos de la lista.',
+  TIPO_MENSAJE_NO_VALIDO: 'Elige qué es tu mensaje de la lista.',
 };
 
 async function pintarMuro(req, res, estado, extra = {}) {
@@ -28,6 +30,8 @@ async function pintarMuro(req, res, estado, extra = {}) {
     iconosMensaje: ICONOS_MENSAJE,
     gruposIconos: GRUPOS_ICONOS,
     maxIconos: MAX_ICONOS_MENSAJE,
+    tiposMensaje: TIPOS_MENSAJE,
+    tipoMensajePorDefecto: TIPO_MENSAJE_POR_DEFECTO,
     publicaciones,
     error: null,
     publicada: false,
@@ -72,8 +76,8 @@ export async function mostrarMuro(req, res, next) {
 
 export async function publicar(req, res, next) {
   try {
-    const { emocion, diseno, iconos } = req.body;
-    await connect.publicar({ idUsuario: req.session.usuarioId, emocion, diseno, iconos });
+    const { emocion, diseno, iconos, tipo_mensaje: tipoMensaje } = req.body;
+    await connect.publicar({ idUsuario: req.session.usuarioId, emocion, diseno, iconos, tipoMensaje });
     res.redirect('/connect?publicada=1');
   } catch (err) {
     responderError(err, req, res, next);

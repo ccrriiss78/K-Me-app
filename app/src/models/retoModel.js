@@ -21,8 +21,10 @@ export async function leerProgreso({ idUsuario, idReto }) {
 //   detrás de otra, y solo una de ellas cierra la ronda.
 // - La recompensa solo se entrega la primera vez: las claves únicas de kpopis_movimientos y de
 //   tesoros_usuario lo garantizan (ON CONFLICT DO NOTHING).
-// Devuelve { aciertos, completado } y, si se ha completado, { primeraVez, ganadoEn }.
-export async function apuntarAcierto({ idUsuario, idReto, numero, totalPreguntas, recompensa }) {
+// - Repasar (D087): si no es la primera vez y llega «repaso» ({ kpopis, clave }, con la fecha en la
+//   clave), se apuntan esos Kpopis; la clave única hace que solo cuente una vez al día por clase.
+// Devuelve { aciertos, completado } y, si se ha completado, { primeraVez, repaso, ganadoEn }.
+export async function apuntarAcierto({ idUsuario, idReto, numero, totalPreguntas, recompensa, repaso = null }) {
   const cliente = await obtenerPool().connect();
   try {
     await cliente.query('BEGIN');
@@ -50,13 +52,25 @@ export async function apuntarAcierto({ idUsuario, idReto, numero, totalPreguntas
        ON CONFLICT (id_usuario, clave) DO NOTHING`,
       [idUsuario, recompensa.kpopis, `reto:${idReto}`],
     );
-    await cliente.query(
-      `INSERT INTO tesoros_usuario (id_usuario, id_tesoro, origen) VALUES ($1, $2, $3)
-       ON CONFLICT (id_usuario, id_tesoro) DO NOTHING`,
-      [idUsuario, recompensa.tesoro, idReto],
-    );
+    // El tesoro, solo si el reto lo da (las clases 002 y 003 dan solo Kpopis, D086).
+    if (recompensa.tesoro) {
+      await cliente.query(
+        `INSERT INTO tesoros_usuario (id_usuario, id_tesoro, origen) VALUES ($1, $2, $3)
+         ON CONFLICT (id_usuario, id_tesoro) DO NOTHING`,
+        [idUsuario, recompensa.tesoro, idReto],
+      );
+    }
+    let repasoPagado = false;
+    if (pagado === 0 && repaso) {
+      const { rowCount } = await cliente.query(
+        `INSERT INTO kpopis_movimientos (id_usuario, cantidad, clave) VALUES ($1, $2, $3)
+         ON CONFLICT (id_usuario, clave) DO NOTHING`,
+        [idUsuario, repaso.kpopis, repaso.clave],
+      );
+      repasoPagado = rowCount === 1;
+    }
     await cliente.query('COMMIT');
-    return { aciertos: [], completado: true, primeraVez: pagado === 1, ganadoEn: cierre.completado_en };
+    return { aciertos: [], completado: true, primeraVez: pagado === 1, repaso: repasoPagado, ganadoEn: cierre.completado_en };
   } catch (err) {
     await cliente.query('ROLLBACK').catch(() => {});
     throw err;

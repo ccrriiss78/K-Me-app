@@ -1,0 +1,11 @@
+<%# El sello de perfil en «Mi K-ME» (D044), con «Quitar». Va en la imagen de perfil si no hay avatar,
+    o en su propio apartado si están los dos (D085). Recibe sello ({ nombre, dibujo, ancho }) y csrfToken. %>
+<figure class="perfil__imagen" data-perfil="sello">
+  <%- include('_sello', { dibujo: sello.dibujo, ancho: sello.ancho, clase: 'sello--perfil' }) %>
+  <figcaption><%= sello.nombre %></figcaption>
+  <form method="post" action="/perfil/sello">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <input type="hidden" name="sello" value="">
+    <button type="submit" class="boton boton--pequeno boton--secundario">Quitar el sello del perfil</button>
+  </form>
+</figure>

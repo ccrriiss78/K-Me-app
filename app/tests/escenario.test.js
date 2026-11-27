@@ -3,8 +3,8 @@
 //   hace 3 preguntas, con las opciones solo en hangul y lectura.
 // - Tras cada respuesta, acierte o falle, la traducción y para qué sirve. Si falla, prueba otra vez:
 //   cada pregunta se repite hasta acertar (regla a, aprobada por la autora en E0073).
-// - Se completa al acertar las 3. La primera vez da 20 Kpopis y «Luz Hangul 001»; repetirla no da
-//   nada más: nunca se cobra dos veces, ni con dos respuestas a la vez.
+// - Se completa al acertar las 3. La primera vez da 20 Kpopis y «Luz Hangul 001»; nunca se cobra dos
+//   veces, ni con dos respuestas a la vez. Desde D087, repasarla da 5 Kpopis, una vez al día.
 // - El progreso, el saldo y los tesoros son de cada cuenta: otra cuenta no los ve.
 // - Solo el servidor decide si se acierta y cuánto se gana.
 // Necesitan una base de datos real configurada en app/.env.local, con la migración 009 aplicada.
@@ -126,7 +126,8 @@ after(async () => {
 // --- Catálogos (sin base de datos) ---
 
 test('HANGUL LIVE 001 enseña solo las 3 expresiones aprobadas, con lectura, traducción, para qué sirve y su fuente del NIKL (D062)', () => {
-  assert.equal(RETOS.length, 1, 'de momento, un solo reto');
+  // Desde D086 (E0101), detrás de la 001 van la 002 y la 003 (tests/hangul-live-clases.test.js).
+  assert.deepEqual(RETOS.map((r) => r.id), ['hangul-live-001', 'hangul-live-002', 'hangul-live-003'], 'la 001, la primera');
   const reto = buscarReto('hangul-live-001');
   assert.equal(reto.titulo, 'HANGUL LIVE 001');
   assert.equal(reto.lema, 'Tu voz. Nuestra luz');
@@ -187,11 +188,11 @@ test('Mi escenario: HANGUL LIVE 001, Kpopis y Mis tesoros', { skip: !hayConfigur
     assert.equal(r.destino, '/entrar');
   });
 
-  await t.test('el menú lleva a «Mi escenario», que presenta solo HANGUL LIVE 001, sin empezar y con su recompensa; la cabecera enseña 0 Kpopis', async () => {
+  await t.test('el menú lleva a «Mi escenario», que presenta HANGUL LIVE 001 (y, desde D086, la 002 y la 003), sin empezar y con su recompensa; la cabecera enseña 0 Kpopis', async () => {
     const r = await navB.pedir('/escenario');
     assert.equal(r.estado, 200);
     assert.match(r.html, /<a href="\/escenario" aria-current="page">Mi escenario<\/a>/);
-    assert.equal((r.html.match(/data-reto="/g) ?? []).length, 1, 'un solo reto: nada de pantallas que aparentan funcionar');
+    assert.deepEqual([...r.html.matchAll(/data-reto="([\w-]+)"/g)].map((m) => m[1]), ['hangul-live-001', 'hangul-live-002', 'hangul-live-003'], 'las tres clases, y nada de pantallas que aparentan funcionar');
     const leido = texto(r.html);
     for (const frase of ['HANGUL LIVE 001', 'Tu voz. Nuestra luz', 'Sin empezar', '20 Kpopis', 'Luz Hangul 001']) {
       assert.ok(leido.includes(frase), `falta «${frase}»`);
@@ -317,17 +318,25 @@ test('Mi escenario: HANGUL LIVE 001, Kpopis y Mis tesoros', { skip: !hayConfigur
     assert.ok(escenario.includes('Repetir'));
   });
 
-  await t.test('repetirla no vuelve a dar la recompensa: «¡Completado otra vez!» con la fecha en que se ganó', async () => {
-    await responder(navA, 1, 'annyeonghaseyo');
-    await responder(navA, 2, 'gomawoyo');
-    const r = await responder(navA, 3, 'paiting');
+  // Desde D087 (E0102), repasar da 5 Kpopis, una vez al día por clase; la recompensa no se repite.
+  await t.test('repetirla no vuelve a dar la recompensa: «¡Completado otra vez!» con la fecha en que se ganó; repasar da 5 Kpopis una vez al día', async () => {
+    const repasar = async () => {
+      await responder(navA, 1, 'annyeonghaseyo');
+      await responder(navA, 2, 'gomawoyo');
+      return responder(navA, 3, 'paiting');
+    };
+    const r = await repasar();
     assert.equal(r.estado, 200);
     const leido = texto(r.html);
-    assert.ok(leido.includes(`¡Completado otra vez! La recompensa ya la ganaste el ${hoy}: es tuya para siempre.`));
-    assert.ok(!leido.includes('Has ganado'), 'no se vuelve a ganar');
-    assert.equal(await saldo(A.id), 20);
-    assert.equal(await cuantosMovimientos(A.id), 1);
-    assert.deepEqual(await tesoros(A.id), ['luz-hangul-001']);
+    assert.ok(leido.includes(`¡Completado otra vez! Por repasar hoy, has ganado 5 Kpopis. La recompensa de la clase ya la ganaste el ${hoy}.`));
+    assert.ok(!leido.includes('Has ganado'), 'la recompensa no se vuelve a ganar');
+    assert.equal(await saldo(A.id), 25);
+    assert.equal(await cuantosMovimientos(A.id), 2);
+    assert.deepEqual(await tesoros(A.id), ['luz-hangul-001'], 'el tesoro, uno solo');
+    const otraVez = texto((await repasar()).html);
+    assert.ok(otraVez.includes(`¡Completado otra vez! La recompensa ya la ganaste el ${hoy}: es tuya para siempre. Los Kpopis por repasar esta clase ya los has ganado hoy: vuelve mañana.`));
+    assert.equal(await saldo(A.id), 25, 'una vez al día');
+    assert.equal(await cuantosMovimientos(A.id), 2);
   });
 
   await t.test('dos respuestas a la vez que completan la miniclase no cobran la recompensa dos veces', async () => {

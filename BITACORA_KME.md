@@ -2,7 +2,7 @@
 
 > **El hilo conductor de K-ME es personalizar un producto para que el fan tenga el protagonismo que merece dentro del mundo del K-pop.** La primera conversación exploraba un posible proyecto de máquina de vending; esa era una forma posible de materializar la idea. El propósito de dar protagonismo al fan es lo que conecta aquel origen con el proyecto actual.
 
-- **Revisión del archivo:** R0099.
+- **Revisión del archivo:** R0102.
 - **Carpeta actual del proyecto:** `C:\Users\<usuario>\Desktop\ACTIVA2026\k-me` (renombrada por la autora; véase E0006).
 - **Última actualización:** 2026-11-25 · Europe/Madrid.
 - **Responsable de las decisiones:** la autora del proyecto.
@@ -267,9 +267,13 @@ Todas estas decisiones están vigentes en esta revisión. Los cambios futuros de
 | D078 | **El nombre visible del lote 06 es «COLECCIÓN K · SPOTLIGHT».** Lema propuesto: «Brilla en tu propio escenario».<br>**Encore** queda reservado para la colección anterior (D075).<br>**Qué cambia:** los títulos y las referencias visibles del lote 06 pasan a Spotlight. Las ocho familias del ZIP, que llegó con «Encore» en su nombre, se identifican por su contenido, para no duplicarlas.<br>**Qué no cambia:** los ids técnicos y los nombres de archivo, por la compatibilidad con recetas y canjes. Tampoco cambian la identidad de K-ME ni los logos. | La autora quiere distinguir las dos colecciones. | E0089, la autora: «El nombre visible aprobado para el lote 06 es: COLECCIÓN K · SPOTLIGHT… Reservamos Encore para la colección anterior… Conserva los ids técnicos ya utilizados y los nombres de archivo». | Hecho en E0089 (V115). E0090: el lema queda solo apuntado bajo Spotlight, sin mostrarse en la app (la autora: «apuntado bajo de Spotlight»). E0091: la autora corrige que se vea en la app (opción A): en «K», un apartado con el título, el lema debajo y las piezas Spotlight (V116). |
 | D079 | **MVP de Intercambios antes de congelar:** se construye el **jueves 26 por la tarde (y parte de la noche)**, solo si lo demás que falta ya está terminado.<br>**Reglas:** las 1 a 7 de `docs/PROPUESTA_INTERCAMBIOS.md` (P030).<br>**Cómo:** con TDD, con dos cuentas y con un interruptor para ocultarlo si falla.<br>**El viernes 27,** en su prueba del navegador, la autora decide si se queda o se oculta.<br>**Punto de vuelta:** el commit `c560bc4` o el siguiente. | La autora quiere intentarlo, sabiendo los riesgos: toca el canje y el guardado de avatares, y quita tiempo al viernes. | E0091–E0092, la autora: «Ok reglas», «Si lo intentamos podemos liarla?», «1. Jueves por la tarde y algo de la noche si ya hemos acabado lo demás q falta». | **Anulada en E0093 por D080:** los intercambios no se construyen antes del 1/12; pasan a ser una de las propuestas que votan los fans («K-ME EXCHANGE»). |
 | D080 | **«K-ME · TÚ DECIDES»: votación de futuras experiencias** en «Mi K-ME», la primera pantalla tras entrar.<br>**Contenido:** título «¿Qué viene después?» y el texto «No solo formas parte de K-ME. También puedes decidir en qué se convierte». Tres propuestas futuras, marcadas como tales: K-ME EXCHANGE, MY STAGE y FAN EVENTS. Un solo botón, «¡Esta es mi favorita!».<br>**Reglas:** un voto por cuenta, guardado en PostgreSQL; se cambia y nunca se suma. Tras votar, los porcentajes reales, sin nombres.<br>**Iconos:** los prepara ChatGPT (T052; integrados en E0094).<br>**Sustituye a D079:** en la presentación se enseñan como futuro las funcionalidades que no están hechas. | La autora quiere que los fans participen en la evolución de K-ME y presentar así lo que aún no está hecho. | E0093, la autora: «He cambiado de parecer… presentaríamos a los usuarios las posibles funcionalidades», el encargo «K-ME · TÚ DECIDES» preparado con ChatGPT, «1. Sí 2. chat gpt preparará los dibujos». | Hecho en E0093 (V118), sin los iconos; con los iconos, E0094 (V119). Falta su revisión (T053). |
-| D081 | **Portada de «Mi K-ME» de la propuesta P031, sin la navegación deslizable.** La página, sin recuadro propio y hasta 1120 px. Primero la identidad (la imagen de perfil, con el alias y la fecha de alta) y la votación «TÚ DECIDES»: desde 1152 px, en dos columnas (272 px y el resto); por debajo, una encima de otra, con la imagen compacta (116 px de alto) junto a su nombre. Las tres tarjetas en fila solo si cada una mide 240 px o más. El recuadro de la votación, como las demás tarjetas; el fucsia, solo para la elegida. En el móvil, la votación sin recuadro. Todo lo demás sigue igual y en el mismo orden. | Dar protagonismo a la fan y a su avatar al entrar, y aprovechar el ancho del ordenador, sin tarjetas dentro de tarjetas. | E0095, la autora: «ok», a la pregunta «¿Reordeno «Mi K-ME» esta tarde (A), lo dejamos para después del 1/12 (B) o no lo hacemos (C)? ¿Subo los 26 archivos?», con la recomendación A del asistente. El asistente le dijo antes de empezar que lo entendía como A y subir, para que pudiera pararlo. | Hecho en E0095 (V120). Falta su revisión (T053). |
+| D081 | **Portada de «Mi K-ME» de la propuesta P031, sin la navegación deslizable.** La página, sin recuadro propio y hasta 1120 px. Primero la identidad (la imagen de perfil, con el alias y la fecha de alta) y la votación «TÚ DECIDES»: desde 1152 px, en dos columnas (272 px y el resto); por debajo, una encima de otra, con la imagen compacta (116 px de alto) junto a su nombre. Las tres tarjetas en fila solo si cada una mide 240 px o más. El recuadro de la votación, como las demás tarjetas; el fucsia, solo para la elegida. En el móvil, la votación sin recuadro. Todo lo demás sigue igual y en el mismo orden. | Dar protagonismo a la fan y a su avatar al entrar, y aprovechar el ancho del ordenador, sin tarjetas dentro de tarjetas. | E0095, la autora: «ok», a la pregunta «¿Reordeno «Mi K-ME» esta tarde (A), lo dejamos para después del 1/12 (B) o no lo hacemos (C)? ¿Subo los 26 archivos?», con la recomendación A del asistente. El asistente le dijo antes de empezar que lo entendía como A y subir, para que pudiera pararlo. | Hecho en E0095 (V120). Falta su revisión (T053). **Sustituida por D085 (E0100): «Mi espacio».** |
 | D082 | **Dirección visual de los tesoros y los recuerdos**, aprobada como referencia (TECH_SPEC §2.7).<br>**Color y materiales:** blanco, negro y fucsia siguen uniendo la identidad; los tesoros y los recuerdos pueden llevar lila, turquesa, dorado, plata, acabados irisados y purpurina localizada, según la experiencia. No indican niveles ni categorías superiores.<br>**Recuerdo:** obtenido por participar, sin aspecto de tienda ni de entrada.<br>**Textos y estados:** HTML accesible sobre fondo limpio.<br>**Primera aplicación, Luz Hangul 001:** su SVG original, sin redibujar, sobre un soporte lila suave con textura de papel, un detalle de plata irisada y brillo localizado; acento fucsia y contornos negros.<br>**Integración:** a la medida de «Mis tesoros», en cuadrícula en el ordenador y ajustada al ancho en el móvil; con los datos y reglas actuales; «Conseguido» solo si el tesoro es tuyo.<br>**Sin añadir:** rarezas, precios, recompensas ni funciones nuevas. | Dar más riqueza de color y materiales a K-ME sin perder la identidad ni la legibilidad. | E0096, la autora: «Quiero aplicar a «Mis tesoros» la dirección visual que hemos trabajado con ChatGPT y que apruebo como referencia», con las condiciones de cada punto. La maqueta de ChatGPT es dirección artística, no un recurso; no llegó a esta sesión. | Hecho en E0096 (V121), con CSS y el grano que ya existía. **E0097, referencia más reciente** (`entrega-chatgpt-tesoros-luz/`, «Quiero que Luz Hangul 001 parezca encendida, con luminosidad blanca y rosa en la esfera, halo suave y un pequeño reflejo sobre el fondo lila»): luz fija en capas de adorno y tarjeta en horizontal (V122). Texturas opcionales (T054). Falta su revisión en el navegador (guía, paso 2). |
 | D083 | **Lightstick de estudio · encendido**, una opción nueva del editor.<br>**Qué es:** el lightstick de estudio con luz fija: núcleo blanco y rosa dentro de la bola, halo rosa suave y reflejo blanco. Sin animación.<br>**Al lado del de siempre, que no cambia:** ni su id, ni sus dibujos, ni los avatares guardados con él.<br>**Mismos datos que el de siempre:** colección `collage-01`, zona y ranura de la mano (uno sustituye al otro), colocación por cuerpo y miniatura. Gratis, en la pestaña Colección «K», sin precio ni canje.<br>**No es** el tesoro Luz Hangul 001, que es otra pieza. | Que el fan pueda llevar el lightstick encendido sin perder el de siempre. | E0098, la autora: «ok, lo metemos», a la pregunta «¿La metemos en la app?», tras ver la vista previa de la entrega de ChatGPT del mismo día. | Hecho en E0098 (V125). Falta la revisión de la autora (T055). |
+| D084 | **Tipo del mensaje de Connect.**<br>**Qué es:** al añadir un mensaje con iconos se elige qué es, de una lista cerrada: Mensaje, Reto, Pregunta, Ánimo o Recomendación. Sin elegir, Mensaje.<br>**En el muro:** el tipo sale en una etiqueta delante de los iconos.<br>**Datos:** columna `tipo_mensaje`, migración 012. Sin iconos, ni mensaje ni tipo. Las publicaciones de antes se ven como «Mensaje». | Que se entienda qué es cada mensaje del muro. | E0099, la autora: «no se entiende muy bien que sea un mensaje… si es un reto, si es mensaje etc antes del mensaje». Eligió la opción A, elegir el tipo («1A»). | Hecho en E0099 (V127). Falta su revisión (guía, paso 7). |
+| D085 | **«Mi K-ME» como «Mi espacio»** (opción C de ChatGPT), con el logo más visible y la imagen de perfil de la cabecera más grande. Sustituye la portada de D081.<br>**Orden:** primero lo propio (la imagen de perfil, con el alias y la fecha de alta; Mis tesoros; Mis Kpopis; y el sello aparte si hay avatar y sello) y después «TÚ DECIDES».<br>**En el ordenador:** la imagen a la izquierda y lo demás a la derecha. **En el móvil:** uno debajo de otro.<br>**Sin recuadros vacíos:** si solo hay sello, ocupa la imagen de perfil.<br>**Cabecera:** el logo, a 80 px (64 en el móvil), y la imagen de perfil, a su misma altura. | «Quiero dar prioridad a lo propio: mi avatar, mi sello, mis tesoros y mis Kpopis. TÚ DECIDES presenta propuestas futuras y tendrá menos movimiento, así que debe quedar después». Y «el logo de la cabecera me parece pequeño». | E0100, la autora: «He elegido la opción C · Mi espacio para Mi K-ME», con las referencias `entrega-chatgpt-mi-kme-opciones/C-escritorio.png`, `C-movil.png` y su LEEME. | Hecho en E0100 (V128). Pendientes: su aprobación para cambiar la prueba 1 de `tu-decides` y su revisión en el navegador. |
+| D086 | **HANGUL LIVE 002 y 003**, detrás de la 001, que no cambia.<br>**002 · Lo que sentimos:** 사랑 (amor), 행복 (felicidad) y 미소 (sonrisa).<br>**003 · Nuestro escenario:** 무대 (escenario), 최애 (favorito) y 컴백 (regreso).<br>**Las palabras:** del catálogo del sello (D043), comprobadas otra vez el 27/11 en el Diccionario Básico de Coreano.<br>**Recompensa:** cada clase da 20 Kpopis la primera vez, sin tesoro.<br>**Para seguir:** el botón «K» (la K con las comillas fucsias) en «Siguiente pregunta», «Siguiente clase» y, en la última, «Terminar la clase». Se ilumina al pasar el ratón o con el teclado; con «reducir movimiento», solo cambia de color.<br>**Para repasar:** «← Clase anterior». | Poder ganar más Kpopis aprendiendo palabras nuevas, de emociones y de K-pop. | E0101, la autora: «quiero añadir algún mensaje más para el hangul, no puedo volver a ganar Kpopis si no hago más que repetir lo mismo… al menos 6»; «no quiero quitar las que había sino añadir todas las nuevas»; la «K» con las comillas del logo, «mejor que se ilumine»; «tiene botón de retroceso… para ir a clases anteriores»; «20 Kpopis». | Hecho en E0101 (V129). Las dos comprobaciones de `escenario` («un solo reto»), cambiadas con su permiso en E0102 (V130). Falta su revisión en el navegador. |
+| D087 | **Kpopis por repasar una clase** (antes P032).<br>**Cuánto:** repetir una clase ya completada da 5 Kpopis, como mucho una vez al día por clase (día de Madrid). La recompensa de la clase sigue siendo solo para la primera vez.<br>**Cómo:** clave `repaso:<clase>:<día>` en `kpopis_movimientos`. La clave única impide cobrar dos veces el mismo día, también con dos respuestas a la vez. Sin migración.<br>**Dónde se ve:** «Repaso de HANGUL LIVE …» en Mis Kpopis. La clase y «Mi escenario» avisan de que repasar da 5 Kpopis al día. | Que repasar también tenga premio, sin que se pueda repetir sin parar para sumar. | E0102, la autora: «y si en otra sesión repiten clase podría ganar 5 Kpopis, ¿no?»; a la propuesta de 5 Kpopis como mucho una vez al día por clase: «hazlo». | Hecho en E0102 (V130). Falta su revisión en el navegador. |
 
 ## 5. Propuestas conservadas, alcance y cuestiones abiertas
 
@@ -308,6 +312,7 @@ Estas propuestas aparecen en las fuentes, pero no se convierten en acuerdos nuev
 | P029 | **Guion de la demo y plan B** (E0085), borrador del asistente para el ensayo del domingo (D054): `docs/GUION_DEMO.md`, con lo que hay que preparar el mismo día, el recorrido de unos 10 minutos con lo que se cuenta en cada paso, el plan B por niveles y el ensayo. Las capturas del plan B las hace `privado/plan-b/capturas-plan-b.mjs` (fuera de Git), probado en E0085 con 18 capturas. Se repite el sábado 28, después de congelar. | Sin confirmar. La autora decide la duración, si crea la cuenta en directo, si imprime en directo y cómo enseña el apartado «por dentro». |
 | P030 | **MVP de Intercambios** (E0090), a partir de una propuesta de ChatGPT que trajo la autora; retoma P017 y P018. Está en `docs/PROPUESTA_INTERCAMBIOS.md`:<br>- **Qué se intercambia:** una pieza de canje por otra, sin chat. Cada fan ofrece las suyas y los demás ven solo los alias de quienes las ofrecen. Se pide ofreciendo una pieza propia; el destinatario acepta o rechaza y el solicitante cancela.<br>- **Datos:** migración 011 con `ofertas_intercambio` y `solicitudes_intercambio`, que también es el historial. Basta mover familias; no hacen falta ejemplares.<br>- **Reglas propuestas (7):** la pieza entregada se conserva solo en ese avatar mientras no se quite; duplicar y «Guardar como copia» exigen la propiedad; usar el avatar tal cual (perfil, Connect, sello) se permite; volver a canjear con clave numerada; las pendientes se anulan al entregar la pieza; no se recibe lo que ya tienes; límite de 5 pendientes.<br>- **Aceptar:** en una transacción con bloqueos.<br>- **Impacto:** la clave del canje, el guardado y el duplicado de avatares.<br>- **Esfuerzo:** 6 a 8 h. | Sin confirmar. La autora decide las reglas (sobre todo la 1 y la 3) y si se hace el jueves 26 con un interruptor o después del 1/12. E0091: reglas confirmadas. E0092: se construye el jueves 26 por la tarde (D079). |
 | P031 | **Redistribución de «Mi K-ME» y navegación del móvil** (E0094): propuesta gráfica de ChatGPT, que trajo la autora con los iconos de «TÚ DECIDES». Maquetas y medidas en `docs/propuestas/tu-decides-01/` (`LEEME_PARA_CLAUDE.md`, `propuesta-escritorio.png` y `propuesta-movil.png`):<br>- **Ordenador (desde 1152 px):** contenido de 1120 px como mucho. A la izquierda, una tarjeta de identidad de 272 px (la imagen de perfil, el alias y, con menos peso, la fecha de alta); a la derecha, «TÚ DECIDES», con las tres tarjetas en fila solo si cada una mide 240 px o más.<br>- **Móvil y tamaños intermedios:** la identidad arriba (avatar de 96 × 116 px junto al alias) y la votación debajo, sin marcos dentro de marcos.<br>- **Navegación del móvil:** una segunda fila deslizable en horizontal (propuesta aparte).<br>- Conserva todo lo actual: el sello del perfil, el estado sin imagen, Mis tesoros, Mis Kpopis y los enlaces. | **E0095: la portada de «Mi K-ME», confirmada y hecha (D081).** La navegación deslizable del móvil sigue sin confirmar. **Valoración del asistente (E0094):** viable, solo vista y estilos, unas 2 o 3 h con tests y Chrome. **Conflictos:**<br>- cambia el sitio que eligió el asistente en E0093 (antes del perfil), aunque la votación seguiría en la primera pantalla, como pide D080;<br>- «Mi K-ME» dejaría de usar la tarjeta común de 420 px: necesita una clase propia;<br>- con avatar y sello a la vez, la columna izquierda crece;<br>- la cabecera de las maquetas está simplificada: no se toca.<br>La navegación deslizable deja destinos fuera de la pantalla y cambia el menú ya revisado en el móvil: el asistente la desaconseja antes del 1/12. |
+| P032 | **Kpopis por repasar una clase** (la autora, E0101: «y si en otra sesión repiten clase podría ganar 5 Kpopis, ¿no?»). Hoy, repetir una clase no da nada (D063). La propuesta: 5 Kpopis por repasar una clase ya completada. Regla por decidir, para que no se pueda repetir sin parar: por ejemplo, como mucho una vez al día por clase. Se haría con una clave por día en `kpopis_movimientos`, que la base de datos ya no deja cobrar dos veces, sin migración nueva. | Decidida en D087 (E0102): «hazlo». |
 
 **Visión futura documentada:** comunidad local, eventos, noticias, tiendas, compras colectivas, productos físicos y posible línea empresarial de personalización (F02–F03). No hay evidencia de servicios operativos. F01 propone dejarlos fuera de los servicios reales de noviembre; falta ratificar el recorte final de la demo.
 
@@ -455,6 +460,10 @@ Actualización del editor: E0042 amplía el trabajo de E0015–E0031 con recurso
 | V124 | 2026-11-26 | Ejecutado por el asistente (E0098, a petición de la autora), test antes que el CSS, con la base local `kme_dev` y Chrome sin ventana. | **En rojo primero:** `logo-entrada` (la hoja `identidad.css` aún tenía `.tarjeta--entrada::before`). **Después, correcta:** **app 304 de 304**.<br>**Chrome (1200 px):** «Entrar» y «Crear cuenta», sin la raya fucsia sobre el borde de la tarjeta; la de debajo del título, el logo, el lema y la sombra rosa siguen igual.<br>**Sin revisión de la autora.** |
 | V125 | 2026-11-26 | Ejecutado por el asistente (E0098, a petición de la autora), tests antes que el catálogo, con la base local `kme_dev` y Chrome sin ventana. | **En rojo primero:** `collage-lightstick-encendido` (editor, 7) y `lightstick-encendido` (app), porque la pieza no estaba en el catálogo ni sus dibujos en `assets/`. Al añadirla, falla como se esperaba la lista de ranuras de `varios-accesorios`, que se amplía. **Después, correctas:** **editor 211 de 211** y **app 311 de 311**.<br>**Comprobado:** cada variante, sin la luz, es byte a byte la de siempre; las huellas de los de siempre no cambian.<br>**Chrome:**<br>- los tres cuerpos, con camiseta, Chaqueta Denim, Chaqueta Cristal y Top Destello, y con el gorro y las gafas: sin cruces raros;<br>- el filtro `svg-seguro.js` acepta la vista previa real del sello con la luz y rechaza un script añadido;<br>- la photocard del sello en PNG sale encendida;<br>- en el editor real, la pestaña «K» la enseña al lado del de siempre.<br>**Límite:** a tamaño pequeño la diferencia es suave. **Sin revisión de la autora.** |
 | V126 | 2026-11-27 | Ejecutado por el asistente (E0099, a petición de la autora), tests antes que el código, con la base local `kme_dev` y Chrome sin ventana. | **En rojo primero:** pruebas 9 y 10 de `tu-decides` (con JSON, el servidor redirigía y respondía HTML). **Después, correcta:** **app 313 de 313**.<br>**Chrome (1280 × 760), página real con una cuenta de prueba y el voto enviado de verdad:** la página bajada 260 px antes de votar sigue en 260 px después; misma dirección (sin recargar); «¡Voto guardado!», la tarjeta elegida y los porcentajes; el foco, en el botón.<br>**Sin revisión de la autora** (guía, paso 8b). |
+| V127 | 2026-11-27 | Ejecutado por el asistente (E0099, a petición de la autora), tests antes que el código, con la base local `kme_dev` (migración 012 aplicada) y Chrome sin ventana. | **En rojo primero:** `connect-tipo-mensaje` (sin la lista de tipos; después, 5 pruebas en rojo, sin el campo en el formulario ni la etiqueta en el muro). **Después, correcta:** **app 321 de 321**.<br>**Chrome (1280 px y móvil, 390 px):** «¿Qué es?» con los cinco tipos en pastillas; en el muro, «RETO», «PREGUNTA» y «MENSAJE» delante de los iconos, también en las publicaciones de antes, sin salirse.<br>**Sin revisión de la autora** (guía, paso 7). |
+| V128 | 2026-11-27 | Ejecutado por el asistente (E0100, a petición de la autora), tests antes que el código, con la base local `kme_dev` y Chrome sin ventana. | **En rojo primero:** `mi-kme-espacio` (6 de 7: el orden de «Mi espacio», los cuatro estados y los tamaños de la cabecera). **Después:** `mi-kme-espacio` 7 de 7; **app 326 de 328**. Fallan, como se esperaba, la prueba 1 de `tu-decides` y su prueba padre: comprueban la portada de D081 («la identidad y la votación, juntas en la portada»), que D085 sustituye. **No se ha cambiado sin la aprobación de la autora.**<br>**Chrome, «Mi K-ME» real con una cuenta de prueba de alias de 26 caracteres, Luz Hangul 001 y 20 Kpopis:**<br>- los cuatro estados (ninguno, solo avatar, los dos y solo sello), a 1280 px, a 640 px (el ancho que queda con el zoom al 200 % en una ventana de 1280) y a 390 px: en orden, sin huecos reservados ni desbordamiento; el avatar entero y sin deformar;<br>- cabecera a 1160, 900 y 390 px: el logo a 80 y 64 px; la cara o el sello entero, a la altura del logo; en el móvil, todo en la fila del logo, con el alias partido en dos líneas.<br>**Auditorías:** contraste, 0 fallos en cuatro estados de «Mi K-ME» a 1280 y 900 px; móvil, 0 fallos; foco del teclado en la votación, visible.<br>**Votar** sigue sin recargar ni mover la página.<br>**Sin revisión de la autora.** |
+| V129 | 2026-11-27 | Ejecutado por el asistente (E0101, a petición de la autora), tests antes que el código, con la base local `kme_dev` y Chrome sin ventana. | **En rojo primero:** `hangul-live-clases` (sin las clases; después, 9 en rojo, sin las vistas). **Después:** `hangul-live-clases` 12 de 12; **app 335 de 340**. Fallan, como se esperaba, tres comprobaciones antiguas, y con ellas sus grupos: dos de `escenario` («de momento, un solo reto») y la prueba 1 de `tu-decides` (V128). **No se han cambiado sin la aprobación de la autora.**<br>**Chrome:**<br>- «Mi escenario» con las tres clases;<br>- la 002 con «Clase anterior» y sus palabras con la fuente;<br>- la «K» normal y, con el foco, iluminada en fucsia;<br>- el final de la 002 («Has ganado 20 Kpopis», «Siguiente clase: HANGUL LIVE 003», «Clase anterior»), en el ordenador y en el móvil.<br>Un primer intento ponía las comillas y la K una debajo de otra; se corrigió.<br>**Sin revisión de la autora.** |
+| V130 | 2026-11-27 | Ejecutado por el asistente (E0102, a petición de la autora), con la base local `kme_dev`. | **Tests cambiados con el permiso de la autora** («cambia los tests para que vaya acorde con lo actual»):<br>- `tu-decides`, prueba 1: la votación va después de «Mi espacio» (D085);<br>- `escenario`: hay tres clases (D086), en el catálogo y en «Mi escenario»;<br>- `escenario`: repetir da 5 Kpopis por repasar, una vez al día (D087);<br>- `hangul-live-clases`, pruebas 5 a 7: el repaso y los saldos que siguen.<br>**En rojo primero:** las pruebas del repaso (repetir no daba nada). **Después:** **app 340 de 340**.<br>**Comprobado:** el repaso de hoy da +5; otra vez el mismo día, nada; con el de hoy pasado a otro día, otros 5. Dos respuestas a la vez siguen sin cobrar dos veces.<br>**Sin revisión de la autora.** |
 
 Las pruebas V005–V008 son resultados declarados por Claude y distinguidos de la comprobación documental V009. Los escenarios siguientes siguen pendientes para el producto completo:
 
@@ -3023,17 +3032,162 @@ Las respuestas se añaden en la sesión correspondiente, con ejemplos. No rellen
     - «no se entiende muy bien que sea un mensaje… si es un reto, si es mensaje etc antes del mensaje»;
     - «me parecen muy pocos iconos, puedes inspirarte en la variedad que hay de emojis».
     - Se le proponen un tipo de mensaje y una lista de iconos nuevos, en una tinta como los del universo K-pop. Esperan su decisión.
-- **Decisiones confirmadas:** la autora eligió votar sin recargar (opción A).
+- **Después:** commit `1e2c67c`, subido, con el arreglo del voto (la autora: «3 si»).
+- **Tipo del mensaje (D084):** la autora eligió la A, que se elija el tipo.
+  - **Tests primero (V127):** `tests/connect-tipo-mensaje.test.js`.
+  - **Lista:** `TIPOS_MENSAJE` en el catálogo.
+  - **Base de datos:** migración 012 (`tipo_mensaje`), aplicada en la base local `kme_dev`.
+  - **Servidor:** `leerTipoMensaje` en el servicio y el aviso nuevo en el controlador.
+  - **Formulario:** «¿Qué es?» con cinco pastillas, dentro de «Añadir un mensaje con iconos».
+  - **Muro:** la etiqueta delante de los iconos, que da nombre a la lista (`aria-labelledby`).
+- **Iconos nuevos:** la autora pide pensarlos a partir de frases reales: «igual habría q pensar en posibles frases reales para crear los iconos que pudiesen reflejar ese mensaje». Se le proponen frases y, de ellas, los iconos que faltan.
+- **Hangul (petición de la autora):** «quiero añadir algun mensaje mas para el hangul, no puedo volver a ganar kpopis si no hago mas que repetir lo mismo… al menos 6, puede tener que ver con las emociones ademas de con el kpop».
+  - **Las 6 palabras:** del catálogo del sello, ya comprobado en el NIKL y aprobado por ella (D043): 사랑, 행복, 미소, 무대, 최애 y 컴백.
+  - **Comprobadas otra vez hoy** en el Diccionario Básico de Coreano (versión en español), las seis con entrada propia:
+    - 사랑: «amor»;
+    - 행복: «felicidad» (la primera acepción es «bendición, suerte»);
+    - 미소: «sonrisa»;
+    - 무대: «escenario»;
+    - 최애: «favorito», con dos pronunciaciones;
+    - 컴백: «regreso, retorno, vuelta».
+  - **La propuesta:** HANGUL LIVE 002 y 003, pendiente de la autora (las recompensas, sobre todo).
+- **Decisiones confirmadas:**
+  - la autora eligió votar sin recargar (opción A);
+  - la autora eligió el tipo de mensaje (A).
 - **Decidido por el asistente sin preguntar:**
   - sin JavaScript se mantiene el salto a `#tu-decides`, que sirve para volver a la votación;
-  - el foco, en el botón.
-- **Pruebas:** V126.
+  - el foco, en el botón;
+  - los cinco tipos propuestos (la autora no los cambió);
+  - el aviso «Elige qué es tu mensaje de la lista.»;
+  - un tipo que llega sin iconos se ignora.
+- **Pruebas:** V126 y V127.
 - **Problemas y pendientes:**
-  - el tipo de mensaje y los iconos nuevos de Connect;
+  - los iconos nuevos (a partir de frases);
+  - HANGUL LIVE 002 y 003;
   - la elección de la autora entre las opciones de «Mi K-ME»;
-  - el commit de E0099.
+  - el commit del tipo de mensaje.
 - **Siguiente paso:** las respuestas de la autora.
 - **Revisión resultante:** R0099.
+
+### E0100 · 2026-11-27 · «Mi K-ME» como «Mi espacio» (opción C), logo e imagen de perfil de la cabecera
+
+- **Autoría y entorno:** autora y asistente (Claude Code); ella lo sigue desde el móvil con Remote Control.
+- **Objetivo:**
+  - aplicar la opción C de ChatGPT, elegida por la autora (D085);
+  - agrandar el logo de la cabecera;
+  - revisar la imagen de perfil de la cabecera.
+- **Base leída:**
+  - R0099;
+  - `entrega-chatgpt-mi-kme-opciones/` (`LEEME_PARA_CLAUDE.md`, `C-escritorio.png`, `C-movil.png`);
+  - el código de «Mi K-ME», `_cabecera.ejs`, `perfilService.js` y sus tests.
+- **Hechos y trabajo realizado:**
+  - **Antes de cambiar, en la app real (Chrome):**
+    - la imagen de perfil de la cabecera medía 38 × 54 px (32 × 46 en el móvil): en el móvil, el sello apenas se leía;
+    - en «Mi K-ME», el avatar medía unos 200 px de alto.
+  - **Tests primero (V128):** `tests/mi-kme-espacio.test.js`, con el orden, los cuatro estados del perfil y los tamaños de la cabecera.
+  - **Vista (`mi-kme.ejs`):**
+    - `mi-kme__espacio`: la imagen de perfil (`perfil`) y `mi-kme__mio` (tesoros, Kpopis y, con avatar y sello, «Tu sello de perfil»), cerrados con `<!-- fin mi espacio -->`; después, «TÚ DECIDES»;
+    - `data-perfil-principal` dice qué ocupa la imagen de perfil;
+    - el sello y su «Quitar» van en una vista parcial nueva, `_perfil-sello.ejs`, que se usa en los dos sitios.
+  - **Estilos (`identidad.css`):**
+    - desde 880 px, dos columnas (2/5 y 3/5), cada una con su altura;
+    - el avatar, hasta 320 px de ancho (260 por debajo de 880 px), entero, sobre papel lila suave;
+    - el sello, hasta 240 px (190 en su apartado);
+    - el logo, a 80 px (64 en el móvil);
+    - la imagen de perfil de la cabecera, a 56 × 80 (45 × 64 en el móvil), con la misma proporción;
+    - en el móvil, el alias se parte en líneas para que todo quepa en la fila del logo.
+  - **Sin tocar:**
+    - los tesoros, con su luz, fechas y datos reales; el saldo, los movimientos, los enlaces y los controles;
+    - el sistema de la imagen de perfil (`perfilSesion.cabecera`): la cara del avatar con su encuadre de rostro, el sello entero, la prioridad del avatar, la inicial y el enlace;
+    - el voto sin recargar.
+  - **No se copiaron** los datos ficticios ni los textos de la maqueta.
+- **Decisiones confirmadas:** D085.
+- **Decidido por el asistente sin preguntar:**
+  - el corte en 880 px y las columnas 2/5 y 3/5 (con 448 px fijos, los tesoros no cabían a 900 px);
+  - el papel lila del avatar, el mismo de Luz Hangul 001, más claro;
+  - con solo sello, que el sello ocupe la imagen de perfil;
+  - la imagen de perfil de la cabecera, tan alta como el logo.
+- **Pruebas:** V128.
+- **Problemas y pendientes:**
+  - **Prueba 1 de `tu-decides`:** falla porque comprueba la portada de D081. La autora pidió no cambiar tests sin su aprobación, así que se le propone el cambio.
+  - **Aviso de «Mis Kpopis»:** dice «Todavía no se pueden gastar», pero desde D074 se canjean. Se le comenta a la autora; no se cambia sin su permiso.
+  - **La entrega de ChatGPT** sigue en la raíz, fuera de Git.
+  - **El commit.**
+  - **La revisión de la autora** en el navegador.
+- **Siguiente paso:** las respuestas de la autora.
+- **Revisión resultante:** R0100.
+
+### E0101 · 2026-11-27 · HANGUL LIVE 002 y 003, con la «K»
+
+- **Autoría y entorno:** autora y asistente (Claude Code); ella lo sigue desde el móvil con Remote Control.
+- **Objetivo:** más clases de hangul para seguir aprendiendo y ganando Kpopis (D086).
+- **Base leída:**
+  - R0100;
+  - el catálogo de la miniclase (`hangul-live.js`) y el del sello (`hangul.js`);
+  - `retoService`, `retoModel`, las vistas de «Mi escenario» y `escenario.test.js`.
+- **Hechos y trabajo realizado:**
+  - **Decisiones de la autora:**
+    - mantener la 001 y añadir las nuevas detrás;
+    - el botón «K» que se ilumina;
+    - un botón para volver a las clases anteriores;
+    - 20 Kpopis por clase.
+    - Preguntó qué pasa si alguien tiene desactivadas las animaciones. Se le explicó el ajuste «reducir movimiento» del sistema y que la página lo respeta sola.
+  - **Tests primero (V129):** `tests/hangul-live-clases.test.js`, que también comprueba que el hangul nuevo sale del catálogo comprobado.
+  - **Catálogo (`hangul-live.js`):**
+    - las clases 002 y 003, con sus palabras, explicaciones y preguntas;
+    - `queSeAprende` («Las 3 palabras»);
+    - `retoAnterior` y `retoSiguiente`, por el orden de `RETOS`.
+  - **Servidor:**
+    - `retoService` da la recompensa sin tesoro (`null`) y la clase anterior y la siguiente;
+    - `retoModel` solo entrega el tesoro si el reto lo da.
+  - **Vistas:**
+    - el botón «K» en `_boton-k.ejs`: la K es un adorno oculto a los lectores de pantalla, y el enlace mantiene su texto;
+    - «← Clase anterior» en la clase y al final;
+    - el aviso de revisión, el tesoro y su cinta, solo cuando los hay.
+  - **Estilos:** en `escenario.css`; todo el botón es el enlace.
+- **Decidido por el asistente sin preguntar:**
+  - los lemas («Lo que sentimos», «Nuestro escenario»), las entradas, las explicaciones y las preguntas;
+  - las clases, todas abiertas (no hay que terminar la anterior);
+  - la K negra con comillas fucsias, que se vuelve fucsia con halo.
+- **Pruebas:** V129.
+- **Problemas y pendientes:**
+  - **Tres comprobaciones antiguas:** la autora pidió no cambiar tests sin su aprobación. Son dos de `escenario` («un solo reto») y la prueba 1 de `tu-decides`.
+  - **Repetir una clase:** la autora pregunta si podría dar 5 Kpopis «en otra sesión». Hoy repetir no da nada; queda como propuesta (P032), con la regla por decidir.
+  - **La revisión de la autora.**
+  - **El commit.**
+- **Siguiente paso:** las respuestas de la autora.
+- **Revisión resultante:** R0101.
+
+### E0102 · 2026-11-27 · Tests al día y Kpopis por repasar
+
+- **Autoría y entorno:** autora y asistente (Claude Code); ella lo sigue desde el móvil con Remote Control.
+- **Objetivo:**
+  - poner los tests de acuerdo con lo decidido (D085, D086);
+  - dar Kpopis por repasar (D087).
+- **Base leída:** R0101; E0100 y E0101.
+- **Hechos y trabajo realizado:**
+  - **Permiso de la autora:** «cambia los test para que vaya acorde con lo actual». Se cambiaron las comprobaciones que decían lo de antes (V130). Lo demás de esas pruebas no cambia.
+  - **Repaso (D087):**
+    - `REPASO` (5 Kpopis) en el catálogo;
+    - la clave del día en `retoService`;
+    - el pago en la misma transacción de `retoModel`, solo si no es la primera vez;
+    - los textos del final, de la clase y de «Mi escenario»;
+    - el concepto «Repaso de …» en Mis Kpopis;
+    - la cabecera se pone al día al ganarlo.
+- **Decidido por el asistente sin preguntar:**
+  - el repaso vale en las tres clases, también la 001;
+  - cuenta el día de Madrid;
+  - el mismo día de la primera vez también se puede ganar el repaso;
+  - los textos del final («Por repasar hoy, has ganado 5 Kpopis.» y «… ya los has ganado hoy: vuelve mañana.»).
+- **Pruebas:** V130.
+  - **Después, la autora: «ok»** (a los iconos de Connect, la frase de «Mis Kpopis» y la subida).
+    - **Frase de «Mis Kpopis»:** «Todavía no se pueden gastar» pasa a «Se ganan en Mi escenario y se canjean en Colección «K»», con los dos enlaces. Primero la comprobación, en `mi-kme-espacio`; app 340 de 340.
+    - **Subida:** el commit de E0099 a E0102.
+- **Problemas y pendientes:**
+  - la revisión de la autora en el navegador;
+  - dibujar los 21 iconos nuevos de Connect, a partir de las frases (aprobados con el «ok»).
+- **Siguiente paso:** los iconos de Connect.
+- **Revisión resultante:** R0102.
 
 <!-- AÑADIR AQUÍ LAS NUEVAS SESIONES, EN ORDEN DE REGISTRO. NO BORRAR E0001. -->
 
@@ -3243,6 +3397,9 @@ PROPUESTA PROCEDENTE DEL OTRO CHAT:
 | R0096 | 2026-11-26 | E0097 | Luz Hangul 001 encendida, con la referencia más reciente de ChatGPT (D082): luz fija en capas de adorno sobre el SVG original y tarjeta en horizontal. V122 (app 303 de 303, Chrome, auditorías). T054 actualizado. TECH_SPEC v1.40. |
 | R0097 | 2026-11-26 | E0097 | La fecha en que se ganó el tesoro, junto a la etiqueta: «Conseguido el …» (V123, app 303 de 303). TECH_SPEC v1.41. |
 | R0098 | 2026-11-26 | E0098 | Sin la raya fucsia suelta sobre la tarjeta de «Entrar» y «Crear cuenta» (V124). Lightstick de estudio · encendido, opción nueva del editor (D083, V125: editor 211 de 211, app 311 de 311); T055. TECH_SPEC v1.42. |
-| R0099 | 2026-11-27 | E0099 | Votar en «TÚ DECIDES» sin recargar la página (V126, app 313 de 313). Propuestas para Connect (tipo de mensaje e iconos nuevos), pendientes de la autora. TECH_SPEC v1.43. |
+| R0099 | 2026-11-27 | E0099 | Votar en «TÚ DECIDES» sin recargar la página (V126). Tipo del mensaje de Connect (D084, migración 012, V127: app 321 de 321). Propuestas de iconos y de HANGUL LIVE 002 y 003, pendientes de la autora. TECH_SPEC v1.44. |
+| R0100 | 2026-11-27 | E0100 | «Mi K-ME» como «Mi espacio» (D085, opción C), logo de 80 px e imagen de perfil de la cabecera a su altura (V128: app 326 de 328, a falta de cambiar con permiso la prueba 1 de `tu-decides`). TECH_SPEC v1.45. |
+| R0101 | 2026-11-27 | E0101 | HANGUL LIVE 002 y 003, con 20 Kpopis cada una, el botón «K» y «Clase anterior» (D086, V129: app 335 de 340, a falta de cambiar con permiso tres comprobaciones antiguas). TECH_SPEC v1.46. |
+| R0102 | 2026-11-27 | E0102 | Tests puestos al día con el permiso de la autora y 5 Kpopis por repasar una clase, una vez al día (D087, antes P032). V130: app 340 de 340. TECH_SPEC v1.47. |
 
 <!-- FIN DE LA BITÁCORA. Las revisiones posteriores deben conservar las entradas históricas. -->

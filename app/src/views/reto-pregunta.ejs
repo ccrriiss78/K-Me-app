@@ -26,23 +26,35 @@
   <% } %>
 
   <% if (final) { %>
-    <div class="final">
-      <img class="final__tesoro" src="<%= final.recompensa.tesoro.imagen %>" alt="" width="120" height="165">
+    <% const tesoro = final.recompensa.tesoro; %>
+    <div class="final<%= tesoro ? '' : ' final--sin-tesoro' %>">
+      <% if (tesoro) { %><img class="final__tesoro" src="<%= tesoro.imagen %>" alt="" width="120" height="165"><% } %>
       <div>
         <% if (final.primeraVez) { %>
-          <p class="final__titulo">¡<%= reto.titulo %> completado! Has ganado <%= final.recompensa.kpopis %> y <%= final.recompensa.tesoro.nombre %>, que ya está en Mis tesoros.</p>
+          <p class="final__titulo">¡<%= reto.titulo %> completado! Has ganado <%= final.recompensa.kpopis %><% if (tesoro) { %> y <%= tesoro.nombre %>, que ya está en Mis tesoros<% } %>.</p>
           <p class="final__kpopis"><img src="<%= final.recompensa.iconoKpopi %>" alt="" width="24" height="24"> +<%= final.recompensa.kpopis %></p>
+        <% } else if (final.repaso) { %>
+          <%# Repasar (D087): 5 Kpopis, una vez al día por clase. %>
+          <p class="final__titulo">¡Completado otra vez! Por repasar hoy, has ganado <%= final.repaso %>. La recompensa de la clase ya la ganaste el <%= final.ganadoEl %>.</p>
+          <p class="final__kpopis"><img src="<%= final.recompensa.iconoKpopi %>" alt="" width="24" height="24"> +<%= final.repaso %></p>
         <% } else { %>
-          <p class="final__titulo">¡Completado otra vez! La recompensa ya la ganaste el <%= final.ganadoEl %>: es tuya para siempre.</p>
+          <p class="final__titulo">¡Completado otra vez! La recompensa ya la ganaste el <%= final.ganadoEl %>: es tuya para siempre. Los Kpopis por repasar esta clase ya los has ganado hoy: vuelve mañana.</p>
+        <% } %>
+        <%# Seguir con la «K» (la clase siguiente o, en la última, terminar) y, para repasar, la anterior (D086). %>
+        <% if (locals.claseSiguiente) { %>
+          <%- include('_boton-k', { href: `/escenario/${claseSiguiente.id}`, texto: `Siguiente clase: ${claseSiguiente.titulo}` }) %>
+        <% } else { %>
+          <%- include('_boton-k', { href: '/escenario', texto: 'Terminar la clase' }) %>
         <% } %>
         <p class="final__acciones">
-          <a class="boton boton--enlace" href="/mi-kme#mis-tesoros">Ver Mis tesoros</a>
-          <a class="boton boton--enlace boton--secundario" href="/escenario">Volver a Mi escenario</a>
+          <% if (tesoro) { %><a class="boton boton--enlace" href="/mi-kme#mis-tesoros">Ver Mis tesoros</a><% } %>
+          <% if (locals.claseAnterior) { %><a class="boton boton--enlace boton--secundario boton-atras" href="/escenario/<%= claseAnterior.id %>">← Clase anterior: <%= claseAnterior.titulo %></a><% } %>
+          <% if (locals.claseSiguiente) { %><a class="boton boton--enlace boton--secundario" href="/escenario">Volver a Mi escenario</a><% } %>
         </p>
       </div>
     </div>
   <% } else if (r && r.acierto) { %>
-    <p><a class="boton boton--enlace" href="/escenario/<%= reto.id %>/preguntas/<%= locals.siguiente %>">Siguiente pregunta</a></p>
+    <%- include('_boton-k', { href: `/escenario/${reto.id}/preguntas/${locals.siguiente}`, texto: 'Siguiente pregunta' }) %>
   <% } else { %>
     <form method="post" action="/escenario/<%= reto.id %>/preguntas/<%= pregunta.numero %>" class="pregunta">
       <input type="hidden" name="_csrf" value="<%= csrfToken %>">

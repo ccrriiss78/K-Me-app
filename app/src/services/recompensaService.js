@@ -14,8 +14,8 @@ export const fechaCorta = (fecha) => formatoFecha.format(fecha);
 // De dónde viene un movimiento, a partir de su clave («reto:hangul-live-001»).
 function concepto(clave) {
   const [tipo, id] = clave.split(':');
-  const reto = tipo === 'reto' ? buscarReto(id) : null;
-  if (reto) return `${reto.titulo} completado`;
+  const reto = tipo === 'reto' || tipo === 'repaso' ? buscarReto(id) : null;
+  if (reto) return tipo === 'repaso' ? `Repaso de ${reto.titulo}` : `${reto.titulo} completado`; // repaso: D087
   const pieza = tipo === 'canje' ? buscarCanje(id) : null; // un gasto en Colección «K» (E0083)
   return pieza ? `Canje: ${pieza.nombre}` : clave;
 }

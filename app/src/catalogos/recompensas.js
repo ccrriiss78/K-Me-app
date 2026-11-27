@@ -1,7 +1,7 @@
 // CATÁLOGO de las recompensas: la moneda de K-ME y los tesoros (D063, D064).
 // - Kpopis: «Kpopi» en singular y «Kpopis» en plural, «de momento» (la autora, 24/11/2026), con su
-//   icono propio. Antes de congelar el código solo los da HANGUL LIVE 001, una vez. El canje queda
-//   para después: todavía no se pueden gastar.
+//   icono propio. Los dan las clases de HANGUL LIVE (la primera vez y, por repasar, una vez al día:
+//   D086, D087) y se gastan en el canje de Colección «K» (D074).
 // - Tesoros («Mis tesoros», «Mi álbum vivo»): objetos que se ganan, nunca se compran (P016).
 //   En la base de datos solo se guarda su id: el nombre y el dibujo se pueden cambiar aquí.
 // - Los dibujos (Kpopi y Luz Hangul 001) son del asistente; la autora los acepta «de momento»

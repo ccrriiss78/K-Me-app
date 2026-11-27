@@ -59,6 +59,15 @@
     <% if (locals.iconosMensaje) { %>
     <details class="mensaje">
       <summary>Añadir un mensaje con iconos <span class="mensaje__opcional">(opcional)</span></summary>
+      <%# Qué es el mensaje (D084): sale delante de los iconos en el muro. Sin elegir, «Mensaje». %>
+      <fieldset class="publicar__grupo mensaje__tipos">
+        <legend class="mensaje__tipos-titulo">¿Qué es?</legend>
+        <div class="mensaje__tipos-opciones">
+          <% (locals.tiposMensaje ?? []).forEach((t) => { %>
+            <label class="mensaje__tipo"><input type="radio" name="tipo_mensaje" value="<%= t.id %>"<%= t.id === tipoMensajePorDefecto ? ' checked' : '' %>> <span><%= t.texto %></span></label>
+          <% }) %>
+        </div>
+      </fieldset>
       <fieldset class="publicar__grupo mensaje__grupo-campos" data-mensaje>
         <legend class="solo-lectores">Mensaje con iconos</legend>
         <p class="nota">Hasta <%= maxIconos %> iconos, en el orden que quieras.</p>
@@ -113,10 +122,14 @@
                   <img src="<%= p.emocion.icono %>" alt="" width="48" height="48">
                   <span><%= p.emocion.texto %></span>
                 </p>
+                <%# El mensaje con iconos, con su tipo delante (D084), que también da nombre a la lista. %>
                 <% if (p.mensaje && p.mensaje.length) { %>
-                  <ul class="mensaje-iconos" aria-label="Mensaje con iconos">
-                    <% p.mensaje.forEach((i) => { %><li><img src="<%= i.icono %>" alt="<%= i.texto %>" width="28" height="28"></li><% }) %>
-                  </ul>
+                  <div class="mensaje-publicado">
+                    <span class="mensaje-publicado__tipo" id="tipo-mensaje-<%= p.id %>"><%= p.tipoMensaje.texto %></span>
+                    <ul class="mensaje-iconos" aria-labelledby="tipo-mensaje-<%= p.id %>">
+                      <% p.mensaje.forEach((i) => { %><li><img src="<%= i.icono %>" alt="<%= i.texto %>" width="28" height="28"></li><% }) %>
+                    </ul>
+                  </div>
                 <% } %>
 
                 <%- include('_reacciones', { p }) %>

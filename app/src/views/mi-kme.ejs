@@ -1,15 +1,19 @@
 <%- include('_cabecera') %>
-<%# Composición de la propuesta P031 (E0095): la página, sin recuadro propio. En la portada, primero la
-    identidad (la imagen de perfil, con el alias y la fecha de alta) y la votación «TÚ DECIDES»: en dos
-    columnas en el ordenador ancho; una debajo de otra en el móvil. Debajo, todo lo demás. %>
+<%# «Mi K-ME» como «Mi espacio» (opción C de ChatGPT, elegida por la autora: D085, E0100). La página,
+    sin recuadro propio. Primero lo propio, en el orden en que se lee: la imagen de perfil (grande, con
+    el alias y la fecha de alta), Mis tesoros, Mis Kpopis y, si hay avatar y sello, el sello en su
+    apartado. Después, «TÚ DECIDES», que son propuestas futuras. En el ordenador, la imagen a la
+    izquierda y lo demás a la derecha; en el móvil, uno debajo de otro. Sin recuadros vacíos: si no hay
+    avatar, el sello ocupa la imagen de perfil. %>
+<% const principal = perfil.avatar ? 'avatar' : perfil.sello ? 'sello' : 'ninguno'; %>
 <section class="tarjeta mi-kme" aria-labelledby="titulo-mi-kme">
   <h1 id="titulo-mi-kme">Mi K-ME</h1>
   <p class="saludo">Bienvenida, <strong><%= cuenta.alias %></strong>. Este es tu espacio privado.</p>
-  <div class="mi-kme__portada">
+  <div class="mi-kme__espacio" data-perfil-principal="<%= principal %>">
   <%# Imagen de perfil (D044, D055). Los SVG los dibuja el servidor a partir de recetas validadas. %>
   <section class="perfil" aria-labelledby="titulo-perfil">
     <h2 id="titulo-perfil">Tu imagen de perfil</h2>
-    <% if (!perfil.avatar && !perfil.sello) { %>
+    <% if (principal === 'ninguno') { %>
       <p>Todavía no has elegido tu imagen de perfil. Puedes usar uno de tus avatares, uno de tus sellos o los dos: pulsa «Usar en mi perfil» en Avatar Studio o en Sello Studio.</p>
     <% } %>
     <% if (perfil.avatar) { %>
@@ -22,26 +26,15 @@
           <button type="submit" class="boton boton--pequeno boton--secundario">Quitar el avatar del perfil</button>
         </form>
       </figure>
-    <% } %>
-    <% if (perfil.sello) { %>
-      <figure class="perfil__imagen" data-perfil="sello">
-        <%- include('_sello', { dibujo: perfil.sello.dibujo, ancho: perfil.sello.ancho, clase: 'sello--perfil' }) %>
-        <figcaption><%= perfil.sello.nombre %></figcaption>
-        <form method="post" action="/perfil/sello">
-          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-          <input type="hidden" name="sello" value="">
-          <button type="submit" class="boton boton--pequeno boton--secundario">Quitar el sello del perfil</button>
-        </form>
-      </figure>
+    <% } else if (perfil.sello) { %>
+      <%- include('_perfil-sello', { sello: perfil.sello }) %>
     <% } %>
     <dl class="datos perfil__datos">
       <dt>Alias</dt><dd><%= cuenta.alias %></dd>
       <dt>Cuenta creada</dt><dd><time datetime="<%= cuenta.creado_en.toISOString() %>"><%= cuenta.creado_en.toLocaleString('es-ES') %></time></dd>
     </dl>
   </section>
-  <%- include('_tu-decides', { tuDecides }) %>
-  </div>
-  <!-- fin portada -->
+  <div class="mi-kme__mio">
   <%# Mis tesoros (D064, «Mi álbum vivo»): los objetos ganados, con su origen y la fecha. Se ganan,
       nunca se compran. Los dibujos salen del catálogo (src/catalogos/recompensas.js). %>
   <section class="tesoros" id="mis-tesoros" aria-labelledby="titulo-tesoros">
@@ -74,11 +67,12 @@
       </ul>
     <% } %>
   </section>
-  <%# Mis Kpopis (D063): el saldo y sus movimientos. De momento solo se ganan; el canje, después. %>
+  <%# Mis Kpopis (D063): el saldo y sus movimientos. Se ganan en Mi escenario y se canjean en
+      Colección «K» (D074). %>
   <section class="kpopis" id="mis-kpopis" aria-labelledby="titulo-kpopis">
     <h2 id="titulo-kpopis">Mis Kpopis</h2>
     <p class="kpopis__saldo"><img src="<%= recompensas.iconoKpopi %>" alt="" width="32" height="32"><strong><%= recompensas.saldo %></strong></p>
-    <p class="nota">De momento se ganan en Mi escenario. Todavía no se pueden gastar.</p>
+    <p class="nota">Se ganan en <a class="enlace" href="/escenario">Mi escenario</a> y se canjean en <a class="enlace" href="/studio/coleccion-k">Colección «K»</a>.</p>
     <% if (recompensas.movimientos.length === 0) { %>
       <p>Todavía no tienes movimientos.</p>
     <% } else { %>
@@ -90,6 +84,18 @@
       </ol>
     <% } %>
   </section>
+  <% if (perfil.avatar && perfil.sello) { %>
+  <%# Con avatar y sello, el sello en su propio apartado (con un solo sello, va en la imagen de perfil). %>
+  <section class="sello-perfil" aria-labelledby="titulo-sello-perfil">
+    <h2 id="titulo-sello-perfil">Tu sello de perfil</h2>
+    <%- include('_perfil-sello', { sello: perfil.sello }) %>
+  </section>
+  <% } %>
+  </div>
+  </div>
+  <!-- fin mi espacio -->
+  <%# «K-ME · TÚ DECIDES» (D080): propuestas futuras, después de lo propio (D085). %>
+  <%- include('_tu-decides', { tuDecides }) %>
   <p><a class="boton boton--enlace" href="/escenario">Ir a Mi escenario</a></p>
   <p><a class="boton boton--enlace" href="/studio/avatares">Crear tus avatares en Avatar Studio</a></p>
   <p><a class="boton boton--enlace" href="/studio/sellos">Crear tus sellos en Sello Studio</a></p>

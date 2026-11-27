@@ -122,13 +122,13 @@ test('K-ME · TÚ DECIDES', { skip: !hayConfiguracion() && 'falta app/.env.local
     assert.match(b, /<form method="post" action="\/tu-decides"[\s\S]*name="_csrf"/);
     assert.equal(elegida(r.html), null);
     assert.doesNotMatch(b, /data-porcentaje/, 'sin resultados antes de votar');
-    // En la portada de «Mi K-ME» (P031, E0095): primero la identidad (la imagen de perfil, con el alias y
-    // la fecha de alta) y, al lado en el ordenador o debajo en el móvil, la votación; después, Mis tesoros.
-    const portada = /<div class="mi-kme__portada">([\s\S]*?)<!-- fin portada -->/.exec(r.html)?.[1] ?? '';
-    assert.ok(portada.includes('id="titulo-perfil"') && portada.includes('id="tu-decides"'), 'la identidad y la votación, juntas en la portada');
-    assert.ok(portada.indexOf('id="titulo-perfil"') < portada.indexOf('id="tu-decides"'), 'primero la identidad');
-    assert.match(/<section class="perfil"[\s\S]*?<\/section>/.exec(portada)?.[0] ?? '', /<dt>Alias<\/dt>[\s\S]*<dt>Cuenta creada<\/dt>/, 'el alias y la fecha de alta, en la tarjeta de identidad');
-    assert.ok(r.html.indexOf('<!-- fin portada -->') < r.html.indexOf('id="mis-tesoros"'), 'después, Mis tesoros');
+    // En «Mi K-ME» como «Mi espacio» (D085, E0100; antes, la portada de P031): primero lo propio (la
+    // imagen de perfil, con el alias y la fecha de alta; Mis tesoros; Mis Kpopis) y después la votación.
+    const espacio = /<div class="mi-kme__espacio"[^>]*>([\s\S]*?)<!-- fin mi espacio -->/.exec(r.html)?.[1] ?? '';
+    assert.ok(espacio.includes('id="titulo-perfil"') && espacio.includes('id="mis-tesoros"'), 'la identidad y lo propio, juntos en «Mi espacio»');
+    assert.ok(!espacio.includes('id="tu-decides"'), 'la votación, fuera de lo propio');
+    assert.match(/<section class="perfil"[\s\S]*?<\/section>/.exec(espacio)?.[0] ?? '', /<dt>Alias<\/dt>[\s\S]*<dt>Cuenta creada<\/dt>/, 'el alias y la fecha de alta, en la tarjeta de identidad');
+    assert.ok(r.html.indexOf('<!-- fin mi espacio -->') < r.html.indexOf('id="tu-decides"'), 'después, la votación');
     // Cada tarjeta, con su icono decorativo (alt vacío: el nombre ya lo dice el título), y el servidor lo sirve.
     for (const p of PROPUESTAS) {
       assert.match(b, new RegExp(`<img class="tu-decides__icono" src="/img/tu-decides/tu-decides-${p.id}\\.svg" alt=""`), `${p.id}: icono`);

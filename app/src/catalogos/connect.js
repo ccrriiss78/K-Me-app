@@ -89,5 +89,20 @@ export const ICONOS_MENSAJE = [
 
 export const buscarIconoMensaje = (id) => ICONOS_MENSAJE.find((i) => i.id === id) ?? null;
 
+// TIPO DE MENSAJE (D084, E0099): qué es el mensaje con iconos, para que en el muro se entienda. Sale
+// delante de los iconos. Lista cerrada, decidida por la autora; sin elegir, «Mensaje».
+// - «id»: lo que se guarda (columna «tipo_mensaje», migración 012). No cambies el id de uno ya usado:
+//   en las publicaciones guardadas, un id que ya no está en la lista se ve como «Mensaje».
+// - «texto»: lo que se lee. Se puede cambiar cuando quieras.
+export const TIPOS_MENSAJE = [
+  { id: 'mensaje', texto: 'Mensaje' },
+  { id: 'reto', texto: 'Reto' },
+  { id: 'pregunta', texto: 'Pregunta' },
+  { id: 'animo', texto: 'Ánimo' },
+  { id: 'recomendacion', texto: 'Recomendación' },
+];
+export const TIPO_MENSAJE_POR_DEFECTO = 'mensaje';
+export const buscarTipoMensaje = (id) => TIPOS_MENSAJE.find((t) => t.id === id) ?? null;
+
 export const buscarEmocion = (id) => EMOCIONES.find((e) => e.id === id) ?? null;
 export const buscarReaccion = (id) => REACCIONES.find((r) => r.id === id) ?? null;

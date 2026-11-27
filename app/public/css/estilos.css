@@ -298,6 +298,24 @@ h1 { margin-top: 0; font-size: 1.5rem; }
 .mensaje__icono:focus-visible,
 .mensaje__elegido:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
 .mensaje-iconos { display: flex; flex-wrap: wrap; gap: 0.35rem; list-style: none; margin: 0 0 0.75rem; padding: 0; }
+/* Tipo de mensaje (D084): al publicar, cinco pastillas; en el muro, la etiqueta delante de los iconos. */
+.mensaje__tipos { margin-bottom: 0.75rem; }
+.mensaje__tipos-titulo { padding: 0; margin-bottom: 0.4rem; font-size: 0.9rem; font-weight: 700; }
+.mensaje__tipos-opciones { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.mensaje__tipo {
+  display: inline-flex; align-items: center; gap: 0.35rem; min-height: 44px;
+  padding: 0.3rem 0.75rem 0.3rem 0.55rem; border: 2px solid var(--color-borde); border-radius: 999px;
+  background: var(--color-superficie); font-size: 0.85rem; font-weight: 700; cursor: pointer;
+}
+.mensaje__tipo input { margin: 0; accent-color: #000; }
+.mensaje__tipo:has(input:checked) { border-color: var(--connect-reaccion-mia); background: var(--color-rosa-suave); }
+.mensaje__tipo:has(input:focus-visible) { outline: 3px solid #000; outline-offset: 2px; }
+.mensaje-publicado { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.6rem; margin: 0 0 0.75rem; }
+.mensaje-publicado .mensaje-iconos { margin: 0; }
+.mensaje-publicado__tipo {
+  padding: 0.2rem 0.6rem; border: 1.5px solid #000; border-radius: 999px; background: var(--color-rosa-suave);
+  color: #000; font-size: 0.72rem; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase;
+}
 .mensaje-iconos img { display: block; width: var(--connect-mensaje-icono); height: var(--connect-mensaje-icono); }
 .mensaje-iconos--borrador { margin: 0 0 0.6rem; }
 

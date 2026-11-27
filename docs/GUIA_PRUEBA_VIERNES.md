@@ -25,7 +25,8 @@ Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu nave
 - [ ] ★ Falla una pregunta a propósito → te deja volver a probar (sin perder nada).
 - [ ] ★ Acierta las 3 → el aviso en magenta, **20 Kpopis** en la cabecera y «Luz Hangul 001» en «Mis tesoros» (Mi K-ME).
 - [ ] ★ En «Mi K-ME», la tarjeta de Luz Hangul 001 en «Mis tesoros» (D082, E0097), en horizontal. A la izquierda, el lightstick encendido: bola blanca y rosa, con un reflejo curvo y un halo rosa sobre el papel lila; esquina fucsia, esquina de lámina irisada y purpurina abajo. A la derecha, sobre blanco: «LIGHTSTICK», el nombre, «Conseguido el» con la fecha de hoy y el origen. Mírala en el ordenador y en el móvil (390 px).
-- [ ] Repítela entera → no vuelve a dar Kpopis ni el tesoro.
+- [ ] Repítela entera → «Por repasar hoy, has ganado 5 Kpopis» (D087), sin volver a dar el tesoro. Repítela otra vez el mismo día → ya no da más («vuelve mañana»). En Mis Kpopis sale «Repaso de HANGUL LIVE 001».
+- [ ] ★ **HANGUL LIVE 002 y 003 (D086):** al acertar, la «K» con comillas fucsias lleva a la siguiente pregunta; pasa el ratón por encima y llega con Tab: se ilumina. Al terminar la 001, «Siguiente clase: HANGUL LIVE 002». Completa la 002 (사랑, 행복, 미소) y la 003 (무대, 최애, 컴백): **+20 Kpopis** cada una, la primera vez; repetirlas no da más. «← Clase anterior» te lleva a repasar. En la 003, «Terminar la clase» vuelve a «Mi escenario».
 - [ ] **Decide:** ¿te gustan los textos, los dibujos y el sitio de cada cosa? ¿Y los materiales del tesoro? ¿Pedimos a ChatGPT las texturas de purpurina y lámina irisada (T054)?
 
 ## 3. Colección «K» y canje (T046)
@@ -84,6 +85,7 @@ Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu nave
 - [ ] Publica con un avatar concreto y con un sello concreto.
 - [ ] Edita o borra ese avatar → la publicación no cambia (es una copia).
 - [ ] Mensaje con iconos: elige, quita, y comprueba que no deja más de 5.
+- [ ] ★ **Tipo de mensaje (D084):** al abrir «Añadir un mensaje con iconos», elige «¿Qué es?» (por ejemplo, Reto) y publica. En el muro, delante de los iconos, sale la etiqueta «RETO». Sin elegir, «MENSAJE». Sin iconos, no sale nada.
 - [ ] Reacciona, quita «la última» y «todas las mías»; borra una publicación tuya.
 - [ ] **Decide:** ¿te gustan los 7 iconos nuevos y el tamaño de la photocard?
 
@@ -97,8 +99,9 @@ Una sola lista, en el orden de la demo, con todo lo que falta revisar en tu nave
 
 ## 8b. K-ME · TÚ DECIDES (T053)
 
-- [ ] ★ Al entrar, la portada nueva de «Mi K-ME» (D081). En el ordenador, a la izquierda, tu imagen de perfil con el alias y la fecha; a la derecha, «¿Qué viene después?» con las tres propuestas futuras en fila. En el móvil, tu imagen pequeña arriba y la votación debajo.
-- [ ] La portada sin imagen de perfil (con la cuenta nueva, antes de elegirla) y con un avatar y un sello a la vez.
+- [ ] ★ Al entrar, «Mi K-ME» como «Mi espacio» (D085). En el ordenador, a la izquierda, tu imagen de perfil grande, con el alias y la fecha; a la derecha, Mis tesoros, Mis Kpopis y tu sello si también tienes avatar; debajo, «¿Qué viene después?». En el móvil, uno debajo de otro, con la imagen grande y centrada, y la votación al final.
+- [ ] Los cuatro casos: sin imagen de perfil (con la cuenta nueva), solo avatar, avatar y sello, y solo sello (el sello ocupa la imagen grande). Prueba también con el zoom del navegador al 200 %.
+- [ ] ★ La cabecera: el logo más grande, y tu cara o tu sello a su misma altura, junto a «Hola, …». En el móvil, todo en una fila.
 - [ ] ★ Elige una tarjeta y pulsa «¡Esta es mi favorita!»: «¡Voto guardado!», tu tarjeta en fucsia con ✓ y los porcentajes. La página **no se recarga ni se mueve** (arreglado hoy, E0099); prueba también con la ventana a unos 900 px y en el móvil (390 px).
 - [ ] Elige otra y vuelve a pulsar: cambia tu voto (no se suma). Sal y vuelve a entrar: sigue la tuya.
 - [ ] Vota con otra cuenta (la de prueba) y mira cómo cambian los porcentajes.

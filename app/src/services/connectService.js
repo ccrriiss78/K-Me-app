@@ -14,8 +14,8 @@ import * as Perfil from '../models/perfilModel.js';
 import { dibujarAvatar } from './avatarCatalogo.js';
 import { dibujar as dibujarSello } from './selloService.js';
 import {
-  REACCIONES, MAX_REACCIONES_POR_TIPO, EMOCION_RETIRADA, MAX_ICONOS_MENSAJE,
-  buscarEmocion, buscarReaccion, buscarIconoMensaje,
+  REACCIONES, MAX_REACCIONES_POR_TIPO, EMOCION_RETIRADA, MAX_ICONOS_MENSAJE, TIPO_MENSAJE_POR_DEFECTO,
+  buscarEmocion, buscarReaccion, buscarIconoMensaje, buscarTipoMensaje,
 } from '../catalogos/connect.js';
 
 // Tamaño del diseño en la photocard del muro (76 × 100 px; el CSS lo ajusta en el móvil).
@@ -97,6 +97,8 @@ export async function verMuro({ idUsuario, ahora = new Date() }) {
       dibujo: dibujoDelDiseno(p.diseno, p.alias),
       // Un icono que ya no está en el catálogo no se ve (como una emoción retirada, sin romper el muro).
       mensaje: (p.iconos ?? []).map(buscarIconoMensaje).filter(Boolean),
+      // Qué es el mensaje (D084). Las publicaciones de antes, sin tipo, se ven como «Mensaje».
+      tipoMensaje: buscarTipoMensaje(p.tipo_mensaje) ?? buscarTipoMensaje(TIPO_MENSAJE_POR_DEFECTO),
       esMia: p.es_mia,
       creadoEn: p.creado_en,
       hace: haceCuanto(p.creado_en, ahora),
@@ -124,6 +126,15 @@ export function leerIconos(valor) {
   return iconos;
 }
 
+// El tipo del mensaje (D084): solo si hay iconos. Sin elegir, «mensaje»; uno que no está en la lista
+// (o algo que no es un texto), error. Sin iconos no hay mensaje, así que tampoco tipo.
+export function leerTipoMensaje(valor, iconos) {
+  if (!iconos.length) return null;
+  if (valor === undefined || valor === '') return TIPO_MENSAJE_POR_DEFECTO;
+  if (typeof valor !== 'string' || !buscarTipoMensaje(valor)) throw errorConCodigo('TIPO_MENSAJE_NO_VALIDO');
+  return valor;
+}
+
 // La copia del diseño elegido, siempre de la propia cuenta: un avatar o sello de otra cuenta «no
 // existe». Vacío = la imagen de perfil del momento (Q11), que también se copia.
 async function copiarDiseno({ idUsuario, valor }) {
@@ -143,11 +154,12 @@ async function copiarDiseno({ idUsuario, valor }) {
   return { tipo, origen: String(fila.id), copia: fila.composicion };
 }
 
-export async function publicar({ idUsuario, emocion, diseno, iconos }) {
+export async function publicar({ idUsuario, emocion, diseno, iconos, tipoMensaje }) {
   if (typeof emocion !== 'string' || !buscarEmocion(emocion)) throw errorConCodigo('EMOCION_NO_VALIDA');
   const mensaje = leerIconos(iconos);
+  const tipo = leerTipoMensaje(tipoMensaje, mensaje);
   const copia = await copiarDiseno({ idUsuario, valor: diseno });
-  return Publicacion.crearPublicacion({ idUsuario, emocion, diseno: copia, iconos: mensaje });
+  return Publicacion.crearPublicacion({ idUsuario, emocion, diseno: copia, iconos: mensaje, tipoMensaje: tipo });
 }
 
 // Suma una reacción. Devuelve 'sumada' o 'tope' (ya había dado el máximo de ese tipo).

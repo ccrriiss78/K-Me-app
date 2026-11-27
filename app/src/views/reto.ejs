@@ -3,12 +3,16 @@
     después, las preguntas. Los textos salen del catálogo (src/catalogos/hangul-live.js). %>
 <section class="tarjeta escenario" aria-labelledby="titulo-reto">
   <p class="escenario__miga"><a class="enlace" href="/escenario">Mi escenario</a></p>
+  <%# Para repasar: la clase anterior, si la hay (D086). %>
+  <% if (locals.claseAnterior) { %>
+    <p class="reto-atras"><a class="boton boton--enlace boton--secundario boton-atras" href="/escenario/<%= claseAnterior.id %>">← Clase anterior: <%= claseAnterior.titulo %></a></p>
+  <% } %>
   <div class="reto-cartel">
     <h1 id="titulo-reto"><%= reto.titulo %> <span class="reto-cartel__lema"><span class="reto-cartel__punto" aria-hidden="true">· </span><%= reto.lema %></span></h1>
   </div>
   <p class="escenario__entrada"><%= reto.entrada %></p>
 
-  <h2 class="escenario__subtitulo">Las 3 expresiones</h2>
+  <h2 class="escenario__subtitulo"><%= reto.queSeAprende ?? 'Las 3 expresiones' %></h2>
   <ol class="expresiones">
     <% for (const e of reto.expresiones) { %>
       <li class="expresion">
@@ -20,7 +24,7 @@
       </li>
     <% } %>
   </ol>
-  <p class="aviso aviso--revision" lang="es"><%= reto.aviso %></p>
+  <% if (reto.aviso) { %><p class="aviso aviso--revision" lang="es"><%= reto.aviso %></p><% } %>
 
   <div class="reto-accion">
     <% if (estado.aciertos > 0) { %>
@@ -30,9 +34,9 @@
       <a class="boton boton--enlace" href="/escenario/<%= reto.id %>/preguntas/1">Empezar las preguntas</a>
     <% } %>
     <% if (estado.completadoEl) { %>
-      <p class="nota">Lo completaste el <%= estado.completadoEl %>. Puedes repetirlo cuando quieras.</p>
+      <p class="nota">Lo completaste el <%= estado.completadoEl %>. Puedes repetirlo cuando quieras: al repasarlo, <%= recompensa.repaso %>, una vez al día.</p>
     <% } else { %>
-      <p class="nota">Recompensa la primera vez que aciertes las 3: <%= recompensa.kpopis %> y <%= recompensa.tesoro.nombre %>.</p>
+      <p class="nota">Recompensa la primera vez que aciertes las 3: <%= recompensa.kpopis %><% if (recompensa.tesoro) { %> y <%= recompensa.tesoro.nombre %><% } %>.</p>
     <% } %>
   </div>
 </section>
